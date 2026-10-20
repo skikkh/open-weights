@@ -907,7 +907,7 @@
   "bench_note": "自己申告。Terminal-Bench 2.1（Terminus）73.0、SWE-bench Pro 61.7、DeepSWE 1.1 42.2は27Bのカード。GPQA/HLE/LiveCodeBench v6はQwen3.8-Flash-Nextのカード比較表の値。AA指数v4.3.2（2026-10-20取得、xhigh設定。mediumは27.6）。",
   "aa_index": 33.7,
   "japanese_note": "3.8-27B自体の日本語評価は未確認。前世代Qwen3.5-27BはNejumi Leaderboard 4（2026/3/6版）で総合0.8049（全体11位）と、中型としては上位だった。",
-  "deploy_note_ja": "BF16で約56GB（H100 80GB×1）、公式FP8で約31GB。4bit量子化（GGUF/MLX）なら16〜24GB級GPUや32GB以上のMacで動く。",
+  "deploy_note_ja": "Q4_K_M（Unsloth UD-Q4_K_M 16.5GB、Q4_K_M一般版で約17GB）でRTX 3090/4090（24GB）に載る。llama.cpp実測（Q4、MTPなし、4kコンテキスト）で生成速度はRTX 3090が約40 tok/s、RTX 4090が約46 tok/s（64kで約38 tok/s）、RTX 5090が約75 tok/s。RTX 5090ではNVFP4+MTPで79 tok/s、SGLang+NVFP4で200 tok/s超の報告がある。MacはM5 Max（llama.cpp、4k）で約31 tok/s、MLX 4bitで約33 tok/s。32GB以上のMacで4bit、64GBのMacならQ8（29GB）も動く。DGX SparkではQ4で約12 tok/s（MTPなし）。Ollama公式ライブラリにqwen3.8:27bがある。",
   "engines": [
    "vLLM",
    "SGLang",
@@ -930,6 +930,14 @@
    "https://blog.qualiteg.com/llm-ranking-2026-03/"
   ],
   "confidence": "high",
+  "q4_gb": 16.5,
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
   "jp_bench": {
    "nejumi": 0.8091
   },
@@ -1987,7 +1995,7 @@
   "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは98.7）、HLEはツールなし（ツールありは17.3）。MMLU 85.3、Tau-Bench（v1）Retail 54.8。aa_indexはAA v4.3.2（high）。",
   "aa_index": 9,
   "japanese_note": "公式のMMMLU日本語は78.8（high）。日本語強化版のGPT-OSS-Swallow-20B（SFT/RL）が公開されている。",
-  "deploy_note_ja": "MXFP4（約14GB）でメモリ16GBのGPUやMacに載る。Ollama、LM Studio、llama.cppでの実績が多い。",
+  "deploy_note_ja": "ネイティブMXFP4で約14GB。16GB GPUやメモリ16GBのMacで動く。llama.cpp実測でRTX 5090が約282 tok/s、M3 Ultraが約116 tok/s（PCWorld報道）。Ollama（gpt-oss:20b）、LM Studio（lms get openai/gpt-oss-20b）が公式対応。",
   "engines": [
    "vLLM",
    "SGLang",
@@ -2004,6 +2012,14 @@
    "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-20B-RL-v0.1"
   ],
   "confidence": "high",
+  "q4_gb": 14,
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
   "short": "gpt-oss-20b"
  },
  {
@@ -2050,7 +2066,7 @@
   "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。",
   "aa_index": 15,
   "japanese_note": "140以上の言語で事前学習し、35以上の言語を標準でサポート（日本語の個別明記はない）。前世代のGemma 3 27Bは日本語ランキング（Qualiteg 2026年3月版）の中規模で5位だった。",
-  "deploy_note_ja": "BF16（約63GB）で1×H100 80GBに載る。公式QAT Q4_0 GGUF（約19GB）なら24GB級のコンシューマGPUで動く。NVIDIAのNVFP4版、RedHatのFP8版、MLX版など派生が非常に多い。",
+  "deploy_note_ja": "Q4_K_M 18.3GB（公式QAT Q4_0は約19GB）でRTX 4090/3090（24GB）に載るが、長いコンテキストはKVキャッシュが重く24GBでは厳しい。RTX 5090のllama.cpp実測でQ4_K_M生成約69 tok/s。Q8_0は32.6GBで、64GBのMacやRTX 5090＋オフロード向け。UnslothのMLX 4bit/8bit版があり、Ollama公式（gemma4:31b）、LM Studioにも対応。",
   "engines": [
    "Transformers",
    "vLLM",
@@ -2070,6 +2086,14 @@
    "https://artificialanalysis.ai/models/gemma-4-31b"
   ],
   "confidence": "high",
+  "q4_gb": 18.3,
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
   "jp_bench": {
    "nejumi": 0.808
   },
@@ -3194,5 +3218,1122 @@
    "https://www.nii.ac.jp/news/release/2026/0403.html"
   ],
   "confidence": "high"
+ },
+ {
+  "id": "qwen3-6-35b-a3b",
+  "name": "Qwen3.6-35B-A3B",
+  "short": "Qwen3.6 35B-A3B",
+  "family": "Qwen3.6",
+  "org": "Alibaba（Qwen）",
+  "country": "CN",
+  "release": "2026-04-16",
+  "arch": "MoE",
+  "total_b": 35,
+  "active_b": 3,
+  "native_precision": "BF16",
+  "weights_gb": 69.4,
+  "q4_gb": 22.1,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+  "summary_ja": "アクティブ3BのMoEなので非常に速く、エージェント型コーディングの性能も高い。Qwen3.8世代には同クラスのMoEが出ていないため、2026年10月時点でもQwenの小型MoEはこれが最新。",
+  "strengths": [
+   "coding",
+   "agent",
+   "efficiency",
+   "vision",
+   "long-context",
+   "japanese"
+  ],
+  "bench": {
+   "swe_verified": 73.4,
+   "gpqa": 86.0,
+   "hle": 21.4,
+   "aime": 92.7,
+   "lcb": 80.4,
+   "mmlu_pro": 85.2,
+   "terminal_bench2": 51.5,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（thinking）。terminal_bench2はTerminal-Bench 2.0。AIMEはAIME 2026、LCBはv6。TAU3-Benchは67.2（tau2ではないためnull）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 70.12、BrowseComp 48.74。aa_indexはAA v4.3.2（Reasoning。非推論は15）。",
+  "aa_index": 18,
+  "japanese_note": "Nejumi Leaderboard 4（2026-09-01時点）で総合0.7978。40B以下ではQwen3.8-27B、Gemma 4 31Bに次ぐ。前世代Qwen3.5-35B-A3BはSwallowで日本語平均0.604。",
+  "deploy_note_ja": "Unsloth UD-Q4_K_M は22.1GBで、24GB GPUには短いコンテキストでぎりぎり載る（足りない分はMoEのエキスパートをCPUへ逃がせる）。M4 Max（48〜128GB）のoMLX 4bitで生成約106〜108 tok/s（4k、コミュニティ計測）と非常に速い。Q8_0は36.9GBで、64GBのMacに向く。Ollama公式（qwen3.6:35b）、LM Studioにも対応。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "KTransformers",
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "Qwen3.5-35B-A3B",
+   "Qwen3-30B-A3B"
+  ],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+   "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF",
+   "https://artificialanalysis.ai/models/qwen3-6-35b-a3b",
+   "https://omlx.ai/benchmarks/fqabp6rx",
+   "https://omlx.ai/benchmarks/nwx2bl2h",
+   "https://journal.qualiteg.com/llm-ranking-2026/",
+   "https://codersera.com/blog/qwen-3-8-model-lineup-2026"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.7978
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（Qualiteg による集計、2026-09-01 時点）"
+ },
+ {
+  "id": "google-gemma-4-26b-a4b",
+  "name": "Gemma 4 26B A4B",
+  "short": "Gemma 4 26B-A4B",
+  "family": "Gemma 4",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-04-02",
+  "arch": "MoE",
+  "total_b": 25.2,
+  "active_b": 3.8,
+  "native_precision": "BF16（MTP版あり）",
+  "weights_gb": 50.5,
+  "q4_gb": 16.9,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/google/gemma-4-26B-A4B-it",
+  "summary_ja": "Gemma 4のMoE版で、31B並みの日本語・多言語性能をはるかに速い速度で出せる。16GB級のGPUでも動く、速度重視の定番。",
+  "strengths": [
+   "efficiency",
+   "multilingual",
+   "japanese",
+   "vision",
+   "reasoning"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 82.3,
+   "hle": 8.7,
+   "aime": 88.3,
+   "lcb": 77.1,
+   "mmlu_pro": 82.6,
+   "terminal_bench2": null,
+   "tau2": 68.2,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは17.2）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 57.40、Terminal-Bench 2.1 37.22。aa_indexはAA v4.3.2（Reasoning）。",
+  "aa_index": 17,
+  "japanese_note": "Swallow LLM Leaderboardで日本語平均0.646（40B以下の国外オープンでGemma 4 31Bに次ぐ2位）。Nejumi Leaderboard 4（2026-09-01時点）で総合0.7872。biton（2026年10月版）は16GB帯の本命としている。",
+  "deploy_note_ja": "UD-Q4_K_M 16.9GBで16〜24GBのGPUに載る。RTX 5090のllama.cpp実測でQ4_K_M生成約249 tok/s。M4 Max 128GBのoMLX（6bit）で生成約83 tok/s（4k）、64kでも約50 tok/s。Ollama公式（gemma4:26b）、LM Studio、Unsloth MLX版あり。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/google/gemma-4-31B-it",
+   "https://huggingface.co/unsloth/gemma-4-26B-A4B-it-GGUF",
+   "https://artificialanalysis.ai/models/open-source/small",
+   "https://atomic.chat/blog/guides/best-local-llms-for-rtx-5090",
+   "https://omlx.ai/benchmarks/5wdp8hn3",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html",
+   "https://journal.qualiteg.com/llm-ranking-2026/",
+   "https://www.biton.co.jp/blog_81.html"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.7872
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（Qualiteg による集計、2026-09-01 時点）"
+ },
+ {
+  "id": "meta-muse-glimmer-30b",
+  "name": "Muse Glimmer-30B",
+  "short": "Muse Glimmer 30B",
+  "family": "Muse",
+  "org": "Meta（Meta Superintelligence Labs）",
+  "country": "US",
+  "release": "2026-08-10",
+  "arch": "Dense",
+  "total_b": 29.6,
+  "active_b": null,
+  "native_precision": "BF16（公式4bit K-Quant版あり）",
+  "weights_gb": 60,
+  "q4_gb": 16.8,
+  "context_k": 131,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "MetaとしてはじめてApache 2.0で出した重み。学習データと学習コードは非公開。",
+  "hf": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+  "summary_ja": "Llama 4以来16か月ぶりにMetaが出したオープンウェイトで、単体GPUで動くエージェント向けの30B密モデル。上位モデルMuse Sparkから蒸留しており、コーディングとツール利用に強い。",
+  "strengths": [
+   "agent",
+   "coding",
+   "tool-use",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 76.0,
+   "gpqa": 83.5,
+   "hle": 22.0,
+   "aime": 94.7,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 51.7,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（reasoning=high）。terminal_bench2はTerminal-Bench 2.1、HLEはAA測定のテキストのみ、AIMEはAIME 2026。ほかにSWE-bench Pro 51.2、MCP Atlas 75.5、AA-LCR 80.0、τ3-Banking 23.5。aa_indexはAA v4.3.2（High）。旧版指数（v4.1系、2026-08）では35だった。",
+  "aa_index": 17,
+  "japanese_note": "Nejumi Leaderboard 4（2026-09-01時点）で総合0.7754（reasoning-xhigh）。モデルカードは100以上の言語で学習とするが、日本語の個別記載はない。AA-Omniscienceの幻覚率は82%と高め（AA記事）。",
+  "deploy_note_ja": "公式GGUFのK-Quant-17GB（Q4_K_M、16.8GB）で24GB GPUに載る（画像入力用mmprojとDFlashドラフタを足しても約20GB）。公式計測でRTX 5090（llama.cpp）は通常74.9 tok/s、DFlash投機的デコードで233.4 tok/s。M4 Maxは23.7→37.8 tok/s、M5 Maxは26.6→50.2 tok/s（ExecuTorch）。llama.cppはb10353以降が必要。Ollama公式（muse-glimmer:30b）、LM Studio対応。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "ExecuTorch"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+   "https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF",
+   "https://artificialanalysis.ai/articles/muse-glimmer",
+   "https://artificialanalysis.ai/models/muse-glimmer",
+   "https://atomic.chat/blog/guides/best-local-llms-for-rtx-5090",
+   "https://journal.qualiteg.com/llm-ranking-2026/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.7754
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（Qualiteg による集計、2026-09-01 時点）"
+ },
+ {
+  "id": "ifm-k2-horizon-mova-36b-a4b",
+  "name": "K2-Horizon-MoVA-36B-A4B",
+  "short": "K2 Horizon MoVA",
+  "family": "K2 Horizon",
+  "org": "MBZUAI Institute of Foundation Models（IFM）",
+  "country": "AE",
+  "release": "2026-09-03",
+  "arch": "MoE",
+  "total_b": 36,
+  "active_b": 4,
+  "native_precision": "BF16",
+  "weights_gb": 74.9,
+  "q4_gb": 22.4,
+  "context_k": 524,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みはApache 2.0。途中チェックポイント・データ・学習コードは今後公開予定とされる。",
+  "hf": "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B",
+  "summary_ja": "UAEのMBZUAIが出した独自アテンション（Mixture of Value Attention）のMoEで、40B以下ではQwen3.8-27Bに次ぐAA指数。エージェント系ベンチが強く、ネイティブ512Kの長文脈を持つ。",
+  "strengths": [
+   "agent",
+   "reasoning",
+   "efficiency",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 80.8,
+   "hle": 25.2,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 58.6,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（reasoning_effort=high。比較対象のベースラインはAA測定）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。ほかにτ3-Banking 26.8、SciCode 38.9、AA-LCR 66.3。aa_indexはAA v4.3.2（サイト表示は丸めて25）。",
+  "aa_index": 25.3,
+  "japanese_note": "言語タグは英語のみで、日本語の評価は見当たらない。外部のローカル検証（MindStudio、同ファミリーの0.9B/7B/32B）で多言語タスクの不具合が指摘されている。",
+  "deploy_note_ja": "公式GGUFのQ4_K_Mは22.4GBで、24GB GPUには短いコンテキストでぎりぎり。32GBのRTX 5090や48GB以上のMacが無難。llama.cppは本家b11454でK2 Horizon対応が入ったばかり（それ以前はIFMのフォークが必要）で、Ollama・LM Studioでの動作実績はまだ少ない。実測tok/sの公表はなし。",
+  "local_runtimes": [
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B",
+   "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B-GGUF",
+   "https://artificialanalysis.ai/models/k2-mova-36b-mid5",
+   "https://artificialanalysis.ai/models/open-source/small",
+   "https://mbzuai.ac.ae/news/mbzuais-institute-of-foundation-models-launches-k2-horizon-the-worlds-largest-fully-open-ai-mo",
+   "https://runaihome.com/blog/ifm-k2-horizon-consumer-gpu-hardware-guide-2026/"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "ornith-1-5-35b-a3b",
+  "name": "Ornith-1.5-35B-A3B",
+  "short": "Ornith-1.5 35B",
+  "family": "Ornith",
+  "org": "DeepReinforce（Ornith）",
+  "country": "?",
+  "release": "2026-08-19",
+  "arch": "MoE",
+  "total_b": 35,
+  "active_b": 3,
+  "native_precision": "BF16（FP8、NVFP4、GGUF、MLX版あり）",
+  "weights_gb": 71.1,
+  "q4_gb": 21.7,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。Qwen3.5とGemma 4のチェックポイントを起点に追加の事前学習・中間学習・事後学習をしたモデル（Ornith-1.0の延長）。",
+  "hf": "https://huggingface.co/ornith-ai/Ornith-1.5-35B",
+  "summary_ja": "自分で学習タスクを作って強化学習を回す手法で鍛えた、コーディング・エージェント特化の35B MoE。ベンダー公表値ではQwen3.6-35B-A3Bを上回るが、第三者による検証はまだない。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 79.0,
+   "gpqa": 89.2,
+   "hle": 25.6,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 67.8,
+   "tau2": null,
+   "browsecomp": 67.6
+  },
+  "bench_note": "公式モデルカード（5回平均、ベンダー自己申告で第三者による再現なし）。terminal_bench2はTerminal-Bench 2.1（Terminus-2。Claude Code使用時は68.5）、HLEはツールなし（ツールありは33.4）。ほかにSWE-bench Pro 59.6、SWE-bench Multilingual 71.4、MCP-Atlas 70.2。AA指数は未掲載。",
+  "aa_index": null,
+  "japanese_note": "35B版の日本語評価は見当たらない。同シリーズの9B版（Ornith-1.5-9B）はNejumi Leaderboard 4（2026-09-01時点）で総合0.6909。",
+  "deploy_note_ja": "公式GGUFのQ4_K_Mは21.7GBで、24GB GPUにはぎりぎり（MoEのCPUオフロード併用が無難）。Q8_0は37.8GBで64GBのMac向け。GGUF版は月間約380万ダウンロードとローカル界隈で人気。Ollama公式ライブラリ（ornith-1.5:35b）、LM Studio、llama.cppで動く。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Ornith-1.0-35B"
+  ],
+  "sources": [
+   "https://huggingface.co/ornith-ai/Ornith-1.5-35B",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B-GGUF",
+   "https://datanorth.ai/news/ornith-releases-ornith-1-5",
+   "https://www.benchlm.ai/models/ornith-1-5-35b-a3b",
+   "https://journal.qualiteg.com/llm-ranking-2026/",
+   "https://ollama.com/library?sort=newest"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "nvidia-nemotron-3-5-lightning-30b-a3b",
+  "name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+  "short": "Nemotron 3.5 Lightning",
+  "family": "Nemotron 3.5",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-08-11",
+  "arch": "MoE（Mamba-2＋Attentionのハイブリッド）",
+  "total_b": 31.6,
+  "active_b": 3.6,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 65.85,
+  "q4_gb": 18.92,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（商用可）。NGCの配布物はNVIDIAのソフトウェアライセンスを参照するため、利用経路ごとに確認が必要。",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+  "summary_ja": "Mamba-2とMoEを組み合わせた、とにかく速い30B級モデルで、最大1Mトークンの長文脈に対応する。性能は同サイズのQwen・Gemmaに一歩譲るが、速度と長文処理で選ばれる。",
+  "strengths": [
+   "efficiency",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 51.56,
+   "gpqa": 75.44,
+   "hle": 11.72,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": 81.94,
+   "terminal_bench2": 24.58,
+   "tau2": null,
+   "browsecomp": 36.97
+  },
+  "bench_note": "公式モデルカード（NVIDIAのNeMo Evaluator SDKでの測定）。terminal_bench2はTerminal-Bench 2.1、HLEはテキストのみ・ツールなし。ほかにSciCode 32.60、AA-LCR 52.00、IFBench 71.88。aa_indexはAA v4.3.2（発表時のv4.1.1では24）。AAの出力速度は310.7 tok/sで全モデル1位。",
+  "aa_index": 13,
+  "japanese_note": "モデルカードの対応言語に日本語が明記されている。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
+  "deploy_note_ja": "Q4_K_Mは25.5GBと大きめなので、24GB GPUではIQ4_XS（18.9GB）が現実的。RTX 5090のllama.cpp実測でIQ4_NL生成約334 tok/s、NVFP4 GGUFで約367 tok/sと、30B級で最速クラス。llama.cppはb10362以降が必要。Ollama公式（nemotron-3.5-lightning:30b）、LM Studio対応。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TensorRT-LLM",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Nemotron 3 Nano 30B-A3B"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+   "https://huggingface.co/bartowski/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
+   "https://artificialanalysis.ai/models/nemotron-3-5-lightning",
+   "https://artificialanalysis.ai/articles/nemotron-3-5-lightning-launch",
+   "https://atomic.chat/blog/guides/best-local-llms-for-rtx-5090",
+   "https://www.biton.co.jp/blog_81.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ai9stars-g9v3-39a5b",
+  "name": "G9v3-39A5B",
+  "short": "G9v3",
+  "family": "G9",
+  "org": "AI9Stars",
+  "country": "?",
+  "release": "2026-08-20",
+  "arch": "MoE",
+  "total_b": 39,
+  "active_b": 5,
+  "native_precision": "BF16",
+  "weights_gb": null,
+  "q4_gb": null,
+  "context_k": 131,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "リポジトリと重みともにApache 2.0。プレビュー版の位置づけ。",
+  "hf": "https://huggingface.co/ai9stars/G9v3-39A5B",
+  "summary_ja": "あまり知られていないチームが出した39B MoEだが、AA指数では40B以下でQwen3.8-27B、K2 Horizon MoVAに次ぐ位置にいる。幻覚の少なさ（AA-Omniscience非幻覚率87%）が目立つ。",
+  "strengths": [
+   "reasoning",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 80.5,
+   "hle": 17.5,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 32.6,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式カードにベンチマーク表はない。値はK2-Horizon-MoVAのモデルカードに載っているAA測定の比較値（terminal_bench2はTerminal-Bench 2.1、HLEはツールなし）。ほかにτ3-Banking 22.1、AA-Omniscience非幻覚率87.0。aa_indexはAA v4.3.2（推定値、独立評価は今後）。中国語版AAページの旧指数では31。",
+  "aa_index": 22,
+  "japanese_note": "対応言語は英語と中国語のみと記載。日本語の評価は見当たらない。",
+  "deploy_note_ja": "独自アーキテクチャでtrust_remote_codeが必要（Transformers 5.6以上、vLLM 0.21以上、SGLang 0.5.12以上）。HF上にコミュニティ量子化が7件あるが、llama.cpp/Ollamaで動くかは未確認。4bitなら単純計算で20GB台前半だが、実ファイルサイズとtok/sの報告は見当たらない。",
+  "local_runtimes": [
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ai9stars/G9v3-39A5B",
+   "https://artificialanalysis.ai/models/g9v3-39a5b",
+   "https://artificialanalysis.ai/models/open-source/small",
+   "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B"
+  ],
+  "confidence": "low"
+ },
+ {
+  "id": "zai-glm-4-7-flash",
+  "name": "GLM-4.7-Flash",
+  "short": "GLM-4.7-Flash",
+  "family": "GLM-4.7",
+  "org": "Z.ai（Zhipu AI）",
+  "country": "CN",
+  "release": "2026-01-19",
+  "arch": "MoE",
+  "total_b": 31.2,
+  "active_b": 3,
+  "native_precision": "BF16",
+  "weights_gb": 59.9,
+  "q4_gb": 18.3,
+  "context_k": 200,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+  "summary_ja": "Z.aiの30B級MoEで、コーディングとエージェント用途向け。GLMの新世代（GLM-5.3-Flash）は320Bと大型化したため、単体GPU向けのGLMは2026年10月時点でもこれが最新。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 59.2,
+   "gpqa": 75.2,
+   "hle": 14.4,
+   "aime": 91.6,
+   "lcb": 64.0,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": 79.5,
+   "browsecomp": 42.8
+  },
+  "bench_note": "公式モデルカード。AIMEはAIME 25、LCBはv6。aa_indexはAA v4.3.2（推定値）。AAはこのモデルを旧版扱い（deprecated）にしている。",
+  "aa_index": 15,
+  "japanese_note": "言語タグは英語と中国語のみ。日本語のリーダーボード結果は見当たらない。",
+  "deploy_note_ja": "Q4_K_M 18.3GB（UD-Q4_K_XL 17.5GB）で24GB GPUや32GB以上のMacに載る。Ollama公式（glm-4.7-flash）、LM Studio、llama.cppで動く。Q8_0は31.8GB。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/zai-org/GLM-4.7-Flash",
+   "https://huggingface.co/unsloth/GLM-4.7-Flash-GGUF",
+   "https://artificialanalysis.ai/models/glm-4-7-flash",
+   "https://gigazine.net/gsc_news/en/20260120-zai-glm-4-7-flash"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "mistral-devstral-small-2-24b",
+  "name": "Devstral Small 2 24B Instruct 2512",
+  "short": "Devstral Small 2",
+  "family": "Devstral 2",
+  "org": "Mistral AI",
+  "country": "FR",
+  "release": "2025-12-09",
+  "arch": "Dense",
+  "total_b": 24,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 47.2,
+  "q4_gb": 14.3,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Small 2はApache 2.0（上位のDevstral 2 123Bは改変MITライセンス）。",
+  "hf": "https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512",
+  "summary_ja": "Mistralのコーディングエージェント専用24Bモデルで、RTX 4090や32GBのMacで動くことを公式にうたう。Mistral Smallの本線は4世代目で119Bに大型化したため、40B以下のMistralはこれが最新。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 68.0,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 22.5,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2（バージョン表記どおり）。SWE-bench Multilingual 55.7。第三者表では SWE-bench Verified 65.8 の報告もある。aa_indexはAA v4.3.2（非推論）。AAは旧版扱い。",
+  "aa_index": 8,
+  "japanese_note": "日本語の評価は見当たらない。",
+  "deploy_note_ja": "Q4_K_M 14.3GBで16GB以上のGPU、24GBなら長めのコンテキストも取れる。Q8_0は25.1GB。Ollama公式（devstral-small-2:24b）、LM Studio、llama.cppに対応。Mistral Vibe CLIなどのコーディングエージェントと組み合わせる前提。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Devstral Small 1.1"
+  ],
+  "sources": [
+   "https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512",
+   "https://huggingface.co/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF",
+   "https://mistral.ai/news/devstral-2-vibe-cli/",
+   "https://artificialanalysis.ai/models/devstral-small-2",
+   "https://benchlm.ai/best/mistral-models"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ibm-granite-4-2-30b",
+  "name": "Granite-4.2-30B",
+  "short": "Granite 4.2 30B",
+  "family": "Granite 4.2",
+  "org": "IBM",
+  "country": "US",
+  "release": "2026-08-25",
+  "arch": "Dense",
+  "total_b": 30,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": null,
+  "q4_gb": 18,
+  "context_k": 128,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/ibm-granite/granite-4.2-30b",
+  "summary_ja": "IBMの企業向け30B密モデルで、思考モード・省思考モード・非思考モードを切り替えられる。長文脈（最大512Kまで拡張）とツール呼び出しに強く、日本語もテスト対象に入っている。",
+  "strengths": [
+   "long-context",
+   "tool-use",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": 57.0,
+   "gpqa": 66.41,
+   "hle": null,
+   "aime": 89.17,
+   "lcb": 75.77,
+   "mmlu_pro": 77.6,
+   "terminal_bench2": 29.24,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。aa_indexはAA v4.3.2。",
+  "aa_index": 13,
+  "japanese_note": "モデルカードのテスト済み言語に日本語が含まれる。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
+  "deploy_note_ja": "Ollama公式（granite4.2:30b）のQ4_K_Mが約18GBで、24GB GPUに載る。ネイティブ128K、512Kまでの拡張あり。LM Studio、llama.cppでも動く。tok/sの実測報告は見当たらない。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Granite 4.1 30B",
+   "Granite 4.0 H Small"
+  ],
+  "sources": [
+   "https://huggingface.co/ibm-granite/granite-4.2-30b",
+   "https://artificialanalysis.ai/models/granite-4-2-30b",
+   "https://ollama.com/library/granite4.2:30b-q4_K_M/blobs/f299dace85d7",
+   "https://datanorth.ai/news/ibm-releases-granite-4-2",
+   "https://www.biton.co.jp/blog_81.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "liquid-lfm2-5-24b-a2b",
+  "name": "LFM2.5-24B-A2B",
+  "short": "LFM2.5 24B",
+  "family": "LFM2.5",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-13",
+  "arch": "MoE（短畳み込み＋GQAのハイブリッド）",
+  "total_b": 24,
+  "active_b": 2.45,
+  "native_precision": "BF16（FP8、GGUF、ONNX、MLX版あり）",
+  "weights_gb": 48,
+  "q4_gb": 14.5,
+  "context_k": 131,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。年間売上1,000万ドル未満の企業は商用利用可、それを超えると別途商用ライセンスが必要（二次情報。原文の確認推奨）。",
+  "hf": "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+  "summary_ja": "アクティブ約2.5Bと非常に軽いMoEで、ツール呼び出しや業務自動化のベンチに強い。2026年10月13日公開の最新モデルで、独立評価はまだ出ていない。",
+  "strengths": [
+   "tool-use",
+   "agent",
+   "efficiency",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": 51.0,
+   "gpqa": 74.42,
+   "hle": 7.4,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（ベンダー自己申告）。SWE-bench VerifiedはOpenCode使用時。ほかにAutomationBench 27.69、BFCLv4 65.01、IFBench 74.69、MATH-500 96.04。AA指数は未掲載。",
+  "aa_index": null,
+  "japanese_note": "対応16言語に日本語が含まれる。日本語リーダーボードの結果はまだない。",
+  "deploy_note_ja": "公式GGUFのQ4_K_Mは14.5GBで、16GB GPUや24GB以上のMacで動く。ベンダー公表でM5 Max 184 tok/s、Ryzen AI Max+ 395で114 tok/s（llama.cpp、Q4_K_M）。Ollama公式（lfm2.5:24b）、LM Studio、MLXに対応。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "LFM2-24B-A2B"
+  ],
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B",
+   "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF",
+   "https://www.llmreference.com/provider/liquid/lfm-2.5-24b-a2b",
+   "https://ollama.com/library?sort=newest"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "lg-exaone-4-5-33b",
+  "name": "EXAONE 4.5 33B",
+  "short": "EXAONE 4.5",
+  "family": "EXAONE 4.5",
+  "org": "LG AI Research",
+  "country": "KR",
+  "release": "2026-04-09",
+  "arch": "Dense",
+  "total_b": 33,
+  "active_b": null,
+  "native_precision": "BF16（公式FP8、AWQ、GGUF版あり）",
+  "weights_gb": 66.1,
+  "q4_gb": 20,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "EXAONE AI Model License Agreement 1.2 - NC",
+  "commercial": "no",
+  "license_note": "非商用（NC）ライセンス。業務利用には別途LGとの契約が必要。",
+  "hf": "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B",
+  "summary_ja": "LG初のオープンウェイトの視覚言語モデル（VLM）で、数学・STEMと文書・図表の読解に強い。ただし非商用ライセンス。",
+  "strengths": [
+   "vision",
+   "math",
+   "reasoning",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 80.5,
+   "hle": null,
+   "aime": 92.6,
+   "lcb": 81.4,
+   "mmlu_pro": 83.3,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード。AIMEはAIME 2026、LCBはv6。τ2-Benchはドメイン別（Retail 77.9、Airline 56.5、Telecom 73.0）のためnull。MMMU 78.7、MMMU-Pro 68.6。aa_indexはAA v4.3.2（推定値）。",
+  "aa_index": 13,
+  "japanese_note": "6言語のタグがあるが内訳は未記載で、韓国語に重点を置く。日本語の評価は見当たらない。",
+  "deploy_note_ja": "公式GGUFでQ4_K_M 20GB（IQ4_XS 18GB）。24GB GPUに載る。llama.cppはb9453以降で公式対応。Ollama（hf.co経由）とLM Studioで動く。Q8_0は35.1GB。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "TensorRT-LLM",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "EXAONE 4.0 32B"
+  ],
+  "sources": [
+   "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B",
+   "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B-GGUF",
+   "https://artificialanalysis.ai/models/exaone-4-5-33b",
+   "https://letsdatascience.com/news/lg-unveils-exaone-45-multimodal-ai-model-1ff108ad"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "bytedance-seed-oss-36b",
+  "name": "Seed-OSS-36B-Instruct",
+  "short": "Seed-OSS 36B",
+  "family": "Seed-OSS",
+  "org": "ByteDance Seed",
+  "country": "CN",
+  "release": "2025-08-20",
+  "arch": "Dense",
+  "total_b": 36,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 72.3,
+  "q4_gb": 21.76,
+  "context_k": 512,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+  "summary_ja": "ネイティブ512Kの長文脈と、思考の長さを指定できる「thinking budget」が特徴の36B密モデル。2026年10月時点でも後継のオープンウェイトは出ていないが、性能は2026年世代に見劣りする。",
+  "strengths": [
+   "long-context",
+   "reasoning",
+   "math"
+  ],
+  "bench": {
+   "swe_verified": 56.0,
+   "gpqa": 71.4,
+   "hle": 10.1,
+   "aime": 84.7,
+   "lcb": 67.4,
+   "mmlu_pro": 82.7,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード。SWE-bench VerifiedはOpenHands使用時（AgentLessでは47）、AIMEはAIME 2025（2024は91.7）、LCBはv6。MMMLU 78.4。aa_indexはAA v4.3.2（推定値）。AAは旧版扱い。",
+  "aa_index": 12,
+  "japanese_note": "国際用途向けに最適化とあり、多言語のMMMLUは78.4。日本語リーダーボードの結果は見当たらない。",
+  "deploy_note_ja": "Q4_K_M 21.8GB（bartowski）で24GB GPUにぎりぎり載るが、長文脈はKVキャッシュで厳しい。Q8_0は38.4GBで64GBのMac向け。llama.cpp系（Ollamaはhf.co経由、LM Studio）で動く。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+   "https://huggingface.co/bartowski/ByteDance-Seed_Seed-OSS-36B-Instruct-GGUF",
+   "https://artificialanalysis.ai/models/seed-oss-36b-instruct",
+   "https://huggingface.co/ByteDance-Seed"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ai2-olmo-3-1-32b-think",
+  "name": "Olmo 3.1 32B Think",
+  "short": "Olmo 3.1 32B",
+  "family": "Olmo 3",
+  "org": "Allen Institute for AI（Ai2）",
+  "country": "US",
+  "release": "2025-12-12",
+  "arch": "Dense",
+  "total_b": 32.2,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": null,
+  "q4_gb": 19,
+  "context_k": 66,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みに加えて学習データ・学習コード・評価コードまで公開された「完全オープン」なモデル。",
+  "hf": "https://huggingface.co/allenai/Olmo-3.1-32B-Think",
+  "summary_ja": "学習データまで公開された完全オープンの32B推論モデルで、研究・再現用途の基準になる。性能は2026年の同サイズ帯より低い。",
+  "strengths": [
+   "reasoning",
+   "math"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 57.5,
+   "hle": null,
+   "aime": 78.1,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード。AIMEはAIME 2025（2024は80.6）。LiveCodeBenchはv3で83.3（v6ではないためnull）。IFEval 93.8、MMLU 86.4。aa_indexはAA v4.3.2（推定値）。",
+  "aa_index": 7,
+  "japanese_note": "日本語の評価は見当たらない（英語中心）。",
+  "deploy_note_ja": "Ollama公式（olmo-3.1:32b、Q4で19GB）で24GB GPUに載る。コンテキストは約64K。Thinkと Instructの2種類がある。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Olmo 3 32B Think"
+  ],
+  "sources": [
+   "https://huggingface.co/allenai/Olmo-3.1-32B-Think",
+   "https://artificialanalysis.ai/models/olmo-3-1-32b-think",
+   "https://ollama.com/library/olmo-3.1"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "google-gemma-4-12b",
+  "name": "Gemma 4 12B Unified",
+  "short": "Gemma 4 12B",
+  "family": "Gemma 4",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-06-03",
+  "arch": "Dense",
+  "total_b": 11.95,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 23.8,
+  "q4_gb": 7.12,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image",
+   "audio"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/google/gemma-4-12B",
+  "summary_ja": "画像・音声を別エンコーダなしでLLM本体に直接入れる「Unified」構成の12Bモデル。8〜12GB級のGPUで動き、26B版に迫る性能を半分以下のメモリで出す。",
+  "strengths": [
+   "efficiency",
+   "multilingual",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 78.8,
+   "hle": 5.2,
+   "aime": 77.5,
+   "lcb": 72.0,
+   "mmlu_pro": 77.2,
+   "terminal_bench2": null,
+   "tau2": 69.0,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし、tau2は3ドメイン平均。MMMLU 83.4、MMMU Pro 69.1。aa_indexはAA v4.3.2（推定値）。",
+  "aa_index": 14,
+  "japanese_note": "biton（2026年10月版）は日本語○の評価。多言語のMMMLUは83.4。日本語リーダーボードの個別スコアは見当たらない。",
+  "deploy_note_ja": "Q4_K_M 7.12GBで8GB GPUや16GBのMacでも動く。RTX 5090のllama.cpp実測でQ4_K_M生成約145 tok/s。Ollama公式（gemma4:12b）、LM Studio対応。Q8_0は12.7GB。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "Gemma 3 12B"
+  ],
+  "sources": [
+   "https://huggingface.co/google/gemma-4-12B",
+   "https://huggingface.co/unsloth/gemma-4-12B-it-GGUF",
+   "https://ai.google.dev/gemma/docs/releases?hl=en",
+   "https://artificialanalysis.ai/models/gemma-4-12b",
+   "https://atomic.chat/blog/guides/best-local-llms-for-rtx-5090",
+   "https://www.biton.co.jp/blog_81.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "ifm-k2-horizon-7b",
+  "name": "K2-Horizon-7B",
+  "short": "K2 Horizon 7B",
+  "family": "K2 Horizon",
+  "org": "MBZUAI Institute of Foundation Models（IFM）",
+  "country": "AE",
+  "release": "2026-09-03",
+  "arch": "Dense",
+  "total_b": 7,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 17,
+  "q4_gb": null,
+  "context_k": 524,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重み・データ・学習レシピ・コードまで公開された完全オープン。",
+  "hf": "https://huggingface.co/IFM/K2-Horizon-7B",
+  "summary_ja": "7B級ながらAA指数21で、Qwen3.6-35B-A3B（18）を上回る小型推論モデル。ただしSWE-benchで答えを取得していた実行が見つかったと開発元自身が公表しており、数値の扱いには注意が要る。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "efficiency",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 70.6,
+   "gpqa": 77.1,
+   "hle": 18.6,
+   "aime": 91.9,
+   "lcb": 71.5,
+   "mmlu_pro": null,
+   "terminal_bench2": 39.1,
+   "tau2": null,
+   "browsecomp": 59.0
+  },
+  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、AIMEはAIME 2025。GPQA/AIME/LCBは「anti-doom-loop」段階前の値（後は75.6/90.3/72.7）。SWE-bench Verifiedはローンチ表では68.4。IFMは、別の7B実行がSWE-benchの答えを取得し82まで水増しされたことを公表している。aa_indexはAA v4.3.2。",
+  "aa_index": 21,
+  "japanese_note": "言語タグは英語のみ。外部のローカル検証（MindStudio）で多言語タスクの不具合が指摘されている。",
+  "deploy_note_ja": "BF16で約17GB（HFのメタデータ上は9Bパラメータ）。4bit量子化なら8GB級GPUが目安とされるが、実ファイルサイズとtok/sの実測は見当たらない。llama.cppは本家b11454でK2 Horizon対応が入ったばかりで、Ollama・LM Studioの実績はまだ少ない。",
+  "local_runtimes": [
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/IFM/K2-Horizon-7B",
+   "https://artificialanalysis.ai/models/k2-horizon-7b",
+   "https://runaihome.com/blog/ifm-k2-horizon-consumer-gpu-hardware-guide-2026/",
+   "https://aireiter.com/blog/k2-horizon-models",
+   "https://huggingface.co/IFM/K2-Horizon-32B-GGUF"
+  ],
+  "confidence": "medium"
  }
 ]
