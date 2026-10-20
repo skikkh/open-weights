@@ -526,10 +526,11 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   ];
   // 巨大LLMを量子化して載せるローカル機（使える量の目安）
   var WS = [
-    { gb: 115, label: "128GB機", sub: "DGX Spark / Ryzen AI Halo / RTX Spark N1X" },
-    { gb: 230, label: "256GB", sub: "DGX Spark×2 / Mac Studio 256GB" },
-    { gb: 470, label: "512GB", sub: "Mac Studio 512GB" },
-    { gb: 740, label: "784GB", sub: "DGX Station（GB300）" }
+    { gb: 110, label: "128GB機", sub: "DGX Spark / Ryzen AI Halo / RTX Spark" },
+    { gb: 160, label: "192GB機", sub: "Ryzen AI Max+ PRO 495 機" },
+    { gb: 230, label: "256GB機", sub: "DGX Spark×2 / Mac Studio 256GB" },
+    { gb: 470, label: "512GB", sub: "Mac Studio M5 Ultra 512GB" },
+    { gb: 700, label: "約750GB", sub: "DGX Station（GB300）" }
   ];
   // 画像・動画・音声などの VRAM（コンシューマGPU基準）
   var VT = [
@@ -807,19 +808,29 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     if (!rows.length) return "";
     var head = "<tr><th>モデル</th>" + WS.map(function (w) { return "<th>" + esc(w.label) + "<small>" + esc(w.sub) + "</small></th>"; }).join("") + "<th>AA</th></tr>";
     var body = rows.map(function (m) {
-      var qs = m.local_q.quants.filter(function (q) { return num(q.size_gb); }).sort(function (a, b) { return b.size_gb - a.size_gb; });
+      // 剪定（REAP など）で別モデル化した版は「載る版」として扱わない
+      var qs = m.local_q.quants.filter(function (q) { return num(q.size_gb) && !/REAP|剪定/i.test(q.name + " " + (q.note || "")); }).sort(function (a, b) { return b.size_gb - a.size_gb; });
       return '<tr><td><a href="#llm" data-open="llm-' + esc(m.id) + '">' + esc(m.short || m.name) + '</a><br><span class="muted" style="font-size:12px">' + esc(cname(m.country)) + " · " + esc(fmtB(m.total_b)) + "</span></td>" +
         WS.map(function (w) {
-          var q = null; for (var i = 0; i < qs.length; i++) if (qs[i].size_gb * 1.1 <= w.gb) { q = qs[i]; break; }
+          var q = null; for (var i = 0; i < qs.length; i++) if ((num(qs[i].resident_gb) || qs[i].size_gb) * 1.1 <= w.gb) { q = qs[i]; break; }
           if (!q) return '<td class="no">載らない</td>';
           var lo = num(q.bits) != null && q.bits < 2.5;
-          return '<td><span class="q' + (lo ? " lo" : "") + '">' + esc(q.name) + '</span><br><span class="muted mono" style="font-size:11.5px">' + esc(fmtGB(q.size_gb)) + "</span></td>";
+          var nm = String(q.name).replace(/\s*\([^)]*\)/g, "");
+          return '<td><span class="q' + (lo ? " lo" : "") + '" title="' + esc(q.name) + '">' + esc(nm) + '</span><br><span class="muted mono" style="font-size:11.5px">' + esc(fmtGB(q.size_gb)) +
+            (num(q.resident_gb) ? "（常駐 " + esc(fmtGB(q.resident_gb)) + "・残りSSD）" : "") + (num(q.bits) ? " · 約" + esc(q.bits) + "bit" : "") + "</span></td>";
         }).join("") + '<td class="num">' + (scoreOf(m) != null ? esc(scoreOf(m)) : "—") + "</td></tr>";
     }).join("");
     return '<div class="box" id="llm-quant"><h3>量子化すれば、どのローカル機に載るか</h3>' +
-      "<p>公開されている量子化版のうち、その機械に載る一番ビット数の高いものを示します（ファイルサイズ × 1.1 が使えるメモリに収まるか）。黄色は2bit台以下で、性能の劣化が大きい「とりあえず動く」水準です。速度は帯域で決まり、128GB機（帯域 約250〜300GB/s）では巨大モデルは実用的な速さになりにくい点に注意してください。</p>" +
+      "<p>Hugging Face で公開されている量子化版のうち、その機械に載る一番ビット数の高いものを示します（ファイルサイズ × 1.1 が使えるメモリに収まるか。SSD に逃がせる部分があるモデルは常駐量で判定）。黄色は2.5bit未満で、性能の劣化が大きい「とりあえず動く」水準です。速さはメモリ帯域で決まり、128GB機（帯域 約250〜300GB/s）では巨大モデルは実用的な速さになりにくい点に注意してください。</p>" +
+      devCards() +
       '<div class="tbl-wrap"><table class="qtbl">' + head + body + "</table></div>" +
       (HW && HW.summary_ja ? '<p class="note muted" style="margin-top:10px">' + esc(HW.summary_ja) + "</p>" : "") + "</div>";
+  }
+  function devCards() {
+    var ds = HW && HW.devices; if (!ds || !ds.length) return "";
+    return '<p class="sec-label" style="margin:12px 0 8px">ローカル機の目安（2026年10月の価格）</p><div class="devs">' + ds.map(function (d) {
+      return '<div class="dev"><b>' + (d.source ? link(d.source, d.name) : esc(d.name)) + "</b><span>" + esc(d.memory) + " · " + esc(d.bandwidth_gbs) + "GB/s</span><br><span>" + esc(d.usable) + "</span><br><span>" + esc(d.price) + "</span></div>";
+    }).join("") + "</div>";
   }
   /* ── AA のローカル機実測（ローカルLLMページ） ── */
   function aaLocalBox() {
@@ -836,7 +847,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
         var r = rs.filter(function (x) { return x.system_id === s.id; }).sort(function (a, b) { return (num(a.completion_min) || 1e9) - (num(b.completion_min) || 1e9); })[0];
         if (!r) return '<td class="no">—</td>';
         if (r.fits === false || num(r.completion_min) == null) return '<td class="no">載らない</td>';
-        return '<td class="num' + (r.completion_min === best ? " best" : "") + '">' + esc(r.completion_min) + " 分</td>";
+        return '<td class="num' + (r.completion_min === best ? " best" : "") + '">' + esc(r.completion_min) + " 分" + (num(r.output_tok_s) ? '<br><span class="muted" style="font-size:11.5px;font-weight:400">生成 ' + esc(r.output_tok_s) + " tok/s</span>" : "") + "</td>";
       }).join("") + "</tr>";
     }).join("");
     var devs = sys.map(function (s) {

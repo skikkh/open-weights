@@ -73,7 +73,83 @@
    "nejumi": 0.8425
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "Kimi K3"
+  "short": "Kimi K3",
+  "local_q": {
+   "summary_ja": "1bitでも466GB以上で、1台の機械では実用になりません。512GB の Mac Studio を2台つないで約9 tok/s。",
+   "quants": [
+    {
+     "name": "MLX REAP160 2bit（エキスパート剪定版）",
+     "bits": 0.52,
+     "size_gb": 181.2,
+     "source": "https://huggingface.co/mlx-community/Kimi-K3-mlx-reap160-2bit",
+     "note": "剪定で別モデル化。品質は要検証"
+    },
+    {
+     "name": "UD-Q1_0",
+     "bits": 1.33,
+     "size_gb": 466.4,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
+    },
+    {
+     "name": "UD-TQ1_0",
+     "bits": 1.45,
+     "size_gb": 508.9,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
+    },
+    {
+     "name": "UD-IQ1_S",
+     "bits": 1.7,
+     "size_gb": 594.0,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF",
+     "note": "Unsloth: 必要メモリ610GB"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.03,
+     "size_gb": 711.1,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.46,
+     "size_gb": 861.3,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.31,
+     "size_gb": 1508.7,
+     "source": "https://huggingface.co/unsloth/Kimi-K3-GGUF"
+    },
+    {
+     "name": "公式重み（INT4/FP4ネイティブ）",
+     "bits": 4.46,
+     "size_gb": 1560.9,
+     "source": "https://huggingface.co/moonshotai/Kimi-K3"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.6,
+     "size_gb": 1609.9,
+     "source": "https://huggingface.co/nvidia/Kimi-K3-NVFP4"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB ×2（RDMA接続）",
+     "quant": "MLX 2.1bit",
+     "gen_tok_s": 8.8,
+     "source": "https://huggingface.co/avlp12/Kimi-K3-Alis-MLX-Dynamic-2.10bpw"
+    },
+    {
+     "hardware": "DGX Spark ×16 クラスタ",
+     "quant": "公式MXFP4",
+     "gen_tok_s": 21.7,
+     "source": "https://forums.developer.nvidia.com/t/full-kimi-k3-running-on-16x-gb10-cluster/379174"
+    }
+   ],
+   "note_ja": null
+  }
  },
  {
   "id": "glm-5-3",
@@ -149,7 +225,100 @@
    "nejumi": 0.8287
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "GLM-5.3"
+  "short": "GLM-5.3",
+  "local_q": {
+   "summary_ja": "4bit（約420GB）で 512GB の Mac Studio に載り約16 tok/s。128GB 機は SSD 併用で約5 tok/s と実用的ではありません。",
+   "quants": [
+    {
+     "name": "DwarfStar/llama.cpp IQ2_XXS (antirez)",
+     "bits": 2.27,
+     "size_gb": 211.1,
+     "source": "https://huggingface.co/antirez/glm-5.3-gguf"
+    },
+    {
+     "name": "UD-IQ1_S",
+     "bits": 2.33,
+     "size_gb": 216.7,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    },
+    {
+     "name": "UD-IQ2_M",
+     "bits": 2.57,
+     "size_gb": 238.6,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF",
+     "note": "Unsloth: 256GB機（DGX Spark 2台、Mac Studio）向け"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.73,
+     "size_gb": 253.9,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.03,
+     "size_gb": 281.7,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.69,
+     "size_gb": 343.0,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.5,
+     "size_gb": 418.3,
+     "source": "https://huggingface.co/mlx-community/GLM-5.3-4bit"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.99,
+     "size_gb": 464.1,
+     "source": "https://huggingface.co/nvidia/GLM-5.3-NVFP4"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 5.02,
+     "size_gb": 467.3,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    },
+    {
+     "name": "AWQ INT4 (cyankiwi)",
+     "bits": 5.25,
+     "size_gb": 488.2,
+     "source": "https://huggingface.co/cyankiwi/GLM-5.3-AWQ-INT4"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.62,
+     "size_gb": 801.4,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-GGUF"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB",
+     "quant": "MLX 4bit",
+     "gen_tok_s": 15.8,
+     "source": "https://huggingface.co/inferencerlabs/GLM-5.3-MLX-Q4i"
+    },
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB ×2",
+     "quant": "MLX 4bit",
+     "gen_tok_s": 21.8,
+     "source": "https://github.com/exo-explore/exo/pull/2317"
+    },
+    {
+     "hardware": "MacBook Pro M5 Max 128GB（SSD併用）",
+     "quant": "IQ2_XXS",
+     "gen_tok_s": 5.1,
+     "source": "https://github.com/antirez/ds4/blob/main/docs/SSD_STREAMING.md"
+    }
+   ],
+   "note_ja": null
+  }
  },
  {
   "id": "deepseek-v4-1-flash",
@@ -226,7 +395,133 @@
    "nejumi": 0.8158
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "DeepSeek V4.1 Flash"
+  "short": "DeepSeek V4.1 Flash",
+  "local_q": {
+   "summary_ja": "2bitなら 256GB 機に常駐して約37 tok/s。Engram 表を SSD に置けば 128GB 機（DGX Spark）でも約9 tok/s で動きます。",
+   "quants": [
+    {
+     "name": "UD-IQ1_S",
+     "bits": 2.49,
+     "size_gb": 233.0,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "うちEngram表(IQ4_NL)110.6GBはSSD上に置ける。RAM/VRAM必要量は残り122.4GB（Unsloth）",
+     "resident_gb": 122.4
+    },
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.68,
+     "size_gb": 250.4,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 139.8GB",
+     "resident_gb": 139.8
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 3.21,
+     "size_gb": 300.5,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 165.3GB",
+     "resident_gb": 165.3
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 3.58,
+     "size_gb": 334.8,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 199.6GB",
+     "resident_gb": 199.6
+    },
+    {
+     "name": "DwarfStar ds41f-q2 (IQ2_XXS/Q2_K)",
+     "bits": 3.91,
+     "size_gb": 365.7,
+     "source": "https://huggingface.co/antirez/deepseek-v4.1-flash-gguf",
+     "note": "主重み151.77GiB＋FP8 Engram 188.83GiB(SSDから読む)。128GB Macで--ssd-streaming"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 4.22,
+     "size_gb": 394.7,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 233.5GB。Unslothは256GB機（Mac Studio）向けと記載",
+     "resident_gb": 233.5
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 5.19,
+     "size_gb": 485.1,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 282.3GB",
+     "resident_gb": 282.3
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 5.36,
+     "size_gb": 500.7,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+     "note": "Engram以外 297.9GB",
+     "resident_gb": 297.9
+    },
+    {
+     "name": "MLX 2bit",
+     "bits": 2.55,
+     "size_gb": 238.8,
+     "source": "https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-MLX-2bit",
+     "note": "1017以前の版"
+    },
+    {
+     "name": "MLX oQ2.5e-mtp",
+     "bits": 3.67,
+     "size_gb": 342.7,
+     "source": "https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ2.5e-mtp"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.59,
+     "size_gb": 429.0,
+     "source": "https://huggingface.co/nvidia/DeepSeek-V4.1-Flash-NVFP4"
+    },
+    {
+     "name": "MLX oQ4e-mtp",
+     "bits": 4.62,
+     "size_gb": 432.0,
+     "source": "https://huggingface.co/mlx-community/DeepSeek-V4.1-Flash-1017-oQ4e-mtp"
+    },
+    {
+     "name": "公式重み（FP4/FP8混在）",
+     "bits": 5.46,
+     "size_gb": 510.3,
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB",
+     "quant": "1017 Q2",
+     "gen_tok_s": 36.1,
+     "source": "https://huggingface.co/elvezjp/DeepSeek-V4.1-Flash-1017-ELVEZ-Q2-gguf"
+    },
+    {
+     "hardware": "Mac Studio M3 Ultra 256GB",
+     "quant": "Q2（常駐）",
+     "gen_tok_s": 37.1,
+     "source": "https://github.com/antirez/ds4/pull/1073"
+    },
+    {
+     "hardware": "DGX Spark 1台（Engram表はSSD）",
+     "quant": "Q2",
+     "gen_tok_s": 9.3,
+     "source": "https://github.com/antirez/ds4/blob/main/docs/DGX_SPARK.md"
+    },
+    {
+     "hardware": "DGX Spark ×2",
+     "quant": "Q2",
+     "gen_tok_s": 21.8,
+     "source": "https://github.com/antirez/ds4/blob/main/docs/DGX_SPARK.md"
+    }
+   ],
+   "note_ja": null
+  }
  },
  {
   "id": "mimo-v2-6-pro",
@@ -297,7 +592,71 @@
    "nejumi": 0.8159
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "MiMo-V2.6-Pro"
+  "short": "MiMo-V2.6-Pro",
+  "local_q": {
+   "summary_ja": "2bit（約256GB）から。実測は 512GB の Mac Studio 2台で約26 tok/s。",
+   "quants": [
+    {
+     "name": "AesSedai BPW2.0 (GGUF, imatrix)",
+     "bits": 2.01,
+     "size_gb": 255.8,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Pro-MOPD-GGUF",
+     "note": "MOPD版"
+    },
+    {
+     "name": "AesSedai BPW2.5",
+     "bits": 2.51,
+     "size_gb": 319.6,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Pro-MOPD-GGUF"
+    },
+    {
+     "name": "AesSedai BPW3.0",
+     "bits": 3.01,
+     "size_gb": 383.5,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Pro-MOPD-GGUF"
+    },
+    {
+     "name": "AesSedai BPW3.5",
+     "bits": 3.51,
+     "size_gb": 447.5,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Pro-MOPD-GGUF"
+    },
+    {
+     "name": "Q2_K (ggml-org)",
+     "bits": 3.28,
+     "size_gb": 418.8,
+     "source": "https://huggingface.co/ggml-org/MiMo-V2.6-Pro-RL-GGUF"
+    },
+    {
+     "name": "MXFP4 (ggml-org GGUF)",
+     "bits": 4.35,
+     "size_gb": 554.2,
+     "source": "https://huggingface.co/ggml-org/MiMo-V2.6-Pro-RL-GGUF"
+    },
+    {
+     "name": "MLX mxfp4-q8",
+     "bits": 4.34,
+     "size_gb": 553.9,
+     "source": "https://huggingface.co/mlx-community/MiMo-V2.6-Pro-RL-mxfp4-q8"
+    },
+    {
+     "name": "公式重み（FP4エキスパート＋FP8/BF16）",
+     "bits": 4.5,
+     "size_gb": 573.5,
+     "source": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+     "note": "配布形式そのものが約4.5bit"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB ×2",
+     "quant": "MXFP4",
+     "gen_tok_s": 25.8,
+     "source": "https://github.com/exo-explore/exo/pull/2317"
+    }
+   ],
+   "note_ja": "Unsloth版なし（unslothはMiMo-V2.5-Proまで）。bartowskiも未確認"
+  }
  },
  {
   "id": "qwen3-8-2-4t-a95b",
@@ -367,7 +726,82 @@
    "nejumi": 0.8598
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "Qwen3.8 2.4T"
+  "short": "Qwen3.8 2.4T",
+  "local_q": {
+   "summary_ja": "1bit（UD-IQ1_S 508GB）で 512GB の Mac に載り約10 tok/s。ただし1bitは品質の劣化が大きい水準です。",
+   "quants": [
+    {
+     "name": "UD-Q1_0 (IQ1_XXXS)",
+     "bits": 1.32,
+     "size_gb": 397.3,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF",
+     "note": "Unsloth: 最低450GB RAM。専用llama.cppブランチ"
+    },
+    {
+     "name": "UD-IQ1_S",
+     "bits": 1.69,
+     "size_gb": 508.4,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    },
+    {
+     "name": "UD-IQ1_M",
+     "bits": 1.88,
+     "size_gb": 564.0,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.19,
+     "size_gb": 656.6,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.19,
+     "size_gb": 955.5,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    },
+    {
+     "name": "UD-IQ4_XS",
+     "bits": 4.37,
+     "size_gb": 1310.9,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.82,
+     "size_gb": 1444.5,
+     "source": "https://huggingface.co/nvidia/Qwen3.8-2.4T-A95B-NVFP4"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.32,
+     "size_gb": 2496.1,
+     "source": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.67,
+     "size_gb": 2600.2,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "512GB の Mac",
+     "quant": "UD-IQ1_S（508GB）",
+     "gen_tok_s": 9.6,
+     "source": "https://www.youtube.com/watch?v=tJjUDdl3reU"
+    },
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB ×4",
+     "quant": "MLX 4bit",
+     "gen_tok_s": 7.4,
+     "source": "https://github.com/ml-explore/mlx/discussions/4231"
+    }
+   ],
+   "note_ja": null
+  }
  },
  {
   "id": "step-5-preview",
@@ -434,7 +868,69 @@
    "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "medium",
-  "short": "Step 5"
+  "short": "Step 5",
+  "local_q": {
+   "summary_ja": "2.4bit（184GB）で DGX Spark 2台に載り約25 tok/s。",
+   "quants": [
+    {
+     "name": "Q2_a (smalinin)",
+     "bits": 2.43,
+     "size_gb": 182.5,
+     "source": "https://huggingface.co/smalinin/Step-5-Preview-GGUF"
+    },
+    {
+     "name": "IQ3_M (smalinin)",
+     "bits": 3.62,
+     "size_gb": 271.6,
+     "source": "https://huggingface.co/smalinin/Step-5-Preview-GGUF"
+    },
+    {
+     "name": "IQ3_KS-mix (ik_llama.cpp用, L-Alchemyst)",
+     "bits": 3.67,
+     "size_gb": 275.2,
+     "source": "https://huggingface.co/L-Alchemyst/Step-5-Preview-GGUF"
+    },
+    {
+     "name": "Q3_K_M (SHSLab)",
+     "bits": 3.87,
+     "size_gb": 290.4,
+     "source": "https://huggingface.co/SHSLab/Step-5-Preview-GGUF"
+    },
+    {
+     "name": "IQ4_KS-mix (ik_llama.cpp用)",
+     "bits": 4.44,
+     "size_gb": 333.0,
+     "source": "https://huggingface.co/L-Alchemyst/Step-5-Preview-GGUF"
+    },
+    {
+     "name": "NVFP4 (StepFun公式)",
+     "bits": 5.26,
+     "size_gb": 394.2,
+     "source": "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.67,
+     "size_gb": 650.3,
+     "source": "https://huggingface.co/stepfun-ai/Step-5-Preview"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "DGX Spark ×2",
+     "quant": "EXL3 2.4bit（184GB）",
+     "gen_tok_s": 25,
+     "source": "https://huggingface.co/kefallrain/Step-5-Preview-EXL3-2.4bpw-2xSpark"
+    },
+    {
+     "hardware": "DGX Spark ×4",
+     "quant": "EXL3 4bit",
+     "gen_tok_s": 25.7,
+     "source": "https://huggingface.co/0xSero/Step-5-Preview-Spark"
+    }
+   ],
+   "note_ja": "Unsloth / bartowski / MLX版は見つからず（個人GGUFのみ）"
+  }
  },
  {
   "id": "glm-5-3-flash",
@@ -507,7 +1003,87 @@
    "nejumi": 0.826
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "GLM-5.3-Flash"
+  "short": "GLM-5.3-Flash",
+  "local_q": {
+   "summary_ja": "最小の量子化版（UD-IQ1_S、約2.33bit・93GB）なら128GB機に載ります。512GB の Mac Studio なら 公式FP8、約8.21bit・328GB まで載ります。",
+   "quants": [
+    {
+     "name": "UD-IQ1_S",
+     "bits": 2.33,
+     "size_gb": 93.1,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "Q2 (antirez)",
+     "bits": 2.41,
+     "size_gb": 96.5,
+     "source": "https://huggingface.co/antirez/glm-5.3-flash-gguf"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.54,
+     "size_gb": 101.8,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.72,
+     "size_gb": 108.7,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.01,
+     "size_gb": 120.4,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF",
+     "note": "Unsloth: 3bitは128GB機（Mac / DGX Spark）向け"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.69,
+     "size_gb": 147.5,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "UD-IQ4_XS",
+     "bits": 3.92,
+     "size_gb": 156.8,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "AWQ INT4 (cyankiwi)",
+     "bits": 4.93,
+     "size_gb": 197.2,
+     "source": "https://huggingface.co/cyankiwi/GLM-5.3-Flash-AWQ-INT4"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.99,
+     "size_gb": 199.7,
+     "source": "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 5.1,
+     "size_gb": 204.0,
+     "source": "https://huggingface.co/mlx-community/GLM-5.3-Flash-4bit"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 5.11,
+     "size_gb": 204.4,
+     "source": "https://huggingface.co/nvidia/GLM-5.3-Flash-NVFP4"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.21,
+     "size_gb": 328.3,
+     "source": "https://huggingface.co/zai-org/GLM-5.3-Flash"
+    }
+   ],
+   "reports": [],
+   "note_ja": null
+  }
  },
  {
   "id": "qwen3-8-flash-next",
@@ -583,7 +1159,69 @@
    "nejumi": 0.8291
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "Qwen3.8-Flash-Next"
+  "short": "Qwen3.8-Flash-Next",
+  "local_q": {
+   "summary_ja": "最小の量子化版（UD-IQ1_S、約3.22bit・72GB）なら128GB機に載ります。512GB の Mac Studio なら BF16、約15.73bit・354GB まで載ります。",
+   "quants": [
+    {
+     "name": "UD-IQ1_S",
+     "bits": 3.22,
+     "size_gb": 72.5,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 3.51,
+     "size_gb": 78.9,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 4.0,
+     "size_gb": 90.0,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    },
+    {
+     "name": "UD-IQ4_XS",
+     "bits": 4.16,
+     "size_gb": 93.7,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.95,
+     "size_gb": 111.3,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+     "note": "Unsloth: 4bitは96〜114GB必要"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.96,
+     "size_gb": 111.5,
+     "source": "https://huggingface.co/mlx-community/Qwen3.8-Flash-Next-4bit"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 5.9,
+     "size_gb": 132.7,
+     "source": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.36,
+     "size_gb": 188.2,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 15.73,
+     "size_gb": 354.0,
+     "source": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "n-gram(PLE)埋め込み層はSSD＋mmapへ逃がせる（Unsloth）ため、実メモリ要求はファイルサイズより小さくできる"
+  }
  },
  {
   "id": "ling-3-1-flash",
@@ -649,7 +1287,81 @@
    "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "medium",
-  "short": "Ling 3.1 Flash"
+  "short": "Ling 3.1 Flash",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.87bit・131GB）なら192GB機に載ります。512GB の Mac Studio なら Q4_K_M、約5.11bit・358GB まで載ります。",
+   "quants": [
+    {
+     "name": "IQ1_S (bartowski)",
+     "bits": 1.87,
+     "size_gb": 131.0,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "IQ1_M",
+     "bits": 2.07,
+     "size_gb": 145.1,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "IQ2_XXS",
+     "bits": 2.44,
+     "size_gb": 170.8,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "Q2_K",
+     "bits": 3.13,
+     "size_gb": 219.2,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "IQ3_XXS",
+     "bits": 3.53,
+     "size_gb": 247.4,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "Q3_K_M",
+     "bits": 3.93,
+     "size_gb": 275.1,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "IQ4_XS",
+     "bits": 4.53,
+     "size_gb": 317.1,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "NVFP4（個人, abliterated版）",
+     "bits": 4.92,
+     "size_gb": 344.4,
+     "source": "https://huggingface.co/Hikari07jp/Ling-3.1-flash-NVFP4-Ablitrated-MTP-RTX-PRO-6000-TP4",
+     "note": "RTX PRO 6000×4 (TP4) 向けと明記"
+    },
+    {
+     "name": "Q4_K_M",
+     "bits": 5.11,
+     "size_gb": 358.0,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.2,
+     "size_gb": 573.8,
+     "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.69,
+     "size_gb": 608.4,
+     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "Unsloth版なし（2026-10-13公開で直後）。EXL3はturboderp等"
+  }
  },
  {
   "id": "mimo-v2-6-flash",
@@ -717,7 +1429,80 @@
    "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "high",
-  "short": "MiMo-V2.6-Flash"
+  "short": "MiMo-V2.6-Flash",
+  "local_q": {
+   "summary_ja": "最小の量子化版（AesSedai BPW2.0、約2bit・77GB）なら128GB機に載ります。512GB の Mac Studio なら NVFP4、約5.15bit・199GB まで載ります。",
+   "quants": [
+    {
+     "name": "AesSedai BPW2.0 (GGUF)",
+     "bits": 2.0,
+     "size_gb": 77.4,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Flash-MOPD-GGUF"
+    },
+    {
+     "name": "AesSedai BPW2.5",
+     "bits": 2.5,
+     "size_gb": 96.7,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Flash-MOPD-GGUF"
+    },
+    {
+     "name": "AesSedai BPW3.0",
+     "bits": 3.01,
+     "size_gb": 116.1,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Flash-MOPD-GGUF"
+    },
+    {
+     "name": "Q2_K_S (ggml-org)",
+     "bits": 2.74,
+     "size_gb": 105.9,
+     "source": "https://huggingface.co/ggml-org/MiMo-V2.6-Flash-MOPD-GGUF"
+    },
+    {
+     "name": "Q2_K (ggml-org)",
+     "bits": 3.27,
+     "size_gb": 126.4,
+     "source": "https://huggingface.co/ggml-org/MiMo-V2.6-Flash-RL-GGUF"
+    },
+    {
+     "name": "AesSedai BPW3.5",
+     "bits": 3.51,
+     "size_gb": 135.5,
+     "source": "https://huggingface.co/AesSedai/MiMo-V2.6-Flash-MOPD-GGUF"
+    },
+    {
+     "name": "MXFP4 (ggml-org GGUF)",
+     "bits": 4.33,
+     "size_gb": 167.4,
+     "source": "https://huggingface.co/ggml-org/MiMo-V2.6-Flash-RL-GGUF"
+    },
+    {
+     "name": "MLX mxfp4-q8",
+     "bits": 4.33,
+     "size_gb": 167.3,
+     "source": "https://huggingface.co/mlx-community/MiMo-V2.6-Flash-RL-mxfp4-q8"
+    },
+    {
+     "name": "MLX 4bit+MTP (TensorFold)",
+     "bits": 4.44,
+     "size_gb": 171.6,
+     "source": "https://huggingface.co/TensorFold/MiMo-V2.6-Flash-RL-MLX-4bit-MTP"
+    },
+    {
+     "name": "公式重み（FP4エキスパート）",
+     "bits": 4.6,
+     "size_gb": 177.7,
+     "source": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL"
+    },
+    {
+     "name": "NVFP4 (ProCreations, safetensors)",
+     "bits": 5.15,
+     "size_gb": 198.8,
+     "source": "https://huggingface.co/ProCreations/MiMo-V2.6-Flash-RL-NVFP4"
+    }
+   ],
+   "reports": [],
+   "note_ja": "Unsloth版なし"
+  }
  },
  {
   "id": "minimax-m3",
@@ -792,7 +1577,88 @@
    "https://blog.qualiteg.com/llm-ranking-2026-03/"
   ],
   "confidence": "medium",
-  "short": "MiniMax-M3"
+  "short": "MiniMax-M3",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.69bit・90GB）なら128GB機に載ります。512GB の Mac Studio なら UD-Q4_K_XL、約4.97bit・266GB まで載ります。",
+   "quants": [
+    {
+     "name": "IQ1_S (bartowski)",
+     "bits": 1.69,
+     "size_gb": 90.5,
+     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "IQ2_XXS (bartowski)",
+     "bits": 2.18,
+     "size_gb": 116.6,
+     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.42,
+     "size_gb": 129.3,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
+     "note": "Unsloth: 約133GB必要"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.69,
+     "size_gb": 143.9,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.0,
+     "size_gb": 160.3,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
+     "note": "Unsloth推奨"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.66,
+     "size_gb": 195.8,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.51,
+     "size_gb": 241.5,
+     "source": "https://huggingface.co/mlx-community/MiniMax-M3-4bit"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.67,
+     "size_gb": 250.1,
+     "source": "https://huggingface.co/nvidia/MiniMax-M3-NVFP4"
+    },
+    {
+     "name": "AWQ INT4 (cyankiwi)",
+     "bits": 4.82,
+     "size_gb": 258.0,
+     "source": "https://huggingface.co/cyankiwi/MiniMax-M3-AWQ-INT4"
+    },
+    {
+     "name": "Q4_K_M (bartowski)",
+     "bits": 4.88,
+     "size_gb": 261.3,
+     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.97,
+     "size_gb": 265.8,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
+    },
+    {
+     "name": "公式MXFP8",
+     "bits": 8.29,
+     "size_gb": 443.7,
+     "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3-MXFP8"
+    }
+   ],
+   "reports": [],
+   "note_ja": "GGUFはテキストのみ・MiniMax Sparse Attention非対応（dense attentionにフォールバックし長文脈でメモリ増）"
+  }
  },
  {
   "id": "hy4-preview",
@@ -861,7 +1727,50 @@
    "nejumi": 0.8344
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "Hy4"
+  "short": "Hy4",
+  "local_q": {
+   "summary_ja": "最小の量子化版（STQ1_0、約2.38bit・229GB）なら512GBのMac Studioに載ります。",
+   "quants": [
+    {
+     "name": "STQ1_0 (AngelSlim公式)",
+     "bits": 2.38,
+     "size_gb": 229.4,
+     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
+    },
+    {
+     "name": "UD-IQ1_M (AngelSlim公式)",
+     "bits": 2.45,
+     "size_gb": 235.4,
+     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.5,
+     "size_gb": 433.4,
+     "source": "https://huggingface.co/mlx-community/Hy4-preview-4bit"
+    },
+    {
+     "name": "Q4_K_M (AngelSlim公式)",
+     "bits": 4.86,
+     "size_gb": 467.3,
+     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
+    },
+    {
+     "name": "NVFP4-W4A16 (Oxmiq)",
+     "bits": 5.1,
+     "size_gb": 490.4,
+     "source": "https://huggingface.co/Oxmiq/Hy4-preview-NVFP4-W4A16"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.46,
+     "size_gb": 813.8,
+     "source": "https://huggingface.co/tencent/Hy4-preview-FP8"
+    }
+   ],
+   "reports": [],
+   "note_ja": "AA Intelligence Indexの一覧に未掲載（preview）"
+  }
  },
  {
   "id": "qwen3-8-27b",
@@ -1258,7 +2167,119 @@
    "nejumi": 0.8379
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
-  "short": "Muse Spark Open"
+  "short": "Muse Spark Open",
+  "local_q": {
+   "summary_ja": "2〜3bit（約300〜340GB）で 512GB の Mac Studio 1台に載り、18〜21 tok/s 出ます。",
+   "quants": [
+    {
+     "name": "UD-IQ1_S",
+     "bits": 1.72,
+     "size_gb": 175.6,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF",
+     "note": "Unsloth: 1bitは180〜212GB必要"
+    },
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.05,
+     "size_gb": 208.9,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.21,
+     "size_gb": 225.6,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF",
+     "note": "Unsloth: 2bitは256GB機に載る"
+    },
+    {
+     "name": "UD-IQ2_S",
+     "bits": 2.7,
+     "size_gb": 275.5,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "Q2_K (ggml-org)",
+     "bits": 2.98,
+     "size_gb": 304.1,
+     "source": "https://huggingface.co/ggml-org/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 3.05,
+     "size_gb": 311.2,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.34,
+     "size_gb": 340.4,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "MLX oQ3e",
+     "bits": 3.64,
+     "size_gb": 371.5,
+     "source": "https://huggingface.co/mlx-community/Muse-Spark-Open-816B-A42B-oQ3e"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.94,
+     "size_gb": 401.5,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "MLX 3bit",
+     "bits": 4.28,
+     "size_gb": 436.1,
+     "source": "https://huggingface.co/mlx-community/Muse-Spark-Open-816B-A42B-3bit"
+    },
+    {
+     "name": "Q4_K_S (ggml-org)",
+     "bits": 4.61,
+     "size_gb": 470.1,
+     "source": "https://huggingface.co/ggml-org/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.96,
+     "size_gb": 505.5,
+     "source": "https://huggingface.co/unsloth/Muse-Spark-Open-816B-A42B-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 5.22,
+     "size_gb": 532.8,
+     "source": "https://huggingface.co/mlx-community/Muse-Spark-Open-816B-A42B-4bit"
+    },
+    {
+     "name": "NVFP4 (Meta公式)",
+     "bits": 5.23,
+     "size_gb": 533.0,
+     "source": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B-NVFP4"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB",
+     "quant": "Q2_K（304GB）",
+     "gen_tok_s": 18,
+     "source": "https://huggingface.co/blog/meta-muse-spark-open"
+    },
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB",
+     "quant": "MLX 3bit（約344GB）",
+     "gen_tok_s": 21,
+     "source": "https://huggingface.co/blog/meta-muse-spark-open"
+    },
+    {
+     "hardware": "Mac Studio M5 Ultra ×4",
+     "quant": "NVFP4",
+     "gen_tok_s": 36.7,
+     "source": "https://machinelearning.apple.com/research/mlx-distributed-inference"
+    }
+   ],
+   "note_ja": null
+  }
  },
  {
   "id": "reflection-beam-1-0",
@@ -1382,7 +2403,68 @@
    "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
   ],
   "confidence": "high",
-  "short": "K2-Horizon"
+  "short": "K2-Horizon",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.81bit・85GB）なら128GB機に載ります。512GB の Mac Studio なら Q8_0、約8.6bit・403GB まで載ります。",
+   "quants": [
+    {
+     "name": "IQ1_S (bartowski)",
+     "bits": 1.81,
+     "size_gb": 85.0,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    },
+    {
+     "name": "IQ2_XXS",
+     "bits": 2.37,
+     "size_gb": 111.0,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    },
+    {
+     "name": "Q2_K",
+     "bits": 3.12,
+     "size_gb": 146.2,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    },
+    {
+     "name": "IQ3_XXS",
+     "bits": 3.45,
+     "size_gb": 161.9,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    },
+    {
+     "name": "MXFP4 (AMD)",
+     "bits": 4.65,
+     "size_gb": 218.1,
+     "source": "https://huggingface.co/amd/K2-Horizon-375B-A23B-MXFP4"
+    },
+    {
+     "name": "NVFP4 (IFM公式)",
+     "bits": 4.9,
+     "size_gb": 229.6,
+     "source": "https://huggingface.co/IFM/K2-Horizon-375B-A23B-NVFP4"
+    },
+    {
+     "name": "Q4_K_M",
+     "bits": 5.07,
+     "size_gb": 237.8,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.33,
+     "size_gb": 390.6,
+     "source": "https://huggingface.co/IFM/K2-Horizon-375B-A23B-FP8"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.6,
+     "size_gb": 403.1,
+     "source": "https://huggingface.co/bartowski/K2-Horizon-375B-A23B-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "Unsloth版なし"
+  }
  },
  {
   "id": "tml-inkling",
@@ -1578,7 +2660,69 @@
    "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
   ],
   "confidence": "high",
-  "short": "Nemotron 3 Ultra"
+  "short": "Nemotron 3 Ultra",
+  "local_q": {
+   "summary_ja": "最小の量子化版（UD-IQ1_M、約2.73bit・188GB）なら256GB機に載ります。512GB の Mac Studio なら UD-Q4_K_XL、約5.24bit・360GB まで載ります。",
+   "quants": [
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.73,
+     "size_gb": 188.0,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.94,
+     "size_gb": 202.2,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.25,
+     "size_gb": 223.3,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF",
+     "note": "Unsloth: 256GB機向け推奨"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.99,
+     "size_gb": 274.3,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF"
+    },
+    {
+     "name": "W4A16 (RedHatAI)",
+     "bits": 4.25,
+     "size_gb": 292.5,
+     "source": "https://huggingface.co/RedHatAI/NVIDIA-Nemotron-3-Ultra-550B-A55B-quantized.w4a16"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 5.05,
+     "size_gb": 347.0,
+     "source": "https://huggingface.co/mlx-community/Nemotron-3-Ultra-550B-A55B-4bit"
+    },
+    {
+     "name": "NVFP4 (NVIDIA公式, NVFP4で事前学習)",
+     "bits": 5.12,
+     "size_gb": 352.3,
+     "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 5.24,
+     "size_gb": 360.2,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.5,
+     "size_gb": 584.3,
+     "source": "https://huggingface.co/unsloth/NVIDIA-Nemotron-3-Ultra-550B-A55B-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": null
+  }
  },
  {
   "id": "nvidia-nemotron-3-5-super-vl",
@@ -1767,7 +2911,68 @@
    "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
   ],
   "confidence": "high",
-  "short": "Solar Open 2"
+  "short": "Solar Open 2",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_M、約1.94bit・60GB）なら128GB機に載ります。512GB の Mac Studio なら Q8_0、約8.52bit・266GB まで載ります。",
+   "quants": [
+    {
+     "name": "IQ1_M (prometheusAIR)",
+     "bits": 1.94,
+     "size_gb": 60.5,
+     "source": "https://huggingface.co/prometheusAIR/Solar-Open2-250B-GGUF"
+    },
+    {
+     "name": "Q2_K (prometheusAIR)",
+     "bits": 3.05,
+     "size_gb": 95.4,
+     "source": "https://huggingface.co/prometheusAIR/Solar-Open2-250B-GGUF"
+    },
+    {
+     "name": "MXQ-v1 混合量子化 (Baekpica)",
+     "bits": 3.06,
+     "size_gb": 95.5,
+     "source": "https://huggingface.co/Baekpica/Solar-Open2-250B-Mixed-Quant-GGUF"
+    },
+    {
+     "name": "IQ4_XS (prometheusAIR)",
+     "bits": 4.36,
+     "size_gb": 136.2,
+     "source": "https://huggingface.co/prometheusAIR/Solar-Open2-250B-GGUF"
+    },
+    {
+     "name": "MLX 4bit (TensorFold)",
+     "bits": 4.51,
+     "size_gb": 140.9,
+     "source": "https://huggingface.co/TensorFold/Solar-Open2-250B-MLX-4bit"
+    },
+    {
+     "name": "INT4 (Nota AI)",
+     "bits": 4.57,
+     "size_gb": 142.9,
+     "source": "https://huggingface.co/nota-ai/Solar-Open2-250B-Nota-INT4"
+    },
+    {
+     "name": "NVFP4 (Nota AI)",
+     "bits": 4.91,
+     "size_gb": 153.3,
+     "source": "https://huggingface.co/nota-ai/Solar-Open2-250B-Nota-NVFP4"
+    },
+    {
+     "name": "Q6_K (prometheusAIR)",
+     "bits": 6.58,
+     "size_gb": 205.6,
+     "source": "https://huggingface.co/prometheusAIR/Solar-Open2-250B-GGUF"
+    },
+    {
+     "name": "Q8_0 (Baekpica)",
+     "bits": 8.52,
+     "size_gb": 266.1,
+     "source": "https://huggingface.co/Baekpica/Solar-Open2-250B-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "Unsloth / bartowski版なし（個人GGUFのみ）"
+  }
  },
  {
   "id": "skt-ax-k2",
@@ -1951,7 +3156,38 @@
    "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-120B-RL-v0.1"
   ],
   "confidence": "high",
-  "short": "gpt-oss-120b"
+  "short": "gpt-oss-120b",
+  "local_q": {
+   "summary_ja": "もともと4bit（MXFP4）で配布されていて約65GB。量子化してもほぼ縮みませんが、そのままで128GB機や RTX PRO 6000（96GB）1枚に載ります。",
+   "quants": [
+    {
+     "name": "Q4_K_M（実体はMXFP4エキスパート）",
+     "bits": 4.29,
+     "size_gb": 62.8,
+     "source": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.31,
+     "size_gb": 63.0,
+     "source": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF"
+    },
+    {
+     "name": "MLX MXFP4-Q8",
+     "bits": 4.34,
+     "size_gb": 63.4,
+     "source": "https://huggingface.co/mlx-community/gpt-oss-120b-MXFP4-Q8"
+    },
+    {
+     "name": "F16（MXFP4ネイティブ＋F16）",
+     "bits": 4.47,
+     "size_gb": 65.4,
+     "source": "https://huggingface.co/unsloth/gpt-oss-120b-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "MXFP4ネイティブ配布のため量子化でほぼ縮まない（全量子化が62〜65GB）。後継（gpt-oss-2等）のオープン版はHugging Face上で見つからず"
+  }
  },
  {
   "id": "openai-gpt-oss-20b",
@@ -2363,7 +3599,68 @@
   "confidence": "medium",
   "short": "Rakuten AI 3.0",
   "pick": "国産最大級（671B MoE）",
-  "pick_reason": "8×H100 1台に載る。Apache 2.0"
+  "pick_reason": "8×H100 1台に載る。Apache 2.0",
+  "local_q": {
+   "summary_ja": "最小の量子化版（Q2_K、約2.91bit・244GB）なら512GBのMac Studioに載ります。",
+   "quants": [
+    {
+     "name": "Q2_K (mmnga-o)",
+     "bits": 2.91,
+     "size_gb": 244.1,
+     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
+    },
+    {
+     "name": "Q3_K_M (mmnga-o)",
+     "bits": 3.81,
+     "size_gb": 319.3,
+     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
+    },
+    {
+     "name": "AWQ (aixsatoshi)",
+     "bits": 4.19,
+     "size_gb": 351.5,
+     "source": "https://huggingface.co/aixsatoshi/RakutenAI-3.0-AWQ"
+    },
+    {
+     "name": "MXFP4_MOE (mmnga-o)",
+     "bits": 4.36,
+     "size_gb": 365.4,
+     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.5,
+     "size_gb": 377.6,
+     "source": "https://huggingface.co/mlx-community/RakutenAI-3.0-MLX-4bit"
+    },
+    {
+     "name": "NVFP4 (rakuten-junliu)",
+     "bits": 4.71,
+     "size_gb": 394.9,
+     "source": "https://huggingface.co/rakuten-junliu/RakutenAI-3.0-NVFP4"
+    },
+    {
+     "name": "W4A16 (rakuten-junliu)",
+     "bits": 4.79,
+     "size_gb": 402.1,
+     "source": "https://huggingface.co/rakuten-junliu/RakutenAI-3.0-W4A16"
+    },
+    {
+     "name": "Q4_K_M (mmnga-o)",
+     "bits": 4.82,
+     "size_gb": 404.5,
+     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.03,
+     "size_gb": 673.2,
+     "source": "https://huggingface.co/Rakuten/RakutenAI-3.0"
+    }
+   ],
+   "reports": [],
+   "note_ja": "AA Intelligence Index一覧に未掲載"
+  }
  },
  {
   "id": "sarashina2-8x70b",

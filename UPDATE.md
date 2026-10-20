@@ -19,6 +19,7 @@
 | `data/tts.json` | 日本語音声合成 |
 | `data/s2s.json` `music.json` `image.json` `video.json` `3d.json` `decision.json` | 汎用カテゴリ（同じスキーマ） |
 | `data/meta.json` | 更新日、次回予定、収録ルール、更新履歴、出典、重み非公開モデルの参考メモ |
+| `data/hardware.json` | Artificial Analysis「Laptops & Workstations」の実測（`aa_local`）、ローカル機の一覧と価格（`devices`）、量子化ローカルの総括（`summary_ja`） |
 | `site/template.html` | ページの雛形（`/*__DATA__*/` にデータが入る） |
 | `scripts/build.py` | 検証して `docs/index.html` を生成 |
 
@@ -61,6 +62,30 @@ bench_note, aa_index, japanese_note, deploy_note_ja, engines[], supersedes[], so
 ```
 
 `strengths` は `coding, agent, reasoning, math, multilingual, japanese, vision, long-context, efficiency, tool-use` から選ぶ。
+
+大型LLM（40B超）のうち量子化版があるものは `local_q` を持つ:
+
+```
+local_q{
+  summary_ja,                      // 結論を平易に1〜2文（例: 2bitで256GB機に常駐し約37 tok/s）
+  quants[{name, bits, size_gb, resident_gb?, source, note?}],  // Hugging Face の実ファイルサイズ。SSDに逃がせる部分がある場合だけ resident_gb（常駐量）
+  reports[{hardware, quant, gen_tok_s, source}],               // 出典つきのローカル実行報告
+  note_ja?
+}
+```
+
+剪定（REAP など）で別モデル化した版は quants に入れてよいが、名前に REAP か「剪定」を含めること（表の「載る版」の判定から外れる）。
+
+### ハードウェア（`data/hardware.json`）
+
+```
+aa_local{url, as_of, metric_ja, systems[{id, name, memory_gb, memory_type, bandwidth_gbs, price_usd, price_oct2026_usd, released, note}],
+         models[...], results[{model, system_id, quant, completion_min, fits, output_tok_s, prefill_tok_s, ...}], sources[]}
+devices[{name, memory, usable, bandwidth_gbs, price, source}]   // 価格は更新時点の公式価格か実売の目安
+summary_ja
+```
+
+AA のページが更新されたら aa_local を最新に（ページに埋め込まれたJSONから取ると正確）。
 
 ### ASR（`data/asr.json`）
 

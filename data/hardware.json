@@ -1,0 +1,379 @@
+{
+ "aa_local": {
+  "url": "https://artificialanalysis.ai/hardware-inference-stack/laptops-workstations",
+  "as_of": "2026-10-20 取得",
+  "metric_ja": "同じエージェント作業（記録済みタスク8件・168ターン・172回のツール呼び出し、文脈は最大約56Kトークン）を最後までやり切るのにかかった時間。短いほど速い。ツールの実行時間は含まず、全構成で文脈65,536トークン・推論オン・投機デコードありで計測。",
+  "workload": {
+   "key": "default",
+   "name": "AgentPerf-Local default",
+   "turns": 168,
+   "toolCalls": 172,
+   "completionUnit": "minutes"
+  },
+  "systems": [
+   {
+    "id": "macbook-pro-14-m5-pro-20gpu-64gb",
+    "name": "MacBook Pro (M5 Pro, 64 GB)",
+    "memory_gb": 64,
+    "memory_type": "unified",
+    "bandwidth_gbs": 307,
+    "price_usd": 3000,
+    "price_basis": "発売時MSRP（RTX 5090はカードMSRP$2,000＋$2,500）",
+    "price_oct2026_usd": 3700,
+    "released": "2026-03",
+    "note": "M5 Pro (20-core GPU, 64 GB) / LPDDR5X-9600。発売時MSRP $3,000。AAの2026年10月概算価格: $3,700。メモリ容量は構成変更可（AAは表記の容量で計測）"
+   },
+   {
+    "id": "amd-ryzen-ai-halo",
+    "name": "AMD Ryzen AI Halo",
+    "memory_gb": 128,
+    "memory_type": "unified",
+    "bandwidth_gbs": 256,
+    "price_usd": 4000,
+    "price_basis": "発売時MSRP（RTX 5090はカードMSRP$2,000＋$2,500）",
+    "price_oct2026_usd": 4000,
+    "released": "2026-07",
+    "note": "Ryzen AI Max+ 395 / LPDDR5X-8000。発売時MSRP $4,000。AAの2026年10月概算価格: $4,000"
+   },
+   {
+    "id": "dgx-spark",
+    "name": "NVIDIA DGX Spark",
+    "memory_gb": 128,
+    "memory_type": "unified",
+    "bandwidth_gbs": 273,
+    "price_usd": 4000,
+    "price_basis": "発売時MSRP（RTX 5090はカードMSRP$2,000＋$2,500）",
+    "price_oct2026_usd": 6000,
+    "released": "2025-10",
+    "note": "GB10 / LPDDR5X-8533。発売時MSRP $4,000。AAの2026年10月概算価格: $6,000"
+   },
+   {
+    "id": "nvidia-rtx-spark-laptop",
+    "name": "NVIDIA RTX Spark Laptop",
+    "memory_gb": 128,
+    "memory_type": "unified",
+    "bandwidth_gbs": 300,
+    "price_usd": 5900,
+    "price_basis": "発売時MSRP（RTX 5090はカードMSRP$2,000＋$2,500）",
+    "price_oct2026_usd": 5900,
+    "released": "2026-10",
+    "note": "N1X / LPDDR5X-9400。発売時MSRP $5,900。AAの2026年10月概算価格: $5,900。メモリ容量は構成変更可（AAは表記の容量で計測）"
+   },
+   {
+    "id": "geforce-rtx-5090",
+    "name": "NVIDIA GeForce RTX 5090",
+    "memory_gb": 32,
+    "memory_type": "vram",
+    "bandwidth_gbs": 1792,
+    "price_usd": 4500,
+    "price_basis": "発売時MSRP（RTX 5090はカードMSRP$2,000＋$2,500）",
+    "price_oct2026_usd": 9500,
+    "released": "2025-01",
+    "note": "RTX 5090 / gddr7。発売時MSRP $2,000（カード単体。AAはシステム価格を「カード＋残りのシステム$2,500」で計算）。AAの2026年10月概算価格: $9,500（カード$7,000＋$2,500）"
+   }
+  ],
+  "models": [
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "aa_index": 33.7,
+    "total_b": 27,
+    "active_b": 27,
+    "quants": [
+     "Q4_K_M",
+     "UD-Q4_K_M"
+    ],
+    "released": "2026-08-14",
+    "context_window_tokens": 262144
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "aa_index": 18.2,
+    "total_b": 36,
+    "active_b": 3,
+    "quants": [
+     "NVFP4",
+     "UD-Q4_K_M"
+    ],
+    "released": "2026-04-16",
+    "context_window_tokens": 262144
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "aa_index": 20.1,
+    "total_b": 124,
+    "active_b": 5.1,
+    "quants": [
+     "Q4_K_M"
+    ],
+    "released": "2026-08-04",
+    "context_window_tokens": 262144
+   }
+  ],
+  "results": [
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "system_id": "macbook-pro-14-m5-pro-20gpu-64gb",
+    "quant": "Q4_K_M",
+    "completion_min": 37.6,
+    "fits": true,
+    "output_tok_s": 23.1,
+    "prefill_tok_s": 212.2,
+    "ttft_median_ms": 2453,
+    "runtime": "llama-cpp/metal",
+    "note": "llama-cpp (metal) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 23.1 tok/s, prefill 212 tok/s, TTFT中央値 2453 ms; 重み unsloth/Qwen3.8-27B-GGUF (17.1 GB); ctx 65536; profile qwen38-27b-q4-k-m-mtp-m5-pro"
+   },
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "system_id": "amd-ryzen-ai-halo",
+    "quant": "Q4_K_M",
+    "completion_min": 34.5,
+    "fits": true,
+    "output_tok_s": 23.4,
+    "prefill_tok_s": 261.2,
+    "ttft_median_ms": 1996,
+    "runtime": "llama-cpp/rocm",
+    "note": "llama-cpp (rocm) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 23.4 tok/s, prefill 261 tok/s, TTFT中央値 1996 ms; 重み unsloth/Qwen3.8-27B-GGUF (17.1 GB); ctx 65536; profile qwen38-27b-q4-k-m-mtp-strix-halo"
+   },
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "system_id": "dgx-spark",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 17.3,
+    "fits": true,
+    "output_tok_s": 43.3,
+    "prefill_tok_s": 601.3,
+    "ttft_median_ms": 1045,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.5.0-dev (build 1, commit f1ea206); 投機デコード=DFlash外部ドラフト; 生成 43.3 tok/s, prefill 601 tok/s, TTFT中央値 1045 ms; 重み unsloth/Qwen3.8-27B-GGUF (17.6 GB); ctx 65536; profile qwen38-27b-ud-q4-k-m-dflash-dgx-spark"
+   },
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "system_id": "nvidia-rtx-spark-laptop",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 18.7,
+    "fits": true,
+    "output_tok_s": 40.6,
+    "prefill_tok_s": 537.5,
+    "ttft_median_ms": 1112,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.5.0-dev (build 11236, commit f1ea20621); 投機デコード=DFlash外部ドラフト; 生成 40.6 tok/s, prefill 538 tok/s, TTFT中央値 1112 ms; 重み unsloth/Qwen3.8-27B-GGUF (17.6 GB); ctx 65536; profile qwen38-27b-ud-q4-k-m-dflash-rtx-spark"
+   },
+   {
+    "model": "Qwen3.8 27B (Xhigh)",
+    "system_id": "geforce-rtx-5090",
+    "quant": "Q4_K_M",
+    "completion_min": 4.9,
+    "fits": true,
+    "output_tok_s": 151.3,
+    "prefill_tok_s": 2155.6,
+    "ttft_median_ms": 324,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 151.3 tok/s, prefill 2156 tok/s, TTFT中央値 324 ms; 重み unsloth/Qwen3.8-27B-GGUF (17.1 GB); ctx 65536; profile qwen38-27b-q4-k-m-mtp"
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "system_id": "macbook-pro-14-m5-pro-20gpu-64gb",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 11.9,
+    "fits": true,
+    "output_tok_s": 70.1,
+    "prefill_tok_s": 717.9,
+    "ttft_median_ms": 675,
+    "runtime": "llama-cpp/metal",
+    "note": "llama-cpp (metal) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 70.1 tok/s, prefill 718 tok/s, TTFT中央値 675 ms; 重み unsloth/Qwen3.6-35B-A3B-MTP-GGUF (22.7 GB); ctx 65536; profile qwen36-35b-a3b-q4-k-m-mtp-m5-pro"
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "system_id": "amd-ryzen-ai-halo",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 11.7,
+    "fits": true,
+    "output_tok_s": 73.9,
+    "prefill_tok_s": 687.4,
+    "ttft_median_ms": 799,
+    "runtime": "llama-cpp/vulkan",
+    "note": "llama-cpp (vulkan) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 73.9 tok/s, prefill 687 tok/s, TTFT中央値 799 ms; 重み unsloth/Qwen3.6-35B-A3B-MTP-GGUF (22.7 GB); ctx 65536; profile qwen36-35b-a3b-q4-k-m-mtp-strix-halo"
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "system_id": "dgx-spark",
+    "quant": "NVFP4",
+    "completion_min": 7.3,
+    "fits": true,
+    "output_tok_s": 118.9,
+    "prefill_tok_s": 1307.7,
+    "ttft_median_ms": 761,
+    "runtime": "vllm/cuda",
+    "note": "vllm (cuda) 0.28.0; 投機デコード=MTP自己ドラフト; 生成 118.9 tok/s, prefill 1308 tok/s, TTFT中央値 761 ms; 重み nvidia/Qwen3.6-35B-A3B-NVFP4 (23.5 GB); ctx 65536; profile qwen36-35b-a3b-nvfp4-mtp-dgx-spark"
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "system_id": "nvidia-rtx-spark-laptop",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 7.6,
+    "fits": true,
+    "output_tok_s": 92.5,
+    "prefill_tok_s": 1599.1,
+    "ttft_median_ms": 478,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.5.0-dev (build 11236, commit f1ea20621); 投機デコード=MTP自己ドラフト; 生成 92.5 tok/s, prefill 1599 tok/s, TTFT中央値 478 ms; 重み unsloth/Qwen3.6-35B-A3B-MTP-GGUF (22.7 GB); ctx 65536; profile qwen36-35b-a3b-ud-q4-k-m-mtp-rtx-spark"
+   },
+   {
+    "model": "Qwen3.6 35B A3B (Reasoning)",
+    "system_id": "geforce-rtx-5090",
+    "quant": "UD-Q4_K_M",
+    "completion_min": 2.0,
+    "fits": true,
+    "output_tok_s": 381.4,
+    "prefill_tok_s": 5101.0,
+    "ttft_median_ms": 165,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.4.1-dev (build 11026, commit b49650adb); 投機デコード=MTP自己ドラフト; 生成 381.4 tok/s, prefill 5101 tok/s, TTFT中央値 165 ms; 重み unsloth/Qwen3.6-35B-A3B-MTP-GGUF (22.7 GB); ctx 65536; profile qwen36-35b-a3b-q4-k-m-mtp-rtx5090"
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "system_id": "amd-ryzen-ai-halo",
+    "quant": "Q4_K_M",
+    "completion_min": 25.1,
+    "fits": true,
+    "output_tok_s": 34.9,
+    "prefill_tok_s": 313.3,
+    "ttft_median_ms": 1675,
+    "runtime": "llama-cpp/rocm",
+    "note": "llama-cpp (rocm) version: 0.4.1-dev (build 11114, commit 7dc9a32df); 投機デコード=DSpark外部ドラフト; 生成 34.9 tok/s, prefill 313 tok/s, TTFT中央値 1675 ms; 重み inclusionAI/Ling-3.0-flash-GGUF (77.0 GB); ctx 65536; profile ling3-flash-q4-k-m-dspark-strix-halo"
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "system_id": "dgx-spark",
+    "quant": "Q4_K_M",
+    "completion_min": 14.9,
+    "fits": true,
+    "output_tok_s": 64.8,
+    "prefill_tok_s": 466.7,
+    "ttft_median_ms": 1626,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.4.1-dev (build 11114, commit 7dc9a32d); 投機デコード=DSpark外部ドラフト; 生成 64.8 tok/s, prefill 467 tok/s, TTFT中央値 1626 ms; 重み inclusionAI/Ling-3.0-flash-GGUF (77.0 GB); ctx 65536; profile ling3-flash-q4-k-m-dspark-dgx-spark"
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "system_id": "nvidia-rtx-spark-laptop",
+    "quant": "Q4_K_M",
+    "completion_min": 15.3,
+    "fits": true,
+    "output_tok_s": 61.9,
+    "prefill_tok_s": 467.3,
+    "ttft_median_ms": 1481,
+    "runtime": "llama-cpp/cuda",
+    "note": "llama-cpp (cuda) version: 0.6.0-dev (build 11583, commit 988015788); 投機デコード=DSpark外部ドラフト; 生成 61.9 tok/s, prefill 467 tok/s, TTFT中央値 1481 ms; 重み inclusionAI/Ling-3.0-flash-GGUF (77.0 GB); ctx 65536; profile ling3-flash-q4-k-m-dspark-dgx-spark"
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "system_id": "geforce-rtx-5090",
+    "quant": "Q4_K_M",
+    "completion_min": null,
+    "fits": false,
+    "output_tok_s": null,
+    "prefill_tok_s": null,
+    "ttft_median_ms": null,
+    "runtime": null,
+    "note": "Does not fit（重み 77.0 GB が NVIDIA GeForce RTX 5090 のメモリに収まらない）"
+   },
+   {
+    "model": "Ling 3.0 Flash",
+    "system_id": "macbook-pro-14-m5-pro-20gpu-64gb",
+    "quant": "Q4_K_M",
+    "completion_min": null,
+    "fits": false,
+    "output_tok_s": null,
+    "prefill_tok_s": null,
+    "ttft_median_ms": null,
+    "runtime": null,
+    "note": "Does not fit（重み 77.0 GB が MacBook Pro (M5 Pro, 64 GB) のメモリに収まらない）"
+   }
+  ],
+  "serving_configs_url": "https://artificialanalysis.ai/hardware-inference-stack/laptops-workstations/configs",
+  "serving_configs_summary_ja": "各結果の起動コマンドを公開。llama.cpp（b11026〜b11583, Metal/ROCm/Vulkan/CUDA）を主に使い、DGX SparkのQwen3.6 35B A3BのみvLLM＋NVFP4（nvidia/Qwen3.6-35B-A3B-NVFP4, kv-cache fp8, flashinfer）。全構成で投機デコードを使用: Qwen3.6はMTP自己ドラフト、Qwen3.8 27BはMTP（M5 Pro/Halo/5090）またはDFlash外部ドラフト（DGX Spark/RTX Spark, Qwen3.8-27B-DFlash2-Q4_K_M）、Ling 3.0 FlashはDSpark外部ドラフト（Ling-3.0-flash-DSpark-bf16）。共通: --ctx-size 65536 --parallel 1 --gpu-layers all --jinja --flash-attn on。",
+  "sources": [
+   "https://artificialanalysis.ai/hardware-inference-stack/laptops-workstations",
+   "https://artificialanalysis.ai/hardware-inference-stack/laptops-workstations/configs",
+   "https://github.com/ArtificialAnalysis/aa-agentperf-local",
+   "https://artificialanalysis.ai/articles/aa-agentperf-local（2026-09-29 公開記事）",
+   "https://github.com/ArtificialAnalysis/aa-agentperf-local/releases（v0.1.0 2026-09-27 〜 v0.3.4 2026-10-15）"
+  ]
+ },
+ "devices": [
+  {
+   "name": "AMD Ryzen AI Halo",
+   "memory": "128GB 統合",
+   "usable": "GPUに約96〜120GB",
+   "bandwidth_gbs": 256,
+   "price": "$3,999",
+   "source": "https://www.amd.com/en/blogs/2026/amd-ryzen-ai-halo-now-available-at-micro-center.html"
+  },
+  {
+   "name": "NVIDIA RTX Spark ノート",
+   "memory": "128GB 統合",
+   "usable": "GPUに約110GB",
+   "bandwidth_gbs": 300,
+   "price": "$5,899〜",
+   "source": "https://www.storagereview.com/news/nvidia-rtx-spark-pre-orders-n1x-laptop-desktop-tdp-mxc-dgx-station-for-windows"
+  },
+  {
+   "name": "NVIDIA DGX Spark",
+   "memory": "128GB 統合",
+   "usable": "約119GB",
+   "bandwidth_gbs": 273,
+   "price": "$6,950（公式）",
+   "source": "https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/"
+  },
+  {
+   "name": "Ryzen AI Max+ PRO 495 機",
+   "memory": "192GB 統合",
+   "usable": "GPUに最大160GB",
+   "bandwidth_gbs": 273,
+   "price": "$6,399〜7,449",
+   "source": "https://www.amd.com/en/blogs/2026/meet-the-next-amd-ryzen-ai-halo.html"
+  },
+  {
+   "name": "DGX Spark ×2（直結）",
+   "memory": "256GB",
+   "usable": "約238GB",
+   "bandwidth_gbs": 273,
+   "price": "約$14,000（計算値）",
+   "source": "https://marketplace.nvidia.com/en-us/enterprise/dgx-spark-bundle/"
+  },
+  {
+   "name": "Mac Studio M5 Ultra 256GB",
+   "memory": "256GB 統合",
+   "usable": "既定で約192GB（設定で拡大可）",
+   "bandwidth_gbs": 1200,
+   "price": "約$10,800〜",
+   "source": "https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/"
+  },
+  {
+   "name": "Mac Studio M5 Ultra 512GB",
+   "memory": "512GB 統合",
+   "usable": "既定で約384GB（設定で拡大可）",
+   "bandwidth_gbs": 1200,
+   "price": "10月下旬発売・価格未公表",
+   "source": "https://macworld.com/article/3220024/apple-announces-the-m5-ultra-mac-studio-with-up-to-512gb-of-ram.html"
+  },
+  {
+   "name": "RTX PRO 6000 Blackwell",
+   "memory": "96GB VRAM",
+   "usable": "96GB",
+   "bandwidth_gbs": 1792,
+   "price": "$16,000（公式）",
+   "source": "https://marketplace.nvidia.com/en-us/enterprise/laptops-workstations/nvidia-rtx-pro-6000-blackwell-workstation-edition"
+  },
+  {
+   "name": "DGX Station（GB300）",
+   "memory": "HBM3e 252GB＋LPDDR5X 496GB",
+   "usable": "748GB（一体で扱える）",
+   "bandwidth_gbs": 7100,
+   "price": "約$85,000〜125,000（見積）",
+   "source": "https://www.nvidia.com/en-us/products/workstations/dgx-station/"
+  }
+ ],
+ "summary_ja": "128GB機で巨大モデルを実用速度（毎秒20トークン以上）で動かすのはまだ難しく、DeepSeek V4.1 Flash や GLM-5.3 は SSD を併用して毎秒5〜10トークン程度です。256GB機なら DeepSeek V4.1 Flash の2bitが常駐して約37 tok/s。512GB の Mac Studio なら Muse Spark Open（2〜3bit、18〜21 tok/s）や GLM-5.3（4bit、約16 tok/s）が実用圏です。Kimi K3 と Qwen3.8 2.4T は1台では厳しく、512GB の Mac を2〜4台つなぐ構成が必要です。Mac は入力の読み込み（prefill）が毎秒200トークン前後と遅いのが弱点です。なお2026年はメモリ不足で機材価格が大きく上がっており、DGX Spark は発売時の約1.7倍、RTX PRO 6000 は約1.9倍になっています。"
+}
