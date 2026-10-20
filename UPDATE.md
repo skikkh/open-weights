@@ -1,6 +1,6 @@
 # 定期更新の手順（3日ごと）
 
-このリポジトリは「オープンウェイト図鑑」（https://skikkh.github.io/open-weights/ ）のデータとビルド一式です。
+このリポジトリは「AIモデル図鑑」（https://skikkh.github.io/open-weights/ ）のデータとビルド一式です。
 定期更新エージェントはこの手順どおりに作業してください。
 
 ## 0. 前提
