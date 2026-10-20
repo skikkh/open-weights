@@ -1,0 +1,1800 @@
+[
+ {
+  "id": "minimax-h3",
+  "access": "open-weight",
+  "name": "MiniMax-H3（H3-Base FL2VA / Ref2VA）",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": "2026-08-03",
+  "params_b": 33,
+  "arch": "Dense single-stream Omni-Transformer（DiT系、MM-RoPE、Flow Matching系。テキストエンコーダはQwen3-VL-32B、映像VAE 16x空間/4x時間圧縮、ステレオ音声VAE）",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "768p（短辺768px。2K化はAPI専用のH3-Regenerate-2Kが必要）",
+   "max_duration_s": 15,
+   "fps": 24,
+   "other": "4〜15秒。32kHzステレオ音声を映像と同時生成。チェックポイントは2種（FL2VA: テキスト＋0〜2枚の画像で首尾フレーム指定 / Ref2VA: 最大9画像・3動画・3音声、計12ファイルまでの参照）。前処理のH3-Context-IRと2K再生成はAPIのみで非公開。CFG蒸留済みBF16。約13BはAdaLN分岐で推論専用なら読み込み不要とモデルカードに記載"
+  },
+  "features": {
+   "音声同時生成": true,
+   "首尾フレーム指定": true,
+   "参照被写体の保持（R2V）": true,
+   "参照動画・参照音声の入力": true,
+   "多言語セリフ（日本語含む）": true,
+   "ComfyUI公式対応": true,
+   "2K出力（ローカル）": false
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": 80,
+  "vram_note": "RTX 4090（24GB）＋システムRAM 64GBで、ComfyUI公式推奨構成（pruned INT8 DiT 19.5GB＋NVFP4 AWQテキストエンコーダ14.6GB＋VAE）を使い、VAEデコード前にモデルをアンロードして動作した実測報告あり（besthub.dev）。12GB級GPU向けの第三者INT4版（各11.3GB）や6GB動作報告もあるが未検証で、INT4は画質劣化の指摘あり。bf16 DiTは61.7GB、bf16テキストエンコーダは48GBなので、量子化なしで快適に動かすなら80GB級が目安（ファイルサイズからの算出）",
+  "speed_note": "RTX 4090・20ステップ・SageAttention・EasyCache使用で、5秒（124フレーム）864×480が約89秒、1056×608が約110〜121秒、672×1216が約141秒（初回ロード除く、besthub.devの実測）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, AA-Video-T2V v2.1）ELO",
+    "value": 1158,
+    "note": "全体5位（信頼区間で1〜7位タイ）、オープンウェイト1位。768p版。2026-10時点",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1121,
+    "note": "全体2位（1位Wan 3.0の1135に次ぐ）、オープンウェイト1位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, AA-Video-I2V v1.1）ELO",
+    "value": 1140,
+    "note": "全体1位（オープン・クローズド含む）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
+    "value": 1356,
+    "note": "全体4位、オープンウェイト1位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "2026年10月時点でオープンウェイト動画モデルの品質トップ。AAのI2V（音声あり）では全モデル中1位で、T2VでもWan 3.0やSeedance 2.5と統計的に並ぶ。Kandinsky 6.0論文の人手比較でも、画質・アーティファクト・動きのリアルさでKandinsky 6.0 Proを有意に上回った。弱みはローカル版が768pまでであること、前処理（Context-IR）と2K再生成が非公開であること、モデルが重いこと",
+  "ja_note": "モデルカードで日本語を含む11言語（アラビア語・中国語・英語・仏・独・伊・日・韓・葡・露・西）のセリフに安定対応と明記。PC Watchも日本語対応を報じている",
+  "license": "MiniMax H3 Community License",
+  "commercial": "conditional",
+  "license_note": "日本では商用利用可。ただしUIに「MiniMax H3」の表示が必要、年商2,000万ドル超は書面許可が必要。米国・EU・英国・韓国は適用地域外で、別途申請が必要",
+  "price_note": "公式APIはAA掲載で$4.80/分（768p版）",
+  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "SGLang",
+   "vLLM"
+  ],
+  "summary_ja": "MiniMaxが2026年8月に公開した33Bの音声付き動画モデルで、オープンウェイトとしては品質が最も高い。テキスト・画像・首尾フレーム・参照（画像/動画/音声）から最長15秒の動画を音声付きで作れる。",
+  "best_for_ja": "最高品質の音声付きT2V/I2V/R2V（日本語セリフ含む）をローカルで作りたい場合。24GB以上のGPUと大容量RAMが前提",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+   "https://www.minimax.io/blog/minimax-h3",
+   "https://comfyui-wiki.com/en/news/2026-08-03-minimax-h3-open-weights-comfyui",
+   "https://comfyui-wiki.com/en/tutorial/advanced/video/minimax/minimax-h3",
+   "https://www.besthub.dev/articles/running-minimax-h3-locally-comfyui-setup-faster-downloads-and-vram-peak-management-eae294f24697",
+   "https://dev.to/routeai_official/minimax-h3-is-open-weight-now-heres-whats-actually-downloadable-vs-api-only-441k",
+   "https://pc.watch.impress.co.jp/docs/news/2129989.html",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://arxiv.org/html/2610.05608"
+  ],
+  "confidence": "medium",
+  "rank": 1,
+  "pick": "オープンで最高品質",
+  "pick_reason": "AA Video Arena I2V 全体1位。日本語のセリフに対応",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1158
+  }
+ },
+ {
+  "id": "ltx-2-5",
+  "access": "open-weight",
+  "name": "LTX-2.5",
+  "org": "LTX（Lightricksから分社）",
+  "country": "IL",
+  "release": "2026-08-11",
+  "params_b": 22,
+  "arch": "音声・映像の同時生成DiT（映像/音声の2ストリーム）。テキストエンコーダはLTX向けに調整したGemma 4 12B。新しい拡散型映像デコーダ（DiffVAE）またはConv VAE、空間x2/時間x2アップスケーラ付き",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "v2v",
+   "edit",
+   "s2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "4K（3840×2176。空間アップスケーラ2回適用）",
+   "max_duration_s": null,
+   "fps": 24,
+   "other": "ネイティブのマルチショット生成（カット間でキャラ・場所・照明・声を維持）。プロンプトから尺を決めるAuto duration。DFR（Diffusion Fidelity Rendering）パイプライン、IC-LoRA（V2V/インペイント/アウトペイント）、Audio-to-Video、Retake（指定区間の再生成）、DubIt（言い換え＋リップシンク）、SDR→HDR。ローカルの最大秒数は公式に明記なし（API版は1回で最大20秒、Proは最大10秒）。フレーム数は8k+1"
+  },
+  "features": {
+   "音声同時生成": true,
+   "マルチショット": true,
+   "首尾フレーム指定": true,
+   "キーフレーム補間": true,
+   "LoRA対応（IC-LoRA含む）": true,
+   "動画編集（Retake・インペイント）": true,
+   "音声駆動（A2V）": true,
+   "蒸留版あり": true,
+   "ComfyUI公式対応": true,
+   "ファインチューン用の事前学習チェックポイント": true
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 32,
+  "vram_note": "公式製品ページに「Min VRAM: 16GB」、VentureBeatも16GB以上の任意のGPUで動くと報道。LTX公式ブログはFP8量子化で32GB（RTX 5090級）、フル品質にはA100/H100を推奨。蒸留版のNVFP4（Blackwell向け）・int8 convrot版、fp8-cast＋CPU/ディスクオフロードあり。ダウンロード容量は約66GiB",
+  "speed_note": "ベンダー発表では蒸留版で10秒・720pのI2Vを2×GB200上で6.8秒（定常状態）。LTX API経由では10秒1080pで23.7秒（VentureBeat）。蒸留パイプラインは8ステップ＋4ステップ",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 951,
+    "note": "LTX-2.5 Fast（API提供ティア）。全体23位/29、オープンウェイト2〜3位。Proティアは948（24位）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video/open-weights"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 933,
+    "note": "Fast。Proは930。いずれもオープンウェイトでMiniMax H3に次ぐ",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 984,
+    "note": "Fast。全体20位、オープンウェイト3位（Proは958で22位）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
+   },
+   {
+    "metric": "ベンダー実施の人手ブラインド比較 勝率",
+    "value": 67,
+    "note": "%。Seedance 2.5 65%、Gemini Omni Flash 55%、FLUX 3 28%との比較。LTX自身が暫定値と注記",
+    "source": "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights"
+   }
+  ],
+  "quality_note": "AAではMiniMax H3に大きく離されるが（約200ELO差）、オープンの中では2番手でLTX-2.3（894）から大きく改善。機能の幅（4K、マルチショット、IC-LoRA、Retake、A2V、学習ツール）と速さが最大の強み。Kandinsky 6.0論文の人手比較では、画質と話し声の質でKandinsky 6.0 Proに負けたが、音声と映像の同期・音質はやや優位（有意差なし）",
+  "ja_note": "HFのタグに「9 languages」とあるが言語一覧は記載なし。日本語のセリフ・プロンプトへの対応は未確認",
+  "license": "LTX-2.x Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上1,000万ドル未満の組織（関連会社を含めて計算）は商用・本番利用無料。それを超える場合は有料の商用契約が必要。軍事・兵器用途は禁止。OSI準拠のオープンソースではない",
+  "price_note": "LTX APIはFast $0.09/秒、Pro $0.12/秒（VentureBeat）。720p $0.09/秒〜4K $0.37/秒との報道もある",
+  "hf": "https://huggingface.co/Lightricks/LTX-2.5",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "ltx-pipelines",
+   "LTX-2 Trainer"
+  ],
+  "summary_ja": "Lightricks系のLTXが2026年8月に出した22Bの音声付き動画モデルで、16GBから動き、4K・マルチショット・編集までこなす。品質はMiniMax H3に次ぐオープン2番手。",
+  "best_for_ja": "16〜32GBのGPUで、音声付き動画・マルチショット・LoRA学習・編集を一通りローカルで回したい制作用途",
+  "supersedes": [
+   "LTX-2.3",
+   "LTX-2",
+   "LTX-Video 0.9.x"
+  ],
+  "sources": [
+   "https://huggingface.co/Lightricks/LTX-2.5",
+   "https://github.com/Lightricks/LTX-2",
+   "https://ltx.io/model/ltx-2-5",
+   "https://ltx.io/blog/open-source-video-generation-models-guide",
+   "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights",
+   "https://comfyui-wiki.com/en/news/2026-08-11-ltx-2-5-open-weights-release",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video/open-weights",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
+  ],
+  "confidence": "high",
+  "rank": 2,
+  "pick": "16GBで動く・音声付き",
+  "pick_reason": "T2V・I2V・音声駆動まで1つで",
+  "hl": {
+   "label": "AA Arena",
+   "value": 951
+  }
+ },
+ {
+  "id": "kandinsky-6-0-video-pro",
+  "access": "open-weight",
+  "name": "Kandinsky 6.0 Video Pro",
+  "org": "Kandinsky Lab（Sber）",
+  "country": "RU",
+  "release": "2026-10-06",
+  "params_b": 29,
+  "arch": "デュアルストリームCrossDiT（学習済み映像ストリームに新規学習の音声ストリームを結合）、Flow Matching。テキストエンコーダはQwen2.5-VL＋CLIP、音声はMMAudio VAE＋BigVGAN系ボコーダ",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（ベースはSD解像度で生成し、別モデルの超解像で1920×1080へ）",
+   "max_duration_s": 5,
+   "fps": 24,
+   "other": "5秒（121フレーム）。44kHz音声（リップシンク含む）を同時生成、映像のみ出力も可。蒸留版（Pro-distill、10ステップ）あり。HF上のパラメータ表示は約30B"
+  },
+  "features": {
+   "音声同時生成": true,
+   "リップシンク": true,
+   "超解像（Full HD）": true,
+   "蒸留版あり": true,
+   "ComfyUI公式対応": true
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 80,
+  "vram_note": "技術報告のVRAMプリセット表で、16GBプリセット時のピーク確保量はSD 7.9GiB / HD 13.7GiB / Full HD 12.3GiB（実機16GBカードで15.1GiB使用）。ただしProの16GBプリセットはホストRAMを約58GiB使う。全モジュールをGPUに常駐させる場合のピークは72.8GiB（H100）なので80GB級が快適。GitHubのベンチ表にはRTX 5080（16GB）・5060 Ti・4090でのブロックオフロード実行時間が載っている",
+  "speed_note": "5秒動画・非蒸留・ウォームアップ後: RTX 4090でSD 936秒/HD 1194秒/Full HD 1247秒、RTX 5090でSD 754秒/Full HD 854秒、H100でSD 356秒/Full HD 402秒（公式GitHub）。蒸留版はさらに高速",
+  "bench": [
+   {
+    "metric": "人手サイドバイサイド評価（技術報告）",
+    "value": null,
+    "note": "数値は図のみ。前世代Kandinsky 5.0 Video Proに明確に勝利。LTX 2.5には画質・話し声の質で優位。Veo 3.1 Fastとは項目ごとに勝ち負けが分かれる。MiniMax H3とSeedance 2.0には画質面で負けるが話し声の質は互角以上",
+    "source": "https://arxiv.org/abs/2610.05608"
+   }
+  ],
+  "quality_note": "話し声の質（スピーチ）に強く、ロシア語・英語のセリフ付き動画を得意とする。画質はMiniMax H3やSeedance 2.0に及ばないと自社論文で認めている。AAアリーナには未掲載（2026-10時点）。5秒固定で、長い尺は出せない",
+  "ja_note": "学習・RLのプロンプトはロシア語と英語。日本語のプロンプト・セリフへの対応は記載なし（未確認）",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・重みともMIT。HFでは利用前に連絡先情報の共有に同意するゲート付き",
+  "price_note": null,
+  "hf": "https://huggingface.co/kandinskylab/Kandinsky-6.0-Pro-5s-Diffusers",
+  "tools": [
+   "Diffusers",
+   "ComfyUI",
+   "vLLM-Omni",
+   "SGLang",
+   "FastVideo"
+  ],
+  "summary_ja": "ロシアSber系のKandinsky Labが2026年10月に公開した29Bの音声付き動画モデルで、MITライセンス。オフロードを使えば16GBのGPUでも動く。",
+  "best_for_ja": "ライセンスの縛りなく商用で使える音声付き動画（話し声中心）が欲しい場合。RAMを64GB程度積める環境向け",
+  "supersedes": [
+   "Kandinsky 5.0 Video Pro"
+  ],
+  "sources": [
+   "https://github.com/kandinskylab/kandinsky-6",
+   "https://huggingface.co/kandinskylab/Kandinsky-6.0-Pro-5s-Diffusers",
+   "https://huggingface.co/kandinskylab",
+   "https://arxiv.org/abs/2610.05608",
+   "https://arxiv.org/html/2610.05608",
+   "https://comfyui-wiki.com/en/models/kandinsky"
+  ],
+  "confidence": "high",
+  "rank": 3
+ },
+ {
+  "id": "kandinsky-6-0-video-lite",
+  "access": "open-weight",
+  "name": "Kandinsky 6.0 Video Lite",
+  "org": "Kandinsky Lab（Sber）",
+  "country": "RU",
+  "release": "2026-10-06",
+  "params_b": 3,
+  "arch": "デュアルストリームCrossDiT（Proと同系統の小型版）、Flow Matching",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（超解像モデル併用）",
+   "max_duration_s": 5,
+   "fps": 24,
+   "other": "5秒・44kHz音声同時生成（リップシンク含む）。蒸留版（Lite-distill）あり"
+  },
+  "features": {
+   "音声同時生成": true,
+   "リップシンク": true,
+   "超解像（Full HD）": true,
+   "蒸留版あり": true,
+   "ComfyUI公式対応": true
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 48,
+  "vram_note": "技術報告の16GBプリセットでピーク7.9〜13.7GiB（Proと同じ値）。全常駐時のピークは43.5〜44.8GiB（H100計測）なので、オフロードなしなら48GB級。RTX 4090/5080/5060 Tiでのブロックオフロード実行時間が公式に掲載",
+  "speed_note": "5秒動画・非蒸留: RTX 4090でSD 437秒/HD 422秒/Full HD 578秒、RTX 5090でSD 309秒/Full HD 406秒、H100でSD 239秒/Full HD 284秒（公式GitHub）",
+  "bench": [
+   {
+    "metric": "VABench（技術報告 表11, 512×768）WER",
+    "value": 0.103,
+    "note": "話し声の単語誤り率。比較3モデル中でテキストと音声の一致度・音声のリアルさで首位と記載",
+    "source": "https://arxiv.org/html/2610.05608"
+   }
+  ],
+  "quality_note": "3Bと非常に小さいのに音声付き動画を出せるのが特徴。画質はProより下。AAアリーナには未掲載",
+  "ja_note": "学習プロンプトはロシア語・英語。日本語対応は未確認",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。HFはゲート付き（情報共有への同意が必要）",
+  "price_note": null,
+  "hf": "https://huggingface.co/kandinskylab/Kandinsky-6.0-Lite-5s-Diffusers",
+  "tools": [
+   "Diffusers",
+   "ComfyUI",
+   "vLLM-Omni",
+   "SGLang",
+   "FastVideo"
+  ],
+  "summary_ja": "Kandinsky 6.0の3B小型版で、音声付き5秒動画を作れる。軽いので16GB級GPUで試しやすい。",
+  "best_for_ja": "手持ちの16GB級GPUで、MITライセンスの音声付き動画を手軽に試したい場合",
+  "supersedes": [
+   "Kandinsky 5.0 Video Lite"
+  ],
+  "sources": [
+   "https://github.com/kandinskylab/kandinsky-6",
+   "https://huggingface.co/kandinskylab",
+   "https://arxiv.org/html/2610.05608"
+  ],
+  "confidence": "high",
+  "rank": 4
+ },
+ {
+  "id": "magi-2-preview",
+  "access": "open-weight",
+  "name": "MAGI-2 Preview",
+  "org": "Sand AI（Sand.ai）",
+  "country": "CN",
+  "release": "2026-08-05",
+  "params_b": 114,
+  "arch": "MoE（MagiMoE）による音声・映像統合生成モデル。低解像度のpreview段→refiner段の2段構成。テキストエンコーダQwen3.5-27B、映像VAEはWan2.2のVAE、音声はStable Audio Open 1.0のVAE",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（refiner出力1088×1920）",
+   "max_duration_s": 10,
+   "fps": null,
+   "other": "現行リリースは10秒のみ対応。preview段は512×896。総パラメータ114B、トークンあたりのアクティブ約6B。チェックポイント合計約307GB"
+  },
+  "features": {
+   "音声同時生成": true,
+   "ComfyUI公式対応": false,
+   "プロンプト拡張用システムプロンプト同梱": true
+  },
+  "min_vram_gb": 640,
+  "rec_vram_gb": 640,
+  "vram_note": "公式要件はNVIDIA Hopper GPU 8基（H100 80GB×8で合計640GBとして記載）。1080pではpreviewとrefinerを80GB 1枚に同時に載せられず、段階間でオフロードすると明記。量子化版・ComfyUI対応はなし（2026-08時点）。個人GPUでは実質動かせない",
+  "speed_note": "公式の生成時間の記載なし",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1044,
+    "note": "全体13位前後（11〜15位）。AAのAPI価格は「Coming soon」",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1046,
+    "note": "全体11位、オープンウェイト2位（H3に次ぎLTX-2.5より上）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
+   }
+  ],
+  "quality_note": "I2Vの品質はオープンでH3に次ぐ2番手。千億級のオープンMoE動画モデルとして話題になったが、Preview版で10秒固定、推論はtorchrun＋Dockerの公式パイプラインのみ",
+  "ja_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "HFモデルカードにApache 2.0と記載",
+  "price_note": null,
+  "hf": "https://huggingface.co/sand-ai/MAGI-2-preview",
+  "tools": [
+   "公式PyTorch（torchrun）",
+   "Docker"
+  ],
+  "summary_ja": "Sand AIの114B MoE音声付き動画モデル（プレビュー版）で、I2V品質はオープンで2番手。H100級GPUが8基必要なため、個人のPCでは動かせない。",
+  "best_for_ja": "H100/H200クラスタを持つ研究機関・企業が、Apache 2.0で高品質な音声付きI2Vを自前運用したい場合",
+  "supersedes": [
+   "MAGI-1"
+  ],
+  "sources": [
+   "https://huggingface.co/sand-ai/MAGI-2-preview",
+   "https://comfyui-wiki.com/en/news/2026-08-05-magi-2-preview",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
+  ],
+  "confidence": "medium",
+  "rank": 5,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1044
+  }
+ },
+ {
+  "id": "cosmos3-super-image2video",
+  "access": "open-weight",
+  "name": "Cosmos3-Super-Image2Video（4Step蒸留版を含む）",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-05-31",
+  "params_b": 64,
+  "arch": "Mixture-of-Transformers（テキスト用の自己回帰タワー＋その他モダリティ用の拡散タワー）。物理AI向けのオムニモーダル世界モデル",
+  "tasks": [
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "720p（推奨480p 832×480）",
+   "max_duration_s": 16.7,
+   "fps": 24,
+   "other": "5〜400フレーム（既定189フレーム、24fps換算で最長約16.7秒）。ベースのCosmos3-SuperはT2V/I2V/音声（48kHzステレオ）・ロボット行動の生成にも対応。4Step版はCFGなし4ステップ（2026-07-20公開）。同系の小型版にCosmos3-Nano（16B）・Edge（4B）あり"
+  },
+  "features": {
+   "音声同時生成（ベースモデル）": true,
+   "蒸留版あり（4ステップ）": true,
+   "ロボット行動・世界モデル用途": true,
+   "量子化版（公式）": false
+  },
+  "min_vram_gb": 180,
+  "rec_vram_gb": null,
+  "vram_note": "公式モデルカードは「H100/H200のマルチGPUノード（4〜8基）またはB200 1基」が必要と明記（B200 1基＝約180GBとして記載）。公式テストはBF16のみでFP8/FP4は非サポート。推奨構成はvLLM-OmniでH200×8。個人GPUでは動かない",
+  "speed_note": "ベース（50ステップ）は8×H200で約55秒、2×H200で約3分。4Step版は480p・189フレームでB200 1基約6.4秒（ベースからの推定値）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
+    "value": 1275,
+    "note": "4Step版。オープンウェイト2位（1位MiniMax H3 1356）。非蒸留版は1253",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V（オープンソース内順位）",
+    "value": 1,
+    "note": "2026-07-17時点でAA I2Vのオープンソース1位とモデルカードに記載（H3公開前）",
+    "source": "https://huggingface.co/nvidia/Cosmos3-Super-Image2Video-4Step"
+   }
+  ],
+  "quality_note": "無音のI2Vではオープンで上位だが、音声ありの最新アリーナには載っていない。物理挙動・ロボティクス向けの世界モデルが本業で、映像作品向けの調整は主目的ではない",
+  "ja_note": null,
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "モデルカードに商用・非商用とも利用可と記載",
+  "price_note": null,
+  "hf": "https://huggingface.co/nvidia/Cosmos3-Super-Image2Video-4Step",
+  "tools": [
+   "Diffusers",
+   "vLLM-Omni",
+   "SGLang",
+   "Cosmos Framework"
+  ],
+  "summary_ja": "NVIDIAの世界モデルCosmos 3の64B版をI2V向けに特化させたモデルで、無音のI2Vはオープンで上位。動かすにはデータセンター級のGPUが必要。",
+  "best_for_ja": "ロボティクス・自動運転のシミュレーション映像や、データセンターでの高速I2V",
+  "supersedes": [
+   "Cosmos-Predict2.5",
+   "Cosmos-Predict2"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/Cosmos3-Super",
+   "https://huggingface.co/nvidia/Cosmos3-Super-Image2Video-4Step",
+   "https://huggingface.co/nvidia/Cosmos3-Nano",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+  ],
+  "confidence": "medium",
+  "rank": 6,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1275
+  }
+ },
+ {
+  "id": "wan2-2-t2v-a14b",
+  "access": "open-weight",
+  "name": "Wan2.2-T2V-A14B",
+  "org": "Alibaba（Tongyi Wan）",
+  "country": "CN",
+  "release": "2025-07-28",
+  "params_b": 27,
+  "arch": "MoE-DiT（高ノイズ用・低ノイズ用の約14Bエキスパート2基、ステップごとのアクティブ14B）、Flow Matching、umT5テキストエンコーダ",
+  "tasks": [
+   "t2v"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": 5,
+   "fps": null,
+   "other": "480P/720P。音声生成なし。総27B・アクティブ14B"
+  },
+  "features": {
+   "音声同時生成": false,
+   "LoRA対応": true,
+   "ComfyUI公式対応": true,
+   "コミュニティGGUF量子化": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 80,
+  "vram_note": "公式READMEは単一GPUで80GB以上（--offload_model、--convert_model_dtype、--t5_cpuで削減）。コミュニティのGGUF量子化なら約12GBで動作、快適には40〜48GBカードが目安（Thunder Compute）",
+  "speed_note": "公式の単一GPU生成時間は画像でのみ掲載。コミュニティの高速化LoRA（LightX2V等）で大きく短縮可能",
+  "bench": [
+   {
+    "metric": "HunyuanVideo 1.5技術報告のT2V評価（指示追従）",
+    "value": 44.07,
+    "note": "Tencentによる比較。HY1.5 61.57、Veo3 73.77。構造安定性は73.75",
+    "source": "https://arxiv.org/html/2511.18870v2"
+   },
+   {
+    "metric": "LongCat-Video技術報告のT2V MOS（総合品質）",
+    "value": 3.35,
+    "note": "Meituanによる比較。Veo3 3.48、PixVerse-V5 3.36、LongCat-Video 3.38",
+    "source": "https://huggingface.co/meituan-longcat/LongCat-Video"
+   }
+  ],
+  "quality_note": "オープン動画モデルの定番で、LoRAなどの周辺ツールが最も充実。2026年の音声付き新世代（H3・LTX-2.5）と比べると古く、音声も出ない。AAの現行アリーナ（v2.x）には未掲載。Alibabaは以後のWan 2.5〜3.0をクローズドにしており、これがWanのオープン最新フラッグシップ",
+  "ja_note": "テキストエンコーダは多言語のumT5で、公式の例は中国語・英語。日本語プロンプトの公式保証はない",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0。生成物の権利は主張しないと明記",
+  "price_note": null,
+  "hf": "https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Wan2GP"
+  ],
+  "summary_ja": "Alibabaの代表的なオープン動画モデルで、テキストから720p・5秒の動画を作る。周辺ツールとLoRAが最も豊富だが、音声は出ない。",
+  "best_for_ja": "Apache 2.0で自由に改造・LoRA学習したい無音T2V。量子化すれば12GB級でも動く",
+  "supersedes": [
+   "Wan2.1-T2V-14B"
+  ],
+  "sources": [
+   "https://github.com/Wan-Video/Wan2.2",
+   "https://huggingface.co/Wan-AI",
+   "https://www.thundercompute.com/blog/best-open-source-ai-video-generation-models",
+   "https://howaiworks.ai/blog/alibaba-wan-open-weights-stopped-at-2-2",
+   "https://arxiv.org/html/2511.18870v2",
+   "https://huggingface.co/meituan-longcat/LongCat-Video"
+  ],
+  "confidence": "high",
+  "rank": 7
+ },
+ {
+  "id": "wan2-2-i2v-a14b",
+  "access": "open-weight",
+  "name": "Wan2.2-I2V-A14B",
+  "org": "Alibaba（Tongyi Wan）",
+  "country": "CN",
+  "release": "2025-07-28",
+  "params_b": 27,
+  "arch": "MoE-DiT（14Bエキスパート×2、アクティブ14B）、Flow Matching",
+  "tasks": [
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": 5,
+   "fps": null,
+   "other": "480P/720P。アスペクト比は入力画像に従う。音声なし"
+  },
+  "features": {
+   "音声同時生成": false,
+   "LoRA対応": true,
+   "ComfyUI公式対応": true,
+   "コミュニティGGUF量子化": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 80,
+  "vram_note": "T2V-A14Bと同じ。公式は単一GPUで80GB以上、コミュニティGGUFで約12GB（Thunder Compute）",
+  "speed_note": "公式の数値はテキストでの記載なし",
+  "bench": [
+   {
+    "metric": "HunyuanVideo 1.5技術報告のI2V評価（画像一貫性）",
+    "value": 73.53,
+    "note": "比較6モデル中で最高（Seedance Pro 73.06、Veo3 72.19）。指示追従は56.19で低め",
+    "source": "https://arxiv.org/html/2511.18870v2"
+   },
+   {
+    "metric": "LongCat-Video技術報告のI2V MOS（総合品質）",
+    "value": 3.26,
+    "note": "Seedance 1.0 3.35、Hailuo-02 3.27、LongCat-Video 3.17",
+    "source": "https://huggingface.co/meituan-longcat/LongCat-Video"
+   }
+  ],
+  "quality_note": "入力画像への忠実さが高く、他社の比較でも画像一貫性は上位。指示追従は弱め。音声なし",
+  "ja_note": "T2V版と同じくumT5ベース。日本語プロンプトの公式保証なし",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0",
+  "price_note": null,
+  "hf": "https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Wan2GP"
+  ],
+  "summary_ja": "Wan2.2の画像→動画版で、入力画像を崩さずに動かすのが得意。オープンI2Vの定番で、量子化すれば12GB級でも動く。",
+  "best_for_ja": "静止画・イラストを忠実に動かす無音I2V、LoRAでの動き追加",
+  "supersedes": [
+   "Wan2.1-I2V-14B-720P",
+   "Wan2.1-I2V-14B-480P"
+  ],
+  "sources": [
+   "https://github.com/Wan-Video/Wan2.2",
+   "https://huggingface.co/Wan-AI",
+   "https://www.thundercompute.com/blog/best-open-source-ai-video-generation-models",
+   "https://arxiv.org/html/2511.18870v2",
+   "https://huggingface.co/meituan-longcat/LongCat-Video"
+  ],
+  "confidence": "high",
+  "rank": 8
+ },
+ {
+  "id": "wan2-2-ti2v-5b",
+  "access": "open-weight",
+  "name": "Wan2.2-TI2V-5B",
+  "org": "Alibaba（Tongyi Wan）",
+  "country": "CN",
+  "release": "2025-07-28",
+  "params_b": 5,
+  "arch": "Dense DiT、高圧縮Wan2.2-VAE（16×16×4）、Flow Matching",
+  "tasks": [
+   "t2v",
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "720p（1280×704 / 704×1280）",
+   "max_duration_s": 5,
+   "fps": 24,
+   "other": "テキスト・画像の両方から生成する統合モデル。音声なし"
+  },
+  "features": {
+   "音声同時生成": false,
+   "LoRA対応": true,
+   "ComfyUI公式対応": true,
+   "コンシューマGPU向け": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 24,
+  "vram_note": "公式は24GB以上（RTX 4090など）。コミュニティGGUFで8GB（Thunder Compute）",
+  "speed_note": "公式: コンシューマGPU 1枚で720p・5秒を9分未満。RTX 4090で480p・5秒が約4〜6分（Thunder Compute）",
+  "bench": [],
+  "quality_note": "A14Bより品質は落ちるが、24GBで720p/24fpsが出せる軽量モデル。2026年時点では同クラスのKandinsky 6.0 Lite（音声付き）やLTX-2.5（16GB〜）が競合",
+  "ja_note": "日本語プロンプトの公式保証なし",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0",
+  "price_note": null,
+  "hf": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Wan2GP"
+  ],
+  "summary_ja": "Wan2.2の5B軽量版で、テキストと画像のどちらからでも720p動画を作れる。24GBで公式動作、量子化すれば8GBでも動く。",
+  "best_for_ja": "ゲーミングGPUで手軽に試すT2V/I2V入門用",
+  "supersedes": [
+   "Wan2.1-T2V-1.3B"
+  ],
+  "sources": [
+   "https://github.com/Wan-Video/Wan2.2",
+   "https://huggingface.co/Wan-AI",
+   "https://www.thundercompute.com/blog/best-open-source-ai-video-generation-models"
+  ],
+  "confidence": "high",
+  "rank": 9,
+  "pick": "8GB（GGUF）で動く定番",
+  "pick_reason": "Apache 2.0。ComfyUI の定番"
+ },
+ {
+  "id": "hunyuanvideo-1-5",
+  "access": "open-weight",
+  "name": "HunyuanVideo-1.5",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2025-11-20",
+  "params_b": 8.3,
+  "arch": "DiT＋3D因果VAE（16x空間/4x時間圧縮）、SSTAスパースアテンション、中英バイリンガルのテキストエンコード",
+  "tasks": [
+   "t2v",
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "1080p（ネイティブ480p/720p＋超解像）",
+   "max_duration_s": 10,
+   "fps": 24,
+   "other": "既定121フレーム（約5秒）、10秒720pの生成にも言及。480p I2Vのステップ蒸留版（8/12ステップ）、CFG蒸留版あり。LoRA学習スクリプト公開。音声なし"
+  },
+  "features": {
+   "音声同時生成": false,
+   "LoRA対応": true,
+   "蒸留版あり": true,
+   "超解像（1080p）": true,
+   "ComfyUI公式対応": true
+  },
+  "min_vram_gb": 14,
+  "rec_vram_gb": 24,
+  "vram_note": "公式: オフロード有効で最低14GB（技術報告ではRTX 4090で720p・121フレームのピーク13.6GB）。Wan2GPは6GBでの動作を報告。FP16で24GBが目安（Thunder Compute）",
+  "speed_note": "480p I2Vステップ蒸留版はRTX 4090 1枚で約75秒。8×H800で720p・121フレーム・50ステップが約26〜28秒（各種高速化あり）",
+  "bench": [
+   {
+    "metric": "GSB勝率 vs Wan2.2（T2V, 技術報告）",
+    "value": 17.12,
+    "note": "%（HY優位34.90%−相手優位17.78%）。vs Kling2.1 Master +12.60%、vs Seedance Pro +11.02%、vs Veo3 −10.32%",
+    "source": "https://arxiv.org/html/2511.18870v2"
+   },
+   {
+    "metric": "GSB勝率 vs Wan2.2（I2V, 技術報告）",
+    "value": 12.65,
+    "note": "%。vs Kling2.1 Master +9.72%、vs Seedance Pro −5.77%、vs Veo3 −3.61%",
+    "source": "https://arxiv.org/html/2511.18870v2"
+   }
+  ],
+  "quality_note": "8.3Bと小さめながら、自社評価ではWan2.2・Kling 2.1に勝ち越し、Veo3には負け越し。構造の安定性と指示追従が強み。音声は出ず、AAの現行アリーナには未掲載。2026-10時点でTencentはこれより新しいオープン動画モデルを出していない",
+  "ja_note": "中国語・英語のバイリンガル対応。日本語は公式対象外",
+  "license": "Tencent Hunyuan Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では利用不可。月間アクティブユーザー1億人超のサービスは別ライセンスが必要",
+  "price_note": null,
+  "hf": "https://huggingface.co/tencent/HunyuanVideo-1.5",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "LightX2V",
+   "Wan2GP"
+  ],
+  "summary_ja": "Tencentの8.3B動画モデルで、14GBから動き、自社評価ではWan2.2より高品質。テキスト・画像の両方から最大1080p（超解像）の動画を作れる。",
+  "best_for_ja": "16〜24GB級GPUで、Wan2.2より一段上の無音T2V/I2Vを作りたい場合",
+  "supersedes": [
+   "HunyuanVideo",
+   "HunyuanVideo-I2V"
+  ],
+  "sources": [
+   "https://huggingface.co/tencent/HunyuanVideo-1.5",
+   "https://arxiv.org/html/2511.18870v2",
+   "https://www.thundercompute.com/blog/best-open-source-ai-video-generation-models",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "high",
+  "rank": 10,
+  "pick": "14GBで動く",
+  "pick_reason": "家庭用GPUで動かしやすい"
+ },
+ {
+  "id": "skyreels-v3-r2v-14b",
+  "access": "open-weight",
+  "name": "SkyReels-V3-R2V-14B",
+  "org": "Skywork AI（Kunlun Tech）",
+  "country": "CN",
+  "release": "2026-01-29",
+  "params_b": 14,
+  "arch": "DiT（統合マルチモーダルin-context学習フレームワーク。Wan 2.1系の謝辞あり）",
+  "tasks": [
+   "r2v"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": 5,
+   "fps": 24,
+   "other": "参照画像1〜4枚（人物・物体など複数被写体）。推奨出力は720p・5秒。アスペクト比1:1/3:4/4:3/16:9/9:16。同シリーズに動画延長用V2V-14B（5〜30秒）あり"
+  },
+  "features": {
+   "参照被写体の保持（R2V）": true,
+   "複数被写体": true,
+   "音声同時生成": false,
+   "低VRAMモード（FP8＋ブロックオフロード）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 24,
+  "vram_note": "モデルカードに数値があるのは「24GB未満のGPUでは--low_vram（FP8重み量子化＋ブロックオフロード）と解像度下げを使う」という記述のみ。最低VRAMの具体値は不明",
+  "speed_note": "公式の生成時間の記載なし",
+  "bench": [
+   {
+    "metric": "参照一貫性（公式比較）",
+    "value": 0.6698,
+    "note": "自社評価で1位（Kling 1.6 0.6630、PixVerse V5 0.6542、Vidu Q2 0.5961）。視覚品質0.8119も1位だが、指示追従は27.22で最下位",
+    "source": "https://github.com/SkyworkAI/SkyReels-V3"
+   }
+  ],
+  "quality_note": "2026年時点で単体のR2V専用オープンモデルとして有力。自社評価では参照の再現度と画質が旧世代の商用モデル（Kling 1.6等）を上回るが、比較相手は古く、指示追従は弱め。音声なし",
+  "ja_note": null,
+  "license": "Skywork Community License",
+  "commercial": "conditional",
+  "license_note": "LICENSE.txtに「商用利用可、再申請不要」と記載。ただし国家・社会の安全を脅かす用途の禁止、ネット公開時のセキュリティ審査など付帯条件あり。全文は別PDF",
+  "price_note": null,
+  "hf": "https://huggingface.co/Skywork/SkyReels-V3-R2V-14B",
+  "tools": [
+   "Diffusers",
+   "xDiT"
+  ],
+  "summary_ja": "Skyworkの参照画像→動画モデルで、1〜4枚の人物・物体画像の見た目を保ったまま動画を作れる。24GB級GPUが目安。",
+  "best_for_ja": "同じキャラクターや商品を複数カットに登場させたい被写体固定の動画",
+  "supersedes": [
+   "SkyReels-A2",
+   "SkyReels-V2"
+  ],
+  "sources": [
+   "https://github.com/SkyworkAI/SkyReels-V3",
+   "https://huggingface.co/Skywork/SkyReels-V3-R2V-14B",
+   "https://github.com/SkyworkAI/SkyReels-V3/blob/main/LICENSE.txt"
+  ],
+  "confidence": "medium",
+  "rank": 11,
+  "pick": "R2V：参照した人物・物を保つ",
+  "pick_reason": "参照画像の見た目を崩さずに動画化"
+ },
+ {
+  "id": "bernini-r",
+  "access": "open-weight",
+  "name": "Bernini-R",
+  "org": "ByteDance",
+  "country": "CN",
+  "release": "2026-06-01",
+  "params_b": null,
+  "arch": "DiTレンダラ（Wan2.2-T2V-A14BのVAE・UMT5・ベース重みに、Bernini-Rの高ノイズ/低ノイズTransformer重みを適用）。MLLMの意味プランナーと組み合わせるBerniniフレームワークの描画部",
+  "tasks": [
+   "t2v",
+   "r2v",
+   "v2v",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": "720p（既定480p）",
+   "max_duration_s": 5,
+   "fps": 24,
+   "other": "既定は480p・16fps、rv2vの例で720p・24fps・121フレーム（約5秒）。対応モード: t2i、i2i編集、t2v、v2v/mv2v編集、参照＋動画の編集（rv2v）、参照→動画（r2v）。音声なし"
+  },
+  "features": {
+   "参照被写体の保持（R2V）": true,
+   "動画編集": true,
+   "参照付き動画編集": true,
+   "音声同時生成": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 80,
+  "vram_note": "VRAMの数値記載なし。推奨はHopper GPU（H100/H800/H200）、参照環境はH100。動画の例は8GPUで実行。他のCUDA GPUもFlashAttention-2/SDPAで動作可とのみ記載",
+  "speed_note": "公式の生成時間の記載なし",
+  "bench": [
+   {
+    "metric": "自社人手投票アリーナ（Bradley-Terry）",
+    "value": null,
+    "note": "動画編集で商用クローズドモデルの第一集団に入ったと主張。数値は未掲載",
+    "source": "https://huggingface.co/ByteDance/Bernini-R"
+   }
+  ],
+  "quality_note": "ByteDanceが2026年にオープン化したR2V＋動画編集モデル。旧来のPhantom（OpenS2V-Eval 56.77%）やBindWeave（57.61%）の後に出た、編集までこなす統合型。独立した数値評価は未確認",
+  "ja_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデルカードでApache 2.0と記載（ベースのWan2.2もApache 2.0）",
+  "price_note": null,
+  "hf": "https://huggingface.co/ByteDance/Bernini-R",
+  "tools": [
+   "公式推論スクリプト（Diffusers形式のWan2.2コンポーネントを使用）"
+  ],
+  "summary_ja": "ByteDanceがWan2.2をベースに作った参照→動画・動画編集モデルで、Apache 2.0で公開。参照画像を使った生成と既存動画の編集を1つでこなせる。",
+  "best_for_ja": "参照画像付きの動画生成や、既存動画の差し替え・編集をH100級の環境で行う場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ByteDance/Bernini-R",
+   "https://huggingface.co/ByteDance/BindWeave"
+  ],
+  "confidence": "medium",
+  "rank": 12
+ },
+ {
+  "id": "wan2-2-animate-2-14b",
+  "access": "open-weight",
+  "name": "Wan2.2-Animate-2-14B（Wan-Animate-2）",
+  "org": "Alibaba（Tongyi Wan）",
+  "country": "CN",
+  "release": "2026-08-07",
+  "params_b": 14,
+  "arch": "Wan2.2ベースの再設計DiT。中間のモーション抽出器を使わず、駆動動画を直接取り込むエンドツーエンドのキャラクターアニメーション",
+  "tasks": [
+   "v2v",
+   "r2v"
+  ],
+  "spec": {
+   "max_resolution": "720p（480pも検証済み）",
+   "max_duration_s": null,
+   "fps": 24,
+   "other": "参照画像＋駆動動画＋テキストで、参照キャラクターを駆動動画の動きで動かす。テキストで視点（カメラ）を駆動動画から切り離して制御。Base（40ステップ）と蒸留版（10ステップ・CFGなし）。HFのDiffusers版の表示は16B。同時期に音楽→ダンスのWan-Dancer-14B（2026-07）も公開"
+  },
+  "features": {
+   "キャラクターアニメーション（モーション転写）": true,
+   "参照被写体の保持（R2V）": true,
+   "カメラ制御（テキスト）": true,
+   "蒸留版あり": true,
+   "音声同時生成": false,
+   "ComfyUI公式対応": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "VRAMの記載なし。既定設定は8×A800、480Pは2×A800で検証済み。単一GPUでの必要量は不明",
+  "speed_note": "蒸留版は10ステップ・CFGなし。Lite版はリアルタイム水準に達すると記載されているが具体値なし",
+  "bench": [],
+  "quality_note": "Wanシリーズでは2026年の数少ないオープン新作（フラッグシップのWan 2.5以降はクローズド）。前作Wan2.2-Animate-14B（HFで約20万DL）の後継。独立評価は未確認",
+  "ja_note": "プロンプトはLLM（Qwen等）が生成する中国語キャプション形式を想定",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0",
+  "price_note": null,
+  "hf": "https://huggingface.co/Wan-AI/Wan2.2-Animate-2-14B",
+  "tools": [
+   "Diffusers（ソースから）",
+   "Gradio"
+  ],
+  "summary_ja": "人物の参照画像を、別の動画の動きどおりに動かすWanのキャラクターアニメーションモデル（2026年8月公開）。テキストでカメラ視点も変えられる。",
+  "best_for_ja": "ダンスや演技の動きを別キャラクターに移すモーション転写",
+  "supersedes": [
+   "Wan2.2-Animate-14B"
+  ],
+  "sources": [
+   "https://huggingface.co/Wan-AI/Wan2.2-Animate-2-14B",
+   "https://huggingface.co/Wan-AI",
+   "https://howaiworks.ai/blog/alibaba-wan-open-weights-stopped-at-2-2"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "longcat-video-avatar-1-5",
+  "access": "open-weight",
+  "name": "LongCat-Video-Avatar 1.5",
+  "org": "Meituan LongCat",
+  "country": "CN",
+  "release": "2026-05",
+  "params_b": null,
+  "arch": "LongCat-Video（13.6B dense DiT）のファインチューン。音声エンコーダはWhisper-Large-v3、DMD2ステップ蒸留（8NFE）",
+  "tasks": [
+   "s2v",
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": null,
+   "fps": null,
+   "other": "音声＋テキスト→動画（AT2V）、音声＋テキスト＋画像→動画（ATI2V）、動画の続き生成。単一話者・複数話者（マルチストリーム音声）対応。セグメントの継ぎ足しで長尺化。アニメ・動物にも汎化"
+  },
+  "features": {
+   "音声駆動（トーキングヘッド）": true,
+   "複数話者": true,
+   "動画延長（長尺）": true,
+   "蒸留版あり（8ステップ）": true,
+   "INT8量子化オプション": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "VRAMの記載なし。公式例は2GPU（context parallel）。--use_int8でVRAMを削減可能。コミュニティのfp8版あり（szwagros/LongCat-Video-Avatar-1.5-fp8）",
+  "speed_note": "DMD2蒸留で8NFE。具体的な秒数の記載なし",
+  "bench": [
+   {
+    "metric": "人手評価（508件の画像・音声ペア、評価者770人、13,240判定）",
+    "value": null,
+    "note": "HeyGen、OmniHuman 1.5、Kling Avatar 2.0と比べて「同等以上」と主張。数値は要旨に記載なし",
+    "source": "https://arxiv.org/abs/2605.26486"
+   }
+  ],
+  "quality_note": "MIT・オープンの音声駆動アバターとして2026年の最新版。リップシンク精度向上（Whisper化）と蒸留による高速化が主な改良点。比較相手が商用の最新アバター製品で、独立評価は未確認",
+  "ja_note": "評価・タグは中国語・英語。日本語音声は記載なし（未確認）",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "モデル重みはMIT",
+  "price_note": null,
+  "hf": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5",
+  "tools": [
+   "公式torchrunスクリプト",
+   "Diffusers"
+  ],
+  "summary_ja": "1枚の写真と音声から、口の動きが合った話し手の動画を作るMeituanのモデル（MIT）。複数人の会話や長い動画にも対応する。",
+  "best_for_ja": "解説動画・バーチャル講師・吹き替えなどのトーキングヘッド生成",
+  "supersedes": [
+   "LongCat-Video-Avatar"
+  ],
+  "sources": [
+   "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5",
+   "https://arxiv.org/abs/2605.26486",
+   "https://comfyui-wiki.com/en/models/longcat/longcat-avatar",
+   "https://huggingface.co/meituan-longcat/LongCat-Video",
+   "https://huggingface.co/szwagros/LongCat-Video-Avatar-1.5-fp8"
+  ],
+  "confidence": "medium",
+  "rank": 14
+ },
+ {
+  "id": "skyreels-v3-a2v-19b",
+  "access": "open-weight",
+  "name": "SkyReels-V3-A2V-19B",
+  "org": "Skywork AI（Kunlun Tech）",
+  "country": "CN",
+  "release": "2026-01-29",
+  "params_b": 19,
+  "arch": "DiT（Wan 2.1・MultiTalkの謝辞あり）",
+  "tasks": [
+   "s2v"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": 200,
+   "fps": 24,
+   "other": "肖像画像1枚＋音声1トラック（最長200秒、mp3/wav）からトーキングアバターを生成。複数キャラクターのシーンにも対応とうたう。歌唱・早口のセリフにも対応"
+  },
+  "features": {
+   "音声駆動（トーキングヘッド）": true,
+   "長尺（分単位）": true,
+   "低VRAMモード（FP8＋ブロックオフロード）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 24,
+  "vram_note": "数値の記載は「24GB未満では--low_vramと540P/480Pを推奨」のみ。最低VRAMの具体値は不明",
+  "speed_note": "公式の生成時間の記載なし",
+  "bench": [
+   {
+    "metric": "音声と映像の同期（社内評価）",
+    "value": 8.18,
+    "note": "OmniHuman 1.5 8.25、KlingAvatar 8.01、HunyuanAvatar 6.72。視覚品質4.60はOmniHuman 1.5と同点、キャラ一貫性0.80",
+    "source": "https://huggingface.co/Skywork/SkyReels-V3-A2V-19B"
+   }
+  ],
+  "quality_note": "自社評価では商用トップのOmniHuman 1.5にほぼ並び、Tencent HunyuanAvatarを大きく上回る。最長200秒の音声に対応する長尺性が強み",
+  "ja_note": "対応言語として中国語・英語・韓国語を明記。日本語は記載なし（未確認）",
+  "license": "Skywork Community License",
+  "commercial": "conditional",
+  "license_note": "商用利用可（再申請不要）と明記。安全保障上の禁止用途やネット公開時のセキュリティ審査など付帯条件あり",
+  "price_note": null,
+  "hf": "https://huggingface.co/Skywork/SkyReels-V3-A2V-19B",
+  "tools": [
+   "Diffusers",
+   "xDiT"
+  ],
+  "summary_ja": "写真1枚と最長200秒の音声から、話したり歌ったりするアバター動画を作るSkyworkのモデル。自社評価では商用トップのOmniHuman 1.5にほぼ並ぶ。",
+  "best_for_ja": "長めのナレーション・歌唱に合わせたトーキングアバター動画",
+  "supersedes": [
+   "SkyReels-A1",
+   "SkyReels-Audio"
+  ],
+  "sources": [
+   "https://huggingface.co/Skywork/SkyReels-V3-A2V-19B",
+   "https://github.com/SkyworkAI/SkyReels-V3",
+   "https://github.com/SkyworkAI/SkyReels-V3/blob/main/LICENSE.txt"
+  ],
+  "confidence": "medium",
+  "rank": 15
+ },
+ {
+  "id": "wan-3-0",
+  "access": "api",
+  "name": "Wan 3.0（Wan-3.0 / Wan-3.0-Prime）",
+  "org": "Alibaba",
+  "country": "CN",
+  "release": "2026-08",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p",
+   "max_duration_s": 30,
+   "fps": null,
+   "other": "2026-08-06に公開ベータ、2026-08-24から一般提供。2〜30秒（smart-duration）。Wan-3.0-Primeは参照画像・動画・音声を組み合わせたR2Vに対応。4Kなし。重みは非公開（Wan 2.5以降4世代連続でクローズド）"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照被写体の保持（R2V）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1173,
+    "note": "全体1位（信頼区間で1〜5位）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1135,
+    "note": "全体1位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1127,
+    "note": "全体5位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
+    "value": 1362,
+    "note": "全体2〜3位タイ",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "2026-10時点でAAのT2V（音声あり・なし）首位。I2Vでは5位",
+  "ja_note": null,
+  "license": "API（Alibaba Cloud Model Studio利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は本調査では未確認）",
+  "price_note": "Alibaba公式API: 480P ¥0.3/秒、720P ¥0.6/秒、1080P ¥1.2/秒（Atlas Cloud記事による）。Runway API経由は$0.05/$0.10/$0.20/秒（480/720/1080p）、Primeは$0.068〜$0.28/秒。AA掲載は1080p換算$12.00/分",
+  "hf": "https://wan.video",
+  "tools": [],
+  "summary_ja": "Alibabaの最新動画モデルで、AAのテキスト→動画ランキングで1位。重みは公開されておらず、APIでのみ使える。",
+  "best_for_ja": "最高品質の音声付きT2Vを、比較的安いAPI料金で使いたい場合",
+  "supersedes": [
+   "Wan 2.7",
+   "Wan 2.6",
+   "Wan 2.5"
+  ],
+  "sources": [
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://www.atlascloud.ai/blog/tips/is-wan-3.0-open-source",
+   "https://howaiworks.ai/blog/alibaba-wan-open-weights-stopped-at-2-2",
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "medium",
+  "rank": 16,
+  "pick": "API で最高品質（T2V）",
+  "pick_reason": "AA Video Arena T2V（音声あり）1位",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1173
+  }
+ },
+ {
+  "id": "seedance-2-5",
+  "access": "api",
+  "name": "Dreamina Seedance 2.5",
+  "org": "ByteDance Seed",
+  "country": "CN",
+  "release": "2026-07-31",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "edit",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（Runway API上の最上位ティア）",
+   "max_duration_s": 30,
+   "fps": null,
+   "other": "1パスで音声と映像を最長30秒まで同時生成し、複数回の延長で数分まで伸ばせる。1リクエストに画像30枚・動画10本・音声10本まで参照可能。指定したタイムスタンプだけを部分編集できる"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照被写体の保持（R2V）": true,
+   "部分編集": true,
+   "動画延長": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1159,
+    "note": "全体3位（1〜7位タイ）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1105,
+    "note": "全体4位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1138,
+    "note": "全体3位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "T2V・I2Vとも最上位グループ。参照素材の数（画像30・動画10・音声10）が突出して多い。前世代の2.0は著作権・肖像権で米ハリウッド各社から強い抗議を受けた",
+  "ja_note": null,
+  "license": "API（ByteDance / BytePlus利用規約）",
+  "commercial": "conditional",
+  "license_note": "BytePlus APIは米国では提供されていないとの報道。CapCut版は実在人物の顔を含む生成やIPの無断利用をブロックし、不可視透かしを付与（2.0の情報）",
+  "price_note": "Runway API経由: 出力$0.20/$0.30/$0.68/秒（480/720/1080p）＋入力動画$0.10〜$0.34/秒。AA掲載は1080p換算$34.12/分（主要モデル中で最も高い）",
+  "hf": "https://seed.bytedance.com/en/seedance",
+  "tools": [],
+  "summary_ja": "ByteDanceの最新動画モデルで、AAのT2V・I2Vとも上位3位以内。参照素材を大量に入れて長尺の音声付き動画を作れるが、料金は高め。",
+  "best_for_ja": "多数の参照素材を使って被写体と演出を細かく固定した広告・映像制作",
+  "supersedes": [
+   "Seedance 2.0",
+   "Seedance 1.5 Pro"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Seedance_2.0",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "medium",
+  "rank": 17,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1159
+  }
+ },
+ {
+  "id": "flux-3-video",
+  "access": "api",
+  "name": "FLUX 3 Video（FLUX 3 / FLUX 3 Max）",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "release": "2026-08-04",
+  "params_b": null,
+  "arch": "マルチモーダルFlowモデル（FLUX 3 Real World Models）",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "v2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（ネイティブ720p＋アップスケール）",
+   "max_duration_s": 20,
+   "fps": null,
+   "other": "最長20秒。開始・終了・複数キーフレーム指定、最大4秒の既存動画からの続き生成、1クリップ内のマルチショット、安価なドラフトモード。参照ベース生成は今後対応予定。FLUX 3 Max（720p）は2026-10にFal経由で登場。オープンウェイトのFLUX 3 Devは予告のみで未公開"
+  },
+  "features": {
+   "音声同時生成": true,
+   "首尾フレーム指定": true,
+   "キーフレーム複数指定": true,
+   "マルチショット": true,
+   "動画延長": true,
+   "参照被写体の保持（R2V）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ（オープン版FLUX 3 Devは計画段階）",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1159,
+    "note": "FLUX 3 Max（720p）。全体4位（1〜7位タイ）。無印FLUX 3は1145で7位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1094,
+    "note": "FLUX 3（無印）。全体5位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1138,
+    "note": "FLUX 3 Max（720p）。全体2位。無印FLUX 3は1086で8位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "画像生成のFLUXの動画版。Max版はT2V・I2Vとも最上位グループで、AA掲載価格では上位勢の中で最安クラス。R2Vは未対応",
+  "ja_note": "公式ブログで日本語を含む多言語のリップシンク（英・中・西・仏・独・日・ヒンディー等）に対応と明記",
+  "license": "API（BFL利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は未確認）",
+  "price_note": "AA掲載: FLUX 3 Max（720p）$2.55/分、FLUX 3 $17.40/分（1080p換算）。ドラフト生成は本生成の数分の一",
+  "hf": "https://bfl.ai/blog/flux-3-video",
+  "tools": [],
+  "summary_ja": "Black Forest LabsのFLUX 3動画版で、Max版はAAのT2V・I2Vとも上位。日本語のリップシンクにも公式対応している。",
+  "best_for_ja": "日本語セリフ付きの動画を、上位品質かつ安い単価で作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://bfl.ai/blog/flux-3-video",
+   "https://bfl.ai/blog",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+  ],
+  "confidence": "medium",
+  "rank": 18,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1159
+  }
+ },
+ {
+  "id": "minimax-h3-max",
+  "access": "api",
+  "name": "MiniMax H3 Max（API版・Hailuo系）",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": "2026-08",
+  "params_b": null,
+  "arch": "H3-Omni-Transformer（オープン版H3-Baseと同系）＋非公開のContext-IR前処理・2K再生成",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "2K（In-context Regenerationによる）",
+   "max_duration_s": 15,
+   "fps": 24,
+   "other": "オープン版にない前処理（H3-Context-IR）と2K再生成（H3-Regenerate-2K）を含むAPI版。Runway APIでは h3_max（480p/768p）と hailuo3（768p/2K）として提供"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照被写体の保持（R2V）": true,
+   "首尾フレーム指定": true,
+   "2K出力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ（同系のH3-Baseはオープンウェイトで別エントリ）",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1156,
+    "note": "全体6位（2〜7位）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1119,
+    "note": "全体3位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1125,
+    "note": "全体6位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "AAのスコアはオープン版H3（768p）とほぼ同じ。2K出力と前処理込みで使えるのが利点。旧Hailuo 2.3はH3に置き換えられた",
+  "ja_note": "H3としては日本語を含む11言語のセリフに対応（モデルカード）",
+  "license": "API（MiniMax利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は未確認）",
+  "price_note": "Runway API経由: h3_max $0.05/秒（480p）・$0.08/秒（768p）、hailuo3 $0.10/秒（768p）・$0.15/秒（2K）＋参照画像1枚$0.02。AA掲載は$4.80/分",
+  "hf": "https://www.minimax.io/blog/minimax-h3",
+  "tools": [],
+  "summary_ja": "MiniMax H3のAPI版で、オープン版にない2K出力と前処理が使える。品質はAAのT2V無音で3位と最上位級。",
+  "best_for_ja": "H3の品質を2Kで、GPUを用意せず安く使いたい場合",
+  "supersedes": [
+   "Hailuo 2.3",
+   "Hailuo 02"
+  ],
+  "sources": [
+   "https://www.minimax.io/blog/minimax-h3",
+   "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "medium",
+  "rank": 19,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1156
+  }
+ },
+ {
+  "id": "gemini-omni-flash-1-1",
+  "access": "api",
+  "name": "Gemini Omni Flash 1.1（Veo 3.1の後継）",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-08",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "v2v",
+   "edit",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "4K（Runway API上で360p/720p/1080p/4Kの料金設定）",
+   "max_duration_s": null,
+   "fps": null,
+   "other": "モデルID gemini-omni-1.1-flash。画像・音声・動画の入力、Interactions APIによる対話的な複数ターン編集に対応。Gemini APIのドキュメントは動画生成の既定としてOmni Flashを推奨し、Veo 3.1のプレビューIDは2026-10-22に提供終了予定"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照画像入力": true,
+   "対話的な動画編集": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": "VentureBeatの比較ではAPIで52秒（Veo 3.1は8秒動画で70秒）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1132,
+    "note": "Gemini Omni Flash 1.1。全体9位（7〜9位）。参考: Veo 3.1は968で20位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1132,
+    "note": "全体4位。参考: Veo 3.1は1028で14位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
+    "value": 1368,
+    "note": "Gemini Omni Flash。全体1位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "Googleの現行の主力動画モデルで、無音I2Vでは全体首位。Veo 3.1よりAAのスコアが大幅に高い",
+  "ja_note": null,
+  "license": "API（Google Gemini API / Vertex AI利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料APIでの商用利用は規約に従う（規約本文は未確認）。Veo系はSynthID透かし付き",
+  "price_note": "Runway API経由: 360p $0.034/秒、720p $0.10/秒、1080p $0.15/秒、4K $0.30/秒＋参照画像・入力動画1秒ごとに$0.01。AA掲載は1080p換算$9.12/分",
+  "hf": "https://ai.google.dev/gemini-api/docs/video",
+  "tools": [],
+  "summary_ja": "Googleの最新動画モデルで、Veo 3.1の後継として推奨されている。無音のI2VではAAで全体1位。",
+  "best_for_ja": "Googleのエコシステム（Gemini API・Vertex AI・Flow）で、編集まで含めて動画を作りたい場合",
+  "supersedes": [
+   "Gemini Omni Flash",
+   "Veo 3.1"
+  ],
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/video",
+   "https://en.wikipedia.org/wiki/Veo_(text-to-video_model)",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights"
+  ],
+  "confidence": "medium",
+  "rank": 20,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1132
+  }
+ },
+ {
+  "id": "grok-imagine-video-1-5",
+  "access": "api",
+  "name": "Grok Imagine Video 1.5",
+  "org": "xAI（AAの表記はSpaceXAI）",
+  "country": "US",
+  "release": "2026-05",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（Runway API上の最上位ティア）",
+   "max_duration_s": null,
+   "fps": null,
+   "other": "モデルIDの日付は2026-05-30。軽量版Grok Imagine Video 1.5 Lite（AA掲載2026-08）あり。参照画像入力はRunway APIの料金表から確認。音声はAAの音声ありアリーナに掲載されていることからの判断"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照画像入力": true,
+   "軽量版あり": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1059,
+    "note": "全体11位（10〜13位）。Lite版は998",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
+    "value": 1067,
+    "note": "全体9位",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "最上位グループの1段下で、Kling 3.0やVeo 3.1よりは上",
+  "ja_note": null,
+  "license": "API（xAI利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は未確認）",
+  "price_note": "xAI公式: $0.080/秒（Lite $0.020/秒）。AA掲載は$15.00/分",
+  "hf": "https://docs.x.ai/developers/models/grok-imagine-video-1.5",
+  "tools": [],
+  "summary_ja": "xAIの動画モデルで、AAでは最上位グループに次ぐ位置。安いLite版もある。",
+  "best_for_ja": "xAIのAPIを既に使っている開発者の中位品質・低価格の動画生成",
+  "supersedes": [
+   "Grok Imagine Video"
+  ],
+  "sources": [
+   "https://docs.x.ai/docs/models",
+   "https://docs.x.ai/developers/models/grok-imagine-video-1.5",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://docs.dev.runwayml.com/guides/pricing/"
+  ],
+  "confidence": "medium",
+  "rank": 21,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1059
+  }
+ },
+ {
+  "id": "kling-4-0",
+  "access": "api",
+  "name": "Kling 4.0",
+  "org": "Kuaishou（KlingAI）",
+  "country": "CN",
+  "release": "2026-10",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "4K（10bit HDR）",
+   "max_duration_s": 30,
+   "fps": null,
+   "other": "ネイティブ30秒、2chステレオ音声、キーフレーム編集の拡張（Wikipedia）。2026-09-28に年額上位会員向けKling 4.0 Flashを先行提供、2026-10に全世界で正式公開"
+  },
+  "features": {
+   "音声同時生成": true,
+   "キーフレーム編集": true,
+   "4K HDR": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・サービス提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
+    "value": 1020,
+    "note": "Kling 4.0はAA未掲載（2026-10時点）。参考値として前世代を記載。Kling 3.0 1080p ProはELOの基準点1000（17位）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
+    "value": 1004,
+    "note": "18位（参考値）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "公開直後でAAの評価はまだない。前世代のKling 3.0はAAで中位（基準点1000）",
+  "ja_note": null,
+  "license": "API / サービス（Kling利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランでの商用利用は規約に従う（規約本文は未確認）",
+  "price_note": "Kling 4.0の料金は未確認。前世代はRunway API経由でKling 3.0 Pro $0.12/秒（音声なし）・$0.17/秒（音声あり）、4K $0.43/秒",
+  "hf": "https://klingai.com",
+  "tools": [],
+  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月に正式公開。ネイティブ4K HDR・30秒・ステレオ音声をうたう。",
+  "best_for_ja": "4K HDRで長めの音声付き動画が必要な制作（評価はこれから）",
+  "supersedes": [
+   "Kling 3.0",
+   "Kling 3.0 Omni",
+   "Kling 2.6"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kling_AI",
+   "https://pinggy.io/blog/best_video_generation_ai_models/",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://docs.dev.runwayml.com/guides/pricing/"
+  ],
+  "confidence": "low",
+  "rank": 22,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1020
+  }
+ },
+ {
+  "id": "runway-gen-4-5",
+  "access": "api",
+  "name": "Runway Gen-4.5",
+  "org": "Runway",
+  "country": "US",
+  "release": "2025-12-01",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "v2v"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "max_duration_s": null,
+   "fps": null,
+   "other": "Image to Video、Keyframes、Video to Videoなど既存の制御モードをGen-4.5に順次展開と発表。動画編集は別モデルのAleph 2.0、演技転写はAct-Two"
+  },
+  "features": {
+   "キーフレーム指定": true,
+   "動画→動画": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・サービス提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena ELO（公開時・旧スケール）",
+    "value": 1247,
+    "note": "2025-11-30時点で1位（Veo 3 1226、Kling 2.5 1225、Sora 2 Pro 1206）。現行v2.1の音声ありボードには未掲載で、旧スケールとは比較不可",
+    "source": "https://runway.com/research/introducing-runway-gen-4.5"
+   }
+  ],
+  "quality_note": "公開時はAA首位だったが、2026年の音声付き世代（Wan 3.0・Seedance 2.5など）が出た後の現行ボードでは、音声ありの部門に載っていない。無音ボードでは23位との二次情報あり",
+  "ja_note": null,
+  "license": "API / サービス（Runway利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランで利用可。商用条件は規約に従う（未確認）",
+  "price_note": "Runway API: 12クレジット/秒＝$0.12/秒（1クレジット$0.01）。全有料プランで利用可",
+  "hf": "https://runway.com/research/introducing-runway-gen-4.5",
+  "tools": [],
+  "summary_ja": "Runwayの最新動画生成モデル（2025年12月）で、公開時はAAのテキスト→動画で1位だった。2026年の音声付き世代と比べると世代が古い。",
+  "best_for_ja": "Runwayの編集ツール群（Aleph、Act-Two）と組み合わせた映像制作",
+  "supersedes": [
+   "Gen-4",
+   "Gen-4 Turbo"
+  ],
+  "sources": [
+   "https://runway.com/research/introducing-runway-gen-4.5",
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://en.wikipedia.org/wiki/Runway_(company)",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "medium",
+  "rank": 23,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1247
+  }
+ },
+ {
+  "id": "luma-ray3-2",
+  "access": "api",
+  "name": "Luma Ray3.2",
+  "org": "Luma AI",
+  "country": "US",
+  "release": "2026-06-09",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "v2v",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": "1080p",
+   "max_duration_s": 20,
+   "fps": 24,
+   "other": "T2V/I2Vは5秒または10秒。Modify Video（動画編集）は24fpsで最長20秒・30fpsで15秒・60fpsで7秒。Reframe（画角変更）。ネイティブ16bit HDR、ACES EXR出力。キーフレーム最大16。T2V/I2Vは音声なし"
+  },
+  "features": {
+   "音声同時生成": false,
+   "ネイティブHDR・EXR出力": true,
+   "キーフレーム最大16": true,
+   "動画編集（Modify Video）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・サービス提供のみ",
+  "speed_note": null,
+  "bench": [],
+  "quality_note": "AAの現行アリーナには未掲載。HDR/EXR出力やキーフレーム16枚など、ポスプロ向けの機能が独自の強み。音声は生成しない",
+  "ja_note": null,
+  "license": "API / サービス（Luma利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランの規約に従う（未確認）。2026年9月以降、新規ユーザーはLuma Agentsのみ登録可能とWikipediaに記載",
+  "price_note": "クレジット制: T2V/I2V 5秒が360p 20・540p 50・720p 100・1080p 400クレジット、10秒は60/150/300/1200。HDRは2倍、HDR＋EXRは3倍",
+  "hf": "https://lumalabs.ai/ray",
+  "tools": [],
+  "summary_ja": "Luma AIの最新動画モデルで、HDR・EXR出力や動画編集など映像の仕上げ向けの機能が充実している。音声は生成しない。",
+  "best_for_ja": "色調整・合成を前提にした映像制作（HDR/EXR素材が欲しい場合）",
+  "supersedes": [
+   "Ray3",
+   "Ray2"
+  ],
+  "sources": [
+   "https://lumalabs.ai/ray",
+   "https://en.wikipedia.org/wiki/Luma_AI",
+   "https://pinggy.io/blog/best_video_generation_ai_models/"
+  ],
+  "confidence": "medium",
+  "rank": 24
+ },
+ {
+  "id": "vidu-q4-preview",
+  "access": "api",
+  "name": "Vidu Q4 Preview",
+  "org": "Shengshu Technology（Vidu）",
+  "country": "CN",
+  "release": null,
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "4K",
+   "max_duration_s": 16,
+   "fps": null,
+   "other": "モデルID viduq4-preview。540p/720p/1080p/2K/4K、3〜16秒。音声と映像の同期生成（既定ON）、自動カメラ切り替え。Reference to Video機能のドキュメントあり。プロンプト最大20,000文字"
+  },
+  "features": {
+   "音声同時生成": true,
+   "自動カメラ切り替え": true,
+   "参照被写体の保持（R2V）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Vidu Q3 Pro）",
+    "value": 943,
+    "note": "Q4 PreviewはAA未掲載。参考として前世代Q3 Pro（25位）を記載",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Vidu Q3 Pro）",
+    "value": 1016,
+    "note": "17位（参考値）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "最新のQ4はプレビュー段階でAA未評価。前世代Q3はAAで中位",
+  "ja_note": null,
+  "license": "API（Vidu利用規約）",
+  "commercial": "conditional",
+  "license_note": "規約本文は未確認",
+  "price_note": "Q4の単価は未確認（タスクごとにクレジット消費）。前世代はAA掲載でQ3 Pro $7.20/分、Q3 Turbo $3.90/分",
+  "hf": "https://platform.vidu.com/docs/api-reference/video-models/vidu-q4-preview/image-to-video",
+  "tools": [],
+  "summary_ja": "中国Shengshuの最新動画モデル（プレビュー版）で、4K・最長16秒・音声付き生成に対応する。品質の第三者評価はまだない。",
+  "best_for_ja": "4K出力が必要な短尺動画の試用",
+  "supersedes": [
+   "Vidu Q3",
+   "Vidu Q2"
+  ],
+  "sources": [
+   "https://platform.vidu.com/docs/api-reference/video-models/vidu-q4-preview/image-to-video",
+   "https://platform.vidu.com/docs/pricing",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+  ],
+  "confidence": "low",
+  "rank": 25,
+  "hl": {
+   "label": "AA Arena",
+   "value": 943
+  }
+ }
+]
