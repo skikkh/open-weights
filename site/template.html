@@ -1252,7 +1252,16 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   /* ── 起動 ── */
   var total = 0; PAGES.forEach(function (p) { if (p.list && p.id !== "jp") total += p.list.length; });
   document.getElementById("st-upd").textContent = META.updated_at || "—";
-  document.getElementById("st-next").textContent = META.next_update || "—";
+  // 定期更新は毎月 1・4・7…31日の 9時（日本時間）に動く（cron 0 0 */3 * *）。次の実行日を更新日から計算する
+  function nextRun(from) {
+    var t = Date.parse((from || "") + "T00:00:00Z"); if (!isFinite(t)) return META.next_update || "—";
+    for (var i = 1; i <= 4; i++) {
+      var d = new Date(t + i * 864e5);
+      if ((d.getUTCDate() - 1) % 3 === 0) return d.toISOString().slice(0, 10) + " 9時ごろ";
+    }
+    return META.next_update || "—";
+  }
+  document.getElementById("st-next").textContent = nextRun(META.updated_at);
   document.getElementById("st-count").textContent = total + " モデル";
   buildNav();
   var html = buildLLMPage("llm") + buildLLMPage("local") + buildJP() + buildASR() + buildTTS();
