@@ -3551,7 +3551,7 @@
   ],
   "mode": "instruct",
   "from_scratch": false,
-  "base_model": "非公開。公式は「オープンソースコミュニティの最良モデル」を基に追加学習したと説明。config.jsonはDeepseekV3ForCausalLM（deepseek_v3）で、61層・hidden 7168・256エキスパートとDeepSeek-V3と同構成",
+  "base_model": "非公開（DeepSeek-V3 と同じ構成）",
   "license": "Apache License 2.0",
   "commercial": "yes",
   "license_note": "Apache 2.0で商用可。ベースモデルの出所を楽天が明かしていないため、社内のコンプライアンス確認が必要になる場合がある",
@@ -3577,7 +3577,7 @@
    "lcb": null,
    "swe_verified": null
   },
-  "japanese_note": "楽天の自社評価では、日本知識（JamC-QA）と日本語の指示追従でGPT-4oを上回る。一方、MMLU-ProXと数学ではGPT-OSS-Swallow-120Bに劣る。thinkingモードの記載はない。第三者による検証はまだ少ない。",
+  "japanese_note": "楽天の自社評価では、日本知識（JamC-QA）と日本語の指示追従でGPT-4oを上回る。一方、MMLU-ProXと数学ではGPT-OSS-Swallow-120Bに劣る。thinkingモードの記載はない。第三者による検証はまだ少ない。　ベースモデル：非公開。公式は「オープンソースコミュニティの最良モデル」を基に追加学習したと説明。config.jsonはDeepseekV3ForCausalLM（deepseek_v3）で、61層・hidden 7168・256エキスパートとDeepSeek-V3と同構成",
   "deploy_note_ja": "FP8の重みが約673GB。公式例はSGLangのDockerで--tp 8。8×H200/B200級が目安で、8×H100 80GB（計640GB）では足りないため2ノード構成が必要。コミュニティのGGUF量子化版もある。",
   "engines": [
    "SGLang",
