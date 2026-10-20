@@ -1143,7 +1143,7 @@
   "name": "Mureka V9.5",
   "org": "Mureka（Kunlun Tech）",
   "country": "CN",
-  "release": null,
+  "release": "2026-08-18",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -1153,7 +1153,7 @@
   "spec": {
    "max_duration_s": null,
    "sample_rate": null,
-   "other": "公開日は未確認（2026-10-07公開のAA Music Arena v1.1で評価済み）。Proプランでステム・WAVダウンロード"
+   "other": "Kunlun Tech（昆仑万维）が公式WeChatで2026-08-18に全プラットフォームへ順次公開と発表。7月のWAIC 2026で先行披露との報道あり。8/28にAPIで強化版mureka-9.5を公開、8/31にシンガポール発のプレスリリース。MusiCoT（音楽の思考連鎖）がベース。Proプランでステム・WAVダウンロード"
   },
   "features": {
    "日本語歌詞": true,
@@ -1188,10 +1188,10 @@
    }
   ],
   "quality_note": "AA Music Arena v1.1でボーカル3位とSuno v6勢に次ぐ位置。前版Mureka 9もWildSongBenchで商用最高スコア",
-  "ja_note": "V9.5の公式対応言語は今回確認できず。HeartMuLa論文の日本語ベンチで旧版Mureka V7.6（PER 0.30）が評価されており、日本語歌唱自体は前世代から可能",
+  "ja_note": "第三者情報では日本語を含む約10言語（中・英・日・韓・葡・西・独・仏・伊・露）に対応。V9.5の公式な対応言語一覧は確認できず。HeartMuLa論文の日本語ベンチでは旧版V7.6（PER 0.30）が評価されている",
   "license": "サービス利用規約（Mureka）",
   "commercial": "conditional",
-  "license_note": "公式サイトはBasic以上に商用ライセンスを含むとし『フル商用権』を謳うが、適用プランの詳細は規約で要確認。学習データは非公開。運営会社（Kunlun Tech）は既知情報で、今回の調査では一次情報で未確認",
+  "license_note": "公式サイトはBasic以上に商用ライセンスを含むとし『フル商用権』を謳うが、適用プランの詳細は規約で要確認。学習データは非公開。運営はKunlun Tech（Pandaily、公式WeChatを引用したGate記事で確認）",
   "hf": "https://www.mureka.ai/",
   "tools": [
    "Webアプリ",
@@ -1211,9 +1211,13 @@
    "https://artificialanalysis.ai/music/leaderboard/vocals",
    "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
-   "https://arxiv.org/abs/2601.10547"
+   "https://arxiv.org/abs/2601.10547",
+   "https://www.gate.com/en-us/news/detail/kunlun-wanwei-releases-mureka-v95-ai-music-generation-model-17843723",
+   "https://www.globenewswire.com/news-release/2026/08/31/3353336/0/en/mureka-introduces-next-generation-ai-music-model-v9-5-advancing-toward-more-human-like-song-creation.html",
+   "https://platform.mureka.ai/docs/en/changelog.html",
+   "https://pandaily.com/mureka-v9-5-ai-music-kunlun-tech-jul2026"
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "rank": 16,
   "hl": {
    "label": "AA Arena",
@@ -1460,7 +1464,7 @@
   "spec": {
    "max_duration_s": null,
    "sample_rate": null,
-   "other": "公式チェンジログ上の最新モデルはAllegro v1.5（2025-03-18）。Sessions・Styles・Voices等の機能を2025年に追加。2026年の新モデル/新プラットフォームは今回確認できず"
+   "other": "公式チェンジログ上の最新モデルはAllegro v1.5（2025-03-18）のまま。2025年にSessions（6月）・Voices（9月）などの機能を追加。UMG・WMG・Kobaltと組むライセンス型の新プラットフォームは2026年中の公開予定とされるが、2026-10-20時点で公開や新モデルの発表は確認できず"
   },
   "features": {
    "ボーカル生成": true,
@@ -1471,9 +1475,9 @@
   "rec_vram_gb": null,
   "vram_note": "クラウドAPI/サービスのため自前GPU不要",
   "speed_note": "非公表",
-  "price_note": "有料サブスクリプション（学生割引・トライアルあり）だが、2026-10時点の料金は今回確認できず。2025-10のUMG和解後は生成物がウォールドガーデン内に限定されDL不可と報道。UMGとのライセンス型新プラットフォームは2026年開始予定と発表済み",
+  "price_note": "Free（1日10クレジット＋月100）、Standard $10/月（年払い$8、月2,400クレジット）、Pro $30/月（年払い$24、月6,000クレジット）（第三者まとめ、2026-10-04時点）。2025-10-29以降、音声・動画・ステムのダウンロードは停止中",
   "bench": [],
-  "quality_note": "2025年前半まではSunoと並ぶ二強だったが、現行のAA Music Arena（ボーカル/インスト）上位表には掲載なし。新プラットフォーム移行中で、最新状況の確度は低い",
+  "quality_note": "2025年前半まではSunoと並ぶ二強だったが、v1.5以降モデル更新がなく、AA Music Arena（ボーカルv1.1・インスト）にも掲載なし（2026-10-20確認）。新プラットフォームへの移行待ち",
   "ja_note": "今回の調査では公式の日本語対応の記述を確認できず",
   "license": "サービス利用規約（Udio）",
   "commercial": "no",
@@ -1490,7 +1494,10 @@
    "https://help.udio.com/en/articles/10748731-changelog-what-s-new-with-udio",
    "https://help.udio.com/en/collections/11900887-subscriptions-credits-and-billing",
    "https://www.musicbusinessworldwide.com/universal-music-settles-udio-lawsuit-strikes-deal-for-licensed-ai-music-platform/",
-   "https://musically.com/2025/10/30/umg-settles-udio-lawsuit-companies-plan-new-ai-music-service-together/"
+   "https://musically.com/2025/10/30/umg-settles-udio-lawsuit-companies-plan-new-ai-music-service-together/",
+   "https://undetectr.com/blog/best-ai-music-generators-2026",
+   "https://www.digitalmusicnews.com/2026/04/09/udio-kobalt-deal/",
+   "https://www.musicbusinessworldwide.com/warner-music-settles-udio-lawsuit-strikes-licensing-deal-with-ai-platform/"
   ],
   "confidence": "low",
   "rank": 20

@@ -1008,8 +1008,8 @@
  {
   "id": "vllm-sr-vela-2",
   "name": "Vela 2.0（0.3B／0.8B／4B／9B）",
-  "org": "KR Labs × vLLM Semantic Router",
-  "country": "?",
+  "org": "KR Labs（オーストリア、TU Wien発）× vLLM Semantic Router（vLLM傘下の国際OSSプロジェクト）",
+  "country": "AT",
   "release": "2026-10",
   "access": "open-weight",
   "params_b": 4.2,
@@ -1084,7 +1084,10 @@
   "supersedes": [],
   "sources": [
    "https://huggingface.co/vllm-sr/Vela-2.0-4B",
-   "https://huggingface.co/vllm-sr"
+   "https://huggingface.co/vllm-sr",
+   "https://vllm-sr.ai/blog/vela-2-0-open-foundation-routing-models",
+   "https://krlabsorg-readme.static.hf.space/README.md",
+   "https://arxiv.org/html/2502.17125v1"
   ],
   "confidence": "medium",
   "rank": 13

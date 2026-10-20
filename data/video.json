@@ -1540,25 +1540,27 @@
   "name": "Kling 4.0",
   "org": "Kuaishou（KlingAI）",
   "country": "CN",
-  "release": "2026-10",
+  "release": "2026-10-15",
   "params_b": null,
   "arch": null,
   "tasks": [
    "t2v",
    "i2v",
    "flf2v",
+   "r2v",
    "audio"
   ],
   "spec": {
-   "max_resolution": "4K（10bit HDR）",
+   "max_resolution": "4K（10bit HDR）。ただし公開時点で1080p・4Kは「近日対応」",
    "max_duration_s": 30,
    "fps": null,
-   "other": "ネイティブ30秒、2chステレオ音声、キーフレーム編集の拡張（Wikipedia）。2026-09-28に年額上位会員向けKling 4.0 Flashを先行提供、2026-10に全世界で正式公開"
+   "other": "1回の生成で3〜30秒。動画延長で合計最大2分（予定）。Omni Referenceで参照素材を最大15件（画像10・動画5・被写体7まで）、キーフレーム最大10枚、プロンプト最大8,000トークン。Kling MCP/CLIに対応。2026-09-28に年額Ultra会員向けにKling 4.0 Flash（約20秒・720pまで）を先行提供し、2026-10-15に全ユーザーへ正式公開。開発者APIは「近日」"
   },
   "features": {
-   "音声同時生成": true,
-   "キーフレーム編集": true,
-   "4K HDR": true
+   "音声同時生成（ステレオ）": true,
+   "キーフレーム編集（最大10枚）": true,
+   "参照素材（最大15件）": true,
+   "4K HDR（公開時点は未提供）": false
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
@@ -1568,25 +1570,25 @@
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
     "value": 1020,
-    "note": "Kling 4.0はAA未掲載（2026-10時点）。参考値として前世代を記載。Kling 3.0 1080p ProはELOの基準点1000（17位）",
+    "note": "Kling 4.0はAA未掲載（2026-10-20確認）。参考値として前世代を記載（16位）。Kling 3.0 1080p ProはELOの基準点1000（17位）。首位はWan 3.0の1173",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
     "value": 1004,
-    "note": "18位（参考値）",
+    "note": "18位（参考値、2026-10-20確認）。首位はMiniMax H3の1140",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "公開直後でAAの評価はまだない。前世代のKling 3.0はAAで中位（基準点1000）",
-  "ja_note": null,
+  "quality_note": "2026-10-20時点でAAのT2V・I2Vアリーナには未掲載で、第三者の品質評価はまだない。前世代のKling 3.0はAAで中位（16〜19位）",
+  "ja_note": "第三者のまとめ（CometAPI、fal）では、台詞音声の対応言語に日本語を含む（中・英・日・韓・西など）。公式ページに言語一覧はなく、日本語の品質評価も見当たらない",
   "license": "API / サービス（Kling利用規約）",
   "commercial": "conditional",
-  "license_note": "有料プランでの商用利用は規約に従う（規約本文は未確認）",
-  "price_note": "Kling 4.0の料金は未確認。前世代はRunway API経由でKling 3.0 Pro $0.12/秒（音声なし）・$0.17/秒（音声あり）、4K $0.43/秒",
+  "license_note": "有料会員（Standard以上）は商用利用可・透かしなし、無料プランは非商用・透かしあり（第三者まとめ、2026-10時点）。運営はKling AI Pte. Ltd.ほか。利用規約と有料サービス規約（2026-04-21版）の本文は未精査",
+  "price_note": "Web会員（USD、月額）: Standard $8.80（660クレジット）、Pro $32.56（3,000）、Premier $80.96（8,000）、Ultra $159.99（26,000）（2026-10時点、第三者による確認）。Kling 4.0のクレジット単価は公式に未公表で、1080pで15クレジット/秒（30秒で450クレジット）という実測報告がある。開発者APIは未提供（近日予定）。参考: 前世代Kling 3.0はRunway API経由で$0.12〜0.17/秒、4K $0.43/秒",
   "hf": "https://klingai.com",
   "tools": [],
-  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月に正式公開。ネイティブ4K HDR・30秒・ステレオ音声をうたう。",
+  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月15日に全ユーザー向けに正式公開された。1回で最長30秒の音声付き動画を作れるが、4K HDR出力と開発者APIは公開時点で「近日対応」。",
   "best_for_ja": "4K HDRで長めの音声付き動画が必要な制作（評価はこれから）",
   "supersedes": [
    "Kling 3.0",
@@ -1598,9 +1600,15 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/",
    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "https://docs.dev.runwayml.com/guides/pricing/"
+   "https://docs.dev.runwayml.com/guides/pricing/",
+   "https://www.marketscreener.com/news/kuaishou-technology-launches-next-generation-kling-4-0-video-generation-model-of-kling-ai-ce785cdade8dff24",
+   "https://kling.ai/feature/kling-4-ai-video-generation",
+   "https://letsdatascience.com/news/kling-ai-opens-kling-40-to-all-users-d9dc6422",
+   "https://www.cometapi.com/kling-4-0-explaineds-guide/",
+   "https://kie.ai/blog/kling-4-0-release-analysis-30-second-clips-keyframes-pricing",
+   "https://framesurfer.com/blogs/kling-ai-pricing"
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "rank": 22,
   "hl": {
    "label": "AA Arena",
@@ -1732,20 +1740,19 @@
   "name": "Vidu Q4 Preview",
   "org": "Shengshu Technology（Vidu）",
   "country": "CN",
-  "release": null,
+  "release": "2026-10-07",
   "params_b": null,
   "arch": null,
   "tasks": [
-   "t2v",
    "i2v",
    "r2v",
    "audio"
   ],
   "spec": {
-   "max_resolution": "4K",
+   "max_resolution": "4K（10bit色）",
    "max_duration_s": 16,
    "fps": null,
-   "other": "モデルID viduq4-preview。540p/720p/1080p/2K/4K、3〜16秒。音声と映像の同期生成（既定ON）、自動カメラ切り替え。Reference to Video機能のドキュメントあり。プロンプト最大20,000文字"
+   "other": "モデルID viduq4-preview（プレビュー版。正式版の時期は未発表）。APIはImage to Video（3〜16秒）とReference to Video（1〜16秒、参照画像最大15枚、参照音声最大3件で声を固定）。540p/720p/1080p/2K/4K。音声と映像の同期生成（既定ON、台詞・効果音）、自動カメラ切り替え。プロンプト最大20,000文字。Q4のText to Videoエンドポイントは確認できず"
   },
   "features": {
    "音声同時生成": true,
@@ -1760,25 +1767,25 @@
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Vidu Q3 Pro）",
     "value": 943,
-    "note": "Q4 PreviewはAA未掲載。参考として前世代Q3 Pro（25位）を記載",
+    "note": "Q4 PreviewはAA未掲載（2026-10-20確認）。参考として前世代Q3 Pro（25位）を記載",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Vidu Q3 Pro）",
     "value": 1016,
-    "note": "17位（参考値）",
+    "note": "17位（参考値、2026-10-20確認）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "最新のQ4はプレビュー段階でAA未評価。前世代Q3はAAで中位",
-  "ja_note": null,
+  "quality_note": "Q4 Previewは2026-10-20時点でAAのアリーナに未掲載で、第三者評価はまだない。前世代のQ3 ProはAAのT2Vで25位、I2Vで17位と中位",
+  "ja_note": "公式ドキュメント・発表に対応言語の記載がなく、日本語の音声・文字の品質は未確認",
   "license": "API（Vidu利用規約）",
   "commercial": "conditional",
-  "license_note": "規約本文は未確認",
-  "price_note": "Q4の単価は未確認（タスクごとにクレジット消費）。前世代はAA掲載でQ3 Pro $7.20/分、Q3 Turbo $3.90/分",
+  "license_note": "無料プランは透かしあり・商用不可、有料プランで透かしなし（第三者まとめ）。規約本文は未確認",
+  "price_note": "API: 540p 9クレジット/秒（$0.045）、720p 19（約$0.095）、1080p 24（約$0.12）、2K 38（約$0.19）、4K 78クレジット/秒（$0.39）。USDはプレスリリースの540p・4K価格から1クレジット＝$0.005として換算（中国向けは1クレジット＝0.03125元）。I2VとR2Vは11月30日まで30%引き。Web版はサブスクリプション",
   "hf": "https://platform.vidu.com/docs/api-reference/video-models/vidu-q4-preview/image-to-video",
   "tools": [],
-  "summary_ja": "中国Shengshuの最新動画モデル（プレビュー版）で、4K・最長16秒・音声付き生成に対応する。品質の第三者評価はまだない。",
+  "summary_ja": "中国Shengshuの次期旗艦動画モデルのプレビュー版で、2026年10月7日に公開された。4K・最長16秒・音声付きで、最大15枚の参照画像を使って人物や声を保ったまま生成できる。",
   "best_for_ja": "4K出力が必要な短尺動画の試用",
   "supersedes": [
    "Vidu Q3",
@@ -1788,9 +1795,14 @@
    "https://platform.vidu.com/docs/api-reference/video-models/vidu-q4-preview/image-to-video",
    "https://platform.vidu.com/docs/pricing",
    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://www.globenewswire.com/news-release/2026/10/07/3376813/0/en/shengshu-technology-launches-vidu-q4-preview-a-next-generation-ai-video-model-built-for-lifelike-performances.html",
+   "https://www.manilatimes.net/2026/10/08/tmt-newswire/globenewswire/shengshu-technology-launches-vidu-q4-preview-a-next-generation-ai-video-model-built-for-lifelike-performances/2441237",
+   "https://platform.vidu.com/docs/overview/pricing",
+   "https://www.unite.ai/vidu-releases-q4-preview-of-next-generation-flagship-ai-video-model/",
+   "https://costbench.com/software/ai-video-generators/vidu/free-plan/"
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "rank": 25,
   "hl": {
    "label": "AA Arena",

@@ -920,8 +920,8 @@
  {
   "id": "seed-vc",
   "name": "Seed-VC（V2）",
-  "org": "Plachtaa（個人開発）",
-  "country": "?",
+  "org": "Plachtaa（Songting Liu、個人開発。南洋理工大学）",
+  "country": "SG",
   "release": "2025-04",
   "params_b": 0.157,
   "arch": "ゼロショットVC（V1: DiT＋Whisper/XLSR内容エンコーダ＋BigVGAN、V2: ASTRAL量子化トークン＋AR＋CFMで声質とアクセントを変換）",
@@ -990,7 +990,9 @@
   "sources": [
    "https://github.com/Plachtaa/seed-vc",
    "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md",
-   "https://huggingface.co/Plachta/Seed-VC"
+   "https://huggingface.co/Plachta/Seed-VC",
+   "https://arxiv.org/html/2411.09943",
+   "https://github.com/Plachtaa"
   ],
   "confidence": "high",
   "rank": 12
@@ -1080,8 +1082,8 @@
  {
   "id": "openvoice-v2",
   "name": "OpenVoice V2",
-  "org": "MyShell.ai",
-  "country": "?",
+  "org": "MyShell.ai（MIT・清華大学の研究者と共同開発）",
+  "country": "US",
   "release": "2024-04",
   "params_b": null,
   "arch": "ベース話者TTS＋トーンカラー変換器（tone color converter）による声色のゼロショット変換",
@@ -1141,7 +1143,10 @@
    "https://github.com/myshell-ai/OpenVoice",
    "https://huggingface.co/myshell-ai/OpenVoiceV2",
    "https://arxiv.org/html/2312.01479",
-   "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md",
+   "https://venturebeat.com/ai/open-source-ai-voice-cloning-arrives-with-myshells-new-openvoice-model",
+   "https://dealroom.co/companies/myshell/",
+   "https://craft.co/myshell"
   ],
   "confidence": "medium",
   "rank": 14

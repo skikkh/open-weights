@@ -1721,7 +1721,7 @@
   "org": "Alibaba Qwen",
   "country": "CN",
   "access": "api",
-  "release": "2026-07",
+  "release": "2026-07-22",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -1729,37 +1729,37 @@
    "edit"
   ],
   "spec": {
-   "max_resolution": null,
-   "other": "Qwen Cloud / Alibaba Cloud Model Studioで提供。標準版のQwen-Image-3.0（AA 1069、$30/1000枚）もある。重みは未公開で、オープン版の最新は2.1。"
+   "max_resolution": "2048×2048",
+   "other": "2026-07-22にQwen-Image-3.0シリーズを発表（当初は招待制）、2026-08-04にQwen Cloud APIで一般提供。生成と編集を同じモデルIDで扱い、編集は入力画像1〜3枚、1回最大6枚出力、プロンプトは約4.5kトークンまで。10px級の小さな文字や新聞・絵コンテなど文字の多いレイアウトが得意で、12言語の文字描画をうたう。標準版Qwen-Image-3.0（$0.03/枚、AA 1070）もある。重みは未公開。後継のQwen-Image-3.1は2026-09-22の云栖大会で披露されたが未公開"
   },
   "features": {},
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": null,
-  "price_note": "AA掲載価格は$40/1000枚。",
+  "price_note": "Qwen Cloud公式: 出力1Kで$0.04/枚、2Kで$0.075/枚、入力画像$0.003/枚。AA掲載価格は$40/1000枚",
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1094,
-    "note": "全体17位",
+    "value": 1095,
+    "note": "全体17位（2026-10-20確認）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
     "value": 1091,
-    "note": "全体15〜20位",
+    "note": "全体18位（2026-10-20確認）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
     "metric": "LMArena Text-to-Image スコア",
     "value": 1255,
-    "note": "13位（2026-10-07時点）",
+    "note": "13位（2026-10-07時点）。2026-08-04の初登場時は1263で5位",
     "source": "https://arena.ai/leaderboard/image/text-to-image"
    }
   ],
-  "quality_note": "Qwen系の最上位API。オープンのQwen-Image-2.1よりAA T2Iで約50点上。",
-  "ja_note": null,
+  "quality_note": "Qwen系の最上位API。AAのT2Iで17位、編集で18位。オープンのQwen-Image-2.1よりAA T2Iで約50点上",
+  "ja_note": "公式ブログに日本語の文字描画例があり、12言語の文字描画をうたう（言語一覧は非公開）。日本語の定量評価はない",
   "license": "API（Qwen Cloud / Alibaba Cloud利用規約）",
   "commercial": "yes",
   "license_note": "クラウドの規約に従い、生成物の商用利用は可能とされる。規約本文の個別精査は未実施。",
@@ -1769,7 +1769,7 @@
    "Qwen Cloud",
    "Qwen Chat"
   ],
-  "summary_ja": "Alibabaの画像生成APIの最上位版。オープン版より一段上の品質を手頃な価格で使える。",
+  "summary_ja": "Alibabaの画像生成・編集APIの最上位版で、新聞や絵コンテのような文字の多い画像を細かく描けるのが特長。1枚$0.04からと手頃。",
   "best_for_ja": "Qwen系の画風を商用で使いたい場合、中国語圏向けの制作",
   "supersedes": [
    "Qwen Image 2.0 Pro",
@@ -1779,13 +1779,18 @@
   "sources": [
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
-   "https://arena.ai/leaderboard/image/text-to-image"
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://www.alibabacloud.com/blog/qwen-image-3-0-rich-content-authentic-details-deep-knowledge_603385",
+   "https://docs.qwencloud.com/developer-guides/getting-started/model-prices",
+   "https://docs.qwencloud.com/developer-guides/getting-started/image-models",
+   "https://x.com/arena/status/2084672571807846418",
+   "https://www.qbitai.com/2026/09/493625.html"
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "rank": 22,
   "hl": {
    "label": "AA Arena",
-   "value": 1094
+   "value": 1095
   }
  },
  {
@@ -1927,7 +1932,7 @@
   "org": "Reve",
   "country": "US",
   "access": "api",
-  "release": null,
+  "release": "2026-07-09",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -1935,15 +1940,15 @@
    "edit"
   ],
   "spec": {
-   "max_resolution": null,
-   "other": "reve.comのアプリとAPIで提供。"
+   "max_resolution": "4K（約1,600万画素）",
+   "other": "reve.comのアプリとAPI（api.reve.com）で提供。画像を編集可能なレイアウトとして組み立ててから描画する2.0系の改良版で、プロンプト理解・世界知識・英語以外の文字描画を強化。APIに2.1専用のモデルIDは公開されていない"
   },
   "features": {},
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": null,
-  "price_note": "公式の料金ページがログイン先へ転送されるため未確認。",
+  "price_note": "アプリ: Free（毎日回復する利用枠、学習へのオプトアウト不可）、Lite $7.99/月、Pro $19.99/月。API: 最低$10で7,500クレジット（約$1.33/1,000クレジット）、v2 Create/Editが150クレジット（約$0.20/枚）、Fast系は5クレジット（約$0.007）（第三者による公式料金ページの転記、2026-07時点）",
   "bench": [
    {
     "metric": "LMArena Text-to-Image スコア",
@@ -1952,23 +1957,29 @@
     "source": "https://arena.ai/leaderboard/image/text-to-image"
    },
    {
+    "metric": "LMArena Text-to-Image スコア（公開直後）",
+    "value": 1306,
+    "note": "2026-07の初登場時に2位（Reve 2.0より+36）",
+    "source": "https://www.eesel.ai/blog/reve-2-1"
+   },
+   {
     "metric": "LMArena Image Edit スコア",
     "value": 1374,
     "note": "16位（2026-10-06時点）",
     "source": "https://arena.ai/leaderboard/image-edit"
    }
   ],
-  "quality_note": "LMArenaのT2Iで7位と、OpenAI・Google・xAI・Microsoftに次ぐ上位。AAのアリーナには掲載されていない。",
-  "ja_note": null,
+  "quality_note": "LMArenaのT2Iで公開直後2位、2026-10時点でも7位とOpenAI・Google・xAI・Microsoftに次ぐ上位。AAのアリーナには2.1は未掲載（編集アリーナに旧Reve V1が47位で載るのみ、2026-10-20確認）",
+  "ja_note": "英語以外の文字描画の強化をうたうが、日本語での評価は見当たらない",
   "license": "API（Reve利用規約）",
-  "commercial": "conditional",
-  "license_note": "利用規約は未確認のため、商用利用の可否と条件は要確認。",
+  "commercial": "yes",
+  "license_note": "Reve AI, Inc.（米カリフォルニア州パロアルト）の規約（2025-10-28更新）で、生成物の権利は利用者に帰属・譲渡されると明記。ただし無料アカウントの生成物は他ユーザーへの公開・利用許諾の対象になり、学習へのオプトアウトは有料プランのみ。APIは別途API規約",
   "hf": "http://reve.com/",
   "tools": [
    "Reveアプリ",
    "Reve API"
   ],
-  "summary_ja": "LMArenaのT2Iで7位につける新興勢の画像モデル。",
+  "summary_ja": "米Reveが2026年7月9日に公開した、ネイティブ4K対応の画像生成・編集モデル。LMArenaのT2Iで公開直後2位、10月時点でも7位の上位にいる。",
   "best_for_ja": "大手以外の高品質な選択肢を試したい場合",
   "supersedes": [
    "Reve 2.0",
@@ -1976,9 +1987,14 @@
   ],
   "sources": [
    "https://arena.ai/leaderboard/image/text-to-image",
-   "https://arena.ai/leaderboard/image-edit"
+   "https://arena.ai/leaderboard/image-edit",
+   "https://x.com/reve/status/2075248950756716747",
+   "https://www.eesel.ai/blog/reve-2-1",
+   "https://www.eesel.ai/blog/reve-2-1-pricing",
+   "https://app.reve.com/terms",
+   "https://nanosceneai.com/blog/reve-2-1"
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "rank": 25,
   "hl": {
    "label": "LMArena",

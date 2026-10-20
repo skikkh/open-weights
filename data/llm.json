@@ -4824,8 +4824,8 @@
   "name": "Ornith-1.5-35B-A3B",
   "short": "Ornith-1.5 35B",
   "family": "Ornith",
-  "org": "DeepReinforce（Ornith）",
-  "country": "?",
+  "org": "DeepReinforce（Ornith。米カリフォルニア州サンタクララ）",
+  "country": "US",
   "release": "2026-08-19",
   "arch": "MoE",
   "total_b": 35,
@@ -4886,7 +4886,10 @@
    "https://datanorth.ai/news/ornith-releases-ornith-1-5",
    "https://www.benchlm.ai/models/ornith-1-5-35b-a3b",
    "https://journal.qualiteg.com/llm-ranking-2026/",
-   "https://ollama.com/library?sort=newest"
+   "https://ollama.com/library?sort=newest",
+   "https://www.alphaxiv.org/@jiwei-li",
+   "https://www.crunchbase.com/organization/deepreinforce-ai",
+   "https://officechai.com/ai/deepreinforce-releases-open-source-orinth-1-5-family-of-models-with-solid-benchmarks-and-mit-license/"
   ],
   "confidence": "medium"
  },
@@ -4965,8 +4968,8 @@
   "name": "G9v3-39A5B",
   "short": "G9v3",
   "family": "G9",
-  "org": "AI9Stars",
-  "country": "?",
+  "org": "AI9Stars（清華大学系の研究チーム）",
+  "country": "CN",
   "release": "2026-08-20",
   "arch": "MoE",
   "total_b": 39,
@@ -5016,7 +5019,9 @@
    "https://huggingface.co/ai9stars/G9v3-39A5B",
    "https://artificialanalysis.ai/models/g9v3-39a5b",
    "https://artificialanalysis.ai/models/open-source/small",
-   "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B"
+   "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B",
+   "https://arxiv.org/html/2603.12793v1",
+   "https://github.com/AI9Stars"
   ],
   "confidence": "low"
  },

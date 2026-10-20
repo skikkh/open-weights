@@ -95,8 +95,8 @@
  {
   "id": "ruby-asr-1-7b",
   "name": "Ruby-ASR-1.7B",
-  "org": "Hao Shi ほか（独立研究者グループ）",
-  "country": "?",
+  "org": "Hao Shi ほか（独立研究者グループ。筆頭著者は京都大学所属）",
+  "country": "JP",
   "release": "2026-09",
   "params_m": 2000,
   "arch": "Speech LLM（Qwen3-ASR-1.7Bを日本語向けに全パラメータ微調整、モーラCTC補助ヘッド付き）",
@@ -151,7 +151,8 @@
   "sources": [
    "https://huggingface.co/hshispeech/Ruby-ASR-1.7B",
    "https://arxiv.org/abs/2609.27289",
-   "https://github.com/hshi-speech/Ruby-ASR-1.7B"
+   "https://github.com/hshi-speech/Ruby-ASR-1.7B",
+   "https://github.com/hshi-speech"
   ],
   "confidence": "medium",
   "rank": 2

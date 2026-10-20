@@ -467,7 +467,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   var NEW_O = ["new", "時系列：新しい順"], OLD_O = ["old", "時系列：古い順"];
   function confLine(c) { return c ? '<div class="conf">情報の確かさ：' + esc({ high: "高", medium: "中", low: "低（要確認）" }[c] || c) + "</div>" : ""; }
 
-  var COUNTRY_JA = { CN: "中国", US: "米国", FR: "フランス", DE: "ドイツ", GB: "英国", CH: "スイス", KR: "韓国", IN: "インド", AE: "UAE", JP: "日本", CA: "カナダ", SG: "シンガポール", IL: "イスラエル", TW: "台湾", NL: "オランダ", RU: "ロシア", HK: "香港", SE: "スウェーデン", FI: "フィンランド", ES: "スペイン", IT: "イタリア", AU: "オーストラリア", VN: "ベトナム", PL: "ポーランド", "?": "不明" };
+  var COUNTRY_JA = { CN: "中国", US: "米国", FR: "フランス", DE: "ドイツ", GB: "英国", CH: "スイス", KR: "韓国", IN: "インド", AE: "UAE", JP: "日本", CA: "カナダ", SG: "シンガポール", IL: "イスラエル", TW: "台湾", NL: "オランダ", RU: "ロシア", HK: "香港", SE: "スウェーデン", FI: "フィンランド", ES: "スペイン", IT: "イタリア", AU: "オーストラリア", VN: "ベトナム", PL: "ポーランド", AT: "オーストリア", BE: "ベルギー", NO: "ノルウェー", DK: "デンマーク", BR: "ブラジル", "?": "不明" };
   function cname(c) { return COUNTRY_JA[c] || c || "不明"; }
   var STR_JA = { coding: "コーディング", agent: "エージェント", reasoning: "推論", math: "数学", multilingual: "多言語", japanese: "日本語", vision: "画像入力", "long-context": "長文脈", efficiency: "省メモリ・高速", "tool-use": "ツール利用" };
   var MODE_JA = { hybrid: "思考ON/OFF切替", thinking: "思考型（推論特化）", instruct: "即答型", base: "ベースモデル（指示調整前）" };
