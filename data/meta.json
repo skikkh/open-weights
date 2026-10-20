@@ -19,7 +19,8 @@
     "音声認識 16件・音声合成 19件・Speech to Speech 14件・音楽 20件",
     "画像 25件・動画 25件・3D 20件・Decision Model 14件（音楽〜Decision は API 提供も含む）",
     "巨大LLMを量子化してローカル機に載せる表と、Artificial Analysis のローカル機実測（Laptops & Workstations）を追加",
-    "開発国を確認：Ornith（米国）、G9v3（中国）、Ruby-ASR（日本）、Seed-VC（シンガポール）、OpenVoice V2（米国）、Vela 2（オーストリア）。Kling 4.0・Vidu Q4・Mureka V9.5・Reve 2.1・Qwen-Image-3.0-Pro の公開日と料金を補完"
+    "開発国を確認：Ornith（米国）、G9v3（中国）、Ruby-ASR（日本）、Seed-VC（シンガポール）、OpenVoice V2（米国）、Vela 2（オーストリア）。Kling 4.0・Vidu Q4・Mureka V9.5・Reve 2.1・Qwen-Image-3.0-Pro の公開日と料金を補完",
+    "定期確認：初版公開後の新しい公開・更新なし（確認のみ）。Mistral Large 4 の重みは10月27日公開予定のため未収録"
    ]
   }
  ],
