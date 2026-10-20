@@ -76,6 +76,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .muted { color: var(--muted); }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
+h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-break: auto-phrase; line-break: strict; }
 
 /* ── 上部ナビ ── */
 .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
@@ -135,8 +136,8 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 .chart-title h3 { font-size: 15px; }
 .chart-title span { font-size: 12.5px; color: var(--muted); }
 .chart-scroll { overflow-x: auto; }
-#chart svg { display: block; width: 100%; min-width: 640px; height: auto; }
-#chart text { font-family: var(--font-body); }
+.chart svg { display: block; max-width: none; }
+.chart text { font-family: var(--font-body); }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--muted); padding: 6px 2px 4px; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
@@ -157,7 +158,8 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 .list { display: grid; gap: 8px; }
 .row { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; scroll-margin-top: 64px; }
 .row[open] { border-color: var(--line-strong); }
-.row > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; gap: 10px 22px; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.5fr) 96px; align-items: start; }
+.row > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: block; }
+.sg { display: grid; gap: 10px 22px; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.5fr) 96px; align-items: start; }
 .row > summary::-webkit-details-marker { display: none; }
 .row > summary:hover .nm { text-decoration: underline; text-decoration-color: var(--line-strong); }
 .c-id { min-width: 0; display: grid; gap: 4px; }
@@ -222,7 +224,8 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 .feat { display: flex; flex-wrap: wrap; gap: 4px; }
 .feat span { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; white-space: nowrap; }
 .feat .on { background: var(--surface-2); color: var(--fg); }
-.feat .off { background: transparent; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-strong); }
+.feat .off { background: transparent; color: var(--muted); border: 1px dashed var(--line-strong); padding: 0 6px; }
+.feat .off::before { content: "× "; }
 .closed { margin-top: 18px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
 .closed b { color: var(--fg); }
 
@@ -243,12 +246,15 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size: 12.5px; color: var(--muted); }
 
 @media (max-width: 760px) {
-  .row > summary { grid-template-columns: minmax(0, 1fr) auto; gap: 10px 12px; }
-  .c-score { max-width: 7.5em; }
+  /* スマホ: 名前・メタとスコアだけ横に並べ、説明・札・サイズは全幅 */
+  .sg { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
+  .c-id { display: contents; }
+  .c-id > .nm { grid-column: 1; grid-row: 1; }
+  .c-id > .meta { grid-column: 1; grid-row: 2; }
+  .c-score { grid-column: 2; grid-row: 1 / span 2; max-width: 8em; }
   .c-score .score-l { white-space: normal; text-align: right; line-height: 1.4; }
-  .c-id { grid-column: 1 / 2; }
-  .c-score { grid-column: 2 / 3; grid-row: 1; }
-  .c-size { grid-column: 1 / -1; }
+  .c-id > .sum, .c-id > .chips { grid-column: 1 / -1; }
+  .c-size { grid-column: 1 / -1; margin-top: 4px; }
   .score { font-size: 24px; }
   .frow > .fl { min-width: 100%; }
   .brand { font-size: 15px; }
@@ -744,64 +750,89 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     if (m.japanese_note) notes += '<p class="note"><b>日本語：</b>' + esc(m.japanese_note) + "</p>";
     var bt = benchTable(m.bench);
     var benchBlock = (bt || m.bench_note) ? "<div><h4>主なベンチマーク</h4>" + bt + (m.bench_note ? '<p class="note muted" style="margin-top:6px">' + esc(m.bench_note) + "</p>" : "") + "</div>" : "";
-    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary>' +
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
       idHead(m, licChip(m.commercial)) + '<div class="chips">' + lineage + strengths + "</div></div>" +
       '<div class="c-size"><div class="params"><b>' + esc(fmtB(m.total_b)) + "</b><span>総パラメータ</span>" +
       (num(m.active_b) != null ? "<b>" + esc(fmtB(m.active_b)) + "</b><span>稼働</span>" : '<span class="muted">Dense（全部使う）</span>') + "</div>" + gauge + fit + lq + "</div>" +
       '<div class="c-score">' + scHtml + "</div>" +
-      "</summary>" +
+      "</div></summary>" +
       '<div class="detail"><div><h4>仕様</h4>' + spec + "</div>" +
       (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + benchBlock + jpBench + sources(m.sources) + confLine(m.confidence) +
       "</div></details>";
   }
 
   /* ── 図：賢さ×重さ ── */
+  // 表示する実際の幅で描く（縮小しないので文字は常に11px）
+  var LASTLIST = {};
+  function textW(t) { var w = 0; for (var i = 0; i < t.length; i++) w += t.charCodeAt(i) > 255 ? 11 : 6.4; return w + 4; }
+  function overlaps(a, list) { return list.some(function (b) { return a[0] < b[0] + b[2] && a[0] + a[2] > b[0] && a[1] < b[1] + b[3] && a[1] + a[3] > b[1]; }); }
   function drawChart(pid, list) {
     var cfg = LCFG[pid], el = document.getElementById(pid + "-chart"); if (!el) return;
+    LASTLIST[pid] = list;
     var pts = list.filter(function (m) { return scoreOf(m) != null && cfg.need(m) != null; });
     if (!pts.length) { el.innerHTML = '<p class="muted" style="padding:20px 0">この条件で AA Index が計測済みのモデルはありません。</p>'; document.getElementById(pid + "-legend").innerHTML = ""; return; }
-    var W = 980, H = 400, L = 46, R = 18, T = 44, B = 40;
+    var avail = el.parentNode.clientWidth;
+    if (!avail) return; // 非表示のページは表示したときに描く
+    var W = Math.max(280, Math.round(avail)), narrow = W < 640;
+    var H = narrow ? 360 : 420, L = narrow ? 30 : 46, R = narrow ? 8 : 18, T = 46, B = 40;
     var ys = pts.map(scoreOf);
     var ymin = Math.max(0, Math.floor((Math.min.apply(null, ys) - 3) / 5) * 5), ymax = Math.ceil((Math.max.apply(null, ys) + 3) / 5) * 5;
     if (ymax - ymin < 15) ymin = Math.max(0, ymax - 15);
     var x0 = Math.log(cfg.cx[0]), x1 = Math.log(cfg.cx[1]);
     function X(gb) { return L + (Math.log(Math.max(cfg.cx[0], Math.min(cfg.cx[1], gb))) - x0) / (x1 - x0) * (W - L - R); }
     function Y(v) { return T + (ymax - v) / (ymax - ymin) * (H - T - B); }
-    var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="AA Index と必要メモリの散布図">';
+    var s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="AA Index と必要メモリの散布図">';
     for (var v = ymin; v <= ymax; v += 5) {
       s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="var(--line)" stroke-width="1"/>';
-      s += '<text x="' + (L - 8) + '" y="' + (Y(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + v + "</text>";
+      s += '<text x="' + (L - 6) + '" y="' + (Y(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + v + "</text>";
     }
-    cfg.xticks.forEach(function (g) { s += '<text x="' + X(g) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + g + "GB</text>"; });
-    s += '<text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + esc(cfg.axis) + " →</text>";
-    s += '<text x="' + L + '" y="14" font-size="11" fill="var(--muted)">↑ AA Intelligence Index</text>';
-    cfg.tiers.filter(function (t) { return isFinite(t.gb) && t.gb >= cfg.cx[0] && t.gb <= cfg.cx[1]; }).forEach(function (t, i) {
-      var x = X(t.gb);
+    (narrow ? cfg.xticks.slice(0, 2) : cfg.xticks).forEach(function (g) { s += '<text x="' + X(g) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + g + "GB</text>"; });
+    s += '<text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + esc(narrow ? "必要メモリ（対数）→" : cfg.axis + " →") + "</text>";
+    s += '<text x="' + L + '" y="13" font-size="11" fill="var(--muted)">↑ AA Index</text>';
+    // 区分の縦線と名前（2段に振り分け、重なる名前は凡例に任せて省く）
+    var rowEnd = [-1e9, -1e9];
+    cfg.tiers.filter(function (t) { return isFinite(t.gb) && t.gb >= cfg.cx[0] && t.gb <= cfg.cx[1]; }).forEach(function (t) {
+      var x = X(t.gb), w = textW(t.label);
       s += '<line x1="' + x + '" x2="' + x + '" y1="' + (T - 6) + '" y2="' + (H - B) + '" stroke="var(' + t.c + ')" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.8"/>';
-      s += '<text x="' + (x + 4) + '" y="' + (i % 2 ? T - 10 : T - 24) + '" font-size="11" font-weight="600" fill="var(' + t.c + ')">' + esc(pid === "local" ? t.label : t.label) + "</text>";
+      var row = rowEnd[0] < x ? 0 : (rowEnd[1] < x ? 1 : -1);
+      if (row < 0 || x + w > W) return;
+      rowEnd[row] = x + w + 4;
+      s += '<text x="' + (x + 3) + '" y="' + (row ? T - 12 : T - 26) + '" font-size="11" font-weight="600" fill="var(' + t.c + ')">' + esc(t.label) + "</text>";
     });
-    pts.slice().sort(function (a, b) { return scoreOf(a) - scoreOf(b); }).forEach(function (m) {
-      var g = cfg.need(m), x = X(g), y = Y(scoreOf(m)), t = tierFor(cfg.tiers, g);
-      var r = num(m.active_b) != null ? Math.max(4, Math.min(11, Math.sqrt(m.active_b) * (pid === "local" ? 1.8 : 1.15))) : 7;
-      s += '<a href="#' + pid + '" data-open="' + pid + "-" + esc(m.id) + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="var(' + t.c + ')" fill-opacity="0.85" stroke="var(--surface)" stroke-width="1.5"><title>' +
-        esc(m.name + "（" + cname(m.country) + "）  AA " + scoreOf(m) + "  要" + fmtGB(g)) + "</title></circle></a>";
+    var dots = pts.map(function (m) {
+      var g = cfg.need(m), r = num(m.active_b) != null ? Math.max(4, Math.min(narrow ? 8 : 11, Math.sqrt(m.active_b) * (pid === "local" ? 1.8 : 1.15))) : 6;
+      return { m: m, x: X(g), y: Y(scoreOf(m)), r: r, t: tierFor(cfg.tiers, g), g: g };
     });
-    var boxes = [];
-    pts.slice().sort(function (a, b) { return scoreOf(b) - scoreOf(a); }).forEach(function (m) {
-      var x = X(cfg.need(m)), y = Y(scoreOf(m)), label = m.short || m.name, w = label.length * 6.3 + 4, h = 13;
-      var cands = [[x + 10, y + 4, "start"], [x - 10, y + 4, "end"], [x + 6, y - 10, "start"], [x - 6, y + 18, "end"], [x + 6, y + 18, "start"], [x - 6, y - 10, "end"]];
+    dots.slice().sort(function (a, b) { return scoreOf(a.m) - scoreOf(b.m); }).forEach(function (d) {
+      s += '<a href="#' + pid + '" data-open="' + pid + "-" + esc(d.m.id) + '"><circle cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(1) + '" fill="var(' + d.t.c + ')" fill-opacity="0.85" stroke="var(--surface)" stroke-width="1.5"><title>' +
+        esc(d.m.name + "（" + cname(d.m.country) + "）  AA " + scoreOf(d.m) + "  要" + fmtGB(d.g)) + "</title></circle></a>";
+    });
+    // ラベル：点にもほかのラベルにも重ならない位置だけに置く（賢い順に優先）
+    var boxes = dots.map(function (d) { return [d.x - d.r - 1, d.y - d.r - 1, 2 * d.r + 2, 2 * d.r + 2]; });
+    dots.slice().sort(function (a, b) { return scoreOf(b.m) - scoreOf(a.m); }).forEach(function (d) {
+      var label = d.m.short || d.m.name, w = textW(label), h = 13, gap = d.r + 3;
+      var cands = [[d.x + gap, d.y + 4, "start"], [d.x - gap, d.y + 4, "end"], [d.x, d.y - gap - 2, "middle"], [d.x, d.y + gap + 11, "middle"],
+                   [d.x + gap - 2, d.y - gap, "start"], [d.x - gap + 2, d.y - gap, "end"], [d.x + gap - 2, d.y + gap + 9, "start"], [d.x - gap + 2, d.y + gap + 9, "end"]];
+      var own = [d.x - d.r - 1, d.y - d.r - 1, 2 * d.r + 2, 2 * d.r + 2];
       for (var i = 0; i < cands.length; i++) {
-        var c = cands[i], bx = c[2] === "start" ? c[0] : c[0] - w, by = c[1] - 10;
-        if (bx < L || bx + w > W - R || by < T - 4 || by + h > H - B) continue;
-        var hit = boxes.some(function (b) { return bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1]; });
-        if (!hit) { boxes.push([bx, by, w, h]); s += '<text x="' + c[0].toFixed(1) + '" y="' + c[1].toFixed(1) + '" text-anchor="' + c[2] + '" font-size="11" fill="var(--fg)" pointer-events="none">' + esc(label) + "</text>"; break; }
+        var c = cands[i], bx = c[2] === "start" ? c[0] : c[2] === "end" ? c[0] - w : c[0] - w / 2, by = c[1] - 10, bb = [bx, by, w, h];
+        if (bx < L || bx + w > W - R || by < T - 2 || by + h > H - B) continue;
+        if (overlaps(bb, boxes.filter(function (b) { return b !== own && !(b[0] === own[0] && b[1] === own[1]); }))) continue;
+        boxes.push(bb);
+        s += '<text x="' + c[0].toFixed(1) + '" y="' + c[1].toFixed(1) + '" text-anchor="' + c[2] + '" font-size="11" fill="var(--fg)" paint-order="stroke" stroke="var(--surface)" stroke-width="3" stroke-linejoin="round" pointer-events="none">' + esc(label) + "</text>";
+        break;
       }
     });
     el.innerHTML = s + "</svg>";
     document.getElementById(pid + "-legend").innerHTML =
       cfg.tiers.map(function (t) { return '<span><i style="background:var(' + t.c + ')"></i>' + esc(t.sub ? t.label + "（" + t.sub + "）" : t.label) + "</span>"; }).join("") +
-      "<span>点の大きさ＝稼働パラメータ</span>" + (list.length - pts.length ? "<span>AA未計測の " + (list.length - pts.length) + " 件は図に出ません</span>" : "");
+      "<span>点の大きさ＝稼働パラメータ</span><span>名前が出ていない点は、押すか触ると名前が出ます</span>" + (list.length - pts.length ? "<span>AA未計測の " + (list.length - pts.length) + " 件は図に出ません</span>" : "");
   }
+  var rzT = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(rzT);
+    rzT = setTimeout(function () { ["llm", "local"].forEach(function (p) { if (LASTLIST[p] && current === p) drawChart(p, LASTLIST[p]); }); }, 150);
+  });
 
   /* ── 巨大モデルの量子化×ローカル機の表（大型LLMページ） ── */
   function quantTable() {
@@ -944,11 +975,11 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     if (m.speed_note) notes += '<p class="note"><b>速度：</b>' + esc(m.speed_note) + "</p>";
     if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
     if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
-    return '<details class="row" id="asr-' + esc(m.id) + '"><summary>' +
+    return '<details class="row" id="asr-' + esc(m.id) + '"><summary><div class="sg">' +
       idHead(m, licChip(m.commercial)) + "</div>" +
       '<div class="c-size"><div class="params"><b>' + esc(fmtM(m.params_m)) + '</b><span>パラメータ</span><span class="tagx">' + (m.lang === "ja-only" ? "日本語専用" : "多言語") + "</span></div>" + cerHtml + feats + "</div>" +
       '<div class="c-score">' + (best != null ? '<span class="score">' + esc(best) + '<small>%</small></span><span class="score-l">最良の日本語CER</span>' : '<span class="score na">—</span><span class="score-l">CER 未公表</span>') + "</div>" +
-      "</summary>" +
+      "</div></summary>" +
       '<div class="detail"><div><h4>仕様</h4>' + detail + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + cerAll + sources(m.sources) + confLine(m.confidence) +
       "</div></details>";
   }
@@ -984,12 +1015,12 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
     if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
     var cb = COM_BIG[m.commercial] || ["?", "var(--muted)"];
-    return '<details class="row" id="tts-' + esc(m.id) + '"><summary>' +
+    return '<details class="row" id="tts-' + esc(m.id) + '"><summary><div class="sg">' +
       idHead(m, "") + "</div>" +
       '<div class="c-size"><div class="params"><b>' + esc(fmtM(m.params_m)) + '</b><span>パラメータ</span><span class="tagx">' + esc(JA_SUP[m.ja_support] || m.ja_support || "") + '</span><span class="tagx">' + esc(CLONE[m.voice_cloning] || m.voice_cloning || "") + "</span></div>" + feats +
       (m.best_for_ja ? '<span class="muted" style="font-size:12.5px">' + esc(m.best_for_ja) + "</span>" : "") + "</div>" +
       '<div class="c-score"><span class="score" style="font-size:20px;color:' + cb[1] + '">' + esc(cb[0]) + '</span><span class="score-l">商用利用</span></div>' +
-      "</summary>" +
+      "</div></summary>" +
       '<div class="detail"><div><h4>仕様</h4>' + detail + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + listBench(m.ja_metrics, "日本語の客観指標") + sources(m.sources) + confLine(m.confidence) +
       "</div></details>";
   }
@@ -1054,11 +1085,11 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       cpu ? '<span class="score" style="font-size:20px;color:var(--t1)">CPU</span><span class="score-l">GPU不要</span>' + hl :
       mn != null ? '<span class="score" style="color:var(' + tier.c + ')">' + esc(mn) + '<small>GB</small></span><span class="score-l">最低VRAM</span>' + hl :
       '<span class="score na">—</span><span class="score-l">VRAM 未公表</span>' + hl;
-    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary>' +
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
       idHead(m, (m.access ? '<span class="tagx">' + (isApi ? "API提供" : "オープンウェイト") + "</span>" : "") + (isApi ? "" : licChip(m.commercial))) + '<div class="chips">' + tasks + "</div></div>" +
       '<div class="c-size">' + (num(m.params_b) != null ? '<div class="params"><b>' + esc(fmtB(m.params_b)) + "</b><span>パラメータ</span></div>" : "") + gauge + fit + feats + "</div>" +
       '<div class="c-score">' + scHtml + "</div>" +
-      "</summary>" +
+      "</div></summary>" +
       '<div class="detail"><div><h4>仕様</h4>' + spec + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + listBench(m.bench, "評価値") + sources(m.sources) + confLine(m.confidence) +
       "</div></details>";
   }
@@ -1185,6 +1216,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     });
     if (current !== id && !keepScroll) window.scrollTo(0, 0);
     current = id;
+    if (LASTLIST[id]) drawChart(id, LASTLIST[id]);
   }
   function openRow(id) {
     var el = document.getElementById(id); if (!el) return;
