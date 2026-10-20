@@ -1,0 +1,977 @@
+[
+ {
+  "id": "irodori-tts-v4-1-small",
+  "name": "Irodori-TTS-v4.1-Small",
+  "org": "Aratako（個人開発者）",
+  "country": "JP",
+  "release": "2026-08-11",
+  "params_m": 766,
+  "arch": "Flow Matching（Rectified Flow DiT。Echo-TTS系設計、Semantic-DACVAE-Japanese 32次元の連続潜在を生成、48kHz出力、テキスト/キャプションエンコーダはmodernbert-ja-310m）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "Kana-CER（Joyo Kanji Yomi・対象漢字）",
+    "value": 7.29,
+    "note": "%、FP32・40ステップ・参照音声/キャプションなし・5シードの平均（±0.13）。作者の自己評価",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small"
+   },
+   {
+    "metric": "Kana-CER（JSUT BASIC5000・文単位）",
+    "value": 3.43,
+    "note": "%、同条件（±0.01）。標準CERは7.22%",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small"
+   },
+   {
+    "metric": "常用漢字の読み正答率（Joyo Kanji Yomi Parakeet版）",
+    "value": 93.42,
+    "note": "%、v4-Largeのモデルカード内の比較表より",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+   }
+  ],
+  "quality_note": "日本語専用で、読みの正確さは公開モデル中でも上位の自己評価値。45種の絵文字で泣き・囁き・笑い・吐息などを位置指定でき、キャプションで声質を指定するVoiceDesignも統合。難読漢字・固有名詞・専門用語は誤読し得る、短い参照音声では話者類似度が下がる（30秒以上推奨）、参照音声とキャプションが矛盾すると不安定、絵文字の効きは文脈で揺れる、と作者が明記。人手MOS評価は未実施。",
+  "latency_note": "既定40ステップの非自己回帰生成。公式のRTF値はなし。高速化が必要なら4ステップ蒸留版（v4.1-Small-MF）を使う。1回の生成長は0.5〜30秒。",
+  "hardware_note": "公式VRAM目安なし。CUDA/ROCm/Intel XPU/CPU/macOS MPSに対応。torchaoのINT8/INT4/FP8量子化版あり（int8で約872MiB）。旧v3(500M)は4GB VRAMのRTX 3050 Ti Laptopで推論でき6.4秒の音声を約3.2秒で生成した報告あり（v4.1での実測ではない）。",
+  "license": "MIT（コード・重み）＋倫理制限",
+  "commercial": "yes",
+  "license_note": "MITのため著作権表示とライセンス文の同梱で商用・改変・再配布が可能。ただし本人同意のない声の複製・なりすまし、ディープフェイクや誤情報の生成は禁止という追加の倫理制限あり。学習データの出典・時間数は非公開（「高品質な日本語音声データセット」とのみ記載）。依存パッケージが揃うとSilentCipher音声透かしが自動で埋め込まれる。",
+  "hf": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small",
+  "summary_ja": "個人開発者Aratako氏による日本語専用のFlow Matching型TTSで、MITライセンスながら読みの正確さと表現力（絵文字による感情指定・声質デザイン）を両立した現行の既定モデル。数秒〜数十秒の参照音声でゼロショットの声のクローンもできる。",
+  "best_for_ja": "商用可の日本語ナレーション・キャラクター音声、感情表現つき読み上げ、声のクローン",
+  "supersedes": [
+   "Irodori-TTS-v4-Small",
+   "Irodori-TTS-500M-v3",
+   "Irodori-TTS-600M-v3-VoiceDesign",
+   "Irodori-TTS-500M-v2",
+   "Irodori-TTS-500M-v2-VoiceDesign",
+   "Irodori-TTS-500M（v1）"
+  ],
+  "sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small",
+   "https://github.com/Aratako/Irodori-TTS",
+   "https://huggingface.co/Aratako/Irodori-TTS-v4-Large",
+   "https://www.issoh.co.jp/tech/details/12221/",
+   "https://lilting.ch/en/articles/irodori-tts-rtx3050ti-4gb-voice-clone"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "日本語の読みが正確・商用OK",
+  "pick_reason": "MIT。読み正答率93%（作者評価）"
+ },
+ {
+  "id": "sarashina2-2-tts",
+  "name": "Sarashina2.2-TTS",
+  "org": "SB Intuitions",
+  "country": "JP",
+  "release": "2026-04-28",
+  "params_m": 800,
+  "arch": "LLM+コーデック（Sarashina2.2-0.5B-Instruct初期化の24層デコーダで25Hz単一コードブックのS3Tokenizer V2トークンを生成→CosyVoice2由来のFlow Matchingデコーダ→HiFi-GAN）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "Kana-CER（Joyo Kanji Yomi・対象漢字）",
+    "value": 7.83,
+    "note": "%、Stage 2、5シード平均（±0.70）。同表でT5Gemma-TTS 13.81、FishAudio S1-mini 33.43、FireRedTTS-2 27.82、Qwen3-TTS 185.89（外れ値含む）",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "読み単位の完全正答率（4,378読み）",
+    "value": 81.5,
+    "note": "%、Stage 2。T5Gemma-TTS 79.7、FireRedTTS-2 66.3、FishAudio S1-mini 63.6、Qwen3-TTS 58.3",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "Kana-CER（JSUT・文単位）",
+    "value": 2.91,
+    "note": "%、Stage 2（±0.06）。標準CERは8.02%",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "SIM（CV3-Ja・ゼロショット）",
+    "value": 74.75,
+    "note": "Stage 2。Qwen3-TTS 69.86、FireRedTTS-2 66.20、FishAudio S1-mini 61.38、T5Gemma-TTS 50.59",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "UTMOS（CV3-Ja）",
+    "value": 3.174,
+    "note": "Stage 2。UTMOSv2は2.877。Qwen3-TTSのUTMOSは3.406で本モデルより高い",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   }
+  ],
+  "quality_note": "漢字の多音字（同じ漢字の複数の読み）対策が主眼で、常用漢字2,136字・4,378読みを網羅したベンチマークで比較対象中もっとも読みが正確（自社論文）。ゼロショット話者類似度も比較対象中最高。日本語と英語のコードスイッチに対応し、英語プロンプトを使っても日本語の誤り率がほぼ悪化しない。表現豊かなスタイルでのCERはFishAudio S1-miniをわずかに下回る。ナレーション・放送・会話・接客・落語調のスタイルに対応。",
+  "latency_note": "公式の速度値・ストリーミング記載なし。vLLMバックエンドを任意で選べ、スループットを上げられる。",
+  "hardware_note": "標準のTransformersバックエンドはVRAM約6GBで動作（公式）。vLLMはより多くのVRAMが必要。Docker環境あり。",
+  "license": "Sarashina Model NonCommercial License Agreement",
+  "commercial": "no",
+  "license_note": "非商用ライセンス。商用利用はSB Intuitionsへの個別問い合わせが必要。サンプル音声は研究目的のみで再配布・商用利用不可。学習データは正規購入の音声、公開音声アーカイブ、国内法を遵守して収集したデータ（robots.txtと利用規約を尊重）と説明。SilentCipher透かしが既定で埋め込まれ、除去しないよう求めている。",
+  "hf": "https://huggingface.co/sbintuitions/sarashina2.2-tts",
+  "summary_ja": "ソフトバンク系のSB Intuitionsが約36万時間（日本語19.4万時間）で学習した日本語中心のLLM型TTSで、漢字の読み分けの正確さとゼロショットの話者再現が強み。ライセンスは非商用。",
+  "best_for_ja": "研究・評価用途、読みの正確さが重要な日本語ナレーションの検証、声のクローンの品質比較",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/sbintuitions/sarashina2.2-tts",
+   "https://github.com/sbintuitions/sarashina2.2-tts",
+   "https://arxiv.org/abs/2606.25369",
+   "https://arxiv.org/html/2606.25369v1"
+  ],
+  "confidence": "high",
+  "rank": 2,
+  "pick": "声クローンの再現度（研究用途）",
+  "pick_reason": "話者類似度が最高水準。商用は別契約"
+ },
+ {
+  "id": "style-bert-vits2-jp-extra",
+  "name": "Style-Bert-VITS2（JP-Extra）2.7.0",
+  "org": "litagin02（個人開発者）",
+  "country": "JP",
+  "release": "2025-08-24",
+  "params_m": null,
+  "arch": "VITS系（Bert-VITS2 v2.1ベース。BERT特徴とスタイルベクトルで感情・話し方を制御。JP-Extraは日本語特化版）",
+  "ja_support": "native",
+  "voice_cloning": "fine-tune",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": true
+  },
+  "ja_metrics": [],
+  "quality_note": "日本語の自然さは今でもローカルTTSのトップ層という評価が多い（個人の5モデル比較で日本語の自然さ5/5・総合1位タイ）。スタイルベクトルの強さを連続的に調整でき、辞書編集と手動のアクセント制御（一部）にも対応。声ごとに学習（ファインチューニング）が必要で、ゼロショットのクローンはできない。2025年8月以降リリースがなく、開発はほぼ安定期。",
+  "latency_note": "個人計測でRTF 0.18（RTX 5090・Windows 11、同一テスト文）。非自己回帰のため短文の応答は速い。",
+  "hardware_note": "推論はCPUのみで可能（CPU版インストーラあり）。学習にはNVIDIA GPUが必要。個人計測の推論時VRAMは約2.1GB。ONNX変換GUIあり（AivisSpeech向けAIVMX作成に利用可）。",
+  "license": "AGPL-3.0（コード。text/user_dictはLGPL-3.0）／モデルは声ごとの規約",
+  "commercial": "conditional",
+  "license_note": "コードはAGPL-3.0のため、改変してネットワークサービスとして提供する場合はソース公開義務が生じる。事前学習モデルはBert-VITS2のJP-Extra事前学習モデル由来。同梱のJVNVコーパス由来モデルはCC BY-SA 4.0（表示・継承）。小春音アミ／あみたろモデルは、あみたろの声素材工房の規約遵守とクレジット表記を条件に商用可（成人向け・政治・宗教・MLM用途、本人の声と偽る利用は禁止）。マージ時は元モデルの声の権利者の同意が必要。開発者は政治目的・なりすまし・ディープフェイク利用をしないよう要請。",
+  "hf": "https://github.com/litagin02/Style-Bert-VITS2",
+  "summary_ja": "日本語の感情表現に強いVITS系TTSの定番で、自分の声素材で学習させてキャラクター音声を作る用途で広く使われている。最終版は2.7.0（2025年8月）。",
+  "best_for_ja": "キャラクター音声の自作、感情豊かな日本語読み上げ、AivisSpeech用モデルの学習",
+  "supersedes": [
+   "Style-Bert-VITS2 2.6.0以前",
+   "Bert-VITS2 JP-Extra"
+  ],
+  "sources": [
+   "https://github.com/litagin02/Style-Bert-VITS2",
+   "https://github.com/litagin02/Style-Bert-VITS2/releases",
+   "https://github.com/litagin02/Style-Bert-VITS2/blob/master/docs/TERMS_OF_USE.md",
+   "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
+  ],
+  "confidence": "high",
+  "rank": 3,
+  "pick": "キャラクター音声・感情表現",
+  "pick_reason": "自分の声データで学習して作り込む"
+ },
+ {
+  "id": "aivisspeech-engine",
+  "name": "AivisSpeech Engine 1.2.0（AIVMXモデル）",
+  "org": "Aivis Project",
+  "country": "JP",
+  "release": "2026-04-30",
+  "params_m": null,
+  "arch": "VITS系（Style-Bert-VITS2 / JP-Extra アーキテクチャのモデルをONNX Runtimeで推論。VOICEVOX ENGINEベースのAPI互換）",
+  "ja_support": "native",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": true
+  },
+  "ja_metrics": [],
+  "quality_note": "中身はStyle-Bert-VITS2系なので日本語の自然さは同等に高いという評価が多い（個人の5モデル比較で日本語の自然さ5/5・総合1位タイ）。AivisHubで多数の話者モデル（公式：まお、コハク等）を配布し、各モデルのスタイル（感情）を切り替えられる。新しい声は自前でSBV2学習→AIVMX変換が必要（録音から作るAivisBuilderは2026年中公開予定）。",
+  "latency_note": "個人計測でRTF 0.15（RTX 5090環境）。公式は「一般的なPCで1ユーザーが使う設計で、大量リクエストのAPIサーバー用途には最適化していない」と明記。ストリーミングは非対応（キャンセル可能な実験的エンドポイントのみ）。",
+  "hardware_note": "CPUのみで動作（空きメモリ1.5GB以上）。--use_gpuでWindowsはDirectML、LinuxはCUDA 12.x＋cuDNN 9.x。iGPUのみの環境ではCPUより遅くなりがち。Docker（cpu-latest / nvidia-latest）あり。",
+  "license": "LGPL-3.0（エンジン）／モデルはACML 1.0・ACML-NC 1.0・CC0・独自ライセンス",
+  "commercial": "conditional",
+  "license_note": "ソフトウェア自体は個人・法人・商用を問わず無料で利用でき、クレジット表記も不要。ただし声（モデル）ごとのライセンスに従う：ACML 1.0は営利・非営利を問わず利用可、ACML-NC 1.0は非営利限定、CC0、2025年3月31日以降は独自ライセンスも可。利用前にAivisHubの各モデルページで確認が必要。",
+  "hf": "https://github.com/Aivis-Project/AivisSpeech-Engine",
+  "summary_ja": "Style-Bert-VITS2系の日本語音声モデルを、GPUなしのPCでも高速に動かせるようにした無料の音声合成エンジンで、AivisHubから声を選んで使う。VOICEVOX互換APIなので既存ツールとつなぎやすい。",
+  "best_for_ja": "CPUだけで動く感情豊かな日本語読み上げ、配信・動画のキャラクター音声、VOICEVOX互換ツール連携",
+  "supersedes": [
+   "AivisSpeech Engine 1.1.x",
+   "AivisSpeech Engine 1.0.0"
+  ],
+  "sources": [
+   "https://github.com/Aivis-Project/AivisSpeech-Engine",
+   "https://github.com/Aivis-Project/AivisSpeech-Engine/releases",
+   "https://aivis-project.com/",
+   "https://github.com/Aivis-Project/ACML",
+   "https://hub.aivis-project.com/",
+   "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
+  ],
+  "confidence": "medium",
+  "rank": 4,
+  "pick": "アプリですぐ使う",
+  "pick_reason": "インストールするだけ。VOICEVOX互換API"
+ },
+ {
+  "id": "irodori-tts-v4-large",
+  "name": "Irodori-TTS-v4-Large",
+  "org": "Aratako（個人開発者）",
+  "country": "JP",
+  "release": "2026-09-27",
+  "params_m": 3290,
+  "arch": "Flow Matching（Rectified Flow DiT 24層・2,048次元。テキスト/キャプション共有エンコーダにT5Gemma 2(1B)を微調整して使用。Semantic-DACVAE-Japanese 32次元）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "常用漢字の読み正答率（Joyo Kanji Yomi Parakeet版）",
+    "value": 92.8,
+    "note": "%、v4.1-Smallは93.42%（Largeの方がわずかに低い）",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+   },
+   {
+    "metric": "Kana-CER（JSUT BASIC5000・文単位）",
+    "value": 3.67,
+    "note": "%（±0.03）。v4.1-Smallは3.43%",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+   },
+   {
+    "metric": "SIM（JVS 100話者・CAM++・参照約30秒）",
+    "value": 0.7593,
+    "note": "v4-Smallは0.7521。参照1クリップでは0.6711",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+   },
+   {
+    "metric": "キャプション追従スコア（Coco-Nut、1〜5点）",
+    "value": 4.2991,
+    "note": "Geminiによる自動採点・単一シード。v4-Smallは4.2339",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+   }
+  ],
+  "quality_note": "Small比で声質デザイン（キャプション追従）と話者類似度が向上した大型版。一方で漢字の読みはv4.1-Smallよりわずかに悪いと作者が明記。他の制限（日本語のみ、短い参照で類似度低下、絵文字の効きの揺れ、人手MOS未実施）はSmallと同じ。",
+  "latency_note": "既定40ステップ。公式の速度値なし。Smallより重い。",
+  "hardware_note": "FP32で約13.2GB。量子化版（int8約3.66GB、int4約2.82GB、FP8約3.66GB）があり、手元実行はNVIDIA GPU＋量子化版が現実的。量子化の種類によりAmpere以降等が必要。",
+  "license": "Gemma Terms of Use＋倫理制限",
+  "commercial": "conditional",
+  "license_note": "テキストエンコーダがgoogle/t5gemma-2-1b-1b由来のためGemma利用規約に従う。再配布時はGemma規約に言及したNOTICEファイル同梱、API/Web提供も規約上の「配布」に含まれ禁止用途条項の通知が必要、改変ファイルへの改変表示、Gemma禁止用途ポリシー（性的に露骨なコンテンツ生成の禁止等）の遵守が求められる。加えて同意なき声の複製・なりすまし・ディープフェイク禁止。学習データの詳細は非公開。",
+  "hf": "https://huggingface.co/Aratako/Irodori-TTS-v4-Large",
+  "summary_ja": "Irodori-TTSの約33億パラメータの高品質版で、声質の指示どおりに作る力と声のクローンの似ている度合いがSmallより高い。Gemma規約の条件付きで商用利用できる。",
+  "best_for_ja": "声質を文章で細かく指定するキャラクター音声制作、高品質な声のクローン",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4-Large",
+   "https://www.issoh.co.jp/tech/details/12221/"
+  ],
+  "confidence": "high",
+  "rank": 5
+ },
+ {
+  "id": "irodori-tts-v4-1-small-mf",
+  "name": "Irodori-TTS-v4.1-Small-MF",
+  "org": "Aratako（個人開発者）",
+  "country": "JP",
+  "release": "2026-09-12",
+  "params_m": 800,
+  "arch": "Flow Matching（v4.1-SmallをMeanFlowで蒸留した少ステップ版。既定4ステップ、CFGの追加パスなし）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "Kana-CER（JSUT BASIC5000・文単位）",
+    "value": 3.78,
+    "note": "%、4ステップ。蒸留前の通常版を4ステップで回すと6.50%、40ステップで3.43%",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small-MF"
+   },
+   {
+    "metric": "SIM（JVS・CAM++・参照約30秒）",
+    "value": 0.7429,
+    "note": "4ステップ。通常版の4ステップは0.3835、40ステップ（v4-Small公表値）は0.7521",
+    "source": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small-MF"
+   }
+  ],
+  "quality_note": "40ステップの通常版に近い読みの正確さと話者類似度を4ステップで出せる高速版。品質はわずかに通常版を下回る。制限事項は通常版と同じ（日本語のみ、難読語の誤読など）。",
+  "latency_note": "既定4ステップ（通常版は40ステップ）で、1ステップあたりDiT評価は1回のみ。公式の実時間計測値はなし。",
+  "hardware_note": "公式VRAM目安なし。通常版Smallと同等のモデル規模（HF表示0.8B）。",
+  "license": "MIT（コード・重み）＋倫理制限",
+  "commercial": "yes",
+  "license_note": "v4.1-Smallと同じくMIT。同意なき声の複製・なりすまし・ディープフェイク禁止の倫理制限あり。学習データの詳細は非公開。",
+  "hf": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small-MF",
+  "summary_ja": "Irodori-TTS-v4.1-Smallを4ステップで生成できるよう蒸留した高速版で、品質をほとんど落とさずに待ち時間を減らせる。",
+  "best_for_ja": "応答速度が大事な日本語音声アシスタント・AITuber、まとめて大量に読み上げる処理",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small-MF",
+   "https://github.com/Aratako/Irodori-TTS",
+   "https://www.issoh.co.jp/tech/details/12221/"
+  ],
+  "confidence": "high",
+  "rank": 6
+ },
+ {
+  "id": "fish-audio-s2-pro",
+  "name": "Fish Audio S2 Pro",
+  "org": "Fish Audio（39 AI, Inc.）",
+  "country": "US",
+  "release": "2026-03",
+  "params_m": 4400,
+  "arch": "LLM+コーデック（Dual-AR：時間方向のSlow AR 4B＋残差コードブック用Fast AR 400M、RVQ 10コードブック・約21Hz）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "WER/CER（MiniMax多言語テストセット・ja）",
+    "value": 2.76,
+    "note": "VoxCPMの比較表。同表でMiniMax 3.519、Qwen3-TTS 3.823、VoxCPM2 4.628、ElevenLabs 10.646。SIMは79.6",
+    "source": "https://github.com/OpenBMB/VoxCPM"
+   },
+   {
+    "metric": "CER（CV3-eval・ja）",
+    "value": 3.96,
+    "note": "VoxCPMの比較表。同表でVoxCPM2 5.96、CosyVoice3-1.5B 7.57",
+    "source": "https://github.com/OpenBMB/VoxCPM"
+   },
+   {
+    "metric": "WER（CV3-Eval・ja）",
+    "value": 5.15,
+    "note": "IndexTTSの比較表（評価系が異なり上の値と一致しない）。同表でのSSは66.15と比較対象中で低め",
+    "source": "https://github.com/index-tts/index-tts"
+   }
+  ],
+  "quality_note": "日本語はTier 1（最上位の対応言語）。第三者の比較表で日本語の誤り率が最も低い部類。[whisper in small voice]や[professional broadcast tone]など自由記述のタグで感情・話し方を文中指定できる（1.5万種以上のタグ）。話者類似度は評価系によって評価が割れる。",
+  "latency_note": "H200 1枚でRTF 0.195、初回音声まで約100ms（公式）。SGLangによる連続バッチ等の最適化に対応。",
+  "hardware_note": "公式VRAM目安なし。重みはBF16で約5B（HF表示）なので重みだけで約10GB程度の見積もり。公式ベンチはデータセンターGPU（H200）。",
+  "license": "Fish Audio Research License",
+  "commercial": "no",
+  "license_note": "研究・個人/趣味・評価目的のみ無料。社内業務利用、製品・サービス、ホスト型API、収益を生む利用はすべて商用扱いで、Fish Audioとの別途書面契約が必要（business@fish.audio）。配布時は規約の同梱、Noticeファイル、「Built with Fish Audio」の表示が必要。モデルや出力を他の基盤生成モデルの作成・改良に使うことは禁止。",
+  "hf": "https://huggingface.co/fishaudio/s2-pro",
+  "summary_ja": "Fish Audioの多言語TTSで日本語を最上位の対応言語としており、第三者の比較でも日本語の誤り率が最も低い部類に入る。自由記述のタグで感情や話し方を指定できるが、商用は別途契約が必要。",
+  "best_for_ja": "高品質な日本語ナレーションの研究・評価、感情タグつき音声、声のクローン（非商用）",
+  "supersedes": [
+   "OpenAudio S1-mini（fishaudio/s1-mini）",
+   "OpenAudio S1",
+   "Fish Speech 1.5"
+  ],
+  "sources": [
+   "https://huggingface.co/fishaudio/s2-pro",
+   "https://huggingface.co/fishaudio/s2-pro/blob/main/LICENSE.md",
+   "https://arxiv.org/abs/2603.08823",
+   "https://github.com/OpenBMB/VoxCPM",
+   "https://github.com/index-tts/index-tts"
+  ],
+  "confidence": "high",
+  "rank": 7
+ },
+ {
+  "id": "qwen3-tts-1-7b",
+  "name": "Qwen3-TTS-12Hz-1.7B（Base / CustomVoice / VoiceDesign）",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01-22",
+  "params_m": 1700,
+  "arch": "LLM+コーデック（12Hz多コードブックのQwen3-TTS-Tokenizer、デュアルトラックのストリーミング生成）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "WER/CER（多言語テストセット・ja）",
+    "value": 3.823,
+    "note": "1.7B-Base、公式モデルカード。同表でMiniMax 3.519、ElevenLabs 10.646。SIMは0.788",
+    "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+   },
+   {
+    "metric": "WER（CV3-Eval・ja）",
+    "value": 5.89,
+    "note": "IndexTTSの比較表。SSは70.18。zh→jaのクロスリンガルは36.09と大きく悪化",
+    "source": "https://github.com/index-tts/index-tts"
+   },
+   {
+    "metric": "読み単位の完全正答率（Joyo Kanji Yomi）",
+    "value": 58.3,
+    "note": "%、Sarashina2.2-TTS論文の比較（他社評価、使用バリアントは本調査では未確認）。JSUT文単位Kana-CERは15.58±10.34と揺れが大きい",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "UTMOS（CV3-Ja）",
+    "value": 3.406,
+    "note": "Sarashina2.2-TTS論文の比較で最高値。SIMは69.86",
+    "source": "https://arxiv.org/html/2606.25369v1"
+   },
+   {
+    "metric": "CER（感情付き日本語プロンプト）",
+    "value": 8.6,
+    "note": "%、CustomVoice 1.7B（話者Ryan）、faster-whisper-large-v3で書き起こし、120サンプル。同評価でFish S1-mini 12.7、VoxCPM2 18.6",
+    "source": "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
+   }
+  ],
+  "quality_note": "音質（UTMOS）は高く、一般文の誤り率も低いが、難しい漢字の読み分けは弱く、スタイルによって誤りが大きく揺れるとの他社評価がある（Sarashina2.2-TTS論文）。日本語ネイティブのプリセット話者はOno_Anna（CustomVoice）。日本語は参照音声つき（Base）で使う方が安定するとの記事あり。個人比較では日本語の自然さ4/5。",
+  "latency_note": "ストリーミング対応、1文字入力で最初の音声パケットを出せ、エンドツーエンド最短97ms（公式）。個人計測でRTF 0.22（RTX 5090）。",
+  "hardware_note": "公式VRAM目安なし。FlashAttention 2推奨（fp16/bf16）。個人計測で1.7B推論時VRAM約4.2GB。pip install qwen-ttsで導入可。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "コード・重みともApache-2.0で商用利用可。声のクローンは本人の同意を得るなど一般的な配慮が必要。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+  "summary_ja": "Alibabaが公開した10言語対応のTTSで、3秒の参照音声からの声のクローン（Base）、プリセット話者＋指示（CustomVoice）、文章からの声づくり（VoiceDesign）の3種がある。Apache-2.0で商用利用しやすく、低遅延ストリーミングに対応する。",
+  "best_for_ja": "商用の音声エージェント・リアルタイム応答、多言語混在の読み上げ、指示による声質デザイン",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "https://github.com/QwenLM/Qwen3-TTS",
+   "https://arxiv.org/abs/2601.15621",
+   "https://arxiv.org/html/2606.25369v1",
+   "https://github.com/index-tts/index-tts",
+   "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/",
+   "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114",
+   "https://neosophie.com/ja/blog/20260317-tts"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "pick": "多言語＋日本語、商用OK",
+  "pick_reason": "Apache 2.0。ゼロショット声クローン"
+ },
+ {
+  "id": "gpt-sovits-v5",
+  "name": "GPT-SoVITS v5",
+  "org": "RVC-Boss（GPT-SoVITSコミュニティ）",
+  "country": "CN",
+  "release": "2026-10-05",
+  "params_m": null,
+  "arch": "LLM(GPT)で意味トークンを予測＋SoVITS（VITS系）で音響生成",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "5秒の参照でゼロショット、約1分の音声で少量ファインチューニングでき、日本語を含む中・英・日・韓・広東語の言語間合成に対応。v5は「SoVITSのファインチューニングなしでも声の類似度が大幅向上」、ボコーダ更新で高域のエイリアシングを低減と公式が説明。日本語の客観評価値は公開されていない。2026年10月公開の直後で第三者評価はまだ少ない。",
+  "latency_note": "公式値（前版v2ProPlus）：RTF 0.014（RTX 4090）、0.028（RTX 4060 Ti）、0.526（M4 CPU）。v5でGPT推論にCUDA GraphとFlash Attentionの高速化が追加。",
+  "hardware_note": "NVIDIA GPU推奨。fp16（is_half）でメモリ削減。公式VRAM目安なし。Macは現状CPU推論推奨。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コードと事前学習モデル（lj1995/GPT-SoVITS）はMIT。クローン元・学習に使う声の権利と本人同意は利用者の責任。事前学習データの内訳は本調査では未確認。",
+  "hf": "https://github.com/RVC-Boss/GPT-SoVITS",
+  "summary_ja": "少ない音声で声を真似できるオープンソースの定番ツールで、日本語の声づくりにも広く使われている。最新のv5は追加学習なしでも声が似やすくなった。",
+  "best_for_ja": "少量の録音からのキャラクター音声作成、声のクローン、ゲーム・動画の台詞生成",
+  "supersedes": [
+   "GPT-SoVITS v2ProPlus",
+   "GPT-SoVITS v2Pro",
+   "GPT-SoVITS v4",
+   "GPT-SoVITS v3",
+   "GPT-SoVITS v2"
+  ],
+  "sources": [
+   "https://github.com/RVC-Boss/GPT-SoVITS",
+   "https://github.com/RVC-Boss/GPT-SoVITS/blob/main/docs/en/Changelog_EN.md",
+   "https://huggingface.co/lj1995/GPT-SoVITS"
+  ],
+  "confidence": "medium",
+  "rank": 9
+ },
+ {
+  "id": "voicevox",
+  "name": "VOICEVOX（ENGINE 0.25.2 / CORE 0.17.0）",
+  "org": "VOICEVOX（ヒホ／Hiroshiba）",
+  "country": "JP",
+  "release": "2026-08-13",
+  "params_m": null,
+  "arch": "OpenJTalk系の日本語言語処理＋音素長・ピッチ予測＋ニューラル音声合成（ONNX Runtime、VVM音声モデル）",
+  "ja_support": "native",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": true
+  },
+  "ja_metrics": [],
+  "quality_note": "アクセント句・アクセント位置・イントネーションを細かく手で直せるため読みの破綻が起きにくく、実用面の安定感が強み。一方、自然さは最新モデルより劣るという評価が多い（個人比較で日本語の自然さ3/5）。キャラクターごとにノーマル・あまあま等のスタイルがある。2026年もずんだもん等に加え新キャラクターを継続追加。",
+  "latency_note": "個人計測でRTF 0.12（CPU動作）。ENGINE 0.26.0のプレリリース（2026年10月）でストリーミング音声合成APIが追加され、CORE 0.17.0でStreamingTalkスタイル型が準備中。",
+  "hardware_note": "CPUで実用速度。GPU（CUDA/DirectML）も任意。Windows/macOS/Linux、C API・Python wheel・各種言語ラッパーあり。",
+  "license": "VOICEVOXソフトウェア利用規約＋音声ライブラリ（キャラクター）ごとの規約／CORE（0.16以降）はMIT",
+  "commercial": "conditional",
+  "license_note": "ソフトウェアは商用・非商用を問わず利用可だが、VOICEVOXを利用したことが分かるクレジット表記が必要。作成音声はキャラクター（音声ライブラリ）ごとの規約に従い、第三者へ利用許諾する際も同条件を課す必要がある。無断再配布・リバースエンジニアリングは禁止。COREのソースとビルド成果物はMIT（0.16未満は別ライセンス）。",
+  "hf": "https://github.com/VOICEVOX/voicevox_engine",
+  "summary_ja": "ずんだもんなどのキャラクター声で知られる無料の日本語読み上げソフトで、CPUだけで速く動き、アクセントを手作業で細かく直せる。声は収録済みのキャラクターから選ぶ方式。",
+  "best_for_ja": "動画・配信の読み上げ、アクセントを確実に制御したい用途、CPUのみの環境",
+  "supersedes": [
+   "VOICEVOX ENGINE 0.25.1以前",
+   "VOICEVOX CORE 0.16.x"
+  ],
+  "sources": [
+   "https://github.com/VOICEVOX/voicevox_engine/releases",
+   "https://github.com/VOICEVOX/voicevox_core/releases",
+   "https://github.com/VOICEVOX/voicevox_core",
+   "https://voicevox.hiroshiba.jp/term/",
+   "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
+  ],
+  "confidence": "high",
+  "rank": 10
+ },
+ {
+  "id": "fish-audio-drama-3",
+  "name": "Fish Audio Drama 3",
+  "org": "Fish Audio（39 AI, Inc.）",
+  "country": "US",
+  "release": "2026-10-13",
+  "params_m": 35000,
+  "arch": "LLM+コーデック（MoE 35B・トークンあたり3Bアクティブ、全/線形のハイブリッドAttention、10コードブックのcodebook-MTP音声デコーダ）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": true,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "1つのテキストに最大16話者を書き分けるドラマ・長尺向けの新世代モデル。[choked up, crying quietly]のような演出指示を文中に置け、指示の言語と台詞の言語が違ってもよい。Artificial Analysisの発音頑健性で93.2%と1位（S2.1 Proは88.1%）だが、日本語個別の評価値は見当たらない。公式モデルカードは83言語と記すのみで日本語の段位は明記なし（ローンチ例やレビューでは日本語の利用が確認できる）。プレビュー段階で出来にばらつきがあるとの指摘あり。",
+  "latency_note": "H200で単一ストリームの初回音声までの中央値88.9ms、RTF 0.131。64並列でも平均RTF 0.801（公式）。長文は自動分割してチャンク単位でストリーミング。",
+  "hardware_note": "公式の最小要件なし。重みはFP8(エキスパート)+BF16で約40GB。コミュニティ報告では48GBクラスのGPUかRTX 3090×2（約39GB）、4bit量子化で約32GB。SGLang-Omni / vLLM-Omniで配信。",
+  "license": "Fish Audio Community License v1.0",
+  "commercial": "conditional",
+  "license_note": "研究・非商用は無料。商用は自社と関連会社の年間売上が50万米ドル未満の間のみ無料（到達後30日以内に通知、90日の移行期間後は別契約）。第三者が音声生成できるAPI/SDK/ホスティング提供は売上に関係なく別契約が必要（自社コンテンツの生成や完成音声の納品は可）。「Built with Fish Audio」表示、Noticeファイルが必要。出力を他の音声生成・基盤モデルの学習/蒸留に使うことと透かしの除去は禁止。実在人物の声は事前同意が必要。HFのメタデータ表記（research license）と本文（Community License）が食い違うため要確認。",
+  "hf": "https://huggingface.co/fishaudio/drama-3",
+  "summary_ja": "Fish Audioが2026年10月に公開した35B規模のMoE型TTSで、複数キャラクターの掛け合いや演出指示つきの長尺音声を作れる。小規模事業者なら商用無料だが、動かすには大きなGPUが必要。",
+  "best_for_ja": "オーディオドラマ・複数話者の掛け合い、演出指示つきのナレーション、長尺コンテンツ",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/fishaudio/drama-3",
+   "https://huggingface.co/fishaudio/drama-3/blob/main/LICENSE",
+   "https://arxiv.org/abs/2610.18010",
+   "https://www.eesel.ai/blog/fish-audio-drama-3-review",
+   "https://comfyui-wiki.com/en/news/2026-10-13-fish-audio-drama-3"
+  ],
+  "confidence": "medium",
+  "rank": 11
+ },
+ {
+  "id": "voxcpm2",
+  "name": "VoxCPM2",
+  "org": "OpenBMB（ModelBest・清華大学）",
+  "country": "CN",
+  "release": "2026-04",
+  "params_m": 2000,
+  "arch": "トークナイザフリーのLM＋局所DiT（CFM）。MiniCPM-4ベース、AudioVAE V2（16kHzでエンコード・48kHzでデコード、LMは6.25Hz）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "WER/CER（MiniMax多言語テストセット・ja）",
+    "value": 4.628,
+    "note": "公式比較表。SIMは82.8で同表最高（Fish S2 79.6、Qwen3-TTS 78.8）",
+    "source": "https://github.com/OpenBMB/VoxCPM"
+   },
+   {
+    "metric": "CER（CV3-eval・ja）",
+    "value": 5.96,
+    "note": "公式比較表。IndexTTSの表では6.69（SS 72.90）",
+    "source": "https://github.com/OpenBMB/VoxCPM"
+   },
+   {
+    "metric": "CER（社内30言語ベンチ・ja）",
+    "value": 2.4,
+    "note": "%、Gemini 3.1 Flash LiteでASR採点。Fish S2-Proは1.82%",
+    "source": "https://github.com/OpenBMB/VoxCPM"
+   }
+  ],
+  "quality_note": "日本語の話者類似度が高く、48kHzの高音質出力が特徴。誤り率はFish S2に及ばない。感情付き日本語プロンプトの第三者評価ではCER 18.6%と崩れやすい結果も出ている。文章での声質デザインと、参照音声＋スタイル指示の組み合わせに対応。言語タグ不要。",
+  "latency_note": "RTX 4090でRTF約0.30、Nano-vLLM使用で約0.13（公式）。ストリーミング生成APIあり。Apple M4 Pro（llama.cpp-omni Q8_0）ではRTF約1.76。",
+  "hardware_note": "VRAM約8GB（公式）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重み・コードともApache-2.0で商用無料と明記。",
+  "hf": "https://huggingface.co/openbmb/VoxCPM2",
+  "summary_ja": "30言語対応・48kHz出力の多言語TTSで、日本語でも声のクローンの似ている度合いが高い。Apache-2.0で商用利用できる。",
+  "best_for_ja": "高音質な声のクローン、文章による声質デザイン、商用の多言語ナレーション",
+  "supersedes": [
+   "VoxCPM1.5",
+   "VoxCPM-0.5B"
+  ],
+  "sources": [
+   "https://huggingface.co/openbmb/VoxCPM2",
+   "https://github.com/OpenBMB/VoxCPM",
+   "https://voxcpm.readthedocs.io/en/latest/models/voxcpm2.html",
+   "https://github.com/index-tts/index-tts",
+   "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
+  ],
+  "confidence": "high",
+  "rank": 12
+ },
+ {
+  "id": "indextts-2-5",
+  "name": "IndexTTS-2.5",
+  "org": "bilibili IndexTeam",
+  "country": "CN",
+  "release": "2026-08-10",
+  "params_m": 800,
+  "arch": "自己回帰GPT（約0.8B）＋Flow Matching（音声→メル）＋BigVGANボコーダ、22.05kHz",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "WER（CV3-Eval・ja）",
+    "value": 5.66,
+    "note": "公式比較表。RL版は5.30。同表でFish S2 Pro 5.15、OmniVoice 5.38、Qwen3-TTS 5.89、VoxCPM2 6.69",
+    "source": "https://github.com/index-tts/index-tts"
+   },
+   {
+    "metric": "SS（話者類似度、CV3-Eval・ja）",
+    "value": 74.62,
+    "note": "公式比較表。RL版は75.41で同表最高",
+    "source": "https://github.com/index-tts/index-tts"
+   },
+   {
+    "metric": "WER（クロスリンガル zh→ja）",
+    "value": 6.57,
+    "note": "公式比較表。RL版6.38、Qwen3-TTSは36.09",
+    "source": "https://github.com/index-tts/index-tts"
+   }
+  ],
+  "quality_note": "2.5で日本語に新対応。<上手|じょうず>のように仮名で読みを直接指定でき、誤読を手で直せる。8次元の感情ベクトルまたはテキストで感情を指定可能。日本語のトークナイザは数字・日付・%を自動展開しないため、読める日本語表記で入力する必要がある。前版IndexTTS-2は日本語非対応（第三者評価でCER 91%）。",
+  "latency_note": "IndexTTS-2の約2倍の推論速度と公式説明（RTF値なし）。duration_factorで話速0.5〜2.0倍を指定可。",
+  "hardware_note": "推論VRAM約6GB、NVIDIA GPU・CUDA 12.8以上、Python 3.10〜3.11（公式）。FP16/BF16でVRAM削減可。",
+  "license": "bilibili Model Use License Agreement",
+  "commercial": "conditional",
+  "license_note": "ロイヤリティ無料の限定ライセンスで商用は禁止されていないが、前月MAUが1億超または前年売上が10億人民元超の場合は別途ライセンスが必要。モデルや出力（派生物に含まれる）を他のAIモデルの改良に使うことは、そのモデル自身・派生物・非商用モデルを除き禁止。医療診断・自動運転・軍事など高リスク用途も禁止。準拠法は中国法、紛争は上海で仲裁。",
+  "hf": "https://huggingface.co/IndexTeam/IndexTTS-2.5",
+  "summary_ja": "bilibiliの感情制御つきゼロショットTTSで、2.5から日本語に対応し、仮名で読みを直接指定できる。自社評価では日本語の話者類似度が高い。",
+  "best_for_ja": "感情を細かく付けたいキャラクター台詞、動画の吹き替え（話速・尺の調整）、読みを固定したい固有名詞の多い文章",
+  "supersedes": [
+   "IndexTTS-2",
+   "IndexTTS-1.5"
+  ],
+  "sources": [
+   "https://huggingface.co/IndexTeam/IndexTTS-2.5",
+   "https://github.com/index-tts/index-tts",
+   "https://huggingface.co/IndexTeam/IndexTTS-2.5/blob/main/LICENSE",
+   "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "fun-cosyvoice3-0-5b",
+  "name": "Fun-CosyVoice3-0.5B-2512",
+  "org": "Alibaba Tongyi（FunAudioLLM）",
+  "country": "CN",
+  "release": "2025-12",
+  "params_m": 500,
+  "arch": "LLM+コーデック（音声トークンを言語モデルで予測）＋Flow Matching",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "CER（CV3-Eval多言語クローン・ja）",
+    "value": 10.4,
+    "note": "%、論文のCosyVoice3-0.5B。DiffRO（強化学習）適用で5.15%。CosyVoice2は9.13%。公開版の0.5B-2512（Base/RL）と論文版が同一かは未確認",
+    "source": "https://arxiv.org/html/2505.17589"
+   },
+   {
+    "metric": "WER（クロスリンガル en→ja）",
+    "value": 16.8,
+    "note": "%、論文の0.5B。DiffRO適用で7.25%",
+    "source": "https://arxiv.org/html/2505.17589"
+   }
+  ],
+  "quality_note": "日本語を含む9言語に対応し、指示文で感情・話し方を変えられる。日本語の誤り率は強化学習版（RL）で大きく改善するが、最新の上位モデルよりはやや劣る。前世代CosyVoice2の個人比較では日本語の自然さ3/5。後継のFun-CosyVoice3.5はAPI提供のみで重み公開は確認できない。",
+  "latency_note": "双方向ストリーミング対応で最短150msの遅延（公式）。",
+  "hardware_note": "公式VRAM目安なし。0.5Bと小型。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0で商用利用可。",
+  "hf": "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+  "summary_ja": "Alibabaの多言語ゼロショットTTSで、低遅延ストリーミングと指示による感情制御に対応する。Apache-2.0で商用利用しやすい。",
+  "best_for_ja": "商用の音声エージェント（低遅延応答）、指示による話し方の調整、声のクローン",
+  "supersedes": [
+   "CosyVoice2-0.5B",
+   "CosyVoice-300M"
+  ],
+  "sources": [
+   "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+   "https://arxiv.org/html/2505.17589",
+   "https://ai-bot.cn/fun-cosyvoice3-5/",
+   "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
+  ],
+  "confidence": "high",
+  "rank": 14
+ },
+ {
+  "id": "magpie-tts-multilingual-357m",
+  "name": "Magpie TTS Multilingual 357M（v2607）",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-07-21",
+  "params_m": 364,
+  "arch": "Encoder-Decoder Transformer（6層因果エンコーダ・12層因果デコーダ＋多コードブック用ローカルTransformer）＋NanoCodec、22.05kHz",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "CER（ja）",
+    "value": 1.4,
+    "note": "%、v2607、NVIDIA自社評価（テストセットの詳細は未確認）",
+    "source": "https://huggingface.co/nvidia/magpie_tts_multilingual_357m"
+   },
+   {
+    "metric": "SSIM（話者類似度、ja）",
+    "value": 0.775,
+    "note": "v2607、pred-context条件",
+    "source": "https://huggingface.co/nvidia/magpie_tts_multilingual_357m"
+   }
+  ],
+  "quality_note": "12言語対応で、日本語は学習データにアニメ音声データセット、Common Voice、Emilia-YODAS日本語等を含む。英語→カタカナのコードスイッチとIPAの発音辞書カスタマイズに対応。プリセット話者は英語名の5声（Aria、Jason等）のみで、日本語ネイティブ話者の声ではない点に注意。ゼロショットの声のクローンは安全上の理由で削除済み。",
+  "latency_note": "音声エージェント向けの低遅延設計。HF公式ブログ要約では初回音声まで32〜79ms（B200で32ms）。モデルカードにRTF値の記載なし。",
+  "hardware_note": "NVIDIA GPU（L4、L40、A10、A30、A100、H100で検証）、Linux。NeMo 25.11 / Riva 2.24.0、TensorRT-LLM・Tritonで高速化。",
+  "license": "NVIDIA Open Model License",
+  "commercial": "yes",
+  "license_note": "モデルカードに「商用利用の準備ができている」と明記。NVIDIA Open Model Licenseの条件に従う。声はプリセットのみ。",
+  "hf": "https://huggingface.co/nvidia/magpie_tts_multilingual_357m",
+  "summary_ja": "NVIDIAの小型・低遅延な多言語TTSで、日本語の誤り率が低く商用利用できる。ただし声はプリセット（英語名の話者）のみで、クローンはできない。",
+  "best_for_ja": "コールセンター等の商用音声エージェント、NVIDIA Riva/NIMでの大規模配信",
+  "supersedes": [
+   "Magpie TTS Multilingual v2602",
+   "Magpie TTS Multilingual v2512"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/magpie_tts_multilingual_357m",
+   "https://www.plushcap.com/content/huggingface/blog/huggingface-build-low-latency-multilingual-voice-agents-open-weights-full-deployment-control-with-nvidia-magpie-tts"
+  ],
+  "confidence": "high",
+  "rank": 15
+ },
+ {
+  "id": "miotts-1-7b",
+  "name": "MioTTS-1.7B",
+  "org": "Aratako（個人開発者）",
+  "country": "JP",
+  "release": "2026-02-11",
+  "params_m": 1700,
+  "arch": "LLM+コーデック（Qwen3-1.7B-Base初期化のデコーダ専用LLM＋自作MioCodec 25Hz・24kHz）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "日本語と英語の約10万時間で学習した軽量LLM型TTS。短い参照音声からゼロショットでクローンできる。客観評価値は公開されておらず、品質はデモ音声での確認が中心。0.1B／0.4B／0.6B／1.2B／2.6Bのサイズ違いがある。",
+  "latency_note": "RTX 5090＋vLLM 0.15.1でRTF 0.10〜0.11（約15秒の音声生成）。0.1B版はRTF 0.04〜0.05。llama.cpp、Ollama、vLLMなど標準のLLM推論基盤でそのまま動く設計。",
+  "hardware_note": "公式VRAM目安なし。一般向けGPUやエッジでの運用を想定。",
+  "license": "Apache-2.0（1.7B。サイズごとにベースモデルのライセンスを継承）",
+  "commercial": "conditional",
+  "license_note": "1.7B/0.6BはQwen3ベースでApache-2.0。0.4B/1.2B/2.6BはLFM Open License v1.0、0.1BはFalcon-LLM Licenseを継承。学習データにEmilia（CC BY-NC 4.0）とHiFiTTS-2を含むと記載があり、同じくEmiliaで学習したOmniVoiceは重みを非商用にしているため、商用時はデータ由来の制約を自己判断する必要がある。実在人物の無断クローン・ディープフェイクは禁止と明記。",
+  "hf": "https://huggingface.co/Aratako/MioTTS-1.7B",
+  "summary_ja": "Irodori-TTSと同じ作者による、日本語・英語対応の軽量なLLM型TTSで、一般的なLLM推論ツールでそのまま高速に動かせる。サイズは0.1B〜2.6Bまで選べる。",
+  "best_for_ja": "LLM推論基盤に載せる軽量な音声応答、エッジ機器での声のクローン",
+  "supersedes": [
+   "T5Gemma-TTS-2b-2b（同作者の前作、別アーキテクチャ）"
+  ],
+  "sources": [
+   "https://huggingface.co/Aratako/MioTTS-1.7B",
+   "https://huggingface.co/Aratako/MioTTS-2.6B",
+   "https://lilting.ch/articles/miotts-lightweight-llm-tts",
+   "https://huggingface.co/k2-fsa/OmniVoice"
+  ],
+  "confidence": "medium",
+  "rank": 16
+ },
+ {
+  "id": "qwen3-tts-0-6b",
+  "name": "Qwen3-TTS-12Hz-0.6B（Base / CustomVoice）",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01-22",
+  "params_m": 600,
+  "arch": "LLM+コーデック（12Hz多コードブックトークナイザ、ストリーミング生成）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "WER/CER（多言語テストセット・ja）",
+    "value": 6.404,
+    "note": "0.6B-Base、公式モデルカード（1.7B-Baseは3.823）",
+    "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+   },
+   {
+    "metric": "SIM（多言語テストセット・ja）",
+    "value": 0.798,
+    "note": "0.6B-Base、公式モデルカード（1.7B-Baseは0.788）",
+    "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+   }
+  ],
+  "quality_note": "1.7Bより日本語の誤り率は高い（6.4 vs 3.8）が、話者類似度はほぼ同等。指示による話し方制御（instruction control）とVoiceDesignは1.7Bのみで、0.6BはBase（クローン）とCustomVoice（プリセット話者）だけ。漢字の読み分けの弱さは1.7Bと同系統と考えられる（0.6B単独の外部評価は未確認）。",
+  "latency_note": "ストリーミング対応（公式の97msは系列全体の最短値）。0.6B単独の実測値は未確認。",
+  "hardware_note": "公式VRAM目安なし（HF表示はBF16で0.9B）。1.7Bより軽い。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0で商用利用可。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "summary_ja": "Qwen3-TTSの軽量版で、声のクローンとプリセット話者に対応し、少ないGPU資源で動かせる。日本語の正確さは1.7B版に劣る。",
+  "best_for_ja": "GPUの小さい環境での商用音声応答、声のクローンの試作",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "confidence": "high",
+  "rank": 17
+ },
+ {
+  "id": "chatterbox-multilingual-v3",
+  "name": "Chatterbox Multilingual V3",
+  "org": "Resemble AI",
+  "country": "US",
+  "release": "2026-06",
+  "params_m": 500,
+  "arch": "LLM（0.5B）で音声トークンを生成＋Flow Matching系デコーダ",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "23言語以上（日本語含む）に対応し、V3で話者類似度の向上、繰り返し・言い過ぎ（ハルシネーション）の低減、会話的な自然さの改善をうたう。感情の誇張度（exaggeration）を調整可能。日本語個別の客観評価は見当たらず、個人比較では旧版の日本語品質を3/5とする記事がある。単一言語特化パックは中国語・スペイン語・ポルトガル語・ヒンディー語のみで日本語はない。",
+  "latency_note": "公式の速度値なし。",
+  "hardware_note": "公式要件なし。CUDAのほかCPU・Apple Silicon（MPS）にも対応。ブラウザ版はWebGPU必須で初回約1.6GBのダウンロード。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MITで商用制限なし、自己ホスト可。生成音声すべてにPerTh透かしが埋め込まれる（MP3圧縮や編集後も残るとされる）。",
+  "hf": "https://huggingface.co/ResembleAI/chatterbox",
+  "summary_ja": "Resemble AIのMITライセンスの多言語TTSで、日本語を含む23以上の言語で同じ声を保ったままクローンできる。日本語品質の客観データは乏しい。",
+  "best_for_ja": "MITで使いたい多言語の声のクローン、英語と日本語を切り替える音声エージェント",
+  "supersedes": [
+   "Chatterbox Multilingual V2"
+  ],
+  "sources": [
+   "https://huggingface.co/ResembleAI/chatterbox",
+   "https://resemble.ai/learn/models/chatterbox-multilingual",
+   "https://github.com/resemble-ai/chatterbox/releases",
+   "https://localaimaster.com/blog/chatterbox-multilingual-v3",
+   "https://qiita.com/0h-n0/items/8f78f7acd31000612d13"
+  ],
+  "confidence": "medium",
+  "rank": 18
+ },
+ {
+  "id": "kokoro-82m",
+  "name": "Kokoro-82M v1.0",
+  "org": "hexgrad",
+  "country": "?",
+  "release": "2025-01-27",
+  "params_m": 82,
+  "arch": "StyleTTS 2＋ISTFTNet（非自己回帰、デコーダのみ）",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": false,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "8言語54声のうち日本語は女性4声・男性1声。作者自身の総合評価はjf_alphaがC+、他はC〜C-と低く、日本語は学習データ（1〜10時間）とG2P（misaki[ja]）が弱い。英語に比べ日本語の自然さは大きく劣る。",
+  "latency_note": "82Mと極小で高速とされるが、公式の具体的な速度値はなし。",
+  "hardware_note": "非常に軽量でCPUや小型GPUでも動かしやすい（公式の要件記載はなし）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みはApache-2.0。学習データは公有・寛容ライセンスの音声（一部CC BY）と、クローズドな商用TTSが生成した合成音声を含むと作者が明記しており、元サービスの規約との関係は利用者側で判断が必要。",
+  "hf": "https://huggingface.co/hexgrad/Kokoro-82M",
+  "summary_ja": "8200万パラメータの超軽量TTSで、日本語のプリセット声も入っているが品質は作者評価でC前後と低め。軽さとライセンスの緩さが利点。",
+  "best_for_ja": "低スペック端末での簡易読み上げ、試作・デモ",
+  "supersedes": [
+   "Kokoro-82M v0.19"
+  ],
+  "sources": [
+   "https://huggingface.co/hexgrad/Kokoro-82M",
+   "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
+  ],
+  "confidence": "high",
+  "rank": 19
+ }
+]

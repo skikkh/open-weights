@@ -1,0 +1,1047 @@
+[
+ {
+  "id": "qwen3-asr-1-7b",
+  "name": "Qwen3-ASR-1.7B",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01",
+  "params_m": 2000,
+  "arch": "Speech LLM（AuTエンコーダ300M + Qwen3-1.7B）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.2,
+    "note": "公式技術報告。日本語の指標名（CER/WER）は報告書に明記なし",
+    "source": "https://arxiv.org/abs/2601.21337"
+   },
+   {
+    "dataset": "Common Voice ja",
+    "cer": 11.64,
+    "note": "公式技術報告（CVバージョン明記なし）",
+    "source": "https://arxiv.org/abs/2601.21337"
+   },
+   {
+    "dataset": "MLC-SLM ja（会話音声）",
+    "cer": 11.8,
+    "note": "公式技術報告",
+    "source": "https://arxiv.org/abs/2601.21337"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 8.71,
+    "note": "第三者（Ruby-ASR論文）。数字・長音・句読点等を正規化したRaw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "CSJ",
+    "cer": 14.55,
+    "note": "第三者（Ruby-ASR論文）。eval区分の明記なし、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 9.18,
+    "note": "第三者（Ruby-ASR論文）、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "TEDxJP",
+    "cer": 9.08,
+    "note": "第三者（Ruby-ASR論文）、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.29,
+    "note": "第三者（Handy）。GGUF Q8_0量子化で評価",
+    "source": "https://models.handy.computer/languages/ja"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 8.2,
+    "note": "第三者（Neosophie）。10モデル中最良。小規模・独自データ",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": "word",
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "vLLMで同時実行1のRTF約0.015、同時実行128で1219秒音声/秒（公式）。RTX 5090でRTF 0.048（Neosophie）。1回あたり最長20分の音声を処理",
+  "hardware_note": "BF16で約5GB VRAMの第三者推定。GGUF Q8_0は2.04GBで、Ryzen 4750UのCPUでも実時間の2.5倍速（Handy）。ストリーミングはvLLMバックエンドのみ。単語タイムスタンプは別モデルQwen3-ForcedAligner-0.6B（日本語対応、最長5分）を使う",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/Qwen/Qwen3-ASR-1.7B",
+  "summary_ja": "Qwenの音声LLM型ASRで、52言語・方言に対応します。日本語の会話音声や専門用語に強く、複数の第三者評価で上位に入っています。",
+  "best_for_ja": "会議・対談・IT系トークなど話し言葉の高精度書き起こし。軽量版のQwen3-ASR-0.6B（FLEURS ja 8.33）は高スループット用途向け",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-ASR-1.7B",
+   "https://arxiv.org/abs/2601.21337",
+   "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B",
+   "https://arxiv.org/abs/2609.27289",
+   "https://models.handy.computer/languages/ja",
+   "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "総合力（話し言葉・雑音・専門用語）",
+  "pick_reason": "会話音声やIT用語でも崩れにくい"
+ },
+ {
+  "id": "ruby-asr-1-7b",
+  "name": "Ruby-ASR-1.7B",
+  "org": "Hao Shi ほか（独立研究者グループ）",
+  "country": "?",
+  "release": "2026-09",
+  "params_m": 2000,
+  "arch": "Speech LLM（Qwen3-ASR-1.7Bを日本語向けに全パラメータ微調整、モーラCTC補助ヘッド付き）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 7.84,
+    "note": "論文の字幕調（sub）版、Raw CER。逐語調（ver）版は8.23",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "CSJ",
+    "cer": 6.33,
+    "note": "sub版、Raw CER（ver版8.23）。評価音声は学習に未使用と記載。ただしCSJの学習区分の扱いは明記なし",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 7.25,
+    "note": "sub版、Raw CER（ver版8.12）",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "TEDxJP",
+    "cer": 9.06,
+    "note": "sub版、Raw CER（ver版8.90）",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "JSUT-Book",
+    "cer": 23.21,
+    "note": "sub版、Raw CER。漢字かな表記揺れを考慮したSA-CERでは8.80",
+    "source": "https://arxiv.org/abs/2609.27289"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "推論系はQwen3-ASR-1.7Bと同じ（qwen-asr / vLLM 0.14以上）。CTCヘッドだけを使えば、LLMデコードなしでカナ読みを出力できる",
+  "hardware_note": "BF16・CUDAでの利用例のみ。必要リソースはQwen3-ASR-1.7Bと同程度とみられる",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/hshispeech/Ruby-ASR-1.7B",
+  "summary_ja": "Qwen3-ASRを日本語向けに微調整し、「今日[きょう]」のようなふりがな付きで出力できるモデルです。論文の5データセット加重平均CERは8.51%で、Qwen3-ASRの10.78%やReazonSpeech-k2の10.35%を下回ります。",
+  "best_for_ja": "読み（ふりがな）も必要な書き起こし。TTSの学習データ作成、字幕、話し言葉の高精度書き起こし",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/hshispeech/Ruby-ASR-1.7B",
+   "https://arxiv.org/abs/2609.27289",
+   "https://github.com/hshi-speech/Ruby-ASR-1.7B"
+  ],
+  "confidence": "medium",
+  "rank": 2
+ },
+ {
+  "id": "reazonspeech-k2-v2",
+  "name": "ReazonSpeech-k2-v2",
+  "org": "Reazon Human Interaction Lab（レアゾン・ホールディングス）",
+  "country": "JP",
+  "release": "2024-08-01",
+  "params_m": 159,
+  "arch": "Zipformer RNN-T（Next-gen Kaldi / k2）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 6.45,
+    "note": "開発元公表値（v2.1ブログ）。int8量子化版は6.63",
+    "source": "https://hilab.jp/blog/reazonspeech-v21-setting-a-new-standard-in-japanese-asr"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 7.85,
+    "note": "開発元公表値",
+    "source": "https://hilab.jp/blog/reazonspeech-v21-setting-a-new-standard-in-japanese-asr"
+   },
+   {
+    "dataset": "TEDxJP-10K",
+    "cer": 9.09,
+    "note": "開発元公表値",
+    "source": "https://hilab.jp/blog/reazonspeech-v21-setting-a-new-standard-in-japanese-asr"
+   },
+   {
+    "dataset": "CSJ",
+    "cer": 16.82,
+    "note": "第三者（Ruby-ASR論文）、Raw CER。同論文のJSUT basic5000は6.52",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 9.4,
+    "note": "第三者（Classmethod）、正規化CER（未正規化は15.01）",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 28.55,
+    "note": "第三者（Neosophie）、小規模・独自データ",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": false
+  },
+  "speed_note": "L40SでRTF 0.0032（Classmethod、batch 32）、RTX 5090でRTF 0.028（Neosophie）",
+  "hardware_note": "ONNX形式で配布され、int8量子化版があり、CPUでも実用的に動く。1回の入力は約30秒まで。長い音声はVADなどで分割する",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/reazon-research/reazonspeech-k2-v2",
+  "summary_ja": "3.5万時間の日本語テレビ音声（ReazonSpeech v2.0）で学習した、159Mパラメータの日本語専用モデルです。小型ながら、JSUTやCommon Voiceの読み上げ・短い発話ではWhisper large-v3を上回ります。",
+  "best_for_ja": "CPU・オンプレミスで軽く動かしたい日本語の短い発話認識。コールセンターの発話単位処理、組込み、サーバー費用の削減",
+  "supersedes": [
+   "reazonspeech-espnet-v1",
+   "reazonspeech-espnet-v2",
+   "reazonspeech-nemo-v2"
+  ],
+  "sources": [
+   "https://huggingface.co/reazon-research/reazonspeech-k2-v2",
+   "https://hilab.jp/blog/reazonspeech-v21-setting-a-new-standard-in-japanese-asr",
+   "https://arxiv.org/abs/2609.27289",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+   "https://dev.classmethod.jp/articles/reazonspeech-v2/"
+  ],
+  "confidence": "high",
+  "rank": 3,
+  "pick": "CPUで速く・軽く",
+  "pick_reason": "159Mで日本語専用。読み上げ音声に強い"
+ },
+ {
+  "id": "parakeet-tdt-ctc-0-6b-ja",
+  "name": "Parakeet TDT-CTC 0.6B ja",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2024-05",
+  "params_m": 600,
+  "arch": "FastConformer TDT-CTCハイブリッド",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 6.4,
+    "note": "公式モデルカード（TDT、greedy、外部LMなし）。CTCデコーダでは6.5",
+    "source": "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 7.1,
+    "note": "公式（TDT、greedy）",
+    "source": "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja"
+   },
+   {
+    "dataset": "Common Voice 16.1 ja test",
+    "cer": 13.2,
+    "note": "公式（TDT、greedy）",
+    "source": "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja"
+   },
+   {
+    "dataset": "TEDxJP-10K",
+    "cer": 9.0,
+    "note": "公式（TDT、greedy）",
+    "source": "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.94,
+    "note": "第三者（Classmethod）、正規化CER（未正規化は9.41）",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "word",
+   "diarization": false,
+   "punctuation": true,
+   "long_form": null
+  },
+  "speed_note": "L40SでRTF 0.000403（batch 32、1時間あたり約2,482時間分を処理）。同じ検証のWhisper large-v3より約19倍速い（Classmethod）",
+  "hardware_note": "L40Sでbatch 32時のピークVRAMは5.5GiB（Classmethod）。GGUF、CoreML、MLX、LiteRTへのコミュニティ移植版があり、Macやエッジでも動かせる。タイムスタンプはNeMo標準機能による",
+  "license": "CC-BY-4.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja",
+  "summary_ja": "NVIDIAがReazonSpeech（3.5万時間超）で学習した日本語専用モデルで、句読点付きで出力します。精度はWhisper large-v3と同等以上で、速度は桁違いに速いのが特長です。",
+  "best_for_ja": "大量の音声ファイルの高速一括書き起こし。GPUコストを抑えたいバッチ処理、精度と速度の両立",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/parakeet-tdt_ctc-0.6b-ja",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+  ],
+  "confidence": "high",
+  "rank": 4,
+  "pick": "GPUで最速クラス",
+  "pick_reason": "JSUT CER 6.4%。大量の書き起こしに"
+ },
+ {
+  "id": "whisper-large-v3",
+  "name": "Whisper large-v3",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2023-11",
+  "params_m": 1550,
+  "arch": "Encoder-Decoder（Whisper系Transformer）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 7.1,
+    "note": "kotoba-whisperモデルカードの比較表",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 8.5,
+    "note": "kotoba-whisperモデルカードの比較表",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 14.9,
+    "note": "kotoba-whisperモデルカード（ReazonSpeech held-out test）",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "CSJ",
+    "cer": 19.77,
+    "note": "第三者（Ruby-ASR論文）、Raw CER。フィラーの削除傾向が誤り率を押し上げる",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "TEDxJP",
+    "cer": 9.52,
+    "note": "第三者（Ruby-ASR論文）、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.49,
+    "note": "第三者（Classmethod）、正規化CER（未正規化は7.51）",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.81,
+    "note": "第三者（Handy）、GGUF Q8_0",
+    "source": "https://models.handy.computer/languages/ja"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "word",
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "L40SでRTF 0.0077（batch 64、Classmethod）。Ryzen 4750UのCPUでほぼ実時間（1.0倍速、Handy）",
+  "hardware_note": "FP16で約10GB VRAMが目安。L40Sでbatch 64時のピークは20.1GiB。faster-whisper、whisper.cpp、MLXなど実行系が豊富",
+  "license": "Apache-2.0（HFモデルカード表記）/ MIT（公式GitHub実装）",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/openai/whisper-large-v3",
+  "summary_ja": "99言語対応の定番モデルで、日本語でも読み上げ音声ではトップ級の精度です。2026年10月時点でOpenAIからオープンウェイトの後継はありません（新モデルはAPI専用）。",
+  "best_for_ja": "汎用の高精度書き起こし、多言語混在の音声、既存ツール（字幕生成など）との連携",
+  "supersedes": [
+   "whisper-large-v2",
+   "whisper-large",
+   "whisper-medium"
+  ],
+  "sources": [
+   "https://huggingface.co/openai/whisper-large-v3",
+   "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0",
+   "https://arxiv.org/abs/2609.27289",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+   "https://models.handy.computer/languages/ja"
+  ],
+  "confidence": "high",
+  "rank": 5
+ },
+ {
+  "id": "whisper-large-v3-turbo",
+  "name": "Whisper large-v3-turbo",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2024-10-01",
+  "params_m": 809,
+  "arch": "Encoder-Decoder（Whisper系、デコーダを32層から4層に削減）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.81,
+    "note": "第三者（Classmethod）、正規化CER（未正規化は8.15）",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.82,
+    "note": "第三者（Handy）、GGUF Q8_0",
+    "source": "https://models.handy.computer/languages/ja"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 7.3,
+    "note": "第三者コミュニティ評価（efwkjn BENCH.md、beam 5）。正規化方法は不明",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 9.2,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 10.3,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）。評価分割は不明",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "TEDxJP（長尺）",
+    "cer": 9.5,
+    "note": "第三者コミュニティ評価（efwkjn、長尺のbatch処理）。同条件のlarge-v3は9.2",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 15.65,
+    "note": "第三者（Neosophie）、小規模・独自データ",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "word",
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "L40SでRTF 0.0048で、large-v3の約1.6倍速い（Classmethod）。RTX 5090でRTF 0.016（Neosophie）。CPUでは1.4倍速（Handy、Ryzen 4750U）",
+  "hardware_note": "約6GB VRAMが目安。L40Sでbatch 64時のピークは11.1GiB。CPUやApple Silicon（MLX、whisper.cpp）でも実用的",
+  "license": "Apache-2.0（HFモデルカード表記）/ MIT（公式GitHub実装）",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/openai/whisper-large-v3-turbo",
+  "summary_ja": "large-v3のデコーダを軽量化した高速版です。日本語の精度はlarge-v3とほぼ同じで、長い音声でも崩れにくいという評価があります。",
+  "best_for_ja": "手元のPCやMacでの日常的な書き起こし、長時間録音、精度と速度のバランス重視",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/openai/whisper-large-v3-turbo",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+   "https://models.handy.computer/languages/ja",
+   "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md",
+   "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+  ],
+  "confidence": "high",
+  "rank": 6
+ },
+ {
+  "id": "kotoba-whisper-v2-2",
+  "name": "Kotoba-Whisper v2.2",
+  "org": "Kotoba Technologies",
+  "country": "JP",
+  "release": "2024-10",
+  "params_m": 756,
+  "arch": "Encoder-Decoder（Whisper large-v3の蒸留版、デコーダ2層）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 8.4,
+    "note": "v2.0モデルカードの値。v2.2はv2.0の重みに話者分離・句読点の処理を加えたパイプライン",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 9.2,
+    "note": "v2.0モデルカード",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 11.6,
+    "note": "v2.0モデルカード（held-out test、学習ドメイン内）",
+    "source": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0"
+   },
+   {
+    "dataset": "CSJ",
+    "cer": 18.95,
+    "note": "第三者（Ruby-ASR論文、Kotoba-v2）、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "TEDxJP",
+    "cer": 10.75,
+    "note": "第三者（Ruby-ASR論文）、Raw CER",
+    "source": "https://arxiv.org/abs/2609.27289"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 6.92,
+    "note": "第三者（Classmethod、v2.2）、正規化CER（未正規化は12.27）",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   },
+   {
+    "dataset": "TEDxJP（長尺）",
+    "cer": 32.5,
+    "note": "第三者コミュニティ評価（efwkjn、kotoba-v2、長尺のbatch処理）。長尺では崩れやすい",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 60.72,
+    "note": "第三者（Neosophie、v2.0）。外れ値の可能性あり、原因の説明なし",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "segment",
+   "diarization": true,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "Whisper large-v3より6.3倍速い（公式）。L40SでRTF 0.0022（Classmethod、batch 64）",
+  "hardware_note": "L40Sでbatch 64時のピークVRAMは6.5GiB。faster-whisper版とGGML版もある。話者分離にはpyannote系の追加モデルが必要",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.2",
+  "summary_ja": "Whisper large-v3を日本語向けに蒸留した高速モデルで、v2.2では話者分離と句読点付与を統合しています。短い発話では実用的ですが、長尺や専門用語では新しいモデルに見劣りします。",
+  "best_for_ja": "話者ラベル付きの簡易な議事録づくり、Whisper系ツールとの互換性を保ちたい日本語書き起こし",
+  "supersedes": [
+   "kotoba-whisper-v1.0",
+   "kotoba-whisper-v1.1",
+   "kotoba-whisper-v2.0",
+   "kotoba-whisper-v2.1"
+  ],
+  "sources": [
+   "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.2",
+   "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0",
+   "https://arxiv.org/abs/2609.27289",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+   "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+  ],
+  "confidence": "high",
+  "rank": 7,
+  "pick": "話者分離・句読点付きの議事録",
+  "pick_reason": "Whisper 互換で導入が簡単"
+ },
+ {
+  "id": "cohere-transcribe-03-2026",
+  "name": "Cohere Transcribe (03-2026)",
+  "org": "Cohere",
+  "country": "CA",
+  "release": "2026-03-26",
+  "params_m": 2000,
+  "arch": "Conformer Encoder-Decoder（大型Conformerエンコーダ + 軽量Transformerデコーダ）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.13,
+    "note": "第三者（Handy）、GGUF Q8_0（95%信頼区間4.48〜5.84）",
+    "source": "https://models.handy.computer/models/cohere-transcribe-03-2026"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.9,
+    "note": "第三者コミュニティ評価（efwkjn/cohere-asr-jaカードのベース比較行）。正規化方法は不明",
+    "source": "https://huggingface.co/efwkjn/cohere-asr-ja"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 8.4,
+    "note": "第三者コミュニティ評価（efwkjn）",
+    "source": "https://huggingface.co/efwkjn/cohere-asr-ja"
+   },
+   {
+    "dataset": "TEDxJP（長尺）",
+    "cer": 22.0,
+    "note": "第三者コミュニティ評価（efwkjn）。長尺条件とみられる",
+    "source": "https://huggingface.co/efwkjn/cohere-asr-ja"
+   },
+   {
+    "dataset": "FLEURS ja + Common Voice 25 ja（結合）",
+    "cer": 27.08,
+    "note": "第三者（BuzzASR論文）、未正規化Raw CER。同条件のQwen3-ASR-1.7Bは23.17（Raw）、Whisper large-v3は23.34（正規化）",
+    "source": "https://arxiv.org/abs/2609.09554"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 17.01,
+    "note": "第三者（Neosophie）、小規模・独自データ",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "none",
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "Open ASR LeaderboardでRTFx 524.88（英語）。RTX 5090でRTF 0.011（Neosophie）。Ryzen 4750UのCPUで4.3倍速（Handy）",
+  "hardware_note": "BF16の重みは約4GB。GGUF Q8_0は2.25GB。自動言語判定がないため、言語（ja）の指定が必要",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026",
+  "summary_ja": "英語のOpen ASR Leaderboardで首位になった14言語対応の高速ASRです。日本語は公式対応ですが、日本語の公式誤り率は公表されておらず、第三者評価ではQwen3-ASRやWhisperと同等かやや劣ります。",
+  "best_for_ja": "日英など多言語が混在する大量音声のサーバー一括処理。日本語単独の用途では他モデルとの比較検証が前提",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026",
+   "https://cohere.com/blog/transcribe",
+   "https://models.handy.computer/models/cohere-transcribe-03-2026",
+   "https://huggingface.co/efwkjn/cohere-asr-ja",
+   "https://arxiv.org/abs/2609.09554",
+   "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+  ],
+  "confidence": "medium",
+  "rank": 8
+ },
+ {
+  "id": "voxtral-mini-4b-realtime-2602",
+  "name": "Voxtral Mini 4B Realtime 2602",
+  "org": "Mistral AI",
+  "country": "FR",
+  "release": "2026-02-04",
+  "params_m": 4400,
+  "arch": "Speech LLM（因果音声エンコーダ約970M + 言語モデル約3.4B、ストリーミング専用設計）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 9.59,
+    "note": "公式カード、遅延480ms（推奨設定）。指標名の明記なし",
+    "source": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.5,
+    "note": "公式カード、遅延2.4秒。160msでは19.17、960msでは6.80",
+    "source": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 5.44,
+    "note": "第三者（Handy）、GGUF Q8_0。遅延設定は不明",
+    "source": "https://models.handy.computer/languages/ja"
+   },
+   {
+    "dataset": "IT用語ドメイン（約30秒×15本）",
+    "cer": 13.54,
+    "note": "第三者（Neosophie）、10モデル中2位",
+    "source": "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": null,
+   "long_form": true
+  },
+  "speed_note": "遅延は80ms〜2.4秒で設定可能（推奨480ms）。RTX 5090でRTF 0.208と、専用ASRより重い（Neosophie）",
+  "hardware_note": "vLLMでの運用は16GB以上のGPUが目安。GGUF Q8_0は4.41GBだが、ノートPC（Ryzen 4750U）では実時間に届かない（GPUで0.8倍速、Handy）",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+  "summary_ja": "日本語を含む13言語に対応したオープンウェイトのストリーミングASRです。遅延を長くするほど精度が上がり、2.4秒の遅延でAPI版のバッチモデルに近い精度になります。",
+  "best_for_ja": "リアルタイム字幕・同時文字起こし（遅延と精度を調整したい場合）、音声エージェントの入力",
+  "supersedes": [
+   "Voxtral-Mini-3B-2507",
+   "Voxtral-Small-24B-2507"
+  ],
+  "sources": [
+   "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+   "https://mistral.ai/news/voxtral-transcribe-2",
+   "https://arxiv.org/abs/2602.11298",
+   "https://models.handy.computer/languages/ja",
+   "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
+  ],
+  "confidence": "high",
+  "rank": 9,
+  "pick": "リアルタイム字幕",
+  "pick_reason": "ストリーミング対応"
+ },
+ {
+  "id": "nemotron-3-5-asr-streaming-0-6b",
+  "name": "Nemotron 3.5 ASR Streaming 0.6B",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-06-04",
+  "params_m": 600,
+  "arch": "FastConformer Cache-Aware RNN-T（言語IDプロンプト条件付け）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 11.48,
+    "note": "公式カード、チャンク1.12秒、言語ID指定。自動判定では11.66",
+    "source": "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 12.22,
+    "note": "公式カード、チャンク320ms（多言語版の既定）、言語ID指定",
+    "source": "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 13.87,
+    "note": "公式カード、チャンク80ms、言語ID指定",
+    "source": "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 13.31,
+    "note": "第三者（Classmethod）、Transformersでオフライン実行、正規化CER",
+    "source": "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "チャンクは80ms、160ms、320ms、560ms、1.12秒から選べる。L40Sのオフライン一括処理でRTF 0.0011（Classmethod）。Ryzen 4750UのCPUで10.6倍速（Handy）",
+  "hardware_note": "NeMo 26.06以上、Transformers、NIMで利用可能。NeMoのストリーミング実行ではピーク7.1GiB（L40S、batch 64）。GGUF版（q8_0）もある",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
+  "summary_ja": "40言語・ロケールを1つのモデルで扱う低遅延ストリーミングASRで、日本語（ja-JP）は実用レベルの段階に位置づけられています。日本語の精度は専用モデルに劣りますが、80ms単位の超低遅延で動きます。",
+  "best_for_ja": "多言語の音声エージェントや通話のリアルタイム認識。遅延を最優先する用途",
+  "supersedes": [
+   "nemotron-speech-streaming-en-0.6b"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
+   "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+   "https://models.handy.computer/languages/ja"
+  ],
+  "confidence": "high",
+  "rank": 10
+ },
+ {
+  "id": "vibevoice-asr",
+  "name": "VibeVoice-ASR",
+  "org": "Microsoft",
+  "country": "US",
+  "release": "2026-01-21",
+  "params_m": 9000,
+  "arch": "Speech LLM（7B級LLMベース、ASR・話者分離・タイムスタンプを1パスで出力）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "MLC-SLM ja（会話音声、MLC-Challenge）",
+    "cer": 14.69,
+    "note": "公式技術報告。表記はWERで、cpWERは15.33、DERは0.82。参考としてQwen3-ASR-1.7Bの同データセットの値は11.80（評価分割が同じかは不明）",
+    "source": "https://arxiv.org/abs/2601.18184"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "segment",
+   "diarization": true,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "最長60分の音声を64Kトークン内で1パス処理する。速度の公式数値はない",
+  "hardware_note": "HFのsafetensors表記は9B（公式ドキュメントは7B表記）。BF16で約18〜20GB VRAMが第三者の目安で、60分の音声ではさらに増える見込み。BitNet版（2026-07）とストリーミング版（VibeVoice-ASR-Streaming-7B/1.5B、2026-09）があるが、ストリーミング版の日本語CERは27.85と低め",
+  "license": "MIT",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/microsoft/VibeVoice-ASR",
+  "summary_ja": "1時間までの会議音声を、話者ラベルとタイムスタンプ付きで一度に書き起こせる50言語超対応のモデルです。日本語の会話データでも話者分離の誤りが非常に少ない結果が出ています。",
+  "best_for_ja": "複数人の会議録・インタビューを話者分離付きで書き起こす用途。ホットワード（固有名詞）指定も可能",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/microsoft/VibeVoice-ASR",
+   "https://arxiv.org/abs/2601.18184",
+   "https://github.com/microsoft/VibeVoice/blob/main/docs/vibevoice-asr.md",
+   "https://huggingface.co/microsoft/VibeVoice-ASR-Streaming-7B",
+   "https://arxiv.org/abs/2609.02812"
+  ],
+  "confidence": "medium",
+  "rank": 11
+ },
+ {
+  "id": "lfm2-5-audio-1-5b-jp",
+  "name": "LFM2.5-Audio-1.5B-JP",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-06-05",
+  "params_m": 1500,
+  "arch": "Speech LLM（FastConformerエンコーダ115M + LFM2.5、音声出力用RQ-transformer。ASR・TTS・音声対話を1モデルで扱う）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 4.42,
+    "note": "公式モデルカード。比較表の中で最良",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 8.07,
+    "note": "公式モデルカード（同じ表のWhisper large-v3は7.1）",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 24.24,
+    "note": "公式モデルカード（held-out）。テレビ音声系では大きく劣る",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   }
+  ],
+  "features": {
+   "streaming": null,
+   "timestamps": "none",
+   "diarization": false,
+   "punctuation": null,
+   "long_form": null
+  },
+  "speed_note": "低遅延設計とされるが、ASRの速度の公式数値はない",
+  "hardware_note": "1.5Bと小型。LFM2.5ファミリーはGGUF、ONNX、MLX形式で配布され、オンデバイス利用を想定している",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "hf": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP",
+  "summary_ja": "日本語に特化した1.5Bの音声・テキスト統合モデルで、音声認識・音声合成・音声対話を1つでこなします。読み上げ音声では高精度ですが、テレビ音声のような雑多な音声は苦手です。商用利用は年間売上1,000万ドル未満の企業に限られます。",
+  "best_for_ja": "オンデバイスの日本語音声エージェントで、ASRと応答生成をまとめて動かす用途",
+  "supersedes": [
+   "LFM2-Audio-1.5B"
+  ],
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP",
+   "https://prtimes.jp/main/html/rd/p/000000006.000175118.html",
+   "https://www.liquid.ai/lfm-license"
+  ],
+  "confidence": "medium",
+  "rank": 12
+ },
+ {
+  "id": "fun-asr-mlt-nano-2512",
+  "name": "Fun-ASR-MLT-Nano-2512",
+  "org": "Tongyi Lab / FunAudioLLM（Alibaba）",
+  "country": "CN",
+  "release": "2025-12",
+  "params_m": 800,
+  "arch": "Speech LLM（エンドツーエンドのLLM型ASR）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 2.32,
+    "note": "第三者（Handy）、GGUF Q8_0（95%信頼区間2.01〜2.65）。20モデル中1位だが、公式の日本語評価はなく、学習データにFLEURSが含まれるかも不明",
+    "source": "https://models.handy.computer/models/Fun-ASR-MLT-Nano-2512"
+   }
+  ],
+  "features": {
+   "streaming": null,
+   "timestamps": "none",
+   "diarization": false,
+   "punctuation": null,
+   "long_form": null
+  },
+  "speed_note": "Ryzen 4750UでGPU 8.8倍速、CPU 5.5倍速（Handy）。2026年にvLLMでのバッチ・ストリーミング推論に対応",
+  "hardware_note": "GGUF Q8_0は0.83GB。CUDAとCPUの両方で動く。タイムスタンプと話者分離は未対応（TODO）",
+  "license": "Apache-2.0（HFモデルカード表記。第三者はFunASR Model License v1.1と表記）",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/FunAudioLLM/Fun-ASR-MLT-Nano-2512",
+  "summary_ja": "東アジア・東南アジアを重視した31言語対応の800Mモデルです。第三者のFLEURS日本語評価で突出した低誤り率を出していますが、他のデータセットでの裏付けはまだありません。",
+  "best_for_ja": "CPUやエッジでも動く多言語ASRの候補。日本語で採用する前に自社データでの検証が必須",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/FunAudioLLM/Fun-ASR-MLT-Nano-2512",
+   "https://github.com/FunAudioLLM/Fun-ASR",
+   "https://models.handy.computer/models/Fun-ASR-MLT-Nano-2512",
+   "https://models.handy.computer/languages/ja"
+  ],
+  "confidence": "low",
+  "rank": 13
+ },
+ {
+  "id": "anime-whisper",
+  "name": "Anime Whisper",
+  "org": "litagin（個人開発者）",
+  "country": "JP",
+  "release": "2024-11",
+  "params_m": 756,
+  "arch": "Encoder-Decoder（kotoba-whisper-v2.0をアニメ調音声で微調整）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "非公開ビジュアルノベル5作品（約7.5万ファイル）",
+    "cer": 13.0,
+    "note": "作者評価。同条件のWhisper large-v3は16.5、parakeet-ja 18.6、kotoba-whisper-v2.0 18.8",
+    "source": "https://huggingface.co/litagin/anime-whisper"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 7.8,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 7.9,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "Common Voice 8.0 ja",
+    "cer": 9.9,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 26.6,
+    "note": "第三者コミュニティ評価（efwkjn、beam 5）。テレビ音声系は苦手",
+    "source": "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": false
+  },
+  "speed_note": "kotoba-whisperベースなので、Whisper large-v3より大幅に速い（kotoba公称で6.3倍）",
+  "hardware_note": "kotoba-whisperと同程度（L40Sでの実測は約6.5GiB）。initial promptを使うと幻覚が増えるため非推奨。長尺音声では精度が大きく落ちる",
+  "license": "MIT",
+  "commercial": "conditional",
+  "hf": "https://huggingface.co/litagin/anime-whisper",
+  "summary_ja": "約5,300時間のアニメ・ゲーム調の演技音声で学習した日本語モデルで、笑い声や吐息なども書き起こします。ライセンスはMITですが、学習データがゲーム音声のため、商用利用時は確認が必要です。",
+  "best_for_ja": "アニメ・ゲーム・VTuberなど演技音声の字幕づくり、音声合成用データセットの書き起こし",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/litagin/anime-whisper",
+   "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+  ],
+  "confidence": "medium",
+  "rank": 14
+ },
+ {
+  "id": "sensevoice-small",
+  "name": "SenseVoice-Small",
+  "org": "FunAudioLLM（Alibaba Tongyi Lab）",
+  "country": "CN",
+  "release": "2024-07",
+  "params_m": 234,
+  "arch": "非自己回帰Encoder（CTC系）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "Common Voice ja",
+    "cer": 11.96,
+    "note": "公式論文（FunAudioLLM、言語ID指定）。同条件のWhisper large-v3は10.34",
+    "source": "https://arxiv.org/abs/2407.04051"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 7.63,
+    "note": "第三者（Handy）、GGUF Q8_0",
+    "source": "https://models.handy.computer/languages/ja"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "10秒の音声を70msで処理し（A800、RTF 0.007）、Whisper large-v3より15倍以上速い（公式）。Ryzen 4750UのCPUで19.7倍速（Handy）",
+  "hardware_note": "GGUF Q8_0は0.24GBで、CPUのみでも高速に動く。長い音声はfsmn-vadと組み合わせる",
+  "license": "FunASR Model Open Source License Agreement v1.1",
+  "commercial": "conditional",
+  "hf": "https://huggingface.co/FunAudioLLM/SenseVoiceSmall",
+  "summary_ja": "中日英韓・広東語に対応した超高速の小型モデルで、感情認識や音響イベント（拍手・笑い声など）の検出もできます。日本語の精度はWhisper large-v3にやや劣ります。ライセンスは出典表示とモデル名の保持が条件です。",
+  "best_for_ja": "CPUだけで大量の音声を素早く処理したい用途、感情・イベントのタグ付けを兼ねた解析",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/FunAudioLLM/SenseVoiceSmall",
+   "https://arxiv.org/abs/2407.04051",
+   "https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE",
+   "https://models.handy.computer/languages/ja"
+  ],
+  "confidence": "medium",
+  "rank": 15
+ },
+ {
+  "id": "moonshine-streaming-small-ja",
+  "name": "Moonshine Streaming Small ja",
+  "org": "Moonshine AI（旧Useful Sensors）",
+  "country": "US",
+  "release": "2026-08-24",
+  "params_m": 113,
+  "arch": "ストリーミングEncoder-Decoder（スライディングウィンドウTransformer、先読み約80ms）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 7.99,
+    "note": "公式カード、シード固定の400発話サンプル（batch 1）。空白を除いたCER",
+    "source": "https://huggingface.co/moonshine-ai/moonshine-streaming-small-ja"
+   },
+   {
+    "dataset": "ReazonSpeech test",
+    "cer": 26.31,
+    "note": "公式カード、同じサンプル。約0.75%の発話で繰り返しループが発生",
+    "source": "https://huggingface.co/moonshine-ai/moonshine-streaming-small-ja"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": null,
+   "long_form": true
+  },
+  "speed_note": "発話の途中から逐次出力する。旧版moonshine-tiny-ja（27M）はRyzen 4750UのCPUで27倍速（Handy）。Small jaの速度の公式数値はない",
+  "hardware_note": "113Mと小型で、エッジ級ハードウェアでのオンデバイス利用を想定している。同時公開のTiny ja版はさらに小さく、CERは約2.5ポイント悪い",
+  "license": "MIT",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/moonshine-ai/moonshine-streaming-small-ja",
+  "summary_ja": "スマートフォンや組込み機器向けの日本語ストリーミングASRです。きれいな読み上げ音声なら十分な精度ですが、雑音や多様な話し方には弱いです。",
+  "best_for_ja": "エッジ端末・ブラウザ・ロボットでのオフライン音声入力、リアルタイム字幕",
+  "supersedes": [
+   "moonshine-tiny-ja",
+   "moonshine-base-ja"
+  ],
+  "sources": [
+   "https://huggingface.co/moonshine-ai/moonshine-streaming-small-ja",
+   "https://huggingface.co/api/models?author=moonshine-ai",
+   "https://models.handy.computer/languages/ja"
+  ],
+  "confidence": "medium",
+  "rank": 16
+ }
+]

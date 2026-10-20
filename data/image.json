@@ -1,0 +1,1988 @@
+[
+ {
+  "id": "qwen-image-2-1",
+  "name": "Qwen-Image-2.1",
+  "org": "Alibaba Qwen（Tongyi Lab）",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-09-20",
+  "params_b": 7,
+  "arch": "Single-stream DiT（32層・block-causal注意・prefix KVキャッシュ）＋Qwen3-VL 8Bテキストエンコーダ＋64ch RGBA VAE",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048（16:9は2752×1536）",
+   "other": "生成と編集を1モデルに統合。参照画像は最大10枚。丸囲み・書き込み・マスクで局所編集でき、透過PNG(RGBA)をネイティブに出力する。推奨40ステップ。画像生成部7B＋エンコーダ8B。"
+  },
+  "features": {
+   "透過PNG(RGBA)生成": true,
+   "複数参照画像(最大10枚)": true,
+   "生成と編集の統合": true,
+   "ComfyUIネイティブ対応": true,
+   "LoRA対応": true,
+   "商用利用可": false
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 16,
+  "vram_note": "公式は最低VRAMを公表していない。第三者の実測（A100上、Zenn kun432氏の検証をlaozhang.aiがまとめたもの）では、bf16で最適化なし約31GB、CPUオフロードで約17GB、bitsandbytes 4bit(nf4)で約7GB。ComfyUI公式のINT8セットは画像モデル7.26GB＋エンコーダ6.31GB（vdf.ai）で16GB級に収まり、RTX 5070 Ti(16GB)・1024²でピーク約13.9GBの報告がある。8GB環境はGGUF Q4＋INT8エンコーダでの動作報告がある一方、画像入力を伴う編集で落ちたとの報告もあり不安定。",
+  "speed_note": "第三者報告ではRTX 4090で1024²約21秒・1536²約56秒、RTX 5070 Tiで1024²/20ステップ約25秒、A100で2048²/40ステップ1分強。prefix KVキャッシュにより、参照画像が多い編集ほど高速化が効く。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1042,
+    "note": "全体21位・オープンウェイト1位（AA-Image-T2I v2.1、2026-10-20閲覧）",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1083,
+    "note": "全体16〜22位・オープンウェイト1位（AA-Image-Editing v2.1、2026-10-20閲覧）",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1223,
+    "note": "82モデル中19位・オープン系1位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1369,
+    "note": "59モデル中18位・オープン系1位、暫定値（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "AAとLMArenaの両方で、T2Iと編集ともにオープンウェイト首位（2026年10月時点）。7Bと小型だが、旧Qwen-Image(20B)をAA T2Iで約140点上回る。公式は文字組み・人物の照明・細部の改善と、人物や商品の同一性保持を強調している。ただしクローズド首位のGPT Image 2.5とはAA T2Iで約180点差がある。GenEval等の公式ベンチ値はモデルカードに載っていない。",
+  "ja_note": "公式は文字描画の改善をうたうが、日本語対応は明記していない。日本語プロンプトはPE（プロンプト拡張）モデルを通すと改善したとの第三者検証がある。旧Qwen-Imageでは日本語文字が崩れるという個人検証が複数あり、2.1の日本語文字描画を体系的に検証した記事は見つかっていない。",
+  "license": "Qwen Research License Agreement（2026-09-20）",
+  "commercial": "no",
+  "license_note": "重みの利用と派生は研究・評価目的（非商用）に限られ、商用は別途ライセンスが必要（窓口: model-business@notice.qwencloud.com）。生成物については本文に明示条項がない。開発チームはX投稿で「出力は利用者のもの」との趣旨を示したが、ライセンス本文には反映されていない。商用で使うなら、Apache-2.0の旧版（T2IのQwen-Image-2512、編集のQwen-Image-Edit-2511）か、公式API（Qwen-Image-2.1-Pro/Turbo）を検討する。",
+  "hf": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+  "tools": [
+   "Diffusers",
+   "ComfyUI",
+   "vLLM-Omni",
+   "SGLang",
+   "LightX2V",
+   "OpenVINO",
+   "Draw Things",
+   "DiffusionBee"
+  ],
+  "summary_ja": "Alibabaの最新オープン画像モデル。生成・編集・最大10枚の参照合成・透過PNGを1つの7Bモデルでこなし、2026年10月時点でオープンウェイトの品質首位。",
+  "best_for_ja": "研究・個人用途での高品質な生成と編集、複数参照の合成、透過素材づくり（商用不可）",
+  "supersedes": [
+   "Qwen-Image-2512",
+   "Qwen-Image-Edit-2509",
+   "Qwen-Image",
+   "Qwen-Image-Layered"
+  ],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen-Image-2.1",
+   "https://github.com/QwenLM/Qwen-Image-2.1",
+   "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE",
+   "https://blog.laozhang.ai/ja/posts/qwen-image-2-1-local",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://docs.comfy.org/tutorials/image/qwen/qwen-image-2-1",
+   "https://www.orcarouter.ai/blog/qwen-image-2-1-artificial-analysis-image-boards",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "オープンで最高品質",
+  "pick_reason": "AA Arena オープン首位。非商用",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1042
+  }
+ },
+ {
+  "id": "qwen-image-2-1-turbo",
+  "name": "Qwen-Image-2.1-Turbo",
+  "org": "Alibaba Qwen（Tongyi Lab）",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-10-09",
+  "params_b": 7,
+  "arch": "Qwen-Image-2.1と同じ7B Single-stream DiT（蒸留チェックポイント）＋Qwen3-VL 8B",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048（16:9は2752×1536）",
+   "other": "8ステップ・CFG1。推奨サンプリングスケジュールがチェックポイントに同梱されている。生成・編集・複数参照・RGBAに対応。"
+  },
+  "features": {
+   "蒸留で高速(8ステップ)": true,
+   "透過PNG(RGBA)生成": true,
+   "複数参照画像(最大10枚)": true,
+   "ComfyUIネイティブ対応": true,
+   "商用利用可": false
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 16,
+  "vram_note": "アーキテクチャと重みのサイズはQwen-Image-2.1と同一なので、メモリ要件も同等（2.1の実測・報告値に準拠）。ComfyUI用のturbo int8版とbf16版、unsloth製GGUFが配布されている。",
+  "speed_note": "8ステップ・CFG1（ベース版は40ステップ、ComfyUIテンプレートは25ステップ）。ステップ数の比で見て、ベース版の数分の1の時間で生成できる。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1028,
+    "note": "全体24位。AAではAPI提供版（$16/1000枚）として計測しており、オープン版と同一の設定かは未確認",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1065,
+    "note": "全体21〜29位（API版の計測値）",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   }
+  ],
+  "quality_note": "AAのAPI版ではT2Iでベース版より14点低いだけで、蒸留による劣化は小さい。ポスター・UI・複数参照合成の作例が公式に多数ある。",
+  "ja_note": "Qwen-Image-2.1と同じ（日本語対応の明記なし）。",
+  "license": "Qwen Research License Agreement",
+  "commercial": "no",
+  "license_note": "ベース版と同じく非商用限定。商用で使うなら公式API（Qwen-Image-2.1-Turbo API）を利用する。",
+  "hf": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+  "tools": [
+   "Diffusers",
+   "ComfyUI",
+   "vLLM-Omni",
+   "SGLang"
+  ],
+  "summary_ja": "Qwen-Image-2.1を8ステップに蒸留した高速版。品質をほぼ保ったまま生成と編集を短時間で回せる。",
+  "best_for_ja": "ローカルでの高速な試行錯誤、編集の反復（非商用）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+   "https://github.com/QwenLM/Qwen-Image-2.1",
+   "https://docs.comfy.org/tutorials/image/qwen/qwen-image-2-1",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+  ],
+  "confidence": "medium",
+  "rank": 2,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1028
+  }
+ },
+ {
+  "id": "flux-3-image-klein",
+  "name": "FLUX 3 Image Klein",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "access": "open-weight",
+  "release": "2026-10-15",
+  "params_b": 5.6,
+  "arch": "フローマッチングの画像トランスフォーマー（5.6B）＋Qwen3-VL-4B-Instructテキストエンコーダ。flow-mapサンプリング",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "control"
+  ],
+  "spec": {
+   "max_resolution": "ネイティブ4K（BFL公表）",
+   "other": "蒸留版は16ステップ・ガイダンスなし、Base版（非蒸留）は50ステップ・CFG3.5。参照画像は最大10枚。0〜1000グリッドのバウンディングボックスで配置・編集範囲を指定できる。プロンプトアップサンプラー（公式9B、または任意のLLM）の併用が必須とされる。"
+  },
+  "features": {
+   "複数参照画像(最大10枚)": true,
+   "バウンディングボックス配置指定": true,
+   "蒸留で高速": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "プロンプト拡張が必須": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 12,
+  "vram_note": "BFL公表では、INT8版がComfyUIやDiffusers経由でVRAM 8GBのGeForce RTXから動く。生成器の重みはBF16で11.2GB、FP8で5.6GB。参照コードのB200実測（1024²、アップサンプラーなし）はBF16 31GB、FP8 26GB、NVFP4 25GB で、公式アップサンプラーを載せるとさらに約28GB増える。unsloth製GGUFはQ4_K_XLで3.93GB。",
+  "speed_note": "NVIDIA計測（ComfyUI）で、蒸留版16ステップ・1024²のT2IはRTX 4070で8.9秒、RTX 5090でINT8・1MP約4秒。Base版の50ステップはGB300で1.7秒、DGX Sparkで43.8秒。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "BFL社内ブラインド評価 ELO差（対FLUX.2 [klein] 9B、T2I）",
+    "value": 91,
+    "note": "BFL公表の社内評価。画像編集では+70。Qwen-Image 2.1やKrea 2より上位と主張しているが、第三者アリーナには未掲載（2026-10-20時点）",
+    "source": "https://bfl.ai/blog/flux-3-image-klein"
+   }
+  ],
+  "quality_note": "BFLの社内評価では、T2I・複数参照・編集のすべてでオープンモデル首位とし、クローズドのIdeogram V4.5やFLUX.2 [pro]より上と主張している。公開から日が浅く、AA・LMArenaでの第三者評価はまだない。モデルカードは、短いプロンプトでは平凡な出力になること、文字描画が不正確になりうることを制限事項に挙げている。",
+  "ja_note": "公式は文字描画の不正確さを制限事項として記載している。日本語プロンプト・日本語文字の対応状況は未確認。",
+  "license": "FLUX Kommunity License v1.0（テキストエンコーダはApache-2.0）",
+  "commercial": "conditional",
+  "license_note": "非商用・研究は無料。年間総収入（関連会社込み）500万ドル未満の個人・企業は生成物を商用利用できる。それを超える組織はBFLの商用ライセンスかAPIが必要。商用のファインチューン・再配布まで包括的に許可するものではない。HFでライセンス同意後にダウンロードする。",
+  "hf": "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "TensorRT-LLM",
+   "SGLang Diffusion",
+   "vLLM-Omni",
+   "Ostris AI Toolkit",
+   "NeMo AutoModel"
+  ],
+  "summary_ja": "BFLが2026年10月に公開した5.6Bの最新オープンモデル。生成・編集・最大10枚の参照合成をこなし、INT8なら8GB級GPUでも動く。",
+  "best_for_ja": "中小規模の商用制作、ローカルでの高速な生成・編集、LoRA学習のベース",
+  "supersedes": [
+   "FLUX.2 [klein] 9B",
+   "FLUX.1 Kontext [dev]",
+   "FLUX.1 [schnell]"
+  ],
+  "sources": [
+   "https://huggingface.co/black-forest-labs/flux-3-image-klein",
+   "https://bfl.ai/blog/flux-3-image-klein",
+   "https://bfl.ai/blog",
+   "https://huggingface.co/unsloth/flux-3-image-klein-GGUF"
+  ],
+  "confidence": "medium",
+  "rank": 3,
+  "pick": "8GBで動く最新FLUX",
+  "pick_reason": "BFL の最新世代の軽量版"
+ },
+ {
+  "id": "flux-2-dev",
+  "name": "FLUX.2 [dev]",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "access": "open-weight",
+  "release": "2025-11-25",
+  "params_b": 32,
+  "arch": "Rectified flow transformer（32B）＋大型LLMテキストエンコーダ（Mistral Small系24B）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "T2I・単一参照編集・複数参照編集を1モデルで扱う。既定50ステップ（28ステップでも可）、guidance 4。fal製の蒸留派生（FLUX.2 [dev] Turbo / Flash）もある。"
+  },
+  "features": {
+   "複数参照画像": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "生成物の商用利用可": true
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": 48,
+  "vram_note": "公式では、4bit量子化（diffusers/FLUX.2-dev-bnb-4bit）とリモートのテキストエンコーダを組み合わせてRTX 4090(24GB)で動かす。フルスクリプトはH100級が必要。ComfyUIのFP8版は本体35.46GB・エンコーダ18.03GBで、48GBカード向けとされる（vdf.ai）。第三者推定（Spheron）は全載せ約90GB、bf16でエンコーダをCPUに置いて約64GB、GGUF Q4_K_S約19GB。",
+  "speed_note": "既定50ステップ。大型のため、コンシューマGPUでは量子化とオフロードが前提で時間がかかる（公式の時間計測なし）。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1000,
+    "note": "全体44位。AAはこのモデルを基準点（1000）に固定している",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1000,
+    "note": "全体40〜47位（基準点）",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1146,
+    "note": "38位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1225,
+    "note": "43位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   },
+   {
+    "metric": "GenEval",
+    "value": 0.87,
+    "note": "HiDream-O1-Imageのモデルカード掲載の比較値",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   },
+   {
+    "metric": "DPG-Bench",
+    "value": 87.57,
+    "note": "HiDream-O1-Imageのモデルカード掲載の比較値",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   }
+  ],
+  "quality_note": "2025年末時点ではオープン最高峰だったが、2026年10月時点ではQwen-Image-2.1、Ideogram 4、HunyuanImage 3.0 Instruct（編集）などに抜かれている。写実性・質感の評価は高い。32Bと重く、家庭用GPUでの運用負荷が大きい。",
+  "ja_note": "個人ブログの検証では「妖怪退散」など漢字を正確に描けた例がある。一方で、漢字に誤りが出た（かなは正確）という報告もあり、評価は割れている。",
+  "license": "FLUX [dev] Non-Commercial License",
+  "commercial": "conditional",
+  "license_note": "モデル自体の商用利用（サービス組込み等）はBFLの商用ライセンスが必要。モデルカードは生成物について「個人・学術・商用目的に使える」と記載している。",
+  "hf": "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Forge"
+  ],
+  "summary_ja": "BFLの大型オープンモデル（32B）。品質は高いが重く、家庭用GPUでは4bit量子化などの工夫が要る。",
+  "best_for_ja": "48GB級GPUや量子化環境での写実的な生成・複数参照編集、既存FLUX資産の活用",
+  "supersedes": [
+   "FLUX.1 [dev]",
+   "FLUX.1 Kontext [dev]",
+   "FLUX.1 Krea [dev]"
+  ],
+  "sources": [
+   "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://www.spheron.network/tools/gpu-recommender/black-forest-labs/FLUX.2-dev/",
+   "https://note.com/ai_0049/n/n7e6f19fd02b7",
+   "https://note.com/ai_0049/n/n9f4dac7c8f2b",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "high",
+  "rank": 4,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1000
+  }
+ },
+ {
+  "id": "flux-2-klein-4b",
+  "name": "FLUX.2 [klein] 4B",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "access": "open-weight",
+  "release": "2026-01",
+  "params_b": 4,
+  "arch": "Rectified flow transformer（4B、蒸留）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "4ステップ・guidance 1.0の蒸留版。生成・編集・複数参照を1モデルに統合している。非蒸留のBase 4Bも別リポジトリで公開。"
+  },
+  "features": {
+   "蒸留で高速(4ステップ)": true,
+   "複数参照画像": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 13,
+  "vram_note": "公式では約13GBに収まり、RTX 3090/4070以上で動く。ComfyUIのFP8版（4.07GB）なら8GB級、BF16（7.75GB）でエンコーダをオフロードすれば12GB級（vdf.ai）。",
+  "speed_note": "公式発表では、高性能GPUでエンドツーエンド1秒未満。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 837,
+    "note": "全体93位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 940,
+    "note": "全体54〜59位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1030,
+    "note": "70位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1187,
+    "note": "49位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "品質ではFLUX 3 Image Kleinや上位モデルに及ばないが、軽さと速さに加え、Apache-2.0で制限なく商用利用できる点が強み。LoRAなど周辺資産も多い。",
+  "ja_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデル・生成物とも商用可。同系の9B版はFLUX Non-Commercial Licenseで、ライセンスが異なる点に注意。",
+  "hf": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Forge"
+  ],
+  "summary_ja": "BFLの小型・高速モデル。BFLのモデルで唯一Apache-2.0のため、企業規模を問わず商用で使いやすい。",
+  "best_for_ja": "売上500万ドル以上の企業での商用利用、低VRAM環境、リアルタイム寄りの生成・編集",
+  "supersedes": [
+   "FLUX.1 [schnell]"
+  ],
+  "sources": [
+   "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+   "https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "high",
+  "rank": 5,
+  "hl": {
+   "label": "AA Arena",
+   "value": 837
+  }
+ },
+ {
+  "id": "ideogram-4",
+  "name": "Ideogram 4",
+  "org": "Ideogram",
+  "country": "CA",
+  "access": "open-weight",
+  "release": "2026-06-03",
+  "params_b": 9.3,
+  "arch": "フローマッチングの完全Single-stream DiT（34層、スクラッチ学習）＋Qwen3-VL-8B-Instruct（中間13層の隠れ状態を連結）",
+  "tasks": [
+   "t2i",
+   "control"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048（各辺256〜2048の16の倍数、縦横比は最大6:1）",
+   "other": "JSON構造化プロンプト、バウンディングボックスでのレイアウト指定、カラーパレット指定に対応。サンプラープリセットは48/20/12ステップ。重みはnf4版とfp8版で配布。fal製の高速蒸留派生（Fast / Instant）もある。"
+  },
+  "features": {
+   "文字描画(タイポグラフィ)特化": true,
+   "バウンディングボックス配置指定": true,
+   "カラーパレット指定": true,
+   "JSON構造化プロンプト": true,
+   "ComfyUIネイティブ対応": true,
+   "LoRA対応": true,
+   "商用利用可": false
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 24,
+  "vram_note": "公式の要件はない。nf4版は24GBのコンシューマGPU1枚に収まる（pinggy.io・vdf.ai）。fp8版はトランスフォーマー9.29GB＋エンコーダ8.78GBで24GBカード向け（vdf.ai）。最低値は「FP8で16GB必要」（Earngenix）、「nf4で約16GB」（techsy.io）とする二次情報があるが、FP8の所要量はソース間で食い違う。ComfyUI版はINT8・NVFP4も提供。",
+  "speed_note": "既定はV4_QUALITY_48（48ステップ）で、20・12ステップのプリセットもある。コミュニティ報告（fal Fast版、RTX 5090、1536²）では bf16 0.85 it/s、int8 1.7 it/s、nvfp4 1.9 it/s。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1026,
+    "note": "Quality設定で全体29位（オープン2位）。標準設定は1001で43位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1205,
+    "note": "ideogram-4.0-qualityとして20位・オープン系2位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "ContraLabs タイポグラフィ評価 1位獲得率",
+    "value": 47.9,
+    "note": "%。プロデザイナー10名のブラインド評価（Nano Banana 2は30.0%）。Ideogram公式READMEが引用した値",
+    "source": "https://github.com/ideogram-oss/ideogram4"
+   }
+  ],
+  "quality_note": "文字組み・レイアウト制御に強く、公式は「9.3Bで、Qwen-Image(20B)・FLUX.2 [dev](32B)・HunyuanImage 3.0(80B)より文字描画が上」と主張している。T2IではQwen-Image-2.1に次ぐオープン2位。編集には非対応。",
+  "ja_note": "公式は「クラス最高の多言語文字描画」と主張しているが、日本語の明記や検証は見つかっていない。",
+  "license": "Ideogram Non-Commercial Model Agreement（推論コードはApache-2.0）",
+  "commercial": "no",
+  "license_note": "重みは非商用目的に限られる。収益を生む製品の広告・宣伝用に出力を生成することは、非商用目的に含まれないと明記されている。出力の権利は主張しない。出力を競合モデルの学習に使うことは禁止。商用は別契約が必要。",
+  "hf": "https://huggingface.co/ideogram-ai/ideogram-4-fp8",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "SGLang",
+   "Draw Things",
+   "DiffusionBee",
+   "Ostris AI Toolkit"
+  ],
+  "summary_ja": "Ideogram初のオープンウェイトモデルで、ポスターやロゴなど文字の多いデザインに強い。T2I品質はオープン2位級だが商用不可。",
+  "best_for_ja": "タイポグラフィ重視のデザイン試作、レイアウト指定つきの生成（非商用）",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/ideogram-oss/ideogram4",
+   "https://huggingface.co/ideogram-ai/ideogram-4-fp8",
+   "https://github.com/ideogram-oss/ideogram4/blob/main/model_licenses/LICENSE-IDEOGRAM-4-NON-COMMERCIAL",
+   "https://huggingface.co/Comfy-Org/Ideogram-4",
+   "https://huggingface.co/Hippotes/Ideogram4-Fal-ComfyUI",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://pinggy.io/blog/best_free_open_source_ai_image_generators_to_self_host/",
+   "https://www.earngenix.com/workflows/install-ideogram-4-comfyui",
+   "https://techsy.io/de/blog/ideogram-4-0",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "medium",
+  "rank": 6,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1026
+  }
+ },
+ {
+  "id": "krea-2-turbo",
+  "name": "Krea 2 Turbo",
+  "org": "Krea",
+  "country": "US",
+  "access": "open-weight",
+  "release": "2026-06-22",
+  "params_b": 12.9,
+  "arch": "DiT（12.9B、Raw版から蒸留）＋Qwen3-VL-4Bテキストエンコーダ＋Qwen Image VAE",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048",
+   "other": "8ステップ・CFG0。非蒸留のKrea 2 Raw（約52ステップ・CFG3.5）はLoRA学習用のベースで、Rawで学習したLoRAはTurboに転用できる。"
+  },
+  "features": {
+   "蒸留で高速(8ステップ)": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "AI生成画像を学習から除外": true
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 32,
+  "vram_note": "公式の要件はない。FP8は13.14GBで16GB級、BF16は本体だけで26.28GB（vdf.ai）のため32GB級が目安。コミュニティのfp8は10〜12GB、nvfp4は8GBを狙うとの記事もある（buildfastwithai、推定値）。",
+  "speed_note": "8ステップ。「一般的なGPUで2K画像を約2秒」との紹介記事もあるが、独立した検証はない。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1113,
+    "note": "krea-2-turbo（community license）として52位（2026-10-07時点）。AAにはAPI版（Krea 2 Large / Medium等）のみ掲載",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   }
+  ],
+  "quality_note": "画風の幅が広く写実表現の評価が高い。コミュニティのLoRA・派生（写実系、アニメ系）が急速に増えている。LMArena T2IではHiDream-O1-Imageとほぼ同等で、FLUX.2 [dev]よりやや下。編集機能はない。",
+  "ja_note": null,
+  "license": "Krea 2 Community License",
+  "commercial": "conditional",
+  "license_note": "年間総収入（関連会社込み、直近12か月）100万ドル未満なら、モデルと生成物を商用利用できる。超える場合はエンタープライズライセンスが必要。生成物の所有権は利用者にある。全利用者にCSAM・非同意画像・名誉毀損対策のフィルタ実装義務がある。第三者記事にある「50席」条件は公式本文では確認できなかった。",
+  "hf": "https://huggingface.co/krea/Krea-2-Turbo",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "SGLang",
+   "Ostris AI Toolkit",
+   "Draw Things",
+   "DiffusionBee"
+  ],
+  "summary_ja": "Kreaが公開した12.9Bの写実・美観寄りのT2Iモデル。8ステップで2K画像を高速に生成できる。",
+  "best_for_ja": "写実的・美麗な一枚絵の生成、小規模事業者の商用制作、LoRAでの画風づくり",
+  "supersedes": [
+   "FLUX.1 Krea [dev]"
+  ],
+  "sources": [
+   "https://huggingface.co/krea/Krea-2-Turbo",
+   "https://krea.ai/krea-2-licensing",
+   "https://comfyui-wiki.com/en/news/2026-06-22-krea-2-open-source-text-to-image",
+   "https://blog.buildfastwithai.com/krea-2-open-source-review-raw-turbo",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "medium",
+  "rank": 7,
+  "hl": {
+   "label": "LMArena",
+   "value": 1113
+  }
+ },
+ {
+  "id": "hunyuanimage-3-0-instruct",
+  "name": "HunyuanImage-3.0-Instruct",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-01-26",
+  "params_b": 80,
+  "arch": "自己回帰型の統合マルチモーダルMoE（総80B・アクティブ13B、64エキスパート）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "CoT推論によるプロンプト自己書き換えに対応。画像編集、複数画像の融合（最大3枚）。既定50ステップ。8ステップ推奨の蒸留版（Instruct-Distil）が別リポジトリで公開されている。"
+  },
+  "features": {
+   "推論(CoT)でプロンプト拡張": true,
+   "複数参照画像(最大3枚)": true,
+   "生成と編集の統合": true,
+   "蒸留版あり": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 640,
+  "vram_note": "公式推奨はInstruct・Instruct-Distilとも80GB GPU×8枚以上（ベース版の3.0は80GB×3枚以上）。家庭用GPU1枚での実用は困難。",
+  "speed_note": "既定50ステップ。Distil版は8ステップ推奨。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1064,
+    "note": "全体22〜29位・オープンウェイト2位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 987,
+    "note": "全体54位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1303,
+    "note": "26位・オープン系2位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "編集品質はオープンウェイトでQwen-Image-2.1に次ぐ2位。世界知識を使った推論でプロンプトを補完するのが特長。ただし後継のHunyuanImage 3.5はTencent CloudのPreview版（API）のみで、重みは未公開。",
+  "ja_note": "公式作例は中国語・英語の文字入り。日本語文字描画は未確認。",
+  "license": "Tencent Hunyuan Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では適用されない（地域外での利用は無許諾扱い）。月間アクティブユーザー1億超の事業者は別途許諾が必要。出力を他のAIモデルの改善に使うことは禁止。日本からの利用は対象地域内。",
+  "hf": "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct",
+  "tools": [
+   "Transformers",
+   "公式推論スクリプト",
+   "vLLM"
+  ],
+  "summary_ja": "Tencentの80B MoE統合モデル。編集品質はオープン上位だが、動かすにはデータセンター級のGPU群が要る。",
+  "best_for_ja": "マルチGPUサーバーでの高品質な編集・推論付き生成の研究や検証",
+  "supersedes": [
+   "HunyuanImage-3.0",
+   "HunyuanImage-2.1"
+  ],
+  "sources": [
+   "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct",
+   "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct-Distil",
+   "https://github.com/Tencent-Hunyuan/HunyuanImage-3.0",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1064
+  }
+ },
+ {
+  "id": "hidream-o1-image",
+  "name": "HiDream-O1-Image",
+  "org": "HiDream.ai",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-05-08",
+  "params_b": 8.8,
+  "arch": "Pixel-level Unified Transformer（UiT）。VAEや独立したテキストエンコーダを持たず、画素・テキスト・条件を1つのトークン空間で扱う",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "control"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048",
+   "other": "T2I・長文テキスト描画・指示編集・被写体指定のパーソナライズ・ストーリーボードを1モデルで扱う。IPパイプラインはレイアウト・骨格条件に対応。推論エージェント（Prompt Agent）が付属。蒸留Dev版は28ステップ。"
+  },
+  "features": {
+   "VAE不要のピクセル空間生成": true,
+   "長文テキスト描画": true,
+   "生成と編集の統合": true,
+   "推論型プロンプトエージェント": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": 10,
+  "rec_vram_gb": 24,
+  "vram_note": "公式の要件はない。ComfyUI版はBF16 16.37GB、FP8 8.07GBで24GBカード向け（vdf.ai）。コミュニティのfp8で約10GB（Pinokio）、RTX A4500でfp8使用時に19GB使用との報告がある。",
+  "speed_note": "フル版は非蒸留、Dev版は28ステップ。公式の時間計測はない。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 974,
+    "note": "全体61位（Dev版は810で98位）。後継のHiDream-O1-Image-1.5（1016）はAPIのみ",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 956,
+    "note": "全体51〜56位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1116,
+    "note": "47位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "GenEval",
+    "value": 0.9,
+    "note": "公式値（Overall）",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   },
+   {
+    "metric": "DPG-Bench",
+    "value": 89.83,
+    "note": "公式値（Overall）",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   },
+   {
+    "metric": "CVTG-2K 平均単語精度",
+    "value": 0.9128,
+    "note": "公式値（複数領域の文字描画）",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   }
+  ],
+  "quality_note": "GenEval・DPG・文字描画の公式ベンチでQwen-ImageやFLUX.2 [dev]を上回る。人による評価のアリーナでは中位で、ベンチ値ほどの差は出ていない。MITライセンスで生成・編集・被写体保持まで扱える点が貴重。",
+  "ja_note": "公式作例は多言語テキストをうたうが、ベンチは英語・中国語（LongText-Bench EN/ZH）のみ。日本語は未確認。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・モデルともMIT。付属のPrompt AgentでGemmaを使う場合は、Gemmaのライセンス同意が別途必要。",
+  "hf": "https://huggingface.co/HiDream-ai/HiDream-O1-Image",
+  "tools": [
+   "Transformers",
+   "公式推論スクリプト",
+   "ComfyUI（コミュニティFP8版）"
+  ],
+  "summary_ja": "VAEを使わずピクセルを直接生成する8B級の統合モデル。生成・編集・被写体保持をこなし、MITで商用も自由。",
+  "best_for_ja": "商用可のライセンスで、生成と編集を1モデルにまとめたい場合。長文テキスト入りの画像",
+  "supersedes": [
+   "HiDream-I1",
+   "HiDream-E1.1"
+  ],
+  "sources": [
+   "https://huggingface.co/HiDream-ai/HiDream-O1-Image",
+   "https://arxiv.org/pdf/2605.11061v1",
+   "https://beta.pinokio.co/posts/01kr99431493406je43zzqvpyy",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "medium",
+  "rank": 9,
+  "pick": "生成も編集も・MIT",
+  "pick_reason": "1つのモデルで両方できる",
+  "hl": {
+   "label": "AA Arena",
+   "value": 974
+  }
+ },
+ {
+  "id": "z-image-turbo",
+  "name": "Z-Image-Turbo",
+  "org": "Alibaba Tongyi-MAI",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2025-11-26",
+  "params_b": 6,
+  "arch": "Scalable Single-Stream DiT（S3-DiT、6B）＋Qwen3系4Bテキストエンコーダ。Decoupled-DMD＋DMDRで蒸留",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "8NFE（num_inference_steps=9）、CFGなし。非蒸留ベースのZ-Image（2026-01-27、28〜50ステップ）も公開済み。編集版のZ-Image-EditとZ-Image-Omni-Baseは「公開予定」のまま（2026-10時点）。"
+  },
+  "features": {
+   "蒸留で高速(8ステップ)": true,
+   "中英バイリンガル文字描画": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 16,
+  "vram_note": "公式では16GB VRAMのコンシューマ機に余裕をもって収まる。ComfyUIのINT8版は6.20GBで12GB級カードに収まる（vdf.ai）。",
+  "speed_note": "公式では、H800で1秒未満のレイテンシ（8NFE）。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 935,
+    "note": "全体69位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1083,
+    "note": "59位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "GenEval",
+    "value": 0.82,
+    "note": "HiDream-O1-Imageカード掲載の比較値（ERNIE-Imageカードでは0.8233）",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   },
+   {
+    "metric": "DPG-Bench",
+    "value": 84.86,
+    "note": "HiDream-O1-Imageカード掲載の比較値",
+    "source": "https://huggingface.co/HiDream-ai/HiDream-O1-Image"
+   },
+   {
+    "metric": "LongText-Bench 平均",
+    "value": 0.9215,
+    "note": "EN 0.917 / ZH 0.926（ERNIE-Imageカード掲載の比較値）",
+    "source": "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   }
+  ],
+  "quality_note": "6Bと軽量ながら写実性と文字描画の評価が高く、HFで5,000超のいいねを集める定番。アリーナの順位は2026年の新モデル群より下がったが、Apache-2.0・16GBで動く手軽さから派生モデル・LoRAが非常に多い。",
+  "ja_note": "公式は英語・中国語のバイリンガル文字描画をうたう。個人ブログの検証では日本語の漢字が明瞭で、「妖怪退散」を正確に描けたとの報告がある（少数サンプル）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデル・生成物とも商用可。",
+  "hf": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "vLLM-Omni",
+   "Forge"
+  ],
+  "summary_ja": "Alibaba Tongyiの6B高速モデル。16GB級GPUで8ステップの高品質な写真を作れ、Apache-2.0で商用も自由。",
+  "best_for_ja": "家庭用GPUでの写実的な生成、商用の量産、LoRA・派生モデルのベース",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+   "https://github.com/Tongyi-MAI/Z-Image",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://note.com/ai_0049/n/n9f4dac7c8f2b",
+   "https://note.com/ai_0049/n/n7e6f19fd02b7",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "high",
+  "rank": 10,
+  "pick": "16GBで動く定番・商用OK",
+  "pick_reason": "Apache 2.0。速い",
+  "hl": {
+   "label": "AA Arena",
+   "value": 935
+  }
+ },
+ {
+  "id": "ernie-image-turbo",
+  "name": "ERNIE-Image-Turbo",
+  "org": "Baidu",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-04",
+  "params_b": 8,
+  "arch": "Single-stream DiT（8B）＋軽量Prompt Enhancer。DMD＋RLで蒸留",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "約1MP（1024×1024、1376×768等の推奨解像度）",
+   "other": "8ステップ。SFT版のERNIE-Image（50ステップ、guidance 4.0）が別リポジトリで公開されている。ポスター・漫画・多コマ等の構造化生成に強い。"
+  },
+  "features": {
+   "蒸留で高速(8ステップ)": true,
+   "プロンプト拡張(PE)同梱": true,
+   "長文テキスト描画": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 24,
+  "vram_note": "公式では24GBのコンシューマGPUで動く。より少ないVRAMでの公式値はない（unsloth製GGUFは配布されている）。",
+  "speed_note": "8ステップ（SFT版は50ステップ）。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 914,
+    "note": "全体77位（SFT版ERNIE Imageは906で80位）",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "GenEval",
+    "value": 0.8667,
+    "note": "公式値（PEなし）。SFT版はPEなしで0.8856",
+    "source": "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   },
+   {
+    "metric": "OneIG-EN Overall",
+    "value": 0.5656,
+    "note": "公式値（PEあり）。SFT版は0.5750",
+    "source": "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   },
+   {
+    "metric": "LongText-Bench 平均",
+    "value": 0.9655,
+    "note": "公式値（PEあり、EN 0.9675 / ZH 0.9636）",
+    "source": "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   }
+  ],
+  "quality_note": "公式ベンチ（GenEval・OneIG・LongText）ではQwen-ImageやZ-Imageを上回り、オープン上位級の値を示す。人による評価のアリーナでは中位で、ベンチほど目立たない。指示追従と文字・レイアウト描画が強み。",
+  "ja_note": "中国語の文字評価（OneIG-ZH、LongText-ZH）は高いが、日本語は未確認。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデル・生成物とも商用可。",
+  "hf": "https://huggingface.co/baidu/ERNIE-Image-Turbo",
+  "tools": [
+   "Diffusers",
+   "ComfyUI"
+  ],
+  "summary_ja": "Baiduの8B T2Iモデルの高速版。文字や多コマ構成に強く、Apache-2.0で商用可。",
+  "best_for_ja": "ポスター・漫画コマなど構造のある画像を商用で量産したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/baidu/ERNIE-Image-Turbo",
+   "https://huggingface.co/baidu/ERNIE-Image",
+   "https://pinggy.io/blog/best_free_open_source_ai_image_generators_to_self_host/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+  ],
+  "confidence": "medium",
+  "rank": 11,
+  "hl": {
+   "label": "AA Arena",
+   "value": 914
+  }
+ },
+ {
+  "id": "qwen-image-edit-2511",
+  "name": "Qwen-Image-Edit-2511",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2025-12",
+  "params_b": 20,
+  "arch": "MMDiT（20B）＋Qwen2.5-VL系テキスト/画像エンコーダ",
+  "tasks": [
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "指示編集の専用モデル。人物・複数人物の一貫性、人気LoRA効果（照明強化等）の内蔵、工業デザイン生成、幾何推論を強化している。既定40ステップ。"
+  },
+  "features": {
+   "複数参照画像": true,
+   "人物の一貫性保持": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。参考として、unsloth製GGUFの拡散部ファイルサイズはQ4_K_Mで13.24GB、Q8_0で21.76GB、BF16で40.87GB（別途テキストエンコーダとVAEが必要）。",
+  "speed_note": "既定40ステップ。Lightning系の少ステップLoRAがコミュニティで多数ある。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 990,
+    "note": "Qwen Image Edit Plus 2511として全体41〜50位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1234,
+    "note": "39位・Apache-2.0のモデルでは上位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "品質面ではQwen-Image-2.1に抜かれた。しかし、2.1が非商用ライセンスになったため、Apache-2.0で使えるQwen系編集モデルとしてはこれが最新。LMArena編集ではFLUX.2 [dev]やklein 9Bをわずかに上回る。同時期のT2I版Qwen-Image-2512（Apache-2.0、LMArena T2I 1125・44位）も商用向けの選択肢になる。",
+  "ja_note": "Qwen-Image系（T2I）は日本語文字が崩れやすいとの個人検証がある。編集での日本語文字の差し替えは未確認。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデル・生成物とも商用可。後継の2.1は研究用ライセンスのため、商用ならこちらを選ぶ理由がある。",
+  "hf": "https://huggingface.co/Qwen/Qwen-Image-Edit-2511",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Nunchaku",
+   "Forge"
+  ],
+  "summary_ja": "Apache-2.0で商用利用できるQwen系編集モデルの最新版。人物の一貫性を保った編集や複数画像の合成に強い。",
+  "best_for_ja": "商用案件での写真編集・合成、LoRA資産を活かした編集",
+  "supersedes": [
+   "Qwen-Image-Edit-2509",
+   "Qwen-Image-Edit"
+  ],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen-Image-Edit-2511",
+   "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF",
+   "https://huggingface.co/Qwen/Qwen-Image-2512",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "high",
+  "rank": 12,
+  "hl": {
+   "label": "AA Arena",
+   "value": 990
+  }
+ },
+ {
+  "id": "glm-image",
+  "name": "GLM-Image",
+  "org": "Zhipu AI（Z.ai）",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-01",
+  "params_b": 16,
+  "arch": "自己回帰＋拡散デコーダのハイブリッド（GLM-4-9B由来の9B AR生成器＋7B Single-stream DiTデコーダ、Glyph Encoder付き）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "1K〜2K",
+   "other": "AR部が約256トークンの要約を生成し、1K〜4Kトークンに展開する。画像編集、スタイル変換、ID保持、複数被写体の一貫性に対応。既定50ステップ。"
+  },
+  "features": {
+   "文字描画特化(Glyph Encoder)": true,
+   "知識集約型の生成": true,
+   "複数参照画像": true,
+   "商用利用可": true
+  },
+  "min_vram_gb": 23,
+  "rec_vram_gb": null,
+  "vram_note": "公式では、enable_model_cpu_offloadを使って約23GBのGPUメモリで動作（推論は遅くなる）。オフロードなしの所要量は公表されていない。",
+  "speed_note": "公式は、推論最適化が未成熟で実行コストが比較的高いとしている。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 887,
+    "note": "全体85位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 824,
+    "note": "全体67〜68位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1012,
+    "note": "Z.ai・MITの行（モデル名欄が欠落した表示）で71〜76位相当（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LongText-Bench 平均",
+    "value": 0.9656,
+    "note": "EN 0.9524 / ZH 0.9788（ERNIE-Imageカード掲載の比較値）",
+    "source": "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   }
+  ],
+  "quality_note": "全体的な画質やアリーナ順位は中位以下だが、長文テキストや知識を要する図解では強い（LongText-Bench ZHでオープン最上位級）。",
+  "ja_note": "中国語・英語の長文描画に強い。日本語は未確認。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "モデル・生成物とも商用可。",
+  "hf": "https://huggingface.co/zai-org/GLM-Image",
+  "tools": [
+   "Diffusers",
+   "SGLang"
+  ],
+  "summary_ja": "自己回帰と拡散を組み合わせた16Bモデルで、文字が多い図解やポスターに強い。MITで商用可。",
+  "best_for_ja": "中国語・英語の長文入りインフォグラフィックや知識系の図解",
+  "supersedes": [
+   "CogView4"
+  ],
+  "sources": [
+   "https://huggingface.co/zai-org/GLM-Image",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://huggingface.co/baidu/ERNIE-Image-Turbo",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "medium",
+  "rank": 13,
+  "hl": {
+   "label": "AA Arena",
+   "value": 887
+  }
+ },
+ {
+  "id": "anima",
+  "name": "Anima（Base / Aesthetic / Turbo）",
+  "org": "CircleStone Labs × Comfy Org",
+  "country": "US",
+  "access": "open-weight",
+  "release": "2026-08",
+  "params_b": 2,
+  "arch": "DiT（NVIDIA Cosmos-Predict2-2Bベース）＋Qwen3 0.6Bテキストエンコーダ（LLMアダプタ経由）＋Qwen-Image VAE",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "1536×1536（512²〜1536²）",
+   "other": "アニメ・イラスト特化。Danbooruタグと英語自然文を併用できる。Base（30〜50ステップ、CFG4〜5、LoRA学習用）、Aesthetic（画質調整版、v1.1は2026-07）、Turbo（CFG1・8〜12ステップ、v1.1は2026-08-24）。初版プレビューは2026-01-29。"
+  },
+  "features": {
+   "アニメ・イラスト特化": true,
+   "Danbooruタグ対応": true,
+   "蒸留で高速(Turbo)": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "日本語文字の描画": false
+  },
+  "min_vram_gb": 6,
+  "rec_vram_gb": 8,
+  "vram_note": "実地レビューでは非量子化で約7GB（lilting.ch）。DiffSynthガイドは最低約6GBとし、6GBカードでは最初からCPUオフロード推奨。拡散モデルのファイルは4.18GB、テキストエンコーダは1.19GB。",
+  "speed_note": "RTX 4060 Ti 16GBで1ステップ約1.8秒（30ステップで1分未満）の報告。RTX 5090で約10秒。Turboは8〜12ステップで大幅に速い。",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "SDXL系とは別系統の新世代アニメモデル。キャラ名・作品名・絵師タグの知識が豊富で、LoRAなしでも多様な画風を出せるとの評価がある。写実は意図的に不得意。WebUI/Forgeは非推奨で、ComfyUI前提。LoRA資産はSDXL系よりまだ少ない。",
+  "ja_note": "公式によれば文字描画は単語〜短いフレーズ程度で、長文は不可。日本語文字は期待できない。プロンプトは英語のタグ・自然文が前提。",
+  "license": "CircleStone Labs Non-Commercial License v1.2",
+  "commercial": "conditional",
+  "license_note": "モデル本体（およびLoRA等の派生物）は非商用・非本番利用に限られる。生成物は、禁止事項に当たらない限り商用を含むあらゆる目的に使えると明記されている。商用でモデルを使う場合は別途ライセンスが必要。",
+  "hf": "https://huggingface.co/circlestone-labs/Anima",
+  "tools": [
+   "ComfyUI",
+   "diffusion-pipe",
+   "sd-scripts",
+   "DiffSynth"
+  ],
+  "summary_ja": "2026年に登場した2Bのアニメ特化モデル。8GB前後のGPUで動き、SDXL系に代わる新しい選択肢として日本でも注目されている。",
+  "best_for_ja": "アニメ・イラスト制作、キャラ・絵師タグでの画風指定、軽量環境でのアニメ生成",
+  "supersedes": [
+   "Anima Preview"
+  ],
+  "sources": [
+   "https://huggingface.co/circlestone-labs/Anima",
+   "https://huggingface.co/circlestone-labs/Anima/blob/main/LICENSE.md",
+   "https://lilting.ch/en/articles/anima-2b-anime-image-generation",
+   "https://comfyui-wiki.com/en/models/anima/anima-turbo-aesthetic-v1",
+   "https://airmore.ai/ja/ai-review/local-anime-ai-image-models-comparison",
+   "https://docs.comfy.org/tutorials/image/anima/anima.md"
+  ],
+  "confidence": "medium",
+  "rank": 14,
+  "pick": "アニメ絵を軽く",
+  "pick_reason": "約7GBで動く"
+ },
+ {
+  "id": "noobai-xl-vpred-1-0",
+  "name": "NoobAI-XL V-Pred 1.0",
+  "org": "Laxhar Dream Lab",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2024-12-22",
+  "params_b": 2.6,
+  "arch": "SDXL UNet（Illustrious XL系、v-prediction）",
+  "tasks": [
+   "t2i",
+   "control"
+  ],
+  "spec": {
+   "max_resolution": "約1MP（832×1216等）",
+   "other": "Danbooru全量とe621で学習（Danbooruは2024-10頃まで）。CFG4〜5、28〜35ステップ。公式ControlNet（normal・depth・canny）がある。eps版のNoobAI-XL 1.1も並存。"
+  },
+  "features": {
+   "アニメ・イラスト特化": true,
+   "Danbooruタグ対応": true,
+   "LoRA対応(Illustrious系と共用)": true,
+   "ControlNet対応": true,
+   "日本語文字の描画": false
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": null,
+  "vram_note": "SDXL系は「8GB前後でも工夫すれば動く」（airmore.ai）。SDXLのFP16 UNetは5.14GBで、8GB級の定番とされる（vdf.ai）。",
+  "speed_note": "28〜35ステップ。SDXL級のため、新世代DiTより軽く速い。",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "Illustrious XLを基に、Danbooruタグの理解を強化したSDXL系アニメモデルの定番。Illustrious系のLoRAが流用でき、資産が非常に厚い。v-predのため、UIや拡張側の対応が必要。新世代モデルに比べると、自然文の理解や構図の複雑さに限界がある。",
+  "ja_note": "SDXL系で文字描画は不得意。日本語文字は描けない前提。プロンプトは英語のDanbooruタグが基本。",
+  "license": "fair-ai-public-license-1.0-sd＋NoobAI追加条項",
+  "commercial": "no",
+  "license_note": "追加条項で、モデル・派生モデル・生成物を含むあらゆる商用化を禁止。派生物はオープンソースでの公開が求められる。商用寄りのSDXLアニメ系にはAnimagine XL 4.0（OpenRAIL++-M）がある。Illustrious XLの最新公開重みはv2.0（2025-04）で、v3.x系は運営サービス上で提供されている。",
+  "hf": "https://huggingface.co/Laxhar/noobai-XL-Vpred-1.0",
+  "tools": [
+   "ComfyUI",
+   "Forge",
+   "AUTOMATIC1111",
+   "sd-scripts",
+   "Diffusers"
+  ],
+  "summary_ja": "Illustrious XL系の定番アニメモデル。タグへの忠実さとLoRA資産の厚さで、今も日本の利用者に広く使われている。",
+  "best_for_ja": "既存のSDXL/Illustrious系LoRAを使ったキャラ絵、8GB級GPUでのアニメ生成（非商用）",
+  "supersedes": [
+   "NoobAI-XL V-Pred 0.75",
+   "NoobAI-XL 1.0"
+  ],
+  "sources": [
+   "https://huggingface.co/Laxhar/noobai-XL-Vpred-1.0",
+   "https://airmore.ai/ja/ai-review/local-anime-ai-image-models-comparison",
+   "https://vdf.ai/blog/best-local-image-generation-models/",
+   "https://huggingface.co/OnomaAIResearch/Illustrious-XL-v2.0",
+   "https://huggingface.co/cagliostrolab/animagine-xl-4.0"
+  ],
+  "confidence": "medium",
+  "rank": 15
+ },
+ {
+  "id": "gpt-image-2-5",
+  "name": "GPT Image 2.5（Sunburst / Flare）",
+  "org": "OpenAI",
+  "country": "US",
+  "access": "api",
+  "release": "2026-09-08",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "API版は2モデル。Flareは既定・高速向けで、GPT-Image-2比でレイテンシ50%減。Sunburstは高精度な編集・制作向けで、生成時間が長い。参照写真からの被写体保持、複数ターン編集の一貫性、透過背景に対応。ChatGPTではSketch（手描き入力）やテンプレート機能もある。"
+  },
+  "features": {
+   "複数ターン編集の一貫性": true,
+   "透過背景": true,
+   "参照写真の被写体保持": true,
+   "C2PA・不可視透かし": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": "Flareは公式でImages 2.0比最大50%の低レイテンシ。Manusの評価ではGPT-Image-2の2〜4倍速。",
+  "price_note": "トークン課金（第三者まとめによる公式料金: 画像出力$30/100万トークン、テキスト入力$5、画像入力$8）。1024²の目安は低品質約$0.006〜最高品質約$0.211/枚（CometAPI試算）。AA掲載価格は最高設定で$210.7/1000枚。FlareとSunburstはトークン単価が同じ。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1221,
+    "note": "Sunburst（max）で全体1位。Flare（max）は1207で2位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1199,
+    "note": "Sunburst（max）で全体1位。Flareは1182で2位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1524,
+    "note": "Sunburstで1位（暫定値）。Flareは1481で2位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "2026年10月時点で、T2I・編集とも主要アリーナの首位。指定箇所だけを変える精密編集と、複数ターンでの画質維持が強み。最高設定は高価。",
+  "ja_note": "公式発表の作例に、日本語テキストを含むステッカー告知ポスターがある。前世代のChatGPT Images 2.0（2026年4月）で、日本語を含む非ラテン文字の描画精度が改善したと報じられている（PC Watch）。2.5の日本語精度を体系的に検証した結果は未確認。",
+  "license": "API（OpenAI利用規約）",
+  "commercial": "yes",
+  "license_note": "OpenAIの規約上、出力の権利は利用者に帰属し、商用利用できる。コンテンツポリシーの制約あり。C2PAメタデータと不可視透かしが付与される。",
+  "hf": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+  "tools": [
+   "OpenAI Images API",
+   "ChatGPT",
+   "Codex",
+   "Adobe Firefly",
+   "Runway"
+  ],
+  "summary_ja": "OpenAIの最新画像モデルで、2026年10月時点の総合首位。精密な編集と複数回の修正に強い。",
+  "best_for_ja": "品質最優先の広告・商品画像、細かな指示の部分編集",
+  "supersedes": [
+   "GPT Image 2",
+   "GPT Image 1.5"
+  ],
+  "sources": [
+   "https://openai.com/index/introducing-chatgpt-images-2-5/",
+   "https://developers.openai.com/api/docs/pricing#image-generation",
+   "https://grida.co/docs/models/gpt-image-2.5",
+   "https://www.cometapi.com/gpt-image-2-5-price-api-cost-per-image/",
+   "https://pc.watch.impress.co.jp/docs/news/2103626.html",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "high",
+  "rank": 16,
+  "pick": "API で最高品質",
+  "pick_reason": "AA Arena 総合1位。日本語の作例あり",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1221
+  }
+ },
+ {
+  "id": "nano-banana-2-1",
+  "name": "Nano Banana 2.1（Gemini Image）",
+  "org": "Google",
+  "country": "US",
+  "access": "api",
+  "release": "2026-10-06",
+  "params_b": null,
+  "arch": "非公開（Gemini系マルチモーダル。Nano Banana 2 / Gemini 3.1 Flash Imageの更新版とされる）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "4K（料金表に1K/2K/4Kの区分）",
+   "other": "Gemini API / Vertex AIで提供。前世代のNano Banana 2は2026-10-29に提供終了予定とされる。"
+  },
+  "features": {
+   "会話型編集": true,
+   "低価格": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "第三者が転載したGoogle料金表では、1K画像$0.0336、2K $0.0504（4Kは$0.0756と$0.113で情報が食い違う）。Nano Banana 2の約半額。バッチは半額程度。AA掲載価格は$33.6/1000枚。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1175,
+    "note": "全体4位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1152,
+    "note": "全体3〜5位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1428,
+    "note": "6位・暫定値（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "トップ級の品質をGPT Image 2.5の数分の1の価格で使える、コストパフォーマンスの高いモデル。AA T2IではGoogle勢の最上位。",
+  "ja_note": null,
+  "license": "API（Google Gemini API / Google Cloud利用規約）",
+  "commercial": "yes",
+  "license_note": "Googleは生成コンテンツの所有権を主張せず、有償利用では商用可。SynthID透かしが付与される（Gemini画像系の標準仕様）。規約本文の個別精査は未実施。",
+  "hf": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/nano-banana-2-1",
+  "tools": [
+   "Gemini API",
+   "Vertex AI",
+   "Gemini アプリ"
+  ],
+  "summary_ja": "Googleの最新画像モデル。総合4位級の品質で、1枚約3セントからと安い。",
+  "best_for_ja": "高品質な画像を安く大量に作りたい用途、会話しながらの編集",
+  "supersedes": [
+   "Nano Banana 2（Gemini 3.1 Flash Image）",
+   "Nano Banana Pro（Gemini 3 Pro Image）",
+   "Imagen 4"
+  ],
+  "sources": [
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/nano-banana-2-1",
+   "https://yourstory.com/ai-story/nano-banana-21-google-ai-image-generation-cheaper",
+   "https://www.orcarouter.ai/de/blog/gemini-nano-banana-2-1-ga",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "medium",
+  "rank": 17,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1175
+  }
+ },
+ {
+  "id": "grok-imagine-image-2-0",
+  "name": "Grok Imagine Image 2.0",
+  "org": "xAI（Arena表記はSpaceXAI）",
+  "country": "US",
+  "access": "api",
+  "release": "2026-08-07",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "max_resolution": "2K（APIは1k/2k指定）",
+   "other": "grok.com/imagineのQuality Mode。マジックワンドでの領域編集、セグメンテーション、背景除去・透過書き出し、スマートリサイズに対応。複数参照編集は1回に最大5枚。API名はgrok-imagine-image-2.0。"
+  },
+  "features": {
+   "複数参照画像(最大5枚)": true,
+   "領域指定編集": true,
+   "透過書き出し": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "AA掲載価格は$60/1000枚（1枚約$0.06）。公式APIは配信品質に応じた課金（料金ページ参照）。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1166,
+    "note": "全体5位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1118,
+    "note": "全体9〜14位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1294,
+    "note": "20260801版として8位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1439,
+    "note": "4位・暫定値（20260801版は1425で7位、2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "公開時（2026-08-07）にArenaのT2I・編集とも2位と公式が発表した。現在もAA T2I 5位、LMArena編集4位と上位を保つ。小さな文字まで鮮明なデザイン的レイアウトを売りにしている。",
+  "ja_note": null,
+  "license": "API（xAI利用規約）",
+  "commercial": "yes",
+  "license_note": "xAI APIの規約に従う。生成物の商用利用は可能とされるが、規約本文の個別精査は未実施。",
+  "hf": "https://x.ai/news/grok-imagine-image-2",
+  "tools": [
+   "xAI API",
+   "grok.com",
+   "Grokアプリ"
+  ],
+  "summary_ja": "xAIの画像モデル最新版。T2Iと編集の両方で世界上位5位前後に入る。",
+  "best_for_ja": "複数参照を使った編集、デザイン寄りの画像生成",
+  "supersedes": [
+   "grok-imagine-image-quality",
+   "grok-imagine-image"
+  ],
+  "sources": [
+   "https://x.ai/news/grok-imagine-image-2",
+   "https://docs.x.ai/developers/model-capabilities/images/generation",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "medium",
+  "rank": 18,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1166
+  }
+ },
+ {
+  "id": "mai-image-2-6",
+  "name": "MAI-Image-2.6",
+  "org": "Microsoft AI",
+  "country": "US",
+  "access": "api",
+  "release": "2026-08-10",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "Microsoft FoundryでPublic Preview（2026-09-04）。高速版のMAI-Image-2.6-Flashもある。公式は、複数参照対応と解像度制御の強化を今後予定としている。"
+  },
+  "features": {
+   "文字描画の強化": true,
+   "低価格": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "AA掲載価格は$38.9/1000枚（Flash版は$19.5/1000枚）。公式は「より低価格」とするのみで、具体額は記載なし。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1165,
+    "note": "全体6位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1152,
+    "note": "全体3〜5位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1428,
+    "note": "5位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "公式発表では、ArenaのT2Iで2位（発表時）、前版比で総合+79 ELO、文字描画+91 ELO。AAではT2I 6位・編集3〜5位と、トップ集団に入る。",
+  "ja_note": null,
+  "license": "API（Microsoft Foundry利用規約）",
+  "commercial": "yes",
+  "license_note": "Microsoft Foundryの規約に従う。Public Previewのため、提供条件が変わる可能性がある。規約本文の個別精査は未実施。",
+  "hf": "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
+  "tools": [
+   "Microsoft Foundry",
+   "MAI Playground"
+  ],
+  "summary_ja": "Microsoftの自社画像モデル最新版。総合6位級の品質を比較的安く使える。",
+  "best_for_ja": "Azure/Foundry中心の業務システムへの画像生成の組み込み",
+  "supersedes": [
+   "MAI-Image-2.5",
+   "MAI-Image-2"
+  ],
+  "sources": [
+   "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "medium",
+  "rank": 19,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1165
+  }
+ },
+ {
+  "id": "seedream-5-0-pro",
+  "name": "Seedream 5.0 Pro",
+  "org": "ByteDance Seed",
+  "country": "CN",
+  "access": "api",
+  "release": "2026-07",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "4K（再販業者の料金表に記載）",
+   "other": "空間的な注釈やスケッチによる指示、レイヤー分離に対応。十数言語でのプロンプトと生成にネイティブ対応。BytePlus（ModelArk）経由で提供。"
+  },
+  "features": {
+   "多言語の文字描画": true,
+   "スケッチ・注釈での指示": true,
+   "レイヤー分離": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "AA掲載価格は$90/1000枚。再販業者の価格は$0.045〜0.135/枚で情報が食い違う（Zalify: 1K $0.0675・2K/4K $0.135、Atlas Cloud: $0.045〜0.09）。公式のBytePlus料金は未確認。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1100,
+    "note": "全体16位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1133,
+    "note": "全体5〜11位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1255,
+    "note": "12位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1394,
+    "note": "10位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "LMArenaのT2I・編集とも10位前後で、編集の評価が特に高い。前世代のSeedream 4.5（LMArena編集で約130万票）から大きく伸びている。",
+  "ja_note": "公式は十数言語のプロンプトと生成にネイティブ対応とし、日本語の6コマ漫画や、英中日韓の4言語表記の地下鉄ポスターを作例に挙げている。日本語の品質を第三者が検証した結果は未確認。",
+  "license": "API（BytePlus利用規約）",
+  "commercial": "yes",
+  "license_note": "BytePlus ModelArk等の規約に従う。生成物の商用利用は可能とされるが、規約本文の個別精査は未実施。",
+  "hf": "https://seed.bytedance.com/en/seedream5_0_pro",
+  "tools": [
+   "BytePlus ModelArk",
+   "Dreamina/CapCut系サービス",
+   "fal等の再販API"
+  ],
+  "summary_ja": "ByteDanceの最新画像モデル。編集とアジア言語の文字入りデザインに強い。",
+  "best_for_ja": "日本語・中国語を含む多言語ポスター、注釈による編集",
+  "supersedes": [
+   "Seedream 5.0 Lite",
+   "Seedream 4.5",
+   "SeedEdit 3.0"
+  ],
+  "sources": [
+   "https://seed.bytedance.com/en/seedream5_0_pro",
+   "https://zalify.com/ai-models/seedream-5-0-pro",
+   "https://www.atlascloud.ai/de/blog/ai-updates/seedream-5-0-pro-price",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "medium",
+  "rank": 20,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1100
+  }
+ },
+ {
+  "id": "flux-3-image",
+  "name": "FLUX 3 Image",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "access": "api",
+  "release": "2026-10-01",
+  "params_b": null,
+  "arch": "非公開（FLUX 3世代のマルチモーダル・フローモデル）",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "control"
+  ],
+  "spec": {
+   "max_resolution": "4K（768/1K/1.5K/2K/4Kの区分）",
+   "other": "生成と局所編集を単一エンドポイントで扱う。参照画像は最大10枚。プロンプトでバウンディングボックスのレイアウトを指定できる。小型版のFLUX 3 Image Kleinは重みを公開しているが、本モデルの重みは非公開（商用の重みライセンス提供が報じられている）。"
+  },
+  "features": {
+   "複数参照画像(最大10枚)": true,
+   "バウンディングボックス配置指定": true,
+   "4K出力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "AA掲載価格は$48/1000枚（1K）。第三者のまとめでは、公式は768で約$0.041、1Kで$0.048、2Kで$0.100、4Kで$0.607/枚だが、OpenRouterの表示価格は約半額と食い違う。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1116,
+    "note": "全体13位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   }
+  ],
+  "quality_note": "AA T2Iで、FLUX.2 [max]（1021）から約95点上昇し13位。編集アリーナへの掲載はまだない。",
+  "ja_note": null,
+  "license": "API（BFL利用規約）",
+  "commercial": "yes",
+  "license_note": "BFL APIの出力は商用利用可とされる。規約本文の個別精査は未実施。",
+  "hf": "https://bfl.ai/",
+  "tools": [
+   "BFL API",
+   "OpenRouter",
+   "Vercel AI Gateway",
+   "fal"
+  ],
+  "summary_ja": "BFLのFLUX 3世代の旗艦画像モデル。最大10枚の参照と4K出力に対応する。",
+  "best_for_ja": "参照画像を多用する商品・キャラクターの合成、4Kの高解像度出力",
+  "supersedes": [
+   "FLUX.2 [max]",
+   "FLUX.2 [pro]",
+   "FLUX.2 [flex]",
+   "FLUX.1 Kontext [max]"
+  ],
+  "sources": [
+   "https://openrouter.ai/black-forest-labs/flux-3-image",
+   "https://kingy.ai/ai-launch-tracker/flux-3-image-2026-10-01/",
+   "https://bfl.ai/blog",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+  ],
+  "confidence": "medium",
+  "rank": 21,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1116
+  }
+ },
+ {
+  "id": "qwen-image-3-0-pro",
+  "name": "Qwen-Image-3.0-Pro",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "access": "api",
+  "release": "2026-07",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "Qwen Cloud / Alibaba Cloud Model Studioで提供。標準版のQwen-Image-3.0（AA 1069、$30/1000枚）もある。重みは未公開で、オープン版の最新は2.1。"
+  },
+  "features": {},
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "AA掲載価格は$40/1000枚。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1094,
+    "note": "全体17位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1091,
+    "note": "全体15〜20位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1255,
+    "note": "13位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   }
+  ],
+  "quality_note": "Qwen系の最上位API。オープンのQwen-Image-2.1よりAA T2Iで約50点上。",
+  "ja_note": null,
+  "license": "API（Qwen Cloud / Alibaba Cloud利用規約）",
+  "commercial": "yes",
+  "license_note": "クラウドの規約に従い、生成物の商用利用は可能とされる。規約本文の個別精査は未実施。",
+  "hf": "https://www.qwencloud.com/try-ai?scene=image&models=qwen-image-3.0-pro",
+  "tools": [
+   "Alibaba Cloud Model Studio",
+   "Qwen Cloud",
+   "Qwen Chat"
+  ],
+  "summary_ja": "Alibabaの画像生成APIの最上位版。オープン版より一段上の品質を手頃な価格で使える。",
+  "best_for_ja": "Qwen系の画風を商用で使いたい場合、中国語圏向けの制作",
+  "supersedes": [
+   "Qwen Image 2.0 Pro",
+   "Qwen Image Plus 2601",
+   "Qwen Image Edit Max 2601"
+  ],
+  "sources": [
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image/text-to-image"
+  ],
+  "confidence": "low",
+  "rank": 22,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1094
+  }
+ },
+ {
+  "id": "ideogram-4-5",
+  "name": "Ideogram 4.5",
+  "org": "Ideogram",
+  "country": "CA",
+  "access": "api",
+  "release": "2026-09",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "max_resolution": "ネイティブ2K（編集は24MP級の元画像を縮小せずに処理できる）",
+   "other": "画質は4段階。Generateは参照画像を最大5枚まで使える。Precise Editは指定部分だけを変え、複数回の編集でもアーティファクトが蓄積しないとされる。アプリ・MCP・APIで提供。重みを公開しているのは4.0のみ。"
+  },
+  "features": {
+   "文字描画(タイポグラフィ)特化": true,
+   "複数参照画像(最大5枚)": true,
+   "精密な部分編集": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "公式API（1枚固定価格、プロンプト長・参照枚数・解像度に依存しない）: Low $0.03、Medium $0.06、High $0.10（参照あり・Precise Editは$0.22）、Very low $0.008。サブスクリプション不要。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1015,
+    "note": "High設定で全体38位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1070,
+    "note": "High設定で全体19〜28位",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1347,
+    "note": "20位・暫定値（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "汎用のアリーナでは中位だが、文字組み・デザイン用途では評価が高い（Ideogram 4のContraLabs評価を参照）。公式は、複数回の編集でGPT Image 2.5 SunburstやNano Banana系より崩れにくいと主張している。",
+  "ja_note": "公式ページの文字差し替え作例に、看板を日本語へ翻訳する例がある。品質を第三者が検証した結果は未確認。",
+  "license": "API（Ideogram利用規約）",
+  "commercial": "yes",
+  "license_note": "有償API・プランでの生成物は商用利用可とされる。規約本文の個別精査は未実施。",
+  "hf": "https://ideogram.ai/models/4.5/",
+  "tools": [
+   "Ideogram API",
+   "Ideogramアプリ",
+   "MCP"
+  ],
+  "summary_ja": "文字入りデザインに強いIdeogramの最新版。1枚3〜22セントの固定価格で編集もできる。",
+  "best_for_ja": "ロゴ・ポスター・看板など文字主体のデザイン、多言語への文字差し替え",
+  "supersedes": [
+   "Ideogram 4.0（API）",
+   "Ideogram 3.0"
+  ],
+  "sources": [
+   "https://ideogram.ai/models/4.5/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "medium",
+  "rank": 23,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1015
+  }
+ },
+ {
+  "id": "midjourney-v8-2",
+  "name": "Midjourney V8.2",
+  "org": "Midjourney",
+  "country": "US",
+  "access": "api",
+  "release": "2026-07-24",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "ネイティブ2K HD（2048×2048）",
+   "other": "Web・Discordのサービスとして提供（公式APIなし）。Style Reference・Image Prompt・Raw・Remix・Personalizationに対応し、Omni ReferenceとDraft Modeは非対応との報告がある。エディタは旧版のV6.1ベースとの報告もある。アニメ向けのNiji 7（2026-01）が別系統で存在。"
+  },
+  "features": {
+   "美的品質・画風": true,
+   "パーソナライズ": true,
+   "スタイル参照": true,
+   "公式API": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": "V8.1の公表値は標準約4秒、HD約12秒（第三者のまとめ）。",
+  "price_note": "月額サブスクリプション: Basic $10、Standard $30、Pro $60、Mega $120（年払いは20%引き）。追加のFast GPU時間は$4/時。",
+  "bench": [],
+  "quality_note": "公式は美観・画質の安定・パーソナライズを強化した版と説明している。AA・LMArenaのアリーナには参加していないため、客観的な順位はない。",
+  "ja_note": null,
+  "license": "サービス（Midjourney利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料会員は生成物をほぼ自由に使える。ただし年間総収入100万ドル超の企業はPro/Megaプランの契約が必要。Stealth（非公開）モードもPro以上のみ。",
+  "hf": "https://docs.midjourney.com/docs/plans",
+  "tools": [
+   "midjourney.com",
+   "Discord"
+  ],
+  "summary_ja": "画風と美しさで根強い人気があるMidjourneyの最新版。月10ドルから使えるが、公式APIはない。",
+  "best_for_ja": "コンセプトアート・ムードボードなど美観重視の一枚絵",
+  "supersedes": [
+   "Midjourney V8.1",
+   "Midjourney V7"
+  ],
+  "sources": [
+   "https://docs.midjourney.com/docs/plans",
+   "https://x.com/midjourney/status/2080781271043911807",
+   "https://www.cometapi.com/midjourney-v8",
+   "https://tech-insider.org/how-to-use-midjourney-v8-2-2026",
+   "https://runtheprompts.com/resources/midjourney-info/midjourney-v8-2-whats-new-and-is-it-better-than-v8-1"
+  ],
+  "confidence": "medium",
+  "rank": 24
+ },
+ {
+  "id": "reve-2-1",
+  "name": "Reve 2.1",
+  "org": "Reve",
+  "country": "US",
+  "access": "api",
+  "release": null,
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "reve.comのアプリとAPIで提供。"
+  },
+  "features": {},
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "公式の料金ページがログイン先へ転送されるため未確認。",
+  "bench": [
+   {
+    "metric": "LMArena Text-to-Image スコア",
+    "value": 1302,
+    "note": "7位（2026-10-07時点）",
+    "source": "https://arena.ai/leaderboard/image/text-to-image"
+   },
+   {
+    "metric": "LMArena Image Edit スコア",
+    "value": 1374,
+    "note": "16位（2026-10-06時点）",
+    "source": "https://arena.ai/leaderboard/image-edit"
+   }
+  ],
+  "quality_note": "LMArenaのT2Iで7位と、OpenAI・Google・xAI・Microsoftに次ぐ上位。AAのアリーナには掲載されていない。",
+  "ja_note": null,
+  "license": "API（Reve利用規約）",
+  "commercial": "conditional",
+  "license_note": "利用規約は未確認のため、商用利用の可否と条件は要確認。",
+  "hf": "http://reve.com/",
+  "tools": [
+   "Reveアプリ",
+   "Reve API"
+  ],
+  "summary_ja": "LMArenaのT2Iで7位につける新興勢の画像モデル。",
+  "best_for_ja": "大手以外の高品質な選択肢を試したい場合",
+  "supersedes": [
+   "Reve 2.0",
+   "Reve v1.5"
+  ],
+  "sources": [
+   "https://arena.ai/leaderboard/image/text-to-image",
+   "https://arena.ai/leaderboard/image-edit"
+  ],
+  "confidence": "low",
+  "rank": 25,
+  "hl": {
+   "label": "LMArena",
+   "value": 1302
+  }
+ }
+]

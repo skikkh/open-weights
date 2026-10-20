@@ -1,0 +1,1149 @@
+[
+ {
+  "id": "llm-jp-moshi-v1",
+  "name": "LLM-jp-Moshi-v1",
+  "org": "国立情報学研究所（NII）大規模言語モデル研究開発センター／LLM-jp 対話WG（東中竜一郎教授ら）",
+  "country": "JP",
+  "release": "2026-02-25",
+  "params_b": 7,
+  "arch": "全二重マルチストリーム（Moshi: Mimiニューラルコーデック＋Temporal/Depth Transformer、ユーザーとモデルの2音声ストリーム＋内的独白テキスト）",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "languages": "日本語",
+   "other": "Kyutai moshiko-pytorch-bf16を初期値に、J-CHAT（ポッドキャスト対話 約69,000時間）で事前学習、LLM-jp-Zoom1（Zoom雑談 約1,000時間）でファインチューニング。HF表記は8B（BF16、重み約15.8GB）。テキストトークナイザはrinna/japanese-gpt2-medium由来、音声トークナイザはMimi"
+  },
+  "features": {
+   "全二重（割り込み可）": true,
+   "相づち・間合いの学習": true,
+   "日本語対応": true,
+   "日本語専用": true,
+   "リアルタイム": true,
+   "CPU動作": false
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": null,
+  "vram_note": "公式モデルカード: VRAM 24GB以上のLinux GPUマシンが必要、macOSは非対応。BF16重みは約15.8GB。コミュニティによるcandle移植版（MtCedar/llm-jp-moshi-v1-candle）やq8量子化版（shunby/llm-jp-moshi-v1-q8）も存在するが、動作要件は未確認。",
+  "speed_note": "本モデル固有の遅延実測は未公開。ベースのMoshiは理論遅延160ms（Mimiフレーム80ms＋音響遅延80ms）、L4 GPUで実効約200ms（Kyutai公式README）。",
+  "bench": [
+   {
+    "metric": "主観評価 自然性（5段階, LLM-jp-Zoom1）",
+    "value": 3.34,
+    "note": "対話継続タスク・クラウドソーシング。J-Moshi 2.43、実音声 4.51",
+    "source": "https://llm-jp.github.io/llm-jp-moshi/"
+   },
+   {
+    "metric": "主観評価 意味性（5段階, LLM-jp-Zoom1）",
+    "value": 2.84,
+    "note": "J-Moshi 2.10、実音声 4.50",
+    "source": "https://llm-jp.github.io/llm-jp-moshi/"
+   },
+   {
+    "metric": "主観評価 自然性（5段階, 日本語CallHome）",
+    "value": 2.99,
+    "note": "J-Moshi 1.88、実音声 3.89",
+    "source": "https://llm-jp.github.io/llm-jp-moshi/"
+   },
+   {
+    "metric": "NISQA（5段階, LLM-jp-Zoom1）",
+    "value": 3.72,
+    "note": "音声品質の自動評価。J-Moshi 3.35",
+    "source": "https://llm-jp.github.io/llm-jp-moshi/"
+   },
+   {
+    "metric": "LLM-as-a-judge 自然性（10段階, Tabidachi）",
+    "value": 5.69,
+    "note": "J-Moshi 5.10、実音声 6.87",
+    "source": "https://llm-jp.github.io/llm-jp-moshi/"
+   },
+   {
+    "metric": "Elyza（音声入力, GPT-4o判定）",
+    "value": 1.0,
+    "note": "Liquid AIによる第三者比較。LFM2.5-Audio-1.5B-JPは2.272、J-Moshiは1.034。雑談特化のため質問応答型タスクは苦手",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   }
+  ],
+  "quality_note": "公式評価（対話継続タスク）で自然性・意味性ともJ-Moshiを上回り、NISQAなど音声品質指標もほぼ全条件で改善（TabidachiのUT-MOSと指示追従のみJ-Moshiがわずかに上）。ただし実音声との差は依然大きく、モデルカードは『プロトタイプで応答が不自然な場合がある』『偏り・不正確・不適切な内容を含みうる』と明記。雑談データ中心のため、Liquid AIの比較ではElyza系の質問応答スコアが最低水準（1.000）。",
+  "ja_note": "日本語専用の全二重音声対話モデル。日本語雑談約1,000時間（Zoom収録）で相づち・返答タイミングなど会話の『間合い』を学習。NIIは『日本語で商用利用可能な全二重音声対話モデルとして世界初』と発表。同じ研究グループ（東中教授）の前身J-Moshi（名古屋大学、研究用途のみのCC BY-NC 4.0）より聞き取りやすさ・自然さが向上。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0で商用利用可。音声トークナイザMimiはKyutai由来（Kyutaiの重みはCC-BY-4.0）。モデルカードに『なりすましや詐欺などの悪意ある目的での使用を意図したものではない』と明記し、利用による損害について開発者は責任を負わない旨を記載。",
+  "hf": "https://huggingface.co/llm-jp/llm-jp-moshi-v1",
+  "tools": [
+   "moshi（PyTorch, moshi<=0.2.2）",
+   "moshi.server（ブラウザWeb UI）",
+   "candle（コミュニティ移植）"
+  ],
+  "summary_ja": "国立情報学研究所が公開した、相づちや割り込みもできる日本語の全二重音声対話モデルです。Apache 2.0で商用利用でき、前身のJ-Moshiより自然に会話できます。",
+  "best_for_ja": "日本語の雑談・相づちを含む自然な音声対話の研究、コールセンターや対話ロボットの試作",
+  "supersedes": [
+   "J-Moshi（nu-dialogue/j-moshi, 2025-01）",
+   "J-Moshi-ext（nu-dialogue/j-moshi-ext, 2025-01）"
+  ],
+  "sources": [
+   "https://www.nii.ac.jp/news/upload/nii_newsrelease_20260225.pdf",
+   "https://huggingface.co/llm-jp/llm-jp-moshi-v1",
+   "https://llm-jp.github.io/llm-jp-moshi/",
+   "https://github.com/kyutai-labs/moshi",
+   "https://huggingface.co/nu-dialogue/j-moshi-ext",
+   "https://arxiv.org/abs/2506.02979"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "日本語の全二重対話・商用OK",
+  "pick_reason": "相づち・割り込みができる"
+ },
+ {
+  "id": "lfm2-5-audio-1-5b-jp",
+  "name": "LFM2.5-Audio-1.5B-JP",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-06-05",
+  "params_b": 1.5,
+  "arch": "エンドツーエンド音声LM（LFM2.5ハイブリッドconv+attention 1.2B＋FastConformer音声エンコーダ115M＋Mimi 8コードブック出力用RQ-Transformer 185M、テキストと音声のインターリーブ生成）",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "languages": "日本語",
+   "other": "音声対話（インターリーブ生成）・日本語ASR・日本語TTSを1モデルで実行（システムプロンプトで切替）。32Kトークン文脈、24kHz出力。英語版LFM2.5-Audio-1.5Bの日本語特化版"
+  },
+  "features": {
+   "全二重（割り込み可）": false,
+   "日本語対応": true,
+   "日本語専用": true,
+   "リアルタイム": true,
+   "ASR・TTS兼用": true,
+   "CPU動作": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM/RAM要件の記載なし。BF16重みは約3.6GB。GGUF版（Q4_0など）をllama.cpp（llama-liquid-audio-cli）でCPU推論可能。PR TIMES発表ではGGUF・ONNX・MLX対応と記載。",
+  "speed_note": "日本語版の遅延実測値は非公開。ベースの英語版LFM2-Audio-1.5Bは『4秒の入力に対し最初の可聴音までの平均エンドツーエンド遅延100ms未満』（Liquid AI公式ブログ、測定ハードウェア非記載）。公式に全二重の記載はなく、ターン制の音声チャット。",
+  "bench": [
+   {
+    "metric": "Elyza（音声入力, GPT-4o判定）",
+    "value": 2.272,
+    "note": "Qwen2.5-Omni-3B 2.365、LLM-jp-Moshi-v1 1.000、J-Moshi 1.034。開発元の自己評価",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "metric": "spoken_Elyza（音声入力, GPT-4o判定）",
+    "value": 2.118,
+    "note": "Qwen2.5-Omni-3B 2.094、LLM-jp-Moshi-v1 1.023",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "metric": "ASR CER（CommonVoice 8 日本語）",
+    "value": 4.42,
+    "note": "%、比較モデル中最良（Whisper-large-v3 8.5）",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "metric": "ASR CER（JSUT basic5000）",
+    "value": 8.07,
+    "note": "%、Whisper-large-v3 7.1",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   },
+   {
+    "metric": "ASR CER（ReazonSpeech held-out）",
+    "value": 24.24,
+    "note": "%、reazonspeech-nemo-v2 11.2より大幅に劣る",
+    "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP"
+   }
+  ],
+  "quality_note": "1.5Bと小型ながら、開発元の比較では日本語の音声質問応答（Elyza系）でJ-Moshi/LLM-jp-Moshi-v1を大きく上回り、5.5BのQwen2.5-Omni-3Bに近いスコア。ASRはCommonVoiceでは良好だがReazonSpeech（CER 24.24%）では専用ASRに大きく劣り、ドメイン差が大きい。いずれも自己評価で第三者の遅延評価は未見。",
+  "ja_note": "Liquid AI初の日本語音声モデルで、日本語のASR・TTS・音声対話に特化。『Respond with interleaved text and audio.』で日本語音声チャット、『Perform ASR/TTS in japanese.』で認識・合成。日本語向けにテキスト:音声トークンのインターリーブ比を6:9に調整。",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "Apache 2.0ベースの独自ライセンス。年間売上1,000万米ドル未満の企業は商用利用無償、それを超えると商用利用権が終了しLiquid AIとの別契約が必要（ユーザー数の制限はなし）。同梱のcanary-180m-flash（CC-BY 4.0）、NeMoコード（Apache 2.0）、Mimi（コードMIT・重みCC-BY-4.0）は個別ライセンス。",
+  "hf": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP",
+  "tools": [
+   "liquid-audio（pip）",
+   "llama.cpp（llama-liquid-audio-cli, GGUF）",
+   "ONNX",
+   "MLX"
+  ],
+  "summary_ja": "Liquid AIの1.5Bという小型の日本語音声モデルで、音声認識・音声合成・音声チャットを1つでこなします。GGUF版があり、CPUやエッジ機器でも動かしやすいのが特長です。",
+  "best_for_ja": "PC・スマホ・組み込みなどエッジでの日本語音声アシスタント、ローカル完結の音声チャット試作",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B-JP",
+   "https://docs.liquid.ai/lfm/models/lfm25-audio-1.5b-jp",
+   "https://prtimes.jp/main/html/rd/p/000000006.000175118.html",
+   "https://www.liquid.ai/blog/lfm2-audio-an-end-to-end-audio-foundation-model",
+   "https://docs.liquid.ai/lfm/help/model-license",
+   "https://github.com/Liquid4All/liquid-audio"
+  ],
+  "confidence": "medium",
+  "rank": 2
+ },
+ {
+  "id": "qwen3-omni-30b-a3b",
+  "name": "Qwen3-Omni-30B-A3B-Instruct",
+  "org": "Alibaba Cloud Qwenチーム",
+  "country": "CN",
+  "release": "2025-09-22",
+  "params_b": 30,
+  "arch": "Thinker-Talker（MoE、総30B/活性3B）＋AuT音声エンコーダ＋マルチコードブック音声生成",
+  "tasks": [
+   "omni",
+   "dialogue",
+   "s2st"
+  ],
+  "spec": {
+   "latency_ms": 234,
+   "languages": "音声入力19言語（日本語含む）／音声出力10言語（英・中・仏・独・露・伊・西・葡・日・韓）／テキスト119言語",
+   "other": "テキスト・画像・音声・動画入力→テキスト＋音声出力。Thinking版・Captioner版あり。プリセット音声はEthan/Chelsie/Aiden。ターン制（全二重ではない）。HFメタデータ上は35B表記"
+  },
+  "features": {
+   "全二重（割り込み可）": false,
+   "日本語対応": true,
+   "リアルタイム": true,
+   "映像入力": true,
+   "音声翻訳（日本語出力可）": true
+  },
+  "min_vram_gb": 79,
+  "rec_vram_gb": null,
+  "vram_note": "公式: transformers・BF16・FlashAttention2での理論最小メモリはInstruct版で15秒動画78.85GB／30秒88.52GB／60秒107.74GB／120秒144.81GB（音声のみ入力時の公式値はなし）。BF16重みは約70.5GB。Talkerを無効化すると約10GB節約できるが音声出力は不可。コミュニティのAWQ 4bit版は重み約27.6GB（音声出力の動作可否は未記載）。",
+  "speed_note": "技術報告: コールドスタート時の理論エンドツーエンド初回パケット遅延 音声234ms／動画547ms。同時接続4で728/1517ms、6で1172/2284ms。公開時点のvLLMはThinker（テキスト出力）のみ対応で、音声出力は専用フォーク／今後対応とモデルカードに記載。",
+  "bench": [
+   {
+    "metric": "VoiceBench Overall",
+    "value": 85.5,
+    "note": "Thinking版 88.8、Gemini-2.5-Pro 89.6",
+    "source": "https://arxiv.org/abs/2509.17765"
+   },
+   {
+    "metric": "日本語音声生成 内容一貫性（低いほど良い）",
+    "value": 3.631,
+    "note": "多言語音声生成評価（Table 14）。MiniMax 3.519、ElevenLabs 10.646",
+    "source": "https://arxiv.org/abs/2509.17765"
+   },
+   {
+    "metric": "日本語音声生成 話者類似度",
+    "value": 0.763,
+    "note": "MiniMax 0.776、ElevenLabs 0.738",
+    "source": "https://arxiv.org/abs/2509.17765"
+   },
+   {
+    "metric": "Fleurs 音声→テキスト翻訳 BLEU（xx→en）",
+    "value": 31.08,
+    "note": "Instruct版。en→xx 37.50。日本語個別値は未掲載",
+    "source": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct"
+   },
+   {
+    "metric": "MMAU-v05.15.25",
+    "value": 77.5,
+    "note": "音声理解",
+    "source": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct"
+   }
+  ],
+  "quality_note": "オープンなOmniモデルの代表格で、VoiceBench 85.5（Thinking版88.8）とGemini 2.5 Pro（89.6）に迫る。日本語音声生成の内容一貫性はMiniMaxと同水準でElevenLabsより良好（技術報告Table 14）。弱点はBF16で80GB級のメモリが必要な点、全二重ではない点、vLLMでの音声出力対応が遅れた点。",
+  "ja_note": "日本語は音声入力・音声出力とも公式対応（出力10言語の1つ）で、日本語音声対話に使える数少ない高性能オープンモデル。プロンプト指示で日本語↔他言語の音声翻訳にも使えるが、専用S2STベンチの日本語値は未公開。後継のQwen3.5-Omni（2026-03、Plus/Flash/Light）はAPI提供のみで重みは非公開。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0で商用可（HFメタデータは license: other / license_name: apache-2.0 表記）。声はプリセット話者のみで、任意話者のボイスクローンは公式機能として記載なし。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct",
+  "tools": [
+   "transformers",
+   "vLLM（専用フォーク、Thinkerのみ）",
+   "qwen-omni-utils",
+   "コミュニティAWQ/GGUF量子化"
+  ],
+  "summary_ja": "Alibabaのマルチモーダルモデルで、音声・画像・動画を理解して日本語でも音声で答えられます。性能は高い一方、BF16では80GB級のGPUが必要です。",
+  "best_for_ja": "日本語の音声アシスタント（画像・動画理解込み）、日英などの音声翻訳、音声エージェントの研究",
+  "supersedes": [
+   "Qwen2.5-Omni-7B",
+   "Qwen2.5-Omni-3B"
+  ],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct",
+   "https://arxiv.org/abs/2509.17765",
+   "https://huggingface.co/cyankiwi/Qwen3-Omni-30B-A3B-Instruct-AWQ-4bit",
+   "https://gigazine.net/gsc_news/en/20260331-qwen3-5-omni"
+  ],
+  "confidence": "high",
+  "rank": 3,
+  "pick": "日本語で話せる Omni",
+  "pick_reason": "音声の入出力と翻訳を1つで"
+ },
+ {
+  "id": "minicpm-o-4-5",
+  "name": "MiniCPM-o 4.5",
+  "org": "OpenBMB（清華大学NLP研究室・面壁智能）",
+  "country": "CN",
+  "release": "2026-02",
+  "params_b": 9,
+  "arch": "Omni-Flow全二重オムニ（SigLip2＋Whisper-medium＋Qwen3-8B＋CosyVoice2、入出力ストリームを共通タイムラインに整列）",
+  "tasks": [
+   "omni",
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": 600,
+   "languages": "音声会話は英語・中国語（バイリンガル）。視覚・OCRは30言語超",
+   "other": "映像・音声を連続入力しながらテキスト＋音声を同時出力。1Hzで発話するか判断し、観察に基づく能動的な声かけも可能。短い参照音声でボイスクローン。int4/GGUF（16サイズ）提供。latency_msは初回トークンまでの時間"
+  },
+  "features": {
+   "全二重（割り込み可）": true,
+   "日本語対応": false,
+   "リアルタイム": true,
+   "映像入力": true,
+   "ボイスクローン": true,
+   "能動的発話": true,
+   "Mac動作": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 28,
+  "vram_note": "公式: GPUメモリ bf16 19.0GB／int4 11.0GB。llama.cpp-omniは半二重でApple M3/M4/M5の16GB RAMまたはNVIDIA 12GB、全二重でApple M4 Max 24GB RAMまたはNVIDIA 12GB。PyTorch版Webデモ（NVIDIA GPU）は28GB以上。論文要旨は『12GB未満RAMのエッジ機器で全二重動作』と記載。",
+  "speed_note": "公式推論効率表: 初回トークンまで0.6秒（bf16/int4とも）、デコード154.3 tok/s（bf16）・212.3 tok/s（int4）。",
+  "bench": [
+   {
+    "metric": "VoiceBench AlpacaEval",
+    "value": 4.8,
+    "note": "5点満点",
+    "source": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
+   },
+   {
+    "metric": "VoiceBench Speech TriviaQA",
+    "value": 75.5,
+    "note": "",
+    "source": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
+   },
+   {
+    "metric": "Seed-TTS test-en WER",
+    "value": 2.38,
+    "note": "%、SIM-o 64.9",
+    "source": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
+   },
+   {
+    "metric": "Seed-TTS test-zh CER",
+    "value": 0.86,
+    "note": "%、SIM-o 74.5",
+    "source": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
+   },
+   {
+    "metric": "MMAU",
+    "value": 76.9,
+    "note": "音声理解",
+    "source": "https://huggingface.co/openbmb/MiniCPM-o-4_5"
+   }
+  ],
+  "quality_note": "9Bで視覚・音声・全二重ライブ対話を統合し、開発元は視覚言語でGemini 2.5 Flash相当、オムニ理解でQwen3-Omni-30B-A3B超と主張（自己評価）。ボイスクローン品質はCosyVoice2超と主張。家庭用GPUやMacで全二重が動く点が実用上の強み。音声会話は英中のみ。",
+  "ja_note": "音声会話の公式対応は英語・中国語のみで、日本語の音声入出力は公式記載なし。日本語での音声対話用途には推奨しにくい。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデルカードは重み・コードともApache-2.0と記載（別途モデルライセンス文書へのリンクあり）。短い参照音声で声を複製できるため、本人同意のない声の利用に注意。",
+  "hf": "https://huggingface.co/openbmb/MiniCPM-o-4_5",
+  "tools": [
+   "transformers",
+   "llama.cpp-omni",
+   "GGUF/int4量子化版",
+   "ローカルリアルタイムWebデモ（Mac/GPU）"
+  ],
+  "summary_ja": "OpenBMBの9Bオムニモデルで、見る・聞く・話すを同時に行う全二重のライブ対話がGPU 12GB級やMacでも動きます。ただし音声会話は英語と中国語のみです。",
+  "best_for_ja": "英語・中国語での全二重ライブ音声＋映像アシスタント、エッジでのオムニ対話の試作",
+  "supersedes": [
+   "MiniCPM-o 2.6"
+  ],
+  "sources": [
+   "https://huggingface.co/openbmb/MiniCPM-o-4_5",
+   "https://github.com/OpenBMB/MiniCPM-o",
+   "https://alphaxiv.org/abs/2604.27393"
+  ],
+  "confidence": "high",
+  "rank": 4
+ },
+ {
+  "id": "personaplex-7b-v1",
+  "name": "PersonaPlex-7B-v1",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-01-15",
+  "params_b": 7,
+  "arch": "全二重デュアルストリーム（Moshi/Moshiko重みから微調整。Mimiエンコーダ/デコーダ＋Temporal/Depth Transformer）",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": 170,
+   "languages": "英語のみ",
+   "other": "会話前に音声プロンプト（声質・話し方）とテキストプロンプト（役割・背景・シナリオ）でペルソナを指定。24kHz。Fisher英語会話1,200時間＋合成ロール対話2,000時間超で学習。latency_msはFull-Duplex-Benchのスムーズなターン交代遅延"
+  },
+  "features": {
+   "全二重（割り込み可）": true,
+   "日本語対応": false,
+   "リアルタイム": true,
+   "声の指定（音声プロンプト）": true,
+   "ペルソナ・役割指定": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM要件記載なし。対応GPUはNVIDIA Ampere（A100）/Hopper（H100）、テスト環境はA100 80GB。HFの重みは約17.1GB（BF16）。--cpu-offloadでGPUメモリ不足時に層をCPUへ退避可能。コミュニティのMLX 4bit版（aufklarer/PersonaPlex-7B-MLX-4bit）あり。参考として同アーキテクチャのMoshi（PyTorch版）は24GB GPUを要求。",
+  "speed_note": "Full-Duplex-Bench: スムーズなターン交代の遅延0.170秒、ユーザー割り込みへの反応0.240秒（NVIDIA公式ページでMoshi・Freeze-Omni・Gemini Live・Qwen2.5-Omniと比較）。",
+  "bench": [
+   {
+    "metric": "Full-Duplex-Bench Smooth Turn Taking TOR",
+    "value": 0.908,
+    "note": "高いほど良い",
+    "source": "https://huggingface.co/nvidia/personaplex-7b-v1"
+   },
+   {
+    "metric": "Full-Duplex-Bench Smooth Turn Taking 遅延（秒）",
+    "value": 0.17,
+    "note": "低いほど良い",
+    "source": "https://research.nvidia.com/labs/adlr/personaplex/"
+   },
+   {
+    "metric": "Full-Duplex-Bench User Interruption TOR",
+    "value": 0.95,
+    "note": "高いほど良い",
+    "source": "https://huggingface.co/nvidia/personaplex-7b-v1"
+   },
+   {
+    "metric": "Full-Duplex-Bench User Interruption 遅延（秒）",
+    "value": 0.24,
+    "note": "低いほど良い",
+    "source": "https://research.nvidia.com/labs/adlr/personaplex/"
+   },
+   {
+    "metric": "Full-Duplex-Bench User Interruption GPT-4o評価",
+    "value": 4.29,
+    "note": "割り込み後の応答品質",
+    "source": "https://huggingface.co/nvidia/personaplex-7b-v1"
+   }
+  ],
+  "quality_note": "声と役割を指定できる全二重対話として実用度が高く、HFで2,800超のいいねを集める人気モデル。公式はFull-Duplex-Benchで他のオープン・商用システムを上回ると主張。Kyutaiが強化学習で割り込み・相づちのタイミングを改善した派生モデル kyutai/personaplex-rl-seamless（2026-06、CC BY-NC 4.0併用の研究用途のみ）も公開されている。英語のみ。",
+  "ja_note": "英語の音声入力に英語音声で応答するモデルで、日本語は非対応。",
+  "license": "NVIDIA Open Model License（コードはMIT）",
+  "commercial": "yes",
+  "license_note": "モデルカードに『商用利用可（ready for commercial use）』と記載。HFでの条件同意（ゲート）が必要。ベースのMoshiko重みはCC-BY-4.0。音声プロンプトで任意の声質を指定できるため、本人同意のない声の模倣に注意。",
+  "hf": "https://huggingface.co/nvidia/personaplex-7b-v1",
+  "tools": [
+   "NVIDIA/personaplex（Moshiベースのサーバー）",
+   "PyTorch",
+   "MLX 4bit（コミュニティ移植）"
+  ],
+  "summary_ja": "NVIDIAがMoshiを元に作った英語の全二重音声対話モデルで、声と役割を指定して自然に会話できます。日本語は話せませんが、商用利用は可能です。",
+  "best_for_ja": "英語のコールセンター・受付・キャラクター対話など、ペルソナ付きのリアルタイム音声エージェント",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/personaplex-7b-v1",
+   "https://research.nvidia.com/labs/adlr/personaplex/",
+   "https://github.com/NVIDIA/personaplex",
+   "https://arxiv.org/abs/2602.06053",
+   "https://huggingface.co/kyutai/personaplex-rl-seamless",
+   "https://github.com/kyutai-labs/moshi"
+  ],
+  "confidence": "high",
+  "rank": 5
+ },
+ {
+  "id": "nemotronlabs-voicechat-11b",
+  "name": "NVIDIA NemotronLabs VoiceChat 11B",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-08-03",
+  "params_b": 11,
+  "arch": "全二重S2S（FastConformerストリーミング音声エンコーダ＋Nemotron Nano v2 LLM（Mamba/Transformerハイブリッド）＋ストリーミングTTSデコーダ/コーデック＋ツール呼び出し用出力チャネル、RNN-T補助ブランチでユーザー発話を書き起こし）",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": 448,
+   "languages": "英語",
+   "other": "入力16kHz／出力22.05kHz。『ツール呼び出しに対応した初のオープン全二重モデル』と主張。latency_msはターン交代遅延（ユーザー割り込みは480ms）"
+  },
+  "features": {
+   "全二重（割り込み可）": true,
+   "日本語対応": false,
+   "リアルタイム": true,
+   "ツール呼び出し": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM要件記載なし。対応GPUはA100/H100/H200/B100/B200/RTX-6000、テストはH100（Linux）。HFの重みファイル合計は約44.4GB。リアルタイム運用はNVIDIA推論コンテナ（CUDA/Triton/vLLM）経由。",
+  "speed_note": "モデルカード: ターン交代 約450ms（表では448ms）、ユーザー割り込み 480ms。PersonaPlex（0.17秒）より遅いが、会話中のツール実行に対応。",
+  "bench": [
+   {
+    "metric": "Full-Duplex-Bench 1.0 Smooth Turn Taking TOR",
+    "value": 0.82,
+    "note": "オープンモデル中2位（モデルカード）",
+    "source": "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B"
+   },
+   {
+    "metric": "Full-Duplex-Bench 1.0 User Interruption GPT-4o評価",
+    "value": 4.33,
+    "note": "割り込み後の応答品質（5点満点）。割り込みTORは1.0",
+    "source": "https://arxiv.org/abs/2609.21967"
+   },
+   {
+    "metric": "VoiceBench 正規化平均",
+    "value": 55.1,
+    "note": "論文要旨",
+    "source": "https://arxiv.org/abs/2609.21967"
+   },
+   {
+    "metric": "BFCL-v3（音声）ツール呼び出し平均",
+    "value": 56.1,
+    "note": "%、AU Harness",
+    "source": "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B"
+   },
+   {
+    "metric": "Full-Duplex-Bench v3 ツール選択F1",
+    "value": 82.5,
+    "note": "%、引数精度42.2%、pass@1 33%",
+    "source": "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B"
+   }
+  ],
+  "quality_note": "Full-Duplex-Bench 1.0とVoiceBenchでオープン全二重モデル中2位、割り込み後の応答品質4.33/5、FDB v3のツール選択F1 82.5%（開発元評価）。引数精度とエンドツーエンドのツール実行（pass@1 33%）は改善余地ありと論文自身が記載。公開から日が浅く第三者評価は少ない。",
+  "ja_note": "英語のみ（モデルタグ・サンプルのシステムプロンプトとも英語）。日本語は非対応。",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "Linux Foundation策定のモデル向け寛容型ライセンスOpenMDW 1.1（商用利用・派生モデル可、改変の公開義務なし）。2026年8月にOSIへ承認申請中。",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B",
+  "tools": [
+   "NVIDIA NeMo（NVIDIA-NeMo/Speech, nemotron-labs-voicechatブランチ）",
+   "Triton Inference Server",
+   "vLLM"
+  ],
+  "summary_ja": "NVIDIAの英語全二重音声対話モデルで、話しながら外部ツールを呼び出せるのが特長です。日本語は非対応で、データセンター級のGPU向けです。",
+  "best_for_ja": "英語の音声エージェント（予約・検索などツール実行を伴う業務対話）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-NemotronLabs-VoiceChat-11B",
+   "https://arxiv.org/abs/2609.21967",
+   "https://betanews.com/article/linux-foundation-openmdw-osi-license/"
+  ],
+  "confidence": "medium",
+  "rank": 6
+ },
+ {
+  "id": "index-echo-s2st",
+  "name": "Index-Echo-S2ST（9B / 2B）",
+  "org": "bilibili Index Team",
+  "country": "CN",
+  "release": "2026-09",
+  "params_b": 9,
+  "arch": "統合型S2ST（Qwen3-Omni AuT音声エンコーダ＋Index-Translate翻訳デコーダ → Hidden2CVマッパー約30M → CosyVoice3音声生成。蒸留＋DiffRO報酬最適化＋RFT）",
+  "tasks": [
+   "s2st"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "languages": "12方向: 中→英/西/日/韓、日→英/西/韓/中、英→中/西/日/韓",
+   "other": "元話者の声（参照音声＋CampPlus話者埋め込み）を条件に訳音声を生成する吹き替え型。発話単位（約30秒以下推奨）でストリーミング非対応。v4.1パッケージ（2026-10）で初期の6方向から12方向に拡張。params_bは翻訳デコーダのサイズ（2B版あり）。GGUF/FP8/FP4版あり"
+  },
+  "features": {
+   "日本語対応": true,
+   "声質保持翻訳": true,
+   "同時通訳": false,
+   "リアルタイム": false
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 24,
+  "vram_note": "公式: 2B版はCUDA GPU 12GB以上、9B版は24GB以上（検証はA100 80GB）。CPU推論は未検証。HFの重み合計は9B版約34.9GB、2B版約19.5GB（CosyVoice3等の同梱コンポーネント込み）。",
+  "speed_note": "遅延・処理速度の公式値なし。非ストリーミング（stream=False）で発話全体を受けてから訳音声を返すため、同時通訳には不向き。",
+  "bench": [
+   {
+    "metric": "話者類似度（CampPlusコサイン, 12方向平均）",
+    "value": 0.8,
+    "note": "9B版。最小0.65（英→中）〜最大0.91（日→韓）",
+    "source": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B"
+   },
+   {
+    "metric": "音声忠実度 WER中央値（日→英）",
+    "value": 0.0,
+    "note": "9B版。Whisper-large-v3で書き起こしモデル自身の訳文と照合（独立した翻訳品質指標ではない）",
+    "source": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B"
+   },
+   {
+    "metric": "音声忠実度 CER中央値（中→日）",
+    "value": 0.064,
+    "note": "9B版。同上の自己一致指標",
+    "source": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B"
+   },
+   {
+    "metric": "音声忠実度 CER中央値（日→中）",
+    "value": 0.056,
+    "note": "9B版。同上",
+    "source": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B"
+   },
+   {
+    "metric": "音声忠実度 WER中央値（日→英）",
+    "value": 0.037,
+    "note": "2B版。同上",
+    "source": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-2B"
+   }
+  ],
+  "quality_note": "日本語を含む中日英の吹き替え型S2STとして貴重なオープンモデルで、元話者の声質を保ったまま訳音声を生成（平均話者類似度0.80）。ただし公開指標は自分の訳文との一致度のみで、BLEU等の翻訳品質ベンチは未公開。声色・発音・話し方の一致は保証されないと明記。公開直後で第三者評価は乏しい。翻訳部はテキスト翻訳モデルIndex-Translate（150言語）と同系。",
+  "ja_note": "日本語は入力（日→英/西/韓/中）・出力（中→日、英→日）とも公式サポート。日→日は動作するが対象外（2B版で約9〜10%失敗の可能性）。ソース言語を書き起こしから推定するため、言語が混在した発話は誤判定の恐れがある。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0（同梱ベンチマークは個別ライセンス）。元話者の声を自動複製して別言語音声を作るため、話者本人の同意と用途（吹き替え・配信等）の確認が必要。",
+  "hf": "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B",
+  "tools": [
+   "Index-Translate（bilibili/Index-Translate）",
+   "CosyVoice3",
+   "GGUF/FP8/FP4量子化版",
+   "公式オンラインデモ"
+  ],
+  "summary_ja": "bilibiliが公開した、日本語・中国語・英語の話し声を本人の声のまま別言語に吹き替える音声翻訳モデルです。発話を区切って処理するため、同時通訳ではありません。",
+  "best_for_ja": "動画・配信の日英中吹き替え、本人の声を保った多言語ナレーション制作",
+  "supersedes": [
+   "Index-Echo-S2ST 初期リリース（6方向）"
+  ],
+  "sources": [
+   "https://huggingface.co/IndexTeam/Index-Echo-S2ST-9B",
+   "https://huggingface.co/IndexTeam/Index-Echo-S2ST-2B",
+   "https://github.com/bilibili/Index-Translate",
+   "https://arxiv.org/abs/2609.40181"
+  ],
+  "confidence": "medium",
+  "rank": 7,
+  "pick": "日英中の吹き替え翻訳",
+  "pick_reason": "元の声のまま訳す"
+ },
+ {
+  "id": "seamless-streaming",
+  "name": "SeamlessStreaming / SeamlessM4T v2",
+  "org": "Meta AI（FAIR）",
+  "country": "US",
+  "release": "2023-11",
+  "params_b": 2.3,
+  "arch": "UnitY2（SeamlessM4T v2）ベースの多言語S2ST／ストリーミング同時翻訳",
+  "tasks": [
+   "s2st"
+  ],
+  "spec": {
+   "latency_ms": 2800,
+   "languages": "音声入力101言語、音声出力36言語（M4T v2の対応表で日本語は音声出力対応）、テキスト出力96言語",
+   "other": "M4T v2はオフライン翻訳（S2ST/S2TT/T2ST/ASR）、SeamlessStreamingは同時翻訳。声質・韻律を保つSeamlessExpressiveは別ライセンス。params_bはM4T v2 largeの値。latency_msはKyutai論文での仏→英LAAL"
+  },
+  "features": {
+   "日本語対応": true,
+   "同時通訳": true,
+   "リアルタイム": true,
+   "声質保持翻訳": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM要件記載なし。モデルカードは『CPU推論は遅く顕著な遅延が出る』としてGPUを推奨。HFの重みはseamless-streaming約8.0GB、seamless-m4t-v2-largeはリポジトリ全体約29.9GB（複数形式を同梱）。",
+  "speed_note": "Hibiki-Zero論文の比較（Europarl-ST仏→英）でLAAL 2.8秒・End Offset 2.4秒。長文（Audio-NTREX）ではLAAL 6.2秒。",
+  "bench": [
+   {
+    "metric": "ASR-BLEU（Europarl-ST 仏→英）",
+    "value": 32.8,
+    "note": "Kyutaiによる第三者比較。Hibiki-Zeroは34.6",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "話者類似度（Europarl-ST 仏→英）",
+    "value": 19.1,
+    "note": "Hibiki-Zeroは49.5。声は保持されない",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "End Offset（秒, 仏→英）",
+    "value": 2.4,
+    "note": "低いほど良い",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "LAAL（秒, 仏→英）",
+    "value": 2.8,
+    "note": "低いほど良い",
+    "source": "https://arxiv.org/html/2602.11072"
+   }
+  ],
+  "quality_note": "約100言語の音声入力と36言語の音声出力をカバーする最大級のオープンS2ST。ただし2023年公開で、2026年のHibiki-Zeroとの比較では翻訳品質・話者類似度・遅延とも下回る。訳音声は固定的な声で、元話者の声は保たれない。",
+  "ja_note": "SeamlessM4T v2の言語表で日本語（jpn）は音声出力・テキスト出力の両方に対応しており、日本語↔英語などを音声で直接翻訳できる数少ないオープンモデル。日本語の個別ベンチ値はモデルカードに未掲載。",
+  "license": "CC BY-NC 4.0",
+  "commercial": "no",
+  "license_note": "SeamlessM4T v2・SeamlessStreamingはCC BY-NC 4.0（非商用）。SeamlessExpressiveは独自のSeamless LicenseとAcceptable Use Policyに従う。非生成コンポーネントの一部はMIT。",
+  "hf": "https://huggingface.co/facebook/seamless-streaming",
+  "tools": [
+   "seamless_communication",
+   "fairseq2",
+   "transformers（SeamlessM4T v2）"
+  ],
+  "summary_ja": "Metaの多言語音声翻訳モデルで、日本語を含む36言語へ音声で訳せ、同時翻訳モードもあります。2023年公開と古く、非商用ライセンスの点に注意が必要です。",
+  "best_for_ja": "日本語を含む多言語の音声翻訳・同時翻訳の研究、非商用のプロトタイプ",
+  "supersedes": [
+   "SeamlessM4T v1（large/medium）"
+  ],
+  "sources": [
+   "https://huggingface.co/facebook/seamless-streaming",
+   "https://huggingface.co/facebook/seamless-m4t-v2-large",
+   "https://arxiv.org/abs/2312.05187",
+   "https://arxiv.org/html/2602.11072",
+   "https://github.com/facebookresearch/seamless_communication"
+  ],
+  "confidence": "medium",
+  "rank": 8
+ },
+ {
+  "id": "hibiki-zero",
+  "name": "Hibiki-Zero",
+  "org": "Kyutai",
+  "country": "FR",
+  "release": "2026-02",
+  "params_b": 3,
+  "arch": "デコーダのみのマルチストリーム階層Transformer（Mimiコーデック）。文単位アライメントで学習後、GRPO強化学習で遅延を最適化（単語単位アライメント不要）",
+  "tasks": [
+   "s2st"
+  ],
+  "spec": {
+   "latency_ms": 2800,
+   "languages": "仏・西・葡・独 → 英（1,000時間未満のデータで新入力言語に適応可能、論文では伊→英を実証）",
+   "other": "音声→音声と音声→テキストの同時翻訳。複数話者の声転写にゼロショット対応（ただし1セッション1話者1言語）。latency_msはEuroparl-ST仏→英のLAAL"
+  },
+  "features": {
+   "日本語対応": false,
+   "同時通訳": true,
+   "リアルタイム": true,
+   "声質保持翻訳": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 12,
+  "vram_note": "公式README: 『8GB VRAMで動くはず、12GBなら安全』。NVIDIA GPU必須。BF16重み約6.7GB。H100 1枚でのバッチ推論は実時間の3倍速（モデルカード）。",
+  "speed_note": "Europarl-ST短文（仏→英）でLAAL 2.8秒・End Offset 2.1秒（同条件のSeamlessは2.8/2.4秒）。独→英はEnd Offset 1.9秒。長文（Audio-NTREX）はLAAL 5.6〜6.3秒。",
+  "bench": [
+   {
+    "metric": "ASR-BLEU（Europarl-ST 仏→英）",
+    "value": 34.6,
+    "note": "Seamless 32.8、Hibiki 31.8",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "話者類似度（Europarl-ST 仏→英）",
+    "value": 49.5,
+    "note": "Seamless 19.1、Hibiki 35.7",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "End Offset（秒, 仏→英）",
+    "value": 2.1,
+    "note": "低いほど良い",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "ASR-BLEU（Europarl-ST 独→英）",
+    "value": 28.6,
+    "note": "Seamless 27.3",
+    "source": "https://arxiv.org/html/2602.11072"
+   },
+   {
+    "metric": "ASR-BLEU（Audio-NTREX長文 仏→英）",
+    "value": 28.7,
+    "note": "Seamless 23.9、Hibiki 26.4",
+    "source": "https://arxiv.org/html/2602.11072"
+   }
+  ],
+  "quality_note": "前身のHibiki（2025-02、仏→英）とSeamlessを、翻訳品質・声の類似度・遅延のすべてで上回る（ICML 2026採択論文）。声を保った同時通訳として最先端のオープンモデル。欠点は出力が英語のみ、入力が欧州4言語のみであること。",
+  "ja_note": "日本語は非対応（入力は仏・西・葡・独、出力は英語）。論文は1,000時間未満のデータで新入力言語に適応できると示しているが、2026年10月時点で公式の日本語版はない。",
+  "license": "CC BY-NC-SA 4.0（重み）／MIT（コード）",
+  "commercial": "no",
+  "license_note": "重みは非商用かつ継承条件付き（CC BY-NC-SA 4.0）。話者の声を転写するため、本人の同意に注意。",
+  "hf": "https://huggingface.co/kyutai/hibiki-zero-3b-pytorch-bf16",
+  "tools": [
+   "hibiki-zero CLI（serve / generate）",
+   "PyTorch",
+   "uv / pip"
+  ],
+  "summary_ja": "Kyutaiの同時通訳モデルで、話し終わりを待たずに約2〜3秒遅れで、話者の声のまま英語に訳します。現状は欧州4言語から英語のみで、日本語には対応していません。",
+  "best_for_ja": "欧州言語→英語のリアルタイム同時通訳、同時通訳モデルの研究ベース",
+  "supersedes": [
+   "Hibiki（hibiki-2b / hibiki-1b, 2025-02）"
+  ],
+  "sources": [
+   "https://huggingface.co/kyutai/hibiki-zero-3b-pytorch-bf16",
+   "https://arxiv.org/html/2602.11072",
+   "https://github.com/kyutai-labs/hibiki-zero",
+   "https://icml.cc/virtual/2026/poster/66094",
+   "https://www.marktechpost.com/2026/02/13/kyutai-releases-hibiki-zero-a3b-parameter-simultaneous-speech-to-speech-translation-model-using-grpo-reinforcement-learning-without-any-word-level-aligned-data/"
+  ],
+  "confidence": "high",
+  "rank": 9
+ },
+ {
+  "id": "beatrice-2",
+  "name": "Beatrice 2",
+  "org": "Project Beatrice",
+  "country": "JP",
+  "release": "2025-08",
+  "params_b": null,
+  "arch": "軽量ストリーミングVC（音素抽出器＋ピッチ推定器＋波形生成器、話者性はクロスアテンションで付与）。変換先話者ごとに学習",
+  "tasks": [
+   "vc"
+  ],
+  "spec": {
+   "latency_ms": 50,
+   "languages": "言語非依存（学習データにReazonSpeech（日本語）とLibriTTS-R（英語）を使用）",
+   "other": "公式VSTプラグイン最新は2.0.0-rc.3（Windows / macOS ARM64、公開日は未記載）。学習ツールbeatrice-trainer最新は2.0.0-rc.0（2025-08-31）。モデルサイズは30MB未満を目標。話者マージ・オートピッチシフトはVCClient側で対応"
+  },
+  "features": {
+   "日本語対応": true,
+   "リアルタイム": true,
+   "CPU動作": true,
+   "ゼロショット声変換": false,
+   "VSTプラグイン": true
+  },
+  "min_vram_gb": 0,
+  "rec_vram_gb": null,
+  "vram_note": "推論はGPU不要（CPU 1スレッドで動作。公式動作環境はWindows 10/11、Intel Core第4世代以降またはN100）。学習はデフォルトで約9GB VRAM（RTX 4090で約40分）、ローカルGPUがなければGoogle Colabも可。",
+  "speed_note": "公式: 外部録音機材での測定で遅延約50ms（公式VST）。開発者のノートPC（Core i7-1165G7）の1スレッドでRTF 0.2未満（rc.0で目標を0.25から変更）。VCClient・beatrice-client経由の遅延は各実装に依存。",
+  "bench": [
+   {
+    "metric": "遅延（ms）",
+    "value": 50,
+    "note": "公式VST、外部録音機材による測定値（目標値）",
+    "source": "https://huggingface.co/fierce-cats/beatrice-trainer"
+   },
+   {
+    "metric": "RTF（Core i7-1165G7, 1スレッド）",
+    "value": 0.2,
+    "note": "0.2未満が要件",
+    "source": "https://huggingface.co/fierce-cats/beatrice-trainer"
+   }
+  ],
+  "quality_note": "CPUだけで約50msという超低遅延が最大の強みで、低スペックPCでも配信に使える。公式キャラクター声（つくよみちゃん、刻鳴時雨、OLUNE）を同梱。任意話者のゼロショット変換はできず、変換先話者ごとに学習済みモデルが必要。2.0系はまだリリース候補（RC）段階で、rc.0以降のモデルは旧VST/VCClientと互換性がない。",
+  "ja_note": "日本発のプロジェクトで公式サイト・ドキュメントとも日本語。学習データに日本語ReazonSpeechを含み、日本語話者での利用が中心（BOOTH等で日本語話者向け学習済みモデルが流通）。",
+  "license": "MIT（beatrice-trainerのソースコードと学習済みモデル）／公式VSTは無料配布",
+  "commercial": "conditional",
+  "license_note": "trainerはMITで、学習したモデルの配布も歓迎と明記。公式VSTプラグインは無料。公式モデル（つくよみちゃん・刻鳴時雨・OLUNE）はキャラクターごとの利用規約・EULAに従う。公式は変換先話者の学習データに公開ライセンスまたは個別許諾のものを使用。他人の声で学習・配布する場合は本人の許諾が前提。",
+  "hf": "https://huggingface.co/fierce-cats/beatrice-trainer",
+  "tools": [
+   "Beatrice公式VSTプラグイン",
+   "beatrice-client",
+   "VCClient（w-okada/voice-changer）",
+   "beatrice-trainer（uv）",
+   "Google Colab"
+  ],
+  "summary_ja": "日本発のリアルタイムAIボイスチェンジャーで、GPUなしのCPUだけで約0.05秒の低遅延で声を変えられます。変換先の声ごとに学習済みモデルが必要です。",
+  "best_for_ja": "配信・ゲーム実況・VTuberのリアルタイム声変換（GPUのない低スペックPCでも可）",
+  "supersedes": [
+   "Beatrice 1（2023-09）",
+   "Beatrice 2.0.0-beta系（2024）"
+  ],
+  "sources": [
+   "https://prj-beatrice.com/",
+   "https://huggingface.co/fierce-cats/beatrice-trainer",
+   "https://github.com/w-okada/voice-changer",
+   "https://forest.watch.impress.co.jp/docs/serial/yajiuma/1611613.html"
+  ],
+  "confidence": "medium",
+  "rank": 10,
+  "pick": "CPUでリアルタイム声変換",
+  "pick_reason": "日本製。遅延約50ms"
+ },
+ {
+  "id": "rvc",
+  "name": "RVC（Retrieval-based-Voice-Conversion-WebUI 2.3.260718）／Applio 3.7.0",
+  "org": "RVC-Project（主要フォークApplioはIAHispano）",
+  "country": "CN",
+  "release": "2026-07-21",
+  "params_b": null,
+  "arch": "RVC系（HuBERT/ContentVec特徴＋学習セット特徴へのtop1検索で音色漏れ抑制＋VITS系デコーダ、RMVPE/FCPEピッチ抽出）。変換先話者ごとに学習",
+  "tasks": [
+   "vc"
+  ],
+  "spec": {
+   "latency_ms": 170,
+   "languages": "言語非依存（学習は低ノイズ音声10分以上を推奨）",
+   "other": "公式2.3.260718: FCPEピッチ抽出対応、リアルタイムGUIのCUDA Graph高速化、RVC Real-Time VST2/VST3プラグイン同梱、ボーカル分離をUVR5からPyMSSへ、学習の中断・再開。基礎モデルはVCTK約50時間で据え置き（RVCv3は予告のみ）。Applio 3.7.0（2026-10-16）はTTS・学習機能付きの使いやすいフォーク"
+  },
+  "features": {
+   "日本語対応": true,
+   "リアルタイム": true,
+   "ゼロショット声変換": false,
+   "歌声変換": true,
+   "VSTプラグイン": true
+  },
+  "min_vram_gb": 4,
+  "rec_vram_gb": null,
+  "vram_note": "公式FAQ: 4GB未満（1060 3GBや各種2GB）のGPUは諦めを推奨、4GBならまだ可能性あり。メモリ不足時は学習のbatch size、推論のx_pad/x_query/x_center/x_maxを下げる。AMD/IntelはDirectML/CPU依存セットあり。RTX 50シリーズ用の整合パッケージも別配布。",
+  "speed_note": "公式README: リアルタイム変換でエンドツーエンド170ms、ASIO入出力デバイスなら90ms（ハードウェア・ドライバ依存）。2.3でリアルタイムGUIにCUDA Graphを導入し、アルゴリズム推論遅延が最大4.7倍高速化・GPU使用量20〜30%減（RTX 4090D測定）。",
+  "bench": [
+   {
+    "metric": "エンドツーエンド遅延（ms）",
+    "value": 170,
+    "note": "リアルタイムGUI、公式README",
+    "source": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI"
+   },
+   {
+    "metric": "エンドツーエンド遅延（ms, ASIO）",
+    "value": 90,
+    "note": "ASIO入出力使用時、ドライバ依存",
+    "source": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI"
+   },
+   {
+    "metric": "CUDA Graphによるアルゴリズム遅延の高速化倍率",
+    "value": 4.7,
+    "note": "最大値、RTX 4090D（2.3.260718の変更履歴）",
+    "source": "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/releases"
+   }
+  ],
+  "quality_note": "学習済みモデルの蓄積とコミュニティ規模（GitHub約3.9万スター）が圧倒的で、話し声・歌声とも実用品質の定番。2026年7月に約2年ぶりの公式更新でVSTプラグインと高速化が入った。弱点はゼロショット不可で話者ごとの学習が必要な点。Applio（MIT）は『今後は頻繁な更新を行わない』方針を表明。",
+  "ja_note": "言語非依存で日本語話者の利用が非常に多い。公式READMEに日本語版があり、VCClient（w-okada/voice-changer）からも利用可能。日本語の配布モデル・解説記事が豊富。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "RVC本体・ApplioともMIT（商用可）。Applioは公式・未改変版の利用時に別途Terms of Use（著作権・知的財産・プライバシーの尊重、必要な権利と許可の確保）への同意が必要。他人やキャラクターの声のモデル化・配布は本人・権利者の許諾が前提。",
+  "hf": "https://huggingface.co/lj1995/VoiceConversionWebUI",
+  "tools": [
+   "RVC WebUI（go-webui）",
+   "リアルタイムGUI（go-realtime-gui）",
+   "RVC Real-Time VST2/VST3",
+   "Applio",
+   "VCClient（w-okada/voice-changer）"
+  ],
+  "summary_ja": "最も普及しているAI声質変換で、10分程度の音声から特定の声のモデルを作り、リアルタイムでも変換できます。2026年7月に公式版が更新され、VSTプラグインも提供されました。",
+  "best_for_ja": "特定キャラクター・歌声への変換、配信用のリアルタイム変換、AIカバー歌唱",
+  "supersedes": [
+   "RVC WebUI 2.2.231006（2023-10版）",
+   "RVC v1系"
+  ],
+  "sources": [
+   "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI",
+   "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/releases",
+   "https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/main/docs/en/faq_en.md",
+   "https://github.com/IAHispano/Applio",
+   "https://github.com/IAHispano/Applio/releases"
+  ],
+  "confidence": "high",
+  "rank": 11
+ },
+ {
+  "id": "seed-vc",
+  "name": "Seed-VC（V2）",
+  "org": "Plachtaa（個人開発）",
+  "country": "?",
+  "release": "2025-04",
+  "params_b": 0.157,
+  "arch": "ゼロショットVC（V1: DiT＋Whisper/XLSR内容エンコーダ＋BigVGAN、V2: ASTRAL量子化トークン＋AR＋CFMで声質とアクセントを変換）",
+  "tasks": [
+   "vc"
+  ],
+  "spec": {
+   "latency_ms": 430,
+   "languages": "言語非依存（Whisper/XLSR系内容エンコーダ）。公式の対応言語リストなし",
+   "other": "モデル: リアルタイム用tiny 25M、オフラインVC 98M、歌声44.1kHz 200M、V2 67M（CFM）＋90M（AR）。params_bはV2の合計。1発話からのファインチューン可。2025-11-21にGitHubリポジトリがアーカイブ（読み取り専用）"
+  },
+  "features": {
+   "ゼロショット声変換": true,
+   "リアルタイム": true,
+   "歌声変換": true,
+   "アクセント変換": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM要件なし（リアルタイム用途はGPUを強く推奨）。README実測はRTX 3060 Laptop GPU（tinyモデル）。Apple Silicon対応（2025-03）。Web UIはV1/V2を同時ロードするとメモリが増え、片方だけのロードも可能。",
+  "speed_note": "公式: アルゴリズム遅延 約300ms＋デバイス側 約100ms。RTX 3060 Laptopでtinyモデルの遅延430ms（Block Time 0.18秒、チャンク推論150ms）。ファインチューン100ステップはT4で約2分。",
+  "bench": [
+   {
+    "metric": "SECS（話者類似度）",
+    "value": 0.8676,
+    "note": "LibriTTS 100発話×実録12話者。OpenVoice 0.7547、CosyVoice 0.8440。作者の自己評価",
+    "source": "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   },
+   {
+    "metric": "WER（%）",
+    "value": 11.99,
+    "note": "OpenVoice 15.46、CosyVoice 18.98、正解音声 8.02",
+    "source": "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   },
+   {
+    "metric": "CER（%）",
+    "value": 2.92,
+    "note": "OpenVoice 4.73、CosyVoice 7.29",
+    "source": "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   },
+   {
+    "metric": "リアルタイム遅延（ms）",
+    "value": 430,
+    "note": "RTX 3060 Laptop、seed-uvit-xlsr-tiny",
+    "source": "https://github.com/Plachtaa/seed-vc"
+   }
+  ],
+  "quality_note": "参照音声1つでの学習不要なゼロショット変換として定番。作者評価ではOpenVoice・CosyVoiceより話者類似度・明瞭度が高く、学習済みSo-VITS-4.0モデルも上回る例を提示（自己評価）。歌声変換にも対応。ただし2025年11月に開発停止（アーカイブ）しており今後の更新はない。",
+  "ja_note": "日本語の公式評価はないが、Whisper/XLSR系の内容エンコーダで言語に依存せず動作し、日本語READMEや日本語キャラクターのデモSpaceも多い。日本語での品質は利用者側で確認が必要。",
+  "license": "GPL-3.0",
+  "commercial": "conditional",
+  "license_note": "GPL-3.0（改変版の配布や組み込み時はソース公開義務）。HFの重み（Plachta/Seed-VC）もGPL-3.0表記。ゼロショットで他人の声を模倣できるため、本人同意のない利用・なりすましに注意。",
+  "hf": "https://huggingface.co/Plachta/Seed-VC",
+  "tools": [
+   "seed-vc CLI（inference.py / inference_v2.py）",
+   "リアルタイムGUI",
+   "Gradio Web UI（app.py）",
+   "Apple Silicon（MPS）"
+  ],
+  "summary_ja": "数秒の参照音声だけで、学習なしに声を別人に変えられるゼロショット声質変換です。リアルタイムや歌声にも対応しますが、2025年11月に開発が終了しています。",
+  "best_for_ja": "学習なしで手早く声を変えたい場合、歌声変換、匿名化・アクセント変換の実験",
+  "supersedes": [
+   "Seed-VC v0.x",
+   "Seed-VC v1.0"
+  ],
+  "sources": [
+   "https://github.com/Plachtaa/seed-vc",
+   "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md",
+   "https://huggingface.co/Plachta/Seed-VC"
+  ],
+  "confidence": "high",
+  "rank": 12
+ },
+ {
+  "id": "meanvc-2",
+  "name": "MeanVC 2",
+  "org": "ASLP-lab（西北工業大学）",
+  "country": "CN",
+  "release": "2026-07",
+  "params_b": 0.018,
+  "arch": "ストリーミング・ゼロショットVC（条件付きフローマッチング＋Future-Receptive Chunking＋Universal Timbre Token Encoder）",
+  "tasks": [
+   "vc"
+  ],
+  "spec": {
+   "latency_ms": 110,
+   "languages": "中国語（評価は北京語のみ）。HFタグは英語・中国語",
+   "other": "約18Mパラメータ。40msチャンク（推奨モデルは120msチャンク＋40ms先読み）。単一CPUコアでフルパイプラインRTF 0.633。論文は2026-06、重みは2026-07にHF公開"
+  },
+  "features": {
+   "ゼロショット声変換": true,
+   "リアルタイム": true,
+   "CPU動作": true,
+   "日本語対応": false
+  },
+  "min_vram_gb": 0,
+  "rec_vram_gb": null,
+  "vram_note": "GPU不要。論文は単一CPUコア（AMD EPYC 7542、量子化・演算融合なし）で遅延とRTFを測定。HFの重み合計は約0.67GB。",
+  "speed_note": "論文: エンドツーエンド初回パケット遅延109.88ms（前身MeanVCの160msチャンク版は211.52ms）。VCモジュールRTF 0.371、ASRエンコーダ0.114＋VC 0.371＋ボコーダ0.148の全体RTF 0.633（単一CPUコア）。",
+  "bench": [
+   {
+    "metric": "初回パケット遅延（ms）",
+    "value": 109.88,
+    "note": "単一CPUコア",
+    "source": "https://arxiv.org/html/2606.09050v1"
+   },
+   {
+    "metric": "SSIM（話者類似度）",
+    "value": 0.71,
+    "note": "MeanVC(160ms) 0.687、StreamVoice+ 0.552",
+    "source": "https://arxiv.org/html/2606.09050v1"
+   },
+   {
+    "metric": "CER（%）",
+    "value": 7.44,
+    "note": "MeanVC(160ms) 5.11、StreamVoice+ 10.27",
+    "source": "https://arxiv.org/html/2606.09050v1"
+   },
+   {
+    "metric": "NMOS",
+    "value": 3.81,
+    "note": "正解音声 4.07",
+    "source": "https://arxiv.org/html/2606.09050v1"
+   },
+   {
+    "metric": "フルパイプラインRTF",
+    "value": 0.633,
+    "note": "単一CPUコア",
+    "source": "https://arxiv.org/html/2606.09050v1"
+   }
+  ],
+  "quality_note": "約18Mと極小で、CPU 1コアでも約110msで動く最新世代のストリーミング・ゼロショットVC。論文では話者類似度（SSIM 0.710）でMeanVC・StreamVoice+を上回るが、CER（7.44%）はMeanVC 160ms版（5.11%）より悪化。評価は北京語のみの自己評価で、Seed-VC等との比較はない。",
+  "ja_note": "日本語の学習・評価の記載なし（学習はEmilia北京語1万時間、評価もSeed-TTS北京語サブセット）。日本語音声での品質は未知数。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "HFモデルカードはApache 2.0（GitHubのMeanVC2リポジトリはライセンス未設定表示）。ゼロショットで声を模倣できるため、本人同意のない利用・なりすましに注意。",
+  "hf": "https://huggingface.co/ASLP-lab/MeanVC2",
+  "tools": [
+   "MeanVC2（GitHub ASLP-lab/MeanVC2）",
+   "PyTorch（CPU推論）"
+  ],
+  "summary_ja": "参照音声だけで声を変えられる超小型（約1,800万パラメータ）のストリーミング声質変換で、CPU 1コアでも約0.1秒の遅延で動きます。評価は中国語のみで、日本語での品質は未確認です。",
+  "best_for_ja": "低遅延・省資源なリアルタイム声変換の組み込み、エッジ機器での声の匿名化研究",
+  "supersedes": [
+   "MeanVC"
+  ],
+  "sources": [
+   "https://huggingface.co/ASLP-lab/MeanVC2",
+   "https://arxiv.org/html/2606.09050v1",
+   "https://github.com/ASLP-lab/MeanVC2",
+   "https://github.com/ASLP-lab/MeanVC"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "openvoice-v2",
+  "name": "OpenVoice V2",
+  "org": "MyShell.ai",
+  "country": "?",
+  "release": "2024-04",
+  "params_b": null,
+  "arch": "ベース話者TTS＋トーンカラー変換器（tone color converter）による声色のゼロショット変換",
+  "tasks": [
+   "vc"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "languages": "V2ネイティブ: 英・西・仏・中・日・韓。変換器はクロスリンガルな声色複製が可能と主張",
+   "other": "トーンカラー変換器で任意の音声の声色を参照話者の声色に変換（VCとして利用可）。MeloTTSと組み合わせて多言語TTS。V2チェックポイントは約0.13GB"
+  },
+  "features": {
+   "ゼロショット声変換": true,
+   "日本語対応": true,
+   "リアルタイム": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM要件記載なし。HFのV2チェックポイントは約0.13GBと小さい。",
+  "speed_note": "V1論文: A10G 1枚で実時間の12倍（1秒の音声生成に85ms）。リアルタイム変換用の公式ツールはなく、オフライン処理向け。",
+  "bench": [
+   {
+    "metric": "実時間比（A10G）",
+    "value": 12,
+    "note": "1秒の音声を85msで生成（V1論文）",
+    "source": "https://arxiv.org/html/2312.01479"
+   },
+   {
+    "metric": "SECS（話者類似度）",
+    "value": 0.7547,
+    "note": "Seed-VC作者による比較のベースライン値（OpenVoiceの版は未記載）。Seed-VCは0.8676",
+    "source": "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   },
+   {
+    "metric": "WER（%）",
+    "value": 15.46,
+    "note": "同上。Seed-VCは11.99",
+    "source": "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+   }
+  ],
+  "quality_note": "MITで商用利用できる軽量なゼロショット声色変換の定番。Seed-VC作者の比較では話者類似度・明瞭度でSeed-VCに劣る一方、DNSMOS系の音質指標（SIG/BAK/OVRL）は最良。2024年4月以降の更新がなく、最新手法には見劣りする。",
+  "ja_note": "V2で日本語をネイティブサポート（論文の学習データも英語・中国語・日本語を含む）。日本語TTS（MeloTTS-Japanese）との組み合わせが容易。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "V1・V2ともMITで『商用・研究とも無料』と明記。他人の声色の複製は本人同意が前提。",
+  "hf": "https://huggingface.co/myshell-ai/OpenVoiceV2",
+  "tools": [
+   "OpenVoice（myshell-ai/OpenVoice）",
+   "MeloTTS"
+  ],
+  "summary_ja": "MyShellのゼロショット声色変換で、短い参照音声の声色を別の音声に移せます。日本語に対応しMITで商用利用できますが、2024年から更新が止まっています。",
+  "best_for_ja": "商用で使える手軽な声色変換、日本語TTSと組み合わせた声のカスタマイズ",
+  "supersedes": [
+   "OpenVoice V1"
+  ],
+  "sources": [
+   "https://github.com/myshell-ai/OpenVoice",
+   "https://huggingface.co/myshell-ai/OpenVoiceV2",
+   "https://arxiv.org/html/2312.01479",
+   "https://github.com/Plachtaa/seed-vc/blob/main/EVAL.md"
+  ],
+  "confidence": "medium",
+  "rank": 14
+ }
+]

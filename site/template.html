@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>オープンウェイト図鑑</title>
+<meta name="description" content="自前のGPUやPCに載せられる最新オープンウェイトモデル（大型LLM・ローカルLLM・国産LLM・音声認識・音声合成・Speech to Speech・音楽・画像・動画・3D・Decision Model）のまとめ。3日ごとに更新。">
+<meta property="og:title" content="オープンウェイト図鑑">
+<meta property="og:description" content="自前のGPUに載せられる最新オープンウェイトモデルのまとめ。3日ごとに更新。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skikkh.github.io/open-weights/">
+<meta name="twitter:card" content="summary">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F45C2'/%3E%3Crect x='6' y='19' width='4' height='7' fill='%23fff'/%3E%3Crect x='12' y='14' width='4' height='12' fill='%23fff'/%3E%3Crect x='18' y='9' width='4' height='17' fill='%23fff'/%3E%3Crect x='24' y='5' width='3' height='21' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: スペックシート型カタログ。上部に固定ナビ、#ハッシュでページ切替。各モデル行に「載る環境」ゲージを持つ */
+:root {
+  --bg: #F2F4F6;
+  --surface: #FFFFFF;
+  --surface-2: #E9EDF1;
+  --fg: #141D26;
+  --muted: #5A6875;
+  --line: #D6DCE3;
+  --line-strong: #AEB8C3;
+  --accent: #1F45C2;
+  --accent-soft: #E1E8FB;
+  --ok: #12704A;   --ok-soft: #DDF1E7;
+  --warn: #8F5600; --warn-soft: #F8EBD3;
+  --bad: #A8261C;  --bad-soft: #F8E0DD;
+  /* 載る環境の段階（軽い→重い） */
+  --t1: #11806A; --t2: #2563C9; --t3: #5B4BC4; --t4: #A35F00; --t5: #B33A12; --t6: #A01E4A;
+  --font-display: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "IBM Plex Sans JP", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E141A; --surface: #151D25; --surface-2: #1C2630; --fg: #E4EAF0; --muted: #94A2AF;
+    --line: #26323D; --line-strong: #3A4856; --accent: #86A2FF; --accent-soft: #1D2A4D;
+    --ok: #5CCB98; --ok-soft: #12301F; --warn: #F0B456; --warn-soft: #362710; --bad: #FF8A7E; --bad-soft: #3A1714;
+    --t1: #3CC7A5; --t2: #6A9CFF; --t3: #9C8CFF; --t4: #E6A23C; --t5: #F07A4A; --t6: #F2678F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E141A; --surface: #151D25; --surface-2: #1C2630; --fg: #E4EAF0; --muted: #94A2AF;
+  --line: #26323D; --line-strong: #3A4856; --accent: #86A2FF; --accent-soft: #1D2A4D;
+  --ok: #5CCB98; --ok-soft: #12301F; --warn: #F0B456; --warn-soft: #362710; --bad: #FF8A7E; --bad-soft: #3A1714;
+  --t1: #3CC7A5; --t2: #6A9CFF; --t3: #9C8CFF; --t4: #E6A23C; --t5: #F07A4A; --t6: #F2678F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+body {
+  margin: 0;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px;
+}
+.wrap {
+  max-width: 1180px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+/* ── 上部ナビ ── */
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.topbar .wrap { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.brand { font-family: var(--font-display); font-size: 17px; color: var(--fg); text-decoration: none; white-space: nowrap; padding-block: 10px; flex: none; }
+.nav { display: flex; align-items: stretch; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; }
+.nav::-webkit-scrollbar { display: none; }
+.nav .grp { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; color: var(--muted); align-self: center; padding: 0 4px 0 12px; white-space: nowrap; text-transform: uppercase; }
+.nav .grp:first-child { padding-left: 0; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 13.5px; padding: 12px 8px 10px; border-bottom: 3px solid transparent; white-space: nowrap; }
+.nav a:hover { color: var(--fg); }
+.nav a[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
+
+/* ── ホーム ── */
+.hero { padding-block: 36px 20px; border-bottom: 1px solid var(--line); }
+.hero-row { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: flex-end; justify-content: space-between; }
+.hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 6vw, 52px); line-height: 1.1; letter-spacing: 0.01em; }
+.hero h1 small { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; }
+.lede { max-width: 64ch; margin: 12px 0 0; color: var(--muted); }
+.stamp { display: grid; grid-template-columns: auto auto; gap: 2px 14px; font-size: 13px; border: 1px solid var(--line-strong); border-radius: var(--r); padding: 10px 14px; background: var(--surface); }
+.stamp dt { color: var(--muted); }
+.stamp dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+.block { padding-block: 22px 6px; }
+.sec-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.pick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.pick { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.pick .k { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.pick .k i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.pick .v { font-weight: 700; font-size: 16.5px; line-height: 1.35; overflow-wrap: anywhere; }
+.pick .v a { color: var(--fg); text-decoration: none; }
+.pick .v a:hover { text-decoration: underline; }
+.pick .s { font-size: 12.5px; color: var(--muted); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; padding-bottom: 40px; }
+.cat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.cat-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.cat-h a { font-weight: 700; font-size: 17px; color: var(--fg); text-decoration: none; }
+.cat-h a:hover { text-decoration: underline; }
+.cat-h span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.cat p { margin: 0; font-size: 13.5px; color: var(--muted); }
+.cat ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
+.cat li { display: flex; gap: 8px; align-items: baseline; font-size: 13.5px; min-width: 0; }
+.cat li .k { color: var(--muted); font-size: 12px; flex: none; min-width: 7.5em; }
+.cat li a { color: var(--fg); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.cat li a:hover { text-decoration: underline; }
+.cat .grp { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+
+/* ── ページ共通 ── */
+.panel { padding-block: 26px 40px; }
+.panel-head { display: grid; gap: 6px; margin-bottom: 18px; }
+.panel-head .grp { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+.panel-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.25; }
+.panel-head p { margin: 0; max-width: 74ch; color: var(--muted); }
+
+/* ── 図（賢さ×重さ） ── */
+.chart-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 14px 8px; margin-bottom: 22px; }
+.chart-title { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
+.chart-title h3 { font-size: 15px; }
+.chart-title span { font-size: 12.5px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+#chart svg { display: block; width: 100%; min-width: 640px; height: auto; }
+#chart text { font-family: var(--font-body); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--muted); padding: 6px 2px 4px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+/* ── フィルタ ── */
+.filters { display: grid; gap: 10px; margin-bottom: 14px; }
+.frow { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.frow > .fl { font-size: 12.5px; color: var(--muted); min-width: 6.5em; }
+.chip-btn { appearance: none; font: inherit; font-size: 13px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); cursor: pointer; }
+.chip-btn[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip-btn:hover { border-color: var(--fg); }
+.ctrl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.ctrl select { font: inherit; font-size: 13px; padding: 4px 8px; border-radius: var(--r); border: 1px solid var(--line-strong); background: var(--surface); color: var(--fg); }
+.ctrl input { accent-color: var(--accent); width: 16px; height: 16px; }
+.count { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; font-family: var(--font-mono); }
+
+/* ── データシート行 ── */
+.list { display: grid; gap: 8px; }
+.row { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; scroll-margin-top: 64px; }
+.row[open] { border-color: var(--line-strong); }
+.row > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; gap: 10px 22px; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.5fr) 96px; align-items: start; }
+.row > summary::-webkit-details-marker { display: none; }
+.row > summary:hover .nm { text-decoration: underline; text-decoration-color: var(--line-strong); }
+.c-id { min-width: 0; display: grid; gap: 4px; }
+.nm { font-weight: 700; font-size: 16.5px; line-height: 1.3; overflow-wrap: anywhere; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12.5px; color: var(--muted); align-items: center; }
+.sum { font-size: 13.5px; color: var(--fg); margin: 2px 0 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.chip { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+.task { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; background: var(--accent-soft); color: var(--accent); font-weight: 600; white-space: nowrap; }
+.lic { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; font-weight: 600; white-space: nowrap; }
+.lic.yes { background: var(--ok-soft); color: var(--ok); }
+.lic.conditional { background: var(--warn-soft); color: var(--warn); }
+.lic.no { background: var(--bad-soft); color: var(--bad); }
+.tagx { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; border: 1px solid var(--line-strong); color: var(--fg); white-space: nowrap; }
+.new { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 0 4px; }
+
+.c-size { min-width: 0; display: grid; gap: 6px; }
+.params { display: flex; flex-wrap: wrap; gap: 2px 14px; align-items: baseline; }
+.params b { font-family: var(--font-mono); font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.params span { font-size: 12px; color: var(--muted); }
+.gauge { position: relative; height: 14px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+.gauge .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px 0 0 3px; opacity: 0.9; }
+.gauge .q4 { position: absolute; top: 2px; bottom: 2px; width: 3px; border-radius: 1px; background: var(--fg); opacity: 0.55; }
+.gauge .tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line-strong); }
+.fit { font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.fit b { font-weight: 700; }
+.fit .mono { color: var(--muted); font-size: 12px; }
+
+.c-score { text-align: right; display: grid; gap: 0; justify-items: end; }
+.score { font-family: var(--font-mono); font-size: 28px; font-weight: 600; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.score small { font-size: 14px; font-weight: 500; margin-left: 1px; }
+.score.na { color: var(--line-strong); font-size: 22px; }
+.score-l { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+.score-bar { width: 72px; height: 4px; border-radius: 2px; background: var(--surface-2); margin-top: 6px; overflow: hidden; }
+.score-bar i { display: block; height: 100%; background: var(--accent); }
+
+.detail { border-top: 1px dashed var(--line); padding: 14px 16px 16px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.detail > div { min-width: 0; }
+.detail h4 { font-size: 12px; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 3px 12px; font-size: 13px; margin: 0; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; overflow-wrap: anywhere; min-width: 0; }
+.bench { width: 100%; border-collapse: collapse; font-size: 13px; }
+.bench td { padding: 3px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.bench td:last-child { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; padding-left: 10px; white-space: nowrap; }
+.note { font-size: 13px; margin: 0; overflow-wrap: anywhere; }
+.note + .note { margin-top: 8px; }
+.srcs { font-size: 12.5px; margin: 0; padding-left: 1.1em; overflow-wrap: anywhere; }
+.conf { font-size: 11.5px; color: var(--muted); }
+
+.usecases { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; margin-bottom: 20px; }
+.usecases:empty { display: none; }
+.uc { border: 1px solid var(--line); border-radius: var(--r); padding: 10px 12px; background: var(--surface); min-width: 0; }
+.uc .k { font-size: 12px; color: var(--muted); }
+.uc .v { font-weight: 700; overflow-wrap: anywhere; }
+.uc .v a { color: inherit; text-decoration: none; }
+.uc .v a:hover { text-decoration: underline; }
+.uc .s { font-size: 12.5px; color: var(--muted); }
+.cer { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.cer span { font-size: 12px; border: 1px solid var(--line); border-radius: 3px; padding: 0 6px; white-space: nowrap; }
+.cer b { font-family: var(--font-mono); font-weight: 600; font-variant-numeric: tabular-nums; }
+.feat { display: flex; flex-wrap: wrap; gap: 4px; }
+.feat span { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; white-space: nowrap; }
+.feat .on { background: var(--surface-2); color: var(--fg); }
+.feat .off { background: transparent; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-strong); }
+.closed { margin-top: 18px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
+.closed b { color: var(--fg); }
+
+/* 見方・更新履歴 */
+.about { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.about section { min-width: 0; }
+.about h3 { font-size: 16px; margin-bottom: 10px; }
+.gloss { margin: 0; display: grid; gap: 10px; }
+.gloss dt { font-weight: 700; }
+.gloss dd { margin: 0; color: var(--muted); font-size: 14px; }
+.rules { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: 14px; }
+.log { display: grid; gap: 14px; }
+.log article { border-left: 2px solid var(--line-strong); padding-left: 12px; }
+.log time { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); }
+.log ul { margin: 4px 0 0; padding-left: 1.1em; font-size: 14px; }
+.lbs { font-size: 13.5px; display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+
+footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size: 12.5px; color: var(--muted); }
+
+@media (max-width: 760px) {
+  .row > summary { grid-template-columns: minmax(0, 1fr) 80px; }
+  .c-id { grid-column: 1 / 2; }
+  .c-score { grid-column: 2 / 3; grid-row: 1; }
+  .c-size { grid-column: 1 / -1; }
+  .score { font-size: 24px; }
+  .frow > .fl { min-width: 100%; }
+  .brand { font-size: 15px; }
+  .cats { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .row { transition: border-color .15s; }
+}
+
+/* 国・公開日・デビュー一覧 */
+.cc { font-size: 11.5px; font-weight: 700; border: 1px solid var(--line-strong); border-radius: 3px; padding: 0 6px; color: var(--fg); white-space: nowrap; line-height: 1.6; }
+.cc.jp { border-color: var(--accent); color: var(--accent); }
+.debut { font-family: var(--font-mono); font-size: 12px; color: var(--fg); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.debut em { font-style: normal; color: var(--muted); margin-left: 4px; font-family: var(--font-body); font-size: 11.5px; }
+.tl { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); margin-bottom: 18px; }
+.tl > summary { cursor: pointer; padding: 10px 14px; font-weight: 700; font-size: 14px; list-style: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.tl > summary span { margin-left: auto; }
+.tl > summary::-webkit-details-marker { display: none; }
+.tl > summary::before { content: "▸"; color: var(--muted); margin-right: -6px; }
+.tl[open] > summary::before { content: "▾"; }
+.tl > summary span { font-weight: 400; color: var(--muted); font-size: 12.5px; }
+.tl-body { border-top: 1px solid var(--line); padding: 10px 14px 12px; display: grid; gap: 6px; max-height: 300px; overflow-y: auto; }
+.tl-m { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.tl-m time { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tl-m div { display: flex; flex-wrap: wrap; gap: 4px 6px; min-width: 0; }
+.tl-m a { font-size: 12.5px; color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 3px; padding: 0 6px; overflow-wrap: anywhere; }
+.tl-m a:hover { border-color: var(--fg); }
+.tl-m a i { font-style: normal; color: var(--muted); margin-left: 5px; font-size: 11px; }
+
+/* 量子化ローカル表・ローカル機 */
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-bottom: 22px; }
+.box h3 { font-size: 15px; margin-bottom: 4px; }
+.box > p { margin: 0 0 10px; font-size: 13px; color: var(--muted); max-width: 80ch; }
+.tbl-wrap { overflow-x: auto; }
+.qtbl { border-collapse: collapse; font-size: 13px; min-width: 620px; width: 100%; }
+.qtbl th, .qtbl td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.qtbl th { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.qtbl th small { display: block; font-weight: 400; font-size: 11px; }
+.qtbl td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.qtbl td.no { color: var(--line-strong); }
+.qtbl td.best { color: var(--ok); font-weight: 700; }
+.qtbl td a { color: var(--fg); font-weight: 600; text-decoration: none; }
+.qtbl td a:hover { text-decoration: underline; }
+.qtbl .q { display: inline-block; font-family: var(--font-mono); font-size: 12px; padding: 0 5px; border-radius: 3px; background: var(--ok-soft); color: var(--ok); font-weight: 600; white-space: nowrap; }
+.qtbl .q.lo { background: var(--warn-soft); color: var(--warn); }
+.devs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 12px; }
+.dev { border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; min-width: 0; }
+.dev b { display: block; font-size: 13.5px; overflow-wrap: anywhere; }
+.dev span { font-size: 12px; color: var(--muted); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.lq { font-size: 12.5px; }
+.lq b { color: var(--t4); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#home">オープンウェイト図鑑</a>
+    <nav class="nav" id="nav" aria-label="カテゴリ"></nav>
+  </div>
+</div>
+
+<main>
+  <!-- ホーム -->
+  <section class="page" id="p-home" data-page="home">
+    <div class="hero">
+      <div class="wrap hero-row">
+        <div>
+          <h1><small>Open-weight models you can actually host</small>オープンウェイト図鑑</h1>
+          <p class="lede">自前のGPUやPCに「頑張れば載せられる」最新のオープンウェイトモデルを、国内外まとめて一覧にしています。各系列は最新世代だけを載せ、Flash／Pro など用途の違う版は分けています。LLMは大型（40B超）とローカル（40B以下）に分け、音声系は日本語に強いものを中心に集めました。音楽・画像・動画・3D・Decision Model は、比べやすいように重み非公開のAPIサービスも載せています。</p>
+        </div>
+        <dl class="stamp">
+          <dt>最終更新</dt><dd id="st-upd">—</dd>
+          <dt>次回更新予定</dt><dd id="st-next">—</dd>
+          <dt>収録数</dt><dd id="st-count">—</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="wrap">
+      <section class="block" aria-labelledby="picks-h">
+        <p class="sec-label" id="picks-h">LLM：いまの最強 早見</p>
+        <div class="pick-grid" id="pick-grid"></div>
+      </section>
+      <section class="block" aria-labelledby="new-h">
+        <p class="sec-label" id="new-h">直近30日にデビューしたモデル</p>
+        <div class="tl" id="home-new"></div>
+      </section>
+      <section class="block" aria-labelledby="cats-h">
+        <p class="sec-label" id="cats-h">カテゴリ別ページ</p>
+        <div class="cats" id="cats"></div>
+      </section>
+    </div>
+  </section>
+
+  <div id="pages"></div>
+
+  <!-- 見方・更新履歴 -->
+  <section class="page wrap panel" id="p-about" data-page="about" hidden>
+    <div class="panel-head">
+      <h2>見方と収録ルール</h2>
+    </div>
+    <div class="about">
+      <section>
+        <h3>収録ルール</h3>
+        <ol class="rules" id="rules"></ol>
+      </section>
+      <section>
+        <h3>用語ミニ辞典</h3>
+        <dl class="gloss">
+          <dt>公開日（デビュー）</dt>
+          <dd>重みが一般にダウンロードできるようになった日です。API提供のものはサービス開始日です。「NEW」は更新日から45日以内に出たものに付けています。</dd>
+          <dt>総パラメータ / 稼働パラメータ</dt>
+          <dd>総パラメータはモデル全体の大きさで、必要なメモリ量を決めます。稼働（アクティブ）パラメータは1トークンごとに実際に計算する量で、速さを決めます。MoE は総が大きく稼働が小さいので「メモリは食うが速い」モデルです。</dd>
+          <dt>MoE（Mixture of Experts）</dt>
+          <dd>中に多数の「専門家」ネットワークを持ち、入力ごとに一部だけを使う構造。いまの超巨大LLMのほとんどがこれです。</dd>
+          <dt>BF16 / FP8 / MXFP4 / 量子化</dt>
+          <dd>重み1個あたりのビット数です。BF16は2バイト、FP8は1バイト、4bitは約0.5バイト、2bitは約0.25バイト。ビット数を落とすほど小さい機械に載りますが、性能は下がります。2bit以下はかなり劣化するので「とりあえず動く」水準と考えてください。</dd>
+          <dt>大型LLMの必要メモリ</dt>
+          <dd>「公式重みのサイズ × 1.2」（KVキャッシュ等の余裕込み）で計算しています。長い文脈や多数の同時アクセスで使うなら、さらに余裕が要ります。</dd>
+          <dt>ローカルLLMの必要メモリ</dt>
+          <dd>「4bit量子化ファイル（Q4_K_M 相当）× 1.15」で計算しています。量子化ファイルのサイズが分からないものは「総パラメータ × 0.6GB」で見積もっています。</dd>
+          <dt>Mac・DGX Spark などの統合メモリ</dt>
+          <dd>CPUとGPUでメモリを共有する機械です。Mac は標準設定だとGPUに使えるのが搭載量の約75%（64GB機なら約48GB）なので、その値で判定しています。</dd>
+          <dt>8×H100 / 8×H200 / 8×B200 / 8×B300</dt>
+          <dd>GPUを8枚積んだサーバ1台（1ノード）。合計メモリはそれぞれ約640GB / 1,128GB / 1,440GB / 2,304GB です。</dd>
+          <dt>最低VRAM（画像・動画・音声など）</dt>
+          <dd>量子化やCPUオフロードを使って「とりあえず動く」最小のGPUメモリ。推奨VRAMは快適に使える目安です。最低VRAMで動かすと生成はかなり遅くなります。</dd>
+          <dt>AA Intelligence Index</dt>
+          <dd>Artificial Analysis が複数のベンチマーク（知識・推論・コーディング・エージェント等）を同じ条件で測って合成した総合点。版が変わると点数の水準も変わるので、同じ版の中で比べてください。</dd>
+          <dt>完了時間（AgentPerf-Local）</dt>
+          <dd>Artificial Analysis がローカル機で、同じエージェント作業（168ターン・172回のツール呼び出し）を最後までやり切るのにかかった時間。短いほど速い機械・モデルです。</dd>
+          <dt>CER（文字誤り率）</dt>
+          <dd>音声認識で、正解の文字列に対してどれだけ間違えたかの割合。日本語は単語の区切りがないので WER ではなく CER で比べるのが普通です。</dd>
+          <dt>T2V / I2V / R2V</dt>
+          <dd>動画生成の入力の違い。T2Vはテキストから、I2Vは1枚の画像を動かす、R2Vは参照画像の人物や物の見た目を保ったまま新しい動画を作ります。</dd>
+          <dt>全二重（full-duplex）</dt>
+          <dd>人と同じように「聞きながら話す」音声対話。相づちや割り込みができます。半二重は交互にしか話せません。</dd>
+          <dt>ゼロショット声クローン</dt>
+          <dd>数秒〜数十秒の参考音声を渡すだけで、追加学習なしにその声で喋らせる機能。本人の同意がある声だけに使いましょう。</dd>
+          <dt>Decision Model（判断モデル）</dt>
+          <dd>文章を生成する代わりに「この文は正しいか（確率）」「選択肢のどれか」「何段階の何点か」を型の決まった形で返すモデル。生成しないぶん速く安く、問い合わせの振り分けやエージェントの次の行動選びに向きます。</dd>
+        </dl>
+      </section>
+      <section>
+        <h3>更新履歴</h3>
+        <div class="log" id="log"></div>
+      </section>
+      <section>
+        <h3>性能値の出典</h3>
+        <ul class="lbs" id="lbs"></ul>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" id="foot"></div>
+</footer>
+
+<script id="data" type="application/json">/*__DATA__*/</script>
+<script>
+(function () {
+  "use strict";
+  var D;
+  try { D = JSON.parse(document.getElementById("data").textContent); }
+  catch (e) { document.querySelector("main").textContent = "データを読み込めませんでした。"; return; }
+  var META = D.meta || {}, LLM = D.llm || [], ASR = D.asr || [], TTS = D.tts || [], GEN = D.gen || {}, HW = D.hw || null;
+
+  /* ── 小道具 ── */
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function safeUrl(u) { return /^https?:\/\//i.test(String(u || "")) ? String(u) : null; }
+  function link(u, label) {
+    var s = safeUrl(u); if (!s) return esc(label || u || "");
+    return '<a href="' + esc(s) + '" target="_blank" rel="noopener">' + esc(label || s.replace(/^https?:\/\//, "")) + "</a>";
+  }
+  function repoLink(u) {
+    if (!u) return null;
+    var s = String(u);
+    return link(s, /github\.com/.test(s) ? "GitHub" : (/huggingface\.co/.test(s) ? "Hugging Face" : null));
+  }
+  function num(v) { return typeof v === "number" && isFinite(v) ? v : null; }
+  function fmtB(b) {
+    b = num(b); if (b == null) return "—";
+    if (b >= 1000) return (Math.round(b / 100) / 10).toString().replace(/\.0$/, "") + "T";
+    if (b >= 100) return Math.round(b) + "B";
+    if (b >= 10) return (Math.round(b * 10) / 10).toString().replace(/\.0$/, "") + "B";
+    if (b >= 1) return (Math.round(b * 100) / 100) + "B";
+    return Math.round(b * 1000) + "M";
+  }
+  function fmtM(m) { m = num(m); return m == null ? "—" : fmtB(m / 1000); }
+  function fmtGB(g) { g = num(g); if (g == null) return "—"; return (g >= 100 ? Math.round(g).toLocaleString("en-US") : (Math.round(g * 10) / 10)) + "GB"; }
+  function fmtDate(s) { if (!s) return "—"; var p = String(s).split("-"); return p[0] + "." + (p[1] || "") + (p[2] ? "." + p[2] : "（日不明）"); }
+  function fmtMD(s) { var p = String(s || "").split("-"); return p[2] ? p[1] + "." + p[2] : (p[1] ? p[1] + "月" : "—"); }
+  var BASE = Date.parse(META.updated_at || "") || Date.now();
+  function daysAgo(s) { if (!s) return 9999; var t = Date.parse(String(s).length === 7 ? s + "-01" : s); return isFinite(t) ? (BASE - t) / 864e5 : 9999; }
+  function relAge(s) {
+    var d = daysAgo(s); if (d === 9999) return "";
+    if (d < 0) return "公開予定";
+    if (d < 1) return "当日";
+    if (d < 31) return Math.round(d) + "日前";
+    if (d < 365) return Math.round(d / 30.4) + "か月前";
+    return Math.floor(d / 365) + "年以上前";
+  }
+  function byNew(a, b) { return String(b.release || "").localeCompare(String(a.release || "")); }
+  function byOld(a, b) { return String(a.release || "9999").localeCompare(String(b.release || "9999")); }
+  var NEW_O = ["new", "時系列：新しい順"], OLD_O = ["old", "時系列：古い順"];
+  function confLine(c) { return c ? '<div class="conf">情報の確かさ：' + esc({ high: "高", medium: "中", low: "低（要確認）" }[c] || c) + "</div>" : ""; }
+
+  var COUNTRY_JA = { CN: "中国", US: "米国", FR: "フランス", DE: "ドイツ", GB: "英国", CH: "スイス", KR: "韓国", IN: "インド", AE: "UAE", JP: "日本", CA: "カナダ", SG: "シンガポール", IL: "イスラエル", TW: "台湾", NL: "オランダ", RU: "ロシア", HK: "香港", SE: "スウェーデン", FI: "フィンランド", ES: "スペイン", IT: "イタリア", AU: "オーストラリア", VN: "ベトナム", PL: "ポーランド", "?": "不明" };
+  function cname(c) { return COUNTRY_JA[c] || c || "不明"; }
+  var STR_JA = { coding: "コーディング", agent: "エージェント", reasoning: "推論", math: "数学", multilingual: "多言語", japanese: "日本語", vision: "画像入力", "long-context": "長文脈", efficiency: "省メモリ・高速", "tool-use": "ツール利用" };
+  var MODE_JA = { hybrid: "思考ON/OFF切替", thinking: "思考型（推論特化）", instruct: "即答型", base: "ベースモデル（指示調整前）" };
+  var COM_JA = { yes: "商用OK", conditional: "条件付き商用", no: "非商用" };
+  var TASK_JA = {
+    t2v: "T2V テキスト→動画", i2v: "I2V 画像→動画", r2v: "R2V 参照→動画", flf2v: "首尾フレーム指定", s2v: "音声駆動", v2v: "動画→動画", edit: "編集", audio: "音声も同時生成",
+    t2i: "テキスト→画像", "multi-ref": "複数画像の参照", inpaint: "部分修正", control: "構図制御",
+    song: "歌もの（歌詞付き）", instrumental: "インスト", a2m: "参照音源から", sfx: "効果音", score: "楽譜",
+    dialogue: "音声対話", omni: "Omni（音声入出力LLM）", s2st: "音声翻訳", vc: "声質変換",
+    i23d: "画像→3D", t23d: "テキスト→3D", texture: "テクスチャ", part: "パーツ分割", rig: "リギング", scene: "シーン・ワールド",
+    predicate: "真偽判定", choice: "選択肢から選ぶ", route: "ルーティング", guard: "安全判定", judge: "回答の採点", rerank: "並べ替え", classify: "分類"
+  };
+  // music の score（楽譜）と decision の score（段階評価）は名前が同じなのでページで切り替える
+  function taskJa(t, pid) { if (t === "score" && pid === "decision") return "段階評価"; return TASK_JA[t] || t; }
+  var TASK_ORDER = Object.keys(TASK_JA);
+
+  /* ── LLM の振り分け（ローカル＝総パラメータ40B以下） ── */
+  var LOCAL_MAX = 40;
+  function isLocal(m) { return num(m.total_b) != null && m.total_b <= LOCAL_MAX; }
+  var BIG = LLM.filter(function (m) { return !isLocal(m); });
+  var LOCAL = LLM.filter(isLocal);
+  var JP = LLM.filter(function (m) { return m.country === "JP"; });
+  function llmPid(m) { return isLocal(m) ? "local" : "llm"; }
+
+  /* ── ページ構成 ── */
+  var PAGES = [
+    { id: "home", nav: "ホーム" },
+    { id: "llm", nav: "大型LLM", grp: "言語", h: "大型LLM：40B超の大型・超巨大モデル", desc: "総パラメータ40B超（ほとんどが100B以上）。賢さ（AA Index）と、載せるのに要るGPUメモリで比べる。量子化してローカル機に載るかも。", list: BIG },
+    { id: "local", nav: "ローカルLLM", grp: "言語", h: "ローカルLLM：手元のGPU・Macで動く40B以下", desc: "総パラメータ40B以下（30B台まで）。4bit量子化で RTX 4090／5090 や Mac に載るかで比べる。", list: LOCAL },
+    { id: "jp", nav: "国産LLM", grp: "言語", h: "国産LLM：日本の組織が公開した重み", desc: "日本の組織が公開したLLM。フルスクラッチと海外モデルベースを区別し、日本語ベンチで比べる。", list: JP },
+    { id: "asr", nav: "音声認識", grp: "音声", h: "音声認識（ASR）：日本語の書き起こし", desc: "日本語の書き起こし（ASR）。日本語CERで精度を比べる。", list: ASR },
+    { id: "tts", nav: "音声合成", grp: "音声", h: "音声合成（TTS）：日本語の読み上げ・声づくり", desc: "日本語の読み上げ・声クローン（TTS）。商用利用の可否に注意。", list: TTS },
+    { id: "s2s", nav: "Speech to Speech", grp: "音声", gen: true, h: "Speech to Speech：音声で聞いて、音声で返す", desc: "音声対話（全二重含む）、音声翻訳、声質変換。日本語で使えるものを中心に。" },
+    { id: "music", nav: "音楽生成", grp: "音声", gen: true, h: "音楽生成：歌もの・インスト・効果音", desc: "歌詞付きの歌やインストを作るモデル。オープンとAPIサービスの両方。日本語歌詞で歌えるかも確認。" },
+    { id: "image", nav: "画像生成", grp: "ビジュアル", gen: true, h: "画像生成：テキストから画像、指示で編集", desc: "テキスト→画像と、指示による画像編集。オープンとAPIサービスの両方。日本語の文字を描けるかも確認。" },
+    { id: "video", nav: "動画生成", grp: "ビジュアル", gen: true, h: "動画生成：T2V・I2V・R2V", desc: "テキスト→動画、画像→動画、参照画像の見た目を保つ R2V など。オープンとAPIサービスの両方。" },
+    { id: "3d", nav: "3D生成", grp: "ビジュアル", gen: true, h: "3D生成：画像やテキストから3Dモデル", desc: "画像→3Dメッシュ、テクスチャ、パーツ分割、3Dシーン生成。オープンとAPIサービスの両方。" },
+    { id: "decision", nav: "Decision Model", grp: "判断", gen: true, h: "Decision Model：文章を書かずに「判定・選択・採点」だけ返す", desc: "OpenAI Decisions API や TypeSafe Jev のような判断専用モデルと、自前で載せられるオープンな代替。" },
+    { id: "about", nav: "見方・更新履歴" }
+  ];
+  var PAGE = {};
+  PAGES.forEach(function (p) { if (p.gen) p.list = GEN[p.id] || []; PAGE[p.id] = p; });
+
+  /* ── メモリの段階 ── */
+  // 大型LLM：データセンターGPU（公式重み）
+  var NODES = [
+    { gb: 80, label: "GPU 1枚", sub: "H100 80GB", c: "--t1" },
+    { gb: 640, label: "8×H100", sub: "640GB", c: "--t2" },
+    { gb: 1128, label: "8×H200", sub: "1,128GB", c: "--t3" },
+    { gb: 1440, label: "8×B200", sub: "1,440GB", c: "--t4" },
+    { gb: 2304, label: "8×B300", sub: "2,304GB", c: "--t5" },
+    { gb: Infinity, label: "複数ノード", sub: "", c: "--t6" }
+  ];
+  // ローカルLLM：手元のGPU・Mac（4bit量子化）。Mac は搭載量の約75%をGPUに使える前提
+  var LT = [
+    { gb: 8, label: "8GB", sub: "RTX 4060 など", c: "--t1" },
+    { gb: 12, label: "12GB", sub: "RTX 4070 など", c: "--t1" },
+    { gb: 16, label: "16GB", sub: "RTX 5080 / Mac 24GB", c: "--t2" },
+    { gb: 24, label: "24GB", sub: "RTX 4090 / Mac 32GB", c: "--t2" },
+    { gb: 32, label: "32GB", sub: "RTX 5090 / Mac 48GB", c: "--t3" },
+    { gb: 48, label: "48GB", sub: "Mac 64GB / RTX 6000 Ada", c: "--t4" },
+    { gb: 96, label: "96GB", sub: "Mac 128GB / DGX Spark / RTX PRO 6000", c: "--t5" },
+    { gb: Infinity, label: "それ以上", sub: "", c: "--t6" }
+  ];
+  // 巨大LLMを量子化して載せるローカル機（使える量の目安）
+  var WS = [
+    { gb: 115, label: "128GB機", sub: "DGX Spark / Ryzen AI Halo / RTX Spark N1X" },
+    { gb: 230, label: "256GB", sub: "DGX Spark×2 / Mac Studio 256GB" },
+    { gb: 470, label: "512GB", sub: "Mac Studio 512GB" },
+    { gb: 740, label: "784GB", sub: "DGX Station（GB300）" }
+  ];
+  // 画像・動画・音声などの VRAM（コンシューマGPU基準）
+  var VT = [
+    { gb: 8, label: "8GB", sub: "RTX 4060 など", c: "--t1" },
+    { gb: 12, label: "12GB", sub: "RTX 4070 など", c: "--t1" },
+    { gb: 16, label: "16GB", sub: "RTX 5080 など", c: "--t2" },
+    { gb: 24, label: "24GB", sub: "RTX 4090", c: "--t2" },
+    { gb: 32, label: "32GB", sub: "RTX 5090", c: "--t3" },
+    { gb: 48, label: "48GB", sub: "RTX 6000 Ada など", c: "--t4" },
+    { gb: 96, label: "96GB", sub: "H100 / RTX PRO 6000", c: "--t5" },
+    { gb: Infinity, label: "複数GPU", sub: "", c: "--t6" }
+  ];
+  var BYTES = { BF16: 2, FP16: 2, FP8: 1, INT8: 1, MXFP4: 0.53, NVFP4: 0.56, INT4: 0.53, FP4: 0.53 };
+  function weightsGB(m) {
+    if (num(m.weights_gb)) return m.weights_gb;
+    var p = String(m.native_precision || "BF16").toUpperCase(), b = 2;
+    Object.keys(BYTES).forEach(function (k) { if (p.indexOf(k) >= 0 && BYTES[k] < b) b = BYTES[k]; });
+    return num(m.total_b) ? m.total_b * b : null;
+  }
+  function nativeNeed(m) { var w = weightsGB(m); return w == null ? null : w * 1.2; }
+  function q4Raw(m) { return num(m.q4_gb) || (num(m.total_b) ? m.total_b * 0.6 : null); }
+  function q4Need(m) { var q = q4Raw(m); return q == null ? null : q * 1.15; }
+  function tierFor(list, gb) { if (gb == null) return null; for (var i = 0; i < list.length; i++) if (gb <= list[i].gb) return list[i]; return list[list.length - 1]; }
+  function logPos(gb, lo, hi) { var v = Math.max(lo, Math.min(hi, gb)); return (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo)) * 100; }
+  function tierName(t) { return t.sub && t.label.indexOf("GB") > 0 && t.label.length <= 5 ? t.sub + "（" + t.label + "）" : t.label; }
+
+  var LCFG = {
+    llm: { tiers: NODES, need: nativeNeed, alt: q4Need, gmin: 8, gmax: 4000, cx: [20, 4000], xticks: [40, 160, 320], axis: "公式重みを載せるのに要るメモリ（対数軸）",
+      fit: function (t) { return "公式重みなら <b style=\"color:var(" + t.c + ')">' + esc(t.label) + "</b> に載る"; },
+      size: function (m) { return esc(fmtGB(weightsGB(m))) + " → 要" + esc(fmtGB(nativeNeed(m))); },
+      altText: function (m, t) { return "4bitなら " + esc(t.label) + "（約" + esc(fmtGB(q4Need(m))) + "）"; },
+      hw: [[80, "GPU 1枚 (80GB)"], [640, "8×H100"], [1128, "8×H200"], [1440, "8×B200"]] },
+    local: { tiers: LT, need: q4Need, alt: nativeNeed, gmin: 4, gmax: 200, cx: [6, 120], xticks: [], axis: "4bit量子化で要るメモリ（対数軸）",
+      fit: function (t) { return "4bitで <b style=\"color:var(" + t.c + ')">' + esc(tierName(t)) + "</b> に載る"; },
+      size: function (m) { return "4bit 約" + esc(fmtGB(q4Raw(m))) + " → 要" + esc(fmtGB(q4Need(m))); },
+      altText: function (m) { return "公式重み（" + esc(m.native_precision || "BF16") + "）なら 要" + esc(fmtGB(nativeNeed(m))); },
+      hw: [[12, "12GB"], [16, "16GB"], [24, "24GB (RTX 4090)"], [32, "32GB (RTX 5090)"], [48, "Mac 64GB"], [96, "Mac 128GB / DGX Spark"]] }
+  };
+  function cfgFor(m) { return isLocal(m) ? LCFG.local : LCFG.llm; }
+
+  function scoreOf(m) { return num(m.aa_index); }
+  function nejOf(m) { return m.jp_bench ? num(m.jp_bench.nejumi) : null; }
+  var maxAA = Math.max.apply(null, LLM.map(scoreOf).filter(function (v) { return v != null; }).concat([1]));
+
+  /* ── 共通パーツ ── */
+  function licChip(c) { return c ? '<span class="lic ' + esc(c) + '">' + esc(COM_JA[c] || c) + "</span>" : ""; }
+  function newChip(rel) { return daysAgo(rel) <= 45 && daysAgo(rel) >= 0 ? '<span class="new">NEW</span>' : ""; }
+  function ccChip(c) { return '<span class="cc' + (c === "JP" ? " jp" : "") + '">' + esc(cname(c)) + "</span>"; }
+  function debut(rel) { return rel ? '<span class="debut" title="公開日">' + esc(fmtDate(rel)) + " 公開<em>" + esc(relAge(rel)) + "</em></span>" : '<span class="debut muted">公開日 不明</span>'; }
+  function sources(list) {
+    if (!list || !list.length) return "";
+    return '<div><h4>出典</h4><ul class="srcs">' + list.slice(0, 8).map(function (u) { return "<li>" + link(u) + "</li>"; }).join("") + "</ul></div>";
+  }
+  function kv(pairs) {
+    return '<dl class="kv">' + pairs.filter(function (p) { return p[1] != null && p[1] !== "" && p[1] !== "—"; })
+      .map(function (p) { return "<dt>" + esc(p[0]) + "</dt><dd>" + p[1] + "</dd>"; }).join("") + "</dl>";
+  }
+  function licKV(m) { return esc(m.license) + (m.license_note ? '<br><span class="muted">' + esc(m.license_note) + "</span>" : ""); }
+  function originKV(m) { return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["公開日", esc(fmtDate(m.release)) + (m.release ? '<span class="muted">（' + esc(relAge(m.release)) + "）</span>" : "")]]; }
+  function idHead(m, extra) {
+    return '<div class="c-id"><div class="nm">' + esc(m.name) + "</div>" +
+      '<div class="meta">' + ccChip(m.country) + "<span>" + esc(m.org) + "</span>" + debut(m.release) + newChip(m.release) + (extra || "") + "</div>" +
+      (m.summary_ja ? '<p class="sum">' + esc(m.summary_ja) + "</p>" : "");
+  }
+  var BENCH_JA = [["swe_verified", "SWE-bench Verified"], ["terminal_bench2", "Terminal-Bench 2"], ["gpqa", "GPQA Diamond"], ["hle", "Humanity's Last Exam"], ["aime", "AIME"], ["lcb", "LiveCodeBench"], ["mmlu_pro", "MMLU-Pro"], ["tau2", "τ²-bench"], ["browsecomp", "BrowseComp"]];
+  function benchTable(b) {
+    if (!b) return "";
+    var rows = BENCH_JA.filter(function (k) { return num(b[k[0]]) != null; })
+      .map(function (k) { return "<tr><td>" + esc(k[1]) + "</td><td>" + b[k[0]] + "</td></tr>"; });
+    return rows.length ? '<table class="bench">' + rows.join("") + "</table>" : "";
+  }
+  function listBench(arr, title) {
+    arr = (arr || []).filter(function (x) { return x && (num(x.value) != null || (x.value != null && x.value !== "")); });
+    if (!arr.length) return "";
+    return "<div><h4>" + esc(title) + '</h4><table class="bench">' + arr.map(function (x) {
+      var lbl = x.metric || x.dataset || "";
+      return "<tr><td>" + (x.source ? link(x.source, lbl) : esc(lbl)) + (x.note ? '<br><span class="muted" style="font-size:12px">' + esc(x.note) + "</span>" : "") + "</td><td>" + esc(x.value) + "</td></tr>";
+    }).join("") + "</table></div>";
+  }
+  function featChips(pairs) {
+    var xs = pairs.filter(function (p) { return p[1] !== undefined && p[1] !== null; });
+    return xs.length ? '<div class="feat">' + xs.map(function (p) { return '<span class="' + (p[1] ? "on" : "off") + '">' + esc(p[0]) + "</span>"; }).join("") + "</div>" : "";
+  }
+  function supKV(m) { return (m.supersedes || []).length ? esc(m.supersedes.join("、")) : null; }
+
+  /* ── デビュー時期の一覧 ── */
+  function timeline(list, pid, title) {
+    var xs = list.filter(function (m) { return m.release; }).slice().sort(byNew);
+    if (!xs.length) return "";
+    var groups = [], cur = null;
+    xs.forEach(function (m) {
+      var k = String(m.release).slice(0, 7);
+      if (!cur || cur.k !== k) { cur = { k: k, items: [] }; groups.push(cur); }
+      cur.items.push(m);
+    });
+    var top = xs[0];
+    return "<summary>" + esc(title || "デビュー時期（新しい順）") + "<span>最新：" + esc(top.name) + "（" + esc(fmtDate(top.release)) + "）</span></summary>" +
+      '<div class="tl-body">' + groups.map(function (g) {
+        return '<div class="tl-m"><time>' + esc(g.k.replace("-", ".")) + "</time><div>" + g.items.map(function (m) {
+          var p = pid || llmPid(m);
+          return '<a href="#' + p + '" data-open="' + p + "-" + esc(m.id) + '">' + esc(m.short || m.name) + "<i>" + esc(cname(m.country)) + "</i></a>";
+        }).join("") + "</div></div>";
+      }).join("") + "</div>";
+  }
+
+  /* ── フィルタ部品（ページごとの状態 ST[pid]） ── */
+  var ST = {}, RENDER = {};
+  function chipRow(label, k, opts, cur) {
+    if (opts.length < 3) return "";
+    return '<div class="frow" role="group" aria-label="' + esc(label) + '"><span class="fl">' + esc(label) + "</span>" + opts.map(function (o) {
+      return '<button class="chip-btn" data-k="' + k + '" data-v="' + esc(o[0]) + '" aria-pressed="' + (String(o[0]) === String(cur)) + '">' + esc(o[1]) + "</button>";
+    }).join("") + "</div>";
+  }
+  function countryOpts(list) {
+    var cnt = {};
+    list.forEach(function (m) { var c = m.country || "?"; cnt[c] = (cnt[c] || 0) + 1; });
+    return [["all", "すべて"]].concat(Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a] || cname(a).localeCompare(cname(b), "ja"); })
+      .map(function (c) { return [c, cname(c) + " " + cnt[c]]; }));
+  }
+  function sortCtl(pid, opts) {
+    return '<label class="ctrl">並び <select data-k="sort" id="' + pid + '-sort">' + opts.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + "</option>"; }).join("") + "</select></label>";
+  }
+  function checkCtl(pid, k, text) { return '<label class="ctrl"><input type="checkbox" data-k="' + k + '" id="' + pid + "-" + k + '"> ' + esc(text) + "</label>"; }
+  function passCountry(pid, m) { return ST[pid].country === "all" || (m.country || "?") === ST[pid].country; }
+  function shell(p, top, filters) {
+    return '<section class="page wrap panel" id="p-' + p.id + '" data-page="' + p.id + '" hidden>' +
+      '<div class="panel-head"><span class="grp">' + esc(p.grp || "") + "</span><h2>" + esc(p.h) + "</h2><p>" + esc((META.page_ledes || {})[p.id] || p.desc) + "</p></div>" +
+      (top || "") +
+      '<div class="usecases" id="' + p.id + '-picks"></div>' +
+      '<details class="tl" id="' + p.id + '-tl"></details>' +
+      '<div class="filters" data-pid="' + p.id + '">' + filters + "</div>" +
+      '<p class="count" id="' + p.id + '-count"></p><div class="list" id="' + p.id + '-list"></div><p class="closed" id="' + p.id + '-closed" hidden></p></section>';
+  }
+  function setList(pid, all, list, rowFn, empty) {
+    document.getElementById(pid + "-count").textContent = all.length + "件中 " + list.length + "件を表示";
+    document.getElementById(pid + "-list").innerHTML = list.map(rowFn).join("") || '<p class="muted">' + esc(empty || "この条件に合うモデルはありません。") + "</p>";
+  }
+  function pickCards(pid, list) {
+    var el = document.getElementById(pid + "-picks"); if (!el) return;
+    el.innerHTML = list.filter(function (m) { return m.pick; }).map(function (m) {
+      return '<div class="uc"><div class="k">' + esc(m.pick) + '</div><div class="v"><a href="#' + pid + '" data-open="' + pid + "-" + esc(m.id) + '">' + esc(m.name) + "</a></div>" +
+        '<div class="s">' + esc(cname(m.country)) + " · " + esc(fmtDate(m.release)) + (m.pick_reason ? " · " + esc(m.pick_reason) : "") + "</div></div>";
+    }).join("");
+  }
+  var ORDER = function (a, b) { return (a.rank || 99) - (b.rank || 99) || byNew(a, b); };
+
+  /* ── LLM 行 ── */
+  function llmRow(m, pid, opt) {
+    opt = opt || {};
+    var cfg = cfgFor(m), w = weightsGB(m), need = cfg.need(m), alt = cfg.alt(m), tier = tierFor(cfg.tiers, need), altT = tierFor(cfg.tiers, alt);
+    var sc = opt.metric ? opt.metric.get(m) : scoreOf(m), scMax = opt.metric ? opt.metric.max : maxAA;
+    var ticks = cfg.tiers.filter(function (t) { return isFinite(t.gb); }).map(function (t) { return '<span class="tick" style="left:' + logPos(t.gb, cfg.gmin, cfg.gmax).toFixed(2) + '%"></span>'; }).join("");
+    var gauge = need == null ? "" :
+      '<div class="gauge" role="img" aria-label="必要メモリの目安 ' + esc(fmtGB(need)) + '">' + ticks +
+      '<span class="fill" style="width:' + logPos(need, cfg.gmin, cfg.gmax).toFixed(2) + "%;background:var(" + tier.c + ')"></span>' +
+      (alt != null && Math.abs(alt - need) / need > 0.1 ? '<span class="q4" style="left:calc(' + logPos(alt, cfg.gmin, cfg.gmax).toFixed(2) + '% - 1px)"></span>' : "") + "</div>";
+    var fit = need == null ? "" : '<div class="fit"><span>' + cfg.fit(tier) + '</span><span class="mono">' + cfg.size(m) + "</span>" +
+      (alt != null && altT && Math.abs(alt - need) / need > 0.1 ? '<span class="mono">' + cfg.altText(m, altT) + "</span>" : "") + "</div>";
+    // 巨大モデルを量子化してローカル機に載せる話
+    var lq = "";
+    if (!isLocal(m) && m.local_q && m.local_q.summary_ja) lq = '<div class="lq"><b>量子化でローカル：</b>' + esc(m.local_q.summary_ja) + "</div>";
+    var strengths = (m.strengths || []).map(function (s) { return '<span class="chip">' + esc(STR_JA[s] || s) + "</span>"; }).join("");
+    var lineage = m.country === "JP" ? (m.from_scratch ? '<span class="tagx">フルスクラッチ</span>' : (m.base_model ? '<span class="tagx">' + esc(m.base_model) + " ベース</span>" : "")) : "";
+    var label = opt.metric ? opt.metric.label : "AA Index";
+    var scHtml = sc != null
+      ? '<span class="score">' + esc(Math.round(sc * 1000) / 1000) + '</span><span class="score-l">' + esc(label) + '</span><span class="score-bar"><i style="width:' + Math.min(100, sc / scMax * 100).toFixed(1) + '%"></i></span>'
+      : '<span class="score na">—</span><span class="score-l">' + esc(label) + " 未計測</span>";
+    if (!opt.metric && m.bench) {
+      if (num(m.bench.swe_verified) != null) scHtml += '<span class="score-l" style="margin-top:4px">SWE-V ' + esc(m.bench.swe_verified) + "</span>";
+      else if (num(m.bench.gpqa) != null) scHtml += '<span class="score-l" style="margin-top:4px">GPQA ' + esc(m.bench.gpqa) + "</span>";
+    }
+    if (!opt.metric && nejOf(m) != null) scHtml += '<span class="score-l" style="margin-top:2px" title="日本語総合ベンチ Nejumi Leaderboard 4">日本語 Nejumi ' + esc(nejOf(m)) + "</span>";
+    var jpBench = "";
+    if (m.jp_bench) {
+      var jb = m.jp_bench, rows = [];
+      if (num(jb.nejumi) != null) rows.push(["Nejumi Leaderboard 4", jb.nejumi]);
+      if (num(jb.swallow_avg) != null) rows.push(["Swallow 日本語平均", jb.swallow_avg]);
+      if (num(jb.jmmlu) != null) rows.push(["JMMLU", jb.jmmlu]);
+      if (num(jb.ja_mtbench) != null) rows.push(["Japanese MT-Bench", jb.ja_mtbench]);
+      if (rows.length || jb.other) jpBench = "<div><h4>日本語ベンチ</h4>" + (rows.length ? '<table class="bench">' + rows.map(function (r) { return "<tr><td>" + esc(r[0]) + "</td><td>" + r[1] + "</td></tr>"; }).join("") + "</table>" : "") +
+        (jb.other ? '<p class="note" style="margin-top:6px">' + esc(jb.other) + "</p>" : "") +
+        (m.jp_bench_note ? '<p class="note muted" style="margin-top:6px">' + esc(m.jp_bench_note) + "</p>" : "") + "</div>";
+    }
+    var spec = kv(originKV(m).concat([
+      ["構造", esc(m.arch)],
+      ["総 / 稼働", esc(fmtB(m.total_b)) + (num(m.active_b) != null ? " / " + esc(fmtB(m.active_b)) : "")],
+      ["配布精度", esc(m.native_precision)],
+      ["重みサイズ", w != null ? esc(fmtGB(w)) + (num(m.weights_gb) ? "" : "（推定）") : null],
+      ["4bit版", num(m.q4_gb) ? esc(fmtGB(m.q4_gb)) : null],
+      ["文脈長", num(m.context_k) != null ? esc(m.context_k >= 1000 ? (m.context_k / 1000) + "M" : m.context_k + "K") + " トークン" : null],
+      ["入力", esc((m.modality || []).map(function (x) { return { text: "テキスト", image: "画像", video: "動画", audio: "音声" }[x] || x; }).join("・"))],
+      ["モード", esc(MODE_JA[m.mode] || m.mode)],
+      ["ベース", m.country === "JP" ? (m.from_scratch ? "フルスクラッチ" : esc(m.base_model)) : null],
+      ["ライセンス", licKV(m)],
+      ["ローカル実行", esc((m.local_runtimes || []).join(", "))],
+      ["推論エンジン", esc((m.engines || []).join(", "))],
+      ["重み", repoLink(m.hf)],
+      ["置き換えた旧版", supKV(m)]
+    ]));
+    var notes = "";
+    if (m.deploy_note_ja) notes += '<p class="note"><b>載せ方：</b>' + esc(m.deploy_note_ja) + "</p>";
+    if (m.local_q) {
+      var q = m.local_q;
+      if (q.quants && q.quants.length) notes += '<p class="note"><b>量子化版：</b>' + q.quants.map(function (x) { return esc(x.name) + (num(x.size_gb) ? " " + esc(fmtGB(x.size_gb)) : ""); }).join(" / ") + "</p>";
+      if (q.reports && q.reports.length) notes += '<p class="note"><b>ローカル実行の報告：</b>' + q.reports.map(function (r) {
+        return esc(r.hardware) + "・" + esc(r.quant || "") + (num(r.gen_tok_s) ? " 生成 " + esc(r.gen_tok_s) + " tok/s" : "") + (r.source ? "（" + link(r.source, "出典") + "）" : "");
+      }).join(" ／ ") + "</p>";
+    }
+    if (m.japanese_note) notes += '<p class="note"><b>日本語：</b>' + esc(m.japanese_note) + "</p>";
+    var bt = benchTable(m.bench);
+    var benchBlock = (bt || m.bench_note) ? "<div><h4>主なベンチマーク</h4>" + bt + (m.bench_note ? '<p class="note muted" style="margin-top:6px">' + esc(m.bench_note) + "</p>" : "") + "</div>" : "";
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary>' +
+      idHead(m, licChip(m.commercial)) + '<div class="chips">' + lineage + strengths + "</div></div>" +
+      '<div class="c-size"><div class="params"><b>' + esc(fmtB(m.total_b)) + "</b><span>総パラメータ</span>" +
+      (num(m.active_b) != null ? "<b>" + esc(fmtB(m.active_b)) + "</b><span>稼働</span>" : '<span class="muted">Dense（全部使う）</span>') + "</div>" + gauge + fit + lq + "</div>" +
+      '<div class="c-score">' + scHtml + "</div>" +
+      "</summary>" +
+      '<div class="detail"><div><h4>仕様</h4>' + spec + "</div>" +
+      (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + benchBlock + jpBench + sources(m.sources) + confLine(m.confidence) +
+      "</div></details>";
+  }
+
+  /* ── 図：賢さ×重さ ── */
+  function drawChart(pid, list) {
+    var cfg = LCFG[pid], el = document.getElementById(pid + "-chart"); if (!el) return;
+    var pts = list.filter(function (m) { return scoreOf(m) != null && cfg.need(m) != null; });
+    if (!pts.length) { el.innerHTML = '<p class="muted" style="padding:20px 0">この条件で AA Index が計測済みのモデルはありません。</p>'; document.getElementById(pid + "-legend").innerHTML = ""; return; }
+    var W = 980, H = 400, L = 46, R = 18, T = 44, B = 40;
+    var ys = pts.map(scoreOf);
+    var ymin = Math.max(0, Math.floor((Math.min.apply(null, ys) - 3) / 5) * 5), ymax = Math.ceil((Math.max.apply(null, ys) + 3) / 5) * 5;
+    if (ymax - ymin < 15) ymin = Math.max(0, ymax - 15);
+    var x0 = Math.log(cfg.cx[0]), x1 = Math.log(cfg.cx[1]);
+    function X(gb) { return L + (Math.log(Math.max(cfg.cx[0], Math.min(cfg.cx[1], gb))) - x0) / (x1 - x0) * (W - L - R); }
+    function Y(v) { return T + (ymax - v) / (ymax - ymin) * (H - T - B); }
+    var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="AA Index と必要メモリの散布図">';
+    for (var v = ymin; v <= ymax; v += 5) {
+      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="var(--line)" stroke-width="1"/>';
+      s += '<text x="' + (L - 8) + '" y="' + (Y(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + v + "</text>";
+    }
+    cfg.xticks.forEach(function (g) { s += '<text x="' + X(g) + '" y="' + (H - B + 18) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + g + "GB</text>"; });
+    s += '<text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + esc(cfg.axis) + " →</text>";
+    s += '<text x="' + L + '" y="14" font-size="11" fill="var(--muted)">↑ AA Intelligence Index</text>';
+    cfg.tiers.filter(function (t) { return isFinite(t.gb) && t.gb >= cfg.cx[0] && t.gb <= cfg.cx[1]; }).forEach(function (t, i) {
+      var x = X(t.gb);
+      s += '<line x1="' + x + '" x2="' + x + '" y1="' + (T - 6) + '" y2="' + (H - B) + '" stroke="var(' + t.c + ')" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.8"/>';
+      s += '<text x="' + (x + 4) + '" y="' + (i % 2 ? T - 10 : T - 24) + '" font-size="11" font-weight="600" fill="var(' + t.c + ')">' + esc(pid === "local" ? t.label : t.label) + "</text>";
+    });
+    pts.slice().sort(function (a, b) { return scoreOf(a) - scoreOf(b); }).forEach(function (m) {
+      var g = cfg.need(m), x = X(g), y = Y(scoreOf(m)), t = tierFor(cfg.tiers, g);
+      var r = num(m.active_b) != null ? Math.max(4, Math.min(11, Math.sqrt(m.active_b) * (pid === "local" ? 1.8 : 1.15))) : 7;
+      s += '<a href="#' + pid + '" data-open="' + pid + "-" + esc(m.id) + '"><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="var(' + t.c + ')" fill-opacity="0.85" stroke="var(--surface)" stroke-width="1.5"><title>' +
+        esc(m.name + "（" + cname(m.country) + "）  AA " + scoreOf(m) + "  要" + fmtGB(g)) + "</title></circle></a>";
+    });
+    var boxes = [];
+    pts.slice().sort(function (a, b) { return scoreOf(b) - scoreOf(a); }).forEach(function (m) {
+      var x = X(cfg.need(m)), y = Y(scoreOf(m)), label = m.short || m.name, w = label.length * 6.3 + 4, h = 13;
+      var cands = [[x + 10, y + 4, "start"], [x - 10, y + 4, "end"], [x + 6, y - 10, "start"], [x - 6, y + 18, "end"], [x + 6, y + 18, "start"], [x - 6, y - 10, "end"]];
+      for (var i = 0; i < cands.length; i++) {
+        var c = cands[i], bx = c[2] === "start" ? c[0] : c[0] - w, by = c[1] - 10;
+        if (bx < L || bx + w > W - R || by < T - 4 || by + h > H - B) continue;
+        var hit = boxes.some(function (b) { return bx < b[0] + b[2] && bx + w > b[0] && by < b[1] + b[3] && by + h > b[1]; });
+        if (!hit) { boxes.push([bx, by, w, h]); s += '<text x="' + c[0].toFixed(1) + '" y="' + c[1].toFixed(1) + '" text-anchor="' + c[2] + '" font-size="11" fill="var(--fg)" pointer-events="none">' + esc(label) + "</text>"; break; }
+      }
+    });
+    el.innerHTML = s + "</svg>";
+    document.getElementById(pid + "-legend").innerHTML =
+      cfg.tiers.map(function (t) { return '<span><i style="background:var(' + t.c + ')"></i>' + esc(t.sub ? t.label + "（" + t.sub + "）" : t.label) + "</span>"; }).join("") +
+      "<span>点の大きさ＝稼働パラメータ</span>" + (list.length - pts.length ? "<span>AA未計測の " + (list.length - pts.length) + " 件は図に出ません</span>" : "");
+  }
+
+  /* ── 巨大モデルの量子化×ローカル機の表（大型LLMページ） ── */
+  function quantTable() {
+    var rows = BIG.filter(function (m) { return m.local_q && m.local_q.quants && m.local_q.quants.some(function (q) { return num(q.size_gb); }); })
+      .sort(function (a, b) { return (scoreOf(b) == null ? -1 : scoreOf(b)) - (scoreOf(a) == null ? -1 : scoreOf(a)); });
+    if (!rows.length) return "";
+    var head = "<tr><th>モデル</th>" + WS.map(function (w) { return "<th>" + esc(w.label) + "<small>" + esc(w.sub) + "</small></th>"; }).join("") + "<th>AA</th></tr>";
+    var body = rows.map(function (m) {
+      var qs = m.local_q.quants.filter(function (q) { return num(q.size_gb); }).sort(function (a, b) { return b.size_gb - a.size_gb; });
+      return '<tr><td><a href="#llm" data-open="llm-' + esc(m.id) + '">' + esc(m.short || m.name) + '</a><br><span class="muted" style="font-size:12px">' + esc(cname(m.country)) + " · " + esc(fmtB(m.total_b)) + "</span></td>" +
+        WS.map(function (w) {
+          var q = null; for (var i = 0; i < qs.length; i++) if (qs[i].size_gb * 1.1 <= w.gb) { q = qs[i]; break; }
+          if (!q) return '<td class="no">載らない</td>';
+          var lo = num(q.bits) != null && q.bits < 2.5;
+          return '<td><span class="q' + (lo ? " lo" : "") + '">' + esc(q.name) + '</span><br><span class="muted mono" style="font-size:11.5px">' + esc(fmtGB(q.size_gb)) + "</span></td>";
+        }).join("") + '<td class="num">' + (scoreOf(m) != null ? esc(scoreOf(m)) : "—") + "</td></tr>";
+    }).join("");
+    return '<div class="box" id="llm-quant"><h3>量子化すれば、どのローカル機に載るか</h3>' +
+      "<p>公開されている量子化版のうち、その機械に載る一番ビット数の高いものを示します（ファイルサイズ × 1.1 が使えるメモリに収まるか）。黄色は2bit台以下で、性能の劣化が大きい「とりあえず動く」水準です。速度は帯域で決まり、128GB機（帯域 約250〜300GB/s）では巨大モデルは実用的な速さになりにくい点に注意してください。</p>" +
+      '<div class="tbl-wrap"><table class="qtbl">' + head + body + "</table></div>" +
+      (HW && HW.summary_ja ? '<p class="note muted" style="margin-top:10px">' + esc(HW.summary_ja) + "</p>" : "") + "</div>";
+  }
+  /* ── AA のローカル機実測（ローカルLLMページ） ── */
+  function aaLocalBox() {
+    var A = HW && HW.aa_local; if (!A || !A.systems || !A.results) return "";
+    var sys = A.systems, models = [];
+    A.results.forEach(function (r) { if (models.indexOf(r.model) < 0) models.push(r.model); });
+    var head = "<tr><th>モデル（量子化）</th>" + sys.map(function (s) { return "<th>" + esc(s.name) + "<small>" + esc(fmtGB(s.memory_gb)) + " · " + esc(s.bandwidth_gbs) + "GB/s</small></th>"; }).join("") + "</tr>";
+    var body = models.map(function (mn) {
+      var rs = A.results.filter(function (r) { return r.model === mn; });
+      var vals = rs.map(function (r) { return num(r.completion_min); }).filter(function (v) { return v != null; });
+      var best = vals.length ? Math.min.apply(null, vals) : null;
+      var qn = rs.map(function (r) { return r.quant; }).filter(Boolean).filter(function (v, i, a) { return a.indexOf(v) === i; }).join(" / ");
+      return "<tr><td>" + esc(mn) + (qn ? '<br><span class="muted mono" style="font-size:11.5px">' + esc(qn) + "</span>" : "") + "</td>" + sys.map(function (s) {
+        var r = rs.filter(function (x) { return x.system_id === s.id; }).sort(function (a, b) { return (num(a.completion_min) || 1e9) - (num(b.completion_min) || 1e9); })[0];
+        if (!r) return '<td class="no">—</td>';
+        if (r.fits === false || num(r.completion_min) == null) return '<td class="no">載らない</td>';
+        return '<td class="num' + (r.completion_min === best ? " best" : "") + '">' + esc(r.completion_min) + " 分</td>";
+      }).join("") + "</tr>";
+    }).join("");
+    var devs = sys.map(function (s) {
+      return '<div class="dev"><b>' + esc(s.name) + "</b><span>" + esc(fmtGB(s.memory_gb)) + (s.memory_type === "unified" ? " 統合" : " VRAM") + " · " + esc(s.bandwidth_gbs) + "GB/s" + (num(s.price_usd) ? " · $" + Number(s.price_usd).toLocaleString("en-US") : "") + "</span></div>";
+    }).join("");
+    return '<div class="box" id="local-aa"><h3>Artificial Analysis のローカル機実測</h3>' +
+      "<p>" + esc(A.metric_ja || "同じエージェント作業をやり切るまでの完了時間（短いほど速い）。") + " " + (A.url ? link(A.url, "Artificial Analysis：Laptops & Workstations") : "") + (A.as_of ? '<span class="muted">（' + esc(A.as_of) + "）</span>" : "") + "</p>" +
+      '<div class="devs">' + devs + "</div>" +
+      '<div class="tbl-wrap"><table class="qtbl">' + head + body + "</table></div></div>";
+  }
+
+  /* ── LLM ページ（大型・ローカル） ── */
+  function buildLLMPage(pid) {
+    var p = PAGE[pid], cfg = LCFG[pid];
+    ST[pid] = { country: "all", hw: "all", q: false, com: false, sort: "score" };
+    var top = '<div class="chart-box"><div class="chart-title"><h3>賢さ × 重さ</h3><span>左上ほど「軽いのに賢い」。点を押すと詳細へ移動します。</span></div>' +
+      '<div class="chart-scroll"><div class="chart" id="' + pid + '-chart"></div></div><div class="legend" id="' + pid + '-legend"></div></div>' +
+      (pid === "llm" ? quantTable() : aaLocalBox());
+    var filters = chipRow("開発国", "country", countryOpts(p.list), "all") +
+      chipRow(pid === "llm" ? "手元の環境" : "手元のGPU・Mac", "hw", [["all", "制限なし"]].concat(cfg.hw), "all").replace("</div>", "") +
+      (pid === "llm" ? checkCtl(pid, "q", "4bit量子化してでも載せる") : checkCtl(pid, "q", "公式重み（量子化なし）で載せる")) + "</div>" +
+      '<div class="frow"><span class="fl">並び順など</span>' + sortCtl(pid, [["score", "賢い順（AA Index）"], ["ja", "日本語が強い順（Nejumi）"], NEW_O, OLD_O, ["light", "軽い順"], ["heavy", "大きい順"]]) + checkCtl(pid, "com", "商用利用できるものだけ") + "</div>";
+    return shell(p, top, filters);
+  }
+  function renderLLMPage(pid) {
+    var p = PAGE[pid], cfg = LCFG[pid], f = ST[pid];
+    var list = p.list.filter(function (m) {
+      if (!passCountry(pid, m)) return false;
+      if (f.com && m.commercial !== "yes" && m.commercial !== "conditional") return false;
+      if (f.hw !== "all") {
+        var g = cfg.need(m);
+        if (f.q) g = pid === "llm" ? Math.min(g || Infinity, q4Need(m) || Infinity) : nativeNeed(m);
+        if (g == null || g > +f.hw) return false;
+      }
+      return true;
+    });
+    var cmp = {
+      score: function (a, b) { return (scoreOf(b) == null ? -1 : scoreOf(b)) - (scoreOf(a) == null ? -1 : scoreOf(a)) || byNew(a, b); },
+      "new": byNew, old: byOld,
+      ja: function (a, b) { return (nejOf(b) == null ? -1 : nejOf(b)) - (nejOf(a) == null ? -1 : nejOf(a)) || byNew(a, b); },
+      light: function (a, b) { return (cfg.need(a) || 1e9) - (cfg.need(b) || 1e9); },
+      heavy: function (a, b) { return (b.total_b || 0) - (a.total_b || 0); }
+    }[f.sort] || byNew;
+    list.sort(cmp);
+    setList(pid, p.list, list, function (m) { return llmRow(m, pid); }, "この条件に合うモデルはありません。環境の条件をゆるめてください。");
+    drawChart(pid, list);
+  }
+  RENDER.llm = function () { renderLLMPage("llm"); };
+  RENDER.local = function () { renderLLMPage("local"); };
+
+  /* ── 国産LLM ── */
+  var nejMax = Math.max.apply(null, JP.map(function (m) { return m.jp_bench && num(m.jp_bench.nejumi); }).filter(function (v) { return v != null; }).concat([0.0001]));
+  var JPM = { label: "Nejumi LB4", max: nejMax, get: function (m) { return m.jp_bench ? num(m.jp_bench.nejumi) : null; } };
+  function buildJP() {
+    var p = PAGE.jp;
+    ST.jp = { country: "all", lin: "all", size: "all", sort: "nejumi" };
+    var filters = chipRow("系統", "lin", [["all", "すべて"], ["scratch", "フルスクラッチ"], ["based", "海外モデルベース"]], "all") +
+      chipRow("大きさ", "size", [["all", "すべて"], ["big", "大型（40B超）"], ["local", "ローカル（40B以下）"]], "all") +
+      '<div class="frow"><span class="fl">並び順</span>' + sortCtl("jp", [["nejumi", "日本語ベンチ順"], NEW_O, OLD_O, ["heavy", "大きい順"]]) + "</div>";
+    var note = META.jp_note ? '<p class="note muted" style="margin:-6px 0 16px;max-width:80ch">' + esc(META.jp_note) + "</p>" : "";
+    return shell(p, note, filters);
+  }
+  RENDER.jp = function () {
+    var f = ST.jp;
+    var list = JP.filter(function (m) {
+      if (f.lin !== "all" && (f.lin === "scratch") !== !!m.from_scratch) return false;
+      if (f.size !== "all" && (f.size === "local") !== isLocal(m)) return false;
+      return true;
+    });
+    list.sort(f.sort === "new" ? byNew : f.sort === "old" ? byOld : f.sort === "heavy" ? function (a, b) { return (b.total_b || 0) - (a.total_b || 0); } :
+      function (a, b) { return (JPM.get(b) == null ? -1 : JPM.get(b)) - (JPM.get(a) == null ? -1 : JPM.get(a)) || (b.total_b || 0) - (a.total_b || 0); });
+    setList("jp", JP, list, function (m) { return llmRow(m, "jp", { metric: JPM }); });
+  };
+
+  /* ── ASR ── */
+  function asrRow(m) {
+    var f = m.features || {};
+    var cer = (m.ja_cer || []).filter(function (c) { return num(c.cer) != null; });
+    var cerHtml = cer.length ? '<div class="cer">' + cer.slice(0, 4).map(function (c) { return "<span>" + esc(c.dataset) + " <b>" + esc(c.cer) + "%</b></span>"; }).join("") + "</div>" : '<span class="muted" style="font-size:12.5px">共通データセットでのCER公表値なし</span>';
+    var best = cer.length ? Math.min.apply(null, cer.map(function (c) { return c.cer; })) : null;
+    var ts = f.timestamps && f.timestamps !== "none" ? (f.timestamps === "word" ? "単語タイムスタンプ" : "区間タイムスタンプ") : null;
+    var feats = featChips([["ストリーミング", f.streaming], [ts || "タイムスタンプ", f.timestamps == null ? null : !!ts], ["話者分離", f.diarization], ["句読点", f.punctuation], ["長時間音声", f.long_form]]);
+    var detail = kv(originKV(m).concat([
+      ["構造", esc(m.arch)], ["サイズ", esc(fmtM(m.params_m))],
+      ["対応言語", m.lang === "ja-only" ? "日本語専用" : "多言語（日本語含む）"],
+      ["ライセンス", licKV(m)], ["重み", repoLink(m.hf)], ["置き換えた旧版", supKV(m)]
+    ]));
+    var cerAll = cer.length ? '<div><h4>日本語CER（%、低いほど正確）</h4><table class="bench">' + cer.map(function (c) {
+      return "<tr><td>" + (c.source ? link(c.source, c.dataset) : esc(c.dataset)) + (c.note ? '<br><span class="muted" style="font-size:12px">' + esc(c.note) + "</span>" : "") + "</td><td>" + esc(c.cer) + "</td></tr>";
+    }).join("") + "</table></div>" : "";
+    var notes = "";
+    if (m.speed_note) notes += '<p class="note"><b>速度：</b>' + esc(m.speed_note) + "</p>";
+    if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
+    if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
+    return '<details class="row" id="asr-' + esc(m.id) + '"><summary>' +
+      idHead(m, licChip(m.commercial)) + "</div>" +
+      '<div class="c-size"><div class="params"><b>' + esc(fmtM(m.params_m)) + '</b><span>パラメータ</span><span class="tagx">' + (m.lang === "ja-only" ? "日本語専用" : "多言語") + "</span></div>" + cerHtml + feats + "</div>" +
+      '<div class="c-score">' + (best != null ? '<span class="score">' + esc(best) + '<small>%</small></span><span class="score-l">最良の日本語CER</span>' : '<span class="score na">—</span><span class="score-l">CER 未公表</span>') + "</div>" +
+      "</summary>" +
+      '<div class="detail"><div><h4>仕様</h4>' + detail + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + cerAll + sources(m.sources) + confLine(m.confidence) +
+      "</div></details>";
+  }
+  function buildASR() {
+    ST.asr = { country: "all", lang: "all", sort: "rank" };
+    return shell(PAGE.asr, "", chipRow("開発国", "country", countryOpts(ASR), "all") +
+      chipRow("対応言語", "lang", [["all", "すべて"], ["ja-only", "日本語専用"], ["multilingual", "多言語"]], "all") +
+      '<div class="frow"><span class="fl">並び順</span>' + sortCtl("asr", [["rank", "おすすめ順"], NEW_O, OLD_O, ["cer", "CERが低い順"]]) + "</div>");
+  }
+  RENDER.asr = function () {
+    var f = ST.asr;
+    function bestCer(m) { var c = (m.ja_cer || []).map(function (x) { return num(x.cer); }).filter(function (v) { return v != null; }); return c.length ? Math.min.apply(null, c) : 1e9; }
+    var list = ASR.filter(function (m) { return passCountry("asr", m) && (f.lang === "all" || m.lang === f.lang); });
+    list.sort(f.sort === "new" ? byNew : f.sort === "old" ? byOld : f.sort === "cer" ? function (a, b) { return bestCer(a) - bestCer(b); } : ORDER);
+    setList("asr", ASR, list, asrRow);
+  };
+
+  /* ── TTS ── */
+  var JA_SUP = { native: "日本語ネイティブ", multilingual: "多言語（日本語公式対応）", community: "有志の日本語版" };
+  var CLONE = { "zero-shot": "ゼロショット声クローン", "fine-tune": "追加学習で声づくり", "preset-only": "用意された声のみ" };
+  var COM_BIG = { yes: ["OK", "var(--ok)"], conditional: ["条件付", "var(--warn)"], no: ["不可", "var(--bad)"] };
+  function ttsRow(m) {
+    var f = m.features || {};
+    var feats = featChips([["ストリーミング", f.streaming], ["感情・スタイル指定", f.emotion_control], ["自然文で声質指定", f.instruction_control], ["複数話者の対話", f.dialogue], ["アクセント調整", f.accent_control]]);
+    var detail = kv(originKV(m).concat([
+      ["構造", esc(m.arch)], ["サイズ", esc(fmtM(m.params_m))],
+      ["日本語", esc(JA_SUP[m.ja_support] || m.ja_support)], ["声", esc(CLONE[m.voice_cloning] || m.voice_cloning)],
+      ["ライセンス", licKV(m)], ["配布元", repoLink(m.hf)], ["置き換えた旧版", supKV(m)]
+    ]));
+    var notes = "";
+    if (m.quality_note) notes += '<p class="note"><b>日本語の品質：</b>' + esc(m.quality_note) + "</p>";
+    if (m.latency_note) notes += '<p class="note"><b>速度：</b>' + esc(m.latency_note) + "</p>";
+    if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
+    if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
+    var cb = COM_BIG[m.commercial] || ["?", "var(--muted)"];
+    return '<details class="row" id="tts-' + esc(m.id) + '"><summary>' +
+      idHead(m, "") + "</div>" +
+      '<div class="c-size"><div class="params"><b>' + esc(fmtM(m.params_m)) + '</b><span>パラメータ</span><span class="tagx">' + esc(JA_SUP[m.ja_support] || m.ja_support || "") + '</span><span class="tagx">' + esc(CLONE[m.voice_cloning] || m.voice_cloning || "") + "</span></div>" + feats +
+      (m.best_for_ja ? '<span class="muted" style="font-size:12.5px">' + esc(m.best_for_ja) + "</span>" : "") + "</div>" +
+      '<div class="c-score"><span class="score" style="font-size:20px;color:' + cb[1] + '">' + esc(cb[0]) + '</span><span class="score-l">商用利用</span></div>' +
+      "</summary>" +
+      '<div class="detail"><div><h4>仕様</h4>' + detail + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + listBench(m.ja_metrics, "日本語の客観指標") + sources(m.sources) + confLine(m.confidence) +
+      "</div></details>";
+  }
+  function buildTTS() {
+    ST.tts = { country: "all", tf: "all", sort: "rank" };
+    return shell(PAGE.tts, "", chipRow("開発国", "country", countryOpts(TTS), "all") +
+      chipRow("絞り込み", "tf", [["all", "すべて"], ["com", "商用OK"], ["clone", "ゼロショット声クローン"], ["stream", "ストリーミング"], ["native", "日本語ネイティブ"]], "all") +
+      '<div class="frow"><span class="fl">並び順</span>' + sortCtl("tts", [["rank", "おすすめ順"], NEW_O, OLD_O]) + "</div>");
+  }
+  RENDER.tts = function () {
+    var f = ST.tts;
+    var list = TTS.filter(function (m) {
+      var x = m.features || {};
+      if (!passCountry("tts", m)) return false;
+      return f.tf === "all" || (f.tf === "com" && m.commercial === "yes") || (f.tf === "clone" && m.voice_cloning === "zero-shot") ||
+        (f.tf === "stream" && x.streaming) || (f.tf === "native" && m.ja_support === "native");
+    });
+    list.sort(f.sort === "new" ? byNew : f.sort === "old" ? byOld : ORDER);
+    setList("tts", TTS, list, ttsRow);
+  };
+
+  /* ── 汎用ページ（S2S・音楽・画像・動画・3D・Decision） ── */
+  function genRow(m, pid) {
+    var isApi = m.access === "api";
+    var mn = num(m.min_vram_gb), rec = num(m.rec_vram_gb), sp = m.spec || {};
+    var cpu = mn === 0;
+    if (cpu) mn = null;
+    var tier = tierFor(VT, mn);
+    var ticks = VT.filter(function (t) { return isFinite(t.gb); }).map(function (t) { return '<span class="tick" style="left:' + logPos(t.gb, 4, 200).toFixed(2) + '%"></span>'; }).join("");
+    var gauge = (isApi || mn == null) ? "" : '<div class="gauge" role="img" aria-label="最低VRAM ' + esc(fmtGB(mn)) + '">' + ticks +
+      '<span class="fill" style="width:' + logPos(mn, 4, 200).toFixed(2) + "%;background:var(" + tier.c + ')"></span>' +
+      (rec != null && rec > mn ? '<span class="q4" style="left:calc(' + logPos(rec, 4, 200).toFixed(2) + '% - 1px)"></span>' : "") + "</div>";
+    var fit = isApi ? '<span class="muted" style="font-size:12.5px">APIで提供（重みは非公開。自前のGPUには載せられません）' + (m.price_note ? "<br>料金：" + esc(m.price_note) : "") + "</span>" :
+      cpu ? '<div class="fit"><span><b style="color:var(--t1)">CPUだけで動く</b>（GPUなしでOK）</span>' + (rec != null ? '<span class="mono">GPUなら推奨 ' + esc(fmtGB(rec)) + "</span>" : "") + "</div>" :
+      mn == null ? '<span class="muted" style="font-size:12.5px">VRAM要件の公表値なし（詳細のメモを参照）</span>' :
+      '<div class="fit"><span>' + (tier.sub ? '<b style="color:var(' + tier.c + ')">' + esc(tier.sub) + "</b>（" + esc(tier.label) + "）で動く" : '<b style="color:var(' + tier.c + ')">複数GPU</b>が必要') + "</span>" +
+      (rec != null && rec > mn ? '<span class="mono">推奨 ' + esc(fmtGB(rec)) + "</span>" : "") + "</div>";
+    var tasks = (m.tasks || []).map(function (t) { return '<span class="task">' + esc(taskJa(t, pid)) + "</span>"; }).join("");
+    var feats = m.features ? featChips(Object.keys(m.features).map(function (k) { return [k, m.features[k]]; })) : "";
+    var spec = kv(originKV(m).concat([
+      ["提供形態", m.access ? (isApi ? "API・サービス（重み非公開）" : "オープンウェイト") : null],
+      ["構造", esc(m.arch)],
+      ["パラメータ", num(m.params_b) != null ? esc(fmtB(m.params_b)) : null],
+      ["最大解像度", esc(sp.max_resolution)],
+      ["最大長", num(sp.max_duration_s) != null ? esc(sp.max_duration_s) + " 秒" : null],
+      ["fps", num(sp.fps) != null ? esc(sp.fps) : null],
+      ["入力", esc(sp.inputs)], ["出力", esc(sp.output || sp.outputs)], ["音質", esc(sp.sample_rate)],
+      ["遅延", num(sp.latency_ms) != null ? esc(sp.latency_ms) + " ms" : null],
+      ["対応言語", esc(sp.languages)], ["その他", esc(sp.other)],
+      ["ツール", esc((m.tools || []).join(", "))],
+      ["ライセンス", licKV(m)], [isApi ? "公式" : "配布元", repoLink(m.hf)], ["置き換えた旧版", supKV(m)]
+    ]));
+    var notes = "";
+    if (m.price_note) notes += '<p class="note"><b>料金：</b>' + esc(m.price_note) + "</p>";
+    if (m.vram_note) notes += '<p class="note"><b>VRAM：</b>' + esc(m.vram_note) + "</p>";
+    if (m.speed_note) notes += '<p class="note"><b>速度：</b>' + esc(m.speed_note) + "</p>";
+    if (m.quality_note) notes += '<p class="note"><b>品質：</b>' + esc(m.quality_note) + "</p>";
+    if (m.ja_note) notes += '<p class="note"><b>日本語：</b>' + esc(m.ja_note) + "</p>";
+    if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
+    var hl = m.hl && m.hl.value != null ? '<span class="score-l" style="margin-top:6px">' + esc(m.hl.label) + " " + esc(m.hl.value) + "</span>" : "";
+    var scHtml = isApi ? '<span class="score" style="font-size:20px">API</span><span class="score-l">重み非公開</span>' + (num(sp.latency_ms) != null ? '<span class="score-l" style="margin-top:6px">約' + esc(sp.latency_ms) + "ms/回</span>" : "") + hl :
+      cpu ? '<span class="score" style="font-size:20px;color:var(--t1)">CPU</span><span class="score-l">GPU不要</span>' + hl :
+      mn != null ? '<span class="score" style="color:var(' + tier.c + ')">' + esc(mn) + '<small>GB</small></span><span class="score-l">最低VRAM</span>' + hl :
+      '<span class="score na">—</span><span class="score-l">VRAM 未公表</span>' + hl;
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary>' +
+      idHead(m, (m.access ? '<span class="tagx">' + (isApi ? "API提供" : "オープンウェイト") + "</span>" : "") + (isApi ? "" : licChip(m.commercial))) + '<div class="chips">' + tasks + "</div></div>" +
+      '<div class="c-size">' + (num(m.params_b) != null ? '<div class="params"><b>' + esc(fmtB(m.params_b)) + "</b><span>パラメータ</span></div>" : "") + gauge + fit + feats + "</div>" +
+      '<div class="c-score">' + scHtml + "</div>" +
+      "</summary>" +
+      '<div class="detail"><div><h4>仕様</h4>' + spec + "</div>" + (notes ? "<div><h4>メモ</h4>" + notes + "</div>" : "") + listBench(m.bench, "評価値") + sources(m.sources) + confLine(m.confidence) +
+      "</div></details>";
+  }
+  function buildGen(p) {
+    var list = p.list, tasks = {};
+    list.forEach(function (m) { (m.tasks || []).forEach(function (t) { tasks[t] = true; }); });
+    var tl = TASK_ORDER.filter(function (t) { return tasks[t]; }).concat(Object.keys(tasks).filter(function (t) { return TASK_ORDER.indexOf(t) < 0; }));
+    var hasApi = list.some(function (m) { return m.access === "api"; });
+    ST[p.id] = { country: "all", task: "all", access: "all", vram: "all", com: false, sort: "rank" };
+    var filters = chipRow("できること", "task", [["all", "すべて"]].concat(tl.map(function (t) { return [t, taskJa(t, p.id)]; })), "all") +
+      (hasApi ? chipRow("提供形態", "access", [["all", "すべて"], ["open-weight", "オープンウェイト"], ["api", "API提供"]], "all") : "") +
+      chipRow("開発国", "country", countryOpts(list), "all") +
+      chipRow("手元のGPU", "vram", [["all", "制限なし"]].concat([8, 12, 16, 24, 32, 48, 96].map(function (g) { return [g, g + "GB"]; })), "all") +
+      '<div class="frow"><span class="fl">並び順など</span>' + sortCtl(p.id, [["rank", "おすすめ順"], NEW_O, OLD_O, ["light", "軽い順"]]) + checkCtl(p.id, "com", "商用利用できるものだけ") + "</div>";
+    RENDER[p.id] = function () { renderGen(p.id); };
+    return shell(p, "", filters);
+  }
+  function renderGen(pid) {
+    var all = PAGE[pid].list, f = ST[pid];
+    var list = all.filter(function (m) {
+      if (f.task !== "all" && (m.tasks || []).indexOf(f.task) < 0) return false;
+      if (f.access !== "all" && (m.access || "open-weight") !== f.access) return false;
+      if (!passCountry(pid, m)) return false;
+      if (f.vram !== "all" && !(num(m.min_vram_gb) != null && m.min_vram_gb <= +f.vram)) return false;
+      if (f.com && m.commercial !== "yes" && m.commercial !== "conditional") return false;
+      return true;
+    });
+    list.sort(f.sort === "new" ? byNew : f.sort === "old" ? byOld : f.sort === "light" ? function (a, b) { return (num(a.min_vram_gb) == null ? 1e9 : a.min_vram_gb) - (num(b.min_vram_gb) == null ? 1e9 : b.min_vram_gb); } : ORDER);
+    setList(pid, all, list, function (m) { return genRow(m, pid); });
+  }
+
+  /* ── ホーム ── */
+  function bestBy(list, f) { var b = null; list.forEach(function (m) { if (f(m) != null && (b == null || f(m) > f(b))) b = m; }); return b; }
+  var HOME_PICKS = [];
+  function renderHome() {
+    var cards = [];
+    function add(k, color, m, s) { if (m && !cards.some(function (c) { return c.m === m; })) cards.push({ k: k, c: color, m: m, s: s }); }
+    function s(m, g) { return cname(m.country) + " · " + fmtDate(m.release) + " · AA " + scoreOf(m) + (g != null ? " · 要" + fmtGB(g) : ""); }
+    var top = bestBy(LLM, scoreOf);
+    if (top) add("総合でいちばん賢い", "--accent", top, s(top, cfgFor(top).need(top)));
+    [[640, "8×H100 に載る最強", "--t2"], [1128, "8×H200 に載る最強", "--t3"]].forEach(function (t) {
+      var b = bestBy(BIG.filter(function (m) { return nativeNeed(m) != null && nativeNeed(m) <= t[0]; }), scoreOf);
+      if (b && b !== top) add(t[1], t[2], b, s(b, nativeNeed(b)));
+    });
+    [[24, "ローカル：RTX 4090 (24GB) で動く最強", "--t2"], [48, "ローカル：Mac 64GB で動く最強", "--t4"]].forEach(function (t) {
+      var b = bestBy(LOCAL.filter(function (m) { return q4Need(m) != null && q4Need(m) <= t[0]; }), scoreOf);
+      if (b) add(t[1], t[2], b, s(b, q4Need(b)) + "（4bit）");
+    });
+    var jpTop = bestBy(JP, JPM.get);
+    if (jpTop) add("国産で日本語がいちばん強い", "--accent", jpTop, cname(jpTop.country) + " · " + fmtDate(jpTop.release) + " · Nejumi " + JPM.get(jpTop));
+    HOME_PICKS = cards;
+    document.getElementById("pick-grid").innerHTML = cards.map(function (c) {
+      var p = c.k.indexOf("国産") === 0 ? "jp" : llmPid(c.m);
+      return '<div class="pick"><div class="k"><i style="background:var(' + c.c + ')"></i>' + esc(c.k) + '</div><div class="v"><a href="#' + p + '" data-open="' + p + "-" + esc(c.m.id) + '">' + esc(c.m.name) + '</a></div><div class="s">' + esc(c.s || "") + "</div></div>";
+    }).join("");
+
+    // 直近30日のデビュー（全カテゴリ）
+    var recent = [];
+    PAGES.forEach(function (p) {
+      if (!p.list || p.id === "jp") return;
+      p.list.forEach(function (m) { if (daysAgo(m.release) <= 30 && daysAgo(m.release) >= 0) recent.push({ m: m, p: p }); });
+    });
+    recent.sort(function (a, b) { return byNew(a.m, b.m); });
+    var nb = document.getElementById("home-new");
+    if (recent.length) {
+      var days = [], cur = null;
+      recent.forEach(function (r) { var k = String(r.m.release); if (!cur || cur.k !== k) { cur = { k: k, items: [] }; days.push(cur); } cur.items.push(r); });
+      nb.innerHTML = '<div class="tl-body" style="border-top:0;max-height:none">' + days.map(function (d) {
+        return '<div class="tl-m"><time>' + esc(fmtMD(d.k)) + "</time><div>" + d.items.map(function (r) {
+          return '<a href="#' + r.p.id + '" data-open="' + r.p.id + "-" + esc(r.m.id) + '">' + esc(r.m.short || r.m.name) + "<i>" + esc(cname(r.m.country)) + " · " + esc(r.p.nav) + "</i></a>";
+        }).join("") + "</div></div>";
+      }).join("") + "</div>";
+    } else nb.hidden = true;
+
+    document.getElementById("cats").innerHTML = PAGES.filter(function (p) { return p.grp; }).map(function (p) {
+      var list = p.list || [], picks;
+      if (p.id === "llm" || p.id === "local") {
+        picks = cards.filter(function (c) { return llmPid(c.m) === p.id && c.k.indexOf("国産") < 0; }).slice(0, 3).map(function (c) {
+          return { id: c.m.id, name: c.m.name, pick: c.k.replace(/^ローカル：/, "").replace(" で動く最強", "").replace(" に載る最強", "").replace("総合でいちばん賢い", "総合1位") };
+        });
+      } else picks = list.filter(function (m) { return m.pick; }).slice(0, 3);
+      var newest = list.slice().sort(byNew)[0];
+      return '<div class="cat"><span class="grp">' + esc(p.grp) + '</span><div class="cat-h"><a href="#' + p.id + '">' + esc(p.nav) + "</a><span>" + list.length + "件</span></div><p>" + esc(p.desc) + "</p>" +
+        ((picks.length || newest) ? "<ul>" + picks.map(function (m) { return '<li><span class="k">' + esc(m.pick) + '</span><a href="#' + p.id + '" data-open="' + p.id + "-" + esc(m.id) + '">' + esc(m.name) + "</a></li>"; }).join("") +
+          (newest ? '<li><span class="k">最新デビュー</span><a href="#' + p.id + '" data-open="' + p.id + "-" + esc(newest.id) + '">' + esc(newest.name) + '</a><span class="muted mono" style="font-size:11.5px">' + esc(fmtDate(newest.release)) + "</span></li>" : "") + "</ul>" : "") + "</div>";
+    }).join("");
+  }
+
+  /* ── 見方・履歴 ── */
+  function renderAbout() {
+    document.getElementById("rules").innerHTML = (META.rules || []).map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("");
+    document.getElementById("log").innerHTML = (META.changelog || []).map(function (c) {
+      return "<article><time>" + esc(c.date) + "</time><ul>" + (c.items || []).map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></article>";
+    }).join("");
+    document.getElementById("lbs").innerHTML = (META.leaderboards || []).map(function (l) {
+      return "<li><b>" + esc(l.name) + "</b>" + (l.as_of ? '<span class="muted mono"> ' + esc(l.as_of) + " 時点</span>" : "") + "<br>" + link(l.url) + (l.note ? '<br><span class="muted">' + esc(l.note) + "</span>" : "") + "</li>";
+    }).join("");
+    var closed = META.closed_refs || {};
+    Object.keys(closed).forEach(function (k) {
+      var el = document.getElementById(k + "-closed");
+      if (el && closed[k]) { el.innerHTML = "<b>参考（重み非公開）：</b>" + esc(closed[k]); el.hidden = false; }
+    });
+    document.getElementById("foot").textContent = META.footer || "";
+  }
+
+  /* ── ナビとページ切替 ── */
+  function buildNav() {
+    var html = "", last = null;
+    PAGES.forEach(function (p) {
+      if (p.id === "home") return;
+      if (p.grp && p.grp !== last) { html += '<span class="grp">' + esc(p.grp) + "</span>"; last = p.grp; }
+      if (!p.grp) html += '<span class="grp">&nbsp;</span>';
+      html += '<a href="#' + p.id + '" data-nav="' + p.id + '">' + esc(p.nav) + "</a>";
+    });
+    document.getElementById("nav").innerHTML = html;
+  }
+  var current = null;
+  function showPage(id, keepScroll) {
+    if (!PAGE[id]) id = "home";
+    document.querySelectorAll(".page").forEach(function (s) { s.hidden = s.getAttribute("data-page") !== id; });
+    document.querySelectorAll("[data-nav]").forEach(function (a) {
+      if (a.getAttribute("data-nav") === id) { a.setAttribute("aria-current", "page"); try { a.scrollIntoView({ block: "nearest", inline: "nearest" }); } catch (e) {} }
+      else a.removeAttribute("aria-current");
+    });
+    if (current !== id && !keepScroll) window.scrollTo(0, 0);
+    current = id;
+  }
+  function openRow(id) {
+    var el = document.getElementById(id); if (!el) return;
+    el.open = true;
+    el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var b = t.closest && t.closest("button[data-k]");
+    if (b) {
+      var box = b.closest("[data-pid]"); if (!box) return;
+      var pid = box.getAttribute("data-pid"), k = b.getAttribute("data-k");
+      ST[pid][k] = b.getAttribute("data-v");
+      box.querySelectorAll('button[data-k="' + k + '"]').forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      RENDER[pid]();
+      return;
+    }
+    var a = t.closest && t.closest("[data-open]"); if (!a) return;
+    e.preventDefault();
+    var rid = a.getAttribute("data-open"), page = rid.slice(0, rid.indexOf("-"));
+    if (page !== current) { try { history.pushState(null, "", "#" + page); } catch (x) {} showPage(page); }
+    setTimeout(function () { openRow(rid); }, 30);
+  });
+  document.addEventListener("change", function (e) {
+    var t = e.target, k = t.getAttribute && t.getAttribute("data-k"); if (!k) return;
+    var box = t.closest("[data-pid]"); if (!box) return;
+    var pid = box.getAttribute("data-pid");
+    ST[pid][k] = t.type === "checkbox" ? t.checked : t.value;
+    RENDER[pid]();
+  });
+  window.addEventListener("hashchange", function () { showPage((location.hash || "").slice(1)); });
+
+  /* ── 起動 ── */
+  var total = 0; PAGES.forEach(function (p) { if (p.list && p.id !== "jp") total += p.list.length; });
+  document.getElementById("st-upd").textContent = META.updated_at || "—";
+  document.getElementById("st-next").textContent = META.next_update || "—";
+  document.getElementById("st-count").textContent = total + " モデル";
+  buildNav();
+  var html = buildLLMPage("llm") + buildLLMPage("local") + buildJP() + buildASR() + buildTTS();
+  PAGES.forEach(function (p) { if (p.gen) html += buildGen(p); });
+  document.getElementById("pages").outerHTML = html;
+  PAGES.forEach(function (p) {
+    if (!p.list) return;
+    RENDER[p.id]();
+    var tl = document.getElementById(p.id + "-tl");
+    if (tl) { tl.innerHTML = timeline(p.list, p.id); tl.open = p.list.length <= 24; if (!p.list.length) tl.hidden = true; }
+    if (p.id !== "llm" && p.id !== "local") pickCards(p.id, p.list);
+  });
+  renderHome(); renderAbout();
+  showPage((location.hash || "").slice(1) || "home", true);
+})();
+</script>
+</body>
+</html>

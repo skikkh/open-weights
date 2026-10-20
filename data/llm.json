@@ -1,0 +1,3198 @@
+[
+ {
+  "id": "kimi-k3",
+  "name": "Kimi K3",
+  "family": "Kimi K3",
+  "org": "Moonshot AI",
+  "country": "CN",
+  "release": "2026-07-27",
+  "arch": "MoE",
+  "total_b": 2800,
+  "active_b": 104,
+  "native_precision": "MXFP4（重み、量子化対応学習）/ MXFP8アクティベーション",
+  "weights_gb": 1560.9,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "thinking",
+  "license": "Kimi K3 License（MITベースの独自ライセンス）",
+  "commercial": "conditional",
+  "license_note": "MaaS（API等で第三者に推論/微調整を提供）事業を営み、グループ年商が2,000万ドルを超える場合はMoonshot AIとの別途契約が必要。MAU1億超または月商2,000万ドル超の商用製品ではUIに「Kimi K3」の表示義務。外部提供しない社内利用は対象外。",
+  "hf": "https://huggingface.co/moonshotai/Kimi-K3",
+  "summary_ja": "総パラメータ2.8T・アクティブ104Bの、2026年10月時点で最大級のオープンウェイトMoE。Kimi Delta Attention（線形注意）とGated MLAのハイブリッドで1Mトークン文脈・画像/動画入力に対応し、長時間のコーディング/エージェント作業に強い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use",
+   "long-context",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 93.5,
+   "hle": 43.5,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 88.3,
+   "tau2": null,
+   "browsecomp": 91.2
+  },
+  "bench_note": "モデルカード自己申告（reasoning_effort=max、temperature=1.0）。HLEはHLE-Fullのツールなし値（ツールあり56.0）。terminal_bench2欄はTerminal-Bench 2.1（Kimi Codeハーネス）の値。その他: DeepSWE v1.1 67.5、ProgramBench 77.8、FrontierSWE 81.2、Toolathlon-Verified 76.5、MCP-Atlas 84.2。AA指数はArtificial Analysis Intelligence Index v4.3.2（2026-10-20取得、Max設定、サイト表示は44、lowは30）。",
+  "aa_index": 43.6,
+  "japanese_note": "K3自体の日本語ベンチは未確認。前世代Kimi-K2.5はNejumi Leaderboard 4（2026/3/6版）で総合0.7785（全体24位）という参考値がある。",
+  "deploy_note_ja": "公式重みはMXFP4で約1.56TB。8×B300/GB300（約2.3TB）なら1ノード、H200なら2ノード16基級が必要で、8×H200（約1.13TB）には収まらない。unslothのGGUF（UD-Q1_0 約466GB〜UD-Q2_K_XL 約861GB）があり、512GB級Macや大容量メモリCPUサーバー+GPUオフロードで最小量子化ならかろうじて動く水準。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Kimi-K2.6",
+   "Kimi-K2.7-Code",
+   "Kimi-K2.5",
+   "Kimi-K2-Thinking"
+  ],
+  "notes": "2026-07-16にAPIで発表、重みは07-27公開。思考は常時ON（low/high/max）。K2.6ベースのコーディング特化版Kimi-K2.7-Code（1T/32B、INT4で約595GB、Modified MIT、2026-06-11）はK3に置き換えられたが、より軽い1T級の選択肢として残っている。",
+  "sources": [
+   "https://huggingface.co/moonshotai/Kimi-K3",
+   "https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE",
+   "https://rits.shanghai.nyu.edu/ai/kimi-k3-open-weights-ship-2-8t-parameters-1-4-tb-to-run/",
+   "https://huggingface.co/unsloth/Kimi-K3-GGUF",
+   "https://huggingface.co/moonshotai/Kimi-K2.7-Code",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8425
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Kimi K3"
+ },
+ {
+  "id": "glm-5-3",
+  "name": "GLM-5.3",
+  "family": "GLM-5.3",
+  "org": "Z.ai（Zhipu AI）",
+  "country": "CN",
+  "release": "2026-08-28",
+  "arch": "MoE",
+  "total_b": 744,
+  "active_b": 40,
+  "native_precision": "FP8（BF16版リポジトリも公開）",
+  "weights_gb": 755.6,
+  "context_k": 1049,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "GLM-5.3 License（MITベースの独自ライセンス）",
+  "commercial": "conditional",
+  "license_note": "MaaS事業を営み、グループ年商が100億ドルを超える場合のみ、商用利用前にZ.aiのセキュリティ審査が必要。それ以外はMIT同等。GLM-5.2までは純MITだったが5.3で変更された。",
+  "hf": "https://huggingface.co/zai-org/GLM-5.3",
+  "summary_ja": "GLM-5.2と同じベースモデルを後学習だけで強化した、Z.aiの744B MoEフラッグシップ。コーディングと長時間エージェント作業、サイバーセキュリティ（脆弱性発見）でオープンモデル最上位級。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "long-context",
+   "reasoning"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 88.2,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカード自己申告（reasoning_effort=max）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code 2.1.207ハーネス）。その他: Terminal-Bench 3.0 28.3、DeepSWE v1.1 66.9、CyberGym 84.5、HLE w/ tools 62.5、AutomationBench 48.2、GDPval-AA v2 1769。ツールなしHLEとGPQAは自社カードに記載なし。AA指数v4.3.2（2026-10-20取得、Max設定。lowは34.3）。",
+  "aa_index": 44.8,
+  "japanese_note": "5.3自体の日本語評価は未確認。前世代GLM-5はNejumi Leaderboard 4（2026/3/6版）で総合0.7884（全体19位）という参考値がある。",
+  "deploy_note_ja": "FP8で約756GB。8×H200（約1.13TB）1ノードが目安で、BF16（約1.5TB）なら8×B300か2ノード。unslothのGGUFがあり、UD-Q4_K_XL 約467GBは512GB級Mac、UD-Q2_K_XL 約254GB／UD-IQ1_S 約217GBは256GB級機が目安。KTransformersでCPU+GPUのハイブリッド推論、Ascend NPU（vLLM-Ascend/xLLM）にも対応。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "Transformers",
+   "KTransformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "GLM-5.2",
+   "GLM-5.1",
+   "GLM-5"
+  ],
+  "notes": "2026-08-14にAPI公開、サイバー能力の伸びを受けた安全性評価のため重み公開は08-28に遅れた。HF上の総パラメータ表示（約753B）はMTP層を含むとみられ、744B/40Bは同一ベースのGLM-5公称値。思考量はreasoning_effortでlow/high/maxを選ぶ（思考オフの記載はない）。上海AI研のAtria-Dawn-Preview（GLM-5.2ベース、MIT）という派生モデルもある。",
+  "sources": [
+   "https://huggingface.co/zai-org/GLM-5.3",
+   "https://huggingface.co/zai-org/GLM-5.3/blob/main/LICENSE",
+   "https://huggingface.co/zai-org/GLM-5",
+   "https://huggingface.co/zai-org/GLM-5.2",
+   "https://gigazine.net/gsc_news/en/20260829-glm-5-3-open/",
+   "https://huggingface.co/unsloth/GLM-5.3-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8287
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "GLM-5.3"
+ },
+ {
+  "id": "deepseek-v4-1-flash",
+  "name": "DeepSeek-V4.1-Flash-1017",
+  "family": "DeepSeek-V4.1",
+  "org": "DeepSeek",
+  "country": "CN",
+  "release": "2026-10-17",
+  "arch": "MoE（Causal Encoder-Decoder構成、Engram条件付きメモリ、CSA2疎注意）",
+  "total_b": 552,
+  "active_b": 16,
+  "native_precision": "FP8＋FP4（ルーテッドエキスパートはFP4）",
+  "weights_gb": 510.3,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+  "summary_ja": "DeepSeekの最新世代V4.1のFlash版（09-10初版の10-17改良版）で、画像入力対応のマルチモーダルMoE。アクティブはプリフィル8B／デコード16Bと軽く、KVキャッシュが1トークン約890バイトなので1M文脈を安く回せる。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use",
+   "long-context",
+   "efficiency",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": 42.6,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。",
+  "aa_index": 45.1,
+  "japanese_note": "V4系の日本語評価は未確認。旧世代DeepSeek-V3.2はNejumi Leaderboard 4（2026/3/6版）で総合0.7888（全体18位）という参考値がある。",
+  "deploy_note_ja": "公式重みは約510GB（FP8とFP4の混在）。8×H200や4×GB300/B300で1ノード。SGLang公式cookbookにGB300/H200/B200/B300/MI350X向けレシピがある（当面はプレビュー版Dockerイメージが必要）。unslothのGGUFはUD-Q2_K_XL 約335GB、UD-IQ1_S 約233GBで512GB級Macが現実的な下限。MLX版（mlx-community oQ系）もある。",
+  "engines": [
+   "SGLang",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "DeepSeek-V4.1-Flash（0910初版）",
+   "DeepSeek-V4-Pro-0813",
+   "DeepSeek-V4-Flash-0731",
+   "DeepSeek-V4-Flash-Vision-Exp",
+   "DeepSeek-V3.2"
+  ],
+  "notes": "総パラメータは公式の「552B backbone」。別に196BのEngram条件付きメモリがあり、HF上の総数は約763B。DeepSeekは2026-09-14からAPIのV4-Pro宛リクエストをV4.1-Flashへ転送しており、「V4.1-Proが出るまで」としている（V4.1-Proの時期は未発表）。V4-Pro-0813の重み（1.6T/49B、約893GB、MIT）はダウンロードできるが、本一覧では置き換え済みとして扱う。Jinja形式のチャットテンプレートはなく、encodingフォルダとdeepseek-recipeを使う。",
+  "sources": [
+   "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+   "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+   "https://thenextweb.com/news/deepseek-v4-1-flash-launch-v4-pro-retired-price-cut",
+   "https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4_1",
+   "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
+   "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8158
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "DeepSeek V4.1 Flash"
+ },
+ {
+  "id": "mimo-v2-6-pro",
+  "name": "MiMo-V2.6-Pro",
+  "family": "MiMo-V2.6",
+  "org": "Xiaomi",
+  "country": "CN",
+  "release": "2026-09-22",
+  "arch": "MoE（SWAとグローバル注意のハイブリッド）",
+  "total_b": 1020,
+  "active_b": 42,
+  "native_precision": "FP8＋MXFP4（エキスパートはMXFP4格納）",
+  "weights_gb": 573.5,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image",
+   "video",
+   "audio"
+  ],
+  "mode": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+  "summary_ja": "Xiaomiの1.02T MoEで、テキスト・画像・動画・音声をまとめて扱うネイティブ・オムニモーダルモデル。大規模な混合強化学習で鍛えられ、AA指数では2026年10月時点でオープンウェイト首位。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "long-context",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 89.9,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "Pro-RLモデルカード自己申告。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 71.9、Terminal-Bench 4.0 34.9、OSWorld-Verified 82.0、Toolathlon-Verified 76.9、AutomationBench 53.1、CyberGym 94.0。GPQA/HLEはカードに記載なし。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 46.3,
+  "japanese_note": null,
+  "deploy_note_ja": "公式重みは約574GB（FP8＋MXFP4）。vLLMの公式例はTP8（8×H200 1ノード）、SGLangの高スループット例は2ノードTP16。8×H100（640GB）だとKVキャッシュの余裕がほぼない。mlx-communityのMLX版（mxfp4-q8）とコミュニティGGUFがあり、512GB級Macも候補になる。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "MLX",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "MiMo-V2.5-Pro"
+  ],
+  "notes": "09-27に、エージェント利用時のツール呼び出し反復を抑えた後継チェックポイントMiMo-V2.6-Pro-MOPDも公開（同サイズ、MIT）。思考オン/オフの切り替え方法はカードに記載がないため、modeはnullにした。9B蒸留版（MiMo-V2.6-Distill-Qwen-9B）も同時公開。",
+  "sources": [
+   "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+   "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-MOPD",
+   "https://www.eweek.com/news/xiaomi-mimo-v26-open-source-rl-reproduction/",
+   "https://huggingface.co/mlx-community/MiMo-V2.6-Pro-RL-mxfp4-q8",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8159
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "MiMo-V2.6-Pro"
+ },
+ {
+  "id": "qwen3-8-2-4t-a95b",
+  "name": "Qwen3.8-2.4T-A95B",
+  "family": "Qwen3.8",
+  "org": "Alibaba（Qwen）",
+  "country": "CN",
+  "release": "2026-08-12",
+  "arch": "MoE（Gated DeltaNet線形注意とGated Attentionのハイブリッド）",
+  "total_b": 2400,
+  "active_b": 95,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 4892.4,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Qwen3.8-Max License（独自）",
+  "commercial": "conditional",
+  "license_note": "MAU1億超または月商2,000万ドル超の商用製品ではモデル名の表示義務。MaaSまたはAIワークアシスタント（コーディング/オフィス生産性向けAI製品）事業を営み、グループ年商が5,000万ドルを超える場合は別途ライセンスが必要（第三者に提供しない社内利用は除外）。",
+  "hf": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+  "summary_ja": "Qwen-Max級を初めて重み公開した2.4T MoEで、APIのQwen3.8-Maxのベースモデル。テキスト専用で常に思考モードで動き、コーディング・業務・研究系の長いエージェントタスクに強い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 92.6,
+   "hle": 43.6,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 86.6,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカード自己申告。表の列名は「Qwen3.8-Max」（このモデルを基にした公式API版）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code、avg@10）。他にSWE-bench Pro 67.7、DeepSWE 1.1 56.6、HLE w/ tools 56.2、IFBench 82.8。AA指数v4.3.2（2026-10-20取得）は重み版「Qwen3.8 2.4T A95B」が39.9で、API版Qwen3.8 Max（0902）は45.4。",
+  "aa_index": 39.9,
+  "japanese_note": "3.8自体の日本語評価は未確認。前世代Qwen3.5-397B-A17BはNejumi Leaderboard 4（2026/3/6版）で総合0.8191、オープンモデル首位（全体5位）で、Qwen系は日本語で実績がある。",
+  "deploy_note_ja": "BF16で約4.9TB、FP8でも約2.5TBあり、8×B300（約2.3TB）1ノードにも収まらない。2ノード以上のB300や3ノード級のH200が必要で、本一覧で最も載せにくいモデル。unslothのGGUFはUD-IQ1_S 約508GB、UD-IQ2_XXS 約657GB、UD-IQ4_XS 約1.3TB。個人では512GB級Macを複数台つないで超低ビットで動かすのがやっと。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Qwen3.5-397B-A17B",
+   "Qwen3-235B-A22B-2507"
+  ],
+  "notes": "ネイティブ262K、公式に約1,010Kまで拡張可能。思考は無効化できない。API版Qwen3.8-Maxは画像入力・非思考モード・既定1M文脈・内蔵ツールに対応する。Qwen3.6/3.7世代の大型モデル（Qwen3.6-Plus、Qwen3.7-Max/Plus）はAPI限定だった。重み公開日は08-12とする報道が多いが、08-03や08-13とする資料もある。",
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+   "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B/blob/main/LICENSE",
+   "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8",
+   "https://runtimewire.com/article/alibaba-qwen38-24t-open-weights-enterprise-license",
+   "https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8598
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Qwen3.8 2.4T"
+ },
+ {
+  "id": "step-5-preview",
+  "name": "Step 5 Preview",
+  "family": "Step 5",
+  "org": "StepFun",
+  "country": "CN",
+  "release": "2026-10-15",
+  "arch": "MoE",
+  "total_b": 600,
+  "active_b": 27,
+  "native_precision": "FP8（BF16版・NVFP4版も公式公開）",
+  "weights_gb": 650.3,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": null,
+  "license": "StepFun Model License 1.0",
+  "commercial": "conditional",
+  "license_note": "MAU1億超または月商2,000万ドル超の商用製品では「Powered by StepFun AI」の表示義務。ハードウェア機器メーカーが機能として提供する場合と、MaaS事業者（グループ年商2,000万ドル超）の商用利用には別途商用契約が必要。モデルの出力で大きく学習したモデルも派生物とみなす。",
+  "hf": "https://huggingface.co/stepfun-ai/Step-5-Preview",
+  "summary_ja": "StepFunの新フラッグシップで、600B MoE（アクティブ27B）・最大1M文脈のエージェント向けモデル。ソフトウェア開発と専門知識業務、とくに金融タスクに強いとされる。",
+  "strengths": [
+   "coding",
+   "agent",
+   "long-context",
+   "vision",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカード（画像）自己申告、Highリーズニング設定: DeepSWE v1.1 67.7、ProgramBench 80.5、Terminal-Bench v4 33.3、Agents' Last Exam 29.5、GDPval-AA v2.1 1566、FrontierFinance 66.4、DRACO 83.3。指定欄に当たる値はカードにない。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 43.7,
+  "japanese_note": null,
+  "deploy_note_ja": "FP8（約650GB）は公式表で8×H200 1ノード、または4×B300 1ノード。BF16（約1.2TB）は8×B300か2ノード16×H200。NVFP4版（約394GB）ならBlackwell 4基級でも載る。GGUF/MLXの主要コミュニティ量子化は未確認。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers"
+  ],
+  "supersedes": [
+   "Step-3.7-Flash",
+   "Step-3.5-Flash",
+   "Step-3"
+  ],
+  "notes": "2026-09-20に発表しTencent WorkBuddyで先行提供、重みは10-15公開（HFリポジトリの作成は09-20）。仕様表の入力はテキストと画像だが、本文には動画入力の記述もある。思考オフの可否はカードに記載がないためmodeはnull。前世代のStep-3.7-Flash（198B/11B、Apache-2.0、256K）はAAで非推奨扱いになったが、128GB級Macで動く軽量な選択肢として残っている。",
+  "sources": [
+   "https://huggingface.co/stepfun-ai/Step-5-Preview",
+   "https://huggingface.co/stepfun-ai/Step-5-Preview/blob/main/LICENSE.txt",
+   "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4",
+   "https://toolnavs.com/de/article/2590-step-5-preview-gibt-gewichte-frei-600b-modell-aktiviert-nur-27b-zu-etwa-einem-ac",
+   "https://huggingface.co/stepfun-ai/Step-3.7-Flash",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "medium",
+  "short": "Step 5"
+ },
+ {
+  "id": "glm-5-3-flash",
+  "name": "GLM-5.3-Flash",
+  "family": "GLM-5.3",
+  "org": "Z.ai（Zhipu AI）",
+  "country": "CN",
+  "release": "2026-08-26",
+  "arch": "MoE（疎注意と線形注意のハイブリッド、mHC）",
+  "total_b": 320,
+  "active_b": 18,
+  "native_precision": "FP8（BF16版リポジトリも公開）",
+  "weights_gb": 328.3,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+  "summary_ja": "新たに学習したベースモデルによる、GLM-5系初のネイティブ・マルチモーダルモデル（320B/アクティブ18B）。GLM-5.2を上回る性能を約1/10の価格で出すとされ、コストパフォーマンスが高い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "efficiency",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 84.3,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "Z.ai公式ベンチ画像（自己申告）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code）。他にDeepSWE v1.1 63.4、Agents' Last Exam 26.3、AutomationBench 48.8、HLE w/ tools 55.3、GDPval-AA v2 1773。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 41.8,
+  "japanese_note": null,
+  "deploy_note_ja": "FP8で約328GB。4×H200か8×H100で1ノード、BF16（約642GB）なら8×H200。unslothのGGUFはUD-Q4_K_XL 約200GBで256GB級Mac、UD-Q2_K_XL 約109GBで128GB級機（DGX Spark/Mac）。KTransformers公式チュートリアルとMLX 4bit版もあり、個人でも載せやすい大型の代表格。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "Transformers",
+   "KTransformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "GLM-4.6V",
+   "GLM-4.7-Flash"
+  ],
+  "notes": "匿名モデル「Ox Alpha」の正体として08-26に発表され、同日重み公開。思考量はreasoning_effort（low/high/max）で指定する。上位版GLM-5.3と違ってライセンスは純MIT。",
+  "sources": [
+   "https://huggingface.co/zai-org/GLM-5.3-Flash",
+   "https://raw.githubusercontent.com/zai-org/GLM-5/refs/heads/main/resources/bench_53.png",
+   "https://www.qubrid.com/blog-news/glm-53-flash-benchmarks-official-and-independent-results",
+   "https://huggingface.co/unsloth/GLM-5.3-Flash-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.826
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "GLM-5.3-Flash"
+ },
+ {
+  "id": "qwen3-8-flash-next",
+  "name": "Qwen3.8-Flash-Next",
+  "family": "Qwen3.8",
+  "org": "Alibaba（Qwen）",
+  "country": "CN",
+  "release": "2026-08-26",
+  "arch": "MoE（Gated DeltaNetとQwen Sparse Attentionのハイブリッド、N-gram埋め込み、Gated Residual）",
+  "total_b": 125,
+  "active_b": 6,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 360.0,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "Qwen Community License 1.0",
+  "commercial": "conditional",
+  "license_note": "MAU1億超または月商2,000万ドル超の商用製品ではモデル名の表示義務。MaaSまたはAIワークアシスタント（コーディング/オフィス生産性向けAI製品）事業者は、売上規模にかかわらず商用利用に別途ライセンスが必要（第三者に提供しない社内利用は除外）。",
+  "hf": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+  "summary_ja": "Qwen4で採用予定のアーキテクチャを先行公開した実験的なマルチモーダルMoE。アクティブ6Bと非常に軽い一方で、GPQAやSWE系ではQwen3.7-Plus（397B）を上回る。",
+  "strengths": [
+   "efficiency",
+   "coding",
+   "agent",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 91.7,
+   "hle": 35.9,
+   "aime": null,
+   "lcb": 91.9,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 39.8,
+  "japanese_note": "Flash-Next自体の日本語評価は未確認。前世代Qwen3.5-122B-A10BはNejumi Leaderboard 4（2026/3/6版）で総合0.8094（全体8位）という参考値がある。",
+  "deploy_note_ja": "BF16で約360GB、公式FP8で約186GB（FP8なら2×H200か4×H100）。unslothのGGUFはUD-Q4_K_XL 約111GBで、128GB級Mac/DGX Sparkならぎりぎり、192GB以上なら余裕がある。UD-Q2_K_XL 約79GB。MLX 4bit版もあり、本一覧で最も手元で動かしやすい大型MoE。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "KTransformers",
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "Qwen3.5-122B-A10B",
+   "Qwen3-Next-80B-A3B",
+   "Qwen3.6-35B-A3B"
+  ],
+  "notes": "総パラメータは公称の本体125B。ほかにN-gram埋め込み51BとMTP 4Bがあり、HF上の総数は約180B。ネイティブ262K、約1Mまで拡張可能。API版Qwen3.8-Flashは既定1M文脈・内蔵ツール付き。",
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+   "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/LICENSE",
+   "https://letsdatascience.com/news/alibaba-releases-qwen38-flash-model-weights-publicly-62298bf0",
+   "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8291
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Qwen3.8-Flash-Next"
+ },
+ {
+  "id": "ling-3-1-flash",
+  "name": "Ling-3.1-flash",
+  "family": "Ling 3.x",
+  "org": "Ant Group（inclusionAI / 百灵）",
+  "country": "CN",
+  "release": "2026-10",
+  "arch": "MoE（Kimi Delta Attention線形注意とGated MLAの7:1ハイブリッド）",
+  "total_b": 560,
+  "active_b": 25,
+  "native_precision": "FP8",
+  "weights_gb": 573.8,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+  "summary_ja": "Ant GroupのLing 3.xを拡大した560B/アクティブ25Bのハイブリッド推論MoE。汎用エージェント、検索、オフィス業務、医療、ソフトウェア開発などの実務タスクで強い。",
+  "strengths": [
+   "agent",
+   "coding",
+   "tool-use",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": 37.44,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 81.18,
+   "tau2": null,
+   "browsecomp": 91.67
+  },
+  "bench_note": "モデルカード（画像表）自己申告。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 68.74、DeepSWE 59.70、Terminal-Bench 4.0 46.03、TAU3-Banking 47.80、HealthBench Professional 65.35。DeepSWE、TB4.0、SWE-bench Proは自社ハーネスLingCodeでの値。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 41.1,
+  "japanese_note": null,
+  "deploy_note_ja": "FP8で約574GB。公式例は8×H200（TP8+EP8）、または4×GB300。bartowskiのGGUFはQ4_K_M 約358GBで512GB級Mac、IQ2_M 約213GBで256GB級機。報道ではMXFP4とブロックFP8の量子化によりHopper 4基でも動くとされる。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Ling-3.0-flash",
+   "Ling-2.6-1T",
+   "Ring-2.6-1T",
+   "Ling-2.6-flash"
+  ],
+  "notes": "09-30に2週間の無料試用として発表（試用中は256Kに制限）、HFリポジトリは10-13作成、コミュニティGGUFは10-15に登場したため、公開日は2026-10とした。configのmax_positionは262,144で、1Mはカード公称値。Ling 3.xは思考オン/オフ一体型で、旧推論特化系列Ringの役割も統合した（Ling-3.0-flashのカードがRing-2.6-1Tを「前の1T級フラッグシップ」と表現）。",
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+   "https://huggingface.co/inclusionAI/Ling-3.0-flash",
+   "https://www.kucoin.com/news/flash/ant-group-s-bailing-open-sources-ling-3-1-flash-ai-model-with-1m-context-support",
+   "https://aiweekly.co/alerts/ants-inclusionai-ships-ling-31-flash-with-560b-parameters",
+   "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "medium",
+  "short": "Ling 3.1 Flash"
+ },
+ {
+  "id": "mimo-v2-6-flash",
+  "name": "MiMo-V2.6-Flash",
+  "family": "MiMo-V2.6",
+  "org": "Xiaomi",
+  "country": "CN",
+  "release": "2026-09-22",
+  "arch": "MoE（SWAとグローバル注意のハイブリッド）",
+  "total_b": 309,
+  "active_b": 15,
+  "native_precision": "FP8＋MXFP4（エキスパートはMXFP4格納）",
+  "weights_gb": 177.7,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image",
+   "video",
+   "audio"
+  ],
+  "mode": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+  "summary_ja": "MiMo-V2.6の効率重視版（309B/アクティブ15B）で、Pro同様にテキスト・画像・動画・音声の入力に対応する。重みは約178GBと小さいが、Terminal-Bench 2.1などのエージェント系ベンチでは上位級。",
+  "strengths": [
+   "efficiency",
+   "coding",
+   "agent",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 87.6,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "Pro-RLのモデルカードに並記された自己申告値。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 67.9、Toolathlon-Verified 73.6、OSWorld-Verified 80.8、CyberGym 95.1。AA指数v4.3.2（2026-10-20取得）。",
+  "aa_index": 37.9,
+  "japanese_note": null,
+  "deploy_note_ja": "公式重みは約178GB。vLLMの公式例はTP4（4×H100/H200）。mlx-communityのMLX版（mxfp4-q8）なら256GB級Mac、コミュニティGGUFなら192GB級機も候補。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "MLX",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "MiMo-V2.5",
+   "MiMo-V2-Flash"
+  ],
+  "notes": "09-27に、ツール呼び出しの反復を抑えた改良チェックポイントMiMo-V2.6-Flash-MOPDも公開。思考オン/オフの切り替え方法はカードに記載がない。",
+  "sources": [
+   "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+   "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-MOPD",
+   "https://www.eweek.com/news/xiaomi-mimo-v26-open-source-rl-reproduction/",
+   "https://huggingface.co/mlx-community/MiMo-V2.6-Flash-RL-mxfp4-q8",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high",
+  "short": "MiMo-V2.6-Flash"
+ },
+ {
+  "id": "minimax-m3",
+  "name": "MiniMax-M3",
+  "family": "MiniMax-M3",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": "2026-06-12",
+  "arch": "MoE（MiniMax Sparse Attention）",
+  "total_b": 428,
+  "active_b": 23,
+  "native_precision": "BF16（公式MXFP8版あり）",
+  "weights_gb": 854.2,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "MiniMax Community License",
+  "commercial": "conditional",
+  "license_note": "商用利用時は「Built with MiniMax M3」の表示とMiniMaxへの通知が必要で、年商2,000万ドル超の製品・サービスは事前の書面許諾が必要。微調整などの派生物を商用展開する場合も対象。軍事目的などの禁止用途がある。",
+  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+  "summary_ja": "学習初期からテキスト・画像・動画を混ぜて学習したネイティブ・マルチモーダルMoE（約428B/アクティブ約23B）。独自の疎注意MSAにより、1M文脈でM2比プリフィル9倍・デコード15倍の高速化をうたう。",
+  "strengths": [
+   "coding",
+   "agent",
+   "vision",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 93.0,
+   "hle": 37.0,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 66.0,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "HFカードにベンチ表がないため、MiniMaxの公称値を二次情報で採用（SWE-bench Pro 59.0、Terminal-Bench 2.1 66.0、MCP-Atlas 74.2）。GPQA 93とHLE 37はGLM-5.2のモデルカード比較表に載ったMiniMax M3の値（同表ではTB2.1 Terminus-2が65）。AA指数v4.3.2（2026-10-20取得）は29.2で、自己申告より大幅に低い。",
+  "aa_index": 29.2,
+  "japanese_note": "M3自体の日本語評価は未確認。前世代MiniMax-M2.1はNejumi Leaderboard 4（2026/3/6版）で総合0.7556（全体32位）という参考値がある。",
+  "deploy_note_ja": "BF16で約854GB（8×H200 1ノード）、公式MXFP8版は約444GB（4×H200や8×H100）。unslothのGGUFはUD-Q4_K_XL 約266GBで512GB級Macなら余裕、UD-Q3_K_XL 約196GBで256GB級Mac。KTransformersのチュートリアル、ROCm（ATOM）向けのMXFP4/MXFP8手順、MLX 4bit版もある。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "Transformers",
+   "KTransformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "MiniMax-M2.7",
+   "MiniMax-M2.5",
+   "MiniMax-M2.1"
+  ],
+  "notes": "06-01に発表し、重みは遅れて06-12に公開。思考はenabled/adaptive/disabledの3モード。後継のMiniMax-M3.1-Flash（Preview、09-27開始）はToken PlanとMiniMax Code経由のみでの提供で重み未公開、AA指数は42.7。HF上の同名組織にあるMiniMax-H3は動画生成モデルで、LLMではない。",
+  "sources": [
+   "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+   "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE",
+   "https://huggingface.co/MiniMaxAI/MiniMax-M3-MXFP8",
+   "https://huggingface.co/zai-org/GLM-5.2",
+   "https://pasqualepillitteri.it/en/news/3934/minimax-m3-chinese-open-weights-coding-model",
+   "https://www.implicator.ai/minimax-promises-m3-weights-after-1m-context-model-launch/",
+   "https://www.eesel.ai/fr/blog/minimax-m3-1-flash-specs-tarifs-tester-preview",
+   "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "medium",
+  "short": "MiniMax-M3"
+ },
+ {
+  "id": "hy4-preview",
+  "name": "Hy4 preview",
+  "family": "Tencent Hy4",
+  "org": "Tencent（Hy / 混元）",
+  "country": "CN",
+  "release": "2026-08-28",
+  "arch": "MoE（Gated DSA疎注意＋IndexCache、iHC）",
+  "total_b": 770,
+  "active_b": 49,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 1560.0,
+  "context_k": 1049,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/tencent/Hy4-preview",
+  "summary_ja": "TencentのHy（旧Hunyuan）新世代フラッグシップのプレビュー版で、770B/アクティブ49B・1M文脈のMoE。ソフトウェア開発、オフィス文書作成、ゲーム開発、科学研究などの実務向けに後学習されている。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 92.3,
+   "hle": 43.4,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 85.4,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカードのベンチ画像（自己申告、最大推論設定）。HLEはツールなし・テキストのみ（ツールあり55.4）。terminal_bench2欄はTerminal-Bench 2.1（Claude Codeハーネス）。他にSWE-bench Pro 65.7、DeepSWE 64.3、SWE-bench Multilingual 82.9、MCP-Atlas 83.7。AA指数は2026-10-20時点で未掲載。",
+  "aa_index": null,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16で約1.56TB（8×B300か2ノード）、公式FP8で約814GB（8×H200 1ノード）。MLX 4bit版（mlx-community）はあるが、GGUFの主要コミュニティ量子化は未確認。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "MLX"
+  ],
+  "supersedes": [
+   "Hy3",
+   "Hy3-preview",
+   "Hunyuan-A13B"
+  ],
+  "notes": "MTP層（10B）は総数に含まない。推論はreasoning_effortで制御し、no_thinkで直接応答。カード自身が、推論が長すぎる・自己検証が過剰といった既知の課題を挙げる早期版。前世代の正式版Hy3（295B/21B、BF16で約598GB、Apache-2.0、256K、2026-07公開、AA指数25.3）は、より軽い選択肢として残っている。",
+  "sources": [
+   "https://huggingface.co/tencent/Hy4-preview",
+   "https://huggingface.co/tencent/Hy4-preview-FP8",
+   "https://huggingface.co/tencent/Hy4-preview/blob/main/assets/benchmark-appendix.jpg",
+   "https://app.sentisense.ai/stories/tencent-open-sources-770-b-hy4-llm-for-coding-and-announces-self-improvement-loo-08312026",
+   "https://huggingface.co/tencent/Hy3",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8344
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Hy4"
+ },
+ {
+  "id": "qwen3-8-27b",
+  "name": "Qwen3.8-27B",
+  "family": "Qwen3.8",
+  "org": "Alibaba（Qwen）",
+  "country": "CN",
+  "release": "2026-08-14",
+  "arch": "Dense（Gated DeltaNetとGated Attentionのハイブリッド）",
+  "total_b": 27.8,
+  "active_b": null,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 55.6,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/Qwen/Qwen3.8-27B",
+  "summary_ja": "Qwen3.8世代の中型デンスモデル（27B）で、画像・動画にも対応するネイティブVLM。単体GPUで動かせ、Apache-2.0で扱いやすい。",
+  "strengths": [
+   "efficiency",
+   "coding",
+   "agent",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 89.2,
+   "hle": 30.8,
+   "aime": null,
+   "lcb": 90.3,
+   "mmlu_pro": null,
+   "terminal_bench2": 73.0,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "自己申告。Terminal-Bench 2.1（Terminus）73.0、SWE-bench Pro 61.7、DeepSWE 1.1 42.2は27Bのカード。GPQA/HLE/LiveCodeBench v6はQwen3.8-Flash-Nextのカード比較表の値。AA指数v4.3.2（2026-10-20取得、xhigh設定。mediumは27.6）。",
+  "aa_index": 33.7,
+  "japanese_note": "3.8-27B自体の日本語評価は未確認。前世代Qwen3.5-27BはNejumi Leaderboard 4（2026/3/6版）で総合0.8049（全体11位）と、中型としては上位だった。",
+  "deploy_note_ja": "BF16で約56GB（H100 80GB×1）、公式FP8で約31GB。4bit量子化（GGUF/MLX）なら16〜24GB級GPUや32GB以上のMacで動く。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TokenSpeed",
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "Qwen3.6-27B",
+   "Qwen3.5-27B"
+  ],
+  "notes": "中型枠（20〜100B）としてQwen系列から1つだけ収録。ネイティブ262K、約1Mまで拡張可能。同時期の大型Qwen3.8（2.4T、Flash-Next）と違い、ライセンスはApache-2.0。",
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3.8-27B",
+   "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
+   "https://www.eweek.com/news/alibaba-qwen3-8-27b-license-apac-china/",
+   "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8091
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Qwen3.8 27B"
+ },
+ {
+  "id": "longcat-2-0",
+  "name": "LongCat-2.0",
+  "family": "LongCat-2.0",
+  "org": "Meituan（LongCat）",
+  "country": "CN",
+  "release": "2026-07-05",
+  "arch": "MoE（LongCat Sparse Attention、N-gram埋め込み）",
+  "total_b": 1600,
+  "active_b": 48,
+  "native_precision": "BF16（公式FP8版・INT8版あり）",
+  "weights_gb": 3551.7,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/meituan-longcat/LongCat-2.0",
+  "summary_ja": "Meituanの1.6T MoE（アクティブ約48B）で、学習から運用まで国産AI ASIC上で行ったことが特徴。独自の疎注意LSAで1M文脈を扱い、Claude Codeなどのハーネスでのコーディング/エージェント用途を想定している。",
+  "strengths": [
+   "agent",
+   "coding",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 88.9,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 70.8,
+   "tau2": null,
+   "browsecomp": 79.9
+  },
+  "bench_note": "モデルカード自己申告（統一ハーネスでの社内計測）。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 59.5、SWE-bench Multilingual 77.3、IMO-AnswerBench 81.8。AA指数v4.3.2（2026-10-20取得）は19.1で、規模の割に低い。",
+  "aa_index": 19.1,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16で約3.55TB、公式FP8/INT8でも約2.05TB。8×B300（約2.3TB）でぎりぎり、H200なら2ノード16基以上が必要。GPUはSGLang cookbook、NPUはSGLang-FluentLLMで展開する。GGUF/MLXの主要コミュニティ量子化は未確認で、個人での運用は非現実的。",
+  "engines": [
+   "SGLang"
+  ],
+  "supersedes": [
+   "LongCat-Flash-Chat",
+   "LongCat-Flash-Thinking-2601",
+   "LongCat-Flash-Omni"
+  ],
+  "notes": "06-30に発表、重みは07-05公開。総パラメータ1.6TにはN-gram埋め込み135Bが含まれる（HF上の総数は約1.78T）。configの既定max_positionは262,144だが、カードと報道では1M文脈とされる。小型系列のLongCat-Flash-Lite-Sparse（69B、2026-07-31）は別系統。",
+  "sources": [
+   "https://huggingface.co/meituan-longcat/LongCat-2.0",
+   "https://huggingface.co/meituan-longcat/LongCat-2.0-FP8",
+   "https://rits.shanghai.nyu.edu/ai/meituan-open-sources-longcat-2-0-a-1-6t-model-trained-on-chinese-chips/",
+   "https://comfyui-wiki.com/en/news/2026-06-30-longcat-2-moe-meituan",
+   "https://docs.sglang.io/cookbook/autoregressive/Meituan/LongCat-2.0",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "medium",
+  "short": "LongCat-2.0"
+ },
+ {
+  "id": "intern-s2-397b",
+  "name": "Intern-S2-397B",
+  "family": "Intern-S2",
+  "org": "Shanghai AI Laboratory（InternLM）",
+  "country": "CN",
+  "release": "2026-09",
+  "arch": "MoE（Qwen3.5-MoE系アーキテクチャ）",
+  "total_b": 397,
+  "active_b": 17,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 806.9,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/internlm/Intern-S2-397B",
+  "summary_ja": "上海AI研による、科学分野に特化したマルチモーダルMoE（397B/アクティブ17B）。論文ページの画像から直接学ぶ事前学習と、20以上の科学分野の強化学習により、生物・分子・材料系のタスクに強い。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "vision",
+   "agent"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": 89.77,
+   "terminal_bench2": 64.04,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカードのベンチ画像（自己申告）。terminal_bench2欄はTerminal-Bench 2.1（Terminus 2）。他にSWE-bench Pro 68.54（mini-SWE-agent）、HMMT-2026 93.56、MMMU-Pro 81.68、FrontierScience-Olympiad 87.00。AA指数は2026-10-20時点で未掲載。",
+  "aa_index": null,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16で約807GB（8×H200）、公式FP8で約406GB（vLLMレシピでは8×H100/H200）。bartowskiのGGUFはQ4_K_M 約255GBで512GB級Mac、IQ2_M 約146GBで192GB級機。時系列入力はLMDeployのみ対応。",
+  "engines": [
+   "LMDeploy",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Intern-S2-Preview-397B",
+   "Intern-S1"
+  ],
+  "notes": "プレビュー版は2026-07-16、正式版のHF公開は09-13頃（DataLearnerは09-09としており、日付は資料で異なる）。configはQwen3.5-MoE（397B-A17B）と同一系統で、Qwen3.5ベースの派生とみられる。同じ研究所からは、GLM-5.2をベースにしたエージェント研究用モデルAtria-Dawn-Preview（744B、MIT、テキストのみ、2026-09）も出ている。",
+  "sources": [
+   "https://huggingface.co/internlm/Intern-S2-397B",
+   "https://huggingface.co/internlm/Intern-S2-397B-FP8",
+   "https://recipes.vllm.ai/internlm/Intern-S2-397B",
+   "https://runtimewire.com/article/shanghai-ai-lab-intern-s2-397b-science-model",
+   "https://huggingface.co/bartowski/Intern-S2-397B-GGUF",
+   "https://huggingface.co/internlm/Atria-Dawn-Preview"
+  ],
+  "confidence": "medium",
+  "short": "Intern-S2"
+ },
+ {
+  "id": "openpangu-2-0-pro",
+  "name": "openPangu-2.0-Pro",
+  "family": "openPangu-2.0",
+  "org": "Huawei",
+  "country": "CN",
+  "release": "2026-07",
+  "arch": "MoE（MLA、DSA+SWAハイブリッド、4ストリームmHC、3ヘッドMTP）",
+  "total_b": 505,
+  "active_b": 18,
+  "native_precision": "BF16（公式Int8版あり）",
+  "weights_gb": 1083.0,
+  "context_k": 524,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenPangu Model License Agreement 2.0",
+  "commercial": "conditional",
+  "license_note": "EU域内での利用・導入は禁止。第三者に製品やサービスを提供する場合は「Powered by openPangu」の表示と商標表示が必要。特許・著作権訴訟を起こすとライセンスが終了する。",
+  "hf": "https://huggingface.co/openpangu/openPangu-2.0-Pro",
+  "summary_ja": "HuaweiがAscend NPUだけで学習した505B MoE（アクティブ18B）で、512K文脈に対応する。思考モードと非思考モードを1つにまとめた後学習を行い、数学やエージェント系で堅実な性能を持つ。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 68.5,
+   "gpqa": 87.9,
+   "hle": 27.1,
+   "aime": 95.4,
+   "lcb": 85.7,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": 81.1,
+   "browsecomp": 65.7
+  },
+  "bench_note": "モデルカード自己申告（Thinkingモード）。aimeはAIME 2026（avg@16、Python使用時97.9）、lcbはLiveCodeBench V6、tau2はTAU2-Bench（avg@3）。他にHMMT Feb 2026 86.2、IFEval 94.5。AA指数は2026-10-20時点で未掲載。",
+  "aa_index": null,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16で約1.08TB、公式Int8で約551GB。公式手順はAscend NPU向けのomni-infer前提で、NVIDIA GPU向けの公式手順やコミュニティ量子化は未確認。",
+  "engines": [
+   "omni-infer"
+  ],
+  "supersedes": [
+   "openPangu-Ultra-MoE-718B"
+  ],
+  "notes": "06-12の開発者会議でopenPangu 2.0ファミリーを発表し、Proの重み・推論コード・技術レポートは07-30〜31にGitCodeとHFで公開。HF自動集計は約541Bと表示するが、公式値は505B。同ファミリーにopenPangu-2.0-Flash（92B、2026-06-30）がある。",
+  "sources": [
+   "https://huggingface.co/openpangu/openPangu-2.0-Pro",
+   "https://huggingface.co/openpangu/openPangu-2.0-Pro/blob/main/LICENSE",
+   "https://www.opensourceforu.com/2026/08/huawei-open-sources-505b-openpangu-ai-drops-weights-and-code/",
+   "https://runtimewire.com/article/huawei-releases-openpangu-2-0-pro-ascend",
+   "https://gitcode.com/ascend-tribe/openPangu-2.0-Infer"
+  ],
+  "confidence": "medium",
+  "short": "openPangu 2.0"
+ },
+ {
+  "id": "yuan3-0-ultra",
+  "name": "Yuan3.0 Ultra",
+  "family": "Yuan3.0",
+  "org": "YuanLab AI（IEIT Systems / 浪潮信息）",
+  "country": "CN",
+  "release": "2026-03-04",
+  "arch": "MoE（LAEPによるエキスパート刈り込み、LFA注意）",
+  "total_b": 1010,
+  "active_b": 68.8,
+  "native_precision": "BF16（公式int4版あり）",
+  "weights_gb": 2022.3,
+  "context_k": 64,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": null,
+  "license": "Yuan 3.0 Model License Agreement",
+  "commercial": "yes",
+  "license_note": "商用利用は申請不要で可能。ただし国家や社会に害を与える用途や、安全評価・届出を経ていないサービスでの利用は禁止されている。",
+  "hf": "https://huggingface.co/YuanLabAI/Yuan3.0-Ultra",
+  "summary_ja": "企業向けRAG、文書・表の理解、要約、Text-to-SQLに最適化した1T級のマルチモーダルMoE。事前学習中に低負荷エキスパートを刈り込み、1515Bから1010Bに縮めている。",
+  "strengths": [
+   "tool-use",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカード自己申告。企業向けベンチ中心で、Docmatix 67.4、ChatRAG平均68.2、MMTab平均62.3。指定欄に当たる値はない。AA指数は未掲載。",
+  "aa_index": null,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16で約2.0TB（8×B300かH200 2ノード以上）、公式int4版は約557GB（8×H100/H200級）。HF版は独自コード（custom_code）で、主要推論エンジンの公式対応やコミュニティ量子化は未確認。文脈は64Kと短め。",
+  "engines": [],
+  "supersedes": [],
+  "notes": "2026年10月時点でYuanLabAIの最新大型公開モデル（7か月前のもので、本一覧の他モデルより古い）。小型版にYuan3.0 Flash（40B級、2025-12）がある。fast-thinking型の強化学習で推論を短くしているが、思考の切り替え方法はカードに記載がない。",
+  "sources": [
+   "https://huggingface.co/YuanLabAI/Yuan3.0-Ultra",
+   "https://huggingface.co/YuanLabAI/Yuan3.0-Ultra-int4",
+   "https://github.com/Yuan-lab-LLM/Yuan3.0"
+  ],
+  "confidence": "medium",
+  "short": "Yuan3.0 Ultra"
+ },
+ {
+  "id": "meta-muse-spark-open",
+  "name": "Muse Spark Open (816B-A42B)",
+  "family": "Muse",
+  "org": "Meta (Meta Superintelligence Labs)",
+  "country": "US",
+  "release": "2026-10-15",
+  "arch": "MoE",
+  "total_b": 816,
+  "active_b": 42,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 1644.3,
+  "context_k": 1000,
+  "modality": [
+   "text",
+   "image",
+   "video",
+   "audio"
+  ],
+  "mode": "thinking",
+  "license": "Muse Model License",
+  "commercial": "conditional",
+  "license_note": "改変・蒸留・再配布・販売は可。製品に「Built with Muse Spark Open」の表示が必要。直近12か月の総売上が2,000万ドルを超えるグループのModel-as-a-Service事業者は、事前にMetaへ通知して別契約が必要。HFは手動承認制のゲート付き（氏名・生年月日・所属等の登録が必要との報道あり）。",
+  "hf": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+  "summary_ja": "Llama 4の後継にあたるMetaの最上位オープンウェイトで、コーディングと長時間のエージェント作業向けに作られた。Meta自身は「米国製で最も高性能なオープンウェイト」と説明している。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "vision",
+   "long-context",
+   "tool-use",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 89.0,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 76.4,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（reasoning effort=xhigh）。terminal_bench2はTerminal-Bench 2.1（Terminus 2）の値。HLEはHLE-Diamond（ツールなし）26.1、HLE（ツールあり）61.0で、通常のHLE（ツールなし）値は未公表のためnull。ほかにOSWorld Verified 80.4、MCP-Atlas 89.2、DeepSWE 1.1 60。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはArtificial Analysis Intelligence Index v4.3.2（2026-10-20時点）。",
+  "aa_index": 38.9,
+  "japanese_note": "100以上の言語のデータで学習したとあるが、日本語の個別評価は公表されていない。",
+  "deploy_note_ja": "公式NVFP4版（約533GB）でもVRAM 700GB以上が必要で、Blackwell 8GPUの1ノード（8×B200等）が目安。BF16（約1.6TB、公式表記は約2TB）は複数ノードが必要。公式にはMac Studio（M5 Ultra 512GB）2台をつないだMLX実行に最適化されている。Unsloth/ggml-orgのGGUF、mlx-communityの3bit/4bit版がある。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "TensorRT-LLM",
+   "Transformers",
+   "MLX",
+   "llama.cpp",
+   "Unsloth"
+  ],
+  "supersedes": [
+   "Llama 4 Maverick",
+   "Llama 4 Scout"
+  ],
+  "sources": [
+   "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+   "https://research.meta.ai/blog/muse-spark-open",
+   "https://pytorch.org/blog/muse-spark-open/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8379
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Muse Spark Open"
+ },
+ {
+  "id": "reflection-beam-1-0",
+  "name": "Beam 1.0 (501B-A23B)",
+  "family": "Beam",
+  "org": "Reflection AI",
+  "country": "US",
+  "release": "2026-10-16",
+  "arch": "MoE",
+  "total_b": 501.3,
+  "active_b": 23.4,
+  "native_precision": "BF16（公式FP8・NVFP4版あり）",
+  "weights_gb": 1002.7,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0。蒸留・出力の学習利用・ファインチューニング・量子化・マージも明示的に禁止していない。別途Usage Policyを参照。",
+  "hf": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+  "summary_ja": "Reflection AIの最初のオープンウェイトモデルで、少ない推論トークンでも高い精度を出すことを重視した501BのMoE。コーディングとエージェント用途が主な狙い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "math",
+   "long-context",
+   "efficiency",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 81.6,
+   "gpqa": 90.6,
+   "hle": 36.0,
+   "aime": 97.7,
+   "lcb": 88.3,
+   "mmlu_pro": null,
+   "terminal_bench2": 80.1,
+   "tau2": null,
+   "browsecomp": 76.8
+  },
+  "bench_note": "公式モデルカードのBF16値（temp 0.7, top_p 0.99）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、BrowseCompはコンテキスト管理あり。HLEはツールなし（ツールありは51.1）。ほかにSWE-Bench Pro v1 66.1、Tau3 Banking 36.1。数値はすべてベンダー公表で、独立評価は限られる。aa_indexはAA v4.3.2。",
+  "aa_index": 30.3,
+  "japanese_note": "モデルカードに「主に英語向けに開発」と明記されている。日本語の評価は公表されていない。",
+  "deploy_note_ja": "BF16（約1.0TB）は8×B200級の1ノードが必要。公式FP8版（約503GB）は8×H200（1.1TB）の1ノード、NVFP4版（約294GB）はBlackwell 4GPU程度が計算上の目安。reasoning_effortはminimal〜maxで調整できる。UnslothのGGUF、2×RTX PRO 6000向けEXL3 3bpw版など、コミュニティ量子化が出始めている。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+   "https://www.unite.ai/?p=488091",
+   "https://aws.amazon.com/blogs/machine-learning/introducing-reflection-beam-an-open-weight-model-for-agentic-coding-on-aws/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "medium",
+  "short": "Beam 1.0"
+ },
+ {
+  "id": "ifm-k2-horizon-375b",
+  "name": "K2-Horizon-375B-A23B",
+  "family": "K2 Horizon",
+  "org": "MBZUAI Institute of Foundation Models (IFM)",
+  "country": "AE",
+  "release": "2026-09-03",
+  "arch": "MoE",
+  "total_b": 375,
+  "active_b": 23,
+  "native_precision": "BF16（公式FP8・NVFP4版あり）",
+  "weights_gb": 758.3,
+  "context_k": 512,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0。重みに加えて学習データ（TxT360-v2）、学習コード、学習ログ、中間チェックポイントまで公開した「フルオープン」モデル。",
+  "hf": "https://huggingface.co/IFM/K2-Horizon-375B-A23B",
+  "summary_ja": "UAEのMBZUAIが公開した、学習データやコードまで公開されたモデルとしては最大級の375B MoE。推論とエージェント作業に強い。",
+  "strengths": [
+   "agent",
+   "reasoning",
+   "coding",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 87.3,
+   "hle": 32.0,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 70.2,
+   "tau2": null,
+   "browsecomp": 72.8
+  },
+  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。SWE-bench Verifiedは未公表（SWE Bench Pro strictは42.6）。ほかにtau3-Banking 34.0、AA-LCR 76.0、GDPVal-AA Elo 1441。aa_indexはAA v4.3.2。",
+  "aa_index": 30.5,
+  "japanese_note": "モデルカードの対応言語は英語のみ。日本語の評価は公表されていない。",
+  "deploy_note_ja": "BF16（約758GB）を8×H200の1ノードで動かす構成が公式に検証されている（SGLang TP8/EP8）。公式FP8版（約391GB）なら8×H100（640GB）にも計算上収まり、NVFP4版（約230GB）もある。bartowski等のGGUFがある。effortはhigh推奨で、low/mediumは研究用途向け。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "K2-V2",
+   "K2 Think V2"
+  ],
+  "sources": [
+   "https://huggingface.co/IFM/K2-Horizon-375B-A23B",
+   "https://mbzuai.ac.ae/news/mbzuais-institute-of-foundation-models-launches-k2-horizon-the-worlds-largest-fully-open-ai-mo",
+   "https://gulfbusiness.com/en/2026/artificial-intelligence/mbzuai-launches-k2-horizon-family-of-six-open-ai-models/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "K2-Horizon"
+ },
+ {
+  "id": "tml-inkling",
+  "name": "Inkling",
+  "family": "Inkling",
+  "org": "Thinking Machines Lab",
+  "country": "US",
+  "release": "2026-07-15",
+  "arch": "MoE",
+  "total_b": 975,
+  "active_b": 41,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 1904.8,
+  "context_k": 1000,
+  "modality": [
+   "text",
+   "image",
+   "audio"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/thinkingmachines/Inkling",
+  "summary_ja": "Mira Murati率いるThinking Machines Labの初の自社基盤モデルで、テキスト・画像・音声を1つのモデルで扱う975BのMoE。思考量（effort）を細かく調整できる。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "coding",
+   "agent",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 77.6,
+   "gpqa": 87.2,
+   "hle": 29.7,
+   "aime": 97.1,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 63.8,
+   "tau2": null,
+   "browsecomp": 77.1
+  },
+  "bench_note": "公式モデルカード・ブログ（effort=0.99）。SWE-bench Verifiedはbash-onlyハーネス、AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは46.0）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。tau3 Banking 23.7。aa_indexはAA v4.3.2（xhigh）。",
+  "aa_index": 25.0,
+  "japanese_note": "英語＋一般的な多言語能力と記載。多言語指標のGlobal-MMLU-Liteは88.7%だが、日本語個別の評価はない。",
+  "deploy_note_ja": "BF16（約1.9TB）は複数ノード（16×H200級）が必要。公式NVFP4版（約592GB）はBlackwell 8GPUの1ノード（8×B200等）が目安。UnslothのGGUFもある。effortはnone〜maxの範囲で調整できる。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "llama.cpp",
+   "Transformers",
+   "Unsloth"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/thinkingmachines/Inkling",
+   "https://thinkingmachines.ai/news/introducing-inkling/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8244
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Inkling"
+ },
+ {
+  "id": "tml-inkling-small",
+  "name": "Inkling-Small",
+  "family": "Inkling",
+  "org": "Thinking Machines Lab",
+  "country": "US",
+  "release": "2026-07-30",
+  "arch": "MoE",
+  "total_b": 276,
+  "active_b": 12,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 531.9,
+  "context_k": 1000,
+  "modality": [
+   "text",
+   "image",
+   "audio"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/thinkingmachines/Inkling-Small",
+  "summary_ja": "Inklingの小型版（276B、アクティブ12B）で、後から出た分、コーディングや推論の多くのベンチで大型版と同等以上の結果を出している。性能あたりの計算コストが低い。",
+  "strengths": [
+   "coding",
+   "reasoning",
+   "math",
+   "vision",
+   "efficiency",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 80.2,
+   "gpqa": 89.5,
+   "hle": 31.6,
+   "aime": 95.5,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 64.7,
+   "tau2": null,
+   "browsecomp": 77.4
+  },
+  "bench_note": "公式モデルカード（effort=0.99）。AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは47.8）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。ARC-AGI-2 40.1。カード上の「AA Index v4.1 = 40.0」は旧版の値。aa_indexはAA v4.3.2での値。",
+  "aa_index": 25.7,
+  "japanese_note": "英語＋一般的な多言語能力と記載。Global-MMLU-Liteは86.7%だが、日本語個別の評価はない。",
+  "deploy_note_ja": "BF16（約532GB）は8×H200または8×B200の1ノード。公式NVFP4版（約171GB）はB200×2程度が目安。UnslothのGGUF（ダウンロード数が多い）で、4bit級ならメモリ256〜512GBのMac Studio等でも動作圏（計算上）。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "Transformers",
+   "llama.cpp",
+   "Unsloth"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/thinkingmachines/Inkling-Small",
+   "https://thinkingmachines.ai/news/inkling-small/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.8222
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Inkling-Small"
+ },
+ {
+  "id": "nvidia-nemotron-3-ultra",
+  "name": "NVIDIA Nemotron 3 Ultra (550B-A55B)",
+  "family": "Nemotron",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-06-04",
+  "arch": "その他(Mamba-2・Transformerハイブリッド＋LatentMoE、MTP付き)",
+  "total_b": 550,
+  "active_b": 55,
+  "native_precision": "BF16（NVFP4で事前学習、公式NVFP4版あり）",
+  "weights_gb": 1121.1,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW License Agreement v1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型）。商用・非商用ともに利用可能と明記。",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+  "summary_ja": "NVIDIA最大のオープンモデルで、Mamba-2とTransformerを組み合わせた構造により長文でも速く動く。推論のオン/オフと中程度の思考量を選べる。",
+  "strengths": [
+   "reasoning",
+   "coding",
+   "math",
+   "long-context",
+   "efficiency",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": 70.7,
+   "gpqa": 87.0,
+   "hle": 26.7,
+   "aime": null,
+   "lcb": 89.0,
+   "mmlu_pro": 86.8,
+   "terminal_bench2": 56.4,
+   "tau2": null,
+   "browsecomp": 44.4
+  },
+  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2.1、LCBはv6、HLEはツールなし（ツールありは37.4）。tau2の代わりにTauBench V3平均70.9を公表。SWE-Bench Multilingual 67.7。AIMEは未公表。aa_indexはAA v4.3.2。",
+  "aa_index": 22.9,
+  "japanese_note": "公式の対応言語に日本語を明記（英・仏・西・伊・独・日・ヒンディー・韓・ポルトガル（ブラジル）・中）。日本語ベンチの個別値は未確認。",
+  "deploy_note_ja": "公式の最小構成は8×B200/GB200/B300、8×H200、または16×H100。推奨は8×B200の1ノード（約1.5TB HBM）。公式NVFP4版（約352GB）でメモリを大きく減らせる。TensorRT-LLMは現状Blackwellのみ対応。UnslothのGGUF、RedHatAIのW4A16/FP8版がある。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TensorRT-LLM",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Llama-3.1-Nemotron-Ultra-253B-v1"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "Nemotron 3 Ultra"
+ },
+ {
+  "id": "nvidia-nemotron-3-5-super-vl",
+  "name": "NVIDIA Nemotron 3.5 Super VL (120B-A12B)",
+  "family": "Nemotron",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-10-15",
+  "arch": "その他(Mamba-2・Transformerハイブリッド MoE＋MTP、C-RADIOビジョンエンコーダ)",
+  "total_b": 120,
+  "active_b": 12,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 248.9,
+  "context_k": 1000,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW License Agreement v1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型）。商用・非商用ともに利用可能と明記。",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+  "summary_ja": "Nemotron 3 Superに画像・動画の理解を加えた後継で、アクティブ12Bと軽いのに3 Ultraを上回るベンチ結果が多い。NVFP4版なら1GPUクラスでも動く。",
+  "strengths": [
+   "agent",
+   "coding",
+   "reasoning",
+   "vision",
+   "efficiency",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 71.1,
+   "gpqa": 89.52,
+   "hle": 31.79,
+   "aime": null,
+   "lcb": 88.22,
+   "mmlu_pro": null,
+   "terminal_bench2": 60.67,
+   "tau2": null,
+   "browsecomp": 78.0
+  },
+  "bench_note": "公式モデルカード。HLEはテキストのみ（全セットは29.20）、LCBはv6、terminal_bench2はTerminal-Bench 2.1。MMLU-Proの代わりにMMLU-ProX 76.91。tau2はretail 69.24/airline 76.50/telecom 73.19（平均は未公表のためnull）、tau3 banking 18.88。表はテキスト化された表から読み取ったため列の対応は要再確認。aa_indexはAA v4.3.2。",
+  "aa_index": 26.5,
+  "japanese_note": "事前学習用にCommon Crawlから抽出した15言語に日本語が含まれる。日本語の個別評価は未確認。",
+  "deploy_note_ja": "BF16（約249GB）は4×H100または2×GB200。公式NVFP4版（約75GB）はDGX Sparkやデータセンター向けBlackwell 1基で動く想定。ggml-org/Unsloth/LM StudioのGGUF、MLX 4bit版がある。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "NVIDIA Nemotron 3 Super 120B-A12B"
+  ],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "Nemotron 3.5 Super"
+ },
+ {
+  "id": "nvidia-nemotron-3-5-bolt",
+  "name": "NVIDIA Nemotron 3.5 Bolt (74B-A9B)",
+  "family": "Nemotron",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-10-15",
+  "arch": "その他(Mamba-2・Transformerハイブリッド LatentMoE、ビジョンエンコーダ付き)",
+  "total_b": 74,
+  "active_b": 9,
+  "native_precision": "BF16（公式2bit量子化「24GB」版あり）",
+  "weights_gb": 149.8,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW License Agreement v1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型）。",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+  "summary_ja": "Nemotron 3.5 Super VLを探索と蒸留で74Bに縮めた中型モデルで、公式の2bit版は24GB以下のメモリで動くよう設計されている。単体GPUで動く中型としてはAAの指標が高い。",
+  "strengths": [
+   "efficiency",
+   "vision",
+   "reasoning",
+   "agent"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 86.43,
+   "hle": 25.3,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 50.98,
+   "tau2": null,
+   "browsecomp": 66.75
+  },
+  "bench_note": "公式モデルカード（2bit「24GB」版の値）。HLEはツールなし、terminal_bench2はTerminal-Bench 2.1。Tau3 Banking 17.01、AA-LCR 64.06。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはAA v4.3.2の「Nemotron 3.5 Bolt 74B-A9B」で、どの量子化版で測ったかは不明。",
+  "aa_index": 21.4,
+  "japanese_note": "日本語の個別評価は未公表（元になったSuper VLの事前学習データには日本語が含まれる）。",
+  "deploy_note_ja": "公式の「24GB」版（約24GB）は、エキスパートをIQ2-XXS（約2bit）に量子化し、128Kコンテキスト・バッチ1で24GB未満に収まるよう設計されている。RTX 5090やDGX Sparkで検証済み。公式GGUF版もある。BF16（約150GB）は2×H100級。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "Nemotron 3.5 Bolt"
+ },
+ {
+  "id": "upstage-solar-open-2",
+  "name": "Solar Open 2 (250B-A15B)",
+  "family": "Solar Open",
+  "org": "Upstage",
+  "country": "KR",
+  "release": "2026-07-22",
+  "arch": "MoE",
+  "total_b": 250,
+  "active_b": 15,
+  "native_precision": "BF16",
+  "weights_gb": 500.6,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Upstage Solar License",
+  "commercial": "yes",
+  "license_note": "Apache 2.0の条項をほぼそのまま採用し、商用利用も可能。派生モデルを配布する場合は、モデル名に「Solar」を付け、「Built with Solar」と表示する必要がある。",
+  "hf": "https://huggingface.co/upstage/Solar-Open2-250B",
+  "summary_ja": "韓国政府の独自AI基盤モデル事業で開発された250BのMoEで、softmaxと線形アテンションを組み合わせて1Mトークンを扱える。英語・韓国語・日本語の3言語を公式にサポートしている。",
+  "strengths": [
+   "reasoning",
+   "coding",
+   "math",
+   "japanese",
+   "multilingual",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 70.4,
+   "gpqa": 86.3,
+   "hle": 28.8,
+   "aime": 95.7,
+   "lcb": 92.4,
+   "mmlu_pro": 86.2,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（reasoning_effort=high）。AIMEはAIME 2026、LCBはv6、HLEはツールなし。Terminal-Bench 2.xの値はなく、Terminal Bench Hardが28.3。τ³ banking 19.6。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。",
+  "aa_index": 24.7,
+  "japanese_note": "公式サポート言語は英語・韓国語・日本語の3つで、日本語を明示的にサポートしている。独立した日本語ベンチの結果は未確認。",
+  "deploy_note_ja": "BF16（約501GB）は最小4×H200、推奨8×H200。Nota AIのNVFP4版（約153GB）とINT4版（約143GB）があり、量子化すればH200 2基で動くと報道されている。MLX 6/8bit版、GGUFのコミュニティ版もある。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Solar Open 100B"
+  ],
+  "sources": [
+   "https://huggingface.co/upstage/Solar-Open2-250B",
+   "https://inews24.com/v/mtl/1987913",
+   "https://news.mtn.co.kr/news-detail/2026072308524238090",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "Solar Open 2"
+ },
+ {
+  "id": "skt-ax-k2",
+  "name": "A.X K2 (688B-A33B)",
+  "family": "A.X",
+  "org": "SK Telecom",
+  "country": "KR",
+  "release": "2026-07-29",
+  "arch": "MoE",
+  "total_b": 688,
+  "active_b": 33,
+  "native_precision": "FP8（ブロックスケールE4M3、公式NVFP4版あり）",
+  "weights_gb": 694.4,
+  "context_k": 256,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0で研究・商用利用可。業務向けの軽量版はSKTへの問い合わせで提供される。",
+  "hf": "https://huggingface.co/skt/A.X-K2",
+  "summary_ja": "SK TelecomがA.X K1（519B）の後継として公開した688BのMoEで、最初からFP8で学習されている。数学・推論と通信系エージェントタスクに強い。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "tool-use",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 85.6,
+   "hle": 27.8,
+   "aime": 97.1,
+   "lcb": 84.0,
+   "mmlu_pro": null,
+   "terminal_bench2": 36.0,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、LCBはv6（2〜5月分）、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ²-Bench Telecomは98.0（平均は未公表のためnull）、τ³ Banking 13.0。BrowseCompは検索10回以内という制限付きで9.3のためnull。KMMLU-Pro 80.5。aa_indexはAA v4.3.2。",
+  "aa_index": 21.5,
+  "japanese_note": "日本語にも対応するが、中国語・日本語・スペイン語の品質は「十分に検証されていない」とモデルカードに明記されている。",
+  "deploy_note_ja": "ネイティブFP8（約694GB）。合計800GiB以上のGPUメモリが推奨で、検証は4×B300、80GB級GPUなら12基以上が必要。FP8で動かすには計算能力8.9以上のGPUが必要（それ以外はBF16展開で約1.4TB）。公式NVFP4版（約398GB）、公式GGUFあり。vLLMはSKTのフォーク版が推奨。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "A.X K1"
+  ],
+  "sources": [
+   "https://huggingface.co/skt/A.X-K2",
+   "https://news.sktelecom.com/en/3204",
+   "https://rcrwireless.com/20260730/ai/sk-telecom-a-x-k2",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "A.X K2"
+ },
+ {
+  "id": "lg-k-exaone-2-0",
+  "name": "K-EXAONE 2.0 (750B-A37B)",
+  "family": "EXAONE",
+  "org": "LG AI Research",
+  "country": "KR",
+  "release": "2026-07-31",
+  "arch": "MoE",
+  "total_b": 750,
+  "active_b": 37,
+  "native_precision": "BF16（公式FP8・NVFP4版あり）",
+  "weights_gb": 1498.7,
+  "context_k": 256,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "前世代のK-EXAONE 236Bは独自ライセンスだったが、2.0でApache 2.0になった。",
+  "hf": "https://huggingface.co/LGAI-EXAONE/K-EXAONE-2.0-750B-A37B",
+  "summary_ja": "LGが前世代のK-EXAONE（236B）を3倍以上に拡大して作った、韓国最大の750B MoE。長文処理（MRCR）と数学に強い。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "long-context",
+   "multilingual",
+   "japanese"
+  ],
+  "bench": {
+   "swe_verified": 68.2,
+   "gpqa": 82.2,
+   "hle": 18.3,
+   "aime": 92.3,
+   "lcb": null,
+   "mmlu_pro": 83.5,
+   "terminal_bench2": 43.8,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ³-Banking 14.2、OpenAI-MRCR 94.4、AA-LCR 56.2。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。",
+  "aa_index": 20,
+  "japanese_note": "対応10言語（韓・英・西・独・日・越・仏・伊・波・葡）に日本語が含まれる。前世代のK-EXAONE 236BはQualitegの日本語LLMランキング（2026年3月版）で総合0.7186だった。",
+  "deploy_note_ja": "BF16は約1.5TBで、公式の配信例は8×H200を2ノード（計16基）。公式FP8版（約752GB）なら8×H200の1ノードに計算上収まり、NVFP4版（約526GB）もある。SGLang/vLLMはLGのフォーク版を使う。MTP/DSparkの投機的デコードで3〜5倍速くなるとされる。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "K-EXAONE 236B-A23B"
+  ],
+  "sources": [
+   "https://huggingface.co/LGAI-EXAONE/K-EXAONE-2.0-750B-A37B",
+   "https://www.lgresearch.ai/news/view?seq=678",
+   "https://blog.qualiteg.com/llm-ranking-2026-03/",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "high",
+  "short": "K-EXAONE 2.0"
+ },
+ {
+  "id": "openai-gpt-oss-120b",
+  "name": "gpt-oss-120b",
+  "family": "gpt-oss",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2025-08-05",
+  "arch": "MoE",
+  "total_b": 117,
+  "active_b": 5.1,
+  "native_precision": "MXFP4（MoE重み。その他はBF16）",
+  "weights_gb": 65.2,
+  "context_k": 128,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0＋gpt-ossの利用ポリシー。harmony形式のプロンプトで使う必要がある。",
+  "hf": "https://huggingface.co/openai/gpt-oss-120b",
+  "summary_ja": "OpenAIのオープンウェイト推論モデルで、MXFP4のおかげで80GBのGPU1基に載る。2026年10月時点でも後継は出ておらず、エコシステムの充実度は最大級。",
+  "strengths": [
+   "reasoning",
+   "math",
+   "efficiency",
+   "tool-use",
+   "coding"
+  ],
+  "bench": {
+   "swe_verified": 62.4,
+   "gpqa": 80.1,
+   "hle": 14.9,
+   "aime": 92.5,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは97.9）、HLEはツールなし（ツールありは19.0）。MMLU 90.0、Tau-Bench（v1）Retail 67.8、Codeforces Elo 2622（ツールあり）。aa_indexはAA v4.3.2（high）。指標の改定で数値が大きく下がっている点に注意。",
+  "aa_index": 12,
+  "japanese_note": "公式のMMMLU日本語は83.5（high）。Science Tokyo（旧東工大）が日本語を強化したGPT-OSS-Swallow-120Bを公開しており、元モデルより日本語ランキングで高く評価されている。",
+  "deploy_note_ja": "MXFP4（約65GB）で1×H100/MI300X（80GB）に載る。Ollama、LM Studio、llama.cppでの実績が多く、メモリの大きいMacやワークステーションでも動く。思考量はlow/medium/highで指定する。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "Ollama",
+   "LM Studio",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/openai/gpt-oss-120b",
+   "https://arxiv.org/abs/2508.10925",
+   "https://artificialanalysis.ai/models/gpt-oss-120b",
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-120B-RL-v0.1"
+  ],
+  "confidence": "high",
+  "short": "gpt-oss-120b"
+ },
+ {
+  "id": "openai-gpt-oss-20b",
+  "name": "gpt-oss-20b",
+  "family": "gpt-oss",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2025-08-05",
+  "arch": "MoE",
+  "total_b": 21,
+  "active_b": 3.6,
+  "native_precision": "MXFP4（MoE重み。その他はBF16）",
+  "weights_gb": 13.8,
+  "context_k": 128,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0＋gpt-ossの利用ポリシー。",
+  "hf": "https://huggingface.co/openai/gpt-oss-20b",
+  "summary_ja": "gpt-ossの小型版で、メモリ16GBの環境でも動く推論モデル。ローカル実行の定番として広く使われている。",
+  "strengths": [
+   "efficiency",
+   "reasoning",
+   "math",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 60.7,
+   "gpqa": 71.5,
+   "hle": 10.9,
+   "aime": 91.7,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは98.7）、HLEはツールなし（ツールありは17.3）。MMLU 85.3、Tau-Bench（v1）Retail 54.8。aa_indexはAA v4.3.2（high）。",
+  "aa_index": 9,
+  "japanese_note": "公式のMMMLU日本語は78.8（high）。日本語強化版のGPT-OSS-Swallow-20B（SFT/RL）が公開されている。",
+  "deploy_note_ja": "MXFP4（約14GB）でメモリ16GBのGPUやMacに載る。Ollama、LM Studio、llama.cppでの実績が多い。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "Ollama",
+   "LM Studio",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/openai/gpt-oss-20b",
+   "https://arxiv.org/abs/2508.10925",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true",
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-20B-RL-v0.1"
+  ],
+  "confidence": "high",
+  "short": "gpt-oss-20b"
+ },
+ {
+  "id": "google-gemma-4-31b",
+  "name": "Gemma 4 31B",
+  "family": "Gemma",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-03-31",
+  "arch": "Dense",
+  "total_b": 30.7,
+  "active_b": null,
+  "native_precision": "BF16（公式QAT 4bit版あり）",
+  "weights_gb": 62.5,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Gemma 4から、従来のGemma利用規約ではなくApache 2.0になった。",
+  "hf": "https://huggingface.co/google/gemma-4-31B-it",
+  "summary_ja": "Gemma 4の最大サイズで、単体GPUで動く密モデルとしては数学・コーディング・多言語のバランスが良い。思考モードのオン/オフを切り替えられる。",
+  "strengths": [
+   "multilingual",
+   "vision",
+   "efficiency",
+   "reasoning",
+   "math"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 84.3,
+   "hle": 19.5,
+   "aime": 89.2,
+   "lcb": 80.0,
+   "mmlu_pro": 85.2,
+   "terminal_bench2": null,
+   "tau2": 76.9,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。",
+  "aa_index": 15,
+  "japanese_note": "140以上の言語で事前学習し、35以上の言語を標準でサポート（日本語の個別明記はない）。前世代のGemma 3 27Bは日本語ランキング（Qualiteg 2026年3月版）の中規模で5位だった。",
+  "deploy_note_ja": "BF16（約63GB）で1×H100 80GBに載る。公式QAT Q4_0 GGUF（約19GB）なら24GB級のコンシューマGPUで動く。NVIDIAのNVFP4版、RedHatのFP8版、MLX版など派生が非常に多い。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio",
+   "MLX"
+  ],
+  "supersedes": [
+   "Gemma 3 27B"
+  ],
+  "sources": [
+   "https://huggingface.co/google/gemma-4-31B-it",
+   "https://ai.google.dev/gemma/docs/releases?hl=en",
+   "https://huggingface.co/google/gemma-4-31B-it-qat-q4_0-gguf",
+   "https://artificialanalysis.ai/models/gemma-4-31b"
+  ],
+  "confidence": "high",
+  "jp_bench": {
+   "nejumi": 0.808
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "short": "Gemma 4 31B"
+ },
+ {
+  "id": "mistral-medium-3-5",
+  "name": "Mistral Medium 3.5 (128B)",
+  "family": "Mistral Medium",
+  "org": "Mistral AI",
+  "country": "FR",
+  "release": "2026-04",
+  "arch": "Dense",
+  "total_b": 128,
+  "active_b": null,
+  "native_precision": "FP8",
+  "weights_gb": 133.6,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Modified MIT License",
+  "commercial": "conditional",
+  "license_note": "MITをベースに、前月の連結月間売上が2,000万ドルを超える企業（またはその従業員）は利用できないという条件を追加している。該当企業はMistralから商用ライセンスを得る必要がある。",
+  "hf": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
+  "summary_ja": "指示追従・推論（旧Magistral）・コーディング（旧Devstral）を1つにまとめた128Bの密モデル。欧州発の大型オープンウェイトの主力で、エージェント型コーディングに強い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "multilingual",
+   "japanese",
+   "vision",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 77.6,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカードと発表時の報道。テキストで確認できたのはSWE-bench Verified 77.6とτ³-Telecom 91.4のみで、他の値は画像のみで読み取れなかった。aa_indexはAA v4.3.2。",
+  "aa_index": 14,
+  "japanese_note": "公式の対応言語に日本語を明記（24言語）。日本語ベンチの個別値は未確認。",
+  "deploy_note_ja": "ネイティブFP8（約134GB。リポジトリには2形式が同梱され合計約267GB）。4×H100/H200程度で自前運用できると報道されている（公式の起動例はTP8）。NVIDIA公式のNVFP4版（約95GB）、UnslothのGGUF、MLX 4bit版、EAGLEの投機的デコードモデルがある。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "Ollama",
+   "Transformers"
+  ],
+  "supersedes": [
+   "Mistral Medium 3.1",
+   "Magistral Medium 1.2",
+   "Devstral 2 (123B)"
+  ],
+  "sources": [
+   "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
+   "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/blob/main/LICENSE",
+   "https://datanorth.ai/news/mistral-medium-3-5-release",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "medium",
+  "short": "Mistral Medium 3.5"
+ },
+ {
+  "id": "cohere-command-a-plus",
+  "name": "Command A+ (05-2026)",
+  "family": "Command",
+  "org": "Cohere",
+  "country": "CA",
+  "release": "2026-05-20",
+  "arch": "MoE",
+  "total_b": 218,
+  "active_b": 25,
+  "native_precision": "BF16（公式FP8・W4A4版あり）",
+  "weights_gb": 437.5,
+  "context_k": 128,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "従来のCommand系（CC-BY-NC）と違い、Apache 2.0で商用利用できる。",
+  "hf": "https://huggingface.co/CohereLabs/command-a-plus-05-2026-bf16",
+  "summary_ja": "Cohere初のApache 2.0フラッグシップで、218BのMoEにより推論・画像理解・ツール利用を1つにまとめた。RAG向けの引用（citation）モードや48言語対応など、企業向け機能が充実している。",
+  "strengths": [
+   "multilingual",
+   "japanese",
+   "tool-use",
+   "vision",
+   "efficiency",
+   "agent"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカードにはベンチマークの記載がない。Cohereの公表値（The Decoder経由）はτ²-Bench Telecom 85%、Terminal-Bench Hard 25%。AAによれば、AA-Omniscienceの非ハルシネーション率86%で1位。aa_indexはAA v4.3.2の値で、リリース当時の旧版では約37だった。",
+  "aa_index": 13,
+  "japanese_note": "対応48言語に日本語を含む。日本語ベンチの個別値は未確認。",
+  "deploy_note_ja": "公式の最小構成は、BF16（約438GB）が4×B200または8×H100、FP8（約225GB）が2×B200または4×H100、推奨のW4A4（約132GB）が1×B200または2×H100。bartowskiのGGUFがある。vLLMは0.21以上で、cohere_melodyライブラリを併用する。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Command A (03-2025)",
+   "Command A Reasoning (08-2025)",
+   "Command A Vision (07-2025)"
+  ],
+  "sources": [
+   "https://huggingface.co/CohereLabs/command-a-plus-05-2026-bf16",
+   "https://the-decoder.com/cohere-open-sources-its-strongest-model-yet/",
+   "https://artificialanalysis.ai/articles/cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release",
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+  ],
+  "confidence": "medium",
+  "short": "Command A+"
+ },
+ {
+  "id": "poolside-laguna-s-2-1",
+  "name": "Laguna S 2.1 (118B-A8B)",
+  "family": "Laguna",
+  "org": "poolside",
+  "country": "US",
+  "release": "2026-07-21",
+  "arch": "MoE",
+  "total_b": 118,
+  "active_b": 8,
+  "native_precision": "BF16（公式FP8・NVFP4・INT4版あり）",
+  "weights_gb": 235.1,
+  "context_k": 1024,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型）。",
+  "hf": "https://huggingface.co/poolside/Laguna-S-2.1",
+  "summary_ja": "コーディングエージェント専業のpoolsideが公開した118BのMoEで、アクティブ8Bと軽いのにTerminal-Bench 2.1で70%を超える。DGX Spark 1台で動かせる点も売りにしている。",
+  "strengths": [
+   "coding",
+   "agent",
+   "efficiency",
+   "long-context",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 70.2,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（思考あり、2026-07-21時点）。terminal_bench2はTerminal-Bench 2.1。SWE-Bench Pro（public）59.4、SWE-bench Multilingual 78.5、DeepSWE 40.4、Toolathlon Verified 49.7。SWE-bench Verified、GPQA、HLEは未公表。AAの値は確認できなかった。poolside自身も「まだフロンティアではない」と述べている。",
+  "aa_index": null,
+  "japanese_note": null,
+  "deploy_note_ja": "BF16（約235GB）はTP4（4×H100級）。公式のFP8版（約131GB）、NVFP4版（約100GB）、INT4版、GGUF版、MLX版、DFlashの投機的デコードモデルがある。NVFP4ならDGX Spark 1台で動くと報道されている。llama.cppはpoolsideのフォーク版（本家への取り込みはレビュー中）。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TensorRT-LLM",
+   "llama.cpp",
+   "Ollama",
+   "Transformers",
+   "MLX"
+  ],
+  "supersedes": [
+   "Laguna M.1"
+  ],
+  "sources": [
+   "https://huggingface.co/poolside/Laguna-S-2.1",
+   "https://thenextweb.com/news/poolside-laguna-s-2-1-open-weight-coding-model",
+   "https://huggingface.co/poolside/Laguna-M.1"
+  ],
+  "confidence": "medium",
+  "short": "Laguna S 2.1"
+ },
+ {
+  "id": "rakuten-ai-3-0",
+  "name": "Rakuten AI 3.0",
+  "family": "Rakuten AI",
+  "org": "楽天グループ",
+  "country": "JP",
+  "release": "2026-03-17",
+  "arch": "MoE",
+  "total_b": 671,
+  "active_b": 37,
+  "native_precision": "FP8（E4M3・ブロック量子化）",
+  "weights_gb": 673.2,
+  "context_k": 128,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": false,
+  "base_model": "非公開。公式は「オープンソースコミュニティの最良モデル」を基に追加学習したと説明。config.jsonはDeepseekV3ForCausalLM（deepseek_v3）で、61層・hidden 7168・256エキスパートとDeepSeek-V3と同構成",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache 2.0で商用可。ベースモデルの出所を楽天が明かしていないため、社内のコンプライアンス確認が必要になる場合がある",
+  "hf": "https://huggingface.co/Rakuten/RakutenAI-3.0",
+  "summary_ja": "楽天がGENIACで開発した約7,000億パラメータ（総671B・アクティブ37B）のMoEモデルで、国産の公開重みとしては最大級。強力なオープンモデルを基に、楽天の日英データで日本語向けに追加学習している。",
+  "strengths": [
+   "japanese",
+   "math",
+   "long-context"
+  ],
+  "jp_bench": {
+   "nejumi": 0.6761,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": 8.88,
+   "other": "楽天の公表値: JamC-QA 76.9 / MMLU-ProX(ja) 71.7 / MATH-100(ja) 86.9 / M-IFEval(ja) 72.1。同じ表でGPT-OSS-Swallow-120B-RL-v0.1は63.0 / 77.5 / 96.0 / 69.5、gpt-4oは74.7 / 64.9 / 75.8 / 67.3"
+  },
+  "jp_bench_note": "日本語MT-Benchは2025-12-18発表時の楽天公表値（judge: gpt-4o-2024-08-06、10点満点）。その他は2026-03-17のプレスリリースにある楽天の自社評価。Swallow LLM Leaderboard v2やNejumiでの第三者評価は確認できなかった",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "楽天の自社評価では、日本知識（JamC-QA）と日本語の指示追従でGPT-4oを上回る。一方、MMLU-ProXと数学ではGPT-OSS-Swallow-120Bに劣る。thinkingモードの記載はない。第三者による検証はまだ少ない。",
+  "deploy_note_ja": "FP8の重みが約673GB。公式例はSGLangのDockerで--tp 8。8×H200/B200級が目安で、8×H100 80GB（計640GB）では足りないため2ノード構成が必要。コミュニティのGGUF量子化版もある。",
+  "engines": [
+   "SGLang",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "RakutenAI-2.0-8x7B-instruct",
+   "RakutenAI-2.0-mini-instruct",
+   "RakutenAI-7B-instruct"
+  ],
+  "sources": [
+   "https://huggingface.co/Rakuten/RakutenAI-3.0",
+   "https://corp.rakuten.co.jp/news/press/2026/0317_01.html",
+   "https://global.rakuten.com/corp/news/press/2025/1218_01.html",
+   "https://innovatopia.jp/ai/ai-news/87602/"
+  ],
+  "confidence": "medium",
+  "short": "Rakuten AI 3.0",
+  "pick": "国産最大級（671B MoE）",
+  "pick_reason": "8×H100 1台に載る。Apache 2.0"
+ },
+ {
+  "id": "sarashina2-8x70b",
+  "name": "Sarashina2-8x70B",
+  "family": "Sarashina",
+  "org": "SB Intuitions（ソフトバンクグループ）",
+  "country": "JP",
+  "release": "2024-11",
+  "arch": "MoE",
+  "total_b": 465,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 929.5,
+  "context_k": 8,
+  "modality": [
+   "text"
+  ],
+  "mode": "base",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "Sarashina Model NonCommercial License Agreement",
+  "commercial": "no",
+  "license_note": "非商用ライセンス。指示チューニング前のベースモデルのため、チャット用途には自前でSFTが必要",
+  "hf": "https://huggingface.co/sbintuitions/sarashina2-8x70b",
+  "summary_ja": "SB Intuitionsが日英でフルスクラッチ学習したSarashina2-70Bを、sparse upcyclingで8エキスパートのMoEに拡張した約4,650億パラメータの事前学習モデル。指示チューニングされていないベースモデル。",
+  "strengths": [
+   "japanese"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": null
+  },
+  "jp_bench_note": "モデルカードにベンチマークの記載はない。事後学習モデル向けのSwallow LLM Leaderboard v2にも掲載されていない",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "国産フルスクラッチ系の公開重みとしては最大級だが、2024年の世代でコンテキストは8K。後継のSarashina3（2026-06）はAPI提供のみで重みは公開されていない。公開重みのSarashina2.2は3B以下しかないため、大型ではこれが最新の公開重みになる。",
+  "deploy_note_ja": "BF16で約930GB。モデルカードには推論に16×H100または16×A100 80GBが必要と書かれている。",
+  "engines": [
+   "Transformers",
+   "vLLM"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/sbintuitions/sarashina2-8x70b",
+   "https://huggingface.co/sbintuitions",
+   "https://www.sbintuitions.co.jp/blog/entry/2026/06/30/100000"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "gpt-oss-swallow-120b-rl",
+  "name": "GPT-OSS-Swallow-120B-RL-v0.1",
+  "family": "Swallow",
+  "org": "東京科学大学（岡崎研究室・横田研究室）／産業技術総合研究所",
+  "country": "JP",
+  "release": "2026-02-20",
+  "arch": "MoE",
+  "total_b": 117,
+  "active_b": 5.1,
+  "native_precision": "BF16（公式MXFP4量子化版あり）",
+  "weights_gb": 233.7,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "openai/gpt-oss-120b",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのgpt-oss-120bもApache 2.0",
+  "hf": "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-120B-RL-v0.1",
+  "summary_ja": "OpenAIのgpt-oss-120bに、日本語中心の継続事前学習（約4,194億トークン）、SFT、強化学習（RLVR）を施した推論モデル。公式は、総パラメータ120B以下のオープンLLMで日本語タスク平均が最高だとしている。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "math",
+   "coding",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": 0.6914,
+   "swallow_avg": 0.6,
+   "jmmlu": null,
+   "ja_mtbench": 7.72,
+   "other": "Swallow LB v2: 英語平均0.782 / JamC-QA 0.616 / MMLU-ProX(ja) 0.776 / 日本語GPQA 0.703 / JHumanEval 0.934。公式モデルページの公表値は日本語平均0.642・英語平均0.804・日本語MT-Bench 0.916で、LB v2とは集計条件が異なる。二次情報（biton.co.jpがQualitegの分析を引用）にNejumi LB4総合0.691とあるが未検証"
+  },
+  "jp_bench_note": "swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版、reasoning effort medium）の値",
+  "bench": {
+   "gpqa": 70.5,
+   "mmlu_pro": 73.1,
+   "aime": 87.9,
+   "lcb": 71.1,
+   "swe_verified": null
+  },
+  "japanese_note": "公式はベース比でJamC-QA（日本知識）+11.4pt、AIME 24-25 +15.0ptと報告。一方で英語GPQAは-8.6ptの低下も報告している。推論強度はmediumが推奨。",
+  "deploy_note_ja": "BF16で約234GBのため4×H100 80GB級。公式MXFP4版（約65GB）なら1×H100 80GBに載る。学習時のコンテキストは32Kで、推奨上限も32Kトークン（YaRNで延長はできるが評価されていない）。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "Llama-3.3-Swallow-70B-Instruct-v0.4",
+   "GPT-OSS-Swallow-120B-SFT-v0.1"
+  ],
+  "sources": [
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-120B-RL-v0.1",
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-120B-RL-v0.1-MXFP4",
+   "https://swallow-llm.github.io/gptoss-swallow.ja.html",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html",
+   "https://gigazine.net/news/20260224-gptoss-qwen3-swallow-japanese-ai/"
+  ],
+  "confidence": "high",
+  "short": "GPT-OSS-Swallow-120B",
+  "pick": "GPU 1枚で動く日本語強化版",
+  "pick_reason": "MXFP4版なら H100 80GB 1枚"
+ },
+ {
+  "id": "stockmark-2-100b-instruct",
+  "name": "Stockmark-2-100B-Instruct",
+  "family": "Stockmark",
+  "org": "ストックマーク",
+  "country": "JP",
+  "release": "2025-09-24",
+  "arch": "Dense",
+  "total_b": 96,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 192.0,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "MIT License",
+  "commercial": "yes",
+  "license_note": "Hugging Faceの重みはMIT。NVIDIA NIM版はNVIDIA Open Model Licenseも併記されている",
+  "hf": "https://huggingface.co/stockmark/Stockmark-2-100B-Instruct",
+  "summary_ja": "ストックマークが日本語を重視してフルスクラッチ開発した約1,000億パラメータ級（実数96B）のDenseモデル。約2兆トークン（英語60%・日本語30%・コード10%）で事前学習し、日本語の合成データでSFTとDPOを行っている。",
+  "strengths": [
+   "japanese"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": 7.87,
+   "other": "楽天のプレスリリース（2026-03-17）の比較表（楽天による評価）: JamC-QA 61.1 / MMLU-ProX(ja) 41.7 / MATH-100(ja) 55.6 / M-IFEval(ja) 45.6"
+  },
+  "jp_bench_note": "日本語MT-Benchはモデルカード記載の自社評価（judgeは記載なし）。Swallow LB v2とNejumiの値は確認できなかった",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "日本語の知識と文章生成を重視したフルスクラッチの大型モデル。推論（thinking）モードはなく、数学・推論系ベンチでは2026年の推論型モデルに大きく劣る。",
+  "deploy_note_ja": "BF16で約192GBのため4×H100 80GBが目安（FP8化すれば2×H100）。コンテキストは32K。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "Stockmark-2-100B-Instruct-beta",
+   "stockmark-100b-instruct-v0.1",
+   "stockmark-13b-instruct"
+  ],
+  "sources": [
+   "https://huggingface.co/stockmark/Stockmark-2-100B-Instruct",
+   "https://build.nvidia.com/stockmark/stockmark-2-100b-instruct.md",
+   "https://corp.rakuten.co.jp/news/press/2026/0317_01.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "shisa-v2-1-llama3-3-70b",
+  "name": "Shisa V2.1 Llama 3.3 70B",
+  "family": "Shisa",
+  "org": "Shisa.AI",
+  "country": "JP",
+  "release": "2025-12-09",
+  "arch": "Dense",
+  "total_b": 70.6,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 141.1,
+  "context_k": 128,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": false,
+  "base_model": "meta-llama/Llama-3.3-70B-Instruct",
+  "license": "Llama 3.3 Community License",
+  "commercial": "conditional",
+  "license_note": "Llama 3.3のライセンスを継承する。月間アクティブユーザーが7億人を超える場合は別途許諾が必要で、「Built with Llama」の表示などの条件がある",
+  "hf": "https://huggingface.co/shisa-ai/shisa-v2.1-llama3.3-70b",
+  "summary_ja": "Shisa.AIがLlama 3.3 70B Instructに、刷新したデータでのSFT・DPOとモデルマージを施した日英バイリンガルモデル。前世代の405B版に迫る日本語性能を70Bで出している。",
+  "strengths": [
+   "japanese",
+   "multilingual"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": 9.26,
+   "other": "Shisaの公表値: JA AVG 73.1 / EN AVG 66.0 / Shaberi v2.1 8.03 / ELYZA-tasks-100 8.36 / shisa-jp-tl-bench（翻訳）9.55。参考としてShisa V2 405BはJA AVG 74.7・JA MT-Bench 9.43"
+  },
+  "jp_bench_note": "JA MT-Bench 9.26はGPT-4-Turboをjudgeにした値で、GPT-5.1をjudgeにすると7.24。いずれもShisaの自社評価",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "日英翻訳と日本語の会話品質に強い。他言語トークンが混ざる率をベースの1.90%から0.36%に下げたと報告している。推論モードはない。V2.1に405B版はなく、最大サイズは前世代のShisa V2 405Bのまま。",
+  "deploy_note_ja": "BF16で約141GBのため2×H100 80GB（KVキャッシュに余裕を持たせるなら4枚）。4bit量子化なら48GB級GPU1枚程度。コンテキストは128K。",
+  "engines": [
+   "vLLM",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "Shisa V2 Llama 3.3 70B"
+  ],
+  "sources": [
+   "https://huggingface.co/shisa-ai/shisa-v2.1-llama3.3-70b",
+   "https://blog.shisa.ai/posts/shisa-v2.1/",
+   "https://shisa.ai/en/news/shisa-v2-1-release/"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "llm-jp-4-1-33b-thinking",
+  "name": "llm-jp-4.1-33b-thinking",
+  "family": "LLM-jp",
+  "org": "国立情報学研究所（NII）大規模言語モデル研究開発センター（LLMC）",
+  "country": "JP",
+  "release": "2026-09-28",
+  "arch": "Dense",
+  "total_b": 33.2,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 66.4,
+  "context_k": 64,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/llm-jp/llm-jp-4.1-33b-thinking",
+  "summary_ja": "NIIが約11.7兆トークンでフルスクラッチ学習したLLM-jp-4 33Bに、改良した事後学習（SFT＋DPO）を施した推論モデル。4.0と比べてSTEM性能と回答の簡潔さが改善し、ツール呼び出しにも対応した。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "math",
+   "tool-use"
+  ],
+  "jp_bench": {
+   "nejumi": 0.7206,
+   "swallow_avg": null,
+   "jmmlu": 85.49,
+   "ja_mtbench": 7.76,
+   "other": "llm-jp-judge（judge: gpt-5.4）: MT-Bench英語 7.98 / AnswerCarefully 4.08 / llm-jp-instructions 3.83。ELYZAの測定: JamC-QA 57.69 / M-IFEval-ja 80.53 / JHumanEval 95.61 / BFCL v4 48.14 / Nejumi BFCL 51.16 / 総合平均60.64"
+  },
+  "jp_bench_note": "MT-BenchはLLM-jpのモデルカードの値（judge: gpt-5.4、reasoning_effort medium、10点満点）。JMMLUとbenchは、ELYZA-Thinking-1.0-llm-jp-4-33bのモデルカードにあるELYZAの測定値（reasoning_effort high）。Swallow LB v2には未掲載",
+  "bench": {
+   "gpqa": 70.77,
+   "mmlu_pro": 78.82,
+   "aime": 78.23,
+   "lcb": 45.2,
+   "swe_verified": null
+  },
+  "japanese_note": "日本語中心のコーパスで一から学習した純国産モデル。4.1ではMT-Benchがわずかに下がった一方、安全性（AnswerCarefully）と指示追従が上がった。トークナイザはllm-jp-tokenizer v4.0系で、チャットテンプレートはHarmony形式に準拠している（openai-harmonyライブラリとは非互換）。",
+  "deploy_note_ja": "BF16で約66GBのため1×H100 80GB。公式GGUFのQ4_K_M（約20GB）なら24GB級GPUでも動く。最大65,536トークン。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "llm-jp-4-33b-thinking",
+   "LLM-jp-3 172B",
+   "llm-jp-3.1-8x13b-instruct4"
+  ],
+  "sources": [
+   "https://huggingface.co/llm-jp/llm-jp-4.1-33b-thinking",
+   "https://huggingface.co/llm-jp/llm-jp-4.1-33b-thinking-gguf",
+   "https://llmc.nii.ac.jp/topics/llm-jp-4-1/",
+   "https://current.ndl.go.jp/car/283665",
+   "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-33b"
+  ],
+  "confidence": "high",
+  "short": "llm-jp-4.1-33b",
+  "pick": "フルスクラッチ国産の本命",
+  "pick_reason": "国産フルスクラッチで Nejumi 最上位。Apache 2.0"
+ },
+ {
+  "id": "llm-jp-4-1-32b-a3b-thinking",
+  "name": "llm-jp-4.1-32b-a3b-thinking",
+  "family": "LLM-jp",
+  "org": "国立情報学研究所（NII）大規模言語モデル研究開発センター（LLMC）",
+  "country": "JP",
+  "release": "2026-09-28",
+  "arch": "MoE",
+  "total_b": 32.1,
+  "active_b": 3.8,
+  "native_precision": "BF16",
+  "weights_gb": 64.3,
+  "context_k": 64,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/llm-jp/llm-jp-4.1-32b-a3b-thinking",
+  "summary_ja": "LLM-jp-4.1のMoE版（128エキスパート中8個が動作し、アクティブは約3.8B）。33B Dense版に近い日本語性能を、より高速に出せる国産フルスクラッチの推論モデル。",
+  "strengths": [
+   "japanese",
+   "efficiency",
+   "tool-use"
+  ],
+  "jp_bench": {
+   "nejumi": 0.684,
+   "swallow_avg": null,
+   "jmmlu": 83.09,
+   "ja_mtbench": 7.69,
+   "other": "llm-jp-judge（judge: gpt-5.4）: MT-Bench英語 7.85 / AnswerCarefully 3.91 / llm-jp-instructions 3.79。ELYZAの測定: JamC-QA 53.79 / M-IFEval-ja 77.32 / BFCL v4 27.96 / 総合平均53.89。参考として旧llm-jp-4-32b-a3b-thinkingはSwallow LB v2で日本語平均0.471"
+  },
+  "jp_bench_note": "MT-BenchはLLM-jpのモデルカード（judge: gpt-5.4、10点満点）。JMMLUとbenchはELYZA-Thinking-1.0-llm-jp-4-32b-a3bのモデルカードにあるELYZAの測定値",
+  "bench": {
+   "gpqa": 60.8,
+   "mmlu_pro": 73.9,
+   "aime": 57.71,
+   "lcb": 32.4,
+   "swe_verified": null
+  },
+  "japanese_note": "4.0のMoE版と比べてGPQA、AIME、指示追従が大きく上がった。日本語MT-Benchは4.0版（7.82）をわずかに下回る。",
+  "deploy_note_ja": "BF16で約64GBのため1×H100 80GB。公式GGUFのQ4_K_M（約21.5GB）なら24GB GPUやStrix Halo級のマシンでも実用的な速度が出る。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "llm-jp-4-32b-a3b-thinking",
+   "llm-jp-3.1-8x13b-instruct4"
+  ],
+  "sources": [
+   "https://huggingface.co/llm-jp/llm-jp-4.1-32b-a3b-thinking",
+   "https://huggingface.co/llm-jp/llm-jp-4.1-32b-a3b-thinking-gguf",
+   "https://llmc.nii.ac.jp/topics/llm-jp-4-1/",
+   "https://www.nii.ac.jp/news/release/2026/0403.html",
+   "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-32b-a3b",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "elyza-thinking-1-0-llm-jp-4-33b",
+  "name": "ELYZA-Thinking-1.0-llm-jp-4-33b",
+  "family": "ELYZA-Thinking",
+  "org": "ELYZA（KDDIグループ）",
+  "country": "JP",
+  "release": "2026-10-02",
+  "arch": "Dense",
+  "total_b": 33.2,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 66.4,
+  "context_k": 64,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "llm-jp/llm-jp-4-33b-base（NIIによるフルスクラッチの国産モデル）",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのLLM-jp-4もApache 2.0",
+  "hf": "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-33b",
+  "summary_ja": "NIIのLLM-jp-4 33Bベースモデルに、ELYZAが中間学習、SFT、検証可能な報酬による強化学習（RLVR）を施した日本語推論モデル。ELYZAの測定では、総合平均でLLM-jp-4.1 33Bをわずかに上回る。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "coding",
+   "tool-use"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": 84.69,
+   "ja_mtbench": null,
+   "other": "ELYZAの測定: JamC-QA 66.35 / JEMHopQA 73.85 / M-IFEval-ja 85.84 / JFBench 39.02 / JHumanEval 95.73 / Nejumi BFCL 46.53 / 総合平均61.69（llm-jp-4.1-33b-thinkingは60.64、Qwen3-32Bは58.11）"
+  },
+  "jp_bench_note": "ELYZAのモデルカードにある自社測定値（temperature 0.6、top_p 0.95など）。MT-Bench、Swallow LB、Nejumiの値は確認できなかった",
+  "bench": {
+   "gpqa": 69.95,
+   "mmlu_pro": 77.53,
+   "aime": 68.85,
+   "lcb": 60.23,
+   "swe_verified": null
+  },
+  "japanese_note": "日本語の知識QA（JamC-QA、JEMHopQA）と、ふりがなや漢数字など日本語特有の制約を含む指示追従で、同サイズの比較対象中トップかそれに近い。数学（AIME）とツール呼び出し（BFCL）ではLLM-jp-4.1に劣る。",
+  "deploy_note_ja": "BF16で約66GBのため1×H100 80GB。vLLM 0.30.0で検証済みで、例は--max-model-len 65536。並列ツール呼び出しには対応していない。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "ELYZA-Thinking-1.0-Qwen-32B",
+   "ELYZA-Shortcut-1.0-Qwen-32B"
+  ],
+  "sources": [
+   "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-33b",
+   "https://www.sbbit.jp/article/cont1/187290",
+   "https://huggingface.co/llm-jp/llm-jp-4-33b-base"
+  ],
+  "confidence": "high",
+  "pick": "日本語の推論・指示追従",
+  "pick_reason": "LLM-jp-4 ベースを ELYZA が強化"
+ },
+ {
+  "id": "elyza-thinking-1-0-llm-jp-4-32b-a3b",
+  "name": "ELYZA-Thinking-1.0-llm-jp-4-32b-a3b",
+  "family": "ELYZA-Thinking",
+  "org": "ELYZA（KDDIグループ）",
+  "country": "JP",
+  "release": "2026-10-02",
+  "arch": "MoE",
+  "total_b": 32.1,
+  "active_b": 3.8,
+  "native_precision": "BF16",
+  "weights_gb": 64.3,
+  "context_k": 64,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "llm-jp/llm-jp-4-32b-a3b-base（NIIによるフルスクラッチの国産MoEモデル）",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのLLM-jp-4もApache 2.0",
+  "hf": "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-32b-a3b",
+  "summary_ja": "LLM-jp-4 32B-A3B（MoE）のベースモデルに、ELYZAが中間学習、SFT、RLVRを施した推論モデル。アクティブ約3.8Bで高速に動き、ELYZAの測定では総合平均でLLM-jp-4.1 32B-A3Bを約4.6pt上回る。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "efficiency",
+   "tool-use"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": 81.05,
+   "ja_mtbench": null,
+   "other": "ELYZAの測定: JamC-QA 59.51 / JEMHopQA 71.59 / M-IFEval-ja 81.75 / JFBench 38.15 / JHumanEval 95.37 / Nejumi BFCL 41.89 / 総合平均58.46（llm-jp-4.1-32b-a3b-thinkingは53.89、Qwen3-30B-A3Bは56.31）"
+  },
+  "jp_bench_note": "ELYZAのモデルカードにある自社測定値。MT-Bench、Swallow LB、Nejumiの値は確認できなかった",
+  "bench": {
+   "gpqa": 63.86,
+   "mmlu_pro": 73.14,
+   "aime": 62.29,
+   "lcb": 53.66,
+   "swe_verified": null
+  },
+  "japanese_note": "JEMHopQAとJFBench（日本語の形式制約付き指示）では、Qwen3.5-35B-A3BやGemma 4 26B-A4Bを含む比較対象中で最高。英語の推論とコーディングは同クラスの海外最新モデルに及ばない。",
+  "deploy_note_ja": "BF16で約64GBのため1×H100 80GB。アクティブが3.8Bなので、量子化版ならコンシューマGPUやMac、Strix Halo級でも高速に動く。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "ELYZA-Shortcut-1.0-Qwen-7B",
+   "Llama-3-ELYZA-JP-8B"
+  ],
+  "sources": [
+   "https://huggingface.co/elyza/ELYZA-Thinking-1.0-llm-jp-4-32b-a3b",
+   "https://www.sbbit.jp/article/cont1/187290"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "qwen3-swallow-32b-rl",
+  "name": "Qwen3-Swallow-32B-RL-v0.2",
+  "family": "Swallow",
+  "org": "東京科学大学（岡崎研究室・横田研究室）／産業技術総合研究所",
+  "country": "JP",
+  "release": "2026-02-20",
+  "arch": "Dense",
+  "total_b": 32.8,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 65.5,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "Qwen/Qwen3-32B（事前学習のみの版が非公開のため、事後学習済み版から継続事前学習）",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのQwen3もApache 2.0",
+  "hf": "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-32B-RL-v0.2",
+  "summary_ja": "AlibabaのQwen3-32Bに、日本語中心の継続事前学習（約2,097億トークン）、SFT、RLVRを施した推論モデル。公式は、32B以下のオープンLLMで日本語タスク平均が最高だとしている。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "math",
+   "coding"
+  ],
+  "jp_bench": {
+   "nejumi": 0.6782,
+   "swallow_avg": 0.555,
+   "jmmlu": null,
+   "ja_mtbench": 7.53,
+   "other": "Swallow LB v2: 英語平均0.763 / JamC-QA 0.518 / MMLU-ProX(ja) 0.761 / 日本語GPQA 0.621。公式ページの公表値は日本語平均0.609・英語平均0.792・日本語MT-Bench 0.894。同世代に30B-A3B（LB v2で日本語平均0.546）と8B（同0.510）もある"
+  },
+  "jp_bench_note": "swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版）の値",
+  "bench": {
+   "gpqa": 70.1,
+   "mmlu_pro": 77.8,
+   "aime": 82.5,
+   "lcb": 63.8,
+   "swe_verified": null
+  },
+  "japanese_note": "常に推論（thinking）する設計で、オン/オフの切り替えはない。ツール呼び出しと関数呼び出しは学習していない。",
+  "deploy_note_ja": "BF16で約66GBのため1×H100 80GB。公式AWQ-INT4版（約19GB）なら24GB GPU1枚。推奨上限は32Kトークン。GPTQ版は性能劣化のため非公開になった。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "Gemma-2-Llama Swallow 27B",
+   "Llama 3.1 Swallow 8B Instruct v0.5",
+   "Qwen3-Swallow-32B-SFT-v0.2"
+  ],
+  "sources": [
+   "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-32B-RL-v0.2",
+   "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-32B-RL-v0.2-AWQ-INT4",
+   "https://swallow-llm.github.io/qwen3-swallow.ja.html",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "plamo-3-nict-31b-base",
+  "name": "PLaMo 3 NICT 31B Base（plamo-3-nict-2604-31b-base）",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）／情報通信研究機構（NICT）",
+  "country": "JP",
+  "release": "2026-06",
+  "arch": "Dense",
+  "total_b": 31.8,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 63.5,
+  "context_k": null,
+  "modality": [
+   "text"
+  ],
+  "mode": "base",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "商用利用には事前登録が必要で、本人または関連会社の年間売上が10億円以下の場合に限る（超える場合はPFNの別途商用ライセンスが必要）。再配布時は「Built with PLaMo」を表示し、派生モデル名に「PLaMo」を含める。出力で学習したモデルも派生モデル扱い。Hugging Faceでのライセンス同意（gated）が必要",
+  "hf": "https://huggingface.co/pfnet/plamo-3-nict-2604-31b-base",
+  "summary_ja": "PFNとNICTが共同開発した日英フルスクラッチの事前学習モデル。2604版は120Bの教師モデルから1.5Tトークンで蒸留した改良版で、指示チューニング前のベースモデル。",
+  "strengths": [
+   "japanese",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "PFNブログ（初版plamo-3-nict-31b-base、2025-11、3Tトークン学習）: JMMLU 0.733 / MMLU-ProX(ja) 0.431 / JamC-QA 0.626 / pfgen-bench 0.79 / JHumanEval 0.543（いずれもベースモデルのfew-shot評価）。2604版のスコアは公表されていない"
+  },
+  "jp_bench_note": "ベースモデルなので、事後学習モデル向けのSwallow LB v2やNejumiには掲載されていない",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "ベースモデルとしてはJamC-QAなど日本知識系の評価が高い。Sliding Window AttentionとフルAttentionのハイブリッド構造でKVキャッシュが小さい（31Bで128Kトークン時2.2GiB）。チャット用途には自前のSFTが必要。PFNのフラッグシップであるPLaMo 3.0 Primeは重みが公開されていない。",
+  "deploy_note_ja": "BF16で約64GBのため1×H100/H200 80GB（vLLMの公式レシピは4Kコンテキスト想定で、KVキャッシュに余裕を持たせるならTP=2）。vLLM 0.12.0以上とtrust_remote_codeが必要。",
+  "engines": [
+   "vLLM",
+   "Transformers"
+  ],
+  "supersedes": [
+   "plamo-3-nict-31b-base（2025-11の初版）",
+   "PLaMo 2 8B",
+   "PLaMo-100B"
+  ],
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-nict-2604-31b-base",
+   "https://huggingface.co/pfnet/plamo-3-nict-31b-base",
+   "https://preferred.jp/ja/blog/tech/plamo_3_8b_31b/",
+   "https://recipes.vllm.ai/pfnet/plamo-3-nict-31b-base",
+   "https://huggingface.co/collections/pfnet/plamo-3"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "gpt-oss-swallow-20b-rl",
+  "name": "GPT-OSS-Swallow-20B-RL-v0.1",
+  "family": "Swallow",
+  "org": "東京科学大学（岡崎研究室・横田研究室）／産業技術総合研究所",
+  "country": "JP",
+  "release": "2026-02-20",
+  "arch": "MoE",
+  "total_b": 20.9,
+  "active_b": 3.6,
+  "native_precision": "BF16（公式MXFP4量子化版あり）",
+  "weights_gb": 41.8,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "openai/gpt-oss-20b",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのgpt-oss-20bもApache 2.0",
+  "hf": "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-20B-RL-v0.1",
+  "summary_ja": "gpt-oss-20bに日本語の継続事前学習、SFT、RLVRを施した推論モデル。公式は、20B以下のオープンLLMで日本語と英語のタスク平均がともに最高だとしている。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "math",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": 0.568,
+   "jmmlu": null,
+   "ja_mtbench": 7.26,
+   "other": "Swallow LB v2: 英語平均0.752 / JamC-QA 0.562 / MMLU-ProX(ja) 0.746 / 日本語GPQA 0.650。公式ページの公表値は日本語平均0.606・英語平均0.788・日本語MT-Bench 0.872"
+  },
+  "jp_bench_note": "swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版、reasoning effort medium）の値",
+  "bench": {
+   "gpqa": 67.6,
+   "mmlu_pro": 73.8,
+   "aime": 85.4,
+   "lcb": 66.5,
+   "swe_verified": null
+  },
+  "japanese_note": "公式はベース比でJamC-QA +13.0pt、日本語GPQA +4.2pt、AIME 24-25 +23.3ptと報告。JHumanEvalは誤差範囲でわずかに下がった。",
+  "deploy_note_ja": "BF16で約42GBのため1×A100/H100 80GB。公式MXFP4版（約14GB）なら16〜24GB GPUやMacでも動く。推奨上限は32Kトークン。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "GPT-OSS-Swallow-20B-SFT-v0.1",
+   "Llama 3.1 Swallow 8B Instruct v0.5"
+  ],
+  "sources": [
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-20B-RL-v0.1",
+   "https://huggingface.co/tokyotech-llm/GPT-OSS-Swallow-20B-RL-v0.1-MXFP4",
+   "https://swallow-llm.github.io/gptoss-swallow.ja.html",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "abeja-qwen3-14b-agentic-256k",
+  "name": "ABEJA-Qwen3-14B-Agentic-256k-v0.1",
+  "family": "ABEJA LLM",
+  "org": "ABEJA",
+  "country": "JP",
+  "release": "2026-02-04",
+  "arch": "Dense",
+  "total_b": 14.8,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 29.5,
+  "context_k": 256,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "Qwen/Qwen3-14B-Base",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/abeja/ABEJA-Qwen3-14B-Agentic-256k-v0.1",
+  "summary_ja": "AlibabaのQwen3-14Bを基に、強化学習を中心とした追加学習で計画立案とツール利用を強化したエージェント向けモデル。最大256kトークンの長文脈に対応する。",
+  "strengths": [
+   "agent",
+   "tool-use",
+   "long-context",
+   "japanese"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": null
+  },
+  "jp_bench_note": "モデルカードにベンチマークの記載はない（詳細は外部ブログ参照とされている）。第三者の評価も確認できなかった",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "思考とツール利用を繰り返すエージェント用途を想定しており、汎用チャット向けの最適化はされていない。ABEJAの前世代で32Bの推論モデル（ABEJA-QwQ32b-Reasoning-Japanese-v1.0、2025-04）はSwallow LB v2で日本語平均0.526。",
+  "deploy_note_ja": "BF16で約30GBのため、1×A100 40GBやL40S 48GBが目安。量子化版なら24GB GPU。256kの文脈を使う場合はKVキャッシュの分だけ追加のメモリが要る。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/abeja/ABEJA-Qwen3-14B-Agentic-256k-v0.1",
+   "https://featherless.ai/models/abeja/ABEJA-Qwen3-14B-Agentic-256k-v0.1",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "llm-jp-4-1-8b-thinking",
+  "name": "llm-jp-4.1-8b-thinking",
+  "family": "LLM-jp",
+  "org": "国立情報学研究所（NII）大規模言語モデル研究開発センター（LLMC）",
+  "country": "JP",
+  "release": "2026-09-28",
+  "arch": "Dense",
+  "total_b": 8.6,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 17.2,
+  "context_k": 64,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/llm-jp/llm-jp-4.1-8b-thinking",
+  "summary_ja": "LLM-jp-4.1シリーズの8B Dense推論モデル。国産フルスクラッチモデルの中で、手元のGPU1枚で動かせる最小構成にあたる。",
+  "strengths": [
+   "japanese",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": 0.6921,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": 7.58,
+   "other": "llm-jp-judge（judge: gpt-5.4）: MT-Bench英語 7.67 / AnswerCarefully 3.92 / llm-jp-instructions 3.67（同条件でgpt-oss-20bは7.33 / 7.85 / 3.55 / 3.16）。参考として旧llm-jp-4-8b-thinkingはSwallow LB v2で日本語平均0.448"
+  },
+  "jp_bench_note": "MT-BenchはLLM-jpのモデルカードの値（judge: gpt-5.4、10点満点）。4.1版はSwallow LB v2に未掲載",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "日本語MT-Benchは同条件でgpt-oss-20bやgpt-4oを上回る。安全性（AnswerCarefully）も4.0版から改善した。",
+  "deploy_note_ja": "BF16で約17GBのため24GB GPU1枚。公式GGUF量子化版ならノートPCやMacでも動く。最大65,536トークン。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio"
+  ],
+  "supersedes": [
+   "llm-jp-4-8b-thinking",
+   "llm-jp-4-8b-instruct",
+   "llm-jp-3.1-13b-instruct4"
+  ],
+  "sources": [
+   "https://huggingface.co/llm-jp/llm-jp-4.1-8b-thinking",
+   "https://huggingface.co/llm-jp/llm-jp-4.1-8b-thinking-gguf",
+   "https://llmc.nii.ac.jp/topics/llm-jp-4-1/",
+   "https://www.nii.ac.jp/news/release/2026/0403.html"
+  ],
+  "confidence": "high"
+ }
+]

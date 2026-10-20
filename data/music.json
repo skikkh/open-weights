@@ -1,0 +1,1498 @@
+[
+ {
+  "id": "minimax-music-3",
+  "access": "open-weight",
+  "name": "MiniMax Music 3 (MiniMax-Music3)",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": "2026-08-13",
+  "params_b": 11.1,
+  "arch": "LM+コーデック+Flow Matching: Global LLM 8B（Qwen3-8B初期化, 第1 RVQ層を予測）+ Local LLM 0.6B（残り7層）→ 両LLMの隠れ状態を融合しFlow Matching 2.4B → Flow-VAEデコーダ 0.123B（合計約11.1B）",
+  "tasks": [
+   "song",
+   "instrumental"
+  ],
+  "spec": {
+   "max_duration_s": 300,
+   "sample_rate": "32kHz 16bit stereo",
+   "other": "入力は歌詞（[Verse][Chorus]等のセクションタグ）＋音楽説明（Global Metadata / Vocal Details / Arrangement の構造化キャプション推奨）。テキスト上限5,000トークン、音響フレーム上限9,000（25fps）。非ストリーミング、CUDA必須。対応言語の公式一覧なし"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": false,
+   "部分編集": false,
+   "8GB以下で動作": true,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 24,
+  "vram_note": "公式HFカード: フル精度で24GB未満に収まる（24GB以上推奨のスニペット）。自動CPUオフロードで約22GB、さらにLMを層単位でストリーミング（group offload）すれば8GBカードでも動作するが低速。ComfyUIはINT8版DiT/テキストエンコーダを用意。GitHub版は2GPU構成（GPU0=LM、GPU1=Flow/デコード）を想定との報道あり。リポジトリ総容量は約57GB",
+  "speed_note": "公式・第三者とも具体的な生成時間は未公表（2026-10時点で確認できず）。オフロード構成は低速と明記",
+  "price_note": "重みは無料。公式API（Music-3.0, $0.15/曲・最大5分）は2026-08-20から新規ユーザー受付停止で、公式はMiniMax Audioかオープン版の利用を案内",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena ボーカル Elo",
+    "value": 1000,
+    "note": "MiniMax Music 3.0。Eloのアンカー（基準点）で8位、オープンウェイト系で唯一ランク入り（Suno v6=1146）。評価経路（API/ローカル）の明記なし。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
+   },
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1000,
+    "note": "アンカー。Stable Audio 3 Medium=996、Suno v6=1148。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   },
+   {
+    "metric": "WildSongBench SongBench Avg",
+    "value": 6.283,
+    "note": "192プロンプト、YuE2開発チームによる評価（ローカル重み＋公式キャプション書き換え使用）。Suno v5=6.872、YuE2=6.732",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "WildSongBench PER（%）",
+    "value": 6.27,
+    "note": "音素誤り率、低いほど良い。公開モデル中で最良（ACE-Step 1.5=7.46、YuE2=8.44）",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   }
+  ],
+  "quality_note": "オープンウェイトの歌もの生成では最大規模（約11B）。AA Music ArenaではElo 1000でSuno v6（1146）・Mureka V9.5（1107）・Lyria 3.5（1052）には及ばないが、Eleven Music v2.5（1012）と同等圏で、オープン勢で唯一ランク入り。WildSongBenchでは歌詞の正確さ（PER 6.27%）が公開モデル最良、総合スコアはYuE2より低くLeVo 2・HeartMuLaとほぼ同等。最長5分、BPM・キー・編成まで構造化キャプションで細かく指示できる",
+  "ja_note": "公式カード・READMEに対応言語の記載なし。GIGAZINE（2026-08-14）がHFデモで日本語歌詞のロック曲を生成し『日本語ボーカルが高品質に生成された』と報告。実例ベースでは日本語対応を確認できるが、公式保証や定量評価はない",
+  "license": "MiniMax-Music3 Community License",
+  "commercial": "conditional",
+  "license_note": "商用可だが条件付き: ①商用製品/サービスのUIに『MiniMax-Music3』を目立つように表示、②グループ年間売上2,000万ドル超はMiniMaxの事前書面許可が必要、③生成機能を第三者に提供する場合は権利侵害を防ぐ安全策の実装・維持義務、④AUPで第三者IP侵害禁止・公開環境での機械生成表示義務など。Qwen3-8B（Apache-2.0）ベース。学習データの出所・権利処理は非公開。一部報道（mer.vin）はCC BY-NC 4.0と書いたが、HF上のLICENSE（2026-08-11整形）はCommunity Licenseで商用を条件付き許諾",
+  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-Music3",
+  "tools": [
+   "ComfyUI（公式ネイティブ）",
+   "diffusers（Modular Pipeline）",
+   "SGLang-Omni",
+   "GGUF（audio-cpp等コミュニティ）",
+   "MLX（コミュニティ）"
+  ],
+  "summary_ja": "MiniMaxが公開した最大5分の歌もの生成モデルで、8BのLLMが曲構成を、Flow Matchingが音質を担当する。オープンウェイトで唯一、主要な音楽アリーナにランク入りしている。",
+  "best_for_ja": "日本語を含むフルコーラスの歌ものをローカルで作りたい人。24GB GPUなら快適、8GBでも低速で動かせる。",
+  "supersedes": [
+   "MiniMax Music 2.6（API専用）",
+   "MiniMax Music 2.5+（API専用）"
+  ],
+  "sources": [
+   "https://huggingface.co/MiniMaxAI/MiniMax-Music3",
+   "https://huggingface.co/MiniMaxAI/MiniMax-Music3/blob/main/LICENSE",
+   "https://github.com/MiniMax-AI/MiniMax-Music3",
+   "https://docs.comfy.org/tutorials/audio/minimax/minimax-music-3",
+   "https://gigazine.net/gsc_news/en/20260814-minimax-music3/",
+   "https://mer.vin/news/minimax-music-3-is-open-weight-but-not-open-for-business/",
+   "https://platform.minimax.io/docs/guides/pricing",
+   "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+  ],
+  "confidence": "medium",
+  "rank": 1,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1000
+  }
+ },
+ {
+  "id": "yue2-3b",
+  "access": "open-weight",
+  "name": "YuE2-3B",
+  "org": "Multimodal Art Projection (M-A-P) / HKUST ほか",
+  "country": "HK",
+  "release": "2026-09-09",
+  "params_b": 3,
+  "arch": "AR–NAR Mixture-of-Transformers（楽譜＋セマンティックトークンをAR予測）＋Flow Matchingで音響潜在を生成＋VAE（非量子化）。名称は3BだがHFのsafetensorsメタデータ表示は約4B",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m",
+   "score"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": "48kHz stereo",
+   "other": "最大長の公式記載なし（デモ最長5:00、速度計測は約3.6分曲）。HF言語タグはzh/en。cot=full（旋律＋和声のABC譜面を計画）/melody/offを選択。SheetSage2で既存曲を採譜してゼロショットカバー"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "楽譜/MIDI出力": true,
+   "8GB以下で動作": false,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": 24,
+  "vram_note": "公式要件: BF16対応NVIDIA GPU 24GB＋ホストRAM 24GB（Linux, Python 3.12）。ただしHFカードの実測ピークVRAMは10.34〜11.18GiB、最大文脈テストで14.08GiB。コミュニティのGGUF版（audio-cpp/Yue2-3B-GGUF等）・MLX版もある",
+  "speed_note": "公式（HFパッケージ、ウォーム、full CoT）: RTX 4090で214.85秒（約3.6分）の曲を71.04秒。H800では224.96秒の曲を54.74秒。vLLMサーバ構成のH800で同時32リクエスト時373.5曲/時",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "WildSongBench SongBench Avg",
+    "value": 6.7316,
+    "note": "単発設定（2候補から低PERを選択）。Suno v5=6.8721、Suno v4.5=6.6995、Suno v6=6.5562。開発元による評価",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "WildSongBench SongBench Avg（best-of-8）",
+    "value": 6.9632,
+    "note": "8候補からSongBench音楽性等で選別した場合。表中最高（Mureka 9=6.9377）",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "WildSongBench PER（%）",
+    "value": 8.44,
+    "note": "Suno v5=8.10%",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "SHS100K ゼロショットカバー CLEWS mAP",
+    "value": 0.647,
+    "note": "フルスコア条件。ACE-Step 1.5=0.024",
+    "source": "https://huggingface.co/m-a-p/YuE2-3B"
+   }
+  ],
+  "quality_note": "開発元のWildSongBench（192曲）で単発でもSuno v4.5〜v5級、best-of-8では表中最高。ただし評価は開発元自身によるもので、best-of-8は選別込み、MuLanやPERなどSuno v5が上回る指標もある（国内報道も条件付きで読むべきと指摘）。AA Arenaには未掲載。旋律・コードのABC譜面を編集して再レンダリングできる点と、カバー生成の強さが独自の強み。旧YuE（WSB 4.92）から大幅に改善",
+  "ja_note": "HFカードの言語タグは中国語・英語のみで日本語の公式表明はない。ただし公式デモページの生成例データ（cases.js）99件中9件が日本語歌詞（言語別: en 56 / zh 31 / ja 9）。国内報道（GIGAZINE）も公式サイトに日本語ボーカル例が複数あると紹介。定量的な日本語評価は未公表",
+  "license": "CC BY-NC 4.0（重み）＋追加クリエイター許諾 / Apache-2.0（コード）",
+  "commercial": "conditional",
+  "license_note": "重みはCC BY-NC 4.0だが追加許諾により、個人ユーザー・クリエイター・ミュージシャンは生成物を無料で利用・収益化可（作者への支払い不要）。企業の利用は作者への商用ライセンス問い合わせが必要。学習データの出所はモデルカードに記載なし",
+  "hf": "https://huggingface.co/m-a-p/YuE2-3B",
+  "tools": [
+   "ComfyUI（ネイティブノード・公式ワークフロー）",
+   "Maestro",
+   "YuE2-Turbo（NOIZ, 推論サーバ）",
+   "エージェントスキル yue2-music",
+   "GGUF / MLX（コミュニティ）"
+  ],
+  "summary_ja": "歌詞とスタイルから、まずメロディとコードの楽譜を書き、それを48kHzのボーカル入り楽曲に仕上げる3Bモデル。楽譜を直して作り直したり、既存曲を別スタイルでカバーしたりできる。",
+  "best_for_ja": "メロディやコードを自分で直しながら曲を詰めたい人、カバー/アレンジ制作。個人クリエイターなら生成物の収益化も可。",
+  "supersedes": [
+   "YuE（v1, 2025）"
+  ],
+  "sources": [
+   "https://github.com/multimodal-art-projection/YuE",
+   "https://huggingface.co/m-a-p/YuE2-3B",
+   "https://map-yue2.github.io/",
+   "https://comfyui-wiki.com/en/models/yue2",
+   "https://innovatopia.jp/ai/ai-news/117767/",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+  ],
+  "confidence": "medium",
+  "rank": 2,
+  "pick": "オープンで歌の品質最上位",
+  "pick_reason": "WildSongBench 首位（開発元評価）"
+ },
+ {
+  "id": "ace-step-1-5-xl",
+  "access": "open-weight",
+  "name": "ACE-Step 1.5 XL（xl-sft / xl-turbo / xl-base）",
+  "org": "ACE Studio × StepFun",
+  "country": "CN",
+  "release": "2026-04-02",
+  "params_b": 4,
+  "arch": "拡散+DCAE系VAE: Qwen3ベース5Hz LM（0.6B/1.7B/4Bから選択, 曲の設計図をCoT生成）＋4B DiT（拡散デコーダ）＋48kHz VAE。turbo=8ステップ、sft/base=50ステップ",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 600,
+   "sample_rate": "48kHz stereo",
+   "other": "歌詞50+言語。BPM・キー・拍子・長さ指定、最大8曲バッチ。カバー・リペイント・Vocal2BGM・トラック抽出/追加（extract/lego/completeはxl-baseのみ）"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "ステム/トラック分離出力": true,
+   "LoRA/微調整": true,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true,
+   "8GB以下で動作": false
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 20,
+  "vram_note": "公式: XLはオフロード＋量子化で12GB以上（12–16GBは際どい）、オフロード無しなら20GB以上推奨。重みはbf16で約9GB（2B版は約4.7GB）。24GB以上ならXL-sft＋4B LMを全てGPU常駐できる最高品質構成",
+  "speed_note": "XL単体の公式計測値は未公表。turboは8ステップ、sft/baseは50ステップ",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "2B版より高音質を狙った4B DiT版で、公式の最高品質推奨構成は24GB以上でのXL-sft＋4B LM。XL単体の第三者ベンチは未確認（WildSongBench等の『ACE-Step 1.5』行はバリアント不明）。MITライセンスのまま品質を上げたい場合の選択肢",
+  "ja_note": "公式は歌詞50以上の言語対応を明記。技術報告では中国語・日本語・タイ語など非ローマ字言語に確率的ローマ字化を用いて学習（客観評価は中英のみ）。GIGAZINE（2026-04-09）はXLで日本語ボーカル曲をローカル生成でき公式デモにも日本語曲があると報告。日本語の定量評価（PER等）は未公表",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・重みともMIT。公式カードは生成物の商用利用可を明記し、学習データを『ライセンス取得済み楽曲・パブリックドメイン/ロイヤリティフリー楽曲・MIDIからの合成音源』と説明（第三者による検証はない）。生成物が既存曲に似た場合の責任は利用者側",
+  "hf": "https://huggingface.co/ACE-Step/acestep-v15-xl-sft",
+  "tools": [
+   "ComfyUI（公式パートナー）",
+   "Gradio",
+   "REST API",
+   "CLI",
+   "diffusers（xl-*-diffusers）",
+   "VST3プラグイン",
+   "Side-Step（学習CLI）"
+  ],
+  "summary_ja": "ACE-Step 1.5の拡散部分を4Bに大きくした高音質版。MITライセンスで、カバー・部分修正・LoRA学習まで一通りそろう。",
+  "best_for_ja": "16〜24GBクラスのGPUで、商用利用しやすい歌ものをなるべく高音質に作りたい人。",
+  "supersedes": [
+   "ACE-Step v1 3.5B（2025-04）"
+  ],
+  "sources": [
+   "https://github.com/ace-step/ACE-Step-1.5",
+   "https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/en/GPU_COMPATIBILITY.md",
+   "https://huggingface.co/ACE-Step/acestep-v15-xl-turbo",
+   "https://gigazine.net/gsc_news/en/20260409-ace-step-1-5-xl",
+   "https://arxiv.org/abs/2602.00744"
+  ],
+  "confidence": "medium",
+  "rank": 3
+ },
+ {
+  "id": "ace-step-1-5",
+  "access": "open-weight",
+  "name": "ACE-Step 1.5（2B: turbo / sft / base）",
+  "org": "ACE Studio × StepFun",
+  "country": "CN",
+  "release": "2026-01-23",
+  "params_b": 2,
+  "arch": "拡散+DCAE系VAE: Qwen3ベース5Hz LM（0.6B/1.7B/4B）による計画＋約2B DiT＋48kHz VAE（25Hz・64次元潜在）。8ステップ蒸留turbo版あり",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 600,
+   "sample_rate": "48kHz stereo",
+   "other": "歌詞50+言語。10秒〜10分、最大8曲バッチ。カバー・リペイント・Vocal2BGM・トラック分離/追加・LRCタイムスタンプ生成。CUDA/ROCm/Intel XPU/MPS/CPU対応"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "ステム/トラック分離出力": true,
+   "LoRA/微調整": true,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true,
+   "8GB以下で動作": true
+  },
+  "min_vram_gb": 4,
+  "rec_vram_gb": 12,
+  "vram_note": "公式: 4GB未満でも動作（LM無効・INT8・CPUオフロード、tier-testで4GB時ピーク3.8GB/30秒曲）。6–8GBで0.6B LM、12GB帯で1.7B LM（ピーク10.8GB）、24GBで4B LM（ピーク21.3GB）",
+  "speed_note": "公式: A100で1曲2秒未満、RTX 3090で10秒未満。8ステップ蒸留モデルで240秒曲がA100約1秒。LMの思考モードやステップ数によりA100上0.5〜10秒",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "WildSongBench SongBench Avg",
+    "value": 6.0118,
+    "note": "YuE2開発チーム評価、バリアント未記載。YuE2=6.7316、MiniMax Music 3=6.283",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "WildSongBench PER（%）",
+    "value": 7.46,
+    "note": "公開モデルではMiniMax Music 3（6.27）に次ぐ低さ",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "専門家MOS 総合（OVL, 1–10）",
+    "value": 4.76,
+    "note": "LeVo 2論文の評価（Tencent）。LeVo 2=5.48、HeartMuLa=4.07、Suno v5=5.72",
+    "source": "https://arxiv.org/abs/2606.30642"
+   },
+   {
+    "metric": "SongEval Coherence",
+    "value": 4.72,
+    "note": "ACE-Step自社技術報告。Suno v5=4.72、HeartMuLa=4.68",
+    "source": "https://arxiv.org/abs/2602.00744"
+   }
+  ],
+  "quality_note": "速度とライセンスの自由度が最大の強み。品質は第三者比較で中位: WildSongBenchではYuE2・LeVo 2・MiniMax Music 3・HeartMuLaより総合が低い一方PERは良好、LeVo 2論文の専門家評価ではLeVo 2より下でHeartMuLaより上。開発元は『Suno v4.5とv5の間』と主張（自社報酬モデルを含む評価）",
+  "ja_note": "公式は歌詞50以上の言語対応を明記。技術報告では中国語・日本語・タイ語など非ローマ字言語に確率的ローマ字化を用いて学習（客観評価は中英のみ）。GIGAZINE（2026-04-09）はXLで日本語ボーカル曲をローカル生成でき公式デモにも日本語曲があると報告。GIGAZINE（2026-02）は歌詞をローマ字入力すると日本語曲をある程度生成できると報告、週刊アスキーも言語Jaで試用。HeartMuLa論文の日本語ベンチでACE-Step（版不明）のPERは0.33（HeartMuLa 0.20、Suno v5 0.35）",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・重みともMIT。公式カードは生成物の商用利用可を明記し、学習データを『ライセンス取得済み楽曲・パブリックドメイン/ロイヤリティフリー楽曲・MIDIからの合成音源』と説明（第三者による検証はない）。生成物が既存曲に似た場合の責任は利用者側",
+  "hf": "https://huggingface.co/ACE-Step/Ace-Step1.5",
+  "tools": [
+   "ComfyUI（公式パートナー）",
+   "Gradio",
+   "REST API",
+   "CLI",
+   "VST3プラグイン",
+   "MLX（Apple Silicon）",
+   "Docker/Jetson"
+  ],
+  "summary_ja": "4GB級のGPUでも動き、RTX 3090なら1曲10秒未満で作れる超高速な歌もの生成モデル。MITライセンスで商用利用しやすい。",
+  "best_for_ja": "低〜中VRAMのPCで大量に試作したい人、商用のBGM/歌もの、LoRAで自分の作風を学習させたい人。",
+  "supersedes": [
+   "ACE-Step v1 3.5B（2025-04）"
+  ],
+  "sources": [
+   "https://github.com/ace-step/ACE-Step-1.5",
+   "https://huggingface.co/ACE-Step/Ace-Step1.5",
+   "https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/en/BENCHMARK.md",
+   "https://arxiv.org/abs/2602.00744",
+   "https://gigazine.net/gsc_news/en/20260204-ace-step-music-generation",
+   "https://weekly.ascii.jp/elem/000/004/374/4374045/5/",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
+   "https://arxiv.org/abs/2606.30642",
+   "https://arxiv.org/abs/2601.10547"
+  ],
+  "confidence": "high",
+  "rank": 4,
+  "pick": "4GBで速い・MIT",
+  "pick_reason": "1曲10秒未満（RTX 3090）"
+ },
+ {
+  "id": "levo-2-large",
+  "access": "open-weight",
+  "name": "LeVo 2（SongGeneration-v2-large）",
+  "org": "Tencent AI Lab（清華大学ほか）",
+  "country": "CN",
+  "release": "2026-03",
+  "params_b": 4,
+  "arch": "LLM+拡散のハイブリッド: 階層LM（LeLM約4B: 混合トークンで構成を計画→ボーカル/伴奏のデュアルトラックトークンを並列予測）＋拡散デコーダ（約0.7B）＋VAE（約0.15B, 48kHz）。SFT→大規模オフラインDPO→セミオンラインDPO",
+  "tasks": [
+   "song",
+   "instrumental",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 270,
+   "sample_rate": "48kHz",
+   "other": "対応言語（公式表）: zh, en, es, ja ほか。10秒の参照音源、またはタグ（性別・ジャンル・感情・楽器）で制御。純インスト（--bgm）/アカペラ（--vocal）/ボーカル・伴奏分離出力（--separate）"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": false,
+   "ステム/トラック分離出力": true,
+   "8GB以下で動作": false,
+   "商用利用（条件付き含む）": false
+  },
+  "min_vram_gb": 22,
+  "rec_vram_gb": 28,
+  "vram_note": "公式表: 参照音源なし22GB／参照音源あり28GB。OOM時は--low_memモードあり。コミュニティのGGUF量子化版（LeVo2.cpp）もある",
+  "speed_note": "公式: RTF 0.82（H20、モデル読込除く）。計算上、4分30秒の曲で約221秒",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "専門家MOS 総合（OVL, 1–10）",
+    "value": 5.48,
+    "note": "開発元論文、専門家評価。Suno v5=5.72、Mureka v8=5.69、MiniMax Music 2.5+=5.22、ACE-Step 1.5=4.76、HeartMuLa=4.07",
+    "source": "https://arxiv.org/abs/2606.30642"
+   },
+   {
+    "metric": "PER（%）",
+    "value": 8.55,
+    "note": "開発元論文。Suno v5=12.40、Mureka v8=9.96",
+    "source": "https://arxiv.org/abs/2606.30642"
+   },
+   {
+    "metric": "WildSongBench SongBench Avg",
+    "value": 6.3247,
+    "note": "YuE2開発チーム評価。同評価のPERは26.12%と悪く、評価条件で歌詞精度の結果が食い違う。AudioBox PQ 8.40は表中最高",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   }
+  ],
+  "quality_note": "開発元の専門家20名評価でオープン勢トップ、MiniMax Music 2.5+を上回りSuno v5・Mureka v8に迫る。WildSongBench（YuE2チーム）でも総合6.32でオープン上位、音質指標（AudioBox PQ）は最高。一方でPERは評価者により8.55%〜26.12%と大きく割れる",
+  "ja_note": "公式README表でv2系の対応言語を『zh, en, es, ja, etc.』と明記（v1系はzh/enのみ）。ただし論文の評価は中国語・英語各100曲のみで、v2デモページにも日本語例は見当たらない（ページ内にかな文字なし）。歌詞は英語半角句読点で区切る独自書式が必要",
+  "license": "SongGeneration License（Tencent, 研究・教育用途限定）",
+  "commercial": "no",
+  "license_note": "Tencent独自ライセンス: コード・重みとも『学術・研究・教育目的に限り、いかなる商用・本番用途にも使用不可』。学習データは約50万時間の楽曲音声で出所は非開示（論文は『無許諾の著作物使用を避ける合理的な措置を講じた』とのみ記載）。HFの一部PRにapache-2.0タグがあるが公式LICENSEが優先",
+  "hf": "https://huggingface.co/lglg666/SongGeneration-v2-large",
+  "tools": [
+   "Gradio",
+   "Docker",
+   "GGUF / LeVo2.cpp（コミュニティ）",
+   "MLX（コミュニティ）"
+  ],
+  "summary_ja": "テンセントの歌もの生成モデル第2版で、作曲担当のLMと高音質化担当の拡散モデルを組み合わせる。歌詞の正確さと音質が高く、ボーカルと伴奏を別トラックで出せる。",
+  "best_for_ja": "研究・教育目的で高品質な歌ものを生成したい人（商用不可）。24GB超のGPU向け。",
+  "supersedes": [
+   "SongGeneration-base / base-new / base-full / large（LeVo 1, 2025）"
+  ],
+  "sources": [
+   "https://github.com/levo-demo/LeVo",
+   "https://github.com/levo-demo/LeVo/blob/main/LICENSE",
+   "https://huggingface.co/lglg666/SongGeneration-v2-large",
+   "https://levo-demo.github.io/levo_v2_demo/",
+   "https://arxiv.org/abs/2606.30642",
+   "https://gaga.art/blog/songgeneration-2/",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+  ],
+  "confidence": "medium",
+  "rank": 5
+ },
+ {
+  "id": "levo-2-medium",
+  "access": "open-weight",
+  "name": "LeVo 2 medium（SongGeneration-v2-medium）",
+  "org": "Tencent AI Lab（清華大学ほか）",
+  "country": "CN",
+  "release": "2026-03",
+  "params_b": null,
+  "arch": "LeVo 2と同じハイブリッドLLM+拡散構成の中型LM版（Flow/VAEはlargeと共通）",
+  "tasks": [
+   "song",
+   "instrumental",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 270,
+   "sample_rate": "48kHz",
+   "other": "対応言語（公式表）: zh, en, es, ja ほか。参照音源・タグ制御、純インスト/アカペラ/分離出力はlargeと同じ"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "ステム/トラック分離出力": true,
+   "8GB以下で動作": false,
+   "商用利用（条件付き含む）": false
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": 18,
+  "vram_note": "公式表: 参照音源なし12GB／参照音源あり18GB。--low_memモードあり",
+  "speed_note": "公式: RTF 0.69（H20）。計算上、4分30秒の曲で約186秒",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "largeを12〜18GB級GPU向けに軽くした版。medium単体の公式品質評価は未公表（論文の比較は約4B構成のみ）",
+  "ja_note": "公式README表でv2系の対応言語を『zh, en, es, ja, etc.』と明記（v1系はzh/enのみ）。ただし論文の評価は中国語・英語各100曲のみで、v2デモページにも日本語例は見当たらない（ページ内にかな文字なし）。歌詞は英語半角句読点で区切る独自書式が必要",
+  "license": "SongGeneration License（Tencent, 研究・教育用途限定）",
+  "commercial": "no",
+  "license_note": "Tencent独自ライセンス: コード・重みとも『学術・研究・教育目的に限り、いかなる商用・本番用途にも使用不可』。学習データは約50万時間の楽曲音声で出所は非開示（論文は『無許諾の著作物使用を避ける合理的な措置を講じた』とのみ記載）。HFの一部PRにapache-2.0タグがあるが公式LICENSEが優先",
+  "hf": "https://huggingface.co/lglg666/SongGeneration-v2-medium",
+  "tools": [
+   "Gradio",
+   "Docker",
+   "GGUF / LeVo2.cpp（コミュニティ）"
+  ],
+  "summary_ja": "LeVo 2の中型版で、12GB級のGPUでも動かせる。機能はlarge版とほぼ同じ。",
+  "best_for_ja": "RTX 4070〜4080級のGPUでLeVo 2を研究・教育目的で試したい人（商用不可）。",
+  "supersedes": [
+   "SongGeneration-base-new / base-full（LeVo 1, 2025）"
+  ],
+  "sources": [
+   "https://github.com/levo-demo/LeVo",
+   "https://huggingface.co/lglg666/SongGeneration-v2-medium",
+   "https://huggingface.co/ckadirt/LeVo2-GGUF"
+  ],
+  "confidence": "medium",
+  "rank": 6
+ },
+ {
+  "id": "heartmula-oss-3b",
+  "access": "open-weight",
+  "name": "HeartMuLa-oss-3B（happy-new-year版）",
+  "org": "HeartMuLa（MuLa Labs / 北京大学ほか）",
+  "country": "CN",
+  "release": "2026-02-13",
+  "params_b": 3.3,
+  "arch": "LM+コーデック: Llama 3.2系3Bグローバル＋0.3Bローカルデコーダで、HeartCodec（12.5Hz音楽コーデック, 48kHz stereo）のトークンを生成",
+  "tasks": [
+   "song"
+  ],
+  "spec": {
+   "max_duration_s": 360,
+   "sample_rate": "48kHz stereo",
+   "other": "論文では最長約6分（コードの既定上限は240秒）。歌詞はセクションタグ付き、スタイルはカンマ区切りタグ。英・中・日・韓・西で評価。参照音源条件付けは未対応（TODO）"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "参照音源から生成": false,
+   "部分編集": false,
+   "8GB以下で動作": false,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": null,
+  "vram_note": "公式に必要VRAMの数値なし。単一GPUでは--lazy_load、OOM時は2枚のGPU（例: RTX 4090×2）にLMとコーデックを分けて載せる設定を案内。コミュニティComfyUIノードはlazy loadで12GB動作・bf16で16GB向け最適化、FP4/NF4量子化にも対応。重みファイルはLM約15.8GB＋コーデック約6.6GB",
+  "speed_note": "公式: 現状RTF≈1.0（加速・ストリーミング版は未公開）。PC Watch: RTX 5090で2分31秒の曲を約99秒",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "日本語 PER（HeartBeats）",
+    "value": 0.2,
+    "note": "開発元論文の日本語ベンチ（0–1表記）。Suno v5=0.35、Suno v4.5=0.29、Mureka V7.6=0.30、ACE-Step=0.33、YuE=0.62",
+    "source": "https://arxiv.org/abs/2601.10547"
+   },
+   {
+    "metric": "日本語 SongEval Avg",
+    "value": 4.51,
+    "note": "開発元論文の日本語ベンチ",
+    "source": "https://arxiv.org/abs/2601.10547"
+   },
+   {
+    "metric": "WildSongBench SongEval Avg",
+    "value": 4.5519,
+    "note": "YuE2開発チーム評価。商用含む全17設定で最高（Suno v5=4.3579）。SongBench Avgは6.2483",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   },
+   {
+    "metric": "専門家MOS 総合（OVL, 1–10）",
+    "value": 4.07,
+    "note": "LeVo 2論文の評価。ACE-Step 1.5=4.76、LeVo 2=5.48",
+    "source": "https://arxiv.org/abs/2606.30642"
+   }
+  ],
+  "quality_note": "WildSongBenchでSongEval平均が全設定で最高、PERも10.71%と良好だが、テキスト整合（MuLan/プロンプト追従）が弱く総合は6.25。自社論文の主観評価ではSuno v4.5（76.1）に次ぐ69.9でACE-Step（66.7）を上回る一方、LeVo 2論文の専門家評価ではACE-Step 1.5より低く、評価者で順位が揺れる。カバー/リミックス用派生モデルMuLaCover（2026-09-16公開, 重み・出力とも非商用）もある。7B版は未公開",
+  "ja_note": "論文で日本語ベンチを実施し、PER 0.20（Suno v5 0.35、Mureka V7.6 0.30、ACE-Step 0.33、YuE 0.62）・SongEval 4.51と日本語で最良クラス。PC Watch（2026-01-29）の試用でも『女性/男性ボーカル問わず流暢な日本語で歌い出す』と報告。日本語歌詞の根拠はオープン勢で最も厚い",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "2026-01-20にリポジトリと全重みをApache 2.0へ変更。学習データは『10万時間の高品質音楽コーパス』（コーデックは約60万曲の内部データ）とされるが出所・権利処理は非開示のため、商用利用時は生成物の類似性チェック推奨。派生のMuLaCoverは別ライセンス（非商用）",
+  "hf": "https://huggingface.co/HeartMuLa/HeartMuLa-oss-3B-happy-new-year",
+  "tools": [
+   "ComfyUI（コミュニティノード複数）",
+   "HF Space / ModelScopeデモ",
+   "Python CLI"
+  ],
+  "summary_ja": "歌詞とタグから最長約6分の歌を作るオープンモデルで、日本語を含む多言語で歌詞の発音が正確。Apache 2.0で商用利用もしやすい。",
+  "best_for_ja": "日本語歌詞の歌ものをローカルで作りたい人（12〜24GB GPU）。",
+  "supersedes": [
+   "HeartMuLa-oss-3B（2026-01-14）",
+   "HeartMuLa-RL-oss-3B-20260123"
+  ],
+  "sources": [
+   "https://github.com/HeartMuLa/heartlib",
+   "https://huggingface.co/HeartMuLa/HeartMuLa-oss-3B-happy-new-year",
+   "https://arxiv.org/abs/2601.10547",
+   "https://pc.watch.impress.co.jp/docs/column/nishikawa/2081382.html",
+   "https://github.com/benjiyaya/HeartMuLa_ComfyUI",
+   "https://github.com/HeartMuLa/MuLaCover",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
+   "https://arxiv.org/abs/2606.30642"
+  ],
+  "confidence": "medium",
+  "rank": 7,
+  "pick": "日本語歌詞の歌・商用OK",
+  "pick_reason": "日本語の発音誤りが Suno v5 より少ない（論文）"
+ },
+ {
+  "id": "stable-audio-3-medium",
+  "access": "open-weight",
+  "name": "Stable Audio 3 Medium",
+  "org": "Stability AI",
+  "country": "GB",
+  "release": "2026-05-20",
+  "params_b": 1.4,
+  "arch": "潜在拡散Transformer（DiT）＋SAME-Large（意味・音響オートエンコーダ, 256次元潜在）。敵対的ポストトレーニングで8ステップ生成",
+  "tasks": [
+   "instrumental",
+   "sfx",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 380,
+   "sample_rate": "44.1kHz stereo",
+   "other": "英語プロンプト（T5Gemma）。可変長生成、テキスト→音、音→音編集、インペインティング/続き生成（複数区間同時可）。歌詞・歌唱なし"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "ボーカル生成": false,
+   "インスト生成": true,
+   "効果音": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "LoRA/微調整": true,
+   "8GB以下で動作": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 6,
+  "rec_vram_gb": null,
+  "vram_note": "公式計測（H200、非チャンクデコード）でピーク5.07GB（5秒）〜6.52GB（380秒）。チャンクデコードで120秒時6.49→約5.14GB。CUDA＋Flash Attention 2が必須",
+  "speed_note": "公式: H200で380秒を1.31秒（TensorRTで0.43秒）、120秒を0.78秒",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 996,
+    "note": "±21。MiniMax Music 3.0=1000、Stable Audio 3 Large=1014、Stable Audio 2.5=984、MusicGen=868。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   }
+  ],
+  "quality_note": "インスト専用ながらAAインストでElo 996とMiniMax Music 3.0と同等圏、旧Stable Audio 2.5（984）以上。6分超の長尺を秒単位で生成でき、インペインティングで部分差し替え、実行時に重ねられるLoRAで作風学習も可能。ボーカル・歌詞は生成できない",
+  "ja_note": "歌詞・歌唱は非対応（レビューでもStable Audio 3系は全モデルでボーカル/歌詞非対応と指摘）。モデルカードの言語は英語のみで、日本語プロンプトの公式サポートなし",
+  "license": "Stability AI Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上100万ドル未満の個人・組織は商用無料（商用利用時はStabilityへの登録が必要）、超える場合はEnterpriseライセンスが必要。生成物の権利は利用者に帰属。出力を使った新たな基盤モデルの開発は不可。学習データは約128万件で、AudioSparxからのライセンス楽曲80.6万件＋Freesound（CC0/CC-BY/CC Sampling+、著作物混入を外部業者で確認・除去）47.3万件と開示されており、権利面の透明性は高い。テキストエンコーダT5GemmaはGemma利用規約。HFはゲート付き（自動承認）",
+  "hf": "https://huggingface.co/stabilityai/stable-audio-3-medium",
+  "tools": [
+   "stable-audio-3ライブラリ",
+   "stable-audio-tools",
+   "Gradio",
+   "CLI",
+   "TensorRT",
+   "GGUF（コミュニティ）"
+  ],
+  "summary_ja": "Stability AIの最新オープン音楽生成モデルで、最長6分20秒のインストや効果音を数秒で作る。権利処理済みデータで学習しているのが特長。",
+  "best_for_ja": "動画・ゲーム・配信用BGMの量産、既存音源の部分差し替え。ボーカル不要な用途。",
+  "supersedes": [
+   "Stable Audio Open 1.0"
+  ],
+  "sources": [
+   "https://github.com/Stability-AI/stable-audio-3",
+   "https://huggingface.co/stabilityai/stable-audio-3-optimized",
+   "https://arxiv.org/abs/2605.17991",
+   "https://stability.ai/license",
+   "https://the-decoder.com/stability-ai-launches-stable-audio-3-0-with-up-to-six-minute-tracks-and-open-weights/",
+   "https://blog.dubspot.com/stable-audio-3-review",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "pick": "インスト・効果音",
+  "pick_reason": "年商100万ドル未満は無料",
+  "hl": {
+   "label": "AA Arena",
+   "value": 996
+  }
+ },
+ {
+  "id": "stable-audio-3-small-music",
+  "access": "open-weight",
+  "name": "Stable Audio 3 Small-Music",
+  "org": "Stability AI",
+  "country": "GB",
+  "release": "2026-05-20",
+  "params_b": 0.433,
+  "arch": "潜在拡散Transformer＋SAME-Small オートエンコーダ（CPU向け軽量版, 音楽専用）",
+  "tasks": [
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 120,
+   "sample_rate": "44.1kHz stereo",
+   "other": "音楽専用。英語プロンプト。インペインティング/続き生成、LoRA。TFLite/LiteRT・CoreML・MLX版あり（報道ではパラメータ数459Mとも）"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "ボーカル生成": false,
+   "インスト生成": true,
+   "部分編集": true,
+   "LoRA/微調整": true,
+   "8GB以下で動作": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 0,
+  "rec_vram_gb": null,
+  "vram_note": "GPU不要（CPU動作前提の設計）。GPU使用時の公式計測ピークは1.69〜2.40GB（H200）",
+  "speed_note": "公式: 120秒の生成がH200で0.45秒（TensorRT 0.044秒）、Mac CPUで5.92秒、Mac CoreMLで3.09秒",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 946,
+    "note": "AA表記は『Stable Audio 3 Small』。±21。Medium=996。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   }
+  ],
+  "quality_note": "品質はMediumより一段下（AAインストで946）だが、GPUなしで2分のBGMを数秒で作れる軽さが強み",
+  "ja_note": "歌詞・歌唱は非対応（レビューでもStable Audio 3系は全モデルでボーカル/歌詞非対応と指摘）。モデルカードの言語は英語のみで、日本語プロンプトの公式サポートなし",
+  "license": "Stability AI Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上100万ドル未満の個人・組織は商用無料（商用利用時はStabilityへの登録が必要）、超える場合はEnterpriseライセンスが必要。生成物の権利は利用者に帰属。出力を使った新たな基盤モデルの開発は不可。学習データは約128万件で、AudioSparxからのライセンス楽曲80.6万件＋Freesound（CC0/CC-BY/CC Sampling+、著作物混入を外部業者で確認・除去）47.3万件と開示されており、権利面の透明性は高い。テキストエンコーダT5GemmaはGemma利用規約。HFはゲート付き（自動承認）",
+  "hf": "https://huggingface.co/stabilityai/stable-audio-3-small-music",
+  "tools": [
+   "stable-audio-3ライブラリ",
+   "CLI",
+   "Gradio（MLX/TFLite版）",
+   "TFLite/LiteRT",
+   "CoreML",
+   "MLX（LoRA学習も可）",
+   "ONNX（コミュニティ）"
+  ],
+  "summary_ja": "CPUだけで動く約4億パラメータの軽量インスト生成モデル。GPUのないノートPCやMacでも2分のBGMを数秒で作れる。",
+  "best_for_ja": "GPUなしのPC・Mac、アプリ組み込み、BGMの試作。",
+  "supersedes": [
+   "Stable Audio Open Small（2025）"
+  ],
+  "sources": [
+   "https://github.com/Stability-AI/stable-audio-3",
+   "https://huggingface.co/stabilityai/stable-audio-3-small-music",
+   "https://the-decoder.com/stability-ai-launches-stable-audio-3-0-with-up-to-six-minute-tracks-and-open-weights/",
+   "https://stability.ai/license",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental"
+  ],
+  "confidence": "high",
+  "rank": 9,
+  "hl": {
+   "label": "AA Arena",
+   "value": 946
+  }
+ },
+ {
+  "id": "stable-audio-3-small-sfx",
+  "access": "open-weight",
+  "name": "Stable Audio 3 Small-SFX",
+  "org": "Stability AI",
+  "country": "GB",
+  "release": "2026-05-20",
+  "params_b": 0.433,
+  "arch": "潜在拡散Transformer＋SAME-Small オートエンコーダ（CPU向け軽量版, 効果音専用）",
+  "tasks": [
+   "sfx",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 120,
+   "sample_rate": "44.1kHz stereo",
+   "other": "効果音専用。英語プロンプト。可変長生成で短い効果音を無駄なく生成。インペインティング/続き生成、LoRA"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "効果音": true,
+   "部分編集": true,
+   "LoRA/微調整": true,
+   "8GB以下で動作": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 0,
+  "rec_vram_gb": null,
+  "vram_note": "GPU不要（CPU動作前提の設計）。GPU使用時の公式計測ピークは1.69〜2.40GB（H200, small共通）",
+  "speed_note": "公式（small共通）: 5秒の生成がH200で0.41秒、Mac CPUで0.70秒、CoreMLで0.23秒",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "効果音専用のsmallモデル。第三者の定量比較は未確認。CPUで即時に効果音を出せるため、ゲームやアプリへの組み込み向き",
+  "ja_note": "効果音モデルのため歌詞は対象外。プロンプトは英語のみ公式対応",
+  "license": "Stability AI Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上100万ドル未満の個人・組織は商用無料（商用利用時はStabilityへの登録が必要）、超える場合はEnterpriseライセンスが必要。生成物の権利は利用者に帰属。出力を使った新たな基盤モデルの開発は不可。学習データは約128万件で、AudioSparxからのライセンス楽曲80.6万件＋Freesound（CC0/CC-BY/CC Sampling+、著作物混入を外部業者で確認・除去）47.3万件と開示されており、権利面の透明性は高い。テキストエンコーダT5GemmaはGemma利用規約。HFはゲート付き（自動承認）",
+  "hf": "https://huggingface.co/stabilityai/stable-audio-3-small-sfx",
+  "tools": [
+   "stable-audio-3ライブラリ",
+   "CLI",
+   "TFLite/LiteRT",
+   "CoreML",
+   "MLX"
+  ],
+  "summary_ja": "CPUで動く効果音専用の軽量モデル。権利処理済みデータで学習しており、商用条件も分かりやすい。",
+  "best_for_ja": "ゲーム・動画の効果音作り、オフライン環境やアプリへの組み込み。",
+  "supersedes": [
+   "Stable Audio Open Small（2025）"
+  ],
+  "sources": [
+   "https://github.com/Stability-AI/stable-audio-3",
+   "https://huggingface.co/stabilityai/stable-audio-3-small-sfx",
+   "https://stability.ai/license"
+  ],
+  "confidence": "high",
+  "rank": 10
+ },
+ {
+  "id": "magenta-realtime-2",
+  "access": "open-weight",
+  "name": "Magenta RealTime 2（base 2.4B / small 230M）",
+  "org": "Google DeepMind（Magenta）",
+  "country": "US",
+  "release": "2026-06-04",
+  "params_b": 2.4,
+  "arch": "LM+コーデック: SpectroStream（48kHz stereo, 25Hz RVQ）＋MusicCoCa（テキスト/音声スタイル埋め込み）＋デコーダのみTransformer（フレーム単位AR, 40ms, 窓付き注意）。small構成は0.23B",
+  "tasks": [
+   "instrumental",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": "48kHz stereo",
+   "other": "無限に連続生成するストリーミング型。テキスト・音声例・MIDI（ノートのオン/持続）で操作、制御遅延約200ms。ドラム有無切替、CFG・マスキングで追従度を調整。主にインスト（声は非言語的なもののみ）"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "ボーカル生成": false,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "リアルタイム生成": true,
+   "MIDI制御": true,
+   "LoRA/微調整": false,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "VRAM要件は非公表。リアルタイム動作はApple Silicon専用: baseはM2 Max/M3 Max/M4 Pro以上、smallはM1 Airを含む全Apple Silicon Mac。NVIDIA GPU・MacともPythonライブラリでオフライン（非リアルタイム）推論は可能。重みはbase 9.84GB / small 1.13GB（safetensors）",
+  "speed_note": "対応Macで再生より速いリアルタイム生成。制御遅延約200ms・フレーム40ms（初代は約3秒・2秒で、約15倍の低遅延化）",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "公式は『公開時点で唯一の低遅延リアルタイム連続音楽生成オープンモデル』とする。曲単位の完成度ではなく、演奏しながら操れる即興性が強み。定量評価は技術報告で公開予定",
+  "ja_note": "歌詞・歌唱は非対応（学習データは主にインストで、声は非言語的なものに限られる）。スタイル指定はテキスト（MusicCoCa）か音声例",
+  "license": "Apache-2.0（コード）/ CC-BY 4.0（重み）",
+  "commercial": "yes",
+  "license_note": "CC-BY 4.0のためクレジット表示すれば商用可。Googleは出力に権利を主張しないが、第三者の権利（著作権等）を侵害する生成は禁止。学習データは複数ソースのストック音楽約7.1万時間（主にインスト）",
+  "hf": "https://huggingface.co/google/magenta-realtime-2",
+  "tools": [
+   "AUv3プラグイン（DAW）",
+   "macOSスタンドアロンアプリ",
+   "C++推論エンジン magentart::core",
+   "MLX",
+   "Pythonライブラリ"
+  ],
+  "summary_ja": "テキストやMIDI、音声例で操作しながら途切れなく音楽を生成し続けるGoogleのリアルタイムモデル。MacならDAWのプラグインとしてライブ演奏に使える。",
+  "best_for_ja": "ライブ演奏・即興・DAW連携、インタラクティブなゲーム/インスタレーションのBGM（Apple Silicon Mac推奨）。",
+  "supersedes": [
+   "Magenta RealTime（2025-06）"
+  ],
+  "sources": [
+   "https://huggingface.co/google/magenta-realtime-2",
+   "https://github.com/magenta/magenta-realtime",
+   "https://magenta.withgoogle.com/magenta-realtime-2"
+  ],
+  "confidence": "high",
+  "rank": 11
+ },
+ {
+  "id": "moss-soundeffect-v2",
+  "access": "open-weight",
+  "name": "MOSS-SoundEffect v2.0",
+  "org": "OpenMOSS（復旦大学）× MOSI",
+  "country": "CN",
+  "release": "2026-05-25",
+  "params_b": 1.3,
+  "arch": "Flow Matching: DiT（1.3B）＋DAC系VAE（48kHz）＋Qwen3-1.7Bテキストエンコーダ。v1の離散トークンARから刷新",
+  "tasks": [
+   "sfx"
+  ],
+  "spec": {
+   "max_duration_s": 30,
+   "sample_rate": "48kHz",
+   "other": "英語・中国語キャプションで学習。自然環境音・都市音・動物・人の動作・短い音楽的クリップ。既定100ステップ・CFG 4.0"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "効果音": true,
+   "LoRA/微調整": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式要件の記載なし。リポジトリの重みは計約11.2GB（DiT 5.66GB＋テキストエンコーダ約4.1GB＋VAE 1.49GB）。二次情報に約18GBとの記載があるが未検証。コミュニティGGUF版（ilintar/moss-soundeffect-gguf）あり",
+  "speed_note": "公式値なし。torch.compile＋CUDA Graphで高速化、初回はコンパイルに数分",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "最長30秒・48kHzの高忠実度な環境音/効果音を狙ったDiT刷新版。第三者の定量比較は未確認。Apache-2.0の効果音モデルとしては新しく規模も大きめ",
+  "ja_note": "効果音モデルのため歌詞は対象外。プロンプトは英語・中国語で学習（日本語プロンプトの公式サポートなし）",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0で商用可。学習データの出所は非開示のため、商用作品では生成音の確認を推奨",
+  "hf": "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+  "tools": [
+   "Gradio",
+   "Pythonパイプライン（diffusers系）",
+   "ファインチューニングスクリプト",
+   "GGUF（コミュニティ）"
+  ],
+  "summary_ja": "文章から最長30秒の環境音・効果音を48kHzで作る1.3Bモデル。Apache-2.0で商用利用しやすい。",
+  "best_for_ja": "動画・ゲーム向けの効果音を商用前提で作りたい人。",
+  "supersedes": [
+   "MOSS-SoundEffect v1.0"
+  ],
+  "sources": [
+   "https://huggingface.co/OpenMOSS-Team/MOSS-SoundEffect-v2.0",
+   "https://github.com/OpenMOSS/MOSS-TTS/tree/main/moss_soundeffect_v2",
+   "https://studio.aifilms.ai/blog/moss-soundeffect-v2-open-source-sound-design",
+   "https://huggingface.co/ilintar/moss-soundeffect-gguf"
+  ],
+  "confidence": "medium",
+  "rank": 12
+ },
+ {
+  "id": "woosh",
+  "access": "open-weight",
+  "name": "Woosh（Woosh-Flow / DFlow / VFlow / DVFlow）",
+  "org": "Sony AI（ソニーグループ）",
+  "country": "JP",
+  "release": "2026-03-16",
+  "params_b": 0.337,
+  "arch": "Flow Matching潜在拡散: Woosh-AE（48kHzモノラル, 0.221B）＋Woosh-CLAP条件付け＋Flow（T2A 0.337B）/ VFlow（動画→音 0.413B）。DFlow/DVFlowは4ステップ蒸留版",
+  "tasks": [
+   "sfx"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": "48kHz mono",
+   "other": "テキスト→効果音（T2A）と動画→効果音（V2A、8秒版チェックポイント）。英語プロンプト。最大長の記載なし（学習は5〜10秒クリップ）"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "効果音": true,
+   "動画から音": true,
+   "8GB以下で動作": true,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": false
+  },
+  "min_vram_gb": 4,
+  "rec_vram_gb": 12,
+  "vram_note": "公式値なし。コミュニティ（ComfyUI-Woosh作者のHFミラー）の概算: Flow/VFlow約8–12GB、DFlow/DVFlow約4–6GB、CPUオフロード時約2–4GB。CPU版インストールも可",
+  "speed_note": "公式の実時間計測なし。関数評価回数はWoosh-Flow約140、蒸留DFlow 4（Stable Audio Open/TangoFluxは約200）",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "AudioCaps FD（OpenL3, 低いほど良い）",
+    "value": 109.1,
+    "note": "公開データ版Woosh-Flow。TangoFlux=131.9、Stable Audio Open=150.1（自社技術報告）",
+    "source": "https://arxiv.org/abs/2604.01929"
+   },
+   {
+    "metric": "AudioCaps CLAP",
+    "value": 0.3719,
+    "note": "TangoFlux=0.3471、Stable Audio Open=0.1457",
+    "source": "https://arxiv.org/abs/2604.01929"
+   },
+   {
+    "metric": "FoleyBench 動画→音 FD",
+    "value": 24.14,
+    "note": "Woosh-VFlow。MMAudio-M=30.48",
+    "source": "https://arxiv.org/abs/2604.01929"
+   }
+  ],
+  "quality_note": "公開データのみで学習した公開版でも、AudioCapsのFD・KL・CLAPでStable Audio Open・TangoFluxを上回り、動画→効果音でもMMAudio-Mより良好（自社技術報告）。4ステップ蒸留版で高速生成できる",
+  "ja_note": "効果音モデルのため歌詞は対象外。プロンプトは英語。日本企業（ソニー）発のオープンな音響生成モデルとして数少ない例で、日本発の歌唱付き音楽生成オープンモデルは今回確認できなかった",
+  "license": "CC BY-NC 4.0（重み）/ MIT（コード、V2A部はApache-2.0）",
+  "commercial": "no",
+  "license_note": "公開重みは非商用のみ。公開版はFreesound（CCライセンス約37万件）・AudioCaps・WavCaps（AudioSet部分）、V2AはVGGSound・OGameData250kで学習。商用ライセンス済み効果音ライブラリで学習した『Private』版は社内限定で非公開",
+  "hf": "https://github.com/SonyResearch/Woosh",
+  "tools": [
+   "Gradio",
+   "APIサーバ",
+   "ComfyUI（コミュニティ: ComfyUI-Woosh）",
+   "REAPER連携スクリプト（デモ）"
+  ],
+  "summary_ja": "ソニーAIが公開した効果音生成モデル群で、文章や動画から効果音を作る。4ステップで動く高速版もある。",
+  "best_for_ja": "研究・個人制作の効果音、動画への効果音付け（非商用）。",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/SonyResearch/Woosh",
+   "https://github.com/SonyResearch/woosh-sfx/releases",
+   "https://arxiv.org/abs/2604.01929",
+   "https://huggingface.co/drbaph/Woosh"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "notagen-x",
+  "access": "open-weight",
+  "name": "NotaGen-X",
+  "org": "NotaGen開発チーム（ElectricAlexis ほか）",
+  "country": "CN",
+  "release": "2025-02",
+  "params_b": 0.516,
+  "arch": "階層型Transformer（パッチ単位20層＋文字単位デコーダ）でABC記譜をAR生成。事前学習→ポストトレーニング→微調整→CLaMP-DPO強化学習",
+  "tasks": [
+   "score"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": "N/A（楽譜出力: ABC記譜→MusicXML変換可）",
+   "other": "『時代-作曲家-編成』プロンプトでクラシックの楽譜を生成。音声は出力しない"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "楽譜/MIDI出力": true,
+   "LoRA/微調整": true,
+   "8GB以下で動作": true,
+   "ComfyUI対応": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": null,
+  "vram_note": "公式: NotaGen-Xのローカル推論に約8GBのGPUメモリ。NotaGen-largeでの学習・推論は24GB以上（small/medium構成なら少なく済む）",
+  "speed_note": "公式値なし",
+  "price_note": null,
+  "bench": [],
+  "quality_note": "クラシックに特化した記号音楽生成（IJCAI 2025）。160万曲で事前学習→約9千曲のクラシックで微調整→CLaMP-DPO。NotaGen-Xは論文版に後処理学習を追加し楽器音域も改善。2026年10月時点で後継版は確認できず（記号音楽ではYuE2がABC譜面の計画を出力する）",
+  "ja_note": "歌詞・歌唱は対象外（器楽の楽譜生成）",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。ただし事前学習用160万曲の出所・権利は詳細非開示。出力は楽譜（ABC/MusicXML）なので演奏・録音は別途必要",
+  "hf": "https://huggingface.co/ElectricAlexis/NotaGen",
+  "tools": [
+   "Gradio（ローカル/HF Space）",
+   "ComfyUI（コミュニティ）",
+   "Colab"
+  ],
+  "summary_ja": "作曲家・時代・編成を指定してクラシック風の楽譜（ABC/MusicXML）を書くモデル。音ではなく楽譜を出すので、譜面ソフトやDAWで編集・演奏できる。",
+  "best_for_ja": "クラシック風の作曲アイデア出し、楽譜ベースの編曲・音楽教育。",
+  "supersedes": [
+   "NotaGen（論文版, 2025-02）"
+  ],
+  "sources": [
+   "https://github.com/ElectricAlexis/NotaGen",
+   "https://huggingface.co/ElectricAlexis/NotaGen",
+   "https://arxiv.org/abs/2502.18008"
+  ],
+  "confidence": "medium",
+  "rank": 14
+ },
+ {
+  "id": "suno-v6",
+  "access": "api",
+  "name": "Suno v6（v6 / v6-wild / v6-mini）",
+  "org": "Suno",
+  "country": "US",
+  "release": "2026-09-09",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": null,
+   "other": "テキスト・音声・画像・動画から生成。セクション単位の自然言語編集、歌詞1行の差し替え、自作曲のマッシュアップ、リフのサンプリング/楽器分離。v6=安定志向、v6-wild=意外性重視、v6-mini=高速・無料"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "ステム/トラック分離出力": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "公式料金（年払い時の月額）: Free $0（50クレジット/日、v6-miniのみ、DL不可、商用不可）/ Pro $8（2,500クレジット/月、DL 20曲/月、v6・v6-wild、商用可）/ Premier $24（10,000クレジット/月、DL 60曲/月、Suno Studio）。月払いはPro $10・Premier $30との報道。一般向けの公式APIは未提供",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena ボーカル Elo",
+    "value": 1146,
+    "note": "1位（v6-mini=1130で2位）。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
+   },
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1148,
+    "note": "1位。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   },
+   {
+    "metric": "WildSongBench SongBench Avg",
+    "value": 6.5562,
+    "note": "YuE2開発チーム評価。同評価ではSuno v5（6.8721）の方が高い",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   }
+  ],
+  "quality_note": "AA Music Arena v1.1（1,000プロンプト・17ジャンル・採用評価者のブラインド投票）でボーカル・インストとも1位。一方YuE2チームのWildSongBenchではv6がv5を下回るなど評価系で順位は変わる。旧モデル（v4〜v5.5）は順次退役",
+  "ja_note": "公式の対応言語一覧は今回確認できず。HeartMuLa論文の日本語ベンチでSuno v5（PER 0.35）・v4.5（0.29）が評価対象になっており、前世代で日本語歌唱が可能なことは確認できる。v6の日本語の定量評価は未確認",
+  "license": "サービス利用規約（Suno）",
+  "commercial": "conditional",
+  "license_note": "無料プランの曲は個人・非商用のみ（収益化不可）。Pro/Premier加入中に作った曲は商用利用・配信可（加入前の無料曲には遡及しない）。自作歌詞の権利は本人に帰属。DL数に月間上限。v6はWarner Music・BMG・Believe/TuneCoreとの提携下で開発（WMGは2025-11に訴訟和解）だが、学習データ全体の内訳は非公開。著作権の扱いは地域で異なり、権利侵害リスクは利用者側",
+  "hf": "https://suno.com/pricing",
+  "tools": [
+   "Webアプリ",
+   "モバイルアプリ",
+   "Suno Studio（Premier）"
+  ],
+  "summary_ja": "音楽アリーナで首位の商用音楽生成サービスの最新版。プロンプトから歌もの・インストを作り、部分編集やマッシュアップもできる。",
+  "best_for_ja": "最高品質の歌もの・インストをすぐ作りたい人（商用利用はPro以上）。",
+  "supersedes": [
+   "Suno v5.5",
+   "Suno v5",
+   "Suno v4.5"
+  ],
+  "sources": [
+   "https://suno.com/pricing",
+   "https://help.suno.com/en/categories/550145-rights-ownership",
+   "https://datanorth.ai/news/suno-launches-v6-v6-wild-and-v6-mini",
+   "https://alphasignal.ai/news/artificial-analysis-music-arena-v1-1-crowns-suno-v6-across-1-000-harder-prompts",
+   "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
+   "https://arxiv.org/abs/2601.10547"
+  ],
+  "confidence": "medium",
+  "rank": 15,
+  "pick": "API で最高品質",
+  "pick_reason": "AA Music Arena 1位",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1146
+  }
+ },
+ {
+  "id": "mureka-v9-5",
+  "access": "api",
+  "name": "Mureka V9.5",
+  "org": "Mureka（Kunlun Tech）",
+  "country": "CN",
+  "release": null,
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": null,
+   "other": "公開日は未確認（2026-10-07公開のAA Music Arena v1.1で評価済み）。Proプランでステム・WAVダウンロード"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "ステム/トラック分離出力": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "Webプラン: Basic $8/月（年$96、月400曲）/ Pro $24/月（年$288、月1,600曲、ステム・WAV DL）。開発者向けAPI（platform.mureka.ai）があるが、V9.5のAPI単価は今回確認できず",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena ボーカル Elo",
+    "value": 1107,
+    "note": "3位（V9=1057）。v1.1公開時の記事ではV9から+51 Eloでシリーズ最大の伸びと紹介。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
+   },
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1084,
+    "note": "3〜6位で統計的に同率。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   },
+   {
+    "metric": "WildSongBench SongBench Avg（Mureka 9）",
+    "value": 6.9377,
+    "note": "前版V9。商用システム中で最高（YuE2開発チーム評価）",
+    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
+   }
+  ],
+  "quality_note": "AA Music Arena v1.1でボーカル3位とSuno v6勢に次ぐ位置。前版Mureka 9もWildSongBenchで商用最高スコア",
+  "ja_note": "V9.5の公式対応言語は今回確認できず。HeartMuLa論文の日本語ベンチで旧版Mureka V7.6（PER 0.30）が評価されており、日本語歌唱自体は前世代から可能",
+  "license": "サービス利用規約（Mureka）",
+  "commercial": "conditional",
+  "license_note": "公式サイトはBasic以上に商用ライセンスを含むとし『フル商用権』を謳うが、適用プランの詳細は規約で要確認。学習データは非公開。運営会社（Kunlun Tech）は既知情報で、今回の調査では一次情報で未確認",
+  "hf": "https://www.mureka.ai/",
+  "tools": [
+   "Webアプリ",
+   "API（platform.mureka.ai）"
+  ],
+  "summary_ja": "音楽アリーナでSunoに次ぐ3位の商用歌もの生成サービス。手頃な月額で大量に生成できる。",
+  "best_for_ja": "Suno以外の高品質な選択肢を探す人、ステム付きで書き出したい人。",
+  "supersedes": [
+   "Mureka V9",
+   "Mureka V8",
+   "Mureka V7.6"
+  ],
+  "sources": [
+   "https://www.mureka.ai/",
+   "https://platform.mureka.ai/docs/",
+   "https://alphasignal.ai/news/artificial-analysis-music-arena-v1-1-crowns-suno-v6-across-1-000-harder-prompts",
+   "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental",
+   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
+   "https://arxiv.org/abs/2601.10547"
+  ],
+  "confidence": "low",
+  "rank": 16,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1107
+  }
+ },
+ {
+  "id": "lyria-3-5",
+  "access": "api",
+  "name": "Lyria 3.5",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-07-29",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental"
+  ],
+  "spec": {
+   "max_duration_s": 180,
+   "sample_rate": "44.1kHz stereo（MP3 / WAV）",
+   "other": "アプリでは最長約3分、APIはプロンプトやタイムスタンプで長さを制御。生成した歌詞・曲構成もテキストで返す。全出力にSynthID透かし。特定アーティストの声や既存歌詞の要求はブロック。Flow Musicで先行公開、2026-09にGemini APIでプレビュー提供"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "Gemini API: lyria-3.5 $0.08/曲（無料枠なし）、Lyria 3 Clip（30秒）$0.04。Flow Music: Free / Starter $8/月（年払い$6）/ Plus $24/月（$18）/ Member $64/月（$48）。Geminiアプリ・YouTube Shorts（Dream Track）・Google Vidsでも利用可",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena ボーカル Elo",
+    "value": 1052,
+    "note": "4〜6位（Lyria 3 Pro=1051）。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
+   },
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1078,
+    "note": "3〜6位で統計的に同率。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   }
+  ],
+  "quality_note": "AAボーカルで4〜6位タイ（Mureka V9と同等）、インストは上位グループ。API単価$0.08/曲は主要サービスで最安級で、アプリ組み込みに向く",
+  "ja_note": "公式ドキュメントは『プロンプトの言語で歌詞を生成』、DeepMindのページは『複数言語でボーカル生成』と記載。ただし日本語を明示した対応言語一覧はなく、日本語品質の定量評価も未確認",
+  "license": "Gemini API / Google 利用規約",
+  "commercial": "conditional",
+  "license_note": "Googleは生成物の所有権を主張しないとされる（著作権性や第三者権利の非侵害は保証しない）。Flow Musicの商用利用権はGoogle AI Plus/Pro/Ultra経由の有料プランで付与と案内され、無料プランの商用可否は明記なし。Flow Musicはアップロード・出力を製品改善に使い得る（人による確認あり）。学習データのライセンス詳細は非開示",
+  "hf": "https://ai.google.dev/gemini-api/docs/music-generation",
+  "tools": [
+   "Gemini API / Google AI Studio",
+   "Google Flow Music",
+   "Geminiアプリ",
+   "YouTube Shorts（Dream Track）",
+   "Google Vids"
+  ],
+  "summary_ja": "GoogleのLyria最新版で、歌詞付きの歌やインストを最長約3分生成する。API価格が1曲8セントと安い。",
+  "best_for_ja": "アプリや動画制作フローに安価なAPIで歌もの生成を組み込みたい開発者。",
+  "supersedes": [
+   "Lyria 3 Pro",
+   "Lyria 3 Clip",
+   "Lyria 2"
+  ],
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/music-generation",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://deepmind.google/models/lyria/",
+   "https://www.therundown.ai/tools/lyria-3-5",
+   "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental"
+  ],
+  "confidence": "medium",
+  "rank": 17,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1052
+  }
+ },
+ {
+  "id": "eleven-music-v2-5",
+  "access": "api",
+  "name": "Eleven Music v2.5",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": "2026-09-11",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 300,
+   "sample_rate": "44.1kHz（MP3 128–192kbps、WAVは有料）",
+   "other": "API生成は最長5分。プロンプト生成とリファレンス生成に対応。他アーティスト楽曲ベースのDLはブロック、実在ミュージシャンの模倣は禁止"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "LoRA/微調整": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "API: 音楽生成$0.15/分（プランごとに込み分数あり）、ファインチューン1件$1.50。ElevenMusicアプリ: Free（ロスレスDL 5曲/日、クレジット表記要）/ Pro（DL 400曲/月）。商用ライセンスはStarter以上",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena ボーカル Elo",
+    "value": 1012,
+    "note": "7位。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
+   },
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1001,
+    "note": "8〜15位帯。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   }
+  ],
+  "quality_note": "AAボーカル7位でMiniMax Music 3.0とほぼ同等圏。社内ブラインド比較（約4.8万ペア）でv2より好まれたと発表（自社評価、R&B・ソウル・ヒップホップ・ロック・オーケストラで特に）",
+  "ja_note": "公式音楽ページのFAQでMusic v2の対応言語に日本語を明記（英・西・仏・独・日ほか）。v2.5単独の言語一覧は未確認だが同系列",
+  "license": "ElevenLabs 利用規約（Music Terms）",
+  "commercial": "conditional",
+  "license_note": "Free=個人利用のみ（帰属表示要）、Starter=商用可（ストリーミング除く）、Creator/Pro=商用可（エンタープライズ用途除く）、セルフサーブ全般で映画・TV・大手ゲームは不可、Enterpriseは全用途可。生成曲の権利はユーザーが保持。『ライセンス済みのステム・楽曲で学習』『アーティスト・レーベル・出版社と提携』と説明（詳細は非開示）",
+  "hf": "https://elevenlabs.io/music",
+  "tools": [
+   "ElevenMusicアプリ",
+   "ElevenLabs API"
+  ],
+  "summary_ja": "音声AI大手ElevenLabsの音楽生成最新版で、権利処理済みデータでの学習を前面に出している。分単位課金のAPIで使いやすい。",
+  "best_for_ja": "商用利用条件を明確にしたい企業・クリエイター、ElevenLabsの音声APIと一緒に使いたい人。",
+  "supersedes": [
+   "Eleven Music v2",
+   "Eleven Music v1"
+  ],
+  "sources": [
+   "https://elevenlabs.io/music",
+   "https://elevenlabs.io/pricing/api",
+   "https://the-decoder.com/elevenlabs-makes-music-v2-5-available-via-app-and-api-with-free-and-pro-tier-options/",
+   "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental"
+  ],
+  "confidence": "medium",
+  "rank": 18,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1012
+  }
+ },
+ {
+  "id": "stable-audio-3-large",
+  "access": "api",
+  "name": "Stable Audio 3 Large",
+  "org": "Stability AI",
+  "country": "GB",
+  "release": "2026-05-20",
+  "params_b": null,
+  "arch": "潜在拡散Transformer（公称2.7B）＋SAME-Large オートエンコーダ。重みは非公開（API・fal.ai・エンタープライズのセルフホストのみ）",
+  "tasks": [
+   "instrumental",
+   "sfx",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 380,
+   "sample_rate": "44.1kHz stereo",
+   "other": "Stable Audio 3系最上位。テキスト→音、音→音編集、インペインティング。歌詞・歌唱なし"
+  },
+  "features": {
+   "日本語歌詞": false,
+   "ボーカル生成": false,
+   "インスト生成": true,
+   "効果音": true,
+   "部分編集": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "ファミリー全体でH200上2秒未満と公称",
+  "price_note": "Stability API: Stable Audio 3.0 1生成8クレジット（$0.08、1クレジット=$0.01）、最長6分。fal.ai経由やエンタープライズ契約でのセルフホストも可",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Music Arena インスト Elo",
+    "value": 1014,
+    "note": "7〜12位帯（Medium=996、Small=946）。2026-10-20取得",
+    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   }
+  ],
+  "quality_note": "Stable Audio 3系の最上位でAAインストはElevenLabs・MiniMaxと同等圏。ボーカルは生成できない",
+  "ja_note": "歌詞・歌唱は非対応。プロンプトは英語",
+  "license": "Stability AI API利用規約 / Enterprise",
+  "commercial": "conditional",
+  "license_note": "API出力の商用条件は今回一次情報で未確認（オープン版のCommunity Licenseでは生成物の権利は利用者帰属）。学習データはライセンス楽曲（AudioSparx）とCCデータ（Freesound）と公表",
+  "hf": "https://docs.stability.ai/pricing",
+  "tools": [
+   "Stability API",
+   "fal.ai",
+   "エンタープライズ・セルフホスト"
+  ],
+  "summary_ja": "Stable Audio 3の最上位モデルで、API経由でのみ使える。最長6分超のインスト・効果音を1回8セントで生成。",
+  "best_for_ja": "権利処理を重視したBGM・効果音をAPIで量産したい企業。",
+  "supersedes": [
+   "Stable Audio 2.5"
+  ],
+  "sources": [
+   "https://docs.stability.ai/pricing",
+   "https://github.com/Stability-AI/stable-audio-3",
+   "https://the-decoder.com/stability-ai-launches-stable-audio-3-0-with-up-to-six-minute-tracks-and-open-weights/",
+   "https://artificialanalysis.ai/music/leaderboard/instrumental"
+  ],
+  "confidence": "medium",
+  "rank": 19,
+  "hl": {
+   "label": "AA Arena",
+   "value": 1014
+  }
+ },
+ {
+  "id": "udio",
+  "access": "api",
+  "name": "Udio（Allegro v1.5）",
+  "org": "Udio（Uncharted Labs）",
+  "country": "US",
+  "release": "2025-03-18",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental"
+  ],
+  "spec": {
+   "max_duration_s": null,
+   "sample_rate": null,
+   "other": "公式チェンジログ上の最新モデルはAllegro v1.5（2025-03-18）。Sessions・Styles・Voices等の機能を2025年に追加。2026年の新モデル/新プラットフォームは今回確認できず"
+  },
+  "features": {
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "商用利用（条件付き含む）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "有料サブスクリプション（学生割引・トライアルあり）だが、2026-10時点の料金は今回確認できず。2025-10のUMG和解後は生成物がウォールドガーデン内に限定されDL不可と報道。UMGとのライセンス型新プラットフォームは2026年開始予定と発表済み",
+  "bench": [],
+  "quality_note": "2025年前半まではSunoと並ぶ二強だったが、現行のAA Music Arena（ボーカル/インスト）上位表には掲載なし。新プラットフォーム移行中で、最新状況の確度は低い",
+  "ja_note": "今回の調査では公式の日本語対応の記述を確認できず",
+  "license": "サービス利用規約（Udio）",
+  "commercial": "no",
+  "license_note": "UMGとの和解（2025-10）以降、作品はプラットフォーム内に閉じてダウンロード不可と報道されており、外部での商用利用は実質不可（最新規約は要確認）。新プラットフォームは許諾済み楽曲で学習する計画",
+  "hf": "https://www.udio.com/",
+  "tools": [
+   "Webアプリ",
+   "iOSアプリ"
+  ],
+  "summary_ja": "かつてSunoと並んだ音楽生成サービスだが、レーベルとの和解後は作品を外部に持ち出せない形に移行中。",
+  "best_for_ja": "現状はプラットフォーム内で楽しむ用途向け。商用・外部配信目的には不向き。",
+  "supersedes": [],
+  "sources": [
+   "https://help.udio.com/en/articles/10748731-changelog-what-s-new-with-udio",
+   "https://help.udio.com/en/collections/11900887-subscriptions-credits-and-billing",
+   "https://www.musicbusinessworldwide.com/universal-music-settles-udio-lawsuit-strikes-deal-for-licensed-ai-music-platform/",
+   "https://musically.com/2025/10/30/umg-settles-udio-lawsuit-companies-plan-new-ai-music-service-together/"
+  ],
+  "confidence": "low",
+  "rank": 20
+ }
+]

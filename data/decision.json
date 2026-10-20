@@ -1,0 +1,1151 @@
+[
+ {
+  "id": "openai-decisions-api",
+  "name": "OpenAI Decisions API（gpt-6-luna）",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2026-10-06",
+  "access": "api",
+  "params_b": null,
+  "arch": "汎用LLM「GPT-6 Luna」を判断専用エンドポイント（POST /v1/decisions）で提供。内部の判断ヘッド構造は非公開",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト（文字列）、またはinput_text＋input_imageを含むuserメッセージ。画像はbase64データURLか公開HTTP(S) URL（file_idは不可）",
+   "outputs": "predicate＝条件が真である確率0〜1／choice＝指定値から1つ＋全選択肢の確率＋confidence／score＝0始まりの順序レベルに対する確率加重スコア（レベルの間の値もあり得る）＋分布＋confidence／質問単位のrefusal",
+   "languages": "公式ガイドに対応言語の記載なし",
+   "other": "対応モデルはgpt-6-lunaのみ。public beta（2026-10-06、DevDay 2026で限定プレビュー後に全開発者へ開放）。公式は「数週間以内にGA予定」。1リクエストに複数の質問（各々一意のname）を入れられ、依存関係のある判断は別リクエスト。ZDR・HIPAA（対象顧客）、米国・欧州（EEA＋スイス）のデータレジデンシー。SDKはPython 3.26.0／JS 7.30.0／Go 3.73.0／Ruby 0.101.0／Java 4.78.0以降。第三者情報（promptfoo）ではchoiceは2〜255値、scoreは2〜10段階、画像は1リクエスト128枚まで"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "1リクエストで複数の質問": true,
+   "質問ごとの拒否（refusal）": true,
+   "ラベル・判断基準を自由に定義": true,
+   "ZDR・HIPAA対応": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力 $0.10/1Mトークンのみ課金。出力・キャッシュ読み書きは無料（公式）。地域処理の割増と長文入力の倍率あり（金額は公式未記載。LLM Gatewayでは272K超の入力が$0.20/1Mと掲載）",
+  "speed_note": "公式は「Responses APIの約10倍速い」とだけ記載し、計測条件は非公開。DevDay時点の報道では約150ms/判断（ベンダー発表で未検証）。Microsoftの比較計測では中央値300ms。独立検証は未確認",
+  "bench": [
+   {
+    "metric": "JevBench capability",
+    "value": 73.5,
+    "note": "第三者まとめ（Redreamality）による掲載値。条件の詳細は不明",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   },
+   {
+    "metric": "Microsoft社内36ベンチ平均正答率(%)",
+    "value": 79.4,
+    "note": "競合のMicrosoftが自社で計測した比較表の値（中央値300ms）。eesel.aiの転載による",
+    "source": "https://www.eesel.ai/blog/microsoft-decision-1"
+   }
+  ],
+  "quality_note": "大手で唯一、汎用フロンティア系LLM（GPT-6 Luna）の知識をそのまま判断に使える点と、画像入力・ZDR/HIPAA・データレジデンシーなど企業向けの機能が揃う点が強み。Vals.aiの独立評価では、文書の主張検証で通常のGPT-6 Luna（Decisions API経由ではない）がJevと同じ正答率で、コストは約3倍。一方、精度や較正の公式数値は未公開で、Microsoftの自社比較表ではMicrosoft-Decision-1やJevを下回る",
+  "ja_note": "対応言語の公式記載なし。基盤のGPT-6 Lunaは汎用LLMなので日本語の入力自体は扱えると見込まれるが、日本語での判断精度の評価は公開されていない。本番前に自社の日本語データで確認が必要",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "OpenAI API利用規約に従う。public betaのため価格・制限は変更の可能性あり",
+  "hf": "https://developers.openai.com/api/docs/guides/decisions",
+  "tools": [
+   "OpenAI SDK（Python/JS/Go/Ruby/Java）",
+   "Decisions Playground",
+   "promptfoo（openai:decisions）",
+   "LangChain（langchain-openai）",
+   "Vercel AI Gateway",
+   "LLM Gateway"
+  ],
+  "summary_ja": "ChatGPTを作るOpenAIの「文章を書かずに答えだけ返す」APIです。「この問い合わせはどの窓口か」「この写真に傷はあるか」といった質問に、選択肢と確率で即答します。",
+  "best_for_ja": "OpenAIの環境で、画像も含む問い合わせ振り分け・コンテンツ分類・エージェントの次の行動選択を低コストで回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://developers.openai.com/api/docs/guides/decisions",
+   "https://unite.ai/openai-releases-decisions-api-in-public-beta-powered-by-gpt-6-luna",
+   "https://propakistani.pk/2026/10/07/openai-launches-decisions-api-with-up-to-10x-faster-responses/",
+   "https://www.orcarouter.ai/blog/openai-decisions-api-gpt-6-luna",
+   "https://llmgateway.io/blog/openai-decisions-api",
+   "https://www.promptfoo.dev/docs/providers/openai-decisions/",
+   "https://vals.ai/blogs/independent-evaluation-of-jev",
+   "https://www.eesel.ai/blog/microsoft-decision-1"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "ChatGPT（OpenAI）の判断API",
+  "pick_reason": "GPT-6 Luna。画像入力も可"
+ },
+ {
+  "id": "typesafe-jev",
+  "name": "Jev 1.13（安定版 jev-latest）／Jev 1.14（プレビュー jev-preview）",
+  "org": "TypeSafe AI",
+  "country": "US",
+  "release": "2026-09-15",
+  "access": "api",
+  "params_b": null,
+  "arch": "「System One」モデル。LLMではなく、テキストを逐次生成しない並列サンプリング型の判断専用モデルと説明されている（規模・構造は非公開）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 100,
+   "inputs": "テキストのみ（文字列・JSONオブジェクト・テキスト配列）。画像・音声・動画は非対応",
+   "outputs": "Choice（定義済み選択肢から1つ）／Score（定義した尺度上の値）／Noul（はい・いいえの確率）の型付き回答と確率。一部の型はconfidenceも返す",
+   "languages": "英語が主で最も高精度。CJKを含む他言語も扱えるが精度は同等ではない（公式）",
+   "other": "POST /v1/systemone。jev-latest＝jev-1.13.0、jev-preview＝jev-1.14.0（2026-10-14から提供）。コンテキストは既定で1リクエスト64k・1質問32k、ヘッダ指定で262kまで拡張可（低速・低精度化と公式が注記）。OpenRouter、Cloudflare Workers AI、LLM Gatewayからも利用可。2026-09-15にステルスから登場（DCVC主導の4,000万ドルのシード）"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "1リクエストで複数の質問": true,
+   "長文コンテキスト拡張（262k）": true,
+   "スキーマ外の回答をしない（型安全）": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力 $0.042/1Mトークン（$42/10億トークン）、出力無料（公式Models）。TypeSafeは1判断あたり約$0.0004と主張",
+  "speed_note": "TypeSafe公称は端から端まで70〜500ms。Vals.aiの独立計測で約0.10秒/呼び出し（負荷下0.11秒、1文書64判断でも0.12秒）。Artificial Analysisの計測で0.13秒/タスク、Microsoftの比較計測では中央値240ms",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v1.0",
+    "value": 58,
+    "note": "2026-10-13公開時点で判断モデル中1位（Jev 1.13）。参考: Claude Haiku 5.5(Low)は61、GPT-6 Luna(Low)は55",
+    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   },
+   {
+    "metric": "文書の主張検証 正答率（Vals.ai、400問）",
+    "value": 0.975,
+    "note": "独立評価。GPT-6 Astra・GPT-6.1 Sol・GPT-6 Lunaと同点、ECE 0.011で12システム中最良",
+    "source": "https://vals.ai/blogs/independent-evaluation-of-jev"
+   },
+   {
+    "metric": "LegalBench クラス均衡正答率（Vals.ai）",
+    "value": 0.73,
+    "note": "独立評価。12システム中最下位（首位GPT-5.6 Terraは0.932）",
+    "source": "https://vals.ai/blogs/independent-evaluation-of-jev"
+   },
+   {
+    "metric": "JevBench composite",
+    "value": 71.5,
+    "note": "Benchmark Heaven版JevBench（知能・較正・速度・コストを合算）。H2O.aiの発表で引用された値",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.1（総合）",
+    "value": 60.11,
+    "note": "Hugging Face上のコミュニティ版ボード、2026-10-10時点で3位",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   }
+  ],
+  "quality_note": "このカテゴリを作った基準モデルで、/v1/systemone形式が事実上の標準になりつつある。独立評価では、範囲のはっきりした検証タスクで最先端LLMと誤差の範囲で並び、速度とコストで大きく勝つ。一方でLegalBenchは最下位、知識・推論系（HLE）は弱く、DI 0.3.1では平均confidence 0.81に対し正答率0.74と過信傾向がある。TypeSafe自身のベンチは他のフロンティアモデルとの一致率で測っている点にも注意",
+  "ja_note": "公式に「英語が主。CJKは扱えるが精度は同等ではない」と明記。日本語の判定に使う場合は自社データでの精度確認が必須",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "当初はウェイトリスト制の早期アクセス（ローンチ5日後に撤廃したとの報道あり）。TypeSafe API利用規約に従う",
+  "hf": "https://docs.typesafe.ai/concepts/system-one",
+  "tools": [
+   "TypeSafe SDK",
+   "HTTP API（/v1/systemone）",
+   "LangChain（TypeSafeClassifier）",
+   "OpenRouter",
+   "Cloudflare Workers AI",
+   "LLM Gateway"
+  ],
+  "summary_ja": "エージェントの「どれを選ぶか」「はいかいいえか」を、文章を書かずに型付きの答えと確率で返す判断専用モデルです。このジャンルの火付け役で、速さと安さが最大の売りです。",
+  "best_for_ja": "英語中心のワークフローで、1件の入力に多数の小さな判断（振り分け・要否判定・優先度付け）を高速・低コストで回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://docs.typesafe.ai/concepts/system-one",
+   "https://docs.typesafe.ai/models",
+   "https://forkast.news/typesafe-ais-jev-is-not-an-llm-and-that-may-be-the-point/",
+   "https://vals.ai/blogs/independent-evaluation-of-jev",
+   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/",
+   "https://www.lindy.ai/blog/jev-ai",
+   "https://runtimewire.com/article/langchain-adds-jev-decision-model-agent-workflows"
+  ],
+  "confidence": "medium",
+  "rank": 2,
+  "pick": "Decision Model の元祖",
+  "pick_reason": "入力 $0.042/100万トークン",
+  "hl": {
+   "label": "AA Arena",
+   "value": 58
+  }
+ },
+ {
+  "id": "microsoft-decision-1",
+  "name": "Microsoft-Decision-1",
+  "org": "Microsoft",
+  "country": "US",
+  "release": "2026-10-09",
+  "access": "api",
+  "params_b": 9,
+  "arch": "AlibabaのQwen3.5-9Bを単一パスの判断スコアリング用に後学習したモデル（重みは非配布）。今後MAIやOpenAIのモデルへ載せ替える予定と公表",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify",
+   "judge",
+   "guard"
+  ],
+  "spec": {
+   "latency_ms": 85,
+   "inputs": "テキストのみ（コンテキスト32,768トークン）と、選択肢を固定した質問",
+   "outputs": "各選択肢の較正済み確率（JSON）。説明・理由文は生成しない",
+   "languages": "公式ページに一覧なし。二次情報でFoundryカタログに25言語（日本語を含む）掲載との報告あり（未確認）",
+   "other": "Microsoft Foundry（Direct from Azure、ライフサイクルはPreview）とOpenRouterで提供。用途はAI出力の評価、分類・ルーティング、エージェントのガードレール、コンテンツ安全判定、検索・文書の関連度判定、低信頼時の人間エスカレーション。信用・雇用・医療など重大な判断の唯一の根拠にしないよう明記"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "ルーブリック採点": true,
+   "安全判定（ガードレール）": true,
+   "棄権（abstention）": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（ベースのQwen3.5-9Bはオープンだが、Decision-1の重みは非配布）",
+  "price_note": "入力 $0.042/1Mトークン、出力無料（Microsoft発表）。Foundryは従量課金またはPTU予約。AAの計測で$31/100万タスク",
+  "speed_note": "Microsoft計測（Foundry・同一リージョン）でp50 85ms、p95 125ms。OpenRouterの3日間計測ではp50 0.19秒（最速プロバイダ）〜0.27秒（平均）、p99 0.67秒（eesel.ai転載）",
+  "bench": [
+   {
+    "metric": "Microsoft社内36ベンチ平均正答率(%)",
+    "value": 83.5,
+    "note": "Microsoft自社計測（約15万問の非公開問題）。同表でJev 1.13.0は82.3、GPT-6 Luna Decisionsは79.4。eesel.aiの転載",
+    "source": "https://www.eesel.ai/blog/microsoft-decision-1"
+   },
+   {
+    "metric": "Artificial Analysis Decision Index v1.0",
+    "value": 54,
+    "note": "GLiDEと同点、Jev 1.13（58）に次ぐ。AA-Omniscienceの非幻覚率40%は判断モデル中最高",
+    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   },
+   {
+    "metric": "入力摂動での判断変化率(%)",
+    "value": 1.3,
+    "note": "8種類の摂動の平均（Microsoft発表）。選択肢の言い換え・逆順・シャッフルでは変化ゼロ",
+    "source": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/"
+   }
+  ],
+  "quality_note": "速度と一貫性が強み。選択肢の並べ替えで答えが変わりにくく、AAでは幻覚の少なさで判断モデル首位。ただし主要な精度の数値はMicrosoft主催の比較が中心で、独立した再現は限られる。テキストのみで画像は不可",
+  "ja_note": "日本語対応の公式記載なし。二次情報（OrcaRouter）では25言語（日本語含む）掲載だが、言語ごとに性能差があると注記されている",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "Azureサブスクリプションが必要（Direct from Azureモデル）。Microsoftの責任あるAI利用制限（監視・プロファイリング等の禁止）あり",
+  "hf": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
+  "tools": [
+   "Microsoft Foundry",
+   "OpenRouter",
+   "LLM Gateway（/v1/decisions）"
+  ],
+  "summary_ja": "Microsoftが出した判断専用モデルで、選択肢ごとの確率を一瞬で返します。Azure上で使え、Jevと同じ価格で速さと答えのぶれにくさを売りにしています。",
+  "best_for_ja": "Azure中心の企業で、AI出力の採点・ガードレール・ルーティングを低遅延で回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
+   "https://ai.azure.com/catalog/models/Microsoft-Decision-1",
+   "https://www.eesel.ai/blog/microsoft-decision-1",
+   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index",
+   "https://www.orcarouter.ai/pl/blog/microsoft-decision-1-ga-foundry-no-published-benchmarks",
+   "https://llmgateway.io/blog/openai-decisions-api"
+  ],
+  "confidence": "medium",
+  "rank": 3,
+  "hl": {
+   "label": "AA Arena",
+   "value": 54
+  }
+ },
+ {
+  "id": "liquid-d1-ultra",
+  "name": "d1-ultra",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-15",
+  "access": "api",
+  "params_b": null,
+  "arch": "d1より大きなオープンウェイトモデルを基にしたマルチモーダル判断モデル。トークンを生成せず1回のフォワードパスで確率を返す（規模は非公開）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト、画像（base64）、または両方",
+   "outputs": "noul＝はいの確率0〜1／Choice＝ラベルごとの確率／Score＝尺度上の位置",
+   "languages": "記載なし",
+   "other": "エンドポイント https://api.liquid.ai/decisions/v1/systemone（model: d1-ultra）。画像は32×32パッチあたり1.5トークン（1024×1024で1,536トークン）。質問ごとに別プロンプトとして課金。Vercel AI Gateway・OpenRouterは公開時点で「近日対応」。コンテキスト32,768トークンとの掲載あり（二次情報）"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "較正（過信抑制）を重視した学習": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力 $0.042/1Mトークン、出力トークンなし（公式）",
+  "speed_note": "公式に遅延の数値なし（1フォワードパスと説明）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v1.0",
+    "value": 65.2,
+    "note": "BenchLMの掲載値（独立評価と記載）。Liquidは「他の判断モデルを少なくとも8ポイント上回る」と主張",
+    "source": "https://benchlm.ai/md/decision-models.md"
+   }
+  ],
+  "quality_note": "Liquidは112評価すべてでJev 1.14を上回り、較正も良いと主張（自社比較）。判断モデル全般の弱点である過信を抑える学習を特長とする。公開から日が浅く、独立した詳細評価はまだ少ない",
+  "ja_note": "言語の記載なし。Liquidは日本語特化の小型LLM（LFM2.5-1.2B-JP）も出しているが、d1-ultraの日本語判定精度は不明",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "Liquid AI API（console.liquid.ai）の利用規約に従う",
+  "hf": "https://www.liquid.ai/blog/d1-ultra",
+  "tools": [
+   "Liquid AI API",
+   "d1 Playground（d1.liquid.ai）"
+  ],
+  "summary_ja": "Liquid AIのAPI専用・画像対応の判断モデルです。確率の「自信の度合い」が実際の正しさとずれにくいよう鍛えたとしています。",
+  "best_for_ja": "画像を含む判定で、確信度をしきい値に使って自動処理と人の確認を切り分けたい場合",
+  "supersedes": [
+   "d1（クラウド版）"
+  ],
+  "sources": [
+   "https://www.liquid.ai/blog/d1-ultra",
+   "https://benchlm.ai/md/decision-models.md",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": 4,
+  "hl": {
+   "label": "AA Arena",
+   "value": 65.2
+  }
+ },
+ {
+  "id": "fastino-glide",
+  "name": "GLiDE",
+  "org": "Fastino",
+  "country": "US",
+  "release": "2026-09-30",
+  "access": "api",
+  "params_b": null,
+  "arch": "「思考型」判断モデル（Generalized Lightweight Decision Engine）。まず高速に判定し、迷う問題にだけ追加の推論を使って確率に反映する",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify",
+   "judge"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "state（エージェントの目的・提案されたツール呼び出し・文脈など）＋型付き質問。1質問の描画済みプロンプトは40kトークンまで（思考トークン込み、超過は拒否）",
+   "outputs": "選択値・confidence・全選択肢の確率（Noul／Choice／Score）。自由文は返さない",
+   "languages": "記載なし",
+   "other": "POST https://api.fastino.ai/v1/systemone（System Oneスキーマ準拠）、model: fastino/GLiDE。思考トークンはusageの出力トークンとして報告。想定用途はルーティング、高リスク操作の制御、インシデント対応、規約・契約の解釈、出力検証、分類"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "迷う問題だけ追加推論": true,
+   "Jev互換API（/v1/systemone）": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力 $0.15/1Mトークン、出力無料（公式docs）。第三者には$0.30/1Mとの掲載もあり。AAの計測で$119/100万タスク",
+  "speed_note": "公式に遅延の数値なし。迷う問題では推論を足すため、他の判断モデルより遅くなる場合がある",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.2.1",
+    "value": 64.81,
+    "note": "Fastinoの自社実行（公開ボード未掲載）。同条件のJev 1.13.0公表値は57.91。38ベンチ中31で上回ると主張",
+    "source": "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model"
+   },
+   {
+    "metric": "Artificial Analysis Decision Index v1.0",
+    "value": 54,
+    "note": "Microsoft-Decision-1と同点。When2Call 84、WildGuardTest 95",
+    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "推論を足せるため、知識・推論系や因果推論（CLadder 88.7%、自社）で強いと主張。一方、第三者のAAではJev 1.13より指数が低く（54対58）、コストは約3倍。自社計測の数値が中心",
+  "ja_note": "言語の記載なし。日本語での精度は不明",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "Fastino APIの利用規約に従う",
+  "hf": "https://docs.fastino.ai/concepts/glide",
+  "tools": [
+   "Fastino API（/v1/systemone）",
+   "HTTP（Bearer: FASTINO_API_KEY）"
+  ],
+  "summary_ja": "Fastinoの「考える」判断モデルです。簡単な判断は即答し、迷うときだけ少し考えてから答えます。",
+  "best_for_ja": "規約解釈や出力検証など、たまに難しい判断が混じるエージェントの制御",
+  "supersedes": [],
+  "sources": [
+   "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model",
+   "https://docs.fastino.ai/concepts/glide",
+   "https://benchlm.ai/models/fastino-glide",
+   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": 5,
+  "hl": {
+   "label": "AA Arena",
+   "value": 54
+  }
+ },
+ {
+  "id": "pplx-decider-v1-1-27b",
+  "name": "pplx-decider v1.1 27B（Perplexity Decider v1.1）",
+  "org": "Perplexity",
+  "country": "US",
+  "release": "2026-10-06",
+  "access": "open-weight",
+  "params_b": 27,
+  "arch": "Qwen3.8-27Bを基にした判断専用モデル。双方向（非因果）の全注意層と判断ヘッドを追加し、最大255個の選択肢を文章生成なしで一括スコアすると説明されている（HFのメタデータ上は26B・BF16）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify",
+   "guard"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト・JSON・画像。1判断のテキストと画像の合計は8,192トークン以内（超過は切り詰めずに拒否）",
+   "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
+   "languages": "記載なし",
+   "other": "最大128個の名前付き質問に回答と報道。ホスト版は入力$0.02/1M・出力無料、262kコンテキストとの掲載あり（二次情報で、HFカードの8kと矛盾）。AAの計測で$17/100万タスク（判断モデル中最安）"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "多数の質問を一括判定": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 49,
+  "rec_vram_gb": 80,
+  "vram_note": "公式カード: BF16の重みだけで約49GiB＋作業メモリが必要なCUDA GPU。80GB級（H100/A100 80GB）が実用的な目安。公式の量子化版の記載なし",
+  "price_note": null,
+  "speed_note": "公式カードに遅延の数値なし（画像解像度を上げるとメモリと遅延が増えるとのみ記載）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.3.1（総合）",
+    "value": 62.75,
+    "note": "2026-10-10時点で1位（117エントリ）。公開問題62.25、新ドメイン55.57、画像部門も1位",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   },
+   {
+    "metric": "Decision Index（HFカード記載の総合）",
+    "value": 61.56,
+    "note": "Perplexity自社実行。v1は56.4、Jevは57.9。Tools 78.88、Language 69.45",
+    "source": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b"
+   },
+   {
+    "metric": "Typed-decisions Brier",
+    "value": 0.16,
+    "note": "Perplexity自社評価（正答率0.75、正解分布とのKL 0.44）",
+    "source": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b"
+   },
+   {
+    "metric": "WildGuardTest（AA Decision Index内）",
+    "value": 94,
+    "note": "Artificial Analysisの計測",
+    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "オープンウェイトの判断モデルとしてコミュニティ版Decision Indexで首位級、画像判定も強い。ただしJevBenchの総合（コスト推定込み）では20.6と低く、27Bで重いため自前運用には大きなGPUが要る。HFリポジトリへのアクセス条件について情報が錯綜している",
+  "ja_note": "言語の記載なし。Qwen3.8ベースで多言語の素地はあるが、日本語での判断精度は未評価",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。ただしHFリポジトリは認証付きアクセスが必要との記載があり、ゲート付き・非公開とする情報もあるため取得前に要確認",
+  "hf": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b",
+  "tools": [
+   "Transformers（Qwen3_5Model）",
+   "autojev（同梱推論コード）",
+   "OpenRouter（ホスト版）"
+  ],
+  "summary_ja": "Perplexityが公開した27Bの判断モデルで、オープンなものの中では最上位級の精度です。画像も見て判断できますが、動かすには大きなGPUが必要です。",
+  "best_for_ja": "精度重視で、判断モデルを自社GPU上に置きたい場合（ツール選択・意図判定・画像を含む判定）",
+  "supersedes": [
+   "pplx-decider v1 27B"
+  ],
+  "sources": [
+   "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/",
+   "https://www.productbuilder.net/models/pplx-decider-v1-1-27b",
+   "https://benchlm.ai/md/decision-models.md",
+   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": 6
+ },
+ {
+  "id": "vllm-sr-decision-3",
+  "name": "Decision 3.0（d3／d3-turbo／d3-flash ほか）",
+  "org": "vLLM Semantic Router（vLLMプロジェクト）",
+  "country": "US",
+  "release": "2026-10-10",
+  "access": "open-weight",
+  "params_b": 26.09,
+  "arch": "マルチモーダル判断モデル群。旗艦d3はQwen3.8-27B、小型版はQwen3.5系（9B/4B/2B/0.8B）が基盤。文章を生成せず1フォワードで各答えの確率を返す。0.59B〜26.09Bの6サイズ＋d3-turbo",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 54.4,
+   "inputs": "テキスト・JSON、複数の画像（PNG/JPEG/WebP、各1.6MPまで）と動画（MP4/WebM/MOV/MKV、2fps・最大32フレーム）",
+   "outputs": "Choice／Yes-No（noul）／Scoreの確率分布。d3-turboはBox（バウンディングボックス＋信頼度）質問と動画追跡にも対応",
+   "languages": "記載なし",
+   "other": "遅延はd3のテキスト中央値（AMD Instinct MI325X、1リクエストずつ）。画像付き290ms、10秒動画500ms。d3-flash（8.39B）はテキスト19.2ms、d3-edge（0.59B）は6.7ms。d3-turbo（26B）は入力を1回だけ読んで全質問に答えるため、64問で867ms（d3-flashは8.26秒）、255問で約15.5倍速。長文は1質問131,072トークン（long_context）。FP8・AWQ・GPTQの量子化版あり。vLLM本体のネイティブ対応はmainブランチ（2026-10-14〜、ナイトリー版が必要）"
+  },
+  "features": {
+   "画像入力": true,
+   "動画入力": true,
+   "確率・信頼度を返す": true,
+   "エッジ向け小型版あり": true,
+   "量子化版あり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 62,
+  "rec_vram_gb": 80,
+  "vram_note": "旗艦d3（BF16）のAutoModel実測ピーク61.8GiB、エンジンモードで65.4GiB/レプリカ（公式）。d3-flashは23.8GiB（同）なので24GB GPUでぎりぎり、32GB級が安全。小型のd3-mini/nano/lite/edgeやFP8・4bit量子化版ならさらに小さいGPUで動く（各VRAMは公式未記載）",
+  "price_note": null,
+  "speed_note": "d3: テキスト54.4ms、vLLM Semantic Routerのエンジンモードで27リクエスト/秒・p99 1秒未満（MI325X 1枚）。d3-flash: 95リクエスト/秒。d3-edge: テキスト6.7ms。いずれも自社計測",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.3.2（テキスト）",
+    "value": 66.3,
+    "note": "d3。149エントリ中1位（公開65.5、同スキル62.8、新ドメイン60.5）。モデルカード記載",
+    "source": "https://huggingface.co/vllm-sr/d3"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.2（画像ボード）",
+    "value": 71.3,
+    "note": "d3。33エントリ中1位",
+    "source": "https://huggingface.co/vllm-sr/d3"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.2（テキスト、推定）",
+    "value": 70.2,
+    "note": "d3-turbo。開発元の推定値で公式ボードの結果ではない",
+    "source": "https://huggingface.co/vllm-sr/d3-turbo"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.2（テキスト）",
+    "value": 55.8,
+    "note": "d3-flash（8.39B）",
+    "source": "https://huggingface.co/vllm-sr/d3-flash"
+   },
+   {
+    "metric": "Perception Test（動画の多肢選択）",
+    "value": 77.4,
+    "note": "d3、自社評価（偶然の水準は33.3）",
+    "source": "https://huggingface.co/vllm-sr/d3"
+   }
+  ],
+  "quality_note": "公開されている判断モデルの中で、コミュニティ版Decision Index（0.3.2）のテキスト・画像の両部門で首位。画像・動画まで扱え、0.6Bのエッジ版から26Bまでサイズを選べるのが強み。新ドメインでは公開問題より5ポイントほど下がる。数値の多くは自社計測で、Brier・ECEなどの較正指標は限定的",
+  "ja_note": "言語の記載なし。Qwen系ベースで多言語の素地はあるが、日本語での判断精度は未評価",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（ベースのQwen3.8-27B・Qwen3.5系もApache-2.0）",
+  "hf": "https://huggingface.co/vllm-sr/d3",
+  "tools": [
+   "vLLM（main/ナイトリー）",
+   "vLLM Semantic Router",
+   "Transformers（AutoModel）",
+   "FP8・AWQ・GPTQ量子化版"
+  ],
+  "summary_ja": "vLLMの開発陣営が公開した、画像や動画まで見て判断できるオープンな判断モデル群です。スマホ級の小型版から大型版まで6サイズ以上あり、公開ボードで首位を取っています。",
+  "best_for_ja": "画像・動画を含む判定や、vLLMでLLMと同じ基盤に判断レイヤーを載せたい場合。エッジ機器ならd3-edge/d3-lite",
+  "supersedes": [
+   "Decision 2.0（Vega 27Bなど）"
+  ],
+  "sources": [
+   "https://huggingface.co/vllm-sr/d3",
+   "https://huggingface.co/vllm-sr/d3-turbo",
+   "https://huggingface.co/vllm-sr/d3-flash",
+   "https://huggingface.co/vllm-sr",
+   "https://www.orcarouter.ai/blog/decision-3-0-open-multimodal-decision-models"
+  ],
+  "confidence": "medium",
+  "rank": 7,
+  "pick": "オープンで最上位",
+  "pick_reason": "Decision Index 0.3.2 で1位"
+ },
+ {
+  "id": "cloudflare-clef",
+  "name": "Clef／Clef-flash",
+  "org": "Cloudflare",
+  "country": "US",
+  "release": "2026-10-01",
+  "access": "open-weight",
+  "params_b": 27,
+  "arch": "Qwen3.8-27B（視覚エンコーダ込み）を基にした判断モデル。全質問の全選択肢の確率を1回のフォワードパスで返す。小型のClef-flashは約9B（Qwen3.5-9B系とされる）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 209.3,
+   "inputs": "テキスト・JSON・画像・動画（テキストのみとマルチモーダルを同じバッチに混在可）",
+   "outputs": "noul（真偽）／choice（名前付き選択肢）／score（順序つき選択肢）の各選択肢の確率",
+   "languages": "記載なし",
+   "other": "遅延はClefの中央値（p95 238.6ms、Decision Index社内計測）。Clef-flashは中央値38.8ms（p95 122.4ms）。Cloudflare Workers AIでホスト。報道では1リクエスト最大64質問、Workers AI価格はClef $0.24/1M・Clef-flash $0.09/1M入力（公式未確認）。リクエストデータを読まない・保存しない・学習に使わない方針。RL微調整サービスも提供（当初は担当エンジニア伴走型）"
+  },
+  "features": {
+   "画像入力": true,
+   "動画入力": true,
+   "確率・信頼度を返す": true,
+   "セルフホスト可": true,
+   "ホストAPIあり（Workers AI）": true,
+   "RL微調整サービス": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 54,
+  "rec_vram_gb": 80,
+  "vram_note": "公式にVRAMの記載なし。27BをBF16で載せると重みだけで約54GB（計算値）、公式テストは単一H200。Clef-flash（約9B）ならBF16で約19GB（計算値）",
+  "price_note": null,
+  "speed_note": "Clef中央値209ms、Clef-flash中央値38.8ms（Cloudflare計測、同条件のJevは524ms）",
+  "bench": [
+   {
+    "metric": "BFCL（Decision Index内）",
+    "value": 98.5,
+    "note": "Clef。Clef-flashは98.8（モデルカード）",
+    "source": "https://huggingface.co/Cloudflare/clef"
+   },
+   {
+    "metric": "BANKING77 macro-F1（Decision Index内）",
+    "value": 94.2,
+    "note": "Clef。Clef-flashは90.9",
+    "source": "https://huggingface.co/Cloudflare/clef"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.1（総合）",
+    "value": 53.08,
+    "note": "Clef、19位。公開問題61.71に対し新ドメイン41.88と大きく低下",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   }
+  ],
+  "quality_note": "ツール呼び出しや意図分類ではJevを上回るほど強い一方、GPQA・MMLU-Pro・BBHなど知識・推論系では大きく劣り、新しい分野への汎化が弱い（公開問題61.71→新ドメイン41.88）。自前運用とWorkers AIのホストを選べる",
+  "ja_note": "言語の記載なし。日本語での判断精度は未評価",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みはApache-2.0（Cloudflare/clef、Cloudflare/clef-flash）",
+  "hf": "https://huggingface.co/Cloudflare/clef",
+  "tools": [
+   "Transformers",
+   "Cloudflare Workers AI"
+  ],
+  "summary_ja": "Cloudflareが公開した判断モデルで、ツールの選択や意図の分類が得意です。自社のサーバーでもCloudflareのクラウドでも動かせます。",
+  "best_for_ja": "エージェントのツール選択・意図判定・人の確認が要るかの判断。小さく速いClef-flashは高頻度の振り分け向け",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Cloudflare/clef",
+   "https://letsdatascience.com/news/cloudflare-releases-open-weight-clef-decision-models-c52886d6",
+   "https://flaviocopes.com/clef/",
+   "https://www.developersdigest.tech/blog/cloudflare-clef-decision-models-2026",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+  ],
+  "confidence": "medium",
+  "rank": 8
+ },
+ {
+  "id": "h2o-lightning-4b",
+  "name": "H2O-Lightning-4B（v1.3.1）",
+  "org": "H2O.ai",
+  "country": "US",
+  "release": "2026-10",
+  "access": "open-weight",
+  "params_b": 4,
+  "arch": "Qwen3.5-4Bを3段階で微調整した判断モデル。1判断＝1フォワード・出力1トークンで、コストは入力トークンだけで決まる（カード上の表記は4B〜5Bで揺れあり）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 30,
+   "inputs": "テキスト（最大40,960トークン）、画像は1リクエスト最大4枚（各約1MPに縮小）",
+   "outputs": "Choice／Yes-No（noul）／Score（順序尺度の確率分布）。画像用のBox（バウンディングボックス）は既定でオフ",
+   "languages": "主に英語で評価（学習データの99%超が英語）",
+   "other": "遅延はH100 80GB（29.8ms）とRTX PRO 4500（30.2ms）での直列計測の中央値（JevBench公開231問）。L40Sの2-way読み取りで38ms。推定コスト$0.021/1,000判断（H2O発表）。Nemotron 3 Nano 4Bベースの姉妹版（h2o-lightning-4b-nemotron-nano、テキストのみ）あり"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "無改造のvLLMで動作": true,
+   "GGUF（llama.cpp）・MLX対応": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 9.3,
+  "rec_vram_gb": 32,
+  "vram_note": "重みは9.3GB（公式）。公式計測は32GBのRTX PRO 4500と48GBのL40S（--gpu-memory-utilization 0.90）。GGUF量子化ならさらに小さくできる",
+  "price_note": null,
+  "speed_note": "中央値約30ms/判断（H100・RTX PRO 4500、自社計測）。JevBenchの補正後の値では209ms扱い",
+  "bench": [
+   {
+    "metric": "JevBench composite",
+    "value": 72.5,
+    "note": "v1.1。2026-10-07時点でオープンウェイト104システム中1位（同ボードのJevは71.5）。較正90・速度92.6・知能60・コスト60。H2O発表（ベンダー報告）",
+    "source": "https://www.financialcontent.com/article/bizwire-2026-10-12-h2o-lightning-4b-ranks-first-on-jevbench-open-weights-leaderboard"
+   },
+   {
+    "metric": "JevBench公開テキスト問題 正答率(%)",
+    "value": 87.9,
+    "note": "v1.3.1、2-way（203/231）。1-wayは85.7%",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
+   },
+   {
+    "metric": "Decision Index 0.3（テキスト、2-way）",
+    "value": 57.86,
+    "note": "v1.3.1。画像は68.22",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
+   }
+  ],
+  "quality_note": "4Bと小型ながら較正と速度に優れ、JevBenchのオープン部門で首位。ただしJevBench総合は速度・コストを含むため小型モデルに有利で、知識・推論が要る判断では大型モデルに劣る",
+  "ja_note": "学習データの99%超が英語で、日本語の記載・評価なし。日本語で使うなら自社データで要検証",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。オンプレ・エアギャップ環境でも利用可",
+  "hf": "https://huggingface.co/h2oai/h2o-lightning-4b",
+  "tools": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp（GGUF）",
+   "MLX",
+   "Transformers"
+  ],
+  "summary_ja": "H2O.aiが公開した4Bの小さな判断モデルで、1回の判断が約0.03秒と非常に速いです。普通のGPU1枚で動き、確信度の正確さにも定評があります。",
+  "best_for_ja": "英語中心の高頻度な振り分け・要否判定を、自社GPU1枚で安く速く回したい場合",
+  "supersedes": [
+   "H2O-Lightning-4B v1.1",
+   "H2O-Lightning-4B v1.2.3"
+  ],
+  "sources": [
+   "https://huggingface.co/h2oai/h2o-lightning-4b",
+   "https://www.financialcontent.com/article/bizwire-2026-10-12-h2o-lightning-4b-ranks-first-on-jevbench-open-weights-leaderboard",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+  ],
+  "confidence": "medium",
+  "rank": 9,
+  "pick": "4Bで軽い",
+  "pick_reason": "JevBench オープン部門1位"
+ },
+ {
+  "id": "liquid-d1-3b",
+  "name": "d1-3B（＋d1-omni-600M）",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-07",
+  "access": "open-weight",
+  "params_b": 3.12,
+  "arch": "LFM2.5-VL-3B（Liquidの非Transformer系ハイブリッド）を微調整した判断モデル。視覚エンコーダはSigLIP2 NaFlex 400M。姉妹のd1-omni-600M（587M）はテキスト・画像・音声に対応",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 8,
+   "inputs": "テキスト、任意のJSON、画像、またはその組み合わせ（コンテキスト32,768トークン）",
+   "outputs": "noul＝P(yes)／choice＝選択・confidence・確率／score＝2〜10段階の期待レベル・confidence・確率",
+   "languages": "モデルカードに「16 languages」のタグ（一覧の記載なし）",
+   "other": "遅延は1質問・ウォーム・単発リクエストでRTX 4090の値（compileなしで16ms）。AMD MI325X 9ms、Apple M5 Pro 30ms、Jetson AGX Thor 16ms、Jetson Orin Nano 50ms。llama.cpp・Ollama・LM Studio向けなど21の量子化ビルドあり"
+  },
+  "features": {
+   "画像入力": true,
+   "音声入力（d1-omni-600M）": true,
+   "確率・信頼度を返す": true,
+   "エッジ機器（Jetson等）で動作": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": 24,
+  "vram_note": "公式にVRAMの記載なし。BF16重みは約6.2GB（計算値）。8GBのJetson Orin Nanoで50ms動作の公式計測あり、RTX 4090（24GB）で8ms",
+  "price_note": null,
+  "speed_note": "RTX 4090で1質問8ms（公式）。コミュニティ版Decision Indexの計測では中央値16ms",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.2.1",
+    "value": 48.57,
+    "note": "10B未満で首位（Liquid自社報告）。d1-omni-600Mは15.95",
+    "source": "https://huggingface.co/LiquidAI/d1-3B"
+   },
+   {
+    "metric": "PAWS-X",
+    "value": 76.9,
+    "note": "多言語の言い換え判定（日本語を含むデータセット）、Liquid社内評価。XNLIは85.0",
+    "source": "https://huggingface.co/LiquidAI/d1-3B"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.1（総合）",
+    "value": 40.08,
+    "note": "53位（2026-10-10時点、第三者まとめ）",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   }
+  ],
+  "quality_note": "3Bで画像も扱え、組み込み機器でも数十msで動く最速クラス。精度は大型の判断モデルに劣る（DI 0.3.1で40.08）ため、単純な振り分けや前段フィルタ向き",
+  "ja_note": "16言語対応のタグがあり、社内評価に多言語データのXNLI・PAWS-X（PAWS-Xは日本語を含む）が入っている。ただし日本語を名指しした記載はなく、日本語の判断精度は要検証",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "年間売上1,000万ドル未満の組織は商用利用可。それ以上は Liquid AI から別途商用ライセンスが必要。研究・非営利利用は売上制限なし",
+  "hf": "https://huggingface.co/LiquidAI/d1-3B",
+  "tools": [
+   "Transformers（trust_remote_code）",
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "Ollama",
+   "LM Studio",
+   "Docker Model Runner"
+  ],
+  "summary_ja": "Liquid AIの小型判断モデルで、ゲーミングPCや組み込み機器でも1回0.01秒前後で判断できます。画像も見られますが、大企業の商用利用には別契約が要ります。",
+  "best_for_ja": "ロボット・カメラ・PCアプリなど端末側での即時判定や、大型モデルの前段フィルタ",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/LiquidAI/d1-3B",
+   "https://aiweekly.co/alerts/liquid-ai-opens-d1-3b-and-d1-omni-600m-decision-models",
+   "https://www.liquid.ai/lfm-license",
+   "https://benchlm.ai/md/decision-models.md",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+  ],
+  "confidence": "medium",
+  "rank": 10
+ },
+ {
+  "id": "strands-decider-2b",
+  "name": "Strands Decider 2B（v1-2610）",
+  "org": "AWS（Strands Labs）",
+  "country": "US",
+  "release": "2026-10-01",
+  "access": "open-weight",
+  "params_b": 1.9,
+  "arch": "Qwen3.5-2B-BaseのLMヘッド（文章生成部）を約100万パラメータのポインタヘッドに置き換え、rank-16 LoRAで適応。Gemma 4ベースの派生（E2B／E4B／12B／26B-A4B）もあり",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify",
+   "judge"
+  ],
+  "spec": {
+   "latency_ms": 115,
+   "inputs": "テキスト（学習時は4,096トークン窓）",
+   "outputs": "選択肢ごとのスコア・確率（choice／はい・いいえ／score）",
+   "languages": "記載なし",
+   "other": "遅延はRTX 3090（WSL2）でのJevBench 1問あたり中央値（p95 299ms）。M3 Proで153ms。選択肢数に構造上の上限なし。コード・学習レシピ・データ一覧をGitHubで公開。現行の参照チェックポイントはStrandsAgents/strands-decider-2B-qwen3.5-v1-2610（amazon/にもミラー）"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "学習レシピ・データ一覧を公開": true,
+   "選択肢数の上限なし": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 4,
+  "rec_vram_gb": 24,
+  "vram_note": "2B版のVRAMは公式未記載。BF16重みは約3.8GB（計算値）。公式計測はRTX 3090（24GB）とM3 Pro。Gemma 4派生はBF16でE2B約9GB、E4B約15GB、12B約23GB、26B-A4B約51GB（公式）",
+  "price_note": null,
+  "speed_note": "RTX 3090で中央値115ms／判断（AWS公表は100ms未満とも）。Gemma 4派生はH100でE2B 102ms〜26B-A4B 245ms",
+  "bench": [
+   {
+    "metric": "JevBench公開セット 正答率（231問）",
+    "value": 0.779,
+    "note": "v1（180/231）、Brier 0.280、ECE 0.072。3シード平均179.7±3.8。旧v19は0.723",
+    "source": "https://github.com/strands-labs/strands-decider"
+   },
+   {
+    "metric": "Jev Decision Index（Gemma 4 26B-A4B派生）",
+    "value": 48.69,
+    "note": "派生版の値（JevBench 207/231）",
+    "source": "https://github.com/strands-labs/strands-decider"
+   },
+   {
+    "metric": "Jev Decision Index 0.3.1（総合）",
+    "value": 21.75,
+    "note": "84位（旧チェックポイント時点、第三者まとめ）",
+    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   }
+  ],
+  "quality_note": "学習レシピまで全部公開されていて、自分の業務データで作り直しやすいのが最大の利点。2B本体は総合指標では低め（DI 0.3.1で21.75）で、知識の要る判断には不向き。精度が要るならGemma 4派生の大きい版を使う",
+  "ja_note": "言語の記載なし。日本語での判断精度は未評価",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "リポジトリはApache-2.0（重み単体のライセンス表記はカードで要確認）。Gemma 4派生もApache-2.0のGemma 4が基盤",
+  "hf": "https://github.com/strands-labs/strands-decider",
+  "tools": [
+   "Transformers",
+   "PEFT（LoRA）"
+  ],
+  "summary_ja": "AWSが公開した2Bの小さな判断モデルで、家庭用GPUでも0.1秒ほどで選択肢を選べます。作り方まで全部公開されているので、自社用に鍛え直しやすいです。",
+  "best_for_ja": "ローカル環境でのツール選択・ルーティング・引数チェックや、自社データでの再学習のたたき台",
+  "supersedes": [
+   "Strands Decider 2B v19",
+   "Strands Decider 2B v21"
+  ],
+  "sources": [
+   "https://github.com/strands-labs/strands-decider",
+   "https://thenewstack.io/aws-strands-decider-model/",
+   "https://aiweekly.co/fr/alerts/aws-strands-labs-ouvre-strands-decider-2b-72-sur-jevbench-en-106-ms-de-latence",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+  ],
+  "confidence": "medium",
+  "rank": 11
+ },
+ {
+  "id": "fastino-gliner2-5-decide",
+  "name": "GLiNER2.5-Decide（340M）",
+  "org": "Fastino Labs",
+  "country": "US",
+  "release": "2026-09-24",
+  "access": "open-weight",
+  "params_b": 0.34,
+  "arch": "DeBERTa-v3-large系エンコーダ（fastino/gliner2-large-v1ベース）の分類・判断モデル。チャット・推論・自由回答はしない",
+  "tasks": [
+   "classify",
+   "choice",
+   "route"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト",
+   "outputs": "呼び出し時に指定したラベル集合へのスコア（意図・ルーティング・感情・優先度・ポリシー、多ラベル可）",
+   "languages": "記載なし",
+   "other": "ホスト版（Pioneer AI）は入力$0.03/1Mとの掲載あるが、同じ集計サイトに料金プラン制との記載もあり矛盾。別系統の英語版1Bバリアント（GLiNER2.5-Decide-1B）も存在"
+  },
+  "features": {
+   "画像入力": false,
+   "実行時にラベルを自由指定": true,
+   "多ラベル分類": true,
+   "CPUでも動く規模": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式にVRAMの記載なし。340Mのエンコーダなので一般的なGPUやCPUでも載る規模（目安）",
+  "price_note": null,
+  "speed_note": "公式の遅延数値なし（エンコーダ型で判断モデルの中でも軽量）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.3.2（総合）",
+    "value": 9.2,
+    "note": "2026-10-17観測（LLM Reference）。知識・推論を含む総合指標のため小型エンコーダには不利",
+    "source": "https://www.llmreference.com/model/gliner2.5-decide"
+   },
+   {
+    "metric": "Fast Decisions 平均(%)",
+    "value": 60.1,
+    "note": "Fastino社内ベンチ（ベンダー報告）",
+    "source": "https://www.llmreference.com/model/gliner2.5-decide"
+   }
+  ],
+  "quality_note": "非常に小さく、固定ラベルの分類や振り分けを大量にさばく用途に向く。知識や推論が要る汎用判断は苦手で、総合指標は低い。Red Hatの検証でも、英語のガードレール用途では約200Mの専用分類器が判断モデルに並ぶか上回ったと報告されており、この種の小型分類器は依然有力",
+  "ja_note": "言語の記載なし。日本語で使うなら要検証",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（商用可）",
+  "hf": "https://huggingface.co/fastino/GLiNER2.5-Decide",
+  "tools": [
+   "Hugging Face（重み）",
+   "Pioneer AI（ホスト版）"
+  ],
+  "summary_ja": "Fastinoが公開した3.4億パラメータのとても小さな分類モデルです。ラベルをその場で指定するだけで、問い合わせの種類や優先度を大量に素早く仕分けられます。",
+  "best_for_ja": "ラベルが決まった問い合わせ分類・意図判定・ポリシー判定を、CPUや小さなGPUで大量に処理したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://www.llmreference.com/model/gliner2.5-decide",
+   "https://huggingface.co/fastino/GLiNER2.5-Decide",
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+  ],
+  "confidence": "low",
+  "rank": 12
+ },
+ {
+  "id": "vllm-sr-vela-2",
+  "name": "Vela 2.0（0.3B／0.8B／4B／9B）",
+  "org": "KR Labs × vLLM Semantic Router",
+  "country": "?",
+  "release": "2026-10",
+  "access": "open-weight",
+  "params_b": 4.2,
+  "arch": "Decision-2.0-Nox-4B（Qwen3.5-4B系）から派生した32層ハイブリッド（Gated DeltaNet＋gated GQA）のルーティング・安全判定モデル。文章は生成しない（params_bは4B版）",
+  "tasks": [
+   "route",
+   "guard",
+   "classify",
+   "choice",
+   "predicate",
+   "score"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト最大16,384トークン（request・source・answerなどのフィールド＋質問リスト）",
+   "outputs": "Choice／Yes-No／Score／Span（根拠箇所の抜き出し）／Set",
+   "languages": "17言語（多言語タグ、日本語の明記なし）",
+   "other": "選択肢・ラベル・ルーブリックはリクエスト時に定義。安全判定・プロンプト攻撃検出・個人情報（PII）検出・根拠スパン抽出をまとめて扱える。0.3B〜9Bの4サイズ"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "根拠スパン抽出": true,
+   "安全・PII・プロンプト攻撃検出": true,
+   "多言語（17言語）": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 17,
+  "rec_vram_gb": 24,
+  "vram_note": "4B版はFP32でパラメータだけ約17GB（実行時の確保分は別、公式）。GPU上はbf16 autocastで動作、FP16は非対応。0.3B/0.8B版はさらに小さい",
+  "price_note": null,
+  "speed_note": "公式の遅延数値なし",
+  "bench": [
+   {
+    "metric": "安全判定 14公開セット平均AUC",
+    "value": 0.921,
+    "note": "学習済みタスク群での値（ゼロショットではない）、モデルカード",
+    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+   },
+   {
+    "metric": "未知のプロンプト攻撃系統 AUC",
+    "value": 0.985,
+    "note": "モデルカード",
+    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+   },
+   {
+    "metric": "PII検出 F1（短文）",
+    "value": 0.985,
+    "note": "モデルカード",
+    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+   },
+   {
+    "metric": "Jev Decision Index 0.2.1",
+    "value": 31.91,
+    "note": "較正あり（既定は31.63）",
+    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+   }
+  ],
+  "quality_note": "汎用の判断精度（DI）は低いが、LLMへのリクエスト振り分けと安全ガード（攻撃検出・PII・根拠確認）を1モデルでこなせる実務寄りの設計。vLLM Semantic Routerと組み合わせる前提",
+  "ja_note": "17言語対応・多言語タグがあるが、日本語の明記はない。日本語の安全判定・ルーティング精度は要検証",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0",
+  "hf": "https://huggingface.co/vllm-sr/Vela-2.0-4B",
+  "tools": [
+   "Transformers（trust_remote_code、>=5.17）",
+   "vLLM Semantic Router",
+   "flash-linear-attention（任意）"
+  ],
+  "summary_ja": "vLLM陣営のルーティング用モデルで、「この依頼をどのAIに回すか」と「危険な依頼でないか」を同時に判定します。根拠になった文の箇所も抜き出せます。",
+  "best_for_ja": "複数のLLMを使い分けるゲートウェイでの振り分けと、入力・出力の安全チェック",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/vllm-sr/Vela-2.0-4B",
+   "https://huggingface.co/vllm-sr"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "gpt-oss-safeguard",
+  "name": "gpt-oss-safeguard（20B／120B）",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2025-10-29",
+  "access": "open-weight",
+  "params_b": 21,
+  "arch": "gpt-oss（MoE、20B版は総21B・稼働3.6B）を基にした安全判定用の推論モデル。判断専用モデルではなく、推論過程を文章で出してからラベルを出す生成型",
+  "tasks": [
+   "guard",
+   "classify",
+   "judge"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト（自分で書いた安全ポリシー＋判定対象。harmony形式が必須）",
+   "outputs": "推論過程（読める）＋ポリシーに基づく分類結果（生成テキスト）",
+   "languages": "記載なし",
+   "other": "「ポリシー持ち込み型」で、ポリシー文を差し替えるだけで判定基準を変えられる。用途はLLM入出力のフィルタ、オンラインのコンテンツラベリング、オフラインのTrust & Safetyラベリング。2026年10月時点でもHF上のOpenAIの最新の判定系オープンモデル（20B版は2026-01更新）"
+  },
+  "features": {
+   "カスタムポリシー指定": true,
+   "推論過程を確認できる": true,
+   "確率・信頼度を返す": false,
+   "画像入力": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": 24,
+  "vram_note": "20B版は16GB VRAMのGPUに載る（公式）。120B版はさらに大型（gpt-oss-120bと同構成なら80GB級GPU1枚）",
+  "price_note": null,
+  "speed_note": "推論文を生成してから答えるため、判断専用モデル（数十〜数百ms）より大幅に遅く、出力トークン分のコストもかかる",
+  "bench": [],
+  "quality_note": "判断専用モデルではないが、判定基準を文章でそのまま渡せて理由も読める点で、ポリシーが頻繁に変わる安全判定に強い。速度・コストは判断モデルに劣るため、高頻度処理では判断モデルや小型分類器を前段に置き、迷った件だけ回す使い方が向く",
+  "ja_note": "対応言語の記載なし。日本語のポリシー・コンテンツでの判定精度は要検証",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（gpt-ossの利用ポリシーにも従う）",
+  "hf": "https://huggingface.co/openai/gpt-oss-safeguard-20b",
+  "tools": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "Docker Model Runner"
+  ],
+  "summary_ja": "OpenAIが公開した安全判定用のモデルで、自分で書いたルールに照らして「このコンテンツは違反か」を理由つきで判定します。判断専用モデルより遅い代わりに、ルールの変更に強いです。",
+  "best_for_ja": "独自の利用規約やモデレーション基準で、理由を残しながら違反判定したい場合（判断モデルの後段の精査役）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/openai/gpt-oss-safeguard-20b",
+   "https://huggingface.co/openai"
+  ],
+  "confidence": "high",
+  "rank": 14
+ }
+]

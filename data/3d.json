@@ -1,0 +1,1340 @@
+[
+ {
+  "id": "trellis-2-4b",
+  "access": "open-weight",
+  "name": "TRELLIS.2-4B",
+  "org": "Microsoft",
+  "country": "US",
+  "release": "2025-12-16",
+  "params_b": 4,
+  "arch": "O-Voxel（フィールドフリーの疎ボクセル構造化潜在）+ Flow Matching DiT（各段約1.3B、構造→形状→材質の3段）",
+  "tasks": [
+   "i23d",
+   "texture"
+  ],
+  "spec": {
+   "output": "GLB メッシュ + PBR（Base Color / Roughness / Metallic / Opacity）",
+   "other": "ボクセル解像度 512³ / 1024³（既定）/ 1536³。テクスチャ最大4096²、サンプルではdecimation目標100万面。開いた面・非多様体・内部構造も表現可。既存メッシュにPBRテクスチャだけを付けるパイプライン（example_texturing.py / app_texturing.py）も同梱。GLBは既定でOPAQUE出力のため透過は手動設定が必要"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": false,
+   "綺麗なトポロジー": false,
+   "テキスト入力": false,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": null,
+  "vram_note": "公式README: 「24GB以上のNVIDIA GPUが必要」。ComfyUIネイティブ版はint8重み（trellis_2_int8_convrot）を配布し「コンシューマ機で動く」とするが必要VRAMの公式数値はない。6〜8GBで動くとする第三者ブログは記載が自己矛盾しており未検証。",
+  "speed_note": "H100で 512³ 約3秒、1024³ 約17秒、1536³ 約60秒（形状＋材質の合計、公式）。",
+  "bench": [
+   {
+    "metric": "ユーザースタディ選好率（画像→3D）",
+    "value": 66.5,
+    "note": "%。約40人×100プロンプト。比較: Hunyuan3D 2.1 13.3% / Step1X-3D 11.8% / TRELLIS 6.4%（著者論文 Table 2）",
+    "source": "https://arxiv.org/abs/2512.14692"
+   },
+   {
+    "metric": "ULIP-2",
+    "value": 0.477,
+    "note": "Hunyuan3D 2.1 0.474 / TRELLIS 0.470 / Step1X-3D 0.464（著者論文 Table 2）",
+    "source": "https://arxiv.org/abs/2512.14692"
+   },
+   {
+    "metric": "3D Arena ELO（render投票）",
+    "value": 1127,
+    "note": "1,429票、2026-10-20取得。オープン勢ではHunyuan3D-2.1(1273)やSF3D(1176)より下位",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1144,
+    "note": "744票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   }
+  ],
+  "quality_note": "著者論文では既存オープン勢に大差（選好66.5%）だが、公開投票の3D Arenaでは中位以下（render 1127 / topology 1144）で評価が割れている（原因は不明）。ComfyUI公式ブログも、入力画像への忠実度ではPixal3Dが概ね上回り、クローズドのHunyuan 3D・Tripo・Rodinにはまだ及ばないとしている。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "重み・コードともMIT。オリジナル実装が依存するnvdiffrast/nvdiffrecはNVIDIAの別ライセンス（非商用）だが、ComfyUIネイティブ版はこれらの依存を除去済みで商用利用可と説明している。",
+  "hf": "https://huggingface.co/microsoft/TRELLIS.2-4B",
+  "tools": [
+   "ComfyUI（2026-08からコア標準搭載）",
+   "Gradio",
+   "GGUF量子化版（コミュニティ）"
+  ],
+  "price_note": null,
+  "summary_ja": "Microsoftの40億パラメータの画像→3Dモデルで、PBR材質付きのGLBを直接出力します。MITライセンスで商用利用しやすいオープン系の定番です。",
+  "best_for_ja": "24GB級GPUで、商用利用できるPBR付き3Dアセットを作りたい場合",
+  "supersedes": [
+   "TRELLIS-image-large"
+  ],
+  "sources": [
+   "https://github.com/microsoft/TRELLIS.2",
+   "https://huggingface.co/microsoft/TRELLIS.2-4B",
+   "https://arxiv.org/abs/2512.14692",
+   "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native",
+   "https://docs.comfy.org/tutorials/3d/trellis2",
+   "https://huggingface.co/spaces/3d-arena/3d-arena"
+  ],
+  "confidence": "high",
+  "rank": 1,
+  "pick": "形状とテクスチャを一括",
+  "pick_reason": "MIT。24GB",
+  "hl": {
+   "label": "3D Arena",
+   "value": 1127
+  }
+ },
+ {
+  "id": "pixal3d",
+  "access": "open-weight",
+  "name": "Pixal3D",
+  "org": "Tencent ARC Lab / 清華大学",
+  "country": "CN",
+  "release": "2026-05",
+  "params_b": null,
+  "arch": "ピクセル整列DiT（画像特徴を逆投影して3D特徴ボリューム化）。mainブランチはTRELLIS.2のバックボーン・VAE＋DINOv3条件付け、paperブランチはDirect3D-S2ベース",
+  "tasks": [
+   "i23d",
+   "texture"
+  ],
+  "spec": {
+   "output": "GLB メッシュ + PBR テクスチャ",
+   "other": "既定解像度1536（低VRAMモードでは1024、--resolutionで変更可）。2026-09に複数視点推論（inference_mv.py、カメラポーズ付きの複数画像入力）を追加。学習コード・データ準備ツールも公開"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": false,
+   "低VRAMモード": true,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": null,
+  "vram_note": "公式の数値なし。全モデル一括ロードで約18GB、低VRAMモード（段階ごとに読み込み・退避、マージ済みPR #12）でピーク約10〜12GB。既定設定では18〜36GBとのコミュニティ報告があり、24GBのRTX 4090/3090で既定設定がOOMになった報告もある（Issue #7, #25）。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "Toys4K単一視点 IoU",
+    "value": 93.57,
+    "note": "Hunyuan3D-2.1 83.33 / TRELLIS 79.48 / Direct3D-S2 74.23 / TripoSG 73.54（著者論文 Table 1、paper版の値）",
+    "source": "https://arxiv.org/abs/2605.10922"
+   },
+   {
+    "metric": "ユーザースタディ Fidelity（1〜5）",
+    "value": 4.91,
+    "note": "30人。Direct3D-S2 3.21 / Hunyuan3D-2.1 2.77 / TripoSG 2.25 / TRELLIS 1.86（著者論文 Table 2）",
+    "source": "https://arxiv.org/abs/2605.10922"
+   },
+   {
+    "metric": "3D Arena ELO（render投票）",
+    "value": 1266,
+    "note": "334票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1222,
+    "note": "257票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   }
+  ],
+  "quality_note": "入力画像への忠実度が最大の強みで、論文ではTRELLIS・Hunyuan3D-2.1・TripoSG・Direct3D-S2を大きく上回る（論文値はDirect3D-S2ベースのpaper版）。3D ArenaでもHunyuan3D-2.1に近い水準。ComfyUI公式もTRELLIS.2より入力一致度で概ね上と評価。一方、薄い二重面（thin shell）や小穴が出るとの報告がある（Issue #18）。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・重みともMIT。TRELLIS.2、Direct3D-S2、DINOv3、MoGeなどの依存物はそれぞれのライセンスに従う（NOTICE参照）。",
+  "hf": "https://huggingface.co/TencentARC/Pixal3D",
+  "tools": [
+   "ComfyUI（2026-08からコア標準搭載）",
+   "Gradio",
+   "Pixal3D-ComfyUI（コミュニティ）",
+   "diffusers系コミュニティ移植"
+  ],
+  "price_note": null,
+  "summary_ja": "Tencent ARCと清華大学による、入力画像のピクセルを3Dに直接対応付けるSIGGRAPH 2026の画像→3Dモデルです。TRELLIS.2ベースでPBR付きGLBを出し、入力画像への忠実さに優れます。",
+  "best_for_ja": "写真やイラストに忠実な形状・テクスチャで3D化したい場合（複数視点の写真がある場合も可）",
+  "supersedes": [
+   "Pixal3D paper版（Direct3D-S2ベース）"
+  ],
+  "sources": [
+   "https://github.com/TencentARC/Pixal3D",
+   "https://huggingface.co/TencentARC/Pixal3D",
+   "https://arxiv.org/abs/2605.10922",
+   "https://github.com/TencentARC/Pixal3D/issues/7",
+   "https://github.com/TencentARC/Pixal3D/pull/12",
+   "https://cgworld.jp/flashnews/01-202606-Pixal3D.html",
+   "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native",
+   "https://huggingface.co/spaces/3d-arena/3d-arena"
+  ],
+  "confidence": "medium",
+  "rank": 2,
+  "hl": {
+   "label": "3D Arena",
+   "value": 1266
+  }
+ },
+ {
+  "id": "hunyuan3d-2-1-shape",
+  "access": "open-weight",
+  "name": "Hunyuan3D-Shape-v2-1（Hunyuan3D 2.1 形状）",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2025-06-13",
+  "params_b": 3.3,
+  "arch": "ShapeVAE（ベクトル集合潜在）+ Flow型3D-DiT",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "メッシュ（形状のみ、trimesh経由でGLB/OBJ等へ出力）",
+   "other": "テクスチャは別モデルHunyuan3D-Paint-v2-1で付与。学習コードも公開。Python 3.10 / PyTorch 2.5.1で検証、macOS/Windows/Linux対応"
+  },
+  "features": {
+   "PBRテクスチャ": false,
+   "テクスチャ生成": false,
+   "複数視点入力": false,
+   "綺麗なトポロジー": false,
+   "低VRAMモード": true,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": 10,
+  "rec_vram_gb": null,
+  "vram_note": "公式: 形状生成のみ約10GB（テクスチャ約21GB、両方で約29GB）。gradio_appに--low_vram_modeあり。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "ULIP-I",
+    "value": 0.1395,
+    "note": "TRELLIS 0.1267 / TripoSG 0.1225 / Step1X-3D 0.1183 / Direct3D-S2 0.1134（公式README、評価条件の詳細記載なし）",
+    "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+   },
+   {
+    "metric": "Uni3D-I",
+    "value": 0.3213,
+    "note": "Step1X-3D 0.3195 / TripoSG 0.3129 / TRELLIS 0.3116（公式README）",
+    "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+   },
+   {
+    "metric": "3D Arena ELO（render投票）",
+    "value": 1273,
+    "note": "2,211票、2026-10-20取得。Paint併用のテクスチャ付き出力での評価",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1313,
+    "note": "824票、2026-10-20取得。オープン勢でHunyuan3D-2(1358)・TRELLIS(1330)に次ぐ",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   }
+  ],
+  "quality_note": "公開投票の3D Arenaでオープン勢の上位常連（render 1273 / topology 1313）。ただし同じArenaでは旧Hunyuan3D-2.0（1284 / 1358）の方が高い。TRELLIS.2論文のユーザースタディでは選好13.3%でTRELLIS.2に大差で劣後、TripoSplat論文のEloではTRELLIS.2とほぼ同等（996対992）。",
+  "ja_note": null,
+  "license": "Tencent Hunyuan 3D 2.1 Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では利用不可（地域除外）。リリース日時点でMAU 100万超のサービスを持つ事業者はTencentの個別許諾が必要。",
+  "hf": "https://huggingface.co/tencent/Hunyuan3D-2.1",
+  "tools": [
+   "Gradio",
+   "APIサーバー同梱",
+   "ComfyUI（コミュニティノード・テンプレート）",
+   "Unity連携（コミュニティ）",
+   "diffusers系コミュニティ移植"
+  ],
+  "price_note": null,
+  "summary_ja": "Tencentのオープン重み3D生成の最新版の形状モデル（3.3B）で、画像からメッシュ形状を作ります。公開投票でも上位の安定した品質です。",
+  "best_for_ja": "10GB級GPUで高品質な形状を作り、テクスチャは別モデルで付けたい場合（EU・英国・韓国以外）",
+  "supersedes": [
+   "Hunyuan3D-2（DiT-v2-0）",
+   "Hunyuan3D-2mv",
+   "Hunyuan3D-2mini",
+   "Hunyuan3D-1"
+  ],
+  "sources": [
+   "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1",
+   "https://huggingface.co/tencent/Hunyuan3D-2.1",
+   "https://arxiv.org/abs/2506.15442",
+   "https://arxiv.org/abs/2512.14692",
+   "https://huggingface.co/spaces/3d-arena/3d-arena"
+  ],
+  "confidence": "high",
+  "rank": 3,
+  "pick": "オープンで最高品質",
+  "pick_reason": "3D Arena 上位。EU・英・韓は利用不可",
+  "hl": {
+   "label": "3D Arena",
+   "value": 1273
+  }
+ },
+ {
+  "id": "hunyuan3d-2-1-paint",
+  "access": "open-weight",
+  "name": "Hunyuan3D-Paint-v2-1（Hunyuan3D 2.1 テクスチャ）",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2025-06-13",
+  "params_b": 2,
+  "arch": "マルチビューPBR拡散モデル（2.0のRGBテクスチャモデルを置換）+ テクスチャベイク",
+  "tasks": [
+   "texture"
+  ],
+  "spec": {
+   "output": "入力メッシュへのPBRテクスチャ（アルベド・メタリック・ラフネス）",
+   "other": "Hunyuan3D-Shapeの出力や手持ちメッシュ＋参照画像からテクスチャ生成。金属反射やサブサーフェス散乱など物理ベースの材質表現をうたう"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": false,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": 21,
+  "rec_vram_gb": 29,
+  "vram_note": "公式: テクスチャ生成約21GB、形状モデルと同時に動かす場合は約29GB。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "CLIP-FiD（低いほど良い）",
+    "value": 24.78,
+    "note": "Hunyuan3D-2.0 26.44 / TexGen 28.24 / SyncMVD-IPA 28.39（公式README）",
+    "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+   },
+   {
+    "metric": "CLIP-I",
+    "value": 0.9207,
+    "note": "Hunyuan3D-2.0 0.8893 / TexGen 0.8818（公式README）",
+    "source": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+   }
+  ],
+  "quality_note": "公式比較で旧2.0・TexGen・SyncMVDを全指標で上回る。オープンのテクスチャ専用モデルとしては定番だが、形状モデルより重く単体で21GB級が必要。",
+  "ja_note": null,
+  "license": "Tencent Hunyuan 3D 2.1 Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では利用不可。MAU 100万超の事業者は個別許諾が必要。",
+  "hf": "https://huggingface.co/tencent/Hunyuan3D-2.1",
+  "tools": [
+   "Gradio",
+   "ComfyUI（コミュニティノード）",
+   "diffusers系コミュニティ移植"
+  ],
+  "price_note": null,
+  "summary_ja": "Hunyuan3D 2.1のテクスチャ担当モデル（2B）で、メッシュにPBR材質のテクスチャを描きます。他モデルで作った形状の色付けにも使えます。",
+  "best_for_ja": "既存メッシュや他モデルの形状にPBRテクスチャを付けたい場合（24GB級GPU）",
+  "supersedes": [
+   "Hunyuan3D-Paint-v2-0"
+  ],
+  "sources": [
+   "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1",
+   "https://huggingface.co/tencent/Hunyuan3D-2.1",
+   "https://arxiv.org/abs/2506.15442"
+  ],
+  "confidence": "high",
+  "rank": 4
+ },
+ {
+  "id": "trellis-text-xlarge",
+  "access": "open-weight",
+  "name": "TRELLIS-text-xlarge",
+  "org": "Microsoft",
+  "country": "US",
+  "release": "2025-03-25",
+  "params_b": 2.0,
+  "arch": "構造化潜在（SLAT）+ Rectified Flow Transformer（テキスト条件）",
+  "tasks": [
+   "t23d"
+  ],
+  "spec": {
+   "output": "3D Gaussian（PLY）/ Radiance Field / テクスチャ付きGLBメッシュ（ベイク、非PBR）",
+   "other": "GLBテクスチャ既定1024²。同時公開の小型版: text-base 342M / text-large 1.1B。局所編集にも対応"
+  },
+  "features": {
+   "テキスト入力": true,
+   "テクスチャ生成": true,
+   "PBRテクスチャ": false,
+   "Gaussian Splat出力": true,
+   "メッシュ出力": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 16,
+  "rec_vram_gb": null,
+  "vram_note": "TRELLIS公式README: 16GB以上のNVIDIA GPUが必要（A100・A6000で検証）。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [],
+  "quality_note": "ネイティブにテキストから3Dを作れる数少ないオープン重み。ただし公式README自身が、テキスト条件モデルはデータ制約で創造性・細部が劣るため、テキスト→画像→画像→3D（現在ならTRELLIS.2等）の2段構成を推奨と明記している。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。依存ライブラリ（nvdiffrast等）は各ライセンスに従う。",
+  "hf": "https://huggingface.co/microsoft/TRELLIS-text-xlarge",
+  "tools": [
+   "Gradio",
+   "ComfyUI（コミュニティノード）"
+  ],
+  "price_note": null,
+  "summary_ja": "Microsoft TRELLISのテキスト→3Dモデル（2.0B）で、文章からGaussianやテクスチャ付きメッシュを直接生成します。品質重視なら画像を経由する2段構成が公式推奨です。",
+  "best_for_ja": "画像を用意せず、テキストだけで手早く3D素材を作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/microsoft/TRELLIS",
+   "https://huggingface.co/microsoft/TRELLIS-text-xlarge"
+  ],
+  "confidence": "high",
+  "rank": 5
+ },
+ {
+  "id": "sam-3d-objects",
+  "access": "open-weight",
+  "name": "SAM 3D Objects",
+  "org": "Meta（FAIR）",
+  "country": "US",
+  "release": "2025-11-19",
+  "params_b": null,
+  "arch": "2段の潜在フローモデル（形状・姿勢・レイアウト予測→テクスチャ/詳細化）＋人手フィードバックを用いたデータエンジン",
+  "tasks": [
+   "i23d",
+   "scene"
+  ],
+  "spec": {
+   "output": "Gaussian Splat（PLY）および テクスチャ付きGLBメッシュ",
+   "other": "マスク指定した物体ごとに形状・テクスチャ・姿勢を推定し、複数物体で室内シーンを再構成。SAM 3D Bodyの人体メッシュと同一座標系に揃えるノートブックあり。2026-06にエンコーダ重み、3D Artist Objectsベンチ（SA-3DAO）とリーダーボードを公開"
+  },
+  "features": {
+   "テクスチャ生成": true,
+   "PBRテクスチャ": false,
+   "Gaussian Splat出力": true,
+   "メッシュ出力": true,
+   "シーン生成": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": 32,
+  "rec_vram_gb": null,
+  "vram_note": "公式setup: 32GB以上のVRAMを持つNVIDIA GPUが必要。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "人間選好の勝率比（対既存手法）",
+    "value": 5,
+    "note": "実写の物体・シーンで少なくとも5:1（論文、CVPR 2026）",
+    "source": "https://arxiv.org/abs/2511.16624"
+   },
+   {
+    "metric": "3D Arena ELO（render投票、3DGS出力）",
+    "value": 1268,
+    "note": "1,409票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   }
+  ],
+  "quality_note": "遮蔽や散らかった実写写真に強く、既存の3D生成モデルに対し人間選好で5:1以上（論文）。3D Arena（3DGS出力）でも1268とオープン上位。整った商品画像より実世界の写真向け。",
+  "ja_note": null,
+  "license": "SAM License",
+  "commercial": "yes",
+  "license_note": "商用を含む利用・改変・再配布を許諾。ただし輸出規制の遵守とITAR・軍事・核・兵器等の用途禁止あり。HFの重みは手動承認制（gated）。",
+  "hf": "https://huggingface.co/facebook/sam-3d-objects",
+  "tools": [
+   "Jupyterノートブック",
+   "Metaのオンラインデモ",
+   "diffusers系コミュニティ移植"
+  ],
+  "price_note": null,
+  "summary_ja": "Metaの、写真の中の物体を切り出して形状・テクスチャ・配置ごと3D化するモデルです。散らかった実写写真に強いのが特徴です。",
+  "best_for_ja": "実写写真から物体や部屋のレイアウトを3D化したい場合（32GB級GPU）",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/facebookresearch/sam-3d-objects",
+   "https://huggingface.co/facebook/sam-3d-objects",
+   "https://arxiv.org/abs/2511.16624",
+   "https://huggingface.co/spaces/3d-arena/3d-arena"
+  ],
+  "confidence": "high",
+  "rank": 6,
+  "hl": {
+   "label": "3D Arena",
+   "value": 1268
+  }
+ },
+ {
+  "id": "triposg",
+  "access": "open-weight",
+  "name": "TripoSG",
+  "org": "VAST（Tripo AI）",
+  "country": "CN",
+  "release": "2025-03",
+  "params_b": 1.5,
+  "arch": "Rectified Flow Transformer + SDF VAE（2048潜在トークン）",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "GLB メッシュ（形状のみ）",
+   "other": "--facesで面数上限を指定可。スケッチ＋プロンプトから形を作るTripoSG-scribble（CFG蒸留・512トークン）も公開"
+  },
+  "features": {
+   "PBRテクスチャ": false,
+   "テクスチャ生成": false,
+   "綺麗なトポロジー": false,
+   "低VRAMで動作": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": null,
+  "vram_note": "公式: 8GB以上のCUDA GPU。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1221,
+    "note": "816票、2026-10-20取得。Pixal3D(1222)とほぼ同等、TRELLIS.2(1144)より上",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "Toys4K単一視点 IoU",
+    "value": 73.54,
+    "note": "Pixal3D論文での比較値（Pixal3D 93.57 / Hunyuan3D-2.1 83.33）",
+    "source": "https://arxiv.org/abs/2605.10922"
+   }
+  ],
+  "quality_note": "8GBで動く軽さとMITライセンスが強みで、形状の投票評価は最新勢と遜色ない。テクスチャは無いので別モデル（Hunyuan3D-Paint等）と組み合わせる。PartCrafterのベースにもなっている。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。",
+  "hf": "https://huggingface.co/VAST-AI/TripoSG",
+  "tools": [
+   "Gradio",
+   "diffusers系コミュニティ移植"
+  ],
+  "price_note": null,
+  "summary_ja": "Tripoを開発するVASTの1.5B形状生成モデルで、8GBのGPUで画像からメッシュを作れます。MITライセンスで商用も自由です。",
+  "best_for_ja": "8〜12GB級の一般的なGPUで、商用利用できる形状を作りたい場合",
+  "supersedes": [
+   "TripoSR"
+  ],
+  "sources": [
+   "https://github.com/VAST-AI-Research/TripoSG",
+   "https://huggingface.co/VAST-AI/TripoSG",
+   "https://huggingface.co/spaces/3d-arena/3d-arena",
+   "https://arxiv.org/abs/2605.10922"
+  ],
+  "confidence": "high",
+  "rank": 7,
+  "pick": "8GBで動く・MIT",
+  "pick_reason": "トポロジーの評価も高い",
+  "hl": {
+   "label": "3D Arena",
+   "value": 1221
+  }
+ },
+ {
+  "id": "spar3d",
+  "access": "open-weight",
+  "name": "SPAR3D（Stable Point Aware 3D）",
+  "org": "Stability AI",
+  "country": "GB",
+  "release": "2025-01-08",
+  "params_b": 2,
+  "arch": "点群拡散（点群の生成・編集）+ フィードフォワードのメッシュ再構成（Stable Fast 3D系）",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "UV展開済みテクスチャ付きGLB（物体単位のラフネス・メタリックを推定、ライティング除去）",
+   "other": "中間の点群を外部ツールやGradioで編集して裏側を修正可能。三角形／四角形リメッシュ（Instant Meshes）と目標面数の指定オプションあり"
+  },
+  "features": {
+   "PBRテクスチャ": false,
+   "材質パラメータ推定": true,
+   "テクスチャ生成": true,
+   "綺麗なトポロジー": true,
+   "低VRAMモード": true,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": 7,
+  "rec_vram_gb": 10.5,
+  "vram_note": "公式README: 既定で10.5GB、SPAR3D_LOW_VRAM=1で約7GB（低速化）。別箇所にrun.pyの既定オプションで単一画像約6GBとの記載もある。Apple Silicon（MPS）も実験対応。",
+  "speed_note": "1秒未満でメッシュ生成（公式モデルカード）。",
+  "bench": [
+   {
+    "metric": "3D Arena ELO（render投票）",
+    "value": 1113,
+    "note": "4,928票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1158,
+    "note": "858票、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   }
+  ],
+  "quality_note": "1秒未満の速さと軽さが最大の強み。品質は3D Arenaで中位で、最新の大型拡散系（Hunyuan3D-2.1、Pixal3D等）には及ばない。四角形リメッシュでゲーム向けに整えやすい。",
+  "ja_note": null,
+  "license": "Stability AI Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上100万ドル未満の個人・組織は商用無料。それ以上はStability AIのEnterpriseライセンスが必要。",
+  "hf": "https://huggingface.co/stabilityai/stable-point-aware-3d",
+  "tools": [
+   "ComfyUI（公式カスタムノード）",
+   "Gradio",
+   "Apple Silicon（MPS、実験的）"
+  ],
+  "price_note": null,
+  "summary_ja": "Stability AIの高速な画像→3Dモデルで、1秒未満でテクスチャ付きメッシュを作ります。点群を編集して見えない裏側を直せます。",
+  "best_for_ja": "8GB級GPUやMacで、試作用の3Dを大量に素早く作りたい場合",
+  "supersedes": [
+   "Stable Fast 3D（SF3D）"
+  ],
+  "sources": [
+   "https://github.com/Stability-AI/stable-point-aware-3d",
+   "https://huggingface.co/stabilityai/stable-point-aware-3d",
+   "https://arxiv.org/abs/2501.04689",
+   "https://huggingface.co/spaces/3d-arena/3d-arena"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "hl": {
+   "label": "3D Arena",
+   "value": 1113
+  }
+ },
+ {
+  "id": "triposplat",
+  "access": "open-weight",
+  "name": "TripoSplat",
+  "org": "VAST（Tripo AI）",
+  "country": "CN",
+  "release": "2026-06",
+  "params_b": null,
+  "arch": "Density-Sampled Gaussians（八分木上の学習可能な密度からGaussian中心をサンプリング）+ 潜在拡散（Sobol列に固定したVecSeqトークン）",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "3D Gaussian Splat（.ply / .splat）",
+   "other": "Gaussian数は可変（最大262,144）で品質と描画コストを調整可能。推論コードは2ファイル約2,000行、transformers/diffusers非依存。DINOv3 ViT-H・FLUX.2 VAE・BiRefNetの重みを使用"
+  },
+  "features": {
+   "Gaussian Splat出力": true,
+   "メッシュ出力": false,
+   "PBRテクスチャ": false,
+   "ComfyUI対応": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式に必要VRAMの記載なし。",
+  "speed_note": "生成全体の時間は非公表。デコードはRTX 4090で約0.10秒/物体（論文Table 1、バッチ4）。",
+  "bench": [
+   {
+    "metric": "ユーザースタディElo",
+    "value": 1137,
+    "note": "32人・399対比較・94プロンプト。Hunyuan3D 2.1 996 / TRELLIS.2 992 / TRELLIS 975 / UniLat3D 900（著者論文の自社評価）",
+    "source": "https://arxiv.org/abs/2605.16355"
+   },
+   {
+    "metric": "CLIP-I（Toys4K）",
+    "value": 92.26,
+    "note": "UniLat3D 91.69 / TRELLIS 91.68 / TRELLIS.2 89.83 / Hunyuan3D 2.1 89.09（著者論文 Table 2）",
+    "source": "https://arxiv.org/abs/2605.16355"
+   }
+  ],
+  "quality_note": "画像から直接Gaussian Splatを出すモデルで、著者評価ではTRELLIS.2やHunyuan3D 2.1のメッシュ出力より好まれた（第三者評価はまだない）。ComfyUI公式テンプレートがあり導入が容易。メッシュが必要なゲーム・CAD用途には不向き。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "コード・重みともMIT。",
+  "hf": "https://huggingface.co/VAST-AI/TripoSplat",
+  "tools": [
+   "ComfyUI（公式ワークフローテンプレート）",
+   "Gradio",
+   "SuperSplat / SparkJSで閲覧"
+  ],
+  "price_note": null,
+  "summary_ja": "Tripoを開発するVASTの、1枚の画像から3D Gaussian Splatを生成するモデルです。Gaussian数を調整でき、AR/VRやWeb表示に向きます。",
+  "best_for_ja": "見た目重視の3D表示（Web・AR/VR・プレビュー）をSplatで作りたい場合",
+  "supersedes": [
+   "TriplaneGaussian"
+  ],
+  "sources": [
+   "https://github.com/VAST-AI-Research/TripoSplat",
+   "https://huggingface.co/VAST-AI/TripoSplat",
+   "https://arxiv.org/abs/2605.16355"
+  ],
+  "confidence": "medium",
+  "rank": 9
+ },
+ {
+  "id": "hunyuan3d-part",
+  "access": "open-weight",
+  "name": "Hunyuan3D-Part（P3-SAM + X-Part）",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2025-09-23",
+  "params_b": null,
+  "arch": "P3-SAM（ネイティブ3Dパーツ分割）+ X-Part（パーツBBoxを条件にした補完生成拡散、Hunyuan3D-2.1ベース）",
+  "tasks": [
+   "part"
+  ],
+  "spec": {
+   "output": "パーツ分割（セマンティック特徴・セグメント・BBox）と、隠れた部分まで補完されたパーツ別メッシュ",
+   "other": "入力は既存メッシュ（スキャンやAI生成メッシュを推奨）。公開版はX-Partの軽量版で、フル版はHunyuan3D Studio（Web）のみ"
+  },
+  "features": {
+   "パーツ分割": true,
+   "テクスチャ生成": false,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式に必要VRAMの記載なし。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [],
+  "quality_note": "分割（P3-SAM）とパーツ補完生成（X-Part）を一体で提供する数少ないオープン重み。ただし公開X-Partは軽量版で、最高品質版はTencentのWebサービス限定。",
+  "ja_note": null,
+  "license": "Tencent Hunyuan 3D-Part Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では利用不可（地域除外）。その他の条件はライセンス本文を要確認。",
+  "hf": "https://huggingface.co/tencent/Hunyuan3D-Part",
+  "tools": [
+   "Hugging Faceデモ",
+   "Hunyuan3D Studio（フル版はWeb）"
+  ],
+  "price_note": null,
+  "summary_ja": "Tencentの3Dパーツ分割＋パーツ生成パイプラインで、1つのメッシュを意味のある部品に分け、隠れた部分も補って出力します。",
+  "best_for_ja": "生成・スキャンしたメッシュを編集やアニメ用に部品分けしたい場合（EU・英国・韓国以外）",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/Tencent-Hunyuan/Hunyuan3D-Part",
+   "https://huggingface.co/tencent/Hunyuan3D-Part",
+   "https://arxiv.org/abs/2509.06784",
+   "https://arxiv.org/abs/2509.08643"
+  ],
+  "confidence": "medium",
+  "rank": 10
+ },
+ {
+  "id": "partcrafter",
+  "access": "open-weight",
+  "name": "PartCrafter",
+  "org": "北京大学ほか",
+  "country": "CN",
+  "release": "2025-07-13",
+  "params_b": null,
+  "arch": "TripoSGベースの多パーツ同時生成DiT（パーツ単位の潜在トークン＋局所/全体アテンション）",
+  "tasks": [
+   "i23d",
+   "part",
+   "scene"
+  ],
+  "spec": {
+   "output": "パーツごとに分かれたメッシュ（形状のみ）",
+   "other": "パーツ数を指定（VLMで自動提案も可）。オブジェクト版と、3D-Frontで学習したシーン版を公開。既定はパーツあたり1024トークン（シーンは2048）"
+  },
+  "features": {
+   "パーツ分割": true,
+   "テクスチャ生成": false,
+   "シーン生成": true,
+   "低VRAMで動作": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": null,
+  "vram_note": "公式: 8GB以上のCUDA GPU。パーツ数やトークン数を減らすと省メモリ。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [],
+  "quality_note": "1枚の画像から分解済みの複数パーツ（またはシーン内の複数物体）を一度に生成でき、NeurIPS 2025採択。8GBで動きMIT。テクスチャは無く、パーツ数の指定が必要。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。",
+  "hf": "https://huggingface.co/wgsxm/PartCrafter",
+  "tools": [
+   "Hugging Faceデモ（コミュニティ）",
+   "Windows向けフォーク"
+  ],
+  "price_note": null,
+  "summary_ja": "1枚の画像から、最初から部品に分かれた3Dメッシュを生成するモデルです。8GBのGPUで動き、MITライセンスです。",
+  "best_for_ja": "部品単位で編集・差し替えしたい3Dモデルを軽量環境で作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/wgsxm/PartCrafter",
+   "https://huggingface.co/wgsxm/PartCrafter",
+   "https://arxiv.org/abs/2506.05573"
+  ],
+  "confidence": "medium",
+  "rank": 11
+ },
+ {
+  "id": "skintokens-tokenrig",
+  "access": "open-weight",
+  "name": "SkinTokens / TokenRig",
+  "org": "VAST（Tripo AI）ほか",
+  "country": "CN",
+  "release": "2026-02",
+  "params_b": 0.6,
+  "arch": "FSQ-CVAEで圧縮したスキントークン + Qwen3-0.6Bベースの自己回帰Transformer（骨格とスキンを1系列で生成）+ GRPO強化学習",
+  "tasks": [
+   "rig"
+  ],
+  "spec": {
+   "output": "スケルトン階層＋頂点スキンウェイト付きメッシュ（GLB）",
+   "other": "入力は3Dメッシュ。既存スケルトンの利用、元テクスチャ・スケールの転写オプションあり。params_bは自己回帰本体（Qwen3-0.6Bベース）の値でVAEを含まない"
+  },
+  "features": {
+   "リギング": true,
+   "商用可（制限なし）": true
+  },
+  "min_vram_gb": 14,
+  "rec_vram_gb": null,
+  "vram_note": "公式: 推論に14GB以上のNVIDIA GPUが必要。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "スキニング精度の改善率（対SOTA）",
+    "value": 98,
+    "note": "%。98〜133%改善と公表（下限値を記載）。ボーン予測は17〜22%改善（自社README）",
+    "source": "https://github.com/VAST-AI-Research/SkinTokens"
+   }
+  ],
+  "quality_note": "UniRig（SIGGRAPH 2025）の公式後継。骨とスキンを1系列で生成し、UniRigやPuppeteerで出やすいウェイトのにじみを抑えたと主張（自社比較）。",
+  "ja_note": null,
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。",
+  "hf": "https://huggingface.co/VAST-AI/SkinTokens",
+  "tools": [
+   "Hugging Face Space",
+   "GLB経由でBlender等に取り込み"
+  ],
+  "price_note": null,
+  "summary_ja": "VASTの自動リギングモデルで、3Dメッシュに骨格とスキンウェイトを一括で付けます。UniRigの後継です。",
+  "best_for_ja": "生成したキャラクターや動物のメッシュをすぐアニメーションさせたい場合",
+  "supersedes": [
+   "UniRig"
+  ],
+  "sources": [
+   "https://github.com/VAST-AI-Research/SkinTokens",
+   "https://huggingface.co/VAST-AI/SkinTokens",
+   "https://arxiv.org/abs/2602.04805"
+  ],
+  "confidence": "medium",
+  "rank": 12,
+  "pick": "自動リギング",
+  "pick_reason": "UniRig の後継"
+ },
+ {
+  "id": "anigen",
+  "access": "open-weight",
+  "name": "AniGen",
+  "org": "VAST（Tripo AI）ほか",
+  "country": "CN",
+  "release": "2026-04",
+  "params_b": null,
+  "arch": "S³ Fields（形状・骨格・スキンを共有空間の場で表現）を生成する2段Flow Matching（TRELLIS系の構造化潜在）",
+  "tasks": [
+   "i23d",
+   "rig"
+  ],
+  "spec": {
+   "output": "リグ付きメッシュGLB（mesh.glb）＋骨格可視化GLB",
+   "other": "関節数の自動決定版と密度制御版などチェックポイントを選択可。動物・人型・機械まで対応。SIGGRAPH 2026"
+  },
+  "features": {
+   "リギング": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": 18,
+  "rec_vram_gb": null,
+  "vram_note": "公式: 18GB以上のNVIDIA GPUが必要。A800とRTX 3090（24GB）で動作確認。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [],
+  "quality_note": "1枚の画像から形状・骨格・スキンウェイトを同時に生成し、生成→自動リグの逐次パイプラインよりリグの妥当性とアニメ品質で大きく上回ると主張（自社評価、数値は論文参照）。",
+  "ja_note": null,
+  "license": "MIT（同梱の一部コンポーネントは非商用）",
+  "commercial": "conditional",
+  "license_note": "コードと重みはMITだが、同梱のextensions/CUBVH（NVIDIA instant-ngp由来）は非商用・研究用途限定。商用時は差し替えが必要。",
+  "hf": "https://huggingface.co/VAST-AI/AniGen",
+  "tools": [
+   "Gradio",
+   "Hugging Face Space"
+  ],
+  "price_note": null,
+  "summary_ja": "1枚の画像から、骨格とスキンウェイト付きですぐ動かせる3Dモデルを生成するSIGGRAPH 2026の研究です。",
+  "best_for_ja": "画像からアニメーション可能なキャラクター・生き物・機械を一発で作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/VAST-AI-Research/AniGen",
+   "https://huggingface.co/VAST-AI/AniGen",
+   "https://arxiv.org/abs/2604.08746"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "hy-world-2-0",
+  "access": "open-weight",
+  "name": "HY-World 2.0",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2026-04-16",
+  "params_b": null,
+  "arch": "4段パイプライン: HY-Pano 2.0（パノラマ生成、約80B／軽量版はQwen-Image-Edit＋425M LoRA）→ WorldNav（VLMによる軌道計画）→ WorldStereo 2.0（約17B、メモリ付き動画拡散でワールド拡張）→ WorldMirror 2.0（約1.2B、フィードフォワード3D再構成）＋3DGS最適化",
+  "tasks": [
+   "scene"
+  ],
+  "spec": {
+   "output": "3D Gaussian Splat / メッシュ / 点群（Blender・Unity・Unreal Engine・Isaac Simに取り込み可）",
+   "other": "生成はテキストまたは単一画像から、再構成は多視点画像・動画から。WorldMirror 2.0は深度・法線・カメラ・点群・3DGS属性を1パスで予測（50K〜500Kピクセル）。2026-05-18に全重みとワールド生成コードを公開"
+  },
+  "features": {
+   "シーン生成": true,
+   "テキスト入力": true,
+   "複数視点入力": true,
+   "Gaussian Splat出力": true,
+   "メッシュ出力": true,
+   "商用可（制限なし）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "ワールド生成は4GPU以上を推奨（8×H20で検証）し、別途Qwen3-VL-8BのvLLMサーバーも必要で、コンシューマGPU1枚向けではない。再構成のWorldMirror 2.0は単一GPUで動作しFSDP・CPUオフロード・不要ヘッド無効化で省メモリ可能だが、必要VRAMの公式数値なし（第三者ガイドは12〜24GBと記載）。",
+  "speed_note": "公式の生成時間の記載なし。",
+  "bench": [
+   {
+    "metric": "カメラ制御 RotErr（低いほど良い、WorldStereo 2.0）",
+    "value": 0.492,
+    "note": "WorldStereo 0.762 / Gen3C 0.944 / SEVA 1.690（公式README）",
+    "source": "https://github.com/Tencent-Hunyuan/HY-World-2.0"
+   }
+  ],
+  "quality_note": "動画ではなく編集・永続可能な3D資産（3DGS/メッシュ）としてワールドを出すのが特徴で、全重みを公開。ただしフル生成は多GPU前提。後継のHY-World 2.1（2026-07）は製品版（Web）での提供のみ確認。",
+  "ja_note": null,
+  "license": "Tencent HY-World 2.0 Community License",
+  "commercial": "conditional",
+  "license_note": "EU・英国・韓国では利用不可（地域除外）。リリース日時点でMAU 100万超の事業者は個別許諾が必要。",
+  "hf": "https://huggingface.co/tencent/HY-World-2.0",
+  "tools": [
+   "Gradio（WorldMirror 2.0）",
+   "Blender / Unity / Unreal Engine / Isaac Sim 取り込み",
+   "ModelScope"
+  ],
+  "price_note": null,
+  "summary_ja": "Tencentの3Dワールド生成・再構成モデル群で、テキストや画像から歩き回れる3D空間を3DGSやメッシュとして作ります。写真・動画からの3D再構成にも使えます。",
+  "best_for_ja": "複数GPU環境でゲーム・シミュレーション用の3Dワールドを作る場合、または単一GPUで写真・動画から3D再構成する場合",
+  "supersedes": [
+   "HunyuanWorld-1.0",
+   "HunyuanWorld-Mirror（WorldMirror 1.0）"
+  ],
+  "sources": [
+   "https://github.com/Tencent-Hunyuan/HY-World-2.0",
+   "https://huggingface.co/tencent/HY-World-2.0",
+   "https://arxiv.org/abs/2604.14268",
+   "https://docs.clore.ai/guides/guides_v2-fr/generation-3d/hunyuan-world-2"
+  ],
+  "confidence": "medium",
+  "rank": 14
+ },
+ {
+  "id": "tripo-h3-1-p2",
+  "access": "api",
+  "name": "Tripo H3.1 / P2.0",
+  "org": "VAST（Tripo AI）",
+  "country": "CN",
+  "release": "2026-09",
+  "params_b": null,
+  "arch": "ネイティブ3D拡散（非公開）",
+  "tasks": [
+   "i23d",
+   "t23d",
+   "texture",
+   "part",
+   "rig"
+  ],
+  "spec": {
+   "output": "GLB（FBX等へ変換可）+ PBR",
+   "other": "H3.1（API名 v3.1-20260211）は高精細フラッグシップ、P2.0（P2-20260801、2026-09-21発表）はネイティブ四角形メッシュ・面数違いを最大4種同時生成・Smart UV。テクスチャv3.5（2026-08）、リグv3.0（2026-09）、パーツ分割、Smart Low-poly（500〜20,000面）、多視点入力（前・左・後・右）"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": true,
+   "パーツ分割": true,
+   "リギング": true,
+   "テキスト入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "Top 3D AIアリーナの計測でv3.1が約1.5分/生成。P1.0は約2秒でエンジン向け低ポリを出すとされる（第三者ガイド）。",
+  "bench": [
+   {
+    "metric": "Top 3D AI アリーナ ELO（総合品質）",
+    "value": 1042,
+    "note": "v3.1、1位・勝率88.6%、2026-08-03時点（186,939票）。掲載元のSloydは同アリーナ3位の競合のため留意",
+    "source": "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
+   }
+  ],
+  "quality_note": "第三者アリーナで総合1位。P系列はゲーム向けのクリーンなトポロジー、H系列は高精細という2系統。旧v2 APIは2026-10-31に終了しapiv3へ移行。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランで商用利用とされる。公式の料金・規約ページは取得できなかった（403）ため要確認。",
+  "hf": "https://platform.tripo3d.ai/",
+  "tools": [
+   "REST API（apiv3）",
+   "公式SDK（Python / JS / Go / Rust / Java）",
+   "ComfyUIノード",
+   "Blender・Unityプラグイン"
+  ],
+  "price_note": "クレジット制（サブスク＋API従量）。Top 3D AIアリーナ掲載の1生成あたり目安はv3.1で約0.30ドル。正確な単価は公式で要確認。",
+  "summary_ja": "Tripo AIの商用3D生成で、高精細なH3.1とゲーム向けの綺麗なメッシュを出すP2.0の2系統があります。テクスチャ・リグ・パーツ分割までAPIで揃います。",
+  "best_for_ja": "ゲーム・アプリ向けに、トポロジーの整った3D素材をAPIで量産したい場合",
+  "supersedes": [
+   "Tripo v3.0",
+   "Tripo P1.0",
+   "Tripo v2.5"
+  ],
+  "sources": [
+   "https://github.com/VAST-AI-Research/tripo-python-sdk/blob/main/docs/API.md",
+   "https://github.com/VAST-AI-Research/tripo-python-sdk/blob/main/CHANGELOG.md",
+   "https://www.morningstar.com/news/pr-newswire/20260921sf53561/tripo-ai-releases-latest-model-tripo-p20-advancing-ai-3d-generation-with-production-ready-assets",
+   "https://www.digitaljournal.com/article/tripo-ai-unveils-new-3d-generation-model-at-gdc-2026/",
+   "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings",
+   "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026"
+  ],
+  "confidence": "medium",
+  "rank": 15
+ },
+ {
+  "id": "meshy-7-1",
+  "access": "api",
+  "name": "Meshy 7.1（Meshy 7系）",
+  "org": "Meshy",
+  "country": "US",
+  "release": "2026-08",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "i23d",
+   "t23d",
+   "texture",
+   "rig"
+  ],
+  "spec": {
+   "output": "GLB / FBX / OBJ / USDZ 等、PBR、最大8Kテクスチャ",
+   "other": "API上のlatestはmeshy-7.1（Meshy 7は2026-08-12公開、7.1の公開日は未確認）。画像・複数画像→3D、Text to 3D（Previewでメッシュ→Refineでテクスチャ）、Ultraジオメトリ、Remesh、UV展開、自動リギング・アニメーション、3Dプリント向け機能"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": true,
+   "リギング": true,
+   "テキスト入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "公式の数値なし。Top 3D AIアリーナの計測ではMeshy 6が約3分/生成。",
+  "bench": [
+   {
+    "metric": "3D Arena ELO（render投票）",
+    "value": 1312,
+    "note": "Meshy-7、213票。Meshy-6は1355（3位）、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "3D Arena ELO（topology投票）",
+    "value": 1278,
+    "note": "Meshy-7、172票。Meshy-6は1329、2026-10-20取得",
+    "source": "https://huggingface.co/spaces/3d-arena/3d-arena"
+   },
+   {
+    "metric": "Top 3D AI アリーナ ELO（総合品質）",
+    "value": 1004,
+    "note": "Meshy 6、8位、2026-08-03時点",
+    "source": "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
+   }
+  ],
+  "quality_note": "3D Arenaではクローズド勢の上位（Meshy-6がrender 3位）。Meshy-7は票数がまだ少なく評価が固まっていない。生成から自動リグ・アニメ・3Dプリントまで一体のパイプラインが強み。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "Freeプランの生成物はCC BY 4.0（帰属表示で商用可）、有料プランは非公開・顧客所有。APIはProプラン以上。",
+  "hf": "https://docs.meshy.ai/api/pricing",
+  "tools": [
+   "REST API",
+   "Webアプリ"
+  ],
+  "price_note": "Pro 月1,000クレジット（日本円表示で¥3,084/月）、Premium 3,000（¥6,168）、Ultra 8,000（¥15,420）、Studio・Enterpriseあり。API: 画像→3D 20クレジット（メッシュのみ）／30（2K・4Kテクスチャ）／35（8K）、Ultraジオメトリ+5、テクスチャ10〜15、自動リギング5、Remesh・UV展開各5。",
+  "summary_ja": "Meshyの最新3D生成で、画像・テキストからPBR付きモデルを作り、リギングやアニメーションまでつなげられます。",
+  "best_for_ja": "生成からリグ・アニメ・書き出しまでを1つのサービスで済ませたい場合",
+  "supersedes": [
+   "Meshy 7",
+   "Meshy 6",
+   "Meshy 5"
+  ],
+  "sources": [
+   "https://docs.meshy.ai/api/pricing",
+   "https://www.meshy.ai/pricing",
+   "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026",
+   "https://huggingface.co/spaces/3d-arena/3d-arena",
+   "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
+  ],
+  "confidence": "medium",
+  "rank": 16,
+  "pick": "API で最高品質",
+  "pick_reason": "3D Arena 上位",
+  "hl": {
+   "label": "3D Arena",
+   "value": 1312
+  }
+ },
+ {
+  "id": "rodin-gen-2-5",
+  "access": "api",
+  "name": "Rodin Gen-2.5",
+  "org": "Deemos（Hyper3D）",
+  "country": "CN",
+  "release": "2026-05-26",
+  "params_b": null,
+  "arch": "ネイティブ3D生成（非公開。Gen-2は10Bの再帰的パーツ生成と公表）",
+  "tasks": [
+   "i23d",
+   "t23d",
+   "texture"
+  ],
+  "spec": {
+   "output": "GLB / FBX 等、4K PBRテクスチャ、三角形（Raw）／四角形メッシュ、Smart Low-Poly",
+   "other": "生出力で1,000万ポリゴン超をうたう。思考量の適応制御、最大10件のバッチ生成、多画像入力。領域選択＋テキストで編集するGen-2 Edit（2026-03）"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": true,
+   "テキスト入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "Top 3D AIアリーナの計測で約4.5分/生成。第三者ガイドでは4秒のドラフトから最上位80秒程度まで。",
+  "bench": [
+   {
+    "metric": "Top 3D AI アリーナ ELO（総合品質）",
+    "value": 1009,
+    "note": "6位、2026-08-03時点",
+    "source": "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
+   }
+  ],
+  "quality_note": "高ポリゴン・高精細なヒーローアセット向けの評判。四角形メッシュ出力でアニメ・変形にも配慮。第三者アリーナではTripo v3.1に次ぐ集団。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランで利用範囲が拡大（Creatorはエクスポート・用途無制限と記載）。規約は要確認。",
+  "hf": "https://docs.hyper3d.ai/",
+  "tools": [
+   "REST API（Businessプラン以上）",
+   "Webアプリ"
+  ],
+  "price_note": "Free（確定前の生成は無料、非公開資産10件）、Creator 月30ドル（約60モデル）、Business 月120ドル（約416モデル、API・120〜240RPM）、Enterpriseは個別。追加クレジット1個1.50ドル。",
+  "summary_ja": "Hyper3D（Deemos）の高精細3D生成で、1,000万ポリゴン級のディテールと四角形メッシュ・4K PBRを出せます。",
+  "best_for_ja": "映像・広告など、ディテール重視のヒーローアセットを作りたい場合",
+  "supersedes": [
+   "Rodin Gen-2",
+   "Rodin Gen-1.5"
+  ],
+  "sources": [
+   "https://hyper3d.ai/pricing",
+   "https://docs.hyper3d.ai/",
+   "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026",
+   "https://www.3daistudio.com/blog/how-to-use-rodin-gen-2-5-online-tutorial",
+   "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
+  ],
+  "confidence": "medium",
+  "rank": 17
+ },
+ {
+  "id": "hunyuan-3d-3-1-api",
+  "access": "api",
+  "name": "Hunyuan 3D 3.1（Tencent HY 3D、API／商用版）",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2026-01-28",
+  "params_b": null,
+  "arch": "形状とテクスチャを分離した生成（非公開）",
+  "tasks": [
+   "i23d",
+   "t23d",
+   "texture",
+   "part",
+   "rig"
+  ],
+  "spec": {
+   "output": "メッシュ（3.0系で最大150万面）+ 8K PBR（メタリック・ラフネス・法線等）",
+   "other": "1536³ジオメトリ。Professional版（多視点入力・面数指定・PBR）とExpress版。後処理APIにパーツ生成・スマートトポロジー・テクスチャ編集・UV展開・自動リギング・形式変換"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": true,
+   "パーツ分割": true,
+   "リギング": true,
+   "テキスト入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "公式の数値なし（Tencent Cloudの2026-09記事に、3.5で約60秒との記載あり）。",
+  "bench": [],
+  "quality_note": "3.0以降はオープン重みを出していない。ComfyUI公式ブログは、Hunyuan 3D・Tripo・RodinなどのクローズドがTRELLIS.2やPixal3Dより良い結果を出すと評価。投票型ベンチでの公開値は見当たらない。Tencent Cloudの記事に3.5の記載があるが正式発表は未確認。",
+  "ja_note": null,
+  "license": "API（Tencent Cloud利用規約）",
+  "commercial": "conditional",
+  "license_note": "Tencent Cloud（国際版）の規約に従う。オープン版のような地域除外条項の有無は要確認。",
+  "hf": "https://3d.hunyuan.tencent.com/",
+  "tools": [
+   "Tencent Cloud API",
+   "Hunyuan3D Studio（Web）"
+  ],
+  "price_note": "Professional: テクスチャ付き25クレジット、形状のみ15、LowPoly 30、PBR・多視点・面数指定は各+10。後処理はパーツ生成30・スマートトポロジー50・自動リギング10など。前払いパック1クレジット0.0135〜0.015ドル、後払い0.02ドル（2026-05更新）。Webプラットフォームは1日20回無料。",
+  "summary_ja": "Tencentの商用3D生成で、オープン版2.1より高解像度な形状と8K PBRを出します。パーツ分割やリギングもAPIで使えます。",
+  "best_for_ja": "オープン版より上の品質をAPIで安く使いたい場合",
+  "supersedes": [
+   "Hunyuan3D 3.0",
+   "Hunyuan3D 2.5"
+  ],
+  "sources": [
+   "https://intl.cloud.tencent.com/document/product/1284/75281",
+   "https://www.tencentcloud.com/techpedia/148305",
+   "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026",
+   "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native"
+  ],
+  "confidence": "medium",
+  "rank": 18
+ },
+ {
+  "id": "seed3d-2-0",
+  "access": "api",
+  "name": "Seed3D 2.0",
+  "org": "ByteDance Seed",
+  "country": "CN",
+  "release": "2026-04-23",
+  "params_b": null,
+  "arch": "粗→精の2段DiT形状生成（局所性考慮VAE）+ MoEとVLM事前知識による統合PBRテクスチャモデル",
+  "tasks": [
+   "i23d",
+   "texture",
+   "part",
+   "scene"
+  ],
+  "spec": {
+   "output": "テクスチャ付きメッシュ + PBR（アルベド・メタリック・ラフネス）",
+   "other": "パーツ分解・学習不要の関節（アーティキュレーション）生成・シーンレイアウト計画を含むシミュレーション向けスイート。Isaac Sim等の物理シミュレータと連携"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "パーツ分割": true,
+   "シーン生成": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "公式の数値なし。",
+  "bench": [
+   {
+    "metric": "人間選好の勝率（テクスチャ付き3D、対商用5モデル）",
+    "value": 69.0,
+    "note": "%。69.0〜89.9%（下限値を記載、比較モデル名は非開示、公式技術報告）",
+    "source": "https://seed.bytedance.com/en/public_papers/seed3d-2-0-advancing-high-fidelity-simulation-ready-3d-content-generation"
+   }
+  ],
+  "quality_note": "公式技術報告で商用5モデルに69〜90%の勝率（自社評価・相手非開示）。ロボット・シミュレーション用途を重視した構成。",
+  "ja_note": null,
+  "license": "API（Volcano Engine / BytePlus利用規約）",
+  "commercial": "conditional",
+  "license_note": "Volcano Engine（火山方舟）およびBytePlusの規約に従う。",
+  "hf": "https://seed.bytedance.com/en/public_papers/seed3d-2-0-advancing-high-fidelity-simulation-ready-3d-content-generation",
+  "tools": [
+   "Volcano Engine API",
+   "BytePlus Playground"
+  ],
+  "price_note": "Volcano Engineで提供。料金は未確認。",
+  "summary_ja": "ByteDanceの第2世代3D生成で、高精細な形状とPBRに加え、パーツ分解や関節付きのシミュレーション向け資産まで作れます。",
+  "best_for_ja": "ロボット・物理シミュレーション用の3D資産をAPIで作りたい場合",
+  "supersedes": [
+   "Seed3D 1.0"
+  ],
+  "sources": [
+   "https://seed.bytedance.com/en/public_papers/seed3d-2-0-advancing-high-fidelity-simulation-ready-3d-content-generation",
+   "https://news.aibase.com/news/27393",
+   "https://www.therundown.ai/tools/seed-3d"
+  ],
+  "confidence": "medium",
+  "rank": 19
+ },
+ {
+  "id": "marble-1-1",
+  "access": "api",
+  "name": "Marble 1.1 / 1.1 Plus",
+  "org": "World Labs",
+  "country": "US",
+  "release": "2026-04-02",
+  "params_b": null,
+  "arch": "マルチモーダル・ワールドモデル（非公開）",
+  "tasks": [
+   "scene"
+  ],
+  "spec": {
+   "output": "3D Gaussian Splat（PLY）、HQメッシュGLB（テクスチャ版・頂点色版）",
+   "other": "入力: テキスト・画像・パノラマ・複数画像・動画。1.1 Plusは自動拡張する大規模ワールド。次世代のAtlas（omniワールドモデル）は2026-09-01から一部パートナーの早期アクセスのみ"
+  },
+  "features": {
+   "シーン生成": true,
+   "テキスト入力": true,
+   "複数視点入力": true,
+   "Gaussian Splat出力": true,
+   "メッシュ出力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・Webサービスのため生成にローカルGPU不要（閲覧は一般GPUでリアルタイム描画可）。",
+  "speed_note": "公式の数値なし。",
+  "bench": [],
+  "quality_note": "編集可能な3Dワールドを生成する商用サービスの代表格。投票型ベンチの公開値は見当たらない。World Labsは2026-09-28にAMDへの合流を発表しており、今後の提供形態に注意。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "conditional",
+  "license_note": "第三者情報ではアプリの商用利用権はProプラン以上。API利用はWorld Labs Platformの規約に従う。",
+  "hf": "https://docs.worldlabs.ai/api/pricing",
+  "tools": [
+   "World API",
+   "Marble Webアプリ",
+   "Spark 2.0（Web向け3DGSストリーミング）"
+  ],
+  "price_note": "World API: 1,250クレジット=1ドル（最低5ドル、失効なし）。1ワールド約1,500〜1,600クレジット（約1.2〜1.3ドル）、Draft 150〜250、1.1 Plusは最大+1,500。HQメッシュGLB出力は3,500クレジット（2.80ドル）、PLYは無料。アプリは月20〜95ドル程度のプラン（第三者情報）。",
+  "summary_ja": "World Labsの3Dワールド生成サービスで、テキストや画像から歩き回れる空間をGaussian Splatやメッシュで出力します。",
+  "best_for_ja": "ゲーム・映像・VR用の背景ワールドを手軽に作りたい場合",
+  "supersedes": [
+   "Marble 1.0"
+  ],
+  "sources": [
+   "https://docs.worldlabs.ai/api/pricing",
+   "https://www.worldlabs.ai/blog",
+   "https://www.worldlabs.ai/blog/atlas",
+   "https://aihola.com/article/world-labs-marble-1-1"
+  ],
+  "confidence": "medium",
+  "rank": 20
+ }
+]
