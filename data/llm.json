@@ -2850,6 +2850,134 @@
   "short": "Nemotron 3.5 Bolt"
  },
  {
+  "id": "ornith-1-5-122b",
+  "name": "Ornith-1.5-122B",
+  "short": "Ornith-1.5 122B",
+  "family": "Ornith",
+  "org": "DeepReinforce（Ornith。米カリフォルニア州サンタクララ）",
+  "country": "US",
+  "release": "2026-10-19",
+  "arch": "MoE",
+  "total_b": 125,
+  "active_b": null,
+  "native_precision": "BF16（公式FP8、NVFP4、GGUF、MLX版あり）",
+  "weights_gb": 249.4,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。Ornith-1.0（Qwen3.5とGemma 4が起点）の延長で、自分で学習タスクを作って強化学習を回す手法で鍛えたモデル。",
+  "hf": "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+  "summary_ja": "35B版で人気のOrnith-1.5の大型版で、コーディング・エージェント作業に特化した122B MoEです。ベンダー公表値ではQwen3.8-Flash-Nextなど同クラスを多くの項目で上回りますが、第三者による検証はまだありません。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": 84.5,
+   "gpqa": null,
+   "hle": 37.7,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 81.2,
+   "tau2": null,
+   "browsecomp": 78.5
+  },
+  "bench_note": "公式モデルカード（ベンダー自己申告で第三者による再現なし）。swe_verifiedはnon-hack設定、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし（ツールありは48.0）。ほかにSWE-bench Pro 76.9、SWE-bench Multilingual 76.4、SciCode 53.8、MCP-Atlas 74.6、Toolathlon-Verified 70.8。アクティブパラメータはカードに記載なし（構成はQwen3.5-122B-A10Bと同じで約10Bとみられる）。AA指数は未掲載。",
+  "aa_index": null,
+  "japanese_note": "日本語の評価は見当たらない。",
+  "deploy_note_ja": "BF16（約249GB）はデータセンター級GPU複数枚。公式NVFP4版（約78GB）なら80GB GPU 1枚（カードの「単体80GB GPUで動く」はこの量子化前提とみられる）。公式GGUF・unslothのGGUF、MLX 4bit（約69GB）がある。",
+  "local_runtimes": [
+   "llama.cpp",
+   "LM Studio",
+   "Ollama",
+   "MLX"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ornith-ai/Ornith-1.5-122B",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-122B-GGUF",
+   "https://huggingface.co/unsloth/Ornith-1.5-122B-GGUF",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-122B-NVFP4",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-122B-MLX-4bit"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "最小の量子化版（UD-IQ1_M、約2.6bit・40GB）なら64GB機に載ります。4bit級（約76〜80GB）は96〜128GB機、Q8_0（133GB）は192GB以上の機械が目安です。",
+   "quants": [
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.58,
+     "size_gb": 40.4,
+     "source": "https://huggingface.co/unsloth/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.85,
+     "size_gb": 44.5,
+     "source": "https://huggingface.co/unsloth/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.82,
+     "size_gb": 59.8,
+     "source": "https://huggingface.co/unsloth/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.39,
+     "size_gb": 68.7,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B-MLX-4bit"
+    },
+    {
+     "name": "Q4_K_M（公式）",
+     "bits": 4.85,
+     "size_gb": 75.8,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "NVFP4（公式）",
+     "bits": 4.97,
+     "size_gb": 77.7,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B-NVFP4"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 5.1,
+     "size_gb": 79.7,
+     "source": "https://huggingface.co/unsloth/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "Q8_0（公式）",
+     "bits": 8.48,
+     "size_gb": 132.6,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 15.95,
+     "size_gb": 249.4,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-122B-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "総パラメータはビジョン部を含めて約125B。サイズはHugging Faceの実ファイル（GB）"
+  }
+ },
+ {
   "id": "upstage-solar-open-2",
   "name": "Solar Open 2 (250B-A15B)",
   "family": "Solar Open",
@@ -4890,6 +5018,71 @@
    "https://www.alphaxiv.org/@jiwei-li",
    "https://www.crunchbase.com/organization/deepreinforce-ai",
    "https://officechai.com/ai/deepreinforce-releases-open-source-orinth-1-5-family-of-models-with-solid-benchmarks-and-mit-license/"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "recursive-flint",
+  "name": "Recursive Flint",
+  "short": "Flint",
+  "family": "Flint",
+  "org": "Recursive Superintelligence, Inc.",
+  "country": "GB",
+  "release": "2026-10-21",
+  "arch": "MoE",
+  "total_b": 39.8,
+  "active_b": 2.5,
+  "native_precision": "BF16（公式int4、NVFP4、GGUF版あり）",
+  "weights_gb": 80,
+  "q4_gb": 22.6,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。ホストAPIの規約は重みのライセンスとは別。",
+  "hf": "https://huggingface.co/RecursiveSI/flint",
+  "summary_ja": "Richard Socher率いるRecursiveがゼロから学習した、コーディングエージェント向けの40B MoE（アクティブ2.5B）です。ノートPCでも高速に動くことを売りにしています。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 74.2,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 54.9,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（ベンダー自己申告、5回以上の平均）。terminal_bench2はTerminal-Bench 2.1。ほかにSWE-bench Pro v2 89.7%。AA指数は未掲載。",
+  "aa_index": null,
+  "japanese_note": "対応言語の記載がなく、日本語の評価は見当たらない。",
+  "deploy_note_ja": "公式int4版（22.6GB）やunslothのUD-Q4_K_XL（25.1GB）なら32GBのMacや24〜32GB GPUで動く。公式ブログではM4 ProのMacBook Proで毎秒125トークン超、RTX Sparkで150トークン超とうたう。BF16（約80GB）はH200かB300 1枚。",
+  "local_runtimes": [
+   "llama.cpp",
+   "LM Studio",
+   "Ollama"
+  ],
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/RecursiveSI/flint",
+   "https://www.recursive.com/updates/introducing-recursive-flint",
+   "https://huggingface.co/unsloth/flint-GGUF",
+   "https://tech.eu/2026/05/13/recursive-superintelligence-emerges-from-stealth-with-650m-raise/"
   ],
   "confidence": "medium"
  },

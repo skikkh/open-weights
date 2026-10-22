@@ -347,6 +347,164 @@
   }
  },
  {
+  "id": "baseten-mammoth-1",
+  "name": "mammoth-1（27B）",
+  "org": "Baseten（Base Labs）",
+  "country": "US",
+  "release": "2026-10-21",
+  "access": "open-weight",
+  "params_b": 27,
+  "arch": "Qwen3.5-27Bを620万件の判断例で全体微調整した判断モデル（画像エンコーダは凍結、テキストのみで学習）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "状態（チケット・メールなど）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
+   "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
+   "languages": "英語",
+   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "判断の保留を学習": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 80,
+  "vram_note": "公式の要件はない（CUDA GPU 1枚で自前運用）。BF16で約55GBのため80GB級が目安",
+  "price_note": "Baseten Model APIsで公開から1週間無料。以降の料金は未発表",
+  "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.4（Baseten発表）",
+    "value": 71.24,
+    "note": "発表時208モデル中1位。10月21日のコミュニティボード0.4.1では68.87で3位",
+    "source": "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/"
+   },
+   {
+    "metric": "Artificial Analysis Decision Index",
+    "value": 65.9,
+    "note": "Basetenによる再現実行の値（AA公式ボードには未掲載）",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "オープンな判断モデルで最上位級。AAの再現実行でも65.9とd1-ultra（65.25）を上回るが、AA公式の掲載はまだない",
+  "ja_note": "英語のみの記載。日本語での精度は不明",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。ゲートなしでダウンロードできる",
+  "hf": "https://huggingface.co/baselabs/mammoth-1",
+  "tools": [
+   "Baseten Model APIs",
+   "OneJev",
+   "Transformers"
+  ],
+  "summary_ja": "Basetenが公開した27Bの判断モデルで、コミュニティのDecision Indexで首位級です。MITライセンスで商用にも自由に使えます。",
+  "best_for_ja": "幅広い知識が要る判断を、商用OKのオープンモデルで自前運用したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/baselabs/mammoth-1",
+   "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/",
+   "https://labs.baseten.co/articles/mammoth-1-and-elephant-1-frontier-decision-models",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "high",
+  "hl": {
+   "label": "Jev 0.4.1",
+   "value": 68.9
+  },
+  "pick": "オープンで最上位",
+  "pick_reason": "Jev Decision Index 0.4 で1位・MIT",
+  "rank": 5
+ },
+ {
+  "id": "baseten-elephant-1",
+  "name": "elephant-1（9B）",
+  "org": "Baseten（Base Labs）",
+  "country": "US",
+  "release": "2026-10-21",
+  "access": "open-weight",
+  "params_b": 9.4,
+  "arch": "Qwen3.5-9Bを620万件の判断例で全体微調整した判断モデル（画像エンコーダは凍結、テキストのみで学習）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "状態（チケット・メールなど）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
+   "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
+   "languages": "英語",
+   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "判断の保留を学習": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 24,
+  "vram_note": "公式の要件はない。BF16で約19GBのため24GB級が目安",
+  "price_note": "Baseten Model APIsで公開から1週間無料。以降の料金は未発表",
+  "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.4（Baseten発表）",
+    "value": 62.65,
+    "note": "15B未満で1位、全体で8位タイ（発表時）。ボード0.4.1では60.26",
+    "source": "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/"
+   },
+   {
+    "metric": "Artificial Analysis Decision Index",
+    "value": 64.69,
+    "note": "AA公式で2位（1位のd1-ultraは65.25）。When2Call 94.8、WildGuardTest 93.3",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "9Bながら公式AA Decision Indexでd1-ultraとほぼ同点の2位。知識が要る判断はmammoth-1のほうが強いとされる",
+  "ja_note": "英語のみの記載。日本語での精度は不明",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。ゲートなしでダウンロードできる",
+  "hf": "https://huggingface.co/baselabs/elephant-1",
+  "tools": [
+   "Baseten Model APIs",
+   "OneJev",
+   "Transformers"
+  ],
+  "summary_ja": "Basetenが公開した9Bの判断モデルで、公式のAA Decision Indexで2位に入りました。小さめのGPUでも動かせます。",
+  "best_for_ja": "素早い判断を安く回したい場合（ツール選択・振り分け・要否判定）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/baselabs/elephant-1",
+   "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/",
+   "https://labs.baseten.co/articles/mammoth-1-and-elephant-1-frontier-decision-models",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "high",
+  "hl": {
+   "label": "AA Arena",
+   "value": 64.7
+  },
+  "rank": 6
+ },
+ {
   "id": "fastino-glide",
   "name": "GLiDE",
   "org": "Fastino",
@@ -417,21 +575,21 @@
    "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
-  "rank": 5,
+  "rank": 7,
   "hl": {
    "label": "AA Arena",
    "value": 54
   }
  },
  {
-  "id": "pplx-decider-v1-1-27b",
-  "name": "pplx-decider v1.1 27B（Perplexity Decider v1.1）",
+  "id": "pplx-decider-v1-2",
+  "name": "pplx-decider v1.2 27B（Perplexity Decider v1.2、Flash 4Bあり）",
   "org": "Perplexity",
   "country": "US",
-  "release": "2026-10-06",
+  "release": "2026-10-16",
   "access": "open-weight",
   "params_b": 27,
-  "arch": "Qwen3.8-27Bを基にした判断専用モデル。双方向（非因果）の全注意層と判断ヘッドを追加し、最大255個の選択肢を文章生成なしで一括スコアすると説明されている（HFのメタデータ上は26B・BF16）",
+  "arch": "Qwen3.8-27Bを基にした判断専用モデル。最大255個の選択肢を文章生成なしで一括スコアする（HFのメタデータ上は26B・BF16）。蒸留した4Bの pplx-decider-flash-v1.2（Qwen3.5-4Bベース）も同時公開",
   "tasks": [
    "predicate",
    "choice",
@@ -442,10 +600,10 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "テキスト・JSON・画像。1判断のテキストと画像の合計は8,192トークン以内（超過は切り詰めずに拒否）",
+   "inputs": "テキスト・JSON・画像（最大1.6MPに縮小）。既定の最大長は262,144トークン（学習は約32kまで、それ以上は抜き取り確認のみ）。複数の質問を1リクエストでまとめて送れる",
    "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
    "languages": "記載なし",
-   "other": "最大128個の名前付き質問に回答と報道。ホスト版は入力$0.02/1M・出力無料、262kコンテキストとの掲載あり（二次情報で、HFカードの8kと矛盾）。AAの計測で$17/100万タスク（判断モデル中最安）"
+   "other": "FP8モードと高速パス（flash-linear-attention、torch.compile）を任意で使える"
   },
   "features": {
    "画像入力": true,
@@ -455,62 +613,60 @@
    "ホストAPIあり": true,
    "日本語対応（公式明記）": false
   },
-  "min_vram_gb": 49,
+  "min_vram_gb": 52,
   "rec_vram_gb": 80,
-  "vram_note": "公式カード: BF16の重みだけで約49GiB＋作業メモリが必要なCUDA GPU。80GB級（H100/A100 80GB）が実用的な目安。公式の量子化版の記載なし",
+  "vram_note": "公式カード: BF16の重みだけで約52GiB＋作業メモリが必要なCUDA GPU。24万トークン級の長い入力では95〜107GiB。Flash版（4B）ならずっと小さいGPUで動く",
   "price_note": null,
   "speed_note": "公式カードに遅延の数値なし（画像解像度を上げるとメモリと遅延が増えるとのみ記載）",
   "bench": [
    {
-    "metric": "Jev Decision Index 0.3.1（総合）",
-    "value": 62.75,
-    "note": "2026-10-10時点で1位（117エントリ）。公開問題62.25、新ドメイン55.57、画像部門も1位",
-    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+    "metric": "Decision Index 0.3（公開問題、HFカード記載）",
+    "value": 68.09,
+    "note": "Perplexity自社実行、質問一括時。v1.1は62.30。画像版は77.43（v1.1は73.22）。Flash 4Bは60.05",
+    "source": "https://huggingface.co/perplexity-ai/pplx-decider-v1.2"
    },
    {
-    "metric": "Decision Index（HFカード記載の総合）",
-    "value": 61.56,
-    "note": "Perplexity自社実行。v1は56.4、Jevは57.9。Tools 78.88、Language 69.45",
-    "source": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b"
+    "metric": "Jev Decision Index 0.4.1（総合）",
+    "value": 67.98,
+    "note": "コミュニティボードで4位（2026-10-21時点）。Flash 4Bは54.29",
+    "source": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
    },
    {
-    "metric": "Typed-decisions Brier",
-    "value": 0.16,
-    "note": "Perplexity自社評価（正答率0.75、正解分布とのKL 0.44）",
-    "source": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b"
-   },
-   {
-    "metric": "WildGuardTest（AA Decision Index内）",
-    "value": 94,
-    "note": "Artificial Analysisの計測",
-    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+    "metric": "Artificial Analysis Decision Index",
+    "value": 56.17,
+    "note": "v1.1は53.06、Flash v1.2は50.15",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
-  "quality_note": "オープンウェイトの判断モデルとしてコミュニティ版Decision Indexで首位級、画像判定も強い。ただしJevBenchの総合（コスト推定込み）では20.6と低く、27Bで重いため自前運用には大きなGPUが要る。HFリポジトリへのアクセス条件について情報が錯綜している",
+  "quality_note": "v1.1から自社計測で約6点向上し、オープンな判断モデルの上位にいる。ただし公式のAA Decision Indexでは56と、Liquid d1-ultraやBasetenのelephant-1（約65）より低い",
   "ja_note": "言語の記載なし。Qwen3.8ベースで多言語の素地はあるが、日本語での判断精度は未評価",
   "license": "Apache-2.0",
   "commercial": "yes",
-  "license_note": "Apache-2.0。ただしHFリポジトリは認証付きアクセスが必要との記載があり、ゲート付き・非公開とする情報もあるため取得前に要確認",
-  "hf": "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b",
+  "license_note": "Apache-2.0。HFリポジトリは公開済み（カード本文には「非公開」との古い記述が残っている）",
+  "hf": "https://huggingface.co/perplexity-ai/pplx-decider-v1.2",
   "tools": [
-   "Transformers（Qwen3_5Model）",
-   "autojev（同梱推論コード）",
+   "pplx_decider（同梱Pythonパッケージ）",
+   "Transformers",
    "OpenRouter（ホスト版）"
   ],
-  "summary_ja": "Perplexityが公開した27Bの判断モデルで、オープンなものの中では最上位級の精度です。画像も見て判断できますが、動かすには大きなGPUが必要です。",
+  "summary_ja": "Perplexityが公開した27Bの判断モデルの新版で、画像も見て判断できます。蒸留した軽い4B版（Flash）も同時に出ました。",
   "best_for_ja": "精度重視で、判断モデルを自社GPU上に置きたい場合（ツール選択・意図判定・画像を含む判定）",
   "supersedes": [
-   "pplx-decider v1 27B"
+   "pplx-decider v1 27B",
+   "pplx-decider v1.1 27B"
   ],
   "sources": [
-   "https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b",
-   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/",
-   "https://www.productbuilder.net/models/pplx-decider-v1-1-27b",
-   "https://benchlm.ai/md/decision-models.md",
-   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   "https://huggingface.co/perplexity-ai/pplx-decider-v1.2",
+   "https://huggingface.co/perplexity-ai/pplx-decider-flash-v1.2",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
-  "rank": 6
+  "rank": 8,
+  "hl": {
+   "label": "AA Arena",
+   "value": 56.2
+  }
  },
  {
   "id": "vllm-sr-decision-3",
@@ -605,9 +761,151 @@
    "https://www.orcarouter.ai/blog/decision-3-0-open-multimodal-decision-models"
   ],
   "confidence": "medium",
-  "rank": 7,
-  "pick": "オープンで最上位",
-  "pick_reason": "Decision Index 0.3.2 で1位"
+  "rank": 9
+ },
+ {
+  "id": "h2o-lightning-31b",
+  "name": "H2O-Lightning-31B（v1.0.7）",
+  "org": "H2O.ai",
+  "country": "US",
+  "release": "2026-10-20",
+  "access": "open-weight",
+  "params_b": 31,
+  "arch": "Gemma 4 31B（it）を微調整した判断モデル。1判断を1回の読み込みで確率として返す",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 60,
+   "inputs": "テキスト（最大131,072トークン）、画像は1リクエスト最大4枚。動画は非対応",
+   "outputs": "Choice（最大255択）／Yes-No／Score。画像用のBoxは既定でオフ",
+   "languages": "主に英語で評価",
+   "other": "遅延はRTX PRO 6000 1枚・直列でのDecision Index実行の中央値60ms（平均186ms）。2-way読み取りにはH2O版vLLMが必要（標準vLLMは1-way）"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "長文（128k）": true,
+   "セルフホスト可": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": 80,
+  "rec_vram_gb": 96,
+  "vram_note": "推奨はRTX PRO 6000（96GB）1枚でFP8重み（約32GiB）。H100 80GBでもFP8なら動く（BF16では長文が載らない）",
+  "price_note": null,
+  "speed_note": "中央値60ms/判断（RTX PRO 6000、自社計測）",
+  "bench": [
+   {
+    "metric": "Decision Index 0.3（テキスト、2-way）",
+    "value": 66.69,
+    "note": "自社実行。画像は76.59",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-31b"
+   },
+   {
+    "metric": "Jev Decision Index 0.4.1（総合）",
+    "value": 66.58,
+    "note": "コミュニティボードで16位（2026-10-21時点）",
+    "source": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+   }
+  ],
+  "quality_note": "4B版より知識・推論が要る判断に強い上位級モデル。ただし4B版と違い非商用ライセンス",
+  "ja_note": "主に英語で評価。日本語の記載・評価なし",
+  "license": "H2O Model Non-Commercial Licence v1.1",
+  "commercial": "no",
+  "license_note": "非商用・非本番用途のみ。HFでゲート付き。Gemma由来部分とvLLMビルドはApache-2.0",
+  "hf": "https://huggingface.co/h2oai/h2o-lightning-31b",
+  "tools": [
+   "vLLM（H2O版）",
+   "SGLang",
+   "Transformers",
+   "Docker Model Runner"
+  ],
+  "summary_ja": "H2O.aiが公開した31Bの判断モデルで、画像と長文にも対応します。精度は高いものの、非商用ライセンスです。",
+  "best_for_ja": "研究・評価目的で、高精度な判断モデルを大きめのGPU1枚で試したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/h2oai/h2o-lightning-31b",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+  ],
+  "confidence": "high",
+  "rank": 10
+ },
+ {
+  "id": "shisa-de-2-1",
+  "name": "Shisa DE-2.1",
+  "org": "Shisa.AI",
+  "country": "JP",
+  "release": "2026-10-19",
+  "access": "open-weight",
+  "params_b": 25.2,
+  "arch": "Gemma 4 26B A4B（it）をLoRAで調整した判断モデル（MoE、アクティブ3.8B）。回答文を作らず各選択肢の確率を返す",
+  "tasks": [
+   "predicate",
+   "choice",
+   "classify",
+   "guard"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "状態＋名前付き質問のリスト（はい・いいえ、または最大256択）。画像も入力できる（画像の較正は未調整）",
+   "outputs": "各選択肢の確率",
+   "languages": "英語・日本語",
+   "other": "標準のvLLMでそのまま動く（Hopper GPUではTriton／FlashInferの注意バックエンド推奨）。Shisa DE SDKで読み取りと較正を行う"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "日本語対応（公式明記）": true,
+   "無改造のvLLMで動作": true,
+   "セルフホスト可": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。BF16の重みは約48GiB（FP8版は27.2GB）。公式の速度計測はRTX PRO 6000（96GB）",
+  "price_note": null,
+  "speed_note": "公式に遅延の代表値なし",
+  "bench": [
+   {
+    "metric": "Decision Index 0.3（公開問題、HFカード記載）",
+    "value": 60.89,
+    "note": "Shisa.AI自社実行。前版DE-2は58.89、同条件のJev 1.13.0は57.96",
+    "source": "https://huggingface.co/shisa-ai/shisa-de-2.1"
+   },
+   {
+    "metric": "日本語 間接的な拒否の判定 AUROC",
+    "value": 0.926,
+    "note": "自社評価。情報漏えい判定0.986、ニュアンス判定0.974",
+    "source": "https://huggingface.co/shisa-ai/shisa-de-2.1"
+   }
+  ],
+  "quality_note": "英語の総合力はオープンの上位勢よりやや下だが、日本語の判定を公式に評価している数少ない判断モデル",
+  "ja_note": "英語と日本語に公式対応。日本語の拒否・漏えい・ニュアンス判定で高いAUROC（自社評価）",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（ベースのGemma 4もApache-2.0）",
+  "hf": "https://huggingface.co/shisa-ai/shisa-de-2.1",
+  "tools": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp",
+   "Shisa DE SDK"
+  ],
+  "summary_ja": "国内のShisa.AIが公開した、日本語にも公式対応する判断モデルです。商用OKのApache-2.0で、標準のvLLMで動かせます。",
+  "best_for_ja": "日本語の問い合わせ振り分けや、拒否・情報漏えいの判定を自前で回したい場合",
+  "supersedes": [
+   "Shisa DE-2"
+  ],
+  "sources": [
+   "https://huggingface.co/shisa-ai/shisa-de-2.1"
+  ],
+  "confidence": "medium",
+  "pick": "日本語に公式対応",
+  "pick_reason": "Apache-2.0・日本語の判定を評価済み",
+  "rank": 11
  },
  {
   "id": "cloudflare-clef",
@@ -687,7 +985,7 @@
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "medium",
-  "rank": 8
+  "rank": 12
  },
  {
   "id": "h2o-lightning-4b",
@@ -769,7 +1067,7 @@
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "medium",
-  "rank": 9,
+  "rank": 13,
   "pick": "4Bで軽い",
   "pick_reason": "JevBench オープン部門1位"
  },
@@ -854,7 +1152,7 @@
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "medium",
-  "rank": 10
+  "rank": 14
  },
  {
   "id": "strands-decider-2b",
@@ -935,7 +1233,7 @@
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 15
  },
  {
   "id": "fastino-gliner2-5-decide",
@@ -1003,7 +1301,7 @@
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "low",
-  "rank": 12
+  "rank": 16
  },
  {
   "id": "vllm-sr-vela-2",
@@ -1090,7 +1388,7 @@
    "https://arxiv.org/html/2502.17125v1"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 17
  },
  {
   "id": "gpt-oss-safeguard",
@@ -1149,6 +1447,6 @@
    "https://huggingface.co/openai"
   ],
   "confidence": "high",
-  "rank": 14
+  "rank": 18
  }
 ]

@@ -104,6 +104,79 @@
   }
  },
  {
+  "id": "fibo-2-0",
+  "name": "FIBO 2.0（Fibo-2.0-dev / Fibo-2.0-edit-turbo）",
+  "org": "Bria AI",
+  "country": "IL",
+  "access": "open-weight",
+  "release": "2026-10-20",
+  "params_b": 8,
+  "arch": "8Bのフローマッチング単一ストリームDiT（44ブロック、FLUX.2 VAEの潜在空間）。プロンプトはQwen3-VL-4B-Instructで読み、構造化JSONプロンプトで細かく指定できる",
+  "tasks": [
+   "t2i",
+   "edit",
+   "inpaint",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "約1MP（既定1024×1024、16の倍数）",
+   "other": "Devは非蒸留の本体（50ステップ・CFG5）。Edit Turboは4ステップ・CFGなしの蒸留版で、指示編集・マスク編集・最大4枚の参照画像に対応。背景除去などのLoRAも予告"
+  },
+  "features": {
+   "指示で編集": true,
+   "マスク編集": true,
+   "複数参照（最大4枚）": true,
+   "構造化JSONプロンプト": true,
+   "蒸留で高速(4ステップ、Edit Turbo)": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。BF16の重みは約8Bパラメータ分（約16GB）。10月21日にコミュニティのGGUF・NVFP4量子化版が出ている",
+  "speed_note": "Devは50ステップ、Edit Turboは4ステップ",
+  "price_note": "Bria APIでも提供（AA掲載の料金 $32/1,000枚）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image ELO",
+    "value": 1039,
+    "note": "22位、オープンウェイトではQwen-Image-2.1（1042）に次ぐ2位（2026-10-22時点）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing ELO",
+    "value": 1087,
+    "note": "21位、オープンウェイトで1位（Qwen-Image-2.1は1083）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
+   }
+  ],
+  "quality_note": "AAの編集アリーナでオープンウェイト首位、生成でも2位。物の数や配置などプロンプトへの忠実さを売りにしている",
+  "ja_note": null,
+  "license": "CC BY-NC 4.0",
+  "commercial": "no",
+  "license_note": "非商用のみ。HFでフォーム入力が必要なゲート付き。商用利用はBriaとの別契約（有償）が必要",
+  "hf": "https://huggingface.co/briaai/Fibo-2.0-dev",
+  "tools": [
+   "Diffusers（BriaFibo2Pipeline）",
+   "ComfyUI",
+   "fal.ai",
+   "Bria API"
+  ],
+  "summary_ja": "イスラエルのBriaが公開した8Bの画像生成・編集モデルで、編集の品質はオープンウェイトで首位です。ただし重みは非商用ライセンスです。",
+  "best_for_ja": "研究・個人用途で、指示やマスクによる高品質な画像編集を手元で試したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/briaai/Fibo-2.0-dev",
+   "https://huggingface.co/briaai/Fibo-2.0-edit-turbo",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
+  ],
+  "confidence": "high",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1039
+  },
+  "rank": 2
+ },
+ {
   "id": "qwen-image-2-1-turbo",
   "name": "Qwen-Image-2.1-Turbo",
   "org": "Alibaba Qwen（Tongyi Lab）",
@@ -171,7 +244,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
   ],
   "confidence": "medium",
-  "rank": 2,
+  "rank": 3,
   "hl": {
    "label": "AA Arena",
    "value": 1028
@@ -246,7 +319,7 @@
    "https://huggingface.co/unsloth/flux-3-image-klein-GGUF"
   ],
   "confidence": "medium",
-  "rank": 3,
+  "rank": 4,
   "pick": "8GBで動く最新FLUX",
   "pick_reason": "BFL の最新世代の軽量版"
  },
@@ -346,7 +419,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 4,
+  "rank": 5,
   "hl": {
    "label": "AA Arena",
    "value": 1000
@@ -432,7 +505,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 5,
+  "rank": 6,
   "hl": {
    "label": "AA Arena",
    "value": 837
@@ -520,7 +593,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 6,
+  "rank": 7,
   "hl": {
    "label": "AA Arena",
    "value": 1026
@@ -589,7 +662,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 7,
+  "rank": 8,
   "hl": {
    "label": "LMArena",
    "value": 1113
@@ -669,7 +742,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 8,
+  "rank": 9,
   "hl": {
    "label": "AA Arena",
    "value": 1064
@@ -770,7 +843,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 9,
+  "rank": 10,
   "pick": "生成も編集も・MIT",
   "pick_reason": "1つのモデルで両方できる",
   "hl": {
@@ -863,7 +936,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 10,
+  "rank": 11,
   "pick": "16GBで動く定番・商用OK",
   "pick_reason": "Apache 2.0。速い",
   "hl": {
@@ -944,7 +1017,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 11,
+  "rank": 12,
   "hl": {
    "label": "AA Arena",
    "value": 914
@@ -1020,7 +1093,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 12,
+  "rank": 13,
   "hl": {
    "label": "AA Arena",
    "value": 990
@@ -1104,7 +1177,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 13,
+  "rank": 14,
   "hl": {
    "label": "AA Arena",
    "value": 887
@@ -1166,7 +1239,7 @@
    "https://docs.comfy.org/tutorials/image/anima/anima.md"
   ],
   "confidence": "medium",
-  "rank": 14,
+  "rank": 15,
   "pick": "アニメ絵を軽く",
   "pick_reason": "約7GBで動く"
  },
@@ -1227,7 +1300,7 @@
    "https://huggingface.co/cagliostrolab/animagine-xl-4.0"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 16
  },
  {
   "id": "gpt-image-2-5",
@@ -1309,7 +1382,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 16,
+  "rank": 17,
   "pick": "API で最高品質",
   "pick_reason": "AA Arena 総合1位。日本語の作例あり",
   "hl": {
@@ -1391,11 +1464,76 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 17,
+  "rank": 18,
   "hl": {
    "label": "AA Arena",
    "value": 1175
   }
+ },
+ {
+  "id": "krea-3",
+  "name": "Krea 3（Ultra / Fast）",
+  "org": "Krea",
+  "country": "US",
+  "access": "api",
+  "release": "2026-10-15",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "edit",
+   "multi-ref",
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "2K（ネイティブ）",
+   "other": "画像編集が中心のモデル。1回の編集に参照画像を最大6枚使え、スタイル参照で連作の見た目をそろえられる。krea.aiのほか fal・Together AI・OpenRouter・Replicate などで提供"
+  },
+  "features": {
+   "指示で編集": true,
+   "複数参照（最大6枚）": true,
+   "ネイティブ2K": true,
+   "重み公開": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "speed_note": null,
+  "price_note": "公式: 1Kで$0.03/枚、2Kで$0.06/枚。AA掲載の料金はUltra $270/1,000枚、Fast $70/1,000枚で、公式と食い違う",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Image Editing ELO",
+    "value": 1151,
+    "note": "Ultra。5位（2026-10-22時点）。Fastは1125で11位",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
+   }
+  ],
+  "quality_note": "AAの編集アリーナでGPT Image 2.5、Nano Banana 2.1、MAI-Image-2.6に並ぶ上位。編集中に商品・人物・文字が崩れにくいとうたう",
+  "ja_note": "日本語の文字描画についての記載はない",
+  "license": "API（Krea利用規約）",
+  "commercial": "yes",
+  "license_note": "Kreaの利用規約に従う。エンタープライズ契約あり",
+  "hf": "https://www.krea.ai/blog/introducing-krea-3",
+  "tools": [
+   "krea.ai",
+   "fal",
+   "Together AI",
+   "OpenRouter",
+   "Replicate"
+  ],
+  "summary_ja": "Kreaの画像編集モデルで、参照画像を最大6枚使って2Kで編集できます。AAの編集ランキングで5位の上位です。",
+  "best_for_ja": "商品写真や人物を崩さずに、安く高品質な画像編集をAPIで行いたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://www.krea.ai/blog/introducing-krea-3",
+   "https://www.krea.ai/blog/krea-3-benchmarks",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
+  ],
+  "confidence": "high",
+  "hl": {
+   "label": "AA 編集",
+   "value": 1151
+  },
+  "rank": 19
  },
  {
   "id": "grok-imagine-image-2-0",
@@ -1477,7 +1615,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 18,
+  "rank": 20,
   "hl": {
    "label": "AA Arena",
    "value": 1166
@@ -1552,7 +1690,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 19,
+  "rank": 21,
   "hl": {
    "label": "AA Arena",
    "value": 1165
@@ -1639,7 +1777,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 20,
+  "rank": 22,
   "hl": {
    "label": "AA Arena",
    "value": 1100
@@ -1709,7 +1847,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 21,
+  "rank": 23,
   "hl": {
    "label": "AA Arena",
    "value": 1116
@@ -1787,7 +1925,7 @@
    "https://www.qbitai.com/2026/09/493625.html"
   ],
   "confidence": "medium",
-  "rank": 22,
+  "rank": 24,
   "hl": {
    "label": "AA Arena",
    "value": 1095
@@ -1866,7 +2004,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 23,
+  "rank": 25,
   "hl": {
    "label": "AA Arena",
    "value": 1015
@@ -1924,7 +2062,7 @@
    "https://runtheprompts.com/resources/midjourney-info/midjourney-v8-2-whats-new-and-is-it-better-than-v8-1"
   ],
   "confidence": "medium",
-  "rank": 24
+  "rank": 26
  },
  {
   "id": "reve-2-1",
@@ -1995,7 +2133,7 @@
    "https://nanosceneai.com/blog/reve-2-1"
   ],
   "confidence": "medium",
-  "rank": 25,
+  "rank": 27,
   "hl": {
    "label": "LMArena",
    "value": 1302
