@@ -1083,8 +1083,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis Music Arena ボーカル Elo",
-    "value": 1146,
-    "note": "1位（v6-mini=1130で2位）。2026-10-20取得",
+    "value": 1147,
+    "note": "1位（v6-mini=1130で2位）。2026-10-25取得",
     "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
    },
    {
@@ -1134,7 +1134,7 @@
   "pick_reason": "AA Music Arena 1位",
   "hl": {
    "label": "AA Arena",
-   "value": 1146
+   "value": 1147
   }
  },
  {
@@ -1256,8 +1256,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis Music Arena ボーカル Elo",
-    "value": 1052,
-    "note": "4〜6位（Lyria 3 Pro=1051）。2026-10-20取得",
+    "value": 1053,
+    "note": "5位（Lyria 3 Pro=1051）。2026-10-25取得",
     "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
    },
    {
@@ -1299,7 +1299,7 @@
   "rank": 17,
   "hl": {
    "label": "AA Arena",
-   "value": 1052
+   "value": 1053
   }
  },
  {
@@ -1337,8 +1337,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis Music Arena ボーカル Elo",
-    "value": 1012,
-    "note": "7位。2026-10-20取得",
+    "value": 1015,
+    "note": "7位。2026-10-25取得",
     "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
    },
    {
@@ -1375,7 +1375,7 @@
   "rank": 18,
   "hl": {
    "label": "AA Arena",
-   "value": 1012
+   "value": 1015
   }
  },
  {

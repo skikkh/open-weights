@@ -17,10 +17,10 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "テキスト（文字列）、またはinput_text＋input_imageを含むuserメッセージ。画像はbase64データURLか公開HTTP(S) URL（file_idは不可）",
+   "inputs": "テキスト・JSON（input_json）・画像（base64データURLか公開HTTP(S) URL、質問ごとの画像も可）。会話履歴（ツール呼び出し・出力を含む）も評価できる。ファイル・音声・item参照は非対応",
    "outputs": "predicate＝条件が真である確率0〜1／choice＝指定値から1つ＋全選択肢の確率＋confidence／score＝0始まりの順序レベルに対する確率加重スコア（レベルの間の値もあり得る）＋分布＋confidence／質問単位のrefusal",
    "languages": "公式ガイドに対応言語の記載なし",
-   "other": "対応モデルはgpt-6-lunaのみ。public beta（2026-10-06、DevDay 2026で限定プレビュー後に全開発者へ開放）。公式は「数週間以内にGA予定」。1リクエストに複数の質問（各々一意のname）を入れられ、依存関係のある判断は別リクエスト。ZDR・HIPAA（対象顧客）、米国・欧州（EEA＋スイス）のデータレジデンシー。SDKはPython 3.26.0／JS 7.30.0／Go 3.73.0／Ruby 0.101.0／Java 4.78.0以降。第三者情報（promptfoo）ではchoiceは2〜255値、scoreは2〜10段階、画像は1リクエスト128枚まで"
+   "other": "対応モデルはgpt-6-lunaのみ。2026-10-06にpublic beta、2026-10-22に一般提供（GA）。1リクエストに1〜400問（beta時は200問）、各々一意のname、依存関係のある判断は別リクエスト。scoreは2〜10段階。GAでプロンプトキャッシュ、JSON入力、会話履歴、Private Link、組織の利用量レポート、GPT-Live連携が追加。ZDR・HIPAA（対象顧客）、米国・欧州（EEA＋スイス）のデータレジデンシー。SDKはPython 3.26.0／JS 7.30.0／Go 3.73.0／Ruby 0.101.0／Java 4.78.0以降。第三者情報（promptfoo）ではchoiceは2〜255値、画像は1リクエスト128枚まで"
   },
   "features": {
    "画像入力": true,
@@ -30,13 +30,14 @@
    "ラベル・判断基準を自由に定義": true,
    "ZDR・HIPAA対応": true,
    "重み公開": false,
-   "日本語対応（公式明記）": false
+   "日本語対応（公式明記）": false,
+   "JSON入力・会話履歴": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": "APIのみ（重み非公開）",
-  "price_note": "入力 $0.10/1Mトークンのみ課金。出力・キャッシュ読み書きは無料（公式）。地域処理の割増と長文入力の倍率あり（金額は公式未記載。LLM Gatewayでは272K超の入力が$0.20/1Mと掲載）",
-  "speed_note": "公式は「Responses APIの約10倍速い」とだけ記載し、計測条件は非公開。DevDay時点の報道では約150ms/判断（ベンダー発表で未検証）。Microsoftの比較計測では中央値300ms。独立検証は未確認",
+  "price_note": "未キャッシュの入力 $0.10/1Mトークン、出力は無料（公式）。GA以降はキャッシュヒットが割引、キャッシュ書き込みは課金（gpt-6-lunaの通常のキャッシュ料金と同じ）。地域処理の割増と長文入力の倍率あり（金額は公式未記載。LLM Gatewayでは272K超の入力が$0.20/1Mと掲載）",
+  "speed_note": "公式は「Responses APIの約10倍速い」とだけ記載し、計測条件は非公開。GA時の報道（TechCrunch）では約100〜180ms/判断、DevDay時点の報道では約150ms（いずれもベンダー発表で未検証）。Microsoftの比較計測では中央値300ms。独立検証は未確認",
   "bench": [
    {
     "metric": "JevBench capability",
@@ -55,7 +56,7 @@
   "ja_note": "対応言語の公式記載なし。基盤のGPT-6 Lunaは汎用LLMなので日本語の入力自体は扱えると見込まれるが、日本語での判断精度の評価は公開されていない。本番前に自社の日本語データで確認が必要",
   "license": "API（利用規約）",
   "commercial": "yes",
-  "license_note": "OpenAI API利用規約に従う。public betaのため価格・制限は変更の可能性あり",
+  "license_note": "OpenAI API利用規約に従う。2026-10-22に一般提供（GA）",
   "hf": "https://developers.openai.com/api/docs/guides/decisions",
   "tools": [
    "OpenAI SDK（Python/JS/Go/Ruby/Java）",
@@ -70,6 +71,7 @@
   "supersedes": [],
   "sources": [
    "https://developers.openai.com/api/docs/guides/decisions",
+   "https://techcrunch.com/2026/10/22/openai-makes-its-jev-competitor-widely-available-as-decision-model-competition-heats-up/",
    "https://unite.ai/openai-releases-decisions-api-in-public-beta-powered-by-gpt-6-luna",
    "https://propakistani.pk/2026/10/07/openai-launches-decisions-api-with-up-to-10x-faster-responses/",
    "https://www.orcarouter.ai/blog/openai-decisions-api-gpt-6-luna",
@@ -85,10 +87,10 @@
  },
  {
   "id": "typesafe-jev",
-  "name": "Jev 1.13（安定版 jev-latest）／Jev 1.14（プレビュー jev-preview）",
+  "name": "Jev 1.14（jev-latest／jev-preview とも 1.14.0）",
   "org": "TypeSafe AI",
   "country": "US",
-  "release": "2026-09-15",
+  "release": "2026-10-14",
   "access": "api",
   "params_b": null,
   "arch": "「System One」モデル。LLMではなく、テキストを逐次生成しない並列サンプリング型の判断専用モデルと説明されている（規模・構造は非公開）",
@@ -101,10 +103,10 @@
   ],
   "spec": {
    "latency_ms": 100,
-   "inputs": "テキストのみ（文字列・JSONオブジェクト・テキスト配列）。画像・音声・動画は非対応",
-   "outputs": "Choice（定義済み選択肢から1つ）／Score（定義した尺度上の値）／Noul（はい・いいえの確率）の型付き回答と確率。一部の型はconfidenceも返す",
+   "inputs": "テキスト（文字列・JSONオブジェクト・テキスト配列）。画像はヘッダ（TypeSafe-Danger-Zone-Images: true）で有効にする実験的機能で、本番利用は非保証。音声・動画は非対応",
+   "outputs": "Choice（定義済み選択肢から1つ）／Score（定義した尺度上の値）／Noul（はい・いいえの確率）の型付き回答と確率。一部の型はconfidenceも返す。1.14では単一物体のバウンディングボックスを返すBox型を追加",
    "languages": "英語が主で最も高精度。CJKを含む他言語も扱えるが精度は同等ではない（公式）",
-   "other": "POST /v1/systemone。jev-latest＝jev-1.13.0、jev-preview＝jev-1.14.0（2026-10-14から提供）。コンテキストは既定で1リクエスト64k・1質問32k、ヘッダ指定で262kまで拡張可（低速・低精度化と公式が注記）。OpenRouter、Cloudflare Workers AI、LLM Gatewayからも利用可。2026-09-15にステルスから登場（DCVC主導の4,000万ドルのシード）"
+   "other": "POST /v1/systemone。2026-10-14にjev-1.14.0をjev-previewで公開し、その後jev-latest（安定版・SDK既定）も1.14.0に移行（公式Models、2026-10-25時点）。1.13は60日前予告で廃止予定。公式は「小幅な改善で、多言語の伸びが最大の見込み」とするが定量値は未公表。コンテキストは既定で1リクエスト64k・1質問32k、ヘッダ指定で262kまで拡張可（低速・低精度化と公式が注記）。OpenRouter、Cloudflare Workers AI、Vercel AI Gateway、Netlify AI Gateway、LLM Gatewayからも利用可。2026-09-15にステルスから登場（DCVC主導の4,000万ドルのシード）"
   },
   "features": {
    "画像入力": false,
@@ -118,13 +120,13 @@
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": "APIのみ（重み非公開）",
-  "price_note": "入力 $0.042/1Mトークン（$42/10億トークン）、出力無料（公式Models）。TypeSafeは1判断あたり約$0.0004と主張",
+  "price_note": "入力 $0.042/1Mトークン（$42/10億トークン）、出力無料（公式Models、1.14・1.13とも同額）。TypeSafeは1判断あたり約$0.0004と主張",
   "speed_note": "TypeSafe公称は端から端まで70〜500ms。Vals.aiの独立計測で約0.10秒/呼び出し（負荷下0.11秒、1文書64判断でも0.12秒）。Artificial Analysisの計測で0.13秒/タスク、Microsoftの比較計測では中央値240ms",
   "bench": [
    {
     "metric": "Artificial Analysis Decision Index v1.0",
     "value": 58,
-    "note": "2026-10-13公開時点で判断モデル中1位（Jev 1.13）。参考: Claude Haiku 5.5(Low)は61、GPT-6 Luna(Low)は55",
+    "note": "2026-10-13公開時点の値で、Jev 1.13による。参考: Claude Haiku 5.5(Low)は61、GPT-6 Luna(Low)は55",
     "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
    },
    {
@@ -152,7 +154,7 @@
     "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
    }
   ],
-  "quality_note": "このカテゴリを作った基準モデルで、/v1/systemone形式が事実上の標準になりつつある。独立評価では、範囲のはっきりした検証タスクで最先端LLMと誤差の範囲で並び、速度とコストで大きく勝つ。一方でLegalBenchは最下位、知識・推論系（HLE）は弱く、DI 0.3.1では平均confidence 0.81に対し正答率0.74と過信傾向がある。TypeSafe自身のベンチは他のフロンティアモデルとの一致率で測っている点にも注意",
+  "quality_note": "このカテゴリを作った基準モデルで、/v1/systemone形式が事実上の標準になりつつある。独立評価では、範囲のはっきりした検証タスクで最先端LLMと誤差の範囲で並び、速度とコストで大きく勝つ。一方でLegalBenchは最下位、知識・推論系（HLE）は弱く、DI 0.3.1では平均confidence 0.81に対し正答率0.74と過信傾向がある。TypeSafe自身のベンチは他のフロンティアモデルとの一致率で測っている点にも注意。掲載のベンチ値は主にJev 1.13のもので、1.14の独立評価はまだ少ない",
   "ja_note": "公式に「英語が主。CJKは扱えるが精度は同等ではない」と明記。日本語の判定に使う場合は自社データでの精度確認が必須",
   "license": "API（利用規約）",
   "commercial": "yes",
@@ -168,7 +170,9 @@
   ],
   "summary_ja": "エージェントの「どれを選ぶか」「はいかいいえか」を、文章を書かずに型付きの答えと確率で返す判断専用モデルです。このジャンルの火付け役で、速さと安さが最大の売りです。",
   "best_for_ja": "英語中心のワークフローで、1件の入力に多数の小さな判断（振り分け・要否判定・優先度付け）を高速・低コストで回したい場合",
-  "supersedes": [],
+  "supersedes": [
+   "Jev 1.13"
+  ],
   "sources": [
    "https://docs.typesafe.ai/concepts/system-one",
    "https://docs.typesafe.ai/models",
@@ -177,7 +181,9 @@
    "https://artificialanalysis.ai/articles/artificial-analysis-decision-index",
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/",
    "https://www.lindy.ai/blog/jev-ai",
-   "https://runtimewire.com/article/langchain-adds-jev-decision-model-agent-workflows"
+   "https://runtimewire.com/article/langchain-adds-jev-decision-model-agent-workflows",
+   "https://alternativeto.net/news/2026/10/typesafe-ai-ships-jev-1-14-with-new-box-type-composable-images-and-longer-context-length/",
+   "https://netlify.com/changelog/typesafe-jev-1-14-0-ai-gateway"
   ],
   "confidence": "medium",
   "rank": 2,
@@ -354,7 +360,7 @@
   "release": "2026-10-21",
   "access": "open-weight",
   "params_b": 27,
-  "arch": "Qwen3.5-27Bを620万件の判断例で全体微調整した判断モデル（画像エンコーダは凍結、テキストのみで学習）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
+  "arch": "Qwen3.5-27Bを620万件の判断例で全体微調整した判断モデル（テキストと画像の判断で言語モデルを全体微調整、画像エンコーダは凍結）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
   "tasks": [
    "predicate",
    "choice",
@@ -364,13 +370,13 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "状態（チケット・メールなど）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
+   "inputs": "状態（チケット・メールなど、テキスト＋任意で画像）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
    "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
    "languages": "英語",
-   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる"
+   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
    "判断の保留を学習": true,
    "セルフホスト可": true,
@@ -434,7 +440,7 @@
   "release": "2026-10-21",
   "access": "open-weight",
   "params_b": 9.4,
-  "arch": "Qwen3.5-9Bを620万件の判断例で全体微調整した判断モデル（画像エンコーダは凍結、テキストのみで学習）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
+  "arch": "Qwen3.5-9Bを620万件の判断例で全体微調整した判断モデル（テキストと画像の判断で言語モデルを全体微調整、画像エンコーダは凍結）。回答文を作らず、各選択肢の確率を返す。自信がないときは判断を保留するよう学習",
   "tasks": [
    "predicate",
    "choice",
@@ -444,13 +450,13 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "状態（チケット・メールなど）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
+   "inputs": "状態（チケット・メールなど、テキスト＋任意で画像）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
    "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
    "languages": "英語",
-   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる"
+   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
    "判断の保留を学習": true,
    "セルフホスト可": true,
@@ -506,13 +512,13 @@
  },
  {
   "id": "fastino-glide",
-  "name": "GLiDE",
+  "name": "GLiDE V1.2（27B）",
   "org": "Fastino",
   "country": "US",
-  "release": "2026-09-30",
-  "access": "api",
-  "params_b": null,
-  "arch": "「思考型」判断モデル（Generalized Lightweight Decision Engine）。まず高速に判定し、迷う問題にだけ追加の推論を使って確率に反映する",
+  "release": "2026-10",
+  "access": "open-weight",
+  "params_b": 26.1,
+  "arch": "Qwen3.8-27Bを改変した判断モデル（言語モデル51.2GB＋画像エンコーダ0.92GB＋255択の判断読み出し層）。文章を生成せず、1質問1フォワードで全選択肢の確率を返す。API公開時（9月30日）は迷う問題だけ追加推論する「思考型」と説明されていた",
   "tasks": [
    "predicate",
    "choice",
@@ -522,63 +528,73 @@
    "judge"
   ],
   "spec": {
-   "latency_ms": null,
-   "inputs": "state（エージェントの目的・提案されたツール呼び出し・文脈など）＋型付き質問。1質問の描画済みプロンプトは40kトークンまで（思考トークン込み、超過は拒否）",
-   "outputs": "選択値・confidence・全選択肢の確率（Noul／Choice／Score）。自由文は返さない",
+   "latency_ms": 84,
+   "inputs": "state（文字列・任意のJSON・テキストと画像のパーツ列）＋型付き質問。1質問のプロンプトは既定で40,000トークンまで（画像トークン込み）。画像はインラインのみ（リモートURL不可）、各1024×1024画素まで縮小。動画は非対応",
+   "outputs": "Choice（最大255択）／Noul（はい・いいえの確率）／Score（順序レベル）の全選択肢の確率",
    "languages": "記載なし",
-   "other": "POST https://api.fastino.ai/v1/systemone（System Oneスキーマ準拠）、model: fastino/GLiDE。思考トークンはusageの出力トークンとして報告。想定用途はルーティング、高リスク操作の制御、インシデント対応、規約・契約の解釈、出力検証、分類"
+   "other": "遅延はBF16・直列・平均2.3問/リクエストでの中央値（RTX PRO 6000で84ms、B200で48ms、H100で78ms。p99は1〜2.7秒）。Python APIとSystem One形式のHTTPサーバー（POST /v1/systemone）を同梱。ホストAPIはPOST https://api.fastino.ai/v1/systemone（model: fastino/GLiDE）。HFリポジトリは10月19日にV1.2の重みを登録、10月22日にライセンスを適用"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
-   "迷う問題だけ追加推論": true,
    "Jev互換API（/v1/systemone）": true,
-   "重み公開": false,
+   "重み公開": true,
+   "ホストAPIあり": true,
    "日本語対応（公式明記）": false
   },
   "min_vram_gb": null,
-  "rec_vram_gb": null,
-  "vram_note": "APIのみ（重み非公開）",
-  "price_note": "入力 $0.15/1Mトークン、出力無料（公式docs）。第三者には$0.30/1Mとの掲載もあり。AAの計測で$119/100万タスク",
-  "speed_note": "公式に遅延の数値なし。迷う問題では推論を足すため、他の判断モデルより遅くなる場合がある",
+  "rec_vram_gb": 80,
+  "vram_note": "BF16で52.2GB（読み込み後）、39kトークンの質問でピーク60.2GB。公式は80GB以上のGPU 1枚（RTX PRO 6000 96GB・B200・H100 80GBで検証）",
+  "price_note": "ホストAPIは入力 $0.04/1Mトークン、出力無料（公式docs、公開時の$0.15から値下げ）。AAの公開時計測で$119/100万タスク",
+  "speed_note": "自社計測の中央値はRTX PRO 6000で84ms、B200で48ms（直列・BF16）。長いプロンプトや質問数が多いと遅くなる（p99で1〜2.7秒）",
   "bench": [
+   {
+    "metric": "Jev Decision Index 0.4.1",
+    "value": 71.5,
+    "note": "V1.2。2026-10-22時点で229モデル中1位とFastinoがモデルカードで主張（2位Jeffan-31b-1710が69.8、3位mammoth-1が68.4）",
+    "source": "https://huggingface.co/fastino/GLiDE"
+   },
    {
     "metric": "Jev Decision Index 0.2.1",
     "value": 64.81,
-    "note": "Fastinoの自社実行（公開ボード未掲載）。同条件のJev 1.13.0公表値は57.91。38ベンチ中31で上回ると主張",
+    "note": "API公開時（9月30日）のFastino自社実行。同条件のJev 1.13.0公表値は57.91",
     "source": "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model"
    },
    {
     "metric": "Artificial Analysis Decision Index v1.0",
     "value": 54,
-    "note": "Microsoft-Decision-1と同点。When2Call 84、WildGuardTest 95",
+    "note": "API公開時の版。Microsoft-Decision-1と同点。When2Call 84、WildGuardTest 95",
     "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
    }
   ],
-  "quality_note": "推論を足せるため、知識・推論系や因果推論（CLadder 88.7%、自社）で強いと主張。一方、第三者のAAではJev 1.13より指数が低く（54対58）、コストは約3倍。自社計測の数値が中心",
-  "ja_note": "言語の記載なし。日本語での精度は不明",
-  "license": "API（利用規約）",
-  "commercial": "yes",
-  "license_note": "Fastino APIの利用規約に従う",
-  "hf": "https://docs.fastino.ai/concepts/glide",
+  "quality_note": "V1.2はコミュニティのDecision Index 0.4.1で首位とされ、オープンな判断モデルで最上位級。ただし首位の主張はFastinoのモデルカードによるもので、AAなど第三者の新しい計測はまだない。公開時の版はAAでJev 1.13を下回っていた（54対58）",
+  "ja_note": "言語の記載なし。日本語での精度は不明（基盤のQwen3.8は多言語LLM）",
+  "license": "Fastino Community License",
+  "commercial": "conditional",
+  "license_note": "年間売上1,000万ドル超の企業が本番で商用利用する場合は別途契約が必要。商用利用時は「Built with Fastino GLiDE」の表示義務。派生モデルにも同じ条件が及ぶ。Qwen3.8由来部分はApache-2.0",
+  "hf": "https://huggingface.co/fastino/GLiDE",
   "tools": [
+   "Transformers（同梱のglideパッケージ）",
+   "HTTPサーバー（/v1/systemone、同梱）",
    "Fastino API（/v1/systemone）",
-   "HTTP（Bearer: FASTINO_API_KEY）"
+   "flash-linear-attention（推奨）"
   ],
-  "summary_ja": "Fastinoの「考える」判断モデルです。簡単な判断は即答し、迷うときだけ少し考えてから答えます。",
-  "best_for_ja": "規約解釈や出力検証など、たまに難しい判断が混じるエージェントの制御",
+  "summary_ja": "Fastinoの判断モデルで、重みがHugging Faceで公開されました。コミュニティのDecision Indexで首位とされ、画像も扱えます。",
+  "best_for_ja": "知識が要る判断や画像を含む判断を、80GB級GPU 1枚で自前運用したい場合（大企業の本番商用は別契約）",
   "supersedes": [],
   "sources": [
-   "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model",
+   "https://huggingface.co/fastino/GLiDE",
+   "https://huggingface.co/fastino/GLiDE/blob/main/LICENSE",
    "https://docs.fastino.ai/concepts/glide",
+   "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model",
    "https://benchlm.ai/models/fastino-glide",
    "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 7,
   "hl": {
-   "label": "AA Arena",
-   "value": 54
+   "label": "Jev 0.4.1",
+   "value": 71.5
   }
  },
  {
@@ -989,13 +1005,13 @@
  },
  {
   "id": "h2o-lightning-4b",
-  "name": "H2O-Lightning-4B（v1.3.1）",
+  "name": "H2O-Lightning-4B（v1.4.0）",
   "org": "H2O.ai",
   "country": "US",
-  "release": "2026-10",
+  "release": "2026-10-24",
   "access": "open-weight",
   "params_b": 4,
-  "arch": "Qwen3.5-4Bを3段階で微調整した判断モデル。1判断＝1フォワード・出力1トークンで、コストは入力トークンだけで決まる（カード上の表記は4B〜5Bで揺れあり）",
+  "arch": "Qwen3.5-4Bを3段階で微調整した判断モデル（v1.4.0は画像を含む学習データで新たに微調整し、1-way／2-wayの両方の読み取りに対応）。1判断＝1フォワード・出力1トークンで、コストは入力トークンだけで決まる（カード上の表記は4B〜5Bで揺れあり）",
   "tasks": [
    "predicate",
    "choice",
@@ -1005,61 +1021,63 @@
   ],
   "spec": {
    "latency_ms": 30,
-   "inputs": "テキスト（最大40,960トークン）、画像は1リクエスト最大4枚（各約1MPに縮小）",
-   "outputs": "Choice／Yes-No（noul）／Score（順序尺度の確率分布）。画像用のBox（バウンディングボックス）は既定でオフ",
+   "inputs": "テキスト（最大40,960トークン）、画像は1リクエスト最大4枚（各約1MPに縮小、1枚20MBまで）",
+   "outputs": "Choice（最大255択）／Yes-No（noul）／Score（順序尺度の確率分布）。画像用のBox（バウンディングボックス）はv1.4.0から常時有効",
    "languages": "主に英語で評価（学習データの99%超が英語）",
-   "other": "遅延はH100 80GB（29.8ms）とRTX PRO 4500（30.2ms）での直列計測の中央値（JevBench公開231問）。L40Sの2-way読み取りで38ms。推定コスト$0.021/1,000判断（H2O発表）。Nemotron 3 Nano 4Bベースの姉妹版（h2o-lightning-4b-nemotron-nano、テキストのみ）あり"
+   "other": "推奨はH2O版vLLM 0.30.0での2-way読み取り（標準vLLMは1-way、v1.4.0の1-way精度は未計測）。遅延の公式値はv1.3系までの計測（H100 80GBで29.8ms、RTX PRO 4500で30.2ms、JevBench公開231問の直列中央値）。v1.4.0のGGUF・MLX版は未公開。Nemotron 3 Nano 4Bベースの姉妹版（h2o-lightning-4b-nemotron-nano、テキストのみ）あり"
   },
   "features": {
    "画像入力": true,
    "確率・信頼度を返す": true,
    "無改造のvLLMで動作": true,
-   "GGUF（llama.cpp）・MLX対応": true,
+   "GGUF（llama.cpp）・MLX対応": false,
    "日本語対応（公式明記）": false
   },
   "min_vram_gb": 9.3,
   "rec_vram_gb": 32,
-  "vram_note": "重みは9.3GB（公式）。公式計測は32GBのRTX PRO 4500と48GBのL40S（--gpu-memory-utilization 0.90）。GGUF量子化ならさらに小さくできる",
+  "vram_note": "重みは9.3GB（公式）。公式計測は48GBのL40S。v1.4.0のGGUF量子化はまだないが、旧版（v1.3系まで）にはGGUFあり",
   "price_note": null,
-  "speed_note": "中央値約30ms/判断（H100・RTX PRO 4500、自社計測）。JevBenchの補正後の値では209ms扱い",
+  "speed_note": "v1.3系までの公式計測で中央値約30ms/判断（H100・RTX PRO 4500）。v1.4.0の遅延は未公表。JevBenchの補正後の値では209ms扱い",
   "bench": [
    {
-    "metric": "JevBench composite",
-    "value": 72.5,
-    "note": "v1.1。2026-10-07時点でオープンウェイト104システム中1位（同ボードのJevは71.5）。較正90・速度92.6・知能60・コスト60。H2O発表（ベンダー報告）",
-    "source": "https://www.financialcontent.com/article/bizwire-2026-10-12-h2o-lightning-4b-ranks-first-on-jevbench-open-weights-leaderboard"
-   },
-   {
     "metric": "JevBench公開テキスト問題 正答率(%)",
-    "value": 87.9,
-    "note": "v1.3.1、2-way（203/231）。1-wayは85.7%",
+    "value": 89.2,
+    "note": "v1.4.0、2-way（206/231）。前版v1.3.2は203/231。差は誤差の範囲（H2O計測）",
     "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
    },
    {
     "metric": "Decision Index 0.3（テキスト、2-way）",
-    "value": 57.86,
-    "note": "v1.3.1。画像は68.22",
+    "value": 62.38,
+    "note": "v1.4.0、H2Oによる公開キットの自社実行（ボード掲載値ではない）。画像は69.03",
     "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
+   },
+   {
+    "metric": "JevBench composite",
+    "value": 72.5,
+    "note": "v1.1。2026-10-07時点でオープンウェイト104システム中1位（同ボードのJevは71.5）。H2O発表（ベンダー報告）",
+    "source": "https://www.financialcontent.com/article/bizwire-2026-10-12-h2o-lightning-4b-ranks-first-on-jevbench-open-weights-leaderboard"
    }
   ],
-  "quality_note": "4Bと小型ながら較正と速度に優れ、JevBenchのオープン部門で首位。ただしJevBench総合は速度・コストを含むため小型モデルに有利で、知識・推論が要る判断では大型モデルに劣る",
+  "quality_note": "4Bと小型ながら較正と速度に優れ、JevBenchのオープン部門で首位。v1.4.0は前版より知識・言語系の判断で上がった一方、検索結果の関連度判定とツール選択では下がったと公式が明記。JevBench総合は速度・コストを含むため小型モデルに有利で、知識・推論が要る判断では大型モデルに劣る",
   "ja_note": "学習データの99%超が英語で、日本語の記載・評価なし。日本語で使うなら自社データで要検証",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "Apache-2.0。オンプレ・エアギャップ環境でも利用可",
   "hf": "https://huggingface.co/h2oai/h2o-lightning-4b",
   "tools": [
-   "vLLM",
+   "vLLM（H2O版で2-way）",
    "SGLang",
-   "llama.cpp（GGUF）",
-   "MLX",
+   "llama.cpp（GGUF、旧版のみ）",
+   "MLX（旧版のみ）",
    "Transformers"
   ],
   "summary_ja": "H2O.aiが公開した4Bの小さな判断モデルで、1回の判断が約0.03秒と非常に速いです。普通のGPU1枚で動き、確信度の正確さにも定評があります。",
   "best_for_ja": "英語中心の高頻度な振り分け・要否判定を、自社GPU1枚で安く速く回したい場合",
   "supersedes": [
    "H2O-Lightning-4B v1.1",
-   "H2O-Lightning-4B v1.2.3"
+   "H2O-Lightning-4B v1.2.3",
+   "H2O-Lightning-4B v1.3.1",
+   "H2O-Lightning-4B v1.3.2"
   ],
   "sources": [
    "https://huggingface.co/h2oai/h2o-lightning-4b",

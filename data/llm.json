@@ -58,7 +58,7 @@
    "Kimi-K2.5",
    "Kimi-K2-Thinking"
   ],
-  "notes": "2026-07-16にAPIで発表、重みは07-27公開。思考は常時ON（low/high/max）。K2.6ベースのコーディング特化版Kimi-K2.7-Code（1T/32B、INT4で約595GB、Modified MIT、2026-06-11）はK3に置き換えられたが、より軽い1T級の選択肢として残っている。",
+  "notes": "2026-07-16にAPIで発表、重みは07-27公開。思考は常時ON（low/high/max）。K2.6ベースのコーディング特化版Kimi-K2.7-Code（1T/32B、INT4で約595GB、Modified MIT、2026-06-11）はK3に置き換えられたが、より軽い1T級の選択肢として残っている。 後継のKimi K3.1 Pro（同じ2.8T/104Bの追加学習版、AA指数55）は10-23にAPIで発表、重みは11-04までに公開予定で未公開。",
   "sources": [
    "https://huggingface.co/moonshotai/Kimi-K3",
    "https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE",
@@ -1505,29 +1505,29 @@
   }
  },
  {
-  "id": "minimax-m3",
-  "name": "MiniMax-M3",
+  "id": "minimax-m3-1-flash",
+  "name": "MiniMax-M3.1-Flash",
   "family": "MiniMax-M3",
   "org": "MiniMax",
   "country": "CN",
-  "release": "2026-06-12",
+  "release": "2026-10-23",
   "arch": "MoE（MiniMax Sparse Attention）",
   "total_b": 428,
   "active_b": 23,
-  "native_precision": "BF16（公式MXFP8版あり）",
-  "weights_gb": 854.2,
+  "native_precision": "NVFP4（エキスパート）＋MXFP8の量子化前提学習（QAT）済み重み",
+  "weights_gb": 252.4,
   "context_k": 1049,
   "modality": [
    "text",
    "image",
    "video"
   ],
-  "mode": "hybrid",
+  "mode": "thinking",
   "license": "MiniMax Community License",
   "commercial": "conditional",
-  "license_note": "商用利用時は「Built with MiniMax M3」の表示とMiniMaxへの通知が必要で、年商2,000万ドル超の製品・サービスは事前の書面許諾が必要。微調整などの派生物を商用展開する場合も対象。軍事目的などの禁止用途がある。",
-  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
-  "summary_ja": "学習初期からテキスト・画像・動画を混ぜて学習したネイティブ・マルチモーダルMoE（約428B/アクティブ約23B）。独自の疎注意MSAにより、1M文脈でM2比プリフィル9倍・デコード15倍の高速化をうたう。",
+  "license_note": "非商用は無料。商用利用時は「Built with MiniMax M3.1-Flash」の表示とMiniMaxへの一度きりの通知が必要で、年商2,000万ドル超の製品・サービスは事前の書面許諾が必要。追加学習した派生物の商用展開も対象。軍事目的などの禁止用途がある。",
+  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+  "summary_ja": "MiniMax-M3を土台に、疎注意の範囲拡大と低ビット前提の学習で軽く速くした428B MoE（アクティブ23B）です。重みは最初から4〜8bitで配られ、約252GBとM3の公式MXFP8版（約444GB）より小さくなりました。",
   "strengths": [
    "coding",
    "agent",
@@ -1537,127 +1537,94 @@
   ],
   "bench": {
    "swe_verified": null,
-   "gpqa": 93.0,
-   "hle": 37.0,
+   "gpqa": null,
+   "hle": 43.4,
    "aime": null,
    "lcb": null,
    "mmlu_pro": null,
-   "terminal_bench2": 66.0,
+   "terminal_bench2": null,
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "HFカードにベンチ表がないため、MiniMaxの公称値を二次情報で採用（SWE-bench Pro 59.0、Terminal-Bench 2.1 66.0、MCP-Atlas 74.2）。GPQA 93とHLE 37はGLM-5.2のモデルカード比較表に載ったMiniMax M3の値（同表ではTB2.1 Terminus-2が65）。AA指数v4.3.2（2026-10-20取得）は29.2で、自己申告より大幅に低い。",
-  "aa_index": 29.2,
-  "japanese_note": "M3自体の日本語評価は未確認。前世代MiniMax-M2.1はNejumi Leaderboard 4（2026/3/6版）で総合0.7556（全体32位）という参考値がある。",
-  "deploy_note_ja": "BF16で約854GB（8×H200 1ノード）、公式MXFP8版は約444GB（4×H200や8×H100）。unslothのGGUFはUD-Q4_K_XL 約266GBで512GB級Macなら余裕、UD-Q3_K_XL 約196GBで256GB級Mac。KTransformersのチュートリアル、ROCm（ATOM）向けのMXFP4/MXFP8手順、MLX 4bit版もある。",
+  "bench_note": "公式モデルカード（ベンダー自己申告）。HLEはツールなし。ほかにTerminal-Bench 4.0 38.1、DeepSWE v1.1 73.7、OSWorld 2.0 61.7、Agents' Last Exam 29.6、NL2Repo-Bench 61.2、CyberGym 82.2、BankerToolBench 76.2、CharXiv RQ 82.5。AA指数v4.3.2（2026-10-25確認）は43で、プレビュー時の42.7と同水準（AAのページはまだ重み非公開の扱い）。",
+  "aa_index": 42.7,
+  "japanese_note": "M3.1-Flash自体の日本語評価は未確認。",
+  "deploy_note_ja": "公式重み（約252GB、DSparkドラフト2.3GB込み）は4×B300などで動き、vLLM・SGLangは公開日から対応。GGUFはunslothのUD-IQ3_S 約175GBで256GB級機、UD-Q4_K_XL 約249GBで512GB級Mac。MLXのText 3bit/4bit版（約186GB/248GB、テキストのみ）もある。",
   "engines": [
-   "SGLang",
    "vLLM",
-   "Transformers",
-   "KTransformers",
+   "SGLang",
+   "TokenSpeed",
    "llama.cpp",
    "MLX"
   ],
   "supersedes": [
+   "MiniMax-M3",
    "MiniMax-M2.7",
    "MiniMax-M2.5",
    "MiniMax-M2.1"
   ],
-  "notes": "06-01に発表し、重みは遅れて06-12に公開。思考はenabled/adaptive/disabledの3モード。後継のMiniMax-M3.1-Flash（Preview、09-27開始）はToken PlanとMiniMax Code経由のみでの提供で重み未公開、AA指数は42.7。HF上の同名組織にあるMiniMax-H3は動画生成モデルで、LLMではない。",
+  "notes": "09-27からプレビュー（Token Plan／MiniMax Code経由）、10-19に正式発表、重みは10-23にHugging FaceとModelScopeで公開（申請不要）。M3からの主な変更は、最初の3層の全注意もMSAに置き換え、ルーティングされるエキスパートと注意をQATで低ビット化、投機デコードをDSparkに変更。HFのsafetensors表示の「220B」は低ビット詰め込み後の数で、総パラメータは約428B。",
   "sources": [
-   "https://huggingface.co/MiniMaxAI/MiniMax-M3",
-   "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE",
-   "https://huggingface.co/MiniMaxAI/MiniMax-M3-MXFP8",
-   "https://huggingface.co/zai-org/GLM-5.2",
-   "https://pasqualepillitteri.it/en/news/3934/minimax-m3-chinese-open-weights-coding-model",
-   "https://www.implicator.ai/minimax-promises-m3-weights-after-1m-context-model-launch/",
-   "https://www.eesel.ai/fr/blog/minimax-m3-1-flash-specs-tarifs-tester-preview",
-   "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
-   "https://artificialanalysis.ai/leaderboards/models",
-   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+   "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+   "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash/blob/main/LICENSE",
+   "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF",
+   "https://huggingface.co/mlx-community/MiniMax-M3.1-Flash-Text-4bit",
+   "https://www.orcarouter.ai/blog/minimax-m3-1-flash-open-weights",
+   "https://pasqualepillitteri.it/en/news/26561/minimax-m3-1-flash-weights-hugging-face-license",
+   "https://artificialanalysis.ai/models/minimax-m3-1-flash"
   ],
-  "confidence": "medium",
-  "short": "MiniMax-M3",
+  "confidence": "high",
+  "short": "MiniMax-M3.1-Flash",
   "local_q": {
-   "summary_ja": "最小の量子化版（IQ1_S、約1.69bit・90GB）なら128GB機に載ります。512GB の Mac Studio なら UD-Q4_K_XL、約4.97bit・266GB まで載ります。",
+   "summary_ja": "最小の量子化版（UD-IQ3_S、約3.3bit・175GB）なら256GB機に載ります。元の重みがすでに約4.7bitのため、512GB の Mac Studio なら公式重みと同等の UD-Q4_K_XL（約249GB）まで載ります。",
    "quants": [
     {
-     "name": "IQ1_S (bartowski)",
-     "bits": 1.69,
-     "size_gb": 90.5,
-     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
+     "name": "UD-IQ3_S",
+     "bits": 3.28,
+     "size_gb": 175.45,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF"
     },
     {
-     "name": "IQ2_XXS (bartowski)",
-     "bits": 2.18,
-     "size_gb": 116.6,
-     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
-    },
-    {
-     "name": "UD-IQ1_M",
-     "bits": 2.42,
-     "size_gb": 129.3,
-     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
-     "note": "Unsloth: 約133GB必要"
-    },
-    {
-     "name": "UD-Q2_K_XL",
-     "bits": 2.69,
-     "size_gb": 143.9,
-     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
-    },
-    {
-     "name": "UD-IQ3_XXS",
-     "bits": 3.0,
-     "size_gb": 160.3,
-     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF",
-     "note": "Unsloth推奨"
+     "name": "MLX 3bit（テキストのみ）",
+     "bits": 3.49,
+     "size_gb": 186.49,
+     "source": "https://huggingface.co/mlx-community/MiniMax-M3.1-Flash-Text-3bit"
     },
     {
      "name": "UD-Q3_K_XL",
-     "bits": 3.66,
-     "size_gb": 195.8,
-     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
+     "bits": 3.63,
+     "size_gb": 193.95,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF"
     },
     {
-     "name": "MLX 4bit",
-     "bits": 4.51,
-     "size_gb": 241.5,
-     "source": "https://huggingface.co/mlx-community/MiniMax-M3-4bit"
-    },
-    {
-     "name": "NVFP4 (NVIDIA)",
-     "bits": 4.67,
-     "size_gb": 250.1,
-     "source": "https://huggingface.co/nvidia/MiniMax-M3-NVFP4"
-    },
-    {
-     "name": "AWQ INT4 (cyankiwi)",
-     "bits": 4.82,
-     "size_gb": 258.0,
-     "source": "https://huggingface.co/cyankiwi/MiniMax-M3-AWQ-INT4"
-    },
-    {
-     "name": "Q4_K_M (bartowski)",
-     "bits": 4.88,
-     "size_gb": 261.3,
-     "source": "https://huggingface.co/bartowski/MiniMax-M3-GGUF"
+     "name": "MLX 4bit（テキストのみ）",
+     "bits": 4.64,
+     "size_gb": 248.37,
+     "source": "https://huggingface.co/mlx-community/MiniMax-M3.1-Flash-Text-4bit"
     },
     {
      "name": "UD-Q4_K_XL",
-     "bits": 4.97,
-     "size_gb": 265.8,
-     "source": "https://huggingface.co/unsloth/MiniMax-M3-GGUF"
+     "bits": 4.66,
+     "size_gb": 249.4,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF"
     },
     {
-     "name": "公式MXFP8",
-     "bits": 8.29,
-     "size_gb": 443.7,
-     "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3-MXFP8"
+     "name": "公式（NVFP4＋MXFP8）",
+     "bits": 4.68,
+     "size_gb": 250.12,
+     "source": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+     "note": "DSparkドラフト2.3GBは別"
+    },
+    {
+     "name": "UD-Q8_K_XL",
+     "bits": 4.84,
+     "size_gb": 259.08,
+     "source": "https://huggingface.co/unsloth/MiniMax-M3.1-Flash-GGUF",
+     "note": "元がNVFP4のため8bitでもほとんど大きくならない"
     }
    ],
    "reports": [],
-   "note_ja": "GGUFはテキストのみ・MiniMax Sparse Attention非対応（dense attentionにフォールバックし長文脈でメモリ増）"
+   "note_ja": "bitsは総パラメータ428Bで割った目安。サイズはHugging Faceの実ファイル（GB）。llama.cppでの画像入力とMSA対応はカードに記載なし"
   }
  },
  {

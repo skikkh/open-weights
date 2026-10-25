@@ -35,13 +35,13 @@
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
     "value": 1042,
-    "note": "全体21位・オープンウェイト1位（AA-Image-T2I v2.1、2026-10-20閲覧）",
+    "note": "全体22位・オープンウェイト2位（FLUX 3 Image Kleinの1043と僅差。AA-Image-T2I v2.1、2026-10-25閲覧）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1083,
-    "note": "全体16〜22位・オープンウェイト1位（AA-Image-Editing v2.1、2026-10-20閲覧）",
+    "value": 1081,
+    "note": "全体20〜27位・オープンウェイト2位（1位はFIBO 2.0の1088。AA-Image-Editing v2.1、2026-10-25閲覧）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
@@ -138,17 +138,17 @@
    {
     "metric": "Artificial Analysis Text-to-Image ELO",
     "value": 1039,
-    "note": "22位、オープンウェイトではQwen-Image-2.1（1042）に次ぐ2位（2026-10-22時点）",
+    "note": "23位、オープンウェイトではFLUX 3 Image Klein（1043）・Qwen-Image-2.1（1042）に次ぐ3位（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
    },
    {
     "metric": "Artificial Analysis Image Editing ELO",
-    "value": 1087,
-    "note": "21位、オープンウェイトで1位（Qwen-Image-2.1は1083）",
+    "value": 1088,
+    "note": "18〜25位、オープンウェイトで1位（Qwen-Image-2.1は1081、2026-10-25時点）",
     "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    }
   ],
-  "quality_note": "AAの編集アリーナでオープンウェイト首位、生成でも2位。物の数や配置などプロンプトへの忠実さを売りにしている",
+  "quality_note": "AAの編集アリーナでオープンウェイト首位、生成でも3位。物の数や配置などプロンプトへの忠実さを売りにしている",
   "ja_note": null,
   "license": "CC BY-NC 4.0",
   "commercial": "no",
@@ -210,14 +210,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1028,
-    "note": "全体24位。AAではAPI提供版（$16/1000枚）として計測しており、オープン版と同一の設定かは未確認",
+    "value": 1029,
+    "note": "全体27位。AAではAPI提供版（$16/1000枚）として計測しており、オープン版と同一の設定かは未確認（2026-10-25閲覧）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1065,
-    "note": "全体21〜29位（API版の計測値）",
+    "value": 1064,
+    "note": "全体25〜34位（API版の計測値、2026-10-25閲覧）",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    }
   ],
@@ -247,7 +247,7 @@
   "rank": 3,
   "hl": {
    "label": "AA Arena",
-   "value": 1028
+   "value": 1029
   }
  },
  {
@@ -286,11 +286,23 @@
    {
     "metric": "BFL社内ブラインド評価 ELO差（対FLUX.2 [klein] 9B、T2I）",
     "value": 91,
-    "note": "BFL公表の社内評価。画像編集では+70。Qwen-Image 2.1やKrea 2より上位と主張しているが、第三者アリーナには未掲載（2026-10-20時点）",
+    "note": "BFL公表の社内評価。画像編集では+70。Qwen-Image 2.1やKrea 2より上位と主張",
     "source": "https://bfl.ai/blog/flux-3-image-klein"
+   },
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1043,
+    "note": "全体21位・オープンウェイト1位（Qwen-Image-2.1の1042をわずかに上回る。AA-Image-T2I v2.1、2026-10-25閲覧）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1072,
+    "note": "全体23〜31位・オープンウェイト3位（FIBO 2.0 1088、Qwen-Image-2.1 1081に次ぐ。2026-10-25閲覧）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    }
   ],
-  "quality_note": "BFLの社内評価では、T2I・複数参照・編集のすべてでオープンモデル首位とし、クローズドのIdeogram V4.5やFLUX.2 [pro]より上と主張している。公開から日が浅く、AA・LMArenaでの第三者評価はまだない。モデルカードは、短いプロンプトでは平凡な出力になること、文字描画が不正確になりうることを制限事項に挙げている。",
+  "quality_note": "AAのT2Iアリーナに掲載され、1043でQwen-Image-2.1（1042）を僅差で上回りオープンウェイト首位になった（2026-10-25時点、差は誤差の範囲）。編集アリーナではFIBO 2.0・Qwen-Image-2.1に次ぐオープン3位。BFLの社内評価では、T2I・複数参照・編集のすべてでオープンモデル首位とし、クローズドのIdeogram V4.5やFLUX.2 [pro]より上と主張している。モデルカードは、短いプロンプトでは平凡な出力になること、文字描画が不正確になりうることを制限事項に挙げている。",
   "ja_note": "公式は文字描画の不正確さを制限事項として記載している。日本語プロンプト・日本語文字の対応状況は未確認。",
   "license": "FLUX Kommunity License v1.0（テキストエンコーダはApache-2.0）",
   "commercial": "conditional",
@@ -316,12 +328,18 @@
    "https://huggingface.co/black-forest-labs/flux-3-image-klein",
    "https://bfl.ai/blog/flux-3-image-klein",
    "https://bfl.ai/blog",
-   "https://huggingface.co/unsloth/flux-3-image-klein-GGUF"
+   "https://huggingface.co/unsloth/flux-3-image-klein-GGUF",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
   ],
   "confidence": "medium",
   "rank": 4,
   "pick": "8GBで動く最新FLUX",
-  "pick_reason": "BFL の最新世代の軽量版"
+  "pick_reason": "AA T2Iでオープン1位（僅差）。BFL の最新世代の軽量版",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1043
+  }
  },
  {
   "id": "flux-2-dev",
@@ -844,12 +862,74 @@
   ],
   "confidence": "medium",
   "rank": 10,
-  "pick": "生成も編集も・MIT",
-  "pick_reason": "1つのモデルで両方できる",
   "hl": {
    "label": "AA Arena",
    "value": 974
   }
+ },
+ {
+  "id": "moss-image",
+  "name": "MOSS-Image（Base / SFT）",
+  "org": "MOSI.AI（OpenMOSS）",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-10-16",
+  "params_b": 5,
+  "arch": "5Bの単一ストリームDiT（42層、FLUX.2 VAEの潜在空間、フローマッチング）。テキストエンコーダはQwen3.5-9B",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "0.25〜4MP（推奨1〜2MP、16の倍数）",
+   "other": "Base（事前学習版。LoRA・ファインチューン用）とSFT（生成用）の2種。自然文・タグ列・レイアウトJSONで最大4Kトークンのプロンプトを受け付け、文字や物の位置をバウンディングボックスで指定できる。既定は50ステップ・CFG3。10月18日に学習ツールKohakuMossTrainer、10月20日にMOSIのAPI提供を開始"
+  },
+  "features": {
+   "レイアウト指定（JSON・バウンディングボックス）": true,
+   "中英の文字描画": true,
+   "LoRA対応": true,
+   "ComfyUIネイティブ対応": true,
+   "商用利用可": true,
+   "指示で編集": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。本体はBF16で約10GB、テキストエンコーダ（Qwen3.5-9B）はBF16で約18GB（パラメータ数からの算出）。GradioにCPUへ逐次退避する低メモリモードがあり、LoRA学習はVRAM 6GBからとされる。コミュニティのGGUF版あり",
+  "speed_note": "既定50ステップ。コミュニティの4ステップ蒸留LoRAもある",
+  "price_note": "MOSI APIプラットフォームでも提供（料金は未確認）",
+  "bench": [
+   {
+    "metric": "LongLongTextBench 平均テキストカバー率",
+    "value": 96.3,
+    "note": "著者の技術報告によるオープンウェイト中の最高値。RealLayoutArenaでも2位とされる（第三者のアリーナには未掲載、2026-10-25確認）",
+    "source": "https://arxiv.org/abs/2610.23374"
+   }
+  ],
+  "quality_note": "長い文章や文字の配置を正確に描けることが売り。AAなど第三者アリーナにはまだ載っていないが、HFのtext-to-imageトレンドで1位になり、公開1週間でLoRAや派生モデル（Kromossなど）が多数出ている",
+  "ja_note": "文字描画は英語・中国語向けとされ、日本語の対応は未確認",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "コード・重みともApache-2.0（HFのモデルカード表記）。テキストエンコーダ・VAEはそれぞれのライセンスに従う",
+  "hf": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
+  "tools": [
+   "Diffusers（MOSSImagePipeline）",
+   "ComfyUI",
+   "SGLang",
+   "Gradio",
+   "KohakuMossTrainer"
+  ],
+  "summary_ja": "上海のMOSI.AI（OpenMOSS）が公開した5Bの画像生成モデルで、文字や物の位置をJSONで細かく指定できます。Apache-2.0で商用にも使えます。",
+  "best_for_ja": "ポスターや図解など、長い文字やレイアウトを指定どおりに描きたい商用制作。LoRA学習のベース",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base",
+   "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
+   "https://github.com/OpenMOSS/MOSS-Image",
+   "https://arxiv.org/abs/2610.23374",
+   "https://comfyui-wiki.com/en/models/moss-image",
+   "https://huggingface.co/models?pipeline_tag=text-to-image&sort=trending"
+  ],
+  "confidence": "medium",
+  "rank": 11
  },
  {
   "id": "z-image-turbo",
@@ -936,7 +1016,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 11,
+  "rank": 12,
   "pick": "16GBで動く定番・商用OK",
   "pick_reason": "Apache 2.0。速い",
   "hl": {
@@ -1017,7 +1097,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 12,
+  "rank": 13,
   "hl": {
    "label": "AA Arena",
    "value": 914
@@ -1093,7 +1173,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 13,
+  "rank": 14,
   "hl": {
    "label": "AA Arena",
    "value": 990
@@ -1177,7 +1257,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 14,
+  "rank": 15,
   "hl": {
    "label": "AA Arena",
    "value": 887
@@ -1239,7 +1319,7 @@
    "https://docs.comfy.org/tutorials/image/anima/anima.md"
   ],
   "confidence": "medium",
-  "rank": 15,
+  "rank": 16,
   "pick": "アニメ絵を軽く",
   "pick_reason": "約7GBで動く"
  },
@@ -1300,7 +1380,7 @@
    "https://huggingface.co/cagliostrolab/animagine-xl-4.0"
   ],
   "confidence": "medium",
-  "rank": 16
+  "rank": 17
  },
  {
   "id": "gpt-image-2-5",
@@ -1335,7 +1415,7 @@
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1221,
+    "value": 1222,
     "note": "Sunburst（max）で全体1位。Flare（max）は1207で2位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
@@ -1382,12 +1462,12 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 17,
+  "rank": 18,
   "pick": "API で最高品質",
   "pick_reason": "AA Arena 総合1位。日本語の作例あり",
   "hl": {
    "label": "AA Arena",
-   "value": 1221
+   "value": 1222
   }
  },
  {
@@ -1420,14 +1500,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1175,
+    "value": 1176,
     "note": "全体4位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1152,
-    "note": "全体3〜5位",
+    "value": 1151,
+    "note": "全体3〜6位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
@@ -1464,10 +1544,10 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 18,
+  "rank": 19,
   "hl": {
    "label": "AA Arena",
-   "value": 1175
+   "value": 1176
   }
  },
  {
@@ -1503,7 +1583,7 @@
    {
     "metric": "Artificial Analysis Image Editing ELO",
     "value": 1151,
-    "note": "Ultra。5位（2026-10-22時点）。Fastは1125で11位",
+    "note": "Ultra。全体3〜6位タイ（2026-10-25時点）。Fastは1126で7〜16位",
     "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    }
   ],
@@ -1533,7 +1613,7 @@
    "label": "AA 編集",
    "value": 1151
   },
-  "rank": 19
+  "rank": 20
  },
  {
   "id": "grok-imagine-image-2-0",
@@ -1568,13 +1648,13 @@
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
     "value": 1166,
-    "note": "全体5位",
+    "note": "全体5〜6位タイ",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1118,
-    "note": "全体9〜14位",
+    "value": 1117,
+    "note": "全体11〜17位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
@@ -1615,7 +1695,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 20,
+  "rank": 21,
   "hl": {
    "label": "AA Arena",
    "value": 1166
@@ -1650,14 +1730,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1165,
-    "note": "全体6位",
+    "value": 1166,
+    "note": "全体5〜6位タイ",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1152,
-    "note": "全体3〜5位",
+    "value": 1151,
+    "note": "全体3〜6位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
@@ -1690,10 +1770,10 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 21,
+  "rank": 22,
   "hl": {
    "label": "AA Arena",
-   "value": 1165
+   "value": 1166
   }
  },
  {
@@ -1733,8 +1813,8 @@
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1133,
-    "note": "全体5〜11位",
+    "value": 1131,
+    "note": "全体7〜13位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
    },
    {
@@ -1777,7 +1857,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 22,
+  "rank": 23,
   "hl": {
    "label": "AA Arena",
    "value": 1100
@@ -1815,9 +1895,15 @@
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1116,
+    "value": 1117,
     "note": "全体13位",
     "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1122,
+    "note": "全体8〜16位（2026-10-25閲覧）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    }
   ],
   "quality_note": "AA T2Iで、FLUX.2 [max]（1021）から約95点上昇し13位。編集アリーナへの掲載はまだない。",
@@ -1847,10 +1933,10 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 23,
+  "rank": 24,
   "hl": {
    "label": "AA Arena",
-   "value": 1116
+   "value": 1117
   }
  },
  {
@@ -1925,7 +2011,7 @@
    "https://www.qbitai.com/2026/09/493625.html"
   ],
   "confidence": "medium",
-  "rank": 24,
+  "rank": 25,
   "hl": {
    "label": "AA Arena",
    "value": 1095
@@ -2004,7 +2090,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 25,
+  "rank": 26,
   "hl": {
    "label": "AA Arena",
    "value": 1015
@@ -2062,7 +2148,7 @@
    "https://runtheprompts.com/resources/midjourney-info/midjourney-v8-2-whats-new-and-is-it-better-than-v8-1"
   ],
   "confidence": "medium",
-  "rank": 26
+  "rank": 27
  },
  {
   "id": "reve-2-1",
@@ -2133,7 +2219,7 @@
    "https://nanosceneai.com/blog/reve-2-1"
   ],
   "confidence": "medium",
-  "rank": 27,
+  "rank": 28,
   "hl": {
    "label": "LMArena",
    "value": 1302

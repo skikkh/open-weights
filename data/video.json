@@ -38,7 +38,7 @@
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, AA-Video-T2V v2.1）ELO",
     "value": 1158,
-    "note": "全体5位（信頼区間で1〜7位タイ）、オープンウェイト1位。768p版。2026-10時点",
+    "note": "全体4〜5位（信頼区間で1〜7位タイ）、オープンウェイト1位。768p版。2026-10-25時点",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -140,8 +140,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 951,
-    "note": "LTX-2.5 Fast（API提供ティア）。全体23位/29、オープンウェイト2〜3位。Proティアは948（24位）",
+    "value": 949,
+    "note": "LTX-2.5 Fast（API提供ティア）。全体24位、オープンウェイト2〜3位。Proティアは945（25位）。2026-10-25時点",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video/open-weights"
    },
    {
@@ -199,7 +199,7 @@
   "pick_reason": "T2V・I2V・音声駆動まで1つで",
   "hl": {
    "label": "AA Arena",
-   "value": 951
+   "value": 949
   }
  },
  {
@@ -369,8 +369,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1044,
-    "note": "全体13位前後（11〜15位）。AAのAPI価格は「Coming soon」",
+    "value": 1042,
+    "note": "全体14位前後。AAのAPI価格は「Coming soon」（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -406,7 +406,7 @@
   "rank": 5,
   "hl": {
    "label": "AA Arena",
-   "value": 1044
+   "value": 1042
   }
  },
  {
@@ -750,9 +750,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "high",
-  "rank": 10,
-  "pick": "14GBで動く",
-  "pick_reason": "家庭用GPUで動かしやすい"
+  "rank": 10
  },
  {
   "id": "skyreels-v3-r2v-14b",
@@ -1088,8 +1086,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1173,
-    "note": "全体1位（信頼区間で1〜5位）",
+    "value": 1175,
+    "note": "全体1位（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1140,8 +1138,77 @@
   "pick_reason": "AA Video Arena T2V（音声あり）1位",
   "hl": {
    "label": "AA Arena",
-   "value": 1173
+   "value": 1175
   }
+ },
+ {
+  "id": "heygen-video-1",
+  "access": "api",
+  "name": "HeyGen Video 1",
+  "org": "HeyGen",
+  "country": "US",
+  "release": "2026-09-30",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "2K（APIは480p・768p・2K）",
+   "max_duration_s": 15,
+   "fps": null,
+   "other": "5〜15秒（1秒刻み）。テキスト・先頭フレーム画像・参照画像から生成し、セリフ・環境音・効果音を映像と同時に作る。アスペクト比は21:9〜9:16の6種。HeyGen API、OpenRouter、Runware、ComfyUIで提供。HeyGenのアバター製品とは別の汎用動画モデル"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照被写体の保持（R2V）": true,
+   "首尾フレーム指定": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "price_note": "公式API: $0.01/秒（10月末までの公開記念価格。通常$0.02/秒）。参照画像を使うR2Vは割高（OpenRouter）。Webアプリは無料枠あり",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1160,
+    "note": "全体3位（Wan 3.0 1175、Utopai X 1167に次ぐ。2026-10-25時点）。I2Vアリーナには未掲載",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   }
+  ],
+  "quality_note": "AAのT2V（音声あり）で全体3位と、Seedance 2.5やMiniMax H3と並ぶ上位。公式は上位モデルに並ぶ品質を数分の1の秒単価で出せるとする。開発者向けページにMiniMax H3をベースに追加学習したとの記載があったとされるが、確認できていない",
+  "ja_note": "公式ページに対応言語の記載はなく、日本語のセリフ品質は未確認",
+  "license": "API（HeyGen利用規約）",
+  "commercial": "yes",
+  "license_note": "HeyGenの利用規約に従う。規約本文は未精査",
+  "hf": "https://www.heygen.com/models/heygen-video",
+  "tools": [
+   "HeyGen API",
+   "OpenRouter",
+   "Runware",
+   "ComfyUI"
+  ],
+  "summary_ja": "アバター動画で知られる米HeyGenが初めて出した汎用の動画生成モデルで、音声付きで最長15秒の動画を作れます。AAのT2Vランキングで3位ながら、1秒$0.01〜0.02と安いのが特徴です。",
+  "best_for_ja": "上位クラスの音声付き動画を安くAPIで大量に作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://www.heygen.com/models/heygen-video",
+   "https://openrouter.ai/heygen/heygen-video-1",
+   "https://openrouter.ai/heygen/heygen-video-1-20260930",
+   "https://help.heygen.com/en/articles/17272995-introducing-heygen-video-generate-cinematic-clips-from-a-prompt",
+   "https://runware.ai/docs/models/heygen-video-1-0/guides",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+  ],
+  "confidence": "medium",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1160
+  },
+  "rank": 17
  },
  {
   "id": "seedance-2-5",
@@ -1178,8 +1245,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1159,
-    "note": "全体3位（1〜7位タイ）",
+    "value": 1158,
+    "note": "全体5位（信頼区間で上位タイ、2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1217,10 +1284,10 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 17,
+  "rank": 18,
   "hl": {
    "label": "AA Arena",
-   "value": 1159
+   "value": 1158
   }
  },
  {
@@ -1260,8 +1327,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1159,
-    "note": "FLUX 3 Max（720p）。全体4位（1〜7位タイ）。無印FLUX 3は1145で7位",
+    "value": 1155,
+    "note": "FLUX 3 Max（720p）。全体6位。無印FLUX 3は1145で8位（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1295,10 +1362,10 @@
    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
   ],
   "confidence": "medium",
-  "rank": 18,
+  "rank": 19,
   "hl": {
    "label": "AA Arena",
-   "value": 1159
+   "value": 1155
   }
  },
  {
@@ -1336,8 +1403,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1156,
-    "note": "全体6位（2〜7位）",
+    "value": 1154,
+    "note": "全体7位（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1376,10 +1443,10 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 19,
+  "rank": 20,
   "hl": {
    "label": "AA Arena",
-   "value": 1156
+   "value": 1154
   }
  },
  {
@@ -1417,8 +1484,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1132,
-    "note": "Gemini Omni Flash 1.1。全体9位（7〜9位）。参考: Veo 3.1は968で20位",
+    "value": 1130,
+    "note": "Gemini Omni Flash 1.1。全体10位。参考: Veo 3.1は963で21位（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1457,10 +1524,10 @@
    "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights"
   ],
   "confidence": "medium",
-  "rank": 20,
+  "rank": 21,
   "hl": {
    "label": "AA Arena",
-   "value": 1132
+   "value": 1130
   }
  },
  {
@@ -1496,8 +1563,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1059,
-    "note": "全体11位（10〜13位）。Lite版は998",
+    "value": 1056,
+    "note": "全体12位。Lite版は992（2026-10-25時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1528,10 +1595,10 @@
    "https://docs.dev.runwayml.com/guides/pricing/"
   ],
   "confidence": "medium",
-  "rank": 21,
+  "rank": 22,
   "hl": {
    "label": "AA Arena",
-   "value": 1059
+   "value": 1056
   }
  },
  {
@@ -1554,7 +1621,7 @@
    "max_resolution": "4K（10bit HDR）。ただし公開時点で1080p・4Kは「近日対応」",
    "max_duration_s": 30,
    "fps": null,
-   "other": "1回の生成で3〜30秒。動画延長で合計最大2分（予定）。Omni Referenceで参照素材を最大15件（画像10・動画5・被写体7まで）、キーフレーム最大10枚、プロンプト最大8,000トークン。Kling MCP/CLIに対応。2026-09-28に年額Ultra会員向けにKling 4.0 Flash（約20秒・720pまで）を先行提供し、2026-10-15に全ユーザーへ正式公開。開発者APIは「近日」"
+   "other": "1回の生成で3〜30秒。動画延長で合計最大2分（予定）。Omni Referenceで参照素材を最大15件（画像10・動画5・被写体7まで）、キーフレーム最大10枚、プロンプト最大8,000トークン。Kling MCP/CLIに対応。2026-09-28に年額Ultra会員向けにKling 4.0 Flash（約20秒・720pまで）を先行提供し、2026-10-15に全ユーザーへ正式公開。開発者APIは公開時点で「近日」。10月21日にKling公式アカウントがAPIの段階提供開始を告知したと報じられているが、公式のモデルIDと秒単価は未確認（2026-10-25時点）"
   },
   "features": {
    "音声同時生成（ステレオ）": true,
@@ -1570,13 +1637,13 @@
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
     "value": 1020,
-    "note": "Kling 4.0はAA未掲載（2026-10-20確認）。参考値として前世代を記載（16位）。Kling 3.0 1080p ProはELOの基準点1000（17位）。首位はWan 3.0の1173",
+    "note": "Kling 4.0はAA未掲載（2026-10-25確認）。参考値として前世代を記載（17位）。Kling 3.0 1080p ProはELOの基準点1000（18位）。首位はWan 3.0の1175",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
     "value": 1004,
-    "note": "18位（参考値、2026-10-20確認）。首位はMiniMax H3の1140",
+    "note": "18位（参考値、2026-10-25確認）。首位はMiniMax H3の1140",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
@@ -1585,10 +1652,10 @@
   "license": "API / サービス（Kling利用規約）",
   "commercial": "conditional",
   "license_note": "有料会員（Standard以上）は商用利用可・透かしなし、無料プランは非商用・透かしあり（第三者まとめ、2026-10時点）。運営はKling AI Pte. Ltd.ほか。利用規約と有料サービス規約（2026-04-21版）の本文は未精査",
-  "price_note": "Web会員（USD、月額）: Standard $8.80（660クレジット）、Pro $32.56（3,000）、Premier $80.96（8,000）、Ultra $159.99（26,000）（2026-10時点、第三者による確認）。Kling 4.0のクレジット単価は公式に未公表で、1080pで15クレジット/秒（30秒で450クレジット）という実測報告がある。開発者APIは未提供（近日予定）。参考: 前世代Kling 3.0はRunway API経由で$0.12〜0.17/秒、4K $0.43/秒",
+  "price_note": "Web会員（USD、月額）: Standard $8.80（660クレジット）、Pro $32.56（3,000）、Premier $80.96（8,000）、Ultra $159.99（26,000）（2026-10時点、第三者による確認）。Kling 4.0のクレジット単価は公式に未公表で、1080pで15クレジット/秒（30秒で450クレジット）という実測報告がある。開発者APIは10月21日に段階提供開始と報道（未確認）。再販業者は720p $0.1134/秒・1080p $0.1701/秒を掲示しているが、Kling公式の単価ではない。参考: 前世代Kling 3.0はRunway API経由で$0.12〜0.17/秒、4K $0.43/秒",
   "hf": "https://klingai.com",
   "tools": [],
-  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月15日に全ユーザー向けに正式公開された。1回で最長30秒の音声付き動画を作れるが、4K HDR出力と開発者APIは公開時点で「近日対応」。",
+  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月15日に全ユーザー向けに正式公開された。1回で最長30秒の音声付き動画を作れるが、4K HDR出力は「近日対応」で、開発者APIは段階提供が始まったと報じられている段階。",
   "best_for_ja": "4K HDRで長めの音声付き動画が必要な制作（評価はこれから）",
   "supersedes": [
    "Kling 3.0",
@@ -1606,10 +1673,12 @@
    "https://letsdatascience.com/news/kling-ai-opens-kling-40-to-all-users-d9dc6422",
    "https://www.cometapi.com/kling-4-0-explaineds-guide/",
    "https://kie.ai/blog/kling-4-0-release-analysis-30-second-clips-keyframes-pricing",
-   "https://framesurfer.com/blogs/kling-ai-pricing"
+   "https://framesurfer.com/blogs/kling-ai-pricing",
+   "https://www.explainx.ai/blog/kling-4-0-launch-30-second-video-stereo-audio-flash-mcp-cli-2026",
+   "https://unifically.com/blogs/kling-4.0"
   ],
   "confidence": "medium",
-  "rank": 22,
+  "rank": 23,
   "hl": {
    "label": "AA Arena",
    "value": 1020
@@ -1673,7 +1742,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 23,
+  "rank": 24,
   "hl": {
    "label": "AA Arena",
    "value": 1247
@@ -1732,7 +1801,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 24
+  "rank": 25
  },
  {
   "id": "vidu-q4-preview",
@@ -1766,14 +1835,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Vidu Q3 Pro）",
-    "value": 943,
-    "note": "Q4 PreviewはAA未掲載（2026-10-20確認）。参考として前世代Q3 Pro（25位）を記載",
+    "value": 935,
+    "note": "Q4 PreviewはAA未掲載（2026-10-25確認）。参考として前世代Q3 Pro（26位）を記載",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Vidu Q3 Pro）",
     "value": 1016,
-    "note": "17位（参考値、2026-10-20確認）",
+    "note": "16位（参考値、2026-10-25確認）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
@@ -1803,10 +1872,10 @@
    "https://costbench.com/software/ai-video-generators/vidu/free-plan/"
   ],
   "confidence": "medium",
-  "rank": 25,
+  "rank": 26,
   "hl": {
    "label": "AA Arena",
-   "value": 943
+   "value": 935
   }
  }
 ]

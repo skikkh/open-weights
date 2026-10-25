@@ -509,16 +509,16 @@
  },
  {
   "id": "voicevox",
-  "name": "VOICEVOX（ENGINE 0.25.2 / CORE 0.17.0）",
+  "name": "VOICEVOX（ENGINE 0.26.0 / CORE 0.17.1）",
   "org": "VOICEVOX（ヒホ／Hiroshiba）",
   "country": "JP",
-  "release": "2026-08-13",
+  "release": "2026-10-23",
   "params_m": null,
   "arch": "OpenJTalk系の日本語言語処理＋音素長・ピッチ予測＋ニューラル音声合成（ONNX Runtime、VVM音声モデル）",
   "ja_support": "native",
   "voice_cloning": "preset-only",
   "features": {
-   "streaming": false,
+   "streaming": true,
    "emotion_control": true,
    "instruction_control": false,
    "dialogue": false,
@@ -526,8 +526,8 @@
   },
   "ja_metrics": [],
   "quality_note": "アクセント句・アクセント位置・イントネーションを細かく手で直せるため読みの破綻が起きにくく、実用面の安定感が強み。一方、自然さは最新モデルより劣るという評価が多い（個人比較で日本語の自然さ3/5）。キャラクターごとにノーマル・あまあま等のスタイルがある。2026年もずんだもん等に加え新キャラクターを継続追加。",
-  "latency_note": "個人計測でRTF 0.12（CPU動作）。ENGINE 0.26.0のプレリリース（2026年10月）でストリーミング音声合成APIが追加され、CORE 0.17.0でStreamingTalkスタイル型が準備中。",
-  "hardware_note": "CPUで実用速度。GPU（CUDA/DirectML）も任意。Windows/macOS/Linux、C API・Python wheel・各種言語ラッパーあり。",
+  "latency_note": "個人計測でRTF 0.12（CPU動作）。ENGINE 0.26.0が2026年10月に正式版となりストリーミング音声合成APIが入った。CORE 0.17.1のstreaming_synthesisは約0.3秒ずつ音声を出し、再生を0.数秒で始められる（新しいVVM形式v2が必要、Java/C APIは未対応）。",
+  "hardware_note": "CPUで実用速度。GPU（CUDA/DirectML）も任意。Windows/macOS/Linux、C API・Python wheel・各種言語ラッパーあり。ENGINE 0.26.0でWindows/Linuxは高性能CPUコアを優先して使う。",
   "license": "VOICEVOXソフトウェア利用規約＋音声ライブラリ（キャラクター）ごとの規約／CORE（0.16以降）はMIT",
   "commercial": "conditional",
   "license_note": "ソフトウェアは商用・非商用を問わず利用可だが、VOICEVOXを利用したことが分かるクレジット表記が必要。作成音声はキャラクター（音声ライブラリ）ごとの規約に従い、第三者へ利用許諾する際も同条件を課す必要がある。無断再配布・リバースエンジニアリングは禁止。COREのソースとビルド成果物はMIT（0.16未満は別ライセンス）。",
@@ -535,18 +535,76 @@
   "summary_ja": "ずんだもんなどのキャラクター声で知られる無料の日本語読み上げソフトで、CPUだけで速く動き、アクセントを手作業で細かく直せる。声は収録済みのキャラクターから選ぶ方式。",
   "best_for_ja": "動画・配信の読み上げ、アクセントを確実に制御したい用途、CPUのみの環境",
   "supersedes": [
-   "VOICEVOX ENGINE 0.25.1以前",
-   "VOICEVOX CORE 0.16.x"
+   "VOICEVOX ENGINE 0.25.2以前",
+   "VOICEVOX CORE 0.17.0以前"
   ],
   "sources": [
    "https://github.com/VOICEVOX/voicevox_engine/releases",
    "https://github.com/VOICEVOX/voicevox_core/releases",
+   "https://github.com/VOICEVOX/voicevox/releases/tag/0.26.1",
+   "https://github.com/VOICEVOX/voicevox_core/releases/tag/0.17.1",
+   "https://github.com/VOICEVOX/voicevox_engine/releases/tag/0.26.0",
    "https://github.com/VOICEVOX/voicevox_core",
    "https://voicevox.hiroshiba.jp/term/",
    "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
   ],
   "confidence": "high",
   "rank": 10
+ },
+ {
+  "id": "drama-3-japanese",
+  "name": "Drama-3-Japanese",
+  "org": "Aratako（個人開発者）",
+  "country": "JP",
+  "release": "2026-10-22",
+  "params_m": 35900,
+  "arch": "Fish Audio Drama 3（MoE 35B・トークンあたり3Bアクティブ、LLM+コーデック）を約7万時間の日本語音声でLoRA微調整（rank 32、埋め込みと音声デコーダも学習）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "常用漢字の読み正答率（Joyo Kanji Yomi Parakeet版）",
+    "value": 93.188,
+    "note": "%、参照音声・キャプションなし、13,536文×5回。元のDrama 3は92.021%",
+    "source": "https://huggingface.co/Aratako/Drama-3-Japanese"
+   },
+   {
+    "metric": "Kana-CER（Joyo Kanji Yomi・Parakeet版）",
+    "value": 6.548,
+    "note": "%。元のDrama 3は7.474%。文単位のKana-CERは2.087%で元モデル（1.421%）の方が良い",
+    "source": "https://huggingface.co/Aratako/Drama-3-Japanese"
+   },
+   {
+    "metric": "SIM（JVS 100話者・CAM++・参照3クリップ）",
+    "value": 0.7688,
+    "note": "元のDrama 3は0.7769（元モデルの方がわずかに高い）",
+    "source": "https://huggingface.co/Aratako/Drama-3-Japanese"
+   }
+  ],
+  "quality_note": "Fish Audio Drama 3を日本語向けに追加学習した版で、漢字の読み正答率と単語レベルの誤りは元モデルより改善。一方で文単位の誤り率や声の似ている度合いは元モデルをわずかに下回る。日本語の感情・演技タグ（[笑いながら]など）とキャプションでの声質指定に対応するが、効きにばらつきがあり、途中で止まる・無音になる場合があると作者が明記。単一話者の読み上げ向けで、元モデルの複数話者の掛け合いは対象外。",
+  "latency_note": "公式の速度値なし（元のDrama 3はH200で初回音声まで中央値88.9ms）。",
+  "hardware_note": "重みは約39.6GB（BF16+FP8）＋コーデック1.87GB。公式のVRAM要件はないが、元のDrama 3と同じく48GB級GPUが目安。推論は元のFish Speech / SGLang-Omniのコードでモデルパスを差し替えて使う。",
+  "license": "Fish Audio Community License v1.0（元モデルから継承）",
+  "commercial": "conditional",
+  "license_note": "元モデルのライセンスを継承。年間売上50万米ドル未満の事業者は商用無料、それ以上や第三者向けの音声生成API提供は別契約が必要（詳細はFish Audio Drama 3の項を参照）。日本語以外の言語は評価されていない。",
+  "hf": "https://huggingface.co/Aratako/Drama-3-Japanese",
+  "summary_ja": "Fish Audio Drama 3を約7万時間の日本語音声で追加学習した版で、漢字の読みの正確さが元モデルより上がった。声のクローンや感情タグに対応するが、動かすには大きなGPUが必要。",
+  "best_for_ja": "Drama 3の表現力を日本語の読み上げで使いたい人、感情タグつきのナレーション",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Aratako/Drama-3-Japanese",
+   "https://huggingface.co/api/models/Aratako/Drama-3-Japanese",
+   "https://huggingface.co/fishaudio/drama-3"
+  ],
+  "confidence": "high",
+  "rank": 11
  },
  {
   "id": "fish-audio-drama-3",
@@ -584,7 +642,7 @@
    "https://comfyui-wiki.com/en/news/2026-10-13-fish-audio-drama-3"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 12
  },
  {
   "id": "voxcpm2",
@@ -644,7 +702,7 @@
    "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
   ],
   "confidence": "high",
-  "rank": 12
+  "rank": 13
  },
  {
   "id": "indextts-2-5",
@@ -703,7 +761,7 @@
    "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 14
  },
  {
   "id": "fun-cosyvoice3-0-5b",
@@ -756,7 +814,7 @@
    "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
   ],
   "confidence": "high",
-  "rank": 14
+  "rank": 15
  },
  {
   "id": "magpie-tts-multilingual-357m",
@@ -807,7 +865,7 @@
    "https://www.plushcap.com/content/huggingface/blog/huggingface-build-low-latency-multilingual-voice-agents-open-weights-full-deployment-control-with-nvidia-magpie-tts"
   ],
   "confidence": "high",
-  "rank": 15
+  "rank": 16
  },
  {
   "id": "miotts-1-7b",
@@ -846,7 +904,7 @@
    "https://huggingface.co/k2-fsa/OmniVoice"
   ],
   "confidence": "medium",
-  "rank": 16
+  "rank": 17
  },
  {
   "id": "qwen3-tts-0-6b",
@@ -895,7 +953,7 @@
    "https://github.com/QwenLM/Qwen3-TTS"
   ],
   "confidence": "high",
-  "rank": 17
+  "rank": 18
  },
  {
   "id": "chatterbox-multilingual-v3",
@@ -935,7 +993,7 @@
    "https://qiita.com/0h-n0/items/8f78f7acd31000612d13"
   ],
   "confidence": "medium",
-  "rank": 18
+  "rank": 19
  },
  {
   "id": "kokoro-82m",
@@ -972,6 +1030,6 @@
    "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
   ],
   "confidence": "high",
-  "rank": 19
+  "rank": 20
  }
 ]

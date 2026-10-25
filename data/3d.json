@@ -533,6 +533,62 @@
   }
  },
  {
+  "id": "hi3d-v1-0",
+  "access": "open-weight",
+  "name": "Hi3D V1.0（旧Sparc3D）",
+  "org": "Hi3D（Sparc3D開発チーム）",
+  "country": "CN",
+  "release": "2026-10-23",
+  "params_b": null,
+  "arch": "Sparc3Dの疎表現と段階的リファイン（疎潜在を自己剪定型の疎VAEで復号してメッシュ抽出）。参照画像を条件に最大3パス（512→1024→1536）で細部を詰める",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "メッシュ（形状のみ。テクスチャ・マテリアル・頂点色なし）",
+   "other": "解像度は512・1024・1536（疎グリッド最大1536³）。出力は中心合わせ・正規化され、実寸は保たれない。学習データは約200万件の3Dアセット。公開物は推論コード・重み・デモのみで、学習コードや評価用データは含まない"
+  },
+  "features": {
+   "高精細な形状（1536³）": true,
+   "テクスチャ生成": false,
+   "PBRテクスチャ": false,
+   "商用可（条件付き）": true,
+   "低VRAMモード": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 96,
+  "vram_note": "公式に最低要件はない。検証環境は96GBのNVIDIA H20のみで、1536³設定はそれ以外で未検証。CPUへの逐次退避オプションはある。Linux・CUDA 12.0〜12.5・計算能力8.0以上が必要で、CPU推論は不可。MLX移植版もコミュニティから出ている",
+  "speed_note": "公式の生成時間の記載なし",
+  "price_note": "公式サイト（hi3d.ai）で無料生成もできる",
+  "bench": [],
+  "quality_note": "自社評価で多視点の忠実度と細部で最高とし、スライス（3Dプリント用の切り分け）成功率90%を主張するが、数値表や再現用の評価コードは公開されておらず、第三者の評価もまだない",
+  "ja_note": null,
+  "license": "Hi3D Open License Agreement 1.0",
+  "commercial": "conditional",
+  "license_note": "商用利用可。月間アクティブユーザー20万人超または月商100万ドル超の製品は別途ライセンスが必要で、商用組み込みでは「Powered by Hi3D 1.0」の表示が必要。元のApache-2.0・MIT部分はそれぞれの条件に従う",
+  "hf": "https://huggingface.co/hi3d-official/Hi3Dv1.0",
+  "tools": [
+   "Gradio",
+   "Docker",
+   "Hugging Face Space（Sparc3Dデモ）"
+  ],
+  "summary_ja": "北京発の3D生成サービスHi3Dが、Sparc3Dを改良して公開した画像→3D形状モデルです。最大1536³の細かい形状を作れますが、テクスチャは付かず、96GB級のGPUが前提です。",
+  "best_for_ja": "3Dプリントや下書き用に、細部まで作り込まれた形状だけを画像から作りたい場合（大容量GPUが前提）",
+  "supersedes": [
+   "Sparc3D"
+  ],
+  "sources": [
+   "https://github.com/hi3d-official/Hi3Dv1.0",
+   "https://huggingface.co/hi3d-official/Hi3Dv1.0",
+   "https://www.hi3d.ai/hi3d-1-0-open-source",
+   "https://technode.global/prnasia/hi3d-v1-0-goes-open-source-the-first-production-validated-open-source-ai-3d-model/",
+   "https://www.orcarouter.ai/blog/hi3d-v1-0-open-source-what-shipped",
+   "https://arxiv.org/abs/2505.14521"
+  ],
+  "confidence": "medium",
+  "rank": 8
+ },
+ {
   "id": "spar3d",
   "access": "open-weight",
   "name": "SPAR3D（Stable Point Aware 3D）",
@@ -599,7 +655,7 @@
    "https://huggingface.co/spaces/3d-arena/3d-arena"
   ],
   "confidence": "high",
-  "rank": 8,
+  "rank": 9,
   "hl": {
    "label": "3D Arena",
    "value": 1113
@@ -669,7 +725,7 @@
    "https://arxiv.org/abs/2605.16355"
   ],
   "confidence": "medium",
-  "rank": 9
+  "rank": 10
  },
  {
   "id": "hunyuan3d-part",
@@ -718,7 +774,7 @@
    "https://arxiv.org/abs/2509.08643"
   ],
   "confidence": "medium",
-  "rank": 10
+  "rank": 11
  },
  {
   "id": "partcrafter",
@@ -770,7 +826,7 @@
    "https://arxiv.org/abs/2506.05573"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 12
  },
  {
   "id": "skintokens-tokenrig",
@@ -826,7 +882,7 @@
    "https://arxiv.org/abs/2602.04805"
   ],
   "confidence": "medium",
-  "rank": 12,
+  "rank": 13,
   "pick": "自動リギング",
   "pick_reason": "UniRig の後継"
  },
@@ -876,7 +932,7 @@
    "https://arxiv.org/abs/2604.08746"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 14
  },
  {
   "id": "hy-world-2-0",
@@ -939,7 +995,7 @@
    "https://docs.clore.ai/guides/guides_v2-fr/generation-3d/hunyuan-world-2"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 15
  },
  {
   "id": "tripo-h3-1-p2",
@@ -1011,7 +1067,7 @@
    "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 16
  },
  {
   "id": "meshy-7-1",
@@ -1090,7 +1146,7 @@
    "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
   ],
   "confidence": "medium",
-  "rank": 16,
+  "rank": 17,
   "pick": "API で最高品質",
   "pick_reason": "3D Arena 上位",
   "hl": {
@@ -1160,7 +1216,7 @@
    "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 18
  },
  {
   "id": "hunyuan-3d-3-1-api",
@@ -1220,7 +1276,7 @@
    "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native"
   ],
   "confidence": "medium",
-  "rank": 18
+  "rank": 19
  },
  {
   "id": "seed3d-2-0",
@@ -1281,7 +1337,7 @@
    "https://www.therundown.ai/tools/seed-3d"
   ],
   "confidence": "medium",
-  "rank": 19
+  "rank": 20
  },
  {
   "id": "marble-1-1",
@@ -1335,6 +1391,6 @@
    "https://aihola.com/article/world-labs-marble-1-1"
   ],
   "confidence": "medium",
-  "rank": 20
+  "rank": 21
  }
 ]
