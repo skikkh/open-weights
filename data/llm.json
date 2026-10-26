@@ -5981,5 +5981,70 @@
    "https://huggingface.co/Nanbeige/Nanbeige4.3-33B-Base"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "krafton-raon-1-mini-preview",
+  "name": "Raon-1 mini preview (30B-A4B)",
+  "short": "Raon-1 mini",
+  "family": "Raon-1",
+  "org": "KRAFTON",
+  "country": "KR",
+  "release": "2026-10-21",
+  "arch": "MoE（線形注意 RDA 18層＋MLA 7層のハイブリッド、専門家128中6＋共有1）",
+  "total_b": 30,
+  "active_b": 4,
+  "native_precision": "MXFP8（公式。NVFP4 版と GGUF 版もあり）",
+  "weights_gb": 32.7,
+  "q4_gb": 19.7,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "プレビュー版。最終版で仕様や成績が変わる可能性がある。",
+  "hf": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+  "summary_ja": "ゲーム会社 KRAFTON（PUBG の開発元）がゼロから学習した30B MoE（稼働4B）のプレビュー版。韓国語の会話とエージェント作業に強く、学習データには日本語も含む。",
+  "strengths": [
+   "agent",
+   "reasoning",
+   "multilingual",
+   "long-context",
+   "efficiency",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 70.8,
+   "gpqa": 84.3,
+   "hle": null,
+   "aime": 93.3,
+   "lcb": 81.6,
+   "mmlu_pro": 76.5,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカードの自己申告（プレビュー版）。IFBench 84.2、BrowseComp Plus 55.7、AA-LCR 67.3、Terminal-Bench Lite 47.0、AIME 2026 93.3。多くの項目で Qwen3.8-27B には及ばないが、同じ MoE 級の Qwen3.6-35B-A3B・Gemma 4 26B-A4B とは互角以上。Artificial Analysis は未計測（2026-10-27 時点）。",
+  "aa_index": null,
+  "japanese_note": "学習言語に日本語を含む（韓国語・英語・日本語・中国語・スペイン語・フランス語・タイ語）。日本語の評価値は公開されていない。",
+  "deploy_note_ja": "公式は MXFP8 で約33GB。NVFP4 版なら RTX 5090（32GB）1枚、4bit GGUF（Q4_K_M 約20GB）なら RTX 4090 にも載る。GGUF は KRAFTON の llama.cpp ブランチが必要（本家への取り込みは未完了）。DFlash2 の投機デコード用ドラフトと MLX 版も公開。",
+  "local_runtimes": [
+   "llama.cpp（KRAFTON版）",
+   "MLX"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp（KRAFTON版）",
+   "MLX"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
+   "https://huggingface.co/KRAFTON/Raon-1-mini-preview-gguf",
+   "https://huggingface.co/KRAFTON/Raon-1-mini-preview-nvfp4"
+  ],
+  "confidence": "medium"
  }
 ]
