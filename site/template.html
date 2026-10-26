@@ -285,6 +285,32 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 .tl-m a:hover { border-color: var(--fg); }
 .tl-m a i { font-style: normal; color: var(--muted); margin-left: 5px; font-size: 11px; }
 
+/* AAのローカル機への載せ方レシピ */
+.rcp .vd { display: inline-block; font-size: 11.5px; line-height: 1.6; padding: 0 6px; border-radius: 3px; font-weight: 600; white-space: nowrap; }
+.vd.resident { background: var(--ok-soft); color: var(--ok); }
+.vd.ssd, .vd.ram-offload { background: var(--warn-soft); color: var(--warn); }
+.vd.cluster { background: var(--accent-soft); color: var(--accent); }
+.vd.no { background: var(--surface-2); color: var(--muted); }
+.vd.lowq { background: var(--bad-soft); color: var(--bad); margin-left: 4px; }
+.rcp td .sp { display: block; font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.rcp td .sp.ref::after { content: "（参考）"; font-family: var(--font-body); color: var(--muted); font-size: 11px; }
+.rcp .dev span { font-family: var(--font-body); font-size: 12.5px; line-height: 1.55; }
+.rdev { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 10px; }
+.ritem .chip { white-space: normal; overflow-wrap: anywhere; }
+.rbest { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; margin: 6px 0 10px; }
+.rbest > div { border: 1px solid var(--line); border-radius: var(--r); padding: 8px 10px; min-width: 0; }
+.rbest .k { font-size: 12px; color: var(--muted); }
+.rbest .v { font-weight: 700; overflow-wrap: anywhere; }
+.rbest .s { font-size: 12.5px; color: var(--muted); }
+.ritem { border-top: 1px solid var(--line); padding: 8px 0; display: grid; gap: 4px; min-width: 0; }
+.ritem .h { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.ritem .h b { font-size: 14.5px; }
+.ritem .h a { color: var(--fg); text-decoration: none; }
+.ritem .h a:hover { text-decoration: underline; }
+.ritem .e { font-size: 12.5px; color: var(--fg); overflow-wrap: anywhere; }
+.ritem .n { font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; word-break: auto-phrase; }
+.ritem .sp { font-family: var(--font-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+
 /* 量子化ローカル表・ローカル機 */
 .box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-bottom: 22px; }
 .box h3 { font-size: 15px; margin-bottom: 4px; }
@@ -872,6 +898,92 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       return '<div class="dev"><b>' + (d.source ? link(d.source, d.name) : esc(d.name)) + "</b><span>" + esc(d.memory) + " · " + esc(d.bandwidth_gbs) + "GB/s</span><br><span>" + esc(d.usable) + "</span><br><span>" + esc(d.price) + "</span></div>";
     }).join("") + "</div>";
   }
+  /* ── AA のローカル機に載せるなら（SOTAレシピ） ── */
+  var RCP = D.recipes || null;
+  var VD_JA = { resident: "全部メモリに載る", ssd: "SSD併用", "ram-offload": "メインメモリ併用", cluster: "台連結", no: "動かない" };
+  function vdChip(r) {
+    var t = r.verdict === "cluster" ? (r.units || 2) + VD_JA.cluster : (VD_JA[r.verdict] || r.verdict);
+    if (r.verdict === "ram-offload" && num(r.host_ram_gb)) t += "（RAM " + r.host_ram_gb + "GB）";
+    return '<span class="vd ' + esc(r.verdict) + '">' + esc(t) + "</span>" + (r.low_quality ? '<span class="vd lowq" title="約1.5〜1.6bit まで縮めた版で、元のモデルより品質がかなり落ちる">品質低下大</span>' : "");
+  }
+  function spd(r) {
+    if (num(r.gen_tok_s) == null) return r.verdict === "no" ? "" : '<span class="sp" style="color:var(--muted)">速度の実測なし</span>';
+    return '<span class="sp' + (r.measured ? "" : " ref") + '">' + esc(r.gen_tok_s) + " tok/s</span>";
+  }
+  function rcpModel(r) { return LLM.filter(function (m) { return m.id === r.llm_id; })[0] || null; }
+  var RSEL = null;
+  // 代表レシピの選び方：1台で動く → 実測あり → 速い
+  function RBEST(a, b) {
+    return (a.verdict === "no") - (b.verdict === "no") || (a.verdict === "cluster") - (b.verdict === "cluster") ||
+      (!!a.low_quality - !!b.low_quality) || (!!b.measured - !!a.measured) || (num(b.gen_tok_s) || 0) - (num(a.gen_tok_s) || 0);
+  }
+  function recipesBox() {
+    if (!RCP || !RCP.devices || !RCP.recipes || !RCP.recipes.length) return "";
+    var devs = RCP.devices;
+    var ids = [];
+    RCP.recipes.forEach(function (r) { if (ids.indexOf(r.llm_id) < 0 && rcpModel(r)) ids.push(r.llm_id); });
+    ids.sort(function (a, b) { var A = LLM.filter(function (m) { return m.id === a; })[0], B = LLM.filter(function (m) { return m.id === b; })[0]; return (scoreOf(B) || 0) - (scoreOf(A) || 0); });
+    function cell(id, d) {
+      var rs = RCP.recipes.filter(function (r) { return r.llm_id === id && r.device === d.id; });
+      if (!rs.length) return '<td class="no">—</td>';
+      // 1台で動くもの → 速いもの の順で代表を選ぶ
+      rs.sort(RBEST);
+      var r = rs[0];
+      return "<td>" + vdChip(r) + spd(r) + "</td>";
+    }
+    var head = "<tr><th>モデル</th>" + devs.map(function (d) { return "<th>" + esc(d.short || d.name) + "<small>" + esc(d.mem) + "</small></th>"; }).join("") + "</tr>";
+    var body = ids.map(function (id) {
+      var m = LLM.filter(function (x) { return x.id === id; })[0];
+      return '<tr><td><a href="#llm" data-open="llm-' + esc(id) + '">' + esc(m.short || m.name) + '</a><br><span class="muted" style="font-size:12px">' + esc(cname(m.country)) + " · " + esc(fmtB(m.total_b)) + (scoreOf(m) != null ? " · AA " + esc(scoreOf(m)) : "") + "</span></td>" + devs.map(function (d) { return cell(id, d); }).join("") + "</tr>";
+    }).join("");
+    RSEL = RSEL || devs[0].id;
+    return '<div class="box rcp" id="llm-recipes"><h3>Artificial Analysis のローカル機に載せるなら</h3>' +
+      "<p>" + esc(RCP.intro_ja || "") + (RCP.source_url ? " " + link(RCP.source_url, "機材の出典：Artificial Analysis") : "") + "</p>" +
+      ((RCP.engines || []).length ? '<p class="sec-label" style="margin:10px 0 6px">いま使われている主な載せ方・エンジン</p><div class="devs">' + RCP.engines.map(function (e) {
+        return '<div class="dev"><b>' + (e.url ? link(e.url, e.name) : esc(e.name)) + "</b><span>" + esc(e.desc) + "</span></div>";
+      }).join("") + "</div>" : "") +
+      '<div class="tbl-wrap"><table class="qtbl">' + head + body + "</table></div>" +
+      '<p class="sec-label" style="margin:16px 0 6px">機種ごとのレシピ</p>' +
+      '<div class="frow" role="group" aria-label="機種">' + devs.map(function (d) {
+        return '<button class="chip-btn" data-rdev="' + esc(d.id) + '" aria-pressed="' + (d.id === RSEL) + '">' + esc(d.short || d.name) + "</button>";
+      }).join("") + "</div>" +
+      '<div class="rdev" id="rdev"></div>' +
+      (RCP.notes_ja ? '<p class="note muted" style="margin-top:10px">' + esc(RCP.notes_ja) + "</p>" : "") + "</div>";
+  }
+  function renderRDev() {
+    var el = document.getElementById("rdev"); if (!el || !RCP) return;
+    var d = RCP.devices.filter(function (x) { return x.id === RSEL; })[0];
+    var rs = RCP.recipes.filter(function (r) { return r.device === RSEL && rcpModel(r); });
+    rs.sort(function (a, b) { return (scoreOf(rcpModel(b)) || 0) - (scoreOf(rcpModel(a)) || 0) || RBEST(a, b); });
+    var single = rs.filter(function (r) { return r.verdict !== "no" && r.verdict !== "cluster" && !r.low_quality; });
+    var fast = single.filter(function (r) { return num(r.gen_tok_s) != null && r.gen_tok_s >= 15; })[0];
+    var any = single[0];
+    function best(k, r) {
+      if (!r) return "";
+      var m = rcpModel(r);
+      return '<div><div class="k">' + esc(k) + '</div><div class="v"><a href="#llm" data-open="llm-' + esc(m.id) + '" style="color:inherit;text-decoration:none">' + esc(m.short || m.name) + "</a></div>" +
+        '<div class="s">' + esc(r.quant || "") + (num(r.gen_tok_s) != null ? " · " + esc(r.gen_tok_s) + " tok/s" + (r.measured ? "" : "（参考）") : "") + " · " + esc(VD_JA[r.verdict] || "") + "</div></div>";
+    }
+    el.innerHTML = '<div class="muted" style="font-size:12.5px">' + esc(d.name) + " · " + esc(d.mem) + " · 帯域 " + esc(d.bw) + (d.price ? " · " + esc(d.price) : "") + (d.note ? "<br>" + esc(d.note) : "") + "</div>" +
+      '<div class="rbest">' + best("実用速度（15 tok/s 以上）で動く一番賢いモデル", fast) +
+      best(any && num(any.gen_tok_s) == null ? "計算上は載る一番賢いモデル（速度の実測なし）" : "とりあえず動く一番賢いモデル", any !== fast ? any : null) + "</div>" +
+      rs.map(function (r) {
+        var m = rcpModel(r);
+        var tr = (r.tricks || []).map(function (t) { return '<span class="chip">' + esc(t) + "</span>"; }).join("");
+        return '<div class="ritem"><div class="h"><b><a href="#llm" data-open="llm-' + esc(m.id) + '">' + esc(m.short || m.name) + "</a></b>" + vdChip(r) + '<span class="sp">' + (num(r.gen_tok_s) != null ? "生成 " + esc(r.gen_tok_s) + " tok/s" + (num(r.prefill_tok_s) != null ? " · 読み込み " + esc(r.prefill_tok_s) + " tok/s" : "") : (r.verdict === "no" ? "" : "速度の実測なし")) + "</span>" +
+          (r.verdict !== "no" ? '<span class="muted" style="font-size:12px">' + (r.measured ? "実測" : "参考：" + esc(String(r.measured_on || "近い機材の値").replace(/^（参考）\s*/, ""))) + "</span>" : "") + "</div>" +
+          (r.verdict !== "no" ? '<div class="e">' + esc([r.engine, r.quant, num(r.file_gb) ? fmtGB(r.file_gb) : null].filter(Boolean).join(" · ")) + (r.engine_url ? " " + link(r.engine_url, "エンジン") : "") + (r.source ? " · " + link(r.source, "出典") : "") + "</div>" : "") +
+          (tr ? '<div class="chips">' + tr + "</div>" : "") +
+          (r.note_ja ? '<div class="n">' + esc(r.note_ja) + "</div>" : "") + "</div>";
+      }).join("");
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-rdev]"); if (!b) return;
+    RSEL = b.getAttribute("data-rdev");
+    document.querySelectorAll("[data-rdev]").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+    renderRDev();
+  });
+
   /* ── AA のローカル機実測（ローカルLLMページ） ── */
   function aaLocalBox() {
     var A = HW && HW.aa_local; if (!A || !A.systems || !A.results) return "";
@@ -905,7 +1017,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     ST[pid] = { country: "all", hw: "all", q: false, com: false, sort: "score" };
     var top = '<div class="chart-box"><div class="chart-title"><h3>賢さ × 重さ</h3><span>左上ほど「軽いのに賢い」。点を押すと詳細へ移動します。</span></div>' +
       '<div class="chart-scroll"><div class="chart" id="' + pid + '-chart"></div></div><div class="legend" id="' + pid + '-legend"></div></div>' +
-      (pid === "llm" ? quantTable() : aaLocalBox());
+      (pid === "llm" ? recipesBox() + quantTable() : aaLocalBox());
     var filters = chipRow("開発国", "country", countryOpts(p.list), "all") +
       chipRow(pid === "llm" ? "手元の環境" : "手元のGPU・Mac", "hw", [["all", "制限なし"]].concat(cfg.hw), "all").replace("</div>", "") +
       (pid === "llm" ? checkCtl(pid, "q", "4bit量子化してでも載せる") : checkCtl(pid, "q", "公式重み（量子化なし）で載せる")) + "</div>" +
@@ -1281,7 +1393,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     if (tl) { tl.innerHTML = timeline(p.list, p.id); tl.open = p.list.length <= 24; if (!p.list.length) tl.hidden = true; }
     if (p.id !== "llm" && p.id !== "local") pickCards(p.id, p.list);
   });
-  renderHome(); renderAbout();
+  renderHome(); renderAbout(); renderRDev();
   showPage((location.hash || "").slice(1) || "home", true);
 })();
 </script>

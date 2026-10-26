@@ -71,6 +71,7 @@ def main():
     meta = load("meta.json")
     gen = {k: load(f"{k}.json", []) for k in GEN_PAGES}
     hw = load("hardware.json", {})
+    recipes = load("recipes.json", {})
 
     errors = []
     check("llm", llm, LLM_REQUIRED, errors)
@@ -82,7 +83,7 @@ def main():
         print("検証エラー:", *errors, sep="\n  ")
         sys.exit(1)
 
-    payload = json.dumps({"meta": meta, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw}, ensure_ascii=False, separators=(",", ":"))
+    payload = json.dumps({"meta": meta, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw, "recipes": recipes}, ensure_ascii=False, separators=(",", ":"))
     payload = payload.replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8")
     if "/*__DATA__*/" not in html:

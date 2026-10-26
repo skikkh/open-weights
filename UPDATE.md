@@ -19,6 +19,7 @@
 | `data/tts.json` | 日本語音声合成 |
 | `data/s2s.json` `music.json` `image.json` `video.json` `3d.json` `decision.json` | 汎用カテゴリ（同じスキーマ） |
 | `data/meta.json` | 更新日、次回予定、収録ルール、更新履歴、出典、重み非公開モデルの参考メモ |
+| `data/recipes.json` | 大型LLMを Artificial Analysis「Laptops & Workstations」の5機種に載せるレシピ（大型LLMページの「載せるなら」表） |
 | `data/hardware.json` | Artificial Analysis「Laptops & Workstations」の実測（`aa_local`）、ローカル機の一覧と価格（`devices`）、量子化ローカルの総括（`summary_ja`） |
 | `site/template.html` | ページの雛形（`/*__DATA__*/` にデータが入る） |
 | `scripts/build.py` | 検証して `docs/index.html` を生成 |
@@ -78,6 +79,20 @@ local_q{
 ```
 
 剪定（REAP など）で別モデル化した版は quants に入れてよいが、名前に REAP か「剪定」を含めること（表の「載る版」の判定から外れる）。
+
+### 載せ方レシピ（`data/recipes.json`）
+
+```
+devices[{id, short, name, mem, bw, price, note}]     // AA のページにある機材（mbp-m5pro-64 / ryzen-ai-halo-128 / dgx-spark-128 / rtx-spark-128 / rtx5090-32）
+engines[{name, url, desc}]                           // いま使われている主な載せ方・エンジン（Strata、ds4、Project Maya など）
+recipes[{llm_id, device, verdict("resident"|"ssd"|"ram-offload"|"cluster"|"no"), units?, host_ram_gb?,
+         engine, engine_url, quant, file_gb, tricks[], gen_tok_s, prefill_tok_s, context,
+         measured(その機材そのものの実測なら true), measured_on, source, note_ja, confidence, low_quality?}]
+```
+
+- llm_id は data/llm.json の id。1つのモデル×機種に複数のレシピを書いてよい（表には「1台で動く→品質低下なし→実測→速い」の順で代表が出る）。
+- 約1.5〜1.6bit まで縮めた版など、元モデルより品質が大きく落ちるものは `low_quality: true`（「品質低下大」の印が付き、最強の判定から外れる）。
+- 単一モデル専用の高速エンジン（Strata など）は数日で速度が変わるので、新しい版の報告があれば数値を更新する。AA のページに機材が増えたら devices にも足す。
 
 ### ハードウェア（`data/hardware.json`）
 
