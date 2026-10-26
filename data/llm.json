@@ -5916,5 +5916,70 @@
    "https://huggingface.co/IFM/K2-Horizon-32B-GGUF"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "nanbeige-4-3-33b",
+  "name": "Nanbeige4.3-33B",
+  "short": "Nanbeige4.3 33B",
+  "family": "Nanbeige4.3",
+  "org": "Nanbeige LLM Lab（BOSS直聘 / Kanzhun）",
+  "country": "CN",
+  "release": "2026-10-24",
+  "arch": "Dense（Llama 系の構造）",
+  "total_b": 33.1,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 66.2,
+  "q4_gb": 20.8,
+  "context_k": 524,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+  "summary_ja": "求人サービス BOSS直聘 系の Nanbeige チームが出した33Bの Dense モデルで、コーディングや事務作業などのエージェント用途に特化している。開発元の比較では、同じ30B級の Qwen3.8-27B や Gemma 4 31B をほとんどの項目で上回る。",
+  "strengths": [
+   "agent",
+   "coding",
+   "tool-use",
+   "reasoning",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 89.5,
+   "hle": null,
+   "aime": 95.2,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 80.9,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "モデルカードの自己申告（思考は最大、preserve_thinking=true）。Terminal-Bench 2.1 80.9、Terminal-Bench 4.0 23.8、DeepSWE 65.5、SWE-Bench Pro 60.3、GDPval 84.8、AA-LCR 84.0、AIME 2026 95.2。比較相手は Qwen3.8-27B・Muse-Glimmer-30B・Gemma4-31B。Artificial Analysis は未計測（2026-10-26 時点）。",
+  "aa_index": null,
+  "japanese_note": "公式の対応言語は英語と中国語で、日本語の評価は公開されていない。",
+  "deploy_note_ja": "BF16 で約66GB。4bit（Q4_K_M 約21GB）なら RTX 4090 / 5090 や GPU に24GB以上使える Mac に載る。公開翌日から bartowski などの GGUF、NVFP4、EXL3、MLX 版が出ている。",
+  "local_runtimes": [
+   "llama.cpp",
+   "LM Studio",
+   "MLX"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+   "https://huggingface.co/bartowski/Nanbeige_Nanbeige4.3-33B-GGUF",
+   "https://huggingface.co/Nanbeige/Nanbeige4.3-33B-Base"
+  ],
+  "confidence": "medium"
  }
 ]

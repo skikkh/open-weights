@@ -37,6 +37,7 @@
 ## 3. 更新作業
 
 1. `data/meta.json` の `updated_at`（前回更新日）以降のニュースを、カテゴリごとに検索する。
+   - **Web検索だけに頼らず、Hugging Face の新着も直接見る**（検索に出る前のモデルを見落とさないため）。例: `curl -s 'https://huggingface.co/api/models?sort=createdAt&direction=-1&limit=200&filter=text-generation'`、`?sort=trendingScore&limit=100`。主要な開発元（Qwen、deepseek-ai、zai-org、moonshotai、XiaomiMiMo、MiniMaxAI、stepfun-ai、inclusionAI、tencent、meta-models、nvidia、google、mistralai、Nanbeige、llm-jp、tokyotech-llm、sbintuitions、pfnet、elyza など）は `?author=<名前>&sort=createdAt&direction=-1` で前回更新日以降の公開を確認する。
    - 新しく重みが公開されたモデル、既存系列の新版、ライセンス変更、重みの取り下げ。
    - 例: 「open weights model release」「Hugging Face 新モデル」「オープンウェイト 公開」「日本語 LLM 公開」「text-to-video open source」など。
 2. LLM の `aa_index` を Artificial Analysis（https://artificialanalysis.ai/ ）の最新値に合わせる。Index の版が変わったら `meta.json` の `leaderboards` の版と日付も直す。
