@@ -152,6 +152,66 @@
   }
  },
  {
+  "id": "kimi-k3-1-pro",
+  "name": "Kimi K3.1 Pro",
+  "short": "Kimi K3.1 Pro",
+  "family": "Kimi K3",
+  "org": "Moonshot AI",
+  "country": "CN",
+  "status": "announced",
+  "announced": "2026-10-23",
+  "release": "2026-11-04",
+  "arch": "MoE",
+  "total_b": 2800,
+  "active_b": null,
+  "native_precision": null,
+  "weights_gb": null,
+  "context_k": 1049,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "thinking",
+  "license": "未発表（Kimi K3 は MIT ベースの独自ライセンス）",
+  "commercial": "conditional",
+  "license_note": "ライセンスは重みの公開時に確定。K3 と同じなら、年商2,000万ドル超の MaaS 事業者は別契約が必要。",
+  "hf": null,
+  "summary_ja": "Kimi K3 に追加学習を重ねた後継で、AA Intelligence Index は55とオープン系では最上位級の見込みです。いまは API だけで、重みは11月4日までに公開予定です。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式ブログの自己申告: Terminal-Bench 4.0 65.7%、Kimi Code Bench 3.0 Long-horizon 61.2%（K3 は55.95%）、BenchCAD 92.7%、ハルシネーション率8.3%（K3 は23.4%）。サイバー関連データを除いて学習したと説明。AA指数は API 版の値（v4.3.2、2026-10-26取得、サイト表示は整数）。",
+  "aa_index": 55,
+  "japanese_note": "日本語の評価は未確認。",
+  "deploy_note_ja": "公式は「3T級」とだけ説明し、AA は総パラメータ2.8T としている。K3 と同じ規模なら公式重みは約1.5TB級で、1ノードに載せるには8×B300級が必要。",
+  "engines": [],
+  "supersedes": [],
+  "notes": "API のモデル名は kimi-k3.1-pro（2〜3倍速い kimi-k3.1-pro-highspeed もある）。思考モードは常時オン。重みが公開されたら status を外し、Kimi K3 を supersedes に移す。",
+  "sources": [
+   "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "https://www.kimi.com/code/docs/en/kimi-code/models.html",
+   "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+   "https://www.tribuneindia.com/news/3-trillion-parameter/chinas-moonshot-ai-launches-kimi-k3-1-pro-plans-full-model-weights-release-by-nov"
+  ],
+  "confidence": "medium"
+ },
+ {
   "id": "glm-5-3",
   "name": "GLM-5.3",
   "family": "GLM-5.3",
@@ -3430,6 +3490,65 @@
   },
   "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
   "short": "Gemma 4 31B"
+ },
+ {
+  "id": "mistral-large-4",
+  "name": "Mistral Large 4 (1T-A52B)",
+  "short": "Mistral Large 4",
+  "family": "Mistral Large",
+  "org": "Mistral AI",
+  "country": "FR",
+  "status": "announced",
+  "announced": "2026-10-06",
+  "release": "2026-10",
+  "arch": "MoE",
+  "total_b": 1000,
+  "active_b": 52,
+  "native_precision": null,
+  "weights_gb": null,
+  "context_k": 524,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "未発表（独自ライセンスになると報道）",
+  "commercial": "conditional",
+  "license_note": "ライセンスは重みの公開時に確定。Large 3 の Apache-2.0 ではなく独自ライセンスになるという報道がある。",
+  "hf": null,
+  "summary_ja": "Mistral 初の1兆パラメータ級 MoE（アクティブ52B）で、画像・文書の理解にも対応します。いまは API のプレビューだけで、重みは10月末に公開予定です。",
+  "strengths": [
+   "agent",
+   "coding",
+   "multilingual",
+   "vision",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式ブログの自己申告（プレビュー）: Terminal-Bench 4 28.3%、DeepSWE 1.1 61.7%、SWE-Atlas-QnA 59.4%、AutomationBench 59.9%。AA指数はプレビュー API の値（v4.3.2、2026-10-26取得）。",
+  "aa_index": 38,
+  "japanese_note": "160以上の言語で学習したとしているが、日本語の評価は未確認。",
+  "deploy_note_ja": "重みのサイズと精度は未発表。プレビュー API は入力100万トークンあたり1.36ドル、出力4.18ドル。",
+  "engines": [],
+  "supersedes": [],
+  "notes": "公式は「重みは今月末」（10月6日の発表）。10月27日公開という報道もある。重みが公開されたら status を外し、旧版（Mistral Large 3）を supersedes に入れる。",
+  "sources": [
+   "https://mistral.ai/news/mistral-large-4/",
+   "https://artificialanalysis.ai/models/mistral-large-4",
+   "https://forklog.com/en/news/mistral-launches-public-preview-of-ai-model-with-1-trillion-parameters",
+   "https://betanews.com/article/mistral-large-4-preview-open-weights/"
+  ],
+  "confidence": "medium"
  },
  {
   "id": "mistral-medium-3-5",

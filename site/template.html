@@ -174,6 +174,7 @@ h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-
 .lic.conditional { background: var(--warn-soft); color: var(--warn); }
 .lic.no { background: var(--bad-soft); color: var(--bad); }
 .tagx { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; border: 1px solid var(--line-strong); color: var(--fg); overflow-wrap: anywhere; max-width: 100%; }
+.ann { font-size: 11px; font-weight: 600; color: var(--warn); border: 1px dashed var(--warn); border-radius: 3px; padding: 0 5px; white-space: nowrap; }
 .new { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 0 4px; }
 
 .c-size { min-width: 0; display: grid; gap: 6px; }
@@ -587,6 +588,9 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   function licChip(c) { return c ? '<span class="lic ' + esc(c) + '">' + esc(COM_JA[c] || c) + "</span>" : ""; }
   function newChip(rel) { return daysAgo(rel) <= 45 && daysAgo(rel) >= 0 ? '<span class="new">NEW</span>' : ""; }
   function ccChip(c) { return '<span class="cc' + (c === "JP" ? " jp" : "") + '">' + esc(cname(c)) + "</span>"; }
+  // 予告（発表済み・重みは未公開）。release は重みの公開予定日、announced は発表日
+  function isAnn(m) { return m.status === "announced"; }
+  function annDebut(m) { return '<span class="debut" title="重みの公開予定日">' + (m.release ? esc(fmtDate(m.release)) : "時期未定") + " 公開予定" + (m.announced ? "<em>" + esc(fmtDate(m.announced)) + " 発表</em>" : "") + '</span><span class="ann" title="発表済みで、重みはまだ公開されていません">予告</span>'; }
   function debut(rel) { return rel ? '<span class="debut" title="公開日">' + esc(fmtDate(rel)) + " 公開<em>" + esc(relAge(rel)) + "</em></span>" : '<span class="debut muted">公開日 不明</span>'; }
   function sources(list) {
     if (!list || !list.length) return "";
@@ -597,10 +601,13 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       .map(function (p) { return "<dt>" + esc(p[0]) + "</dt><dd>" + p[1] + "</dd>"; }).join("") + "</dl>";
   }
   function licKV(m) { return esc(m.license) + (m.license_note ? '<br><span class="muted">' + esc(m.license_note) + "</span>" : ""); }
-  function originKV(m) { return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["公開日", esc(fmtDate(m.release)) + (m.release ? '<span class="muted">（' + esc(relAge(m.release)) + "）</span>" : "")]]; }
+  function originKV(m) {
+    if (isAnn(m)) return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["状態", '<span class="ann">予告</span> 発表済み・重みは未公開'], ["発表日", m.announced ? esc(fmtDate(m.announced)) : null], ["公開予定日", m.release ? esc(fmtDate(m.release)) : "未定"]];
+    return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["公開日", esc(fmtDate(m.release)) + (m.release ? '<span class="muted">（' + esc(relAge(m.release)) + "）</span>" : "")]];
+  }
   function idHead(m, extra) {
     return '<div class="c-id"><div class="nm">' + esc(m.name) + "</div>" +
-      '<div class="meta">' + ccChip(m.country) + "<span>" + esc(m.org) + "</span>" + debut(m.release) + newChip(m.release) + (extra || "") + "</div>" +
+      '<div class="meta">' + ccChip(m.country) + "<span>" + esc(m.org) + "</span>" + (isAnn(m) ? annDebut(m) : debut(m.release) + newChip(m.release)) + (extra || "") + "</div>" +
       (m.summary_ja ? '<p class="sum">' + esc(m.summary_ja) + "</p>" : "");
   }
   var BENCH_JA = [["swe_verified", "SWE-bench Verified"], ["terminal_bench2", "Terminal-Bench 2"], ["gpqa", "GPQA Diamond"], ["hle", "Humanity's Last Exam"], ["aime", "AIME"], ["lcb", "LiveCodeBench"], ["mmlu_pro", "MMLU-Pro"], ["tau2", "τ²-bench"], ["browsecomp", "BrowseComp"]];
@@ -626,7 +633,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 
   /* ── デビュー時期の一覧 ── */
   function timeline(list, pid, title) {
-    var xs = list.filter(function (m) { return m.release; }).slice().sort(byNew);
+    var xs = list.filter(function (m) { return m.release && !isAnn(m); }).slice().sort(byNew);
     if (!xs.length) return "";
     var groups = [], cur = null;
     xs.forEach(function (m) {
@@ -804,8 +811,8 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       return { m: m, x: X(g), y: Y(scoreOf(m)), r: r, t: tierFor(cfg.tiers, g), g: g };
     });
     dots.slice().sort(function (a, b) { return scoreOf(a.m) - scoreOf(b.m); }).forEach(function (d) {
-      s += '<a href="#' + pid + '" data-open="' + pid + "-" + esc(d.m.id) + '"><circle cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(1) + '" fill="var(' + d.t.c + ')" fill-opacity="0.85" stroke="var(--surface)" stroke-width="1.5"><title>' +
-        esc(d.m.name + "（" + cname(d.m.country) + "）  AA " + scoreOf(d.m) + "  要" + fmtGB(d.g)) + "</title></circle></a>";
+      s += '<a href="#' + pid + '" data-open="' + pid + "-" + esc(d.m.id) + '"><circle cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(1) + '" fill="var(' + d.t.c + ')" ' + (isAnn(d.m) ? 'fill-opacity="0.12" stroke="var(' + d.t.c + ')" stroke-dasharray="3 2"' : 'fill-opacity="0.85" stroke="var(--surface)"') + ' stroke-width="1.5"><title>' +
+        esc(d.m.name + (isAnn(d.m) ? "【予告・重み未公開】" : "") + "（" + cname(d.m.country) + "）  AA " + scoreOf(d.m) + "  要" + fmtGB(d.g)) + "</title></circle></a>";
     });
     // ラベル：点にもほかのラベルにも重ならない位置だけに置く（賢い順に優先）
     var boxes = dots.map(function (d) { return [d.x - d.r - 1, d.y - d.r - 1, 2 * d.r + 2, 2 * d.r + 2]; });
@@ -1122,7 +1129,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   }
 
   /* ── ホーム ── */
-  function bestBy(list, f) { var b = null; list.forEach(function (m) { if (f(m) != null && (b == null || f(m) > f(b))) b = m; }); return b; }
+  function bestBy(list, f) { var b = null; list.forEach(function (m) { if (!isAnn(m) && f(m) != null && (b == null || f(m) > f(b))) b = m; }); return b; }
   var HOME_PICKS = [];
   function renderHome() {
     var cards = [];
@@ -1150,7 +1157,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     var recent = [];
     PAGES.forEach(function (p) {
       if (!p.list || p.id === "jp") return;
-      p.list.forEach(function (m) { if (daysAgo(m.release) <= 30 && daysAgo(m.release) >= 0) recent.push({ m: m, p: p }); });
+      p.list.forEach(function (m) { if (!isAnn(m) && daysAgo(m.release) <= 30 && daysAgo(m.release) >= 0) recent.push({ m: m, p: p }); });
     });
     recent.sort(function (a, b) { return byNew(a.m, b.m); });
     var nb = document.getElementById("home-new");
@@ -1171,7 +1178,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
           return { id: c.m.id, name: c.m.name, pick: c.k.replace(/^ローカル：/, "").replace(" で動く最強", "").replace(" に載る最強", "").replace("総合でいちばん賢い", "総合1位") };
         });
       } else picks = list.filter(function (m) { return m.pick; }).slice(0, 3);
-      var newest = list.slice().sort(byNew)[0];
+      var newest = list.filter(function (m) { return !isAnn(m); }).sort(byNew)[0];
       return '<div class="cat"><span class="grp">' + esc(p.grp) + '</span><div class="cat-h"><a href="#' + p.id + '">' + esc(p.nav) + "</a><span>" + list.length + "件</span></div><p>" + esc(p.desc) + "</p>" +
         ((picks.length || newest) ? "<ul>" + picks.map(function (m) { return '<li><span class="k">' + esc(m.pick) + '</span><a href="#' + p.id + '" data-open="' + p.id + "-" + esc(m.id) + '">' + esc(m.name) + "</a></li>"; }).join("") +
           (newest ? '<li><span class="k">最新デビュー</span><a href="#' + p.id + '" data-open="' + p.id + "-" + esc(newest.id) + '">' + esc(newest.name) + '</a><span class="muted mono" style="font-size:11.5px">' + esc(fmtDate(newest.release)) + "</span></li>" : "") + "</ul>" : "") + "</div>";

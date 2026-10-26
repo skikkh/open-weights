@@ -30,7 +30,8 @@
 3. 同じ世代でも Flash／Pro、サイズ違い、T2V版／I2V版など用途が分かれるものは別エントリ。
 4. LLM は総パラメータ 100B 以上の大型〜超巨大が中心。主要系列の注目中型（単体GPUに載るもの）は少数だけ。
 5. ASR・TTS・Speech to Speech は日本語で使えるものを中心にする。
-6. 件数の目安: LLM 海外 25〜35／国産 8〜14、ASR 10〜16、TTS 12〜18、その他各 10〜18。
+6. **予告も載せる**: 公式に発表され、重み（API提供カテゴリはサービス）の公開日や公開予定が示されているが、まだ出ていないモデルは「予告」として載せる。`status: "announced"`、`announced`（発表日）を付け、`release` には公開予定日（分からなければ予定月）を入れる。予告のエントリには `supersedes` と `pick` を付けず、旧版は重みが出るまで消さない。根拠は公式発表（ブログ・公式X・ドキュメント）で取り、報道だけなら confidence を medium か low にする。半年以上動きのない予告は消す。
+7. 件数の目安: LLM 海外 25〜35／国産 8〜14、ASR 10〜16、TTS 12〜18、その他各 10〜18。
 
 ## 3. 更新作業
 
@@ -40,6 +41,7 @@
 2. LLM の `aa_index` を Artificial Analysis（https://artificialanalysis.ai/ ）の最新値に合わせる。Index の版が変わったら `meta.json` の `leaderboards` の版と日付も直す。
 3. 国産LLM の `jp_bench.nejumi` を Nejumi Leaderboard の最新値に合わせる。
 4. 新モデルは下のスキーマで追加し、置き換わる旧版を消す。
+   - 予告（`status: "announced"`）のエントリは毎回確認する。重みが公開されたら `status` と `announced` を消し、`release` を実際の公開日に直し、`hf` やサイズを埋め、旧版を消して `supersedes` に移す（changelog は「公開: …（予告→公開）」）。予定日を過ぎても出ていなければ、新しい予定を調べて `release` を直す。
 5. `pick`／`pick_reason`／`rank`（おすすめ順）を見直す。`pick` は各カテゴリ 3〜5 件まで。
 6. `meta.json` を更新する:
    - `updated_at` を今日に。`next_update` は次の実行日（毎月 1・4・7…28・31日）に。ページの「次回更新予定」は updated_at から自動計算される。
@@ -58,6 +60,7 @@ arch("MoE"|"Dense"|…), total_b, active_b, native_precision, weights_gb, contex
 modality[], mode("hybrid"|"thinking"|"instruct"), license, commercial("yes"|"conditional"|"no"),
 license_note, hf, summary_ja, strengths[], bench{swe_verified,gpqa,hle,aime,lcb,mmlu_pro,terminal_bench2,tau2,browsecomp},
 bench_note, aa_index, japanese_note, deploy_note_ja, engines[], supersedes[], sources[], confidence
+予告のみ: status("announced"), announced(YYYY-MM-DD)  ※ release は公開予定日。全カテゴリ共通
 国産のみ: from_scratch, base_model, jp_bench{nejumi,swallow_avg,jmmlu,ja_mtbench,other}, jp_bench_note, pick, pick_reason
 ```
 

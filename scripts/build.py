@@ -14,6 +14,8 @@ TEMPLATE = ROOT / "site" / "template.html"
 OUT = ROOT / "docs" / "index.html"
 
 COMMERCIAL = {"yes", "conditional", "no"}
+# 予告（発表済み・重みは未公開）のエントリは status: "announced"
+STATUS = {None, "announced"}
 LLM_REQUIRED = ["id", "name", "org", "country", "release", "total_b", "license", "commercial"]
 ASR_REQUIRED = ["id", "name", "org", "country", "release", "license", "commercial"]
 TTS_REQUIRED = ["id", "name", "org", "country", "release", "license", "commercial", "ja_support"]
@@ -41,6 +43,10 @@ def check(kind, items, required, errors):
         if m.get("id") in seen:
             errors.append(f"{label}: id が重複しています")
         seen.add(m.get("id"))
+        if m.get("status") not in STATUS:
+            errors.append(f"{label}: status は announced か省略")
+        if m.get("status") == "announced" and m.get("supersedes"):
+            errors.append(f"{label}: 予告のエントリに supersedes は付けない（重みが出て旧版を消すときに付ける）")
         if m.get("commercial") not in COMMERCIAL:
             errors.append(f"{label}: commercial は yes/conditional/no のどれか")
         for u in [m.get("hf")] + list(m.get("sources") or []):

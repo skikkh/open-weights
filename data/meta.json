@@ -1,9 +1,10 @@
 {
- "updated_at": "2026-10-25",
+ "updated_at": "2026-10-26",
  "next_update": "2026-10-28",
  "rules": [
-  "重みがダウンロードできるもの（オープンウェイト）を載せます。音楽・画像・動画・3D・Decision Model だけは、比べやすいように重み非公開のAPIサービスも「API提供」として載せています。",
+  "重みがダウンロードできるもの（オープンウェイト）を載せます（予告を除く）。音楽・画像・動画・3D・Decision Model だけは、比べやすいように重み非公開のAPIサービスも「API提供」として載せています。",
   "各系列は最新世代だけを載せます。後継が出たら旧版は消し、詳細の「置き換えた旧版」に名前を残します。",
+  "公式に発表されていて重みがまだ出ていないモデルも「予告」として載せます。公開日の欄は公開予定日で、おすすめやランキングの1位には入れません。重みが出たら通常のエントリに切り替えます。",
   "同じ世代でも Flash／Pro、サイズ違い、T2V版／I2V版など用途が分かれるものは別々に載せます。",
   "LLM は総パラメータ40B超を「大型LLM」、40B以下を「ローカルLLM」に分けます。国産LLMは大きさに関係なく「国産LLM」ページにもまとめています。",
   "ASR・TTS・Speech to Speech は日本語で使えるものを中心に集めています。",
@@ -12,6 +13,15 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-10-26",
+   "items": [
+    "新設: 「予告」区分。発表済みで重みが未公開のモデルも、公開予定日つきで載せるようにした（おすすめ・1位の判定からは外す）",
+    "追加（予告）: Kimi K3.1 Pro（Moonshot AI、10/23発表、重みは11/4までに公開予定。AA 55）",
+    "追加（予告）: Mistral Large 4（Mistral AI、1T MoE・アクティブ52B、10/6発表、重みは10月末に公開予定。AA 38）",
+    "確認: 音声・音楽・画像・動画・3D・Decision Model に、公開日が予告された未公開モデルはなし"
+   ]
+  },
   {
    "date": "2026-10-25",
    "items": [
@@ -94,7 +104,7 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Claude Opus 5.5（AA 57.6）、Claude Sonnet 5.5（56.0）、Meta Muse Wonder Full（56）、GPT-6 Astra（52.7）、Gemini 4 Argon（52.6）、Qwen3.8 Max（45.4、API版）、Kimi K3.1 Pro（約55、10/23にAPI発表・重みは未公開）など。オープンの首位 MiMo-V2.6-Pro は 46.3 で、クローズドの最上位とは約11点の差があります。",
+  "llm": "Claude Opus 5.5（AA 57.6）、Claude Sonnet 5.5（56.0）、Meta Muse Wonder Full（56）、GPT-6 Astra（52.7）、Gemini 4 Argon（52.6）、Qwen3.8 Max（45.4、API版）など。オープンの首位 MiMo-V2.6-Pro は 46.3 で、クローズドの最上位とは約11点の差があります。",
   "jp": "PLaMo 3.0 Prime（PFN）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini Transcribe V2（API専用）など。",
   "tts": "ElevenLabs Eleven v4 / v4 Turbo、Google Gemini 3.8 Flash TTS・Chirp 3 HD、Azure AI Speech Neural HD（DragonHD）、OpenAI gpt-4o-mini-tts、Fish Audio S2.1 Pro API、Aivis Cloud API など。",
