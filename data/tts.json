@@ -1031,5 +1031,212 @@
   ],
   "confidence": "high",
   "rank": 20
+ },
+ {
+  "id": "zonos2",
+  "name": "ZONOS2",
+  "org": "Zyphra",
+  "country": "US",
+  "release": "2026-06-12",
+  "params_m": 8000,
+  "arch": "MoE（ZyphraのMoE++系、総8B・稼働約0.9B）の自己回帰モデル。音素化せずUTF-8バイト列のテキストとECAPA-TDNN話者埋め込みを入力に、DAC（44.1kHz）の音声トークンをdelayパターンで生成。CFG不要",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "600万時間超の多言語音声で学習し、日本語は英語・中国語と並ぶTier 1（最上位の対応区分）。公式はSeed-TTS-Evalと自社のZTTS1-Evalで主要オープンTTSと互角、特に話者類似度と韻律が強いとするが、数値表は公開しておらず日本語の評価値もない。感情スライダー（喜び・悲しみ・怒り・驚き、感情価・覚醒度の軸）、話速8段階、安定重視のstableとクローン忠実度重視のexpressiveの2モードを持つ。1回の生成は最長1分。第三者の日本語試用では生成できたが、人名のアクセントが一般名詞の読みになる、温度を上げると発音が崩れるといった例が報告されている",
+  "latency_note": "公式は前版（Zonos v0.1、1.6B）比でスループット4倍のリアルタイム動作とするが、初回音声までの遅延値は未公開。Mini-SGLangベースの推論サーバーでストリーミング出力に対応",
+  "hardware_note": "公式対応はLinux（x86_64）＋NVIDIA GPUのみ。重み（model.pth）は約15.3GBで、公式のVRAM目安はない。第三者がVRAM 8GBのRTX 4060 Laptopで共有メモリにあふれさせながら日本語を生成できたが、4.5秒の音声に約105秒かかった。公式のGGUF版（Zyphra/ZONOS2-GGUF）あり。Zyphra Cloudでも提供",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みはApache-2.0（HFのモデルカード表記）、GitHubの推論コードはMIT。商用利用の追加条件の記載はない",
+  "hf": "https://huggingface.co/Zyphra/ZONOS2",
+  "summary_ja": "米Zyphraの多言語TTSで、日本語は英語・中国語と並ぶ最上位の対応言語です。数秒の参照音声で声をまねでき、Apache-2.0で商用にも使えます。",
+  "best_for_ja": "商用OKのライセンスで、日本語を含む多言語の声のクローンや感情の調整をしたい場合",
+  "supersedes": [
+   "Zonos v0.1"
+  ],
+  "sources": [
+   "https://huggingface.co/Zyphra/ZONOS2",
+   "https://www.zyphra.com/our-work/zonos2",
+   "https://github.com/Zyphra/ZONOS2",
+   "https://huggingface.co/Zyphra/ZONOS2-GGUF",
+   "https://lilting.ch/articles/zonos2-rtx4060-8gb-local-japanese",
+   "https://gigazine.net/news/20260615-tts-zonos2-amd-zyphra"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "supertonic-3",
+  "name": "Supertonic 3",
+  "org": "Supertone（HYBE子会社。2026年7月に清算を決定）",
+  "country": "KR",
+  "release": "2026-05-06",
+  "params_m": 99,
+  "arch": "ONNX Runtimeで動く軽量の非自己回帰TTS（テキストエンコーダ・継続長予測器・ベクトル推定器・ボコーダの4モデル構成、公開ONNX合計で約99M）",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": null,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "CER（ja）",
+    "value": 4.61,
+    "note": "%、公式カードのグラフ値（評価セットの詳細は記載なし）。同じグラフでは2B級のVoxCPM2の方が誤りが少ない",
+    "source": "https://huggingface.co/Supertone/supertonic-3"
+   }
+  ],
+  "quality_note": "31言語に対応（前版Supertonic 2は5言語）し、読み飛ばしや繰り返しの失敗を減らした。日本語のCERは4.61%で、10倍以上大きいモデルにやや劣る程度。<laugh>・<breath>・<sigh>などの表現タグに対応。無料で使える声は同梱の10種（F1〜F5・M1〜M5）だけで、参照音声から声を作るVoice Builderは有料サービス。公式デモに日本語のキャラクター声と朗読の作例がある",
+  "latency_note": "公式計測でCPU上の平均RTF 0.172（A100上のVoxCPM2は1.04、Qwen3-TTSは2.16）。前版Supertonic 2（0.119）よりはやや遅い",
+  "hardware_note": "GPU不要。ONNX RuntimeでCPUだけで動き、公式計測のピークメモリは2.0GiB。重みは約0.4GB。ブラウザやエッジ端末への組み込みを想定。Python SDK（pip install supertonic）があり、コミュニティのMLX版もある",
+  "license": "OpenRAIL-M",
+  "commercial": "yes",
+  "license_note": "モデルはBigScience Open RAIL-M（商用可。違法行為・差別などの用途制限があり、派生物にも同じ制限を引き継ぐ必要がある）。サンプルコードはMIT。カスタム声の作成（Voice Builder）は有料。開発元のSupertoneは2026年7月15日にHYBEが解散・清算を決議しており、今後の更新や有料のVoice Builderが続くかは不明（公開済みの重みとライセンスはそのまま）",
+  "hf": "https://huggingface.co/Supertone/supertonic-3",
+  "summary_ja": "韓国Supertoneの超小型TTS（約1億パラメータ）で、GPUなしのCPUだけで実時間の約6倍の速さで日本語を読み上げます。無料で使える声は同梱の10種です。",
+  "best_for_ja": "スマホ・ブラウザ・組込み機器など、GPUのない環境でのオフライン読み上げ",
+  "supersedes": [
+   "Supertonic 2"
+  ],
+  "sources": [
+   "https://huggingface.co/Supertone/supertonic-3",
+   "https://huggingface.co/Supertone/supertonic-3/blob/main/LICENSE",
+   "https://github.com/supertone-inc/supertonic",
+   "https://huggingface.co/mlx-community/supertonic-3-mlx",
+   "https://musicbusinessworldwide.com/hybe-winds-down-ai-voice-company-supertone-after-investing-nearly-35m"
+  ],
+  "confidence": "medium",
+  "rank": 21
+ },
+ {
+  "id": "kaburi-tts",
+  "name": "KABURI-TTS",
+  "org": "国立情報学研究所（NII）大規模言語モデル研究開発センター／LLM-jp 対話WG（東中竜一郎氏ら）",
+  "country": "JP",
+  "release": "2026-09",
+  "params_m": 615,
+  "arch": "2話者の対話音声を左右2チャンネルで同時生成するrectified flowモデル（Irodori-TTS-500M-v2を対話向けに追加学習、約615M）。前段で音素ラスタ（発音・音素長・間・重なり）を作る小型モデル群と、書き言葉の対話を話し言葉に直すテキスト変換器（llm-jp-3-440mを微調整、約447M）を持つ。復号はSemantic-DACVAE-Japanese（48kHzステレオ）",
+  "ja_support": "native",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": false,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": true,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "対話全体の自然さ（5段階、テキスト入力評価）",
+    "value": 3.83,
+    "note": "KABURI（stat）。MOSS-TTSD 3.53、元のIrodori-TTS 3.11。発話単位の自然さは3.38（MOSS-TTSD 3.20）",
+    "source": "https://arxiv.org/html/2609.07200v1"
+   },
+   {
+    "metric": "発話の重なり率（テキスト入力評価）",
+    "value": 0.12,
+    "note": "KABURI（stat）。話者交替は毎分40.4回。元のIrodori-TTSは0.020・毎分17.4回。参考：テスト区間の実会話は0.076・毎分35.4回",
+    "source": "https://arxiv.org/html/2609.07200v1"
+   }
+  ],
+  "quality_note": "相づち・発話の重なり（かぶり）・間を含む2人の雑談を、テキストだけから1本のステレオ音声として生成できる珍しい日本語TTS。論文の聴取評価では、対話全体の自然さでMOSS-TTSDや元のIrodori-TTSを上回った。オンライン会議の雑談コーパス（LLM-jp-Zoom1、約1,085時間）で学習しており、話者参照もその条件に近い10秒程度の自然な会話音声が最適。スタジオ録音の朗読音声を参照にすると品質が下がる、辞書にない語の読みが不明瞭になる、韻律がやや不自然な箇所が残る、と公式が明記",
+  "latency_note": "公式の速度値なし（論文にもRTFの記載なし）",
+  "hardware_note": "公式のVRAM目安なし。重みは音響モデル約2.5GB・テキスト変換器約1.8GB（いずれもFP32）。推論コードはGitHub（llm-jp/kaburi-tts）",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重み・設定はApache-2.0。ただし音響モデルはIrodori-TTS-500M-v2（MIT）の派生でMITの条件も適用。デコーダの重み（Semantic-DACVAE-Japanese、MIT）は実行時に自動取得。なりすまし・詐欺・誤情報への悪用をしないよう求めている（ライセンス条件ではないお願い）",
+  "hf": "https://huggingface.co/llm-jp/kaburi-tts",
+  "summary_ja": "国立情報学研究所のLLM-jpが公開した、2人の日本語の会話を相づちや言葉の重なりまで含めて合成するTTSです。台本から自然な雑談音声を作れます。",
+  "best_for_ja": "ポッドキャスト風の掛け合い、対話システムの研究、雑談音声データの作成",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/llm-jp/kaburi-tts",
+   "https://github.com/llm-jp/kaburi-tts",
+   "https://arxiv.org/abs/2609.07200",
+   "https://arxiv.org/html/2609.07200v1"
+  ],
+  "confidence": "medium",
+  "rank": 19
+ },
+ {
+  "id": "firered-tts3",
+  "name": "FireRedTTS3",
+  "org": "FireRed Team（小紅書）",
+  "country": "CN",
+  "release": "2026-08-13",
+  "params_m": null,
+  "arch": "LLM＋音響モデルの統合型（Base と Instruct）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": true,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "24言語に対応し、MiniMax-MLS-Test で平均 WER/CER 3.754% と話者類似度84.8%が最良という自己申告。日本語単独の評価値は公開されていない。",
+  "latency_note": null,
+  "hardware_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "利用上の注意事項（なりすまし禁止など）がモデルカードにある。",
+  "hf": "https://huggingface.co/FireRedTeam/FireRedTTS3",
+  "summary_ja": "小紅書の FireRed チームが出した24言語対応の音声合成。自然文の指示で話し方や速さ・高さを変えられ、複数話者の対話も作れる。",
+  "best_for_ja": "多言語のナレーションや、指示で声の雰囲気を調整したいとき（日本語の品質は要確認）",
+  "supersedes": [
+   "FireRedTTS-2"
+  ],
+  "sources": [
+   "https://huggingface.co/FireRedTeam/FireRedTTS3",
+   "https://github.com/FireRedTeam/FireRedTTS3"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "moss-tts-v1-5",
+  "name": "MOSS-TTS v1.5",
+  "org": "OpenMOSS（復旦大学ほか）",
+  "country": "CN",
+  "release": "2026-05-25",
+  "params_m": 8490,
+  "arch": "LLM型の音声合成（8.5B）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": null,
+   "instruction_control": null,
+   "dialogue": null,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "公式の対応言語一覧に日本語を含む。日本語単独の評価値は公開されていない。Hugging Face のダウンロードは約10万。",
+  "latency_note": null,
+  "hardware_note": "8.5B なので GPU 前提（BF16 で約17GB）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5",
+  "summary_ja": "OpenMOSS が出した8.5Bの多言語音声合成で、日本語を含む30言語以上に対応する。Apache 2.0 で商用利用できる。",
+  "best_for_ja": "商用で使える大きめの多言語TTSを自前で動かしたいとき（日本語の品質は要確認）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5"
+  ],
+  "confidence": "medium"
  }
 ]

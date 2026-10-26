@@ -434,12 +434,11 @@
   ],
   "supersedes": [
    "DeepSeek-V4.1-Flash（0910初版）",
-   "DeepSeek-V4-Pro-0813",
    "DeepSeek-V4-Flash-0731",
    "DeepSeek-V4-Flash-Vision-Exp",
    "DeepSeek-V3.2"
   ],
-  "notes": "総パラメータは公式の「552B backbone」。別に196BのEngram条件付きメモリがあり、HF上の総数は約763B。DeepSeekは2026-09-14からAPIのV4-Pro宛リクエストをV4.1-Flashへ転送しており、「V4.1-Proが出るまで」としている（V4.1-Proの時期は未発表）。V4-Pro-0813の重み（1.6T/49B、約893GB、MIT）はダウンロードできるが、本一覧では置き換え済みとして扱う。Jinja形式のチャットテンプレートはなく、encodingフォルダとdeepseek-recipeを使う。",
+  "notes": "総パラメータは公式の「552B backbone」。別に196BのEngram条件付きメモリがあり、HF上の総数は約763B。DeepSeekは2026-09-14からAPIのV4-Pro宛リクエストをV4.1-Flashへ転送しており、「V4.1-Proが出るまで」としている（V4.1-Proの時期は未発表）。Pro 系列の最新の重みは DeepSeek-V4-Pro-0813（別エントリ）。Jinja形式のチャットテンプレートはなく、encodingフォルダとdeepseek-recipeを使う。",
   "sources": [
    "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
    "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
@@ -6044,6 +6043,1508 @@
    "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
    "https://huggingface.co/KRAFTON/Raon-1-mini-preview-gguf",
    "https://huggingface.co/KRAFTON/Raon-1-mini-preview-nvfp4"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "xing4-0-29b-a4b",
+  "name": "Xing4.0-29B-A4B",
+  "short": "Xing4.0 29B",
+  "family": "Xing（旧TeleChat）",
+  "org": "China Telecom Artificial Intelligence Technology（中国電信のAI子会社。XingChen-AGI、旧TeleChat）",
+  "country": "CN",
+  "release": "2026-09-16",
+  "arch": "MoE（MLA＋mHC＋MTP）",
+  "total_b": 31.2,
+  "active_b": 4,
+  "native_precision": "BF16（公式FP8・W8A8・GGUF版あり）",
+  "weights_gb": 62.4,
+  "q4_gb": 18.95,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。",
+  "hf": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B",
+  "summary_ja": "中国電信のAI子会社が、旧TeleChatを改称したXingシリーズとして公開した29B MoE（稼働4B）。Huawei AscendとMindSporeだけで学習した、この規模で最初のモデルとしている。公表値はSWE-bench Verified 75.0、Terminal-Bench 2.1 57.5で、Qwen3.6-35B-A3Bと同等のコーディング・エージェント性能。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 75.0,
+   "gpqa": null,
+   "hle": null,
+   "aime": 90.0,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 57.5,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（自己申告、第三者による再現なし）。terminal_bench2はTerminal-Bench 2.1（Terminus-2、3回平均）、aimeはAIME 2026（5回平均）。ほかにSWE-bench Multilingual 66.0、Tau3-Bench 64.63、Claw-Eval 76.55、IFBench 69.67、AA-LCR 61.0。同じ表のQwen3.6-35B-A3BはSWE-bench Verified 76.0、Terminal-Bench 2.1 51.5。AA指数・Nejumiは未掲載。",
+  "aa_index": null,
+  "japanese_note": "対応言語は英語・中国語と明記されている。日本語の評価は見当たらない。",
+  "deploy_note_ja": "BF16で約62GB。公式GGUFはIQ4_XS（18.3GB）とQ8_0（34.2GB）、コミュニティ（Venastine Research）のQ4_K_Mは19.0GB、IQ2_M（9.9GB）なら16GB級GPUにも載る。vLLM・SGLangは公式の外部プラグインが必要。KTransformers、MLX版もある。",
+  "local_runtimes": [
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "KTransformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [
+   "TeleChat3系"
+  ],
+  "notes": "同じ土台の意図分類向け派生Xing4.0-29B-Intent（2026-10-15）は特化型のため対象外。",
+  "sources": [
+   "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B",
+   "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B-GGUF",
+   "https://huggingface.co/Venastine-Research/Xing4.0-29B-A4B-GGUF",
+   "https://github.com/XingChen-AGI/Xing4.0-29B-A4B"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "google-diffusiongemma-26b-a4b",
+  "name": "DiffusionGemma 26B A4B",
+  "short": "DiffusionGemma 26B",
+  "family": "Gemma 4",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-06-10",
+  "arch": "MoE（ブロック単位の離散拡散。自己回帰エンコーダ＋双方向デコーダ）",
+  "total_b": 25.8,
+  "active_b": 3.8,
+  "native_precision": "BF16（NVIDIA・Red HatのNVFP4/FP8版あり）",
+  "weights_gb": 51.6,
+  "q4_gb": 16.81,
+  "context_k": 256,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Gemma 4と同じApache-2.0。",
+  "hf": "https://huggingface.co/google/diffusiongemma-26B-A4B-it",
+  "summary_ja": "Gemma 4 26B A4Bをもとに、256トークンのブロックを並列に書き上げる離散拡散で文章を作る速度重視のモデル。H100で毎秒1,000トークン超、RTX 5090で700トークン超と通常版の最大4倍速い。ただし品質は通常のGemma 4より明確に低く、Googleも品質重視なら通常版を勧めている。",
+  "strengths": [
+   "efficiency",
+   "vision",
+   "long-context",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 73.2,
+   "hle": 11.0,
+   "aime": 69.1,
+   "lcb": 69.1,
+   "mmlu_pro": 77.6,
+   "terminal_bench2": null,
+   "tau2": 56.2,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（推奨のEntropy Boundサンプラー使用）。aimeはAIME 2026（ツールなし）、lcbはLiveCodeBench v6、hleはツールなし、tau2は3回平均。同じ表の通常版Gemma 4 26B A4BはMMLU Pro 82.6、AIME 2026 88.3、GPQA 82.3、LCB v6 77.1。aa_indexはAA v4.3.2の推定値（*）で、通常版（16.7）を大きく下回る。",
+  "aa_index": 9.5,
+  "japanese_note": "35以上の言語に対応（事前学習は140以上）。日本語の個別評価は見当たらない。",
+  "deploy_note_ja": "BF16で約52GB。量子化すれば18GB以内でRTX 4090/5090に載るとGoogleは説明している。unslothのGGUF（Q4_K_M 16.8GB）はllama.cppの拡散用ブランチとllama-diffusion-cliでしか動かず、llama-serverやOllamaでは使えない。速度の利点はApple Siliconなどユニファイドメモリ機では出にくい。vLLM、Transformers、MLX、NVIDIA NIMに対応。",
+  "local_runtimes": [
+   "vLLM",
+   "MLX",
+   "llama.cpp（拡散用ブランチ）"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "MLX",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "notes": "通常版Gemma 4 26B A4B（収録済み）の置き換えではなく、速度を優先する別用途の版として載せる。",
+  "sources": [
+   "https://huggingface.co/google/diffusiongemma-26B-A4B-it",
+   "https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/",
+   "https://ai.google.dev/gemma/docs/diffusiongemma",
+   "https://huggingface.co/unsloth/diffusiongemma-26B-A4B-it-GGUF",
+   "https://artificialanalysis.ai/models/diffusiongemma-26b-a4b"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "poolside-laguna-xs-2-1",
+  "name": "Laguna XS 2.1 (33B-A3B)",
+  "short": "Laguna XS 2.1",
+  "family": "Laguna",
+  "org": "poolside",
+  "country": "US",
+  "release": "2026-07-02",
+  "arch": "MoE（SWAと全体注意を3:1で併用）",
+  "total_b": 33.4,
+  "active_b": 3,
+  "native_precision": "BF16（公式FP8・NVFP4・INT4・GGUF版あり。KVキャッシュはFP8）",
+  "weights_gb": 66.9,
+  "q4_gb": 20.27,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型。商用・改変とも許可不要）。",
+  "hf": "https://huggingface.co/poolside/Laguna-XS-2.1",
+  "summary_ja": "コーディングエージェント専業のpoolsideが、手元のマシンでの長時間のコーディング作業向けに出した33B MoE（稼働3B）。前版XS.2からSWE-bench Multilingualが5.4ポイント伸び、36GBメモリのMacで動く。Ollama・llama.cppに公式対応し、コミュニティのGGUFも月150万ダウンロード超と人気。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 70.9,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 37.5,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（自社ハーネスpool、思考あり、256K文脈）。terminal_bench2はTerminal-Bench 2.0（2.1ではない）。ほかにSWE-bench Multilingual 63.1、SWE-Bench Pro（public）47.6。同じ表のQwen3.6-35B-A3BはSWE-bench Verified 73.4、Terminal-Bench 2.0 51.5で、まだ一歩及ばない。AA指数・Nejumiは未掲載。",
+  "aa_index": null,
+  "japanese_note": "日本語の評価は見当たらない。",
+  "deploy_note_ja": "公式GGUFのQ4_K_Mは20.3GBで24GB GPUに載る（Q8_0は35.6GB）。Ollama公式（laguna-xs-2.1）、llama.cpp本家（ggml-orgのGGUFあり）、vLLM 0.21以降、SGLang、TensorRT-LLM、MLXに対応。モデルカードにはApple SiliconのOllamaで空出力になる不具合（llama.cpp側の修正待ち）の注記がある。DFlashの投機的デコード用モデルもある。",
+  "local_runtimes": [
+   "Ollama",
+   "llama.cpp",
+   "MLX",
+   "vLLM"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "TensorRT-LLM",
+   "Transformers",
+   "llama.cpp",
+   "Ollama"
+  ],
+  "supersedes": [
+   "Laguna XS.2"
+  ],
+  "sources": [
+   "https://huggingface.co/poolside/Laguna-XS-2.1",
+   "https://poolside.ai/blog/introducing-laguna-xs-2-1",
+   "https://huggingface.co/poolside/Laguna-XS-2.1-GGUF",
+   "https://huggingface.co/ggml-org/Laguna-XS-2.1-GGUF",
+   "https://huggingface.co/mudler/Laguna-XS-2.1-APEX-GGUF",
+   "https://ollama.com/library/laguna-xs-2.1"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "sarvam-30b",
+  "name": "Sarvam-30B",
+  "short": "Sarvam 30B",
+  "family": "Sarvam",
+  "org": "Sarvam AI",
+  "country": "IN",
+  "release": "2026-03-06",
+  "arch": "MoE（128エキスパート＋共有1、top-6、GQA）",
+  "total_b": 32.2,
+  "active_b": 2.4,
+  "native_precision": "FP32で配布（公式FP8・GGUF版あり）",
+  "weights_gb": 128.6,
+  "q4_gb": 19.57,
+  "context_k": 131,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。",
+  "hf": "https://huggingface.co/sarvamai/sarvam-30b",
+  "summary_ja": "インドのSarvam AIがIndiaAI Missionの計算資源でゼロから学習した30B MoE（稼働2.4B、16兆トークン）。インドの22公用語で同サイズ最高水準をうたい、音声通話中のツール呼び出しなど軽い実運用向け。汎用の知能指標（AA）は6.6（推定）と同クラスでは低め。",
+  "strengths": [
+   "multilingual",
+   "efficiency",
+   "reasoning",
+   "math"
+  ],
+  "bench": {
+   "swe_verified": 34.0,
+   "gpqa": 66.5,
+   "hle": null,
+   "aime": 88.3,
+   "lcb": 70.0,
+   "mmlu_pro": 80.0,
+   "terminal_bench2": null,
+   "tau2": 45.7,
+   "browsecomp": 35.5
+  },
+  "bench_note": "公式モデルカード（自己申告、最大65,536トークンで評価）。aimeはAIME 25（ツールなし。ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 97.0、HMMT（Feb 25）73.3、MILU 76.8。aa_indexはAA v4.3.2の推定値（*）。",
+  "aa_index": 6.6,
+  "japanese_note": "インドの言語と英語が中心で、日本語への言及や評価はない。",
+  "deploy_note_ja": "HFの本体はFP32で約129GBと大きい。公式FP8版は38.6GB、公式GGUFのQ4_K_Mは19.6GB（ファイル名の拡張子が.gguf.ggufと二重）で24GB GPUに載る。vLLMはカードの時点で本家未対応のため、同梱のhotpatch_vllm.pyかフォークを使う。SGLangは対応。",
+  "local_runtimes": [
+   "llama.cpp",
+   "vLLM"
+  ],
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Sarvam-M"
+  ],
+  "notes": "config上の最大文脈は131,072トークン（AAの表示は評価時の65.5K）。",
+  "sources": [
+   "https://huggingface.co/sarvamai/sarvam-30b",
+   "https://www.sarvam.ai/blogs/sarvam-30b-105b",
+   "https://huggingface.co/sarvamai/sarvam-30b-gguf",
+   "https://huggingface.co/sarvamai/sarvam-30b-fp8",
+   "https://artificialanalysis.ai/models/sarvam-30b"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "nex-n2-5-mini",
+  "name": "Nex-N2.5-mini",
+  "short": "Nex-N2.5 mini",
+  "family": "Nex-N2.5",
+  "org": "Nex-AGI（上海奇績智峰智能科技・上海創智学院）",
+  "country": "CN",
+  "release": "2026-09-08",
+  "arch": "MoE（Gated DeltaNet＋Gated Attentionのハイブリッド。Qwen3.5-35B-A3Bと同構成）",
+  "total_b": 35.1,
+  "active_b": 3,
+  "native_precision": "BF16",
+  "weights_gb": 70.2,
+  "q4_gb": 22.32,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。Qwen3.5-35B-A3B-Baseを起点にしたNex-N2-miniの後継（Qwen3.5もApache-2.0）。",
+  "hf": "https://huggingface.co/nex-agi/Nex-N2.5-mini",
+  "summary_ja": "上海のNex-AGIが、Qwen3.5-35B-A3B系の土台にエージェント向けの追加学習を重ねた35B MoE（稼働3B）。画面を見ながらPCやブラウザを操作する作業に力を入れ、公表値はOSWorld-Verified 71.2、Terminal-Bench 2.1 73.4。",
+  "strengths": [
+   "agent",
+   "coding",
+   "vision",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 73.4,
+   "tau2": null,
+   "browsecomp": 83.4
+  },
+  "bench_note": "公式モデルカード（自社評価が中心、temperature 0.7、NexAUハーネス）。terminal_bench2はTerminal-Bench 2.1、BrowseCompは文脈圧縮（Summary）を使った値。ほかにSWE-Bench Pro 43.8、DeepSWE v1.1 36.1、Toolathlon Verified 54.6、OSWorld-Verified 71.2、OSWorld-G 82.9、OmniDoc 89.7。AA指数は未掲載（前世代のNex-N2-ProはAAが独自モデルとして掲載）。",
+  "aa_index": null,
+  "jp_bench": {
+   "nejumi": 0.7038
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）。reasoning-highでの評価",
+  "japanese_note": "Nejumi Leaderboard 4で総合0.704（reasoning-high）。",
+  "deploy_note_ja": "BF16で約70GB。bartowskiのGGUFはQ4_K_M 22.3GB、IQ4_XS 19.9GB（画像入力用のmmproj 0.9GBは別）。カードの推奨はSGLang（2×H100、Nex版パッチ入りDockerイメージ）。OpenRouterに無料枠がある。",
+  "local_runtimes": [
+   "llama.cpp",
+   "SGLang"
+  ],
+  "engines": [
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Nex-N2-mini"
+  ],
+  "notes": "base_model: Qwen/Qwen3.5-35B-A3B-Base（Nex-N2-miniのモデルカードに明記。N2.5はN2の土台を継続と公式が説明）。",
+  "sources": [
+   "https://huggingface.co/nex-agi/Nex-N2.5-mini",
+   "https://huggingface.co/nex-agi/Nex-N2-mini",
+   "https://nex-agi.com/",
+   "https://huggingface.co/bartowski/nex-agi_Nex-N2.5-mini-GGUF",
+   "https://openrouter.ai/nex-agi/nex-n2.5-mini-20260908",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "qwen3-swallow-30b-a3b-rl",
+  "name": "Qwen3-Swallow-30B-A3B-RL-v0.2",
+  "short": "Qwen3 Swallow 30B-A3B",
+  "family": "Swallow",
+  "org": "東京科学大学（岡崎研究室・横田研究室）／産業技術総合研究所",
+  "country": "JP",
+  "release": "2026-02-20",
+  "arch": "MoE",
+  "total_b": 30.5,
+  "active_b": 3.3,
+  "native_precision": "BF16（公式AWQ-INT4版あり）",
+  "weights_gb": 61.1,
+  "q4_gb": 18.56,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": false,
+  "base_model": "Qwen/Qwen3-30B-A3B-Base（事前学習済みモデルから継続事前学習）",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "ベースのQwen3もApache 2.0",
+  "hf": "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-30B-A3B-RL-v0.2",
+  "summary_ja": "AlibabaのQwen3-30B-A3B-Baseに、日本語中心の継続事前学習、SFT、RLVRを施したMoEの推論モデル（稼働約3B）。公式の日本語タスク平均は0.591で同シリーズ32B（0.609）に次ぎ、稼働パラメータが少ないぶん速い。英語では元のQwen3-30B-A3Bを下回るタスクが多い。",
+  "strengths": [
+   "japanese",
+   "reasoning",
+   "math",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": 0.6287,
+   "swallow_avg": 0.546,
+   "jmmlu": null,
+   "ja_mtbench": 7.41,
+   "other": "Swallow LB v2: 英語平均0.711 / JamC-QA 0.520 / MMLU-ProX(ja) 0.750 / 日本語GPQA 0.612。公式ページの公表値は日本語平均0.591・英語平均0.732・日本語MT-Bench 0.889"
+  },
+  "jp_bench_note": "nejumiはNejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）。swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版）の値",
+  "bench": {
+   "gpqa": 61.5,
+   "mmlu_pro": 69.2,
+   "aime": 81.7,
+   "lcb": 61.8,
+   "swe_verified": null
+  },
+  "japanese_note": "常に推論（thinking）する設計で、オン/オフの切り替えはない。ツール呼び出しは学習していない。",
+  "deploy_note_ja": "BF16で約61GB。公式AWQ-INT4版のほか、コミュニティ（mmnga-o）のGGUFはQ4_K_M 18.6GB・IQ4_XS 16.4GBで、16〜24GB GPUに載る。推奨上限は32Kトークン。GPTQ版は性能劣化のため非公開になった。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Qwen3-Swallow-30B-A3B-SFT-v0.2"
+  ],
+  "sources": [
+   "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-30B-A3B-RL-v0.2",
+   "https://huggingface.co/tokyotech-llm/Qwen3-Swallow-30B-A3B-RL-v0.2-AWQ-INT4",
+   "https://huggingface.co/mmnga-o/Qwen3-Swallow-30B-A3B-RL-v0.2-gguf",
+   "https://swallow-llm.github.io/qwen3-swallow.ja.html",
+   "https://swallow-llm.github.io/leaderboard/index-post.ja.html",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "sarvam-105b",
+  "name": "Sarvam-105B",
+  "short": "Sarvam 105B",
+  "family": "Sarvam",
+  "org": "Sarvam AI",
+  "country": "IN",
+  "release": "2026-03-06",
+  "arch": "MoE（MLA型注意、128エキスパート＋共有1、top-8）",
+  "total_b": 106,
+  "active_b": 10.3,
+  "native_precision": "FP32で配布（公式FP8・GGUF版あり）",
+  "weights_gb": 424.1,
+  "context_k": 131,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。",
+  "hf": "https://huggingface.co/sarvamai/sarvam-105b",
+  "summary_ja": "Sarvam AIがインドでゼロから学習した105B MoE（稼働10.3B、12兆トークン）で、インドの22公用語に強い主権AIの旗艦。公表値ではgpt-oss-120bやGLM-4.5-Airと並ぶが、AAの知能指標は8.8（推定）とgpt-oss-120b（12）を下回る。",
+  "strengths": [
+   "multilingual",
+   "reasoning",
+   "math",
+   "agent"
+  ],
+  "bench": {
+   "swe_verified": 45.0,
+   "gpqa": 78.7,
+   "hle": null,
+   "aime": 88.3,
+   "lcb": 71.7,
+   "mmlu_pro": 81.7,
+   "terminal_bench2": null,
+   "tau2": 68.3,
+   "browsecomp": 49.5
+  },
+  "bench_note": "公式モデルカード（自己申告）。swe_verifiedはSWE-Agentハーネス、aimeはAIME 25（ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 98.6、HMMT（Feb 25）85.8、MMLU 90.6。aa_indexはAA v4.3.2の推定値（*）。",
+  "aa_index": 8.8,
+  "japanese_note": "インドの言語と英語が中心で、日本語への言及や評価はない。",
+  "deploy_note_ja": "HFの本体はFP32で約424GB。公式FP8版は約113GBでH100 2枚から、公式GGUFのQ4_K_Mは64.2GBで96GB以上のMacや大容量メモリ機向け。コミュニティのIQ2_M（37.3GB）なら48GB級でも載る。vLLMは同梱のhotpatch_vllm.pyかフォークが必要。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/sarvamai/sarvam-105b",
+   "https://www.sarvam.ai/blogs/sarvam-30b-105b",
+   "https://huggingface.co/sarvamai/sarvam-105b-gguf",
+   "https://huggingface.co/sarvamai/sarvam-105b-fp8",
+   "https://huggingface.co/Aaravomega/sarvam-105b-GGUF-IQ2_M-IQ1_M",
+   "https://artificialanalysis.ai/models/sarvam-105b"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "コミュニティの2bit級（IQ2_M、約2.8bit・37GB）なら48GB機に載ります。公式の4bit（Q4_K_M、64GB）は96GB以上の機械が目安です。",
+   "quants": [
+    {
+     "name": "IQ1_M",
+     "bits": 2.05,
+     "size_gb": 27.11,
+     "source": "https://huggingface.co/Aaravomega/sarvam-105b-GGUF-IQ2_M-IQ1_M"
+    },
+    {
+     "name": "IQ2_M",
+     "bits": 2.81,
+     "size_gb": 37.25,
+     "source": "https://huggingface.co/Aaravomega/sarvam-105b-GGUF-IQ2_M-IQ1_M"
+    },
+    {
+     "name": "Q4_K_M（公式）",
+     "bits": 4.84,
+     "size_gb": 64.2,
+     "source": "https://huggingface.co/sarvamai/sarvam-105b-gguf"
+    },
+    {
+     "name": "FP8（公式）",
+     "bits": 8.49,
+     "size_gb": 112.53,
+     "source": "https://huggingface.co/sarvamai/sarvam-105b-fp8"
+    },
+    {
+     "name": "FP32（HFの本体）",
+     "bits": 32.0,
+     "size_gb": 424.13,
+     "source": "https://huggingface.co/sarvamai/sarvam-105b"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）。bitsは総パラメータ106Bで割った目安"
+  }
+ },
+ {
+  "id": "ornith-1-5-397b",
+  "name": "Ornith-1.5-397B",
+  "short": "Ornith-1.5 397B",
+  "family": "Ornith",
+  "org": "DeepReinforce（Ornith。米カリフォルニア州サンタクララ）",
+  "country": "US",
+  "release": "2026-08-19",
+  "arch": "MoE",
+  "total_b": 403,
+  "active_b": null,
+  "native_precision": "BF16（公式FP8・NVFP4・GGUF版あり）",
+  "weights_gb": 806.8,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT。Ornith-1.0（Qwen3.5とGemma 4が起点）の延長で、構成はQwen3.5-397B-A17Bと同じ。",
+  "hf": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+  "summary_ja": "35B版で人気のOrnith-1.5の最上位モデル。学習タスクと解き方を自分で作って強化学習を回す手法で鍛えた、コーディング・エージェント特化の397B MoE。公表値はTerminal-Bench 2.1 86.1、SWE-bench Verified 86.0とClaude Opus 4.8並みで、日本語のNejumiも0.816と高い。AAには未掲載。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 86.0,
+   "gpqa": 92.8,
+   "hle": 44.6,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 86.1,
+   "tau2": null,
+   "browsecomp": 86.6
+  },
+  "bench_note": "公式モデルカード（5回平均、ベンダー自己申告で第三者による再現なし）。terminal_bench2はTerminal-Bench 2.1（Terminus-2。Claude Code使用時は85.2）、HLEはツールなし（ツールありは56.1）。ほかにSWE-bench Pro 65.1、SWE-bench Multilingual 79.6、DeepSWE 56.0、MCP-Atlas 80.0、Toolathlon-Verified 71.2、ClawEval 81.4。アクティブパラメータはカードに記載なし（構成上は約17B）。AA指数は未掲載。",
+  "aa_index": null,
+  "jp_bench": {
+   "nejumi": 0.8161
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）",
+  "japanese_note": "Nejumi Leaderboard 4で総合0.816（同シリーズ35B版は0.763）。",
+  "deploy_note_ja": "BF16（約807GB）は8×H200級（カードの例はTP8）。公式FP8版は約418GB、NVFP4版は約319GB。公式GGUFのQ4_K_Mは244GBで256GB機では余裕がなく、3bit級（IQ3_XXS 166GB）が現実的。bartowskiのIQ2_XXS（106GB）なら128GB機に載る。YaRNで約1Mトークンまで拡張できる。DFlashの投機的デコード用モデルもある。",
+  "local_runtimes": [
+   "llama.cpp"
+  ],
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Ornith-1.0-397B"
+  ],
+  "notes": "base_model: Qwen3.5-397B-A17B（モデル構成qwen3_5_moeとカードの記述から判断）。総パラメータはビジョン部を含めて約403B。",
+  "sources": [
+   "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+   "https://ornith.ai/ornith_1_5.html",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-397B-GGUF",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-397B-NVFP4",
+   "https://huggingface.co/ornith-ai/Ornith-1.5-397B-FP8",
+   "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.6bit・82GB）なら128GB機に載りますが品質低下が大きめです。2bit級（IQ2_XXS、106GB）は128GB機、4bit級（Q4_K_M、242〜244GB）は384GB以上の機械が目安です。",
+   "quants": [
+    {
+     "name": "IQ1_S",
+     "bits": 1.62,
+     "size_gb": 81.78,
+     "source": "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "IQ2_XXS",
+     "bits": 2.11,
+     "size_gb": 106.31,
+     "source": "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "Q2_K",
+     "bits": 2.77,
+     "size_gb": 139.5,
+     "source": "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "IQ3_XXS",
+     "bits": 3.29,
+     "size_gb": 166.08,
+     "source": "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "Q3_K_M",
+     "bits": 3.6,
+     "size_gb": 181.49,
+     "source": "https://huggingface.co/bartowski/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "Q4_K_M（公式）",
+     "bits": 4.85,
+     "size_gb": 244.31,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "NVFP4（公式）",
+     "bits": 6.33,
+     "size_gb": 319.4,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B-NVFP4"
+    },
+    {
+     "name": "FP8（公式）",
+     "bits": 8.3,
+     "size_gb": 418.33,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B-FP8"
+    },
+    {
+     "name": "Q8_0（公式）",
+     "bits": 8.5,
+     "size_gb": 428.52,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 16.0,
+     "size_gb": 806.8,
+     "source": "https://huggingface.co/ornith-ai/Ornith-1.5-397B"
+    }
+   ],
+   "reports": [],
+   "note_ja": "総パラメータはビジョン部を含めて約403B。サイズはHugging Faceの実ファイル（GB）"
+  }
+ },
+ {
+  "id": "motif-3",
+  "name": "Motif 3 (314B-A13B)",
+  "short": "Motif 3",
+  "family": "Motif",
+  "org": "Motif Technologies",
+  "country": "KR",
+  "release": "2026-08-07",
+  "arch": "MoE（GDLA注意＝差分注意＋MLA、mHC、エキスパート別PolyNorm、MTP）",
+  "total_b": 314.8,
+  "active_b": 13.2,
+  "native_precision": "BF16（公式NVFP4版あり）",
+  "weights_gb": 629.7,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT（「Built with Motif 3」などの表記をお願いしている）。",
+  "hf": "https://huggingface.co/Motif-Technologies/Motif-3",
+  "summary_ja": "韓国のMotif Technologiesが独自設計でゼロから学習した314B MoE（稼働13.2B、12.5兆トークン）。公表値はTerminal-Bench 2.1 74.9、SWE-bench Verified 76.2とエージェント・ツール利用に強い。AAの知能指標は33.6（推定）で、韓国のオープンモデルでは最上位。",
+  "strengths": [
+   "agent",
+   "coding",
+   "tool-use",
+   "reasoning",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 76.2,
+   "gpqa": 83.4,
+   "hle": 37.0,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 74.9,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（temperature 1.0、262Kトークン）。terminal_bench2はTerminal-Bench 2.1。ほかにτ²-Bench Telecom 94.7、τ³-Banking 35.3、GDPval v2 38.7、SciCode 40.6、IMOAnswerBench 83.2、AA-LCR 72.3、IFBench 78.2。aa_indexはAA v4.3.2の推定値（*）。正式版の前に出たMotif 3 Beta（0714）のAA推定値は32.3。",
+  "aa_index": 33.6,
+  "jp_bench": {
+   "nejumi": 0.707
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）",
+  "japanese_note": "Nejumi Leaderboard 4で総合0.707。英語・韓国語が中心。",
+  "deploy_note_ja": "BF16で約630GB。カードの推奨はMotif版vLLMフォーク（Docker）で、H200/B200の8枚構成をFP8化（modelopt_blockfp8）して動かす例。公式NVFP4版は約187GB。コミュニティ（AesSedai）のGGUFはQ4_K_M 197GB、IQ2_S 109GBがあるが、llama.cpp本家での対応状況は未確認。",
+  "engines": [
+   "vLLM",
+   "Transformers"
+  ],
+  "supersedes": [
+   "Motif 3 Beta（0714）",
+   "Motif-2-12.7B-Reasoning"
+  ],
+  "sources": [
+   "https://huggingface.co/Motif-Technologies/Motif-3",
+   "https://arxiv.org/abs/2608.09119",
+   "https://huggingface.co/Motif-Technologies/Motif-3-NVFP4",
+   "https://huggingface.co/AesSedai/Motif-3-GGUF",
+   "https://github.com/MotifTechnologies/vllm",
+   "https://artificialanalysis.ai/models/motif-3",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "コミュニティの2bit級（IQ2_S、約2.8bit・109GB）なら128GB機に載ります。公式NVFP4（187GB）や4bit級GGUF（197GB）は256GB機が目安ですが、GGUFを動かすにはllama.cppの対応状況の確認が必要です。",
+   "quants": [
+    {
+     "name": "IQ2_S",
+     "bits": 2.77,
+     "size_gb": 108.87,
+     "source": "https://huggingface.co/AesSedai/Motif-3-GGUF"
+    },
+    {
+     "name": "IQ3_M",
+     "bits": 3.38,
+     "size_gb": 132.93,
+     "source": "https://huggingface.co/AesSedai/Motif-3-GGUF"
+    },
+    {
+     "name": "IQ4_XS",
+     "bits": 3.91,
+     "size_gb": 153.69,
+     "source": "https://huggingface.co/AesSedai/Motif-3-GGUF"
+    },
+    {
+     "name": "NVFP4（公式）",
+     "bits": 4.75,
+     "size_gb": 186.89,
+     "source": "https://huggingface.co/Motif-Technologies/Motif-3-NVFP4"
+    },
+    {
+     "name": "Q4_K_M",
+     "bits": 5.01,
+     "size_gb": 197.01,
+     "source": "https://huggingface.co/AesSedai/Motif-3-GGUF"
+    },
+    {
+     "name": "Q5_K_M",
+     "bits": 6.0,
+     "size_gb": 236.31,
+     "source": "https://huggingface.co/AesSedai/Motif-3-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 16.0,
+     "size_gb": 629.68,
+     "source": "https://huggingface.co/Motif-Technologies/Motif-3"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）。GGUFはコミュニティ版"
+  }
+ },
+ {
+  "id": "dots3-note-preview",
+  "name": "dots3-note Preview",
+  "short": "dots3-note",
+  "family": "dots3",
+  "org": "rednote hi lab（小紅書 / Xiaohongshu）",
+  "country": "CN",
+  "release": "2026-08-09",
+  "arch": "MoE（DSA疎注意13層＋SWA33層、MTP）＋MoE型ViT・音声エンコーダ",
+  "total_b": 288.4,
+  "active_b": 16,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 576.9,
+  "context_k": 524,
+  "modality": [
+   "text",
+   "image",
+   "video",
+   "audio"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。言語部は280B（アクティブ16B）で、視覚エンコーダ7B・音声エンコーダ0.8Bを含めて約288B。",
+  "hf": "https://huggingface.co/dots-studio/dots3-note-prev",
+  "summary_ja": "小紅書（RED）のhi labが公開したdots3ファミリー最初のオープンウェイトで、テキスト・画像・動画・音声を理解する280B MoE（稼働16B）。512Kトークン文脈に対応し、公表値はSWE-bench Verified 78.4、Terminal-Bench 2.1 75.1、LiveCodeBench v6 91.5。ファミリーで最も軽い版で、プレビュー扱い。",
+  "strengths": [
+   "coding",
+   "agent",
+   "vision",
+   "long-context",
+   "reasoning",
+   "tool-use"
+  ],
+  "bench": {
+   "swe_verified": 78.4,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": 91.5,
+   "mmlu_pro": null,
+   "terminal_bench2": 75.1,
+   "tau2": null,
+   "browsecomp": 83.3
+  },
+  "bench_note": "公式モデルカード（自己申告）。terminal_bench2はTerminal-Bench 2.1、lcbはLiveCodeBench v6、browsecompは文脈管理あり。HLEはツールありの52.6だけが公表されているため欄は空欄。ほかにSWE-bench Pro 61.0、SWE-bench Multilingual 75.7、IFBench 80.4、Codeforces 3056、Toolathlon-Verified 55.6、MMMU-Pro 79.1。AA指数・Nejumiは未掲載。",
+  "aa_index": null,
+  "japanese_note": "日本語の評価は見当たらない。",
+  "deploy_note_ja": "BF16で約577GB、公式FP8版は約299GBで8GPU 1ノード（カードの推奨）。vLLMは本家mainで対応し、SGLang・TransformersはPRのブランチが必要。llama.cpp用GGUF（ggml-org、bartowski）があり、bartowskiのQ4_K_Mは171GB、IQ2_XXSは76GB。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "dots.llm1.inst",
+   "dots.vlm1.inst"
+  ],
+  "sources": [
+   "https://huggingface.co/dots-studio/dots3-note-prev",
+   "https://huggingface.co/dots-studio/dots3-note-prev-fp8",
+   "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF",
+   "https://huggingface.co/ggml-org/dots3-note-prev-GGUF",
+   "https://recipes.vllm.ai/dots-studio/dots3-note-prev"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "2bit級（IQ2_XXS、約2.1bit・76GB）なら96〜128GB機に載ります。4bit級（Q4_K_M、171GB）は256GB機、FP8（299GB）はデータセンター級が目安です。",
+   "quants": [
+    {
+     "name": "IQ1_S",
+     "bits": 1.62,
+     "size_gb": 58.58,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "IQ2_XXS",
+     "bits": 2.1,
+     "size_gb": 75.75,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "Q2_K",
+     "bits": 2.76,
+     "size_gb": 99.42,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "Q3_K_M",
+     "bits": 3.57,
+     "size_gb": 128.59,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "IQ4_XS",
+     "bits": 4.17,
+     "size_gb": 150.39,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "Q4_K_M",
+     "bits": 4.75,
+     "size_gb": 171.11,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "FP8（公式）",
+     "bits": 8.28,
+     "size_gb": 298.67,
+     "source": "https://huggingface.co/dots-studio/dots3-note-prev-fp8"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.28,
+     "size_gb": 298.41,
+     "source": "https://huggingface.co/bartowski/dots-studio_dots3-note-prev-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 16.0,
+     "size_gb": 576.89,
+     "source": "https://huggingface.co/dots-studio/dots3-note-prev"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）。GGUFの画像・音声入力には別途mmprojが必要"
+  }
+ },
+ {
+  "id": "nex-n2-5-pro",
+  "name": "Nex-N2.5-Pro",
+  "short": "Nex-N2.5 Pro",
+  "family": "Nex-N2.5",
+  "org": "Nex-AGI（上海奇績智峰智能科技・上海創智学院）",
+  "country": "CN",
+  "release": "2026-09-08",
+  "arch": "MoE（Gated DeltaNet＋Gated Attentionのハイブリッド。Qwen3.5-397B-A17Bと同構成）",
+  "total_b": 397,
+  "active_b": 17,
+  "native_precision": "FP8（compressed-tensors）で配布",
+  "weights_gb": 407.1,
+  "context_k": 262,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。Qwen3.5-397B-A17Bを起点にしたNex-N2-Proの後継（Qwen3.5もApache-2.0）。",
+  "hf": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+  "summary_ja": "上海のNex-AGIのエージェント特化モデルの中核で、Qwen3.5-397B-A17B系にPC・ブラウザ操作やコーディングの追加学習を重ねた397B MoE。公表値はTerminal-Bench 2.1 82.7、OSWorld-Verified 82.2とクローズドの上位に迫り、日本語のNejumiも0.784と高い。",
+  "strengths": [
+   "agent",
+   "coding",
+   "vision",
+   "tool-use",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 82.7,
+   "tau2": null,
+   "browsecomp": 89.7
+  },
+  "bench_note": "公式モデルカード（自社評価が中心、temperature 0.7、NexAUハーネス）。terminal_bench2はTerminal-Bench 2.1、BrowseCompは文脈圧縮あり。ほかにSWE-Bench Pro 61.2、DeepSWE v1.1 55.8、Toolathlon Verified 68.5、GDPval-AA v2 1628、OSWorld-Verified 82.2、OSWorld-2 56.4、OSWorld-G 87.4。AA指数は未掲載（前世代のNex-N2-ProはAA v4.3.2で28.2・推定）。",
+  "aa_index": null,
+  "jp_bench": {
+   "nejumi": 0.7836
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）。reasoning-highでの評価",
+  "japanese_note": "Nejumi Leaderboard 4で総合0.784（reasoning-high。前世代Nex-N2-Proは0.789）。",
+  "deploy_note_ja": "公式重みはFP8で約407GB。カードの例は8×H100 1ノード（SGLangのNex版パッチ入りDocker）。bartowskiのGGUFはQ4_K_M 251GB、IQ2_XXS 115GB、IQ1_S 88GB。OpenRouterに無料枠がある。",
+  "engines": [
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Nex-N2-Pro"
+  ],
+  "notes": "base_model: Qwen/Qwen3.5-397B-A17B（Nex-N2-Proのモデルカードに明記。N2.5はN2の土台を継続）。同時公開の最上位Nex-N2.5-Max（1.6T、DeepSeek-V4-Pro-Base起点、FP8で約1.65TB）は対象外にした。",
+  "sources": [
+   "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+   "https://huggingface.co/nex-agi/Nex-N2-Pro",
+   "https://nex-agi.com/",
+   "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF",
+   "https://openrouter.ai/nex-agi/nex-n2.5-pro-20260907",
+   "https://artificialanalysis.ai/models/nex-n2-pro",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "medium",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.8bit・88GB）なら128GB機に載りますが品質低下が大きめです。2bit級（IQ2_XXS、115GB）は128GB機でぎりぎり、4bit級（Q4_K_M、251GB）は384GB以上の機械が目安です。",
+   "quants": [
+    {
+     "name": "IQ1_S",
+     "bits": 1.77,
+     "size_gb": 87.87,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "IQ2_XXS",
+     "bits": 2.32,
+     "size_gb": 115.09,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "Q2_K",
+     "bits": 3.04,
+     "size_gb": 150.75,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "IQ3_XXS",
+     "bits": 3.42,
+     "size_gb": 169.55,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "Q3_K_M",
+     "bits": 3.83,
+     "size_gb": 189.95,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "Q4_K_M",
+     "bits": 5.06,
+     "size_gb": 250.83,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    },
+    {
+     "name": "FP8（公式）",
+     "bits": 8.21,
+     "size_gb": 407.13,
+     "source": "https://huggingface.co/nex-agi/Nex-N2.5-Pro"
+    },
+    {
+     "name": "Q8_0",
+     "bits": 8.5,
+     "size_gb": 421.58,
+     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）。公式の配布はFP8のみ"
+  }
+ },
+ {
+  "id": "qwen3-coder-next",
+  "name": "Qwen3-Coder-Next (80B-A3B)",
+  "short": "Qwen3 Coder Next",
+  "family": "Qwen3-Coder",
+  "org": "Alibaba（Qwen）",
+  "country": "CN",
+  "release": "2026-02-03",
+  "arch": "MoE（Gated DeltaNet＋Gated Attentionのハイブリッド。Qwen3-Next構成）",
+  "total_b": 79.7,
+  "active_b": 3,
+  "native_precision": "BF16（公式FP8・GGUF版あり）",
+  "weights_gb": 159.4,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "license": "Apache License 2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+  "summary_ja": "Qwenのコーディングエージェント・ローカル開発向けモデルで、80Bのうち稼働3Bと軽く、Claude CodeやQwen Codeなど各種CLI/IDEで使える非思考型。Qwen3.8世代に後継のコーダーはまだ出ておらず系列の最新だが、汎用のQwen3.8-Flash-Next（AA 39.8）と比べると総合力は大きく劣る（AA 9.2）。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 70.6,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 36.2,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式（Hugging Faceの評価結果欄、自己申告）。terminal_bench2はTerminal-Bench 2.0（2.1ではない）。ほかにSWE-bench Pro 44.3。詳しいベンチはQwenブログの画像のみ。aa_indexはAA v4.3.2（推定ではない実測）。",
+  "aa_index": 9.2,
+  "japanese_note": "日本語の個別評価は見当たらない。",
+  "deploy_note_ja": "BF16で約159GB。公式GGUFのQ4_K_Mは48.4GBで64GB機、unslothのUD-Q2_K_XL（26.8GB）なら32GB機にも載る。MLX 4bit（44.8GB）もあり、Ollama・LM Studio・llama.cppで動く。SGLang 0.5.8以降、vLLMに対応。",
+  "local_runtimes": [
+   "Ollama",
+   "LM Studio",
+   "llama.cpp",
+   "MLX"
+  ],
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+   "https://qwen.ai/blog?id=qwen3-coder-next",
+   "https://huggingface.co/Qwen/Qwen3-Coder-Next-GGUF",
+   "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF",
+   "https://huggingface.co/lmstudio-community/Qwen3-Coder-Next-MLX-4bit",
+   "https://artificialanalysis.ai/models/qwen3-coder-next",
+   "https://technews.tw/2026/02/04/qwen3-coder-next-significantly-cuts-inference-costs/"
+  ],
+  "confidence": "high",
+  "local_q": {
+   "summary_ja": "最小の量子化版（UD-TQ1_0、約1.9bit・19GB）なら24GB GPUにも載りますが品質低下が大きめです。2bit級（UD-Q2_K_XL、27GB）は32GB機、4bit級（Q4_K_M、48GB）は64GB機が目安です。",
+   "quants": [
+    {
+     "name": "UD-TQ1_0",
+     "bits": 1.9,
+     "size_gb": 18.94,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.34,
+     "size_gb": 23.31,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 2.69,
+     "size_gb": 26.76,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.64,
+     "size_gb": 36.28,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "MLX 4bit",
+     "bits": 4.5,
+     "size_gb": 44.84,
+     "source": "https://huggingface.co/lmstudio-community/Qwen3-Coder-Next-MLX-4bit"
+    },
+    {
+     "name": "Q4_K_M（公式）",
+     "bits": 4.86,
+     "size_gb": 48.41,
+     "source": "https://huggingface.co/Qwen/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.98,
+     "size_gb": 49.61,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "Q8_0（公式）",
+     "bits": 8.52,
+     "size_gb": 84.81,
+     "source": "https://huggingface.co/Qwen/Qwen3-Coder-Next-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 16.01,
+     "size_gb": 159.46,
+     "source": "https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）"
+  }
+ },
+ {
+  "id": "deepseek-v4-pro-0813",
+  "name": "DeepSeek-V4-Pro-0813",
+  "short": "DeepSeek V4 Pro",
+  "family": "DeepSeek-V4",
+  "org": "DeepSeek",
+  "country": "CN",
+  "release": "2026-08-13",
+  "arch": "MoE（DSpark投機的デコード用モジュール同梱）",
+  "total_b": 1600,
+  "active_b": 49,
+  "native_precision": "FP8＋FP4（ルーテッドエキスパートはFP4）",
+  "weights_gb": 892.7,
+  "context_k": 1049,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+  "summary_ja": "DeepSeek-V4-Proの正式版（プレビュー版0424の後継）で、総1.6T・アクティブ49Bの同社最大のオープンウェイト。エージェント性能が大きく伸び、公表値はTerminal-Bench 2.1 87.9とKimi K3並み。AAの知能指標は36.0で、後発の軽量なV4.1-Flash（45.1）を下回る。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "tool-use",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": 42.7,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": 87.9,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（max effort、DeepSeek Harness）。HLEはツールなし（ツールありは60.0）、terminal_bench2はTerminal-Bench 2.1。ほかにNL2Repo 61.5、Cybergym 83.3、DeepSWE 62.7、Toolathlon-Verified 74.1、AutomationBench（Public）31.8。AA指数v4.3.2（Max設定。Non-reasoningは20.4）。",
+  "aa_index": 36.0,
+  "jp_bench": {
+   "nejumi": 0.7984
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）。reasoning-maxでの評価",
+  "japanese_note": "Nejumi Leaderboard 4で総合0.798（reasoning-max）。V4.1-Flash-1017は0.816。",
+  "deploy_note_ja": "公式重みは約893GB（FP8とFP4の混在）。カードのvLLM例は4×GB300 1ノード（DSparkの投機的デコード有効）。SGLang公式cookbookあり。unslothのGGUFはUD-Q4_K_XLで約850GBとほぼ原寸で、低ビット版は出ていない。NVIDIA公式のNVFP4版もある。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "DeepSeek-V4-Pro（プレビュー版、0424）"
+  ],
+  "notes": "DeepSeekは2026-09-14からAPIのV4-Pro宛リクエストをV4.1-Flashへ転送しており、V4.1-Proの時期は未発表。重みのあるPro系列の最新はこの0813版。Jinja形式のチャットテンプレートはなく、encodingフォルダを使う。",
+  "sources": [
+   "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+   "https://artificialanalysis.ai/models/deepseek-v4-pro",
+   "https://recipes.vllm.ai/deepseek-ai/DeepSeek-V4-Pro",
+   "https://huggingface.co/unsloth/DeepSeek-V4-Pro-0813-GGUF",
+   "https://huggingface.co/nvidia/DeepSeek-V4-Pro-0813-NVFP4",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+  ],
+  "confidence": "high",
+  "local_q": {
+   "summary_ja": "公式重みでも約893GB。2bit（antirez の IQ2XXS 版 約465GB）で 512GB の Mac Studio にぎりぎり載り、512GB の Mac Studio を4台つなぐと約15 tok/s。",
+   "quants": [
+    {
+     "name": "DwarfStar IQ2XXS-w2Q2K (antirez)",
+     "bits": 2.32,
+     "size_gb": 464.6,
+     "source": "https://huggingface.co/antirez/deepseek-v4-gguf",
+     "note": "V4-Pro 用の2bit。512GB の Mac 向け"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.25,
+     "size_gb": 849.7,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4-Pro-0813-GGUF"
+    },
+    {
+     "name": "UD-Q8_K_XL",
+     "bits": 4.37,
+     "size_gb": 873.4,
+     "source": "https://huggingface.co/unsloth/DeepSeek-V4-Pro-0813-GGUF"
+    },
+    {
+     "name": "公式重み（FP4/FP8混在）",
+     "bits": 4.46,
+     "size_gb": 892.7,
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"
+    },
+    {
+     "name": "NVFP4 (NVIDIA)",
+     "bits": 4.57,
+     "size_gb": 913.1,
+     "source": "https://huggingface.co/nvidia/DeepSeek-V4-Pro-NVFP4"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB ×4",
+     "quant": "MXFP4/MXFP8（約833GiB）",
+     "gen_tok_s": 14.8,
+     "source": "https://huggingface.co/guruswami-ai/deepseek-v4-pro-0813-mlx-tp4-recipe"
+    }
+   ],
+   "note_ja": "Unsloth は 0813 版で Q4_K_XL / Q8_K_XL のみ（1〜3bit は未公開）"
+  }
+ },
+ {
+  "id": "arcee-trinity-large-thinking",
+  "name": "Trinity-Large-Thinking (398B-A13B)",
+  "short": "Trinity Large Thinking",
+  "family": "Trinity",
+  "org": "Arcee AI",
+  "country": "US",
+  "release": "2026-04-01",
+  "arch": "MoE（256エキスパート＋共有1、top-4）",
+  "total_b": 398.6,
+  "active_b": 13,
+  "native_precision": "BF16（公式FP8・NVFP4・W4A16・GGUF版あり）",
+  "weights_gb": 797.3,
+  "context_k": 512,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1（寛容型）。",
+  "hf": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking",
+  "summary_ja": "米Arcee AIがDatologyと組んでゼロから17兆トークン学習したTrinity-Largeの推論・エージェント版（398B MoE、稼働13B）。τ²-Benchなどツール利用で高い公表値を出す一方、AAの知能指標は10.8と同規模の中国勢に大きく離されている。米国発でゼロから学習した大型オープンモデルとしては数少ない存在。",
+  "strengths": [
+   "agent",
+   "tool-use",
+   "reasoning",
+   "math",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 63.2,
+   "gpqa": 76.3,
+   "hle": null,
+   "aime": 96.3,
+   "lcb": null,
+   "mmlu_pro": 83.4,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカード（SWE-bench Verifiedはmini-swe-agent-v2）。aimeはAIME25。ほかにτ²-Airline 88.0、τ²-Telecom 94.7、PinchBench 91.9、BFCL v4 70.1、IFBench 52.3。aa_indexはAA v4.3.2（推定ではない実測）。",
+  "aa_index": 10.8,
+  "japanese_note": "対応言語の一覧に日本語はない。前段のTrinity-Large-PreviewはNejumi Leaderboard 4で総合0.627。",
+  "deploy_note_ja": "BF16で約797GB。公式NVFP4版は約235GB、公式GGUFはQ4_K_M 242GB、IQ2_XXS 106GB、IQ1_S 81GB。会話履歴には思考トークンを残す必要がある（消すとツール呼び出しが崩れることがある）。OpenRouterで提供されている。",
+  "engines": [
+   "vLLM",
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [
+   "Trinity-Large-Preview"
+  ],
+  "sources": [
+   "https://huggingface.co/arcee-ai/Trinity-Large-Thinking",
+   "https://arxiv.org/abs/2602.17004",
+   "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF",
+   "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-NVFP4",
+   "https://artificialanalysis.ai/models/trinity-large-thinking"
+  ],
+  "confidence": "high",
+  "local_q": {
+   "summary_ja": "最小の量子化版（IQ1_S、約1.6bit・81GB）なら128GB機に載りますが品質低下が大きめです。2bit級（IQ2_XXS、106GB）は128GB機、4bit級（NVFP4 235GB・Q4_K_M 242GB）は384GB以上の機械が目安です。",
+   "quants": [
+    {
+     "name": "IQ1_S（公式）",
+     "bits": 1.63,
+     "size_gb": 81.22,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "IQ2_XXS（公式）",
+     "bits": 2.13,
+     "size_gb": 105.98,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "Q2_K（公式）",
+     "bits": 2.79,
+     "size_gb": 139.22,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "Q3_K_M（公式）",
+     "bits": 3.64,
+     "size_gb": 181.36,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "NVFP4（公式）",
+     "bits": 4.71,
+     "size_gb": 234.68,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-NVFP4"
+    },
+    {
+     "name": "Q4_K_M（公式）",
+     "bits": 4.85,
+     "size_gb": 241.85,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "Q8_0（公式）",
+     "bits": 8.5,
+     "size_gb": 423.68,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking-GGUF"
+    },
+    {
+     "name": "BF16",
+     "bits": 16.0,
+     "size_gb": 797.28,
+     "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking"
+    }
+   ],
+   "reports": [],
+   "note_ja": "サイズはHugging Faceの実ファイル（GB）"
+  }
+ },
+ {
+  "id": "swiss-ai-apertus-v1-5-70b",
+  "name": "Apertus v1.5 70B",
+  "short": "Apertus 70B",
+  "family": "Apertus v1.5",
+  "org": "Swiss AI Initiative（EPFL・ETH Zürich・CSCS）",
+  "country": "CH",
+  "release": "2026-07-24",
+  "arch": "Dense",
+  "total_b": 72.0,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 144.6,
+  "context_k": null,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みの取得には利用条件への同意（ゲート）が必要。学習データと学習コードまで公開されている。",
+  "hf": "https://huggingface.co/swiss-ai/Apertus-v1.5-70B",
+  "summary_ja": "スイスの大学連合が、学習データまですべて公開して作った70Bの多言語モデル。性能より透明性と規制への準拠を重視した「完全オープン」の代表格。",
+  "strengths": [
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 35.9,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": 56.4,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "Hugging Face に登録された評価値（GPQA main 35.9、MMLU-Pro 56.4）。技術報告と Artificial Analysis の掲載はまだ（2026-10-27 時点）。RL 版（Apertus-v1.5-70B-RL、2026-08-22）もある。",
+  "aa_index": null,
+  "japanese_note": "1,000以上の言語を学習しているが、日本語の評価値は公開されていない。",
+  "deploy_note_ja": "BF16 で約145GB（8×H100 1台）。4bit なら約43GBで Mac 64GB 級にも載る。GGUF は試験版のみ。",
+  "engines": [
+   "vLLM",
+   "Transformers"
+  ],
+  "supersedes": [
+   "Apertus 70B（v1）"
+  ],
+  "sources": [
+   "https://huggingface.co/swiss-ai/Apertus-v1.5-70B",
+   "https://huggingface.co/swiss-ai/Apertus-v1.5-70B-RL"
+  ],
+  "confidence": "medium"
+ },
+ {
+  "id": "nex-n2-5-max",
+  "name": "Nex-N2.5-Max",
+  "short": "Nex-N2.5-Max",
+  "family": "Nex-N2.5",
+  "org": "Nex-AGI（上海奇績智峰智能科技・上海創智学院）",
+  "country": "CN",
+  "release": "2026-09-07",
+  "arch": "MoE（DeepSeek-V4-Pro-Base を追加学習）",
+  "total_b": 1600.8,
+  "active_b": null,
+  "native_precision": "FP8",
+  "weights_gb": 1654.6,
+  "context_k": null,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "ベースの DeepSeek-V4-Pro のライセンス（MIT）にも従う。",
+  "hf": "https://huggingface.co/nex-agi/Nex-N2.5-Max",
+  "summary_ja": "Nex AGI が DeepSeek-V4-Pro-Base を追加学習した1.6Tの最大版。同時公開の Pro（397B）・mini と同じ系列だが、日本語総合では Pro をやや下回る。",
+  "strengths": [
+   "agent",
+   "coding"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "Artificial Analysis は未掲載（2026-10-27 時点）。",
+  "aa_index": null,
+  "jp_bench": {
+   "nejumi": 0.771
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データ）",
+  "japanese_note": null,
+  "deploy_note_ja": "FP8 で約1.65TB。8×B300 1台でも足りず、複数ノードが必要。",
+  "engines": [
+   "vLLM",
+   "SGLang"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nex-agi/Nex-N2.5-Max"
   ],
   "confidence": "medium"
  }

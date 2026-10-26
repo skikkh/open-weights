@@ -1466,5 +1466,229 @@
   ],
   "confidence": "high",
   "rank": 18
+ },
+ {
+  "id": "intern-decision-4b",
+  "name": "Intern-Decision-4B（2B／0.8Bあり）",
+  "org": "Shanghai AI Laboratory（InternLM）",
+  "country": "CN",
+  "release": "2026-09-26",
+  "access": "open-weight",
+  "params_b": 4.5,
+  "arch": "Qwen3.5-4Bを全体微調整したマルチモーダル判断モデル。回答JSONの骨組みに質問ごとのプレースホルダを置き、その直前の位置で候補記号のロジットを読んで、全質問の確率を1回の順伝播で出す（自己回帰マスク言語モデリング）。文章は生成しない",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 44,
+   "inputs": "状態（テキスト）＋名前付き質問（1〜16問、各最大62択）＋画像（最大8枚）。最大8,192トークン（超過は切り詰めずに拒否）",
+   "outputs": "choice／score／noul（はい・いいえ）の各選択肢の較正済み確率",
+   "languages": "記載なし",
+   "other": "Jev互換の応答形式。推論は同梱のDecisionEngine（Transformersバックエンドのみ）。0.8B・2B版も同時公開（いずれも約33ms）。技術報告では、確信度の低い問いだけ大型モデルへ回すとJevbench-Hardの正答率が73.9%から87.4%に上がる例を示している"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "Jev互換の応答形式": true,
+   "vLLM対応": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。BF16の重みは約9.1GB（2B版約4.4GB、0.8B版約1.7GB）。公式の速度計測はRTX 4090（24GB）",
+  "price_note": null,
+  "speed_note": "RTX 4090で1リクエスト（289トークン・3問）平均44ms（公式）。同じ表でJevは約110ms",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.4.1（総合）",
+    "value": 38.69,
+    "note": "コミュニティ版ボード、229件中127位（2026-10-26時点、一部の問題は採点待ち）。公開問題の指数は38.0",
+    "source": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+   },
+   {
+    "metric": "7評価セット平均正答率（開発元）",
+    "value": 90.02,
+    "note": "%、Jevbench（Easy／Original／Hard）・Typed Decision・ToolACE・AG News・WildJailBreak。同じ表でJev 1.13は88.74、2B版84.68、0.8B版79.38",
+    "source": "https://arxiv.org/abs/2610.22131"
+   }
+  ],
+  "quality_note": "開発元の7セット平均ではJevをわずかに上回るが、知識や推論を広く問うコミュニティ版Decision Indexでは38.7と、同じ4B級のPerplexity Decider Flash（54.3）などより大きく低い。ツール選択・意図分類のような定型の判断向き。同ボードでの較正誤差（ECE 0.028）は小さい",
+  "ja_note": "言語の記載・評価なし。日本語で使うなら自社データでの検証が必要",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（ベースのQwen3.5もApache-2.0）",
+  "hf": "https://huggingface.co/internlm/Intern-Decision-4B",
+  "tools": [
+   "Transformers（同梱のDecisionEngine）",
+   "Hugging Face Spaces（デモ）"
+  ],
+  "summary_ja": "中国の上海AI研究所（InternLM）が公開した、画像も読める小さな判断モデルです。普通のGPU1枚で1回約0.04秒と速く、さらに小さい0.8B・2B版もあります。",
+  "best_for_ja": "ツール選択や問い合わせ分類などの定型の判断を、画像も含めて手元のGPUで速く回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/internlm/Intern-Decision-4B",
+   "https://huggingface.co/internlm/Intern-Decision-2B",
+   "https://huggingface.co/internlm/Intern-Decision-0.8B",
+   "https://github.com/internlm/Intern-Decision",
+   "https://arxiv.org/abs/2610.22131",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": 14,
+  "hl": {
+   "label": "Jev 0.4.1",
+   "value": 38.7
+  }
+ },
+ {
+  "id": "convai-laya",
+  "name": "Laya（421M、多言語版322M）",
+  "org": "Convai Innovations",
+  "country": "IN",
+  "release": "2026-09-18",
+  "access": "open-weight",
+  "params_b": 0.42,
+  "arch": "ModernBERT-large（多言語版はmmBERT-base）のエンコーダに判断用ヘッドを付けた非自己回帰モデル。選択肢ごとの[MASK]位置でスコアを出し、1回の順伝播で全質問に答える。適正スコアリング規則を報酬にした強化学習（RLCD）で確率の較正を狙う",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify",
+   "guard"
+  ],
+  "spec": {
+   "latency_ms": 33,
+   "inputs": "状態（テキスト・メール・チケット・JSON）＋型付き質問。英語版は512トークン、多言語版は1,024（最大8,192）トークン",
+   "outputs": "choice／score／noul（はい・いいえ）の確率",
+   "languages": "英語（ルート版）。多言語版は100以上の言語",
+   "other": "Routerが文字種・言語を判定して英語版と多言語版を自動で使い分ける。laya-serveでTypeSafe Jevと同じPOST /v1/systemone形式のHTTPサーバーを立てられる。MCPサーバー、LangChain連携、ONNX Runtimeに対応。特定業務向けに微調整したlaya-typed-decisionsも同梱"
+  },
+  "features": {
+   "画像入力": false,
+   "確率・信頼度を返す": true,
+   "Jev互換のHTTP API": true,
+   "CPUでも動く規模": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。重みは英語版約0.8GB、多言語版約0.6GB（FP16）。公式計測はT4 GPUで、CPUでも1問193〜464ms",
+  "price_note": "Vercel AI Gatewayで2026-10-31まで無料提供（以降は未確認）",
+  "speed_note": "T4 GPUで1問32.8ms（多言語版）〜39.5ms（英語版）、10問まとめて72〜159ms（公式）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.4.1（総合）",
+    "value": 9.21,
+    "note": "コミュニティ版ボード、229件中216位（2026-10-26時点、一部採点待ち）。公開問題の指数は6.19",
+    "source": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+   },
+   {
+    "metric": "typed-decisions 正答率（2,000判断）",
+    "value": 0.766,
+    "note": "そのベンチの学習データで微調整したlaya-typed-decisionsの値。微調整なしの英語版は0.362（ランダム0.318、多数派回答0.461）と公式が明記",
+    "source": "https://huggingface.co/convaiinnovations/laya"
+   }
+  ],
+  "quality_note": "非常に速くCPUでも動き、GitHubで3万超のスターを集めた話題のモデル。ただし公式自身が「そのまま使う判断エンジンではなく、微調整して使う土台」と明記しており、微調整なしでは定型の判断でも多数派回答の水準に届かない。選択肢が20を超えると精度が大きく落ち、較正前の確率は過信気味。知識・推論を含む総合指標は最下位圏",
+  "ja_note": "多言語版（mmBERT-base）は100以上の言語を扱い、意図分類（MASSIVE）などで51言語中45言語が実用水準とするが、日本語単独の値は記載なし",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（商用可）",
+  "hf": "https://huggingface.co/convaiinnovations/laya",
+  "tools": [
+   "laya（Python SDK）",
+   "laya-serve（Jev互換HTTP）",
+   "MCPサーバー",
+   "LangChain／LangGraph",
+   "ONNX Runtime",
+   "Vercel AI Gateway"
+  ],
+  "summary_ja": "インドのConvai Innovationsが公開した4億パラメータ級のとても小さな判断モデルです。CPUでも動き、TypeSafe Jevと同じAPI形式で使えますが、精度を出すには自社データでの微調整が前提です。",
+  "best_for_ja": "自社の判断データで微調整して、CPUや小さなGPUで大量の定型判断を速く回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/convaiinnovations/laya",
+   "https://github.com/NandhaKishorM/laya",
+   "https://huggingface.co/spaces/multimodalart/jev-decision-index",
+   "https://vercel.com/changelog/laya-decision-model-now-available-on-ai-gateway-free-through-october-31",
+   "https://www.llmreference.com/model-family/laya"
+  ],
+  "confidence": "medium",
+  "rank": 18,
+  "hl": {
+   "label": "Jev 0.4.1",
+   "value": 9.2
+  }
+ },
+ {
+  "id": "autotrust-jev-27b-vl",
+  "name": "JEV-27B-VL",
+  "org": "AutoTrust AI",
+  "country": "SG",
+  "release": "2026-09-30",
+  "access": "open-weight",
+  "params_b": 27.8,
+  "arch": "Qwen3.8-27B（凍結）に判断用の小さなブロックを足した構造。画像入力対応",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "rerank"
+  ],
+  "spec": {
+   "inputs": "テキスト・画像",
+   "outputs": "真偽の確率、選択肢ごとの確率、0〜5の段階評価",
+   "languages": "英語中心",
+   "other": "Jev 互換の /v1/decide。RTX PRO 6000 で1件あたり約264ms（Decision Index 計測）"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "BF16 で約56GB。量子化版の公式情報なし",
+  "price_note": null,
+  "speed_note": "4Kトークンの入力で中央値0.6秒、32Kで3.0秒（モデルカード）",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.3（Vision 部門）",
+    "value": 1,
+    "note": "20モデル中1位（コミュニティの評価表）",
+    "source": "https://huggingface.co/AutoTrust/JEV-27B-VL"
+   },
+   {
+    "metric": "JevBench",
+    "value": 88.7,
+    "note": "開発元の自己申告",
+    "source": "https://huggingface.co/AutoTrust/JEV-27B-VL"
+   }
+  ],
+  "quality_note": "公開直後に Hugging Face の急上昇1位になり、ダウンロードは約250万。独立した比較では TypeSafe Jev 1.13 に迫るが上回ってはいないという報告がある。",
+  "ja_note": "日本語対応は明記されていない。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "ベースの Qwen3.8-27B のライセンスにも従う。",
+  "hf": "https://huggingface.co/AutoTrust/JEV-27B-VL",
+  "tools": [
+   "vLLM"
+  ],
+  "summary_ja": "シンガポールの AutoTrust AI が、Qwen3.8-27B に判断用の部品を足して作ったオープンな判断モデル。真偽・選択・段階評価を確率つきで返し、画像も入力できる。",
+  "best_for_ja": "検索結果やおすすめの並べ替え、エージェントの次の行動選びを自前のGPUで動かしたいとき",
+  "supersedes": [
+   "JEV-27B（テキスト版）"
+  ],
+  "sources": [
+   "https://huggingface.co/AutoTrust/JEV-27B-VL",
+   "https://technode.global/prnasia/autotrust-ai-releases-jev-27b-an-open-decision-model-for-self-hosted-ai-agents/",
+   "https://runtimewire.com/article/autotrust-ai-jev-27b-self-hosted-decision-model"
+  ],
+  "confidence": "medium"
  }
 ]

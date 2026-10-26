@@ -14,6 +14,18 @@
  ],
  "changelog": [
   {
+   "date": "2026-10-27",
+   "items": [
+    "監査: 2026年公開モデルの漏れを、Hugging Face の新着・人気一覧と主要開発元の公開一覧で点検し、以下を追加",
+    "追加（LLM）: Xing4.0-29B-A4B、DiffusionGemma 26B A4B、Laguna XS 2.1 (33B-A3B)、Sarvam-30B、Nex-N2.5-mini、Qwen3-Swallow-30B-A3B-RL-v0.2、Sarvam-105B、Ornith-1.5-397B、Motif 3 (314B-A13B)、dots3-note Preview、Nex-N2.5-Pro、Qwen3-Coder-Next (80B-A3B)、DeepSeek-V4-Pro-0813、Trinity-Large-Thinking (398B-A13B)、Apertus v1.5 70B、Nex-N2.5-Max",
+    "追加（音声合成）: ZONOS2、Supertonic 3、KABURI-TTS、FireRedTTS3、MOSS-TTS v1.5",
+    "追加（画像）: Ming-Image-0.1-Design",
+    "追加（動画）: SCAIL-2、daVinci-MagiHuman",
+    "追加（Decision Model）: Intern-Decision-4B（2B／0.8Bあり）、Laya（421M、多言語版322M）、JEV-27B-VL",
+    "修正: DeepSeek V4 Pro 0813 を Pro 系列の最新として掲載（Flash と Pro を別系列とする方針に合わせ、V4.1 Flash の「置き換え済み」の記述を外した）"
+   ]
+  },
+  {
    "date": "2026-10-26",
    "items": [
     "追加: Raon-1 mini preview（韓国 KRAFTON、10/21公開、ゼロから学習した30B MoE・稼働4B・Apache-2.0。学習データに日本語を含む。NVFP4 版で RTX 5090 1枚に載る）",

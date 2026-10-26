@@ -1877,5 +1877,131 @@
    "label": "AA Arena",
    "value": 935
   }
+ },
+ {
+  "id": "scail-2",
+  "access": "open-weight",
+  "name": "SCAIL-2",
+  "org": "Zhipu AI（Z.ai）・清華大学",
+  "country": "CN",
+  "release": "2026-06-09",
+  "params_b": 14,
+  "arch": "Wan2.1-14Bベースのキャラクターアニメーション用DiT。骨格図やマスクなどの中間表現に頼らず、駆動動画の潜在をそのまま入力列に入れる（In-Context Mask Conditioning、モード別RoPE）。合成した6万組の動きペアで学習し、Bias-Aware DPOで手や口元の崩れを抑える",
+  "tasks": [
+   "v2v",
+   "r2v"
+  ],
+  "spec": {
+   "max_resolution": "704p（512pにも対応。縦横は32の倍数）",
+   "max_duration_s": null,
+   "fps": null,
+   "other": "参照画像＋駆動動画で参照キャラクターを動かす「アニメーション」（エンドツーエンド／骨格駆動）と、動画内の人物を差し替える「置き換え」の2モード。複数人物、動物の動きでの駆動、複数の参照画像（背面・アップなど）に対応。既定40ステップ（蒸留LoRAで8ステップにする例あり）。DPO LoRAと置き換え用のリライティングLoRAを別配布。コミュニティのノードで長尺化もできる"
+  },
+  "features": {
+   "キャラクターアニメーション（モーション転写）": true,
+   "人物の置き換え": true,
+   "複数人物": true,
+   "動物の動きで駆動": true,
+   "ComfyUI公式対応": true,
+   "音声同時生成": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない（単一GPU推論は既定でモデルをCPUへ退避）。Comfy-Orgの再配布版はfp16 32.8GB、fp8 17.7GB、int8 16.7GB、NVFP4混合11.0GBで、別途T5（umt5-xxl）とVAEが要る。コミュニティのGGUF版もある",
+  "speed_note": "既定40ステップ。蒸留LoRAで8ステップに減らす例が公式READMEにある。公式の時間計測はない",
+  "bench": [],
+  "quality_note": "前作SCAIL-Previewの骨格依存をなくし、複雑な動き・人物の差し替え・動物での駆動まで1モデルで扱えるようにした。論文は各タスクで最高水準と主張するが、第三者のアリーナ評価はない。公開当日からComfyUI本体が対応し、Comfy-Orgの再配布版は直近30日で約57万回ダウンロードされるなど広く使われている。同じ用途のWan2.2-Animate-2（2026-08）との独立比較は未確認",
+  "ja_note": "プロンプトは生成後の動画の説明文（英語の例のみ）。日本語の記載なし",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "モデルの重みはMIT（HFのモデルカード表記）、GitHubのコードはApache-2.0",
+  "price_note": null,
+  "hf": "https://huggingface.co/zai-org/SCAIL-2",
+  "tools": [
+   "ComfyUI（ネイティブ対応）",
+   "公式推論スクリプト（wan版・sat版）",
+   "Replicate（コミュニティ版）"
+  ],
+  "summary_ja": "中国Zhipu AIが公開した、1枚のキャラクター画像を別の動画の動きどおりに動かすモデルです。動画内の人物の差し替えもでき、ComfyUIでそのまま使えます。",
+  "best_for_ja": "ダンスや演技の動きを別のキャラクターに移す、動画内の人物を差し替える",
+  "supersedes": [
+   "SCAIL-Preview"
+  ],
+  "sources": [
+   "https://huggingface.co/zai-org/SCAIL-2",
+   "https://github.com/zai-org/SCAIL-2",
+   "https://arxiv.org/abs/2606.10804",
+   "https://huggingface.co/Comfy-Org/SCAIL-2",
+   "https://comfyui-wiki.com/en/news/2026-06-09-scail-2-character-animation"
+  ],
+  "confidence": "medium",
+  "rank": 13
+ },
+ {
+  "id": "davinci-magihuman",
+  "access": "open-weight",
+  "name": "daVinci-MagiHuman",
+  "org": "上海創智学院（SII）GAIR・Sand.ai",
+  "country": "CN",
+  "release": "2026-03-21",
+  "params_b": 15,
+  "arch": "テキスト・映像・音声を1本の系列で扱う15B・40層のシングルストリームTransformer（クロスアテンションなし、最初と最後の4層だけモダリティ別）。テキストエンコーダはT5Gemma 9B、音声側はStable Audio Open 1.0。低解像度で生成し潜在空間で超解像する2段構成",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p（256pで生成し、潜在空間の超解像で540p／1080pへ）",
+   "max_duration_s": null,
+   "fps": null,
+   "other": "人物中心の映像とセリフ・音を同時生成（テキスト→映像＋音声、画像＋テキスト→映像＋音声）。公式の速度・品質表は5秒の動画で示されている。ベース、DMD-2蒸留版（8ステップ・CFGなし）、540p／1080p超解像モデル、軽量VAEデコーダを公開"
+  },
+  "features": {
+   "音声同時生成": true,
+   "多言語セリフ（日本語含む）": true,
+   "蒸留版あり": true,
+   "1080p超解像": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。速度計測はH100 1枚で、Hopper向けFlash Attentionの導入手順になっている。ベースのDiTは約31GB、蒸留版と各超解像モデルはそれぞれ約61GB、別途T5Gemma 9Bが要る（ファイルサイズからの目安）",
+  "speed_note": "H100 1枚で5秒の動画を256pなら約2秒、540pは約8秒、1080pは約38秒で生成（公式、MagiCompilerによる最適化込み）",
+  "bench": [
+   {
+    "metric": "人手の対比較 勝率（対LTX 2.3）",
+    "value": 60.9,
+    "note": "%、2,000組の比較（引き分け17.2%、負け21.9%）。対Ovi 1.1は80.0%。開発元の評価",
+    "source": "https://huggingface.co/GAIR/daVinci-MagiHuman"
+   },
+   {
+    "metric": "セリフ音声のWER",
+    "value": 14.6,
+    "note": "%、開発元の評価。LTX 2.3は19.23%、Ovi 1.1は40.45%",
+    "source": "https://huggingface.co/GAIR/daVinci-MagiHuman"
+   }
+  ],
+  "quality_note": "人の表情・身ぶりと話し声の同期に特化し、開発元の評価ではLTX 2.3とOvi 1.1を上回る。ただし比較相手は旧世代で、AAのアリーナには未掲載。後に出たLTX-2.5やMiniMax-H3との比較はない。生成が非常に速く、15Bと音声付きオープン動画の中では軽い",
+  "ja_note": "モデルカードで中国語（普通話・広東語）・英語・日本語・韓国語・ドイツ語・フランス語のセリフに対応と明記",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（コード・重み）",
+  "price_note": null,
+  "hf": "https://huggingface.co/GAIR/daVinci-MagiHuman",
+  "tools": [
+   "公式推論スクリプト",
+   "MagiCompiler",
+   "Docker"
+  ],
+  "summary_ja": "上海のSII-GAIRとSand.aiが公開した、話す人物の動画をセリフの音声ごと作るモデルです。日本語のセリフに公式対応し、生成がとても速いのが特長です。",
+  "best_for_ja": "日本語で話す人物の短い動画（解説・広告・キャラクター）を、音声付きで手早く作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/GAIR/daVinci-MagiHuman",
+   "https://github.com/GAIR-NLP/daVinci-MagiHuman",
+   "https://arxiv.org/abs/2603.21986"
+  ],
+  "confidence": "medium",
+  "rank": 17
  }
 ]

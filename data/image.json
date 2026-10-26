@@ -2224,5 +2224,76 @@
    "label": "LMArena",
    "value": 1302
   }
+ },
+ {
+  "id": "ming-image-0-1-design",
+  "name": "Ming-Image-0.1-Design",
+  "org": "Ant Group（inclusionAI）",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-09-17",
+  "params_b": 6,
+  "arch": "6Bの拡散Transformer（DiT）に、条件付け用のMing系MoEマルチモーダルLLM（BF16で約34GB）とQwen2系1.5Bのコネクタを組み合わせた構成。透明背景（RGBA）の画像を直接出力できる",
+  "tasks": [
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "2048×2048（推奨。2560×1440など1:4〜4:1の比率に対応）",
+   "other": "UI・インフォグラフィック・ポスターなど文字の多いデザイン向け。Figma風のレイヤー構造JSONを推奨プロンプト形式とし、短い指示をJSONに書き換えるプロンプト拡張（Ling-3.0-flash-VLやQwen3.8-27Bを使用）を用意。既定12ステップ・CFG 1.0。決まった前置き文を付けると透明背景（RGBA）の画像を生成する。同時公開のMing-Image-0.1-Design-Layerは、完成したデザイン画像を編集可能な透明レイヤーに分解する"
+  },
+  "features": {
+   "透明背景（RGBA）出力": true,
+   "長文テキスト描画": true,
+   "UI・デザイン特化": true,
+   "レイヤー分解（別モデル）": true,
+   "商用利用可": true,
+   "指示で編集": false
+  },
+  "min_vram_gb": 80,
+  "rec_vram_gb": 80,
+  "vram_note": "公式の検証済み最小構成はVRAM 80GiB以上のGPU 1枚（BF16）。重みは合計約53GB（DiT約12GB、MLLM約34GB、コネクタ約6GB）。量子化版・ComfyUI対応は未確認",
+  "speed_note": "既定12ステップ（CFG 1.0）。公式の時間計測はない",
+  "price_note": "DeepInfraでもホスト提供（料金は未確認）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 999,
+    "note": "全体47位、オープンウェイトでは7位前後（FLUX.2 [dev] の1000とほぼ同点）。2026-10-27確認",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   },
+   {
+    "metric": "Artificial Analysis UI/UXデザイン部門 ELO（オープンウェイト）",
+    "value": 1082,
+    "note": "公開直後（2026-09-22頃）のオープンウェイト1位（2位 Ideogram 4.0 (Quality) 1052）。開発元がGitHubに掲載したAAの画面による値で、その後に出たモデルは含まない",
+    "source": "https://github.com/inclusionAI/Ming-Image"
+   }
+  ],
+  "quality_note": "UIやインフォグラフィックなど文字とレイアウトの多いデザインに特化した生成モデル。AAの総合アリーナではFLUX.2 [dev] 並みの999で、オープンでは上位だがQwen-Image-2.1やFLUX 3 Image Klein（1040台）には届かない。一方、AAのUI/UXデザイン部門では公開時点でオープンウェイト1位。透明背景の素材を直接作れる点も珍しい",
+  "ja_note": "公式の作例・説明は英語と中国語のみで、日本語の文字描画は未確認",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT（HFのモデルカード・GitHubとも）",
+  "hf": "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design",
+  "tools": [
+   "公式推論スクリプト（Ming-Image）",
+   "vLLM-Omni",
+   "Hugging Face Spaces（デモ）"
+  ],
+  "summary_ja": "中国Ant GroupのinclusionAIが公開した、アプリの画面やポスターなど文字の多いデザインづくりが得意な画像生成モデルです。透明背景の素材も作れ、MITで商用にも使えます。",
+  "best_for_ja": "アプリやWebのUI案、インフォグラフィック、スライド素材など、文字とレイアウトが主役のデザイン案づくり",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design",
+   "https://github.com/inclusionAI/Ming-Image",
+   "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design-Layer",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://deepinfra.com/blog/ming-design-with-ai"
+  ],
+  "confidence": "medium",
+  "rank": 9,
+  "hl": {
+   "label": "AA Arena",
+   "value": 999
+  }
  }
 ]
