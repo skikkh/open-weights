@@ -145,3 +145,7 @@ decision のみ: access("api"|"open-weight"), price_note
 - s2s: `dialogue omni s2st vc`
 - 3d: `i23d t23d texture part rig scene`
 - decision: `predicate choice score route guard judge rerank classify`
+
+### 発表済み・提供待ちの参考モデル
+
+`data/meta.json` の `llm_reference_models` は、Fern 0.1 のように提供形態・重み公開予定が未確認のLLMを掲載する参考枠。発表日、国、公式の規模範囲、文脈長、提供状況、ローカル実行可否、出典を保持する。未確認の値を確定値にしない。通常のLLM件数・ランキングには含めない。提供開始時に公式情報を再確認する。

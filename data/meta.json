@@ -16,6 +16,12 @@
   {
    "date": "2026-10-27",
    "items": [
+    "追加: Fern 0.1（Mirendil、米国、10/26発表）を大型LLMの参考枠に掲載。100〜500B、最大1,000万トークン。提供待ち・重み配布未確認のため、ローカル実行モデルの比較には含めない。"
+   ]
+  },
+  {
+   "date": "2026-10-27",
+   "items": [
     "監査: 2026年公開モデルの漏れを、Hugging Face の新着・人気一覧と主要開発元の公開一覧で点検し、以下を追加",
     "追加（LLM）: Xing4.0-29B-A4B、DiffusionGemma 26B A4B、Laguna XS 2.1 (33B-A3B)、Sarvam-30B、Nex-N2.5-mini、Qwen3-Swallow-30B-A3B-RL-v0.2、Sarvam-105B、Ornith-1.5-397B、Motif 3 (314B-A13B)、dots3-note Preview、Nex-N2.5-Pro、Qwen3-Coder-Next (80B-A3B)、DeepSeek-V4-Pro-0813、Trinity-Large-Thinking (398B-A13B)、Apertus v1.5 70B、Nex-N2.5-Max",
     "追加（音声合成）: ZONOS2、Supertonic 3、KABURI-TTS、FireRedTTS3、MOSS-TTS v1.5",
@@ -125,5 +131,24 @@
   "tts": "ElevenLabs Eleven v4 / v4 Turbo、Google Gemini 3.8 Flash TTS・Chirp 3 HD、Azure AI Speech Neural HD（DragonHD）、OpenAI gpt-4o-mini-tts、Fish Audio S2.1 Pro API、Aivis Cloud API など。",
   "s2s": "OpenAI GPT-Live-1（ChatGPT）・gpt-realtime-2・gpt-realtime-translate、Google Gemini Live 系、Alibaba Qwen3.5-Omni Plus / Flash（API）など。"
  },
- "footer": "各モデルの公式発表・Hugging Face・各種リーダーボードをもとにまとめています。数値は出典ごとに条件が違うので目安として使い、導入前に必ず公式情報とライセンスを確認してください。3日ごとに自動で更新しています。"
+ "footer": "各モデルの公式発表・Hugging Face・各種リーダーボードをもとにまとめています。数値は出典ごとに条件が違うので目安として使い、導入前に必ず公式情報とライセンスを確認してください。3日ごとに自動で更新しています。",
+ "llm_reference_models": [
+  {
+   "id": "fern-0-1",
+   "name": "Fern 0.1",
+   "org": "Mirendil",
+   "country": "US",
+   "announced": "2026-10-26",
+   "release": null,
+   "size_ja": "100〜500B（公式の公表範囲。正確な総数・稼働数は未公表）",
+   "context_ja": "最大1,000万トークン（開発元の公表値）",
+   "availability_ja": "発表済み・提供待ち（Coming soon）。提供開始日・提供形態・料金・ライセンスは未確認。",
+   "local_ja": "重みの配布は確認できず、ローカル実行可否・必要メモリは不明。",
+   "summary_ja": "ゼロから事前学習した Mirendil-Base を短期間の事後学習で調整。テキスト・コード入力に対応し、長いログやエージェントの実行履歴、コードベースの解析を想定。",
+   "sources": [
+    "https://mirendil.com/news/introducing-fern/",
+    "https://www.linkedin.com/company/mirendil"
+   ]
+  }
+ ]
 }

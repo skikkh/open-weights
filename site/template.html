@@ -1306,6 +1306,22 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     document.getElementById("lbs").innerHTML = (META.leaderboards || []).map(function (l) {
       return "<li><b>" + esc(l.name) + "</b>" + (l.as_of ? '<span class="muted mono"> ' + esc(l.as_of) + " 時点</span>" : "") + "<br>" + link(l.url) + (l.note ? '<br><span class="muted">' + esc(l.note) + "</span>" : "") + "</li>";
     }).join("");
+    var refs = META.llm_reference_models || [];
+    var refHost = document.getElementById("llm-closed");
+    if (refHost && refs.length) {
+      var box = document.createElement("section");
+      box.className = "box";
+      box.setAttribute("aria-label", "発表済み・提供待ちの参考モデル");
+      box.innerHTML = '<h3>発表済み・提供待ちの参考モデル</h3>' + refs.map(function (m) {
+        return '<article id="reference-' + esc(m.id) + '"><h4>' + esc(m.name) + '</h4><p>' +
+          ccChip(m.country) + ' ' + esc(m.org) + ' · ' + esc(fmtDate(m.announced)) + ' 発表</p><p>' +
+          esc(m.summary_ja) + '</p><dl>' +
+          [["規模", m.size_ja], ["文脈長", m.context_ja], ["提供状況", m.availability_ja], ["ローカル実行", m.local_ja]].map(function (r) {
+            return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>';
+          }).join('') + '</dl><p>出典：' + (m.sources || []).map(function (u, i) { return link(u, i === 0 ? "公式発表" : "開発元の会社情報"); }).join(' · ') + '</p></article>';
+      }).join('');
+      refHost.parentNode.insertBefore(box, refHost);
+    }
     var closed = META.closed_refs || {};
     Object.keys(closed).forEach(function (k) {
       var el = document.getElementById(k + "-closed");
