@@ -482,6 +482,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   var BASE = Date.parse(META.updated_at || "") || Date.now();
   function daysAgo(s) { if (!s) return 9999; var t = Date.parse(String(s).length === 7 ? s + "-01" : s); return isFinite(t) ? (BASE - t) / 864e5 : 9999; }
   function relAge(s) {
+    if (/^\d{4}-\d{2}$/.test(String(s || ""))) return "経過日数は不明";
     var d = daysAgo(s); if (d === 9999) return "";
     if (d < 0) return "公開予定";
     if (d < 1) return "当日";
@@ -586,7 +587,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     return num(m.total_b) ? m.total_b * b : null;
   }
   function nativeNeed(m) { var w = weightsGB(m); return w == null ? null : w * 1.2; }
-  function q4Raw(m) { return num(m.q4_gb) || (num(m.total_b) ? m.total_b * 0.6 : null); }
+  function q4Raw(m) { if (m.q4_unverified) return null; return num(m.q4_gb) || (num(m.total_b) ? m.total_b * 0.6 : null); }
   function q4Need(m) { var q = q4Raw(m); return q == null ? null : q * 1.15; }
   function tierFor(list, gb) { if (gb == null) return null; for (var i = 0; i < list.length; i++) if (gb <= list[i].gb) return list[i]; return list[list.length - 1]; }
   function logPos(gb, lo, hi) { var v = Math.max(lo, Math.min(hi, gb)); return (Math.log(v) - Math.log(lo)) / (Math.log(hi) - Math.log(lo)) * 100; }
@@ -730,6 +731,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       (alt != null && Math.abs(alt - need) / need > 0.1 ? '<span class="q4" style="left:calc(' + logPos(alt, cfg.gmin, cfg.gmax).toFixed(2) + '% - 1px)"></span>' : "") + "</div>";
     var fit = need == null ? "" : '<div class="fit"><span>' + cfg.fit(tier) + '</span><span class="mono">' + cfg.size(m) + "</span>" +
       (alt != null && altT && Math.abs(alt - need) / need > 0.1 ? '<span class="mono">' + cfg.altText(m, altT) + "</span>" : "") + "</div>";
+    if (need == null && isLocal(m) && m.q4_unverified) fit = '<p class="note muted">4bit版の動作は未確認。公式配布の重みは約' + esc(fmtGB(w)) + '（実行には作業用メモリも必要）。</p>';
     // 巨大モデルを量子化してローカル機に載せる話
     var lq = "";
     if (!isLocal(m) && m.local_q && m.local_q.summary_ja) lq = '<div class="lq"><b>量子化でローカル：</b>' + esc(m.local_q.summary_ja) + "</div>";
@@ -786,7 +788,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
       idHead(m, licChip(m.commercial)) + '<div class="chips">' + lineage + strengths + "</div></div>" +
       '<div class="c-size"><div class="params"><b>' + esc(fmtB(m.total_b)) + "</b><span>総パラメータ</span>" +
-      (num(m.active_b) != null ? "<b>" + esc(fmtB(m.active_b)) + "</b><span>稼働</span>" : '<span class="muted">Dense（全部使う）</span>') + "</div>" + gauge + fit + lq + "</div>" +
+      (num(m.active_b) != null ? "<b>" + esc(fmtB(m.active_b)) + "</b><span>稼働</span>" : '<span class="muted">' + (/^MoE/.test(m.arch || "") ? "MoE（稼働数未公表）" : "Dense（全部使う）") + "</span>") + "</div>" + gauge + fit + lq + "</div>" +
       '<div class="c-score">' + scHtml + "</div>" +
       "</div></summary>" +
       '<div class="detail"><div><h4>仕様</h4>' + spec + "</div>" +
@@ -1186,6 +1188,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       ["最大解像度", esc(sp.max_resolution)],
       ["最大長", num(sp.max_duration_s) != null ? esc(sp.max_duration_s) + " 秒" : null],
       ["fps", num(sp.fps) != null ? esc(sp.fps) : null],
+      ["文脈長", num(sp.context_k) != null ? Math.round(sp.context_k * 1000).toLocaleString("ja-JP") + " トークン" : null],
       ["入力", esc(sp.inputs)], ["出力", esc(sp.output || sp.outputs)], ["音質", esc(sp.sample_rate)],
       ["遅延", num(sp.latency_ms) != null ? esc(sp.latency_ms) + " ms" : null],
       ["対応言語", esc(sp.languages)], ["その他", esc(sp.other)],
@@ -1306,22 +1309,24 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     document.getElementById("lbs").innerHTML = (META.leaderboards || []).map(function (l) {
       return "<li><b>" + esc(l.name) + "</b>" + (l.as_of ? '<span class="muted mono"> ' + esc(l.as_of) + " 時点</span>" : "") + "<br>" + link(l.url) + (l.note ? '<br><span class="muted">' + esc(l.note) + "</span>" : "") + "</li>";
     }).join("");
-    var refs = META.llm_reference_models || [];
-    var refHost = document.getElementById("llm-closed");
-    if (refHost && refs.length) {
+    ["llm", "jp"].forEach(function (pid) {
+      var refs = META[pid + "_reference_models"] || [];
+      var refHost = document.getElementById(pid + "-closed");
+      if (!refHost || !refs.length) return;
       var box = document.createElement("section");
       box.className = "box";
-      box.setAttribute("aria-label", "発表済み・提供待ちの参考モデル");
-      box.innerHTML = '<h3>発表済み・提供待ちの参考モデル</h3>' + refs.map(function (m) {
+      var heading = pid === "jp" ? "国産LLMの参考モデル（API・企業向け提供）" : "発表済み・提供待ちの参考モデル";
+      box.setAttribute("aria-label", heading);
+      box.innerHTML = '<h3>' + esc(heading) + '</h3>' + refs.map(function (m) {
         return '<article id="reference-' + esc(m.id) + '"><h4>' + esc(m.name) + '</h4><p>' +
-          ccChip(m.country) + ' ' + esc(m.org) + ' · ' + esc(fmtDate(m.announced)) + ' 発表</p><p>' +
+          ccChip(m.country) + ' ' + esc(m.org) + ' · ' + esc(fmtDate(m.release || m.announced)) + (m.release ? ' 提供開始' : ' 発表') + '</p><p>' +
           esc(m.summary_ja) + '</p><dl>' +
-          [["規模", m.size_ja], ["文脈長", m.context_ja], ["提供状況", m.availability_ja], ["ローカル実行", m.local_ja]].map(function (r) {
+          [["規模", m.size_ja], ["文脈長", m.context_ja], ["提供状況", m.availability_ja], ["ローカル実行", m.local_ja], ["料金", m.price_ja]].filter(function (r) { return r[1]; }).map(function (r) {
             return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>';
-          }).join('') + '</dl><p>出典：' + (m.sources || []).map(function (u, i) { return link(u, i === 0 ? "公式発表" : "開発元の会社情報"); }).join(' · ') + '</p></article>';
+          }).join('') + '</dl><p>出典：' + (m.sources || []).map(function (u, i) { return link(u, i === 0 ? "公式発表" : "出典 " + (i + 1)); }).join(' · ') + '</p></article>';
       }).join('');
       refHost.parentNode.insertBefore(box, refHost);
-    }
+    });
     var closed = META.closed_refs || {};
     Object.keys(closed).forEach(function (k) {
       var el = document.getElementById(k + "-closed");

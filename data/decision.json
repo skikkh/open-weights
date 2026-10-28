@@ -1098,84 +1098,6 @@
   "pick_reason": "JevBench オープン部門1位"
  },
  {
-  "id": "liquid-d1-2b",
-  "name": "d1-2B（＋d1-Omni-2B）",
-  "org": "Liquid AI",
-  "country": "US",
-  "release": "2026-10-27",
-  "access": "open-weight",
-  "params_b": 1.92,
-  "arch": "LFM3-VL-2B（LFM3の24層ハイブリッド：ゲート付き短畳み込み13層＋スライディング窓注意5層＋全体注意6層）を微調整した判断モデル。姉妹のd1-Omni-2B（2.17B）は音声入力にも対応",
-  "tasks": [
-   "predicate",
-   "choice",
-   "score",
-   "route",
-   "classify"
-  ],
-  "spec": {
-   "latency_ms": 5.7,
-   "inputs": "テキスト・JSON、画像、動画（d1-Omni-2Bは音声も）。コンテキスト128Kトークン",
-   "outputs": "型つきの答えと確率（トークンは生成しない）。分類に加え、テキスト・数値・日付の抽出（位置つき）、画像内の物体の位置、数量の区間推定",
-   "languages": "16言語（日本語を含む：英・アラビア・中・仏・独・伊・日・韓・葡・西・越・泰・インドネシア・ヒンディー・露・波）",
-   "other": "遅延は1判断あたりNVIDIA H100で5.7ms、AMD MI325Xで3.8ms（公式）。1つの入力に何問でも1回で答える。GGUF・ONNX・MLX版あり。約64Kトークンを超える入力では精度が落ちる（公式注記）"
-  },
-  "features": {
-   "画像入力": true,
-   "動画入力": true,
-   "音声入力（d1-Omni-2B）": true,
-   "確率・信頼度を返す": true,
-   "エッジ機器で動作": true,
-   "日本語対応（公式明記）": true
-  },
-  "min_vram_gb": null,
-  "rec_vram_gb": null,
-  "vram_note": "公式にVRAMの記載なし。BF16重みは約3.8GB（計算値）で、GGUF・MLX版ならノートPCでも動かしやすい",
-  "price_note": null,
-  "speed_note": "H100で1判断5.7ms、MI325Xで3.8ms（公式）",
-  "bench": [
-   {
-    "metric": "Decision Index 公開セット（v0.3）",
-    "value": 51.1,
-    "note": "d1-2B。同条件でd1-3B 49.0、d1-Omni-2B 49.0、d1-omni-600M 18.3（Liquid自社計測）",
-    "source": "https://huggingface.co/LiquidAI/d1-2B"
-   },
-   {
-    "metric": "Decision Bench（decisionbench.ai）v4",
-    "value": 85.2,
-    "note": "d1-2B。d1-3Bは83.6",
-    "source": "https://huggingface.co/LiquidAI/d1-2B"
-   }
-  ],
-  "quality_note": "前版d1-3Bより3分の2以下の大きさで、多くの判断ベンチで上回る（自社比較）。知識が必要な問題は大型モデルが有利",
-  "ja_note": "モデルカードの対応16言語に日本語が明記された。日本語での判断精度の独立評価はまだない",
-  "license": "LFM Open License v1.0",
-  "commercial": "conditional",
-  "license_note": "年間売上1,000万ドル未満の組織は商用利用可。それ以上は Liquid AI から別途商用ライセンスが必要",
-  "hf": "https://huggingface.co/LiquidAI/d1-2B",
-  "tools": [
-   "Transformers（trust_remote_code）",
-   "llama.cpp（GGUF）",
-   "ONNX Runtime",
-   "MLX"
-  ],
-  "summary_ja": "Liquid AIの小型判断モデルの新版で、2Bながら前版の3Bを上回り、1回数ミリ秒で判断できます。日本語を含む16言語に対応し、音声も扱えるOmni版もあります。",
-  "best_for_ja": "PC・スマホ・組み込み機器での即時判定や、文書からの項目抽出、大型モデルの前段フィルタ",
-  "supersedes": [
-   "d1-3B",
-   "d1-omni-600M"
-  ],
-  "notes": "LFM3ファミリーとして2026-10-27にブログ発表（HFリポジトリ作成は10/24）。",
-  "sources": [
-   "https://huggingface.co/LiquidAI/d1-2B",
-   "https://huggingface.co/LiquidAI/d1-Omni-2B",
-   "https://www.liquid.ai/blog/lfm3",
-   "https://www.liquid.ai/lfm-license"
-  ],
-  "confidence": "medium",
-  "rank": 14
- },
- {
   "id": "strands-decider-2b",
   "name": "Strands Decider 2B（v1-2610）",
   "org": "AWS（Strands Labs）",
@@ -1689,5 +1611,117 @@
    "https://runtimewire.com/article/autotrust-ai-jev-27b-self-hosted-decision-model"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "liquid-d1-2b",
+  "name": "d1-2B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/d1-2B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/d1-2B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/d1-2B/blob/main/LICENSE"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "access": "open-weight",
+  "params_b": 1.91818,
+  "arch": "LFM3-VL-2Bベースの判断専用モデル",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "classify",
+   "route"
+  ],
+  "spec": {
+   "context_k": 131.072,
+   "inputs": "テキスト・画像・動画と質問",
+   "outputs": "型付きの回答・確率。文章や音声を生成しない",
+   "languages": "日本語を含む16言語"
+  },
+  "features": {
+   "画像入力": true,
+   "動画入力": true,
+   "音声入力": false,
+   "日本語対応（公式明記）": true,
+   "確率・信頼度を返す": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "BF16の配布重みは約3.84GB。最低VRAM・日本語での遅延実測は未確認。CPU・MPS・CUDA向けの実行例あり。",
+  "quality_note": "開発元の比較で前世代を改善。異なる条件のベンチマークを混在させず、旧d1の実測遅延・順位は引き継がない。",
+  "ja_note": "公式カードに日本語を明記。日本語単独の独立評価は未確認。",
+  "summary_ja": "画像や動画も使い、真偽・選択・採点などを確率付きで返す約1.92Bの判断モデル。前世代d1-3Bの後継。",
+  "tools": [
+   "Transformers",
+   "MLX",
+   "ONNX"
+  ],
+  "supersedes": [
+   "d1-3B"
+  ],
+  "rank": 14
+ },
+ {
+  "id": "liquid-d1-omni-2b",
+  "name": "d1-Omni-2B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/d1-Omni-2B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/d1-Omni-2B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/d1-Omni-2B/blob/main/LICENSE"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "access": "open-weight",
+  "params_b": 2.16693,
+  "arch": "LFM3-Omni-2Bベースの判断専用モデル",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "classify",
+   "route"
+  ],
+  "spec": {
+   "context_k": 131.072,
+   "inputs": "テキスト・画像・動画・音声と質問",
+   "outputs": "型付きの回答・確率。文章や音声を生成しない",
+   "languages": "日本語を含む16言語（音声は一部言語を除く）"
+  },
+  "features": {
+   "画像入力": true,
+   "動画入力": true,
+   "音声入力": true,
+   "日本語対応（公式明記）": true,
+   "確率・信頼度を返す": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "BF16の配布重みは約4.33GB。最低VRAM・日本語での遅延実測は未確認。CPU・MPS・CUDA向けの実行例あり。",
+  "quality_note": "開発元の比較で前世代を改善。異なる条件のベンチマークを混在させず、旧d1の実測遅延・順位は引き継がない。",
+  "ja_note": "公式カードに日本語を明記。音声による質問も入力できるが、長い音声、特に非ラテン文字の言語では精度低下の注意書きがある。",
+  "summary_ja": "d1の判断モデルに音声入力を加えた約2.17B版。音声を聞いても文章や音声を生成せず、決まった型の回答と確率を返す。",
+  "tools": [
+   "Transformers",
+   "MLX",
+   "ONNX"
+  ],
+  "supersedes": [
+   "d1-omni-600M"
+  ],
+  "rank": 15
  }
 ]

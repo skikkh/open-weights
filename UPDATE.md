@@ -149,3 +149,7 @@ decision のみ: access("api"|"open-weight"), price_note
 ### 発表済み・提供待ちの参考モデル
 
 `data/meta.json` の `llm_reference_models` は、Fern 0.1 のように提供形態・重み公開予定が未確認のLLMを掲載する参考枠。発表日、国、公式の規模範囲、文脈長、提供状況、ローカル実行可否、出典を保持する。未確認の値を確定値にしない。通常のLLM件数・ランキングには含めない。提供開始時に公式情報を再確認する。
+
+`data/meta.json` の `jp_reference_models` は国産LLMのAPI・企業向け提供を掲載する参考枠。提供開始日（release）、料金（price_ja）、オンプレミスの契約形態と重みの一般公開を区別して更新する。
+
+4bit配布版や実行互換性を確認できないLLMには `q4_unverified: true` を付ける。サイズからの推計だけでGPUに「載る」と断定しない。公式4bit版を確認できたら容量・出典を追加し、このフラグを外す。

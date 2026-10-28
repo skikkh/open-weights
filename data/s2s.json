@@ -182,82 +182,6 @@
   "rank": 2
  },
  {
-  "id": "lfm3-audio-2b",
-  "name": "LFM3-Audio-2B",
-  "org": "Liquid AI",
-  "country": "US",
-  "release": "2026-10-27",
-  "params_b": 2.0,
-  "arch": "LFM3バックボーン＋自社の因果的音声エンコーダ＋音声トークナイザLiquidCodec（80msあたり12トークン）。音声トークンを並列に予測してテキストと音声をインターリーブ生成",
-  "tasks": [
-   "dialogue",
-   "s2st"
-  ],
-  "spec": {
-   "latency_ms": 50,
-   "languages": "18言語（日本語を含む）",
-   "sample_rate": "入力16kHz／出力24kHz",
-   "other": "音声チャット・ASR・TTS・音声翻訳・音声からのツール呼び出しを1モデルで実行（システムプロンプトで切替）。文脈32Kトークン。遅延は最初のトークンまで最短50ms（公式）。LiquidCodecはM4 Maxの1スレッドで実時間の約87倍"
-  },
-  "features": {
-   "全二重（割り込み可）": false,
-   "日本語対応": true,
-   "日本語専用": false,
-   "リアルタイム": true,
-   "ASR・TTS兼用": true,
-   "CPU動作": true
-  },
-  "min_vram_gb": null,
-  "rec_vram_gb": null,
-  "vram_note": "公式のVRAM記載なし。2BのBF16で約4GB（計算値）。GGUF（llama.cpp）・MLX・ONNX版がありCPUやMacでも動かせる",
-  "speed_note": "最初のトークンまで最短50ms、話している間に先読み（プリフィル）する方式（公式）",
-  "bench": [
-   {
-    "metric": "VoiceBench（音声入力・テキスト出力）",
-    "value": 73.13,
-    "note": "LFM2.5-Audio-1.5B 55.17、Gemma 4 E4B 72.90、Qwen2.5-Omni-3B 66.37（開発元の比較）",
-    "source": "https://huggingface.co/LiquidAI/LFM3-Audio-2B"
-   },
-   {
-    "metric": "多言語ASR誤り率（FLEURS 9言語平均、日中韓はCER）",
-    "value": 6.03,
-    "note": "%、日本語単独の値は非公開",
-    "source": "https://huggingface.co/LiquidAI/LFM3-Audio-2B"
-   },
-   {
-    "metric": "英語TTS UTMOSv2",
-    "value": 3.83,
-    "note": "LFM2.5-Audio-1.5B 3.22",
-    "source": "https://huggingface.co/LiquidAI/LFM3-Audio-2B"
-   }
-  ],
-  "quality_note": "2Bと小型ながら、音声での質問応答（VoiceBench）で8BのGemma 4 E4Bと同等。いずれも開発元の自己評価で、日本語単独の評価値は出ていない",
-  "ja_note": "日本語を含む18言語の認識・合成・翻訳に対応。日本語特化版のLFM2.5-Audio-1.5B-JPとは別系統で、日本語の品質比較はまだない",
-  "license": "LFM Open License v1.0",
-  "commercial": "conditional",
-  "license_note": "Apache 2.0ベースの独自ライセンス。年間売上1,000万米ドル未満の企業は商用利用無償、それを超えると商用利用権が終了しLiquid AIとの別契約が必要（ユーザー数の制限はなし）。",
-  "hf": "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
-  "tools": [
-   "Transformers（trust_remote_code）",
-   "vLLM",
-   "SGLang",
-   "llama.cpp（GGUF）",
-   "MLX-VLM",
-   "ONNX Runtime"
-  ],
-  "summary_ja": "Liquid AIの2Bの多言語音声モデルで、日本語を含む18言語で音声チャット・文字起こし・読み上げ・翻訳をこなします。ノートPCや組み込み機器で動かす前提の軽さです。",
-  "best_for_ja": "ローカル完結の多言語音声アシスタントや、声で操作するアプリ（ツール呼び出し）の試作",
-  "supersedes": [],
-  "notes": "LFM3ファミリーとして2026-10-27にブログ発表。同時にテキスト・画像・音声の全部を扱うLFM3-Omni-2Bも公開。",
-  "sources": [
-   "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
-   "https://www.liquid.ai/blog/lfm3",
-   "https://huggingface.co/LiquidAI/LFM3-Omni-2B"
-  ],
-  "confidence": "medium",
-  "rank": 5
- },
- {
   "id": "qwen3-omni-30b-a3b",
   "name": "Qwen3-Omni-30B-A3B-Instruct",
   "org": "Alibaba Cloud Qwenチーム",
@@ -516,7 +440,7 @@
    "https://github.com/kyutai-labs/moshi"
   ],
   "confidence": "high",
-  "rank": 6
+  "rank": 5
  },
  {
   "id": "nemotronlabs-voicechat-11b",
@@ -596,7 +520,7 @@
    "https://betanews.com/article/linux-foundation-openmdw-osi-license/"
   ],
   "confidence": "medium",
-  "rank": 7
+  "rank": 6
  },
  {
   "id": "index-echo-s2st",
@@ -680,7 +604,7 @@
    "https://arxiv.org/abs/2609.40181"
   ],
   "confidence": "medium",
-  "rank": 8,
+  "rank": 7,
   "pick": "日英中の吹き替え翻訳",
   "pick_reason": "元の声のまま訳す"
  },
@@ -760,7 +684,7 @@
    "https://github.com/facebookresearch/seamless_communication"
   ],
   "confidence": "medium",
-  "rank": 9
+  "rank": 8
  },
  {
   "id": "hibiki-zero",
@@ -844,7 +768,7 @@
    "https://www.marktechpost.com/2026/02/13/kyutai-releases-hibiki-zero-a3b-parameter-simultaneous-speech-to-speech-translation-model-using-grpo-reinforcement-learning-without-any-word-level-aligned-data/"
   ],
   "confidence": "high",
-  "rank": 10
+  "rank": 9
  },
  {
   "id": "beatrice-2",
@@ -913,7 +837,7 @@
    "https://forest.watch.impress.co.jp/docs/serial/yajiuma/1611613.html"
   ],
   "confidence": "medium",
-  "rank": 11,
+  "rank": 10,
   "pick": "CPUでリアルタイム声変換",
   "pick_reason": "日本製。遅延約50ms"
  },
@@ -991,7 +915,7 @@
    "https://github.com/IAHispano/Applio/releases"
   ],
   "confidence": "high",
-  "rank": 12
+  "rank": 11
  },
  {
   "id": "seed-vc",
@@ -1071,7 +995,7 @@
    "https://github.com/Plachtaa"
   ],
   "confidence": "high",
-  "rank": 13
+  "rank": 12
  },
  {
   "id": "meanvc-2",
@@ -1153,7 +1077,7 @@
    "https://github.com/ASLP-lab/MeanVC"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 13
  },
  {
   "id": "openvoice-v2",
@@ -1225,6 +1149,115 @@
    "https://craft.co/myshell"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 14
+ },
+ {
+  "id": "liquid-lfm3-audio-2b",
+  "name": "LFM3-Audio-2B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/LFM3-Audio-2B/blob/main/LICENSE"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "access": "open-weight",
+  "params_b": 2.00233,
+  "arch": "LFM3三種混合バックボーン＋音声エンコーダ・LiquidCodec",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "context_k": 32.768,
+   "inputs": "テキスト・音声（16kHz入力）",
+   "outputs": "テキスト・24kHz音声・テキストと音声の交互出力",
+   "languages": "日本語を含む多言語（テキストと音声で対象言語が異なる）"
+  },
+  "features": {
+   "日本語対応": true,
+   "日本語専用": false,
+   "音声ストリーミング": true,
+   "全二重（割り込み可）": null,
+   "画像・動画入力": false,
+   "CPU動作": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式BF16の配布容量は音声トークナイザを含め約4.15GB。最低VRAM・日本語での実機動作速度は未確認。GGUF・MLXなどの公式配布あり。",
+  "speed_note": "ストリーミング対応。開発元の英語・特定機材での遅延値を日本語対話の保証値には使っていない。",
+  "bench": [],
+  "quality_note": "日本語を含む多言語の認識・音声出力に対応するが、一般的なASR/TTS専用モデルと同じ精度を保証するものではない。",
+  "ja_note": "通常の多言語音声入出力で日本語に対応。LiveASRモードは現時点で英語のみ。",
+  "summary_ja": "音声認識・音声対話・読み上げを約2Bでまとめた端末向けモデル。日本語を含む音声入力と音声出力、ストリーミングに対応する。",
+  "tools": [
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "best_for_ja": "端末側で動く日本語の音声対話",
+  "supersedes": [],
+  "rank": 10
+ },
+ {
+  "id": "liquid-lfm3-omni-2b",
+  "name": "LFM3-Omni-2B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM3-Omni-2B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/LFM3-Omni-2B/blob/main/LICENSE"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "access": "open-weight",
+  "params_b": 2.16693,
+  "arch": "LFM3三種混合バックボーン＋音声エンコーダ・LiquidCodec＋視覚エンコーダ",
+  "tasks": [
+   "dialogue",
+   "omni"
+  ],
+  "spec": {
+   "context_k": 32.768,
+   "inputs": "テキスト・画像・動画・音声",
+   "outputs": "テキスト・24kHz音声・テキストと音声の交互出力",
+   "languages": "日本語を含む多言語（テキストと音声で対象言語が異なる）"
+  },
+  "features": {
+   "日本語対応": true,
+   "日本語専用": false,
+   "音声ストリーミング": true,
+   "全二重（割り込み可）": null,
+   "画像・動画入力": true,
+   "CPU動作": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式BF16の配布容量は音声トークナイザを含め約4.48GB。最低VRAM・日本語での実機動作速度は未確認。GGUF・MLXなどの公式配布あり。",
+  "speed_note": "ストリーミング対応。開発元の英語・特定機材での遅延値を日本語対話の保証値には使っていない。",
+  "bench": [],
+  "quality_note": "日本語を含む多言語の認識・音声出力に対応するが、一般的なASR/TTS専用モデルと同じ精度を保証するものではない。",
+  "ja_note": "公式カードに日本語のテキスト・音声対応を明記。音声つき動画や画像について音声で質問できる。",
+  "summary_ja": "文字・画像・動画・音声を1つで読み、テキストや音声で答える約2.17BのOmniモデル。日本語を含む音声入出力にも対応する。",
+  "tools": [
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "best_for_ja": "端末側で動く日本語の音声対話・画像についての音声質問",
+  "supersedes": [],
+  "rank": 11
  }
 ]

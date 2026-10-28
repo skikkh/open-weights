@@ -1283,7 +1283,7 @@
   }
  },
  {
-  "id": "ling-3-1-flash",
+  "id": "ling-3-1-flash-1019",
   "name": "Ling-3.1-flash-1019",
   "family": "Ling 3.x",
   "org": "Ant Group（inclusionAI / 百灵）",
@@ -1292,9 +1292,9 @@
   "arch": "MoE（Kimi Delta Attention線形注意とGated MLAの7:1ハイブリッド）",
   "total_b": 560,
   "active_b": 25,
-  "native_precision": "FP8",
-  "weights_gb": 573.8,
-  "context_k": 1000,
+  "native_precision": "FP8（BF16・FP32の一部テンソルを含む）",
+  "weights_gb": 573.781,
+  "context_k": 1048.576,
   "modality": [
    "text"
   ],
@@ -1303,126 +1303,40 @@
   "commercial": "yes",
   "license_note": null,
   "hf": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019",
-  "summary_ja": "Ant GroupのLing 3.1-flashを追加学習で強化した560B/アクティブ25Bのハイブリッド推論MoE。汎用エージェントやオフィス業務、科学系の課題で初版より伸びた。",
+  "summary_ja": "Ling-3.1-flashを追加学習した新版。推論・ツール利用・科学系タスクを改善し、10月27日に重みを公開した。",
   "strengths": [
    "agent",
    "coding",
    "tool-use",
    "long-context"
   ],
-  "bench": {
-   "swe_verified": null,
-   "gpqa": null,
-   "hle": 37.44,
-   "aime": null,
-   "lcb": null,
-   "mmlu_pro": null,
-   "terminal_bench2": 81.18,
-   "tau2": null,
-   "browsecomp": 91.67
-  },
-  "bench_note": "ベンチ欄は初版Ling-3.1-flashのモデルカード（画像表）自己申告。terminal_bench2欄はTerminal-Bench 2.1。1019版のカードでは、AA-Briefcase 約1400→1524 Elo、AutomationBench-AA 62%→68%、CritPt 18%→26%、SciCode 54%→57%に向上と記載。AA指数v4.3.2（2026-10-28取得）は1019版で43.9（初版41.1）。AAの1019版の個別値はHLE 43.5%、Terminal-Bench 4.0 32.8%。",
-  "aa_index": 43.9,
-  "japanese_note": null,
-  "deploy_note_ja": "FP8で約574GB。公式例は8×H200（TP8+EP8）、または4×GB300。bartowskiのGGUFはQ4_K_M 約358GBで512GB級Mac、IQ2_M 約213GBで256GB級機。報道ではMXFP4とブロックFP8の量子化によりHopper 4基でも動くとされる。",
+  "bench": {},
+  "bench_note": "AA Intelligence Index v4.3.2は公式モデルカード・AA公開ページで44（丸め値）。旧版の41.1と区別。",
+  "aa_index": 44,
+  "japanese_note": "多言語の日本語性能について、この新版固有の独立評価は未確認。",
+  "deploy_note_ja": "公式配布は約574GB。SGLang・vLLM向け手順あり。ネイティブ文脈はconfig上262,144トークン、最大約1Mは拡張設定を使用。旧版の量子化ファイル・実測速度はこの版には流用していない。",
   "engines": [
    "SGLang",
    "vLLM",
    "llama.cpp"
   ],
   "supersedes": [
-   "Ling-3.1-flash（初版）",
+   "Ling-3.1-flash",
    "Ling-3.0-flash",
    "Ling-2.6-1T",
    "Ring-2.6-1T",
    "Ling-2.6-flash"
   ],
-  "notes": "1019版は2026-10-27にHFで公開（MIT、構成は初版と同じ560B-A25B）。09-30に2週間の無料試用として発表（試用中は256Kに制限）、HFリポジトリは10-13作成、コミュニティGGUFは10-15に登場したため、公開日は2026-10とした。configのmax_positionは262,144で、1Mはカード公称値。Ling 3.xは思考オン/オフ一体型で、旧推論特化系列Ringの役割も統合した（Ling-3.0-flashのカードがRing-2.6-1Tを「前の1T級フラッグシップ」と表現）。",
+  "notes": "09-30に2週間の無料試用として発表（試用中は256Kに制限）、HFリポジトリは10-13作成、コミュニティGGUFは10-15に登場したため、公開日は2026-10とした。configのmax_positionは262,144で、1Mはカード公称値。Ling 3.xは思考オン/オフ一体型で、旧推論特化系列Ringの役割も統合した（Ling-3.0-flashのカードがRing-2.6-1Tを「前の1T級フラッグシップ」と表現）。",
   "sources": [
    "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019",
-   "https://huggingface.co/inclusionAI/Ling-3.1-flash",
-   "https://huggingface.co/inclusionAI/Ling-3.0-flash",
-   "https://www.kucoin.com/news/flash/ant-group-s-bailing-open-sources-ling-3-1-flash-ai-model-with-1m-context-support",
-   "https://aiweekly.co/alerts/ants-inclusionai-ships-ling-31-flash-with-560b-parameters",
-   "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF",
-   "https://artificialanalysis.ai/leaderboards/models"
+   "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019/commits/main",
+   "https://artificialanalysis.ai/models/ling-3-1-flash-1019"
   ],
   "confidence": "medium",
   "short": "Ling 3.1 Flash 1019",
-  "local_q": {
-   "summary_ja": "最小の量子化版（IQ1_S、約1.87bit・131GB）なら192GB機に載ります。512GB の Mac Studio なら Q4_K_M、約5.11bit・358GB まで載ります。",
-   "quants": [
-    {
-     "name": "IQ1_S (bartowski)",
-     "bits": 1.87,
-     "size_gb": 131.0,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "IQ1_M",
-     "bits": 2.07,
-     "size_gb": 145.1,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "IQ2_XXS",
-     "bits": 2.44,
-     "size_gb": 170.8,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "Q2_K",
-     "bits": 3.13,
-     "size_gb": 219.2,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "IQ3_XXS",
-     "bits": 3.53,
-     "size_gb": 247.4,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "Q3_K_M",
-     "bits": 3.93,
-     "size_gb": 275.1,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "IQ4_XS",
-     "bits": 4.53,
-     "size_gb": 317.1,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "NVFP4（個人, abliterated版）",
-     "bits": 4.92,
-     "size_gb": 344.4,
-     "source": "https://huggingface.co/Hikari07jp/Ling-3.1-flash-NVFP4-Ablitrated-MTP-RTX-PRO-6000-TP4",
-     "note": "RTX PRO 6000×4 (TP4) 向けと明記"
-    },
-    {
-     "name": "Q4_K_M",
-     "bits": 5.11,
-     "size_gb": 358.0,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    },
-    {
-     "name": "公式FP8",
-     "bits": 8.2,
-     "size_gb": 573.8,
-     "source": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
-    },
-    {
-     "name": "Q8_0",
-     "bits": 8.69,
-     "size_gb": 608.4,
-     "source": "https://huggingface.co/bartowski/Ling-3.1-flash-GGUF"
-    }
-   ],
-   "reports": [],
-   "note_ja": "Unsloth版なし（2026-10-13公開で直後）。EXL3はturboderp等 量子化版のサイズは初版Ling-3.1-flashのもの（1019版は構成が同じなので同程度）。"
-  }
+  "verified_at": "2026-10-28",
+  "q4_unverified": true
  },
  {
   "id": "mimo-v2-6-flash",
@@ -7549,5 +7463,570 @@
    "https://huggingface.co/nex-agi/Nex-N2.5-Max"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "inclusionai-lbs-27b",
+  "name": "LBS-27B",
+  "short": "LBS-27B",
+  "family": "LBS-27B",
+  "org": "Ant Group / inclusionAI",
+  "country": "CN",
+  "release": "2026-10-26",
+  "arch": "Dense",
+  "total_b": 27.357,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 54.714,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/inclusionAI/LBS-27B",
+  "summary_ja": "画面内の対象を探し、必要な領域を拡大して観察する画像・GUI操作向けモデル。Qwen3.8-27Bを基に、画面操作で学んだ観察方法を画像質問にも転用する。",
+  "strengths": [
+   "vision",
+   "agent",
+   "tool-use"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "日本語での独立評価は未確認。",
+  "deploy_note_ja": "BF16の配布ファイルは約54.7GB。4bit版の実行・GUI操作用の拡大ツール連携は未検証。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/inclusionAI/LBS-27B",
+   "https://huggingface.co/inclusionAI/LBS-27B/commits/main",
+   "https://github.com/inclusionAI/UI-Venus/tree/LBS"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "base_model": "Qwen3.8-27B",
+  "bench_note": "ScreenSpot-Proの操作正答率81.15%などは開発元評価。一般会話モデルとの総合比較ではない。",
+  "q4_unverified": true
+ },
+ {
+  "id": "hy-memory-30b-a3b",
+  "name": "Hy-Memory-30B-A3B",
+  "short": "Hy-Memory-30B-A3B",
+  "family": "Hy-Memory-30B-A3B",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2026-10-15",
+  "arch": "MoE",
+  "total_b": 30,
+  "active_b": 3,
+  "native_precision": "BF16",
+  "weights_gb": 60.132,
+  "context_k": 262.144,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+  "summary_ja": "対話や作業履歴から、何を長期記憶に残すかを判断する記憶書き込み専用モデル。Mem0・MemOS・Hy-Memoryなどの外部記憶基盤と組み合わせて使う。",
+  "strengths": [
+   "agent",
+   "long-context"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "公式カードの対応言語は中国語・英語。日本語での品質は未確認。",
+  "deploy_note_ja": "BF16重み約60.1GB。通常のチャット役ではなく、記憶の追加・修正を担当する専用モデル。量子化・実機実測は未確認。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+   "https://huggingface.co/tencent/Hy-Memory-30B-A3B/commits/main",
+   "https://github.com/Tencent-Hunyuan/Hy-Memory"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "q4_unverified": true
+ },
+ {
+  "id": "nvidia-dory-1-0-4b",
+  "name": "Nemotron Labs Dory 1.0 4B",
+  "short": "Nemotron Labs Dory 1.0 4B",
+  "family": "Nemotron Labs Dory 1.0 4B",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-10-16",
+  "arch": "Dense",
+  "total_b": 3.975,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 7.951,
+  "context_k": 262.144,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+  "summary_ja": "同じ層を繰り返し通すことで、保存する重みを増やさず推論の計算量を変えられる4Bモデル。ループ数を1・2・4回に変えて速度と品質を調整できる。",
+  "strengths": [
+   "reasoning",
+   "efficiency",
+   "agent"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "公式カードの主対象言語は英語。日本語での独立評価は未確認。",
+  "deploy_note_ja": "BF16約7.95GB。公式GGUFのQ5_K_Mは約3.67GBだが5bit版であり4bit実測とは区別。反復数・文脈長でKVキャッシュと速度が変わる。",
+  "engines": [
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF",
+   "https://openmdw.ai/license/1-1/"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "license_note": "OpenMDW-1.1に従い商用・改変・再配布が可能。表示・ライセンス通知などの条件を保持する。",
+  "q4_unverified": true
+ },
+ {
+  "id": "nvidia-nemotron-3-5-bolt-e4b",
+  "name": "Nemotron 3.5 Bolt E4B（BF16 / 4GB版）",
+  "short": "Nemotron 3.5 Bolt E4B（BF16 / 4GB版）",
+  "family": "Nemotron 3.5 Bolt E4B（BF16 / 4GB版）",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-10-23",
+  "arch": "Dense",
+  "total_b": 7.996,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 15.992,
+  "context_k": 65.536,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+  "summary_ja": "Gemma 4 E4Bを追加学習した、ローカルの音声・端末アシスタント向け小型モデル。名称のE4Bは有効規模で、実際に保存する総パラメータは約8B。",
+  "strengths": [
+   "efficiency",
+   "tool-use",
+   "agent"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "公式カードの対応言語に日本語を含む。日本語固有のベンチマークは未確認。",
+  "deploy_note_ja": "公式Q4_K_Mファイルは約6.18GB。「4GB」という版名をダウンロード容量や全メモリ使用量と混同しないこと。文脈・ドラフトモデルの有無によって必要メモリは増える。",
+  "engines": [
+   "Transformers",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/commits/main",
+   "https://openmdw.ai/license/1-1/"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "q4_gb": 6.180446208,
+  "base_model": "Gemma 4 E4B",
+  "license_note": "OpenMDW-1.1。由来モデル・同梱コンポーネントの通知と適用条件も確認する。"
+ },
+ {
+  "id": "internscience-sage-a1-5",
+  "name": "Sage-A1.5",
+  "short": "Sage-A1.5",
+  "family": "Sage-A1.5",
+  "org": "Shanghai AI Laboratory / InternScience",
+  "country": "CN",
+  "release": "2026-10-21",
+  "arch": "MoE",
+  "total_b": 35.952,
+  "active_b": 3,
+  "native_precision": "BF16",
+  "weights_gb": 71.908,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/InternScience/Sage-A1.5",
+  "summary_ja": "科学研究や長い作業を、計画・ツール利用・検証を繰り返して進める35B級MoE。Qwen3.6とAgents-A1を基に、複数の作業担当への分担や方針の修正を学習した。",
+  "strengths": [
+   "agent",
+   "reasoning",
+   "vision",
+   "tool-use"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "日本語での独立評価は未確認。",
+  "deploy_note_ja": "公式GGUFはQ4_K_M約21.71GB＋画像用プロジェクタ約0.90GB。合計約22.61GBで、24GB GPUは文脈とKVキャッシュ次第で不足する。32GB以上が余裕を持ちやすい。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/InternScience/Sage-A1.5",
+   "https://huggingface.co/InternScience/Sage-A1.5/commits/main",
+   "https://huggingface.co/InternScience/Sage-A1.5-Q4_K_M-GGUF"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "base_model": "Qwen3.6-35B-A3B / Agents-A1",
+  "q4_gb": 22.612
+ },
+ {
+  "id": "jetbrains-mellum-2-1-12b",
+  "name": "Mellum2.1 12B-A2.5B Thinking",
+  "short": "Mellum2.1 12B-A2.5B Thinking",
+  "family": "Mellum2.1 12B-A2.5B Thinking",
+  "org": "JetBrains（本社：アムステルダム）",
+  "country": "NL",
+  "release": "2026-10",
+  "arch": "MoE",
+  "total_b": 12.15,
+  "active_b": 2.5,
+  "native_precision": "BF16",
+  "weights_gb": 24.301,
+  "context_k": 131.072,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking",
+  "summary_ja": "コードの調査・編集・テスト実行を担うコーディングエージェント向けMoE。稼働2.5Bの軽量設計を保ち、実際の開発環境での強化学習を増やした。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 47,
+   "gpqa": 64.6,
+   "lcb": 82
+  },
+  "aa_index": null,
+  "japanese_note": "公式カードの主対象言語は英語。日本語指示での品質は未確認。",
+  "deploy_note_ja": "公式Q4_K_Mは約8.07GB、MXFP4_MOEは約7.03GB。MTP付き別ファイルもある。正式告知は10月（日の確定を保留）、公式GGUFの初回アップロードは10/7、元のHF重み履歴は9月から存在する。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking",
+   "https://huggingface.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF",
+   "https://blog.jetbrains.com/ai/2026/10/mellum2-1-gets-to-work-a-fast-open-model-for-coding-agents/",
+   "https://www.jetbrains.com/company/commitment/"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "q4_gb": 8.071295264,
+  "bench_note": "開発元の同一評価環境による値。LiveCodeBench v6は82%、SWE-bench Verifiedは47%。独立したAA測定値ではない。"
+ },
+ {
+  "id": "ling-3-0-flash-sante",
+  "name": "Ling-3.0-flash-Sante",
+  "short": "Ling-3.0-flash-Sante",
+  "family": "Ling-3.0-flash-Sante",
+  "org": "Ant Group / inclusionAI",
+  "country": "CN",
+  "release": "2026-10-19",
+  "arch": "MoE",
+  "total_b": 124,
+  "active_b": 5.1,
+  "native_precision": "BF16",
+  "weights_gb": 254.981,
+  "context_k": 262.144,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante",
+  "summary_ja": "医療・ヘルスケアの研究や資料調査、ツール利用に追加学習したLing系列。汎用の最新Lingとは用途が違う専門モデルとして掲載する。",
+  "strengths": [
+   "reasoning",
+   "agent",
+   "tool-use"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "日本語での独立評価は未確認。",
+  "deploy_note_ja": "BF16重み約255GB。bartowskiのQ4_K_Mは3分割計約80.39GBで、余裕量を含めると80GB GPU1枚には厳しい。医療系の開発元評価を一般モデルの総合順位と混同しない。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante",
+   "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante/commits/main",
+   "https://huggingface.co/bartowski/Ling-3.0-flash-Sante-GGUF"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "q4_gb": 80.394
+ },
+ {
+  "id": "wevisone-vl-2b",
+  "name": "WeVisOne-VL 2B",
+  "short": "WeVisOne-VL 2B",
+  "family": "WeVisOne-VL 2B",
+  "org": "Tencent / WeChat Vision",
+  "country": "CN",
+  "release": "2026-10-23",
+  "arch": "Dense",
+  "total_b": 2.442,
+  "active_b": null,
+  "native_precision": "FP16（公式推論設定はBF16）",
+  "weights_gb": 4.922,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/tencent/WeVisOne-VL-2B",
+  "summary_ja": "物体検出・位置指定・個数カウント・OCR・画像の切り抜きをまとめて扱う視覚認識モデル。Qwen3-VLに小型のピクセルデコーダを組み合わせた。",
+  "strengths": [
+   "vision"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "日本語OCR・日本語の指示への独立評価は未確認。一般対話より視覚認識向け。",
+  "deploy_note_ja": "公式バックボーン重みと必須mask_decoder.ptを含めた配布容量。4bitでの動作は未検証。専用のwevisone_vl推論パッケージを使用する。",
+  "engines": [
+   "Transformers",
+   "wevisone_vl"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/tencent/WeVisOne-VL-2B",
+   "https://huggingface.co/tencent/WeVisOne-VL-2B/commits/main",
+   "https://github.com/Tencent/WeVisOne-VL"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "base_model": "Qwen3-VL",
+  "q4_unverified": true
+ },
+ {
+  "id": "wevisone-vl-4b",
+  "name": "WeVisOne-VL 4B",
+  "short": "WeVisOne-VL 4B",
+  "family": "WeVisOne-VL 4B",
+  "org": "Tencent / WeChat Vision",
+  "country": "CN",
+  "release": "2026-10-27",
+  "arch": "Dense",
+  "total_b": 4.831,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 9.7,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "instruct",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/tencent/WeVisOne-VL-4B",
+  "summary_ja": "物体検出・位置指定・個数カウント・OCR・画像の切り抜きをまとめて扱う視覚認識モデル。Qwen3-VLに小型のピクセルデコーダを組み合わせた。",
+  "strengths": [
+   "vision"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "日本語OCR・日本語の指示への独立評価は未確認。一般対話より視覚認識向け。",
+  "deploy_note_ja": "公式バックボーン重みと必須mask_decoder.ptを含めた配布容量。4bitでの動作は未検証。専用のwevisone_vl推論パッケージを使用する。",
+  "engines": [
+   "Transformers",
+   "wevisone_vl"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/tencent/WeVisOne-VL-4B",
+   "https://huggingface.co/tencent/WeVisOne-VL-4B/commits/main",
+   "https://github.com/Tencent/WeVisOne-VL"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "base_model": "Qwen3-VL",
+  "q4_unverified": true
+ },
+ {
+  "id": "baidu-unlimited-ocr-2",
+  "name": "Unlimited-OCR 2",
+  "short": "Unlimited-OCR 2",
+  "family": "Unlimited-OCR 2",
+  "org": "Baidu",
+  "country": "CN",
+  "release": "2026-10-27",
+  "arch": "MoE（OCR専用）",
+  "total_b": 3.344,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 6.688,
+  "context_k": 131.072,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "instruct",
+  "license": "MIT",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/baidu/Unlimited-OCR-2",
+  "summary_ja": "長い複数ページ文書からテキストやレイアウトを読み取るOCR専用モデル。SR-SWAで履歴を圧縮し、文書の長さに対するメモリ増加を抑える。",
+  "strengths": [
+   "vision",
+   "long-context"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "多言語モデルと記載されるが、日本語専用の精度評価は未確認。汎用チャット用途ではない。",
+  "deploy_note_ja": "BF16重み約6.69GB。公式動作確認はA800 80GBで、ページ画像・同時処理数・履歴設定により使用量が変わる。家庭用GPUでの最低VRAMは未確認。10/27正式発表（HF重み履歴は10/26）。",
+  "engines": [
+   "Transformers",
+   "SGLang"
+  ],
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/baidu/Unlimited-OCR-2",
+   "https://huggingface.co/baidu/Unlimited-OCR-2/commits/main",
+   "https://github.com/baidu/Unlimited-OCR"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "q4_unverified": true
+ },
+ {
+  "id": "liquid-lfm3-1-7b",
+  "name": "LFM3-1.7B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/LFM3-1.7B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM3-1.7B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/LICENSE",
+   "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "short": "LFM3-1.7B",
+  "family": "LFM3",
+  "arch": "Dense（三種混合：短い畳み込み・局所Attention・全域Attention）",
+  "total_b": 1.7288,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 3.4576,
+  "q4_gb": 1.099627808,
+  "context_k": 262.144,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "summary_ja": "約1.73Bの端末向けテキストモデル。ツール呼び出しや構造化出力、用途別の追加学習向けで、小さなメモリで動かせる。",
+  "strengths": [
+   "efficiency",
+   "tool-use",
+   "multilingual"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "公式の対応言語に日本語を含む。日本語固有の独立ベンチマークは未確認。",
+  "deploy_note_ja": "公式GGUFのQ4_K_Mは約1.10GB。作業用メモリ・KVキャッシュは別途必要で、256K全文脈を約1GBで実行できるという意味ではない。小型モデルのため複雑な推論・コーディングは推奨されていない。",
+  "engines": [
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": []
+ },
+ {
+  "id": "liquid-lfm3-vl-2b",
+  "name": "LFM3-VL-2B",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": "2026-10-27",
+  "license": "LFM Open License v1.0",
+  "commercial": "conditional",
+  "license_note": "LFM Open License v1.0。商用利用には年商1,000万米ドルの制限があり、大規模組織はLiquid AIとの別契約が必要。著作権・ライセンス通知や依存部品の条件も保持する。",
+  "hf": "https://huggingface.co/LiquidAI/LFM3-VL-2B",
+  "sources": [
+   "https://huggingface.co/LiquidAI/LFM3-VL-2B",
+   "https://huggingface.co/blog/LiquidAI/lfm3",
+   "https://huggingface.co/LiquidAI/LFM3-VL-2B/blob/main/LICENSE",
+   "https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-28",
+  "short": "LFM3-VL-2B",
+  "family": "LFM3",
+  "arch": "Dense（三種混合：短い畳み込み・局所Attention・全域Attention）",
+  "total_b": 1.91818,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 3.8364,
+  "q4_gb": 1.47862384,
+  "context_k": 131.072,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "thinking",
+  "summary_ja": "画像と動画を読める約1.92Bの小型モデル。独自の視覚エンコーダを使い、動画はフレームを取り出して入力する。",
+  "strengths": [
+   "efficiency",
+   "tool-use",
+   "multilingual",
+   "vision"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "公式の対応言語に日本語を含む。日本語固有の独立ベンチマークは未確認。",
+  "deploy_note_ja": "公式Q4_K_M約1.10GB＋F16画像プロジェクタ約0.379GB、計約1.48GB。画像・動画の前処理とKVキャッシュは別途必要。映像の生成モデルではない。",
+  "engines": [
+   "Transformers",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": []
  }
 ]

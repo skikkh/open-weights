@@ -2003,5 +2003,57 @@
   ],
   "confidence": "medium",
   "rank": 17
+ },
+ {
+  "id": "hy-nomas",
+  "access": "open-weight",
+  "name": "Hy-Nomas",
+  "org": "Tencent Hunyuan",
+  "country": "CN",
+  "release": "2026-10-23",
+  "params_b": null,
+  "arch": "Segment-autoregressive DiT＋PixelUMM decoder",
+  "tasks": [
+   "t2v"
+  ],
+  "spec": {
+   "max_resolution": "720×1280",
+   "fps": 24,
+   "other": "テキストやカメラ軌跡を途中で変えながら動画を区間ごとに継続生成。24fpsは生成映像の再生速度であり、リアルタイム生成速度を意味しない。"
+  },
+  "features": {
+   "カメラ制御": true,
+   "継続生成": true,
+   "LoRA対応": true
+  },
+  "min_vram_gb": 24,
+  "rec_vram_gb": null,
+  "vram_note": "公式にRTX 4090 1枚向けの低メモリ設定あり。INT8 DiT・INT8 KV・FP8 decoderとCPUオフロードを使用。必要RAM・実測生成速度は未確認。コミュニティの12GB報告は公式条件と区別し採用していない。",
+  "quality_note": "公式の同一条件アリーナ値は未確認。対話的に世界を進める操作性が主眼。",
+  "ja_note": "日本語プロンプトの品質保証・独立評価は未確認。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "公式HF・GitHubのLICENSE原文でApache-2.0を確認。第三者部品は各元ライセンスを適用。",
+  "hf": "https://huggingface.co/tencent/Hy-Nomas",
+  "tools": [
+   "ComfyUI",
+   "SGLang",
+   "WanGP",
+   "Diffusers",
+   "Reactor Runtime"
+  ],
+  "summary_ja": "カメラや文章で指示を変えながら、動画の世界を少しずつ続けて生成するモデル。RTX 4090 1枚向けの公式設定があり、ComfyUIなどにも統合されている。",
+  "best_for_ja": "カメラ移動・継続的な世界生成をローカルで試す用途。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/tencent/Hy-Nomas",
+   "https://huggingface.co/tencent/Hy-Nomas/commits/main",
+   "https://github.com/Tencent-Hunyuan/Hy-Nomas",
+   "https://huggingface.co/tencent/Hy-Nomas/blob/main/LICENSE"
+  ],
+  "confidence": "high",
+  "rank": 10,
+  "verified_at": "2026-10-28",
+  "release_note": "公式コード・デモの告知は10/21、HF重みアップロード履歴は10/23。"
  }
 ]

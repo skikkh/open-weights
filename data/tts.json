@@ -1238,5 +1238,105 @@
    "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "ming-3-0-tts-0-5b",
+  "name": "Ming-3.0-TTS 0.5B",
+  "org": "Ant Group / inclusionAI",
+  "country": "CN",
+  "release": "2026-10",
+  "params_m": 1479.455,
+  "arch": "Dense（0.5Bバックボーン＋DiT・音声トークナイザ等）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": null
+  },
+  "ja_metrics": [
+   {
+    "metric": "日本語CER（MiniMax multilingual test）",
+    "value": 3.765,
+    "note": "%、開発元のASRを用いた評価。同じデータセット・条件以外と横比較しない。",
+    "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B"
+   },
+   {
+    "metric": "日本語話者類似度（SIM）",
+    "value": 0.765,
+    "note": "開発元評価。高いほど参照話者に近い。",
+    "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B"
+   }
+  ],
+  "quality_note": "日本語を含む7言語。日本語の多言語モードと、感情・笑いなどの制御モードは別仕様で、すべての制御が日本語で併用できるとは確認できない。",
+  "latency_note": "日本語での実測遅延・ストリーミング性能は未確認。",
+  "hardware_note": "公式配布のsafetensorsは約2.959GB（音声部品を含む）。最低VRAMは未公表。公開月は公式GitHubの告知に合わせ10月、重みアップロード履歴は9月から存在。 0.5Bは言語バックボーンの名称で、配布safetensors全体は約1.48Bパラメータ。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "著作権・MITライセンス通知を保持。同梱・依存部品の条件も確認する。",
+  "hf": "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B",
+  "summary_ja": "日本語を含む7言語で声の複製・声質デザインができる小型TTS。公式の日本語CERと話者類似度を掲載している。",
+  "best_for_ja": "参照音声を使った日本語の読み上げ。日本語専用モデルとの比較試聴向け。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B",
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B/commits/main",
+   "https://github.com/inclusionAI/Ming-3.0-tts"
+  ],
+  "confidence": "high",
+  "rank": 20,
+  "verified_at": "2026-10-28"
+ },
+ {
+  "id": "ming-3-0-tts-tiny",
+  "name": "Ming-3.0-TTS tiny",
+  "org": "Ant Group / inclusionAI",
+  "country": "CN",
+  "release": "2026-10",
+  "params_m": 8981.004,
+  "arch": "MoE（バックボーン7.9B、稼働約1.3B＋音声部品）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": true,
+   "accent_control": null
+  },
+  "ja_metrics": [
+   {
+    "metric": "日本語CER（MiniMax multilingual test）",
+    "value": 3.427,
+    "note": "%、開発元のASRを用いた評価。同じデータセット・条件以外と横比較しない。",
+    "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny"
+   },
+   {
+    "metric": "日本語話者類似度（SIM）",
+    "value": 0.78,
+    "note": "開発元評価。高いほど参照話者に近い。",
+    "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny"
+   }
+  ],
+  "quality_note": "日本語を含む7言語。日本語の多言語モードと、感情・笑いなどの制御モードは別仕様で、すべての制御が日本語で併用できるとは確認できない。",
+  "latency_note": "日本語での実測遅延・ストリーミング性能は未確認。",
+  "hardware_note": "公式配布のsafetensorsは約17.963GB（音声部品を含む）。最低VRAMは未公表。公開月は公式GitHubの告知に合わせ10月、重みアップロード履歴は9月から存在。 7.9Bは言語バックボーンで、配布safetensors全体は約8.98Bパラメータ。",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "著作権・MITライセンス通知を保持。同梱・依存部品の条件も確認する。",
+  "hf": "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny",
+  "summary_ja": "日本語を含む7言語に対応するMoE音声合成モデル。公式の日本語CERと話者類似度を掲載している。",
+  "best_for_ja": "参照音声を使った日本語の読み上げ。日本語専用モデルとの比較試聴向け。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny",
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny/commits/main",
+   "https://github.com/inclusionAI/Ming-3.0-tts"
+  ],
+  "confidence": "high",
+  "rank": 21,
+  "verified_at": "2026-10-28"
  }
 ]
