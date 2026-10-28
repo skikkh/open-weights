@@ -686,13 +686,13 @@
  },
  {
   "id": "vllm-sr-decision-3",
-  "name": "Decision 3.0（d3／d3-turbo／d3-flash ほか）",
+  "name": "Decision 3.0（d3-ultra／d3／d3-turbo／d3-flash ほか）",
   "org": "vLLM Semantic Router（vLLMプロジェクト）",
   "country": "US",
-  "release": "2026-10-10",
+  "release": "2026-10-24",
   "access": "open-weight",
   "params_b": 26.09,
-  "arch": "マルチモーダル判断モデル群。旗艦d3はQwen3.8-27B、小型版はQwen3.5系（9B/4B/2B/0.8B）が基盤。文章を生成せず1フォワードで各答えの確率を返す。0.59B〜26.09Bの6サイズ＋d3-turbo",
+  "arch": "マルチモーダル判断モデル群。旗艦d3はQwen3.8-27B、小型版はQwen3.5系（9B/4B/2B/0.8B）が基盤。文章を生成せず1フォワードで各答えの確率を返す。0.59B〜26.09Bの6サイズ＋d3-turbo＋最上位のd3-ultra（26.09B、10/24公開）",
   "tasks": [
    "predicate",
    "choice",
@@ -703,9 +703,9 @@
   "spec": {
    "latency_ms": 54.4,
    "inputs": "テキスト・JSON、複数の画像（PNG/JPEG/WebP、各1.6MPまで）と動画（MP4/WebM/MOV/MKV、2fps・最大32フレーム）",
-   "outputs": "Choice／Yes-No（noul）／Scoreの確率分布。d3-turboはBox（バウンディングボックス＋信頼度）質問と動画追跡にも対応",
+   "outputs": "Choice／Yes-No（noul）／Scoreの確率分布。d3-turbo・d3-ultraはBox（画像・動画内の位置＋信頼度）とTrack（動画全体の追跡）にも対応",
    "languages": "記載なし",
-   "other": "遅延はd3のテキスト中央値（AMD Instinct MI325X、1リクエストずつ）。画像付き290ms、10秒動画500ms。d3-flash（8.39B）はテキスト19.2ms、d3-edge（0.59B）は6.7ms。d3-turbo（26B）は入力を1回だけ読んで全質問に答えるため、64問で867ms（d3-flashは8.26秒）、255問で約15.5倍速。長文は1質問131,072トークン（long_context）。FP8・AWQ・GPTQの量子化版あり。vLLM本体のネイティブ対応はmainブランチ（2026-10-14〜、ナイトリー版が必要）"
+   "other": "遅延はd3のテキスト中央値（AMD Instinct MI325X、1リクエストずつ）。画像付き290ms、10秒動画500ms。d3-flash（8.39B）はテキスト19.2ms、d3-edge（0.59B）は6.7ms。d3-turbo（26B）は入力を1回だけ読んで全質問に答えるため、64問で867ms（d3-flashは8.26秒）、255問で約15.5倍速。長文は1質問131,072トークン（long_context）。FP8・AWQ・GPTQの量子化版あり。vLLM本体のネイティブ対応はmainブランチ（2026-10-14〜、ナイトリー版が必要）。d3-ultraは入力を1回読んで全質問に答え、同じ写真への1〜255問で304ms〜2.16秒（MI325X 1枚、中央値）"
   },
   "features": {
    "画像入力": true,
@@ -721,6 +721,12 @@
   "price_note": null,
   "speed_note": "d3: テキスト54.4ms、vLLM Semantic Routerのエンジンモードで27リクエスト/秒・p99 1秒未満（MI325X 1枚）。d3-flash: 95リクエスト/秒。d3-edge: テキスト6.7ms。いずれも自社計測",
   "bench": [
+   {
+    "metric": "SR-Text（自社テスト、偶然補正の正答率×100）",
+    "value": 87.2,
+    "note": "d3-ultra。同条件でGLiDE V1.2 85.1、d1-ultra 83.4、d3-turbo 83.1、d3 81.4、Jev 1.14 73.1。問題は非公開の自社テスト",
+    "source": "https://huggingface.co/vllm-sr/d3-ultra"
+   },
    {
     "metric": "Jev Decision Index 0.3.2（テキスト）",
     "value": 66.3,
@@ -752,24 +758,25 @@
     "source": "https://huggingface.co/vllm-sr/d3"
    }
   ],
-  "quality_note": "公開されている判断モデルの中で、コミュニティ版Decision Index（0.3.2）のテキスト・画像の両部門で首位。画像・動画まで扱え、0.6Bのエッジ版から26Bまでサイズを選べるのが強み。新ドメインでは公開問題より5ポイントほど下がる。数値の多くは自社計測で、Brier・ECEなどの較正指標は限定的",
+  "quality_note": "最上位のd3-ultraは、開発元の自社テストでGLiDE V1.2やd1-ultraを上回る（非公開問題・自社計測）。公開されている判断モデルの中で、コミュニティ版Decision Index（0.3.2）のテキスト・画像の両部門で首位。画像・動画まで扱え、0.6Bのエッジ版から26Bまでサイズを選べるのが強み。新ドメインでは公開問題より5ポイントほど下がる。数値の多くは自社計測で、Brier・ECEなどの較正指標は限定的",
   "ja_note": "言語の記載なし。Qwen系ベースで多言語の素地はあるが、日本語での判断精度は未評価",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "Apache-2.0（ベースのQwen3.8-27B・Qwen3.5系もApache-2.0）",
-  "hf": "https://huggingface.co/vllm-sr/d3",
+  "hf": "https://huggingface.co/vllm-sr/d3-ultra",
   "tools": [
    "vLLM（main/ナイトリー）",
    "vLLM Semantic Router",
    "Transformers（AutoModel）",
    "FP8・AWQ・GPTQ量子化版"
   ],
-  "summary_ja": "vLLMの開発陣営が公開した、画像や動画まで見て判断できるオープンな判断モデル群です。スマホ級の小型版から大型版まで6サイズ以上あり、公開ボードで首位を取っています。",
+  "summary_ja": "vLLMの開発陣営が公開した、画像や動画まで見て判断できるオープンな判断モデル群です。10月24日に最上位のd3-ultraが加わり、スマホ級の小型版から27B級まで選べます。",
   "best_for_ja": "画像・動画を含む判定や、vLLMでLLMと同じ基盤に判断レイヤーを載せたい場合。エッジ機器ならd3-edge/d3-lite",
   "supersedes": [
    "Decision 2.0（Vega 27Bなど）"
   ],
   "sources": [
+   "https://huggingface.co/vllm-sr/d3-ultra",
    "https://huggingface.co/vllm-sr/d3",
    "https://huggingface.co/vllm-sr/d3-turbo",
    "https://huggingface.co/vllm-sr/d3-flash",
@@ -777,7 +784,8 @@
    "https://www.orcarouter.ai/blog/decision-3-0-open-multimodal-decision-models"
   ],
   "confidence": "medium",
-  "rank": 9
+  "rank": 9,
+  "notes": "初版（d3など）は2026-10-10公開。公開日欄は最上位d3-ultraの公開日（HFリポジトリ作成10/24、更新10/26）。"
  },
  {
   "id": "h2o-lightning-31b",
@@ -1090,14 +1098,14 @@
   "pick_reason": "JevBench オープン部門1位"
  },
  {
-  "id": "liquid-d1-3b",
-  "name": "d1-3B（＋d1-omni-600M）",
+  "id": "liquid-d1-2b",
+  "name": "d1-2B（＋d1-Omni-2B）",
   "org": "Liquid AI",
   "country": "US",
-  "release": "2026-10-07",
+  "release": "2026-10-27",
   "access": "open-weight",
-  "params_b": 3.12,
-  "arch": "LFM2.5-VL-3B（Liquidの非Transformer系ハイブリッド）を微調整した判断モデル。視覚エンコーダはSigLIP2 NaFlex 400M。姉妹のd1-omni-600M（587M）はテキスト・画像・音声に対応",
+  "params_b": 1.92,
+  "arch": "LFM3-VL-2B（LFM3の24層ハイブリッド：ゲート付き短畳み込み13層＋スライディング窓注意5層＋全体注意6層）を微調整した判断モデル。姉妹のd1-Omni-2B（2.17B）は音声入力にも対応",
   "tasks": [
    "predicate",
    "choice",
@@ -1106,68 +1114,63 @@
    "classify"
   ],
   "spec": {
-   "latency_ms": 8,
-   "inputs": "テキスト、任意のJSON、画像、またはその組み合わせ（コンテキスト32,768トークン）",
-   "outputs": "noul＝P(yes)／choice＝選択・confidence・確率／score＝2〜10段階の期待レベル・confidence・確率",
-   "languages": "モデルカードに「16 languages」のタグ（一覧の記載なし）",
-   "other": "遅延は1質問・ウォーム・単発リクエストでRTX 4090の値（compileなしで16ms）。AMD MI325X 9ms、Apple M5 Pro 30ms、Jetson AGX Thor 16ms、Jetson Orin Nano 50ms。llama.cpp・Ollama・LM Studio向けなど21の量子化ビルドあり"
+   "latency_ms": 5.7,
+   "inputs": "テキスト・JSON、画像、動画（d1-Omni-2Bは音声も）。コンテキスト128Kトークン",
+   "outputs": "型つきの答えと確率（トークンは生成しない）。分類に加え、テキスト・数値・日付の抽出（位置つき）、画像内の物体の位置、数量の区間推定",
+   "languages": "16言語（日本語を含む：英・アラビア・中・仏・独・伊・日・韓・葡・西・越・泰・インドネシア・ヒンディー・露・波）",
+   "other": "遅延は1判断あたりNVIDIA H100で5.7ms、AMD MI325Xで3.8ms（公式）。1つの入力に何問でも1回で答える。GGUF・ONNX・MLX版あり。約64Kトークンを超える入力では精度が落ちる（公式注記）"
   },
   "features": {
    "画像入力": true,
-   "音声入力（d1-omni-600M）": true,
+   "動画入力": true,
+   "音声入力（d1-Omni-2B）": true,
    "確率・信頼度を返す": true,
-   "エッジ機器（Jetson等）で動作": true,
-   "日本語対応（公式明記）": false
+   "エッジ機器で動作": true,
+   "日本語対応（公式明記）": true
   },
-  "min_vram_gb": 8,
-  "rec_vram_gb": 24,
-  "vram_note": "公式にVRAMの記載なし。BF16重みは約6.2GB（計算値）。8GBのJetson Orin Nanoで50ms動作の公式計測あり、RTX 4090（24GB）で8ms",
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式にVRAMの記載なし。BF16重みは約3.8GB（計算値）で、GGUF・MLX版ならノートPCでも動かしやすい",
   "price_note": null,
-  "speed_note": "RTX 4090で1質問8ms（公式）。コミュニティ版Decision Indexの計測では中央値16ms",
+  "speed_note": "H100で1判断5.7ms、MI325Xで3.8ms（公式）",
   "bench": [
    {
-    "metric": "Jev Decision Index 0.2.1",
-    "value": 48.57,
-    "note": "10B未満で首位（Liquid自社報告）。d1-omni-600Mは15.95",
-    "source": "https://huggingface.co/LiquidAI/d1-3B"
+    "metric": "Decision Index 公開セット（v0.3）",
+    "value": 51.1,
+    "note": "d1-2B。同条件でd1-3B 49.0、d1-Omni-2B 49.0、d1-omni-600M 18.3（Liquid自社計測）",
+    "source": "https://huggingface.co/LiquidAI/d1-2B"
    },
    {
-    "metric": "PAWS-X",
-    "value": 76.9,
-    "note": "多言語の言い換え判定（日本語を含むデータセット）、Liquid社内評価。XNLIは85.0",
-    "source": "https://huggingface.co/LiquidAI/d1-3B"
-   },
-   {
-    "metric": "Jev Decision Index 0.3.1（総合）",
-    "value": 40.08,
-    "note": "53位（2026-10-10時点、第三者まとめ）",
-    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+    "metric": "Decision Bench（decisionbench.ai）v4",
+    "value": 85.2,
+    "note": "d1-2B。d1-3Bは83.6",
+    "source": "https://huggingface.co/LiquidAI/d1-2B"
    }
   ],
-  "quality_note": "3Bで画像も扱え、組み込み機器でも数十msで動く最速クラス。精度は大型の判断モデルに劣る（DI 0.3.1で40.08）ため、単純な振り分けや前段フィルタ向き",
-  "ja_note": "16言語対応のタグがあり、社内評価に多言語データのXNLI・PAWS-X（PAWS-Xは日本語を含む）が入っている。ただし日本語を名指しした記載はなく、日本語の判断精度は要検証",
+  "quality_note": "前版d1-3Bより3分の2以下の大きさで、多くの判断ベンチで上回る（自社比較）。知識が必要な問題は大型モデルが有利",
+  "ja_note": "モデルカードの対応16言語に日本語が明記された。日本語での判断精度の独立評価はまだない",
   "license": "LFM Open License v1.0",
   "commercial": "conditional",
-  "license_note": "年間売上1,000万ドル未満の組織は商用利用可。それ以上は Liquid AI から別途商用ライセンスが必要。研究・非営利利用は売上制限なし",
-  "hf": "https://huggingface.co/LiquidAI/d1-3B",
+  "license_note": "年間売上1,000万ドル未満の組織は商用利用可。それ以上は Liquid AI から別途商用ライセンスが必要",
+  "hf": "https://huggingface.co/LiquidAI/d1-2B",
   "tools": [
    "Transformers（trust_remote_code）",
-   "vLLM",
-   "SGLang",
-   "llama.cpp",
-   "Ollama",
-   "LM Studio",
-   "Docker Model Runner"
+   "llama.cpp（GGUF）",
+   "ONNX Runtime",
+   "MLX"
   ],
-  "summary_ja": "Liquid AIの小型判断モデルで、ゲーミングPCや組み込み機器でも1回0.01秒前後で判断できます。画像も見られますが、大企業の商用利用には別契約が要ります。",
-  "best_for_ja": "ロボット・カメラ・PCアプリなど端末側での即時判定や、大型モデルの前段フィルタ",
-  "supersedes": [],
+  "summary_ja": "Liquid AIの小型判断モデルの新版で、2Bながら前版の3Bを上回り、1回数ミリ秒で判断できます。日本語を含む16言語に対応し、音声も扱えるOmni版もあります。",
+  "best_for_ja": "PC・スマホ・組み込み機器での即時判定や、文書からの項目抽出、大型モデルの前段フィルタ",
+  "supersedes": [
+   "d1-3B",
+   "d1-omni-600M"
+  ],
+  "notes": "LFM3ファミリーとして2026-10-27にブログ発表（HFリポジトリ作成は10/24）。",
   "sources": [
-   "https://huggingface.co/LiquidAI/d1-3B",
-   "https://aiweekly.co/alerts/liquid-ai-opens-d1-3b-and-d1-omni-600m-decision-models",
-   "https://www.liquid.ai/lfm-license",
-   "https://benchlm.ai/md/decision-models.md",
-   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   "https://huggingface.co/LiquidAI/d1-2B",
+   "https://huggingface.co/LiquidAI/d1-Omni-2B",
+   "https://www.liquid.ai/blog/lfm3",
+   "https://www.liquid.ai/lfm-license"
   ],
   "confidence": "medium",
   "rank": 14
@@ -1322,14 +1325,14 @@
   "rank": 16
  },
  {
-  "id": "vllm-sr-vela-2",
-  "name": "Vela 2.0（0.3B／0.8B／4B／9B）",
+  "id": "vllm-sr-vela-3",
+  "name": "Vela 3.0（vela3-fast 0.4B〜vela3-turbo 27B）",
   "org": "KR Labs（オーストリア、TU Wien発）× vLLM Semantic Router（vLLM傘下の国際OSSプロジェクト）",
   "country": "AT",
   "release": "2026-10",
   "access": "open-weight",
-  "params_b": 4.2,
-  "arch": "Decision-2.0-Nox-4B（Qwen3.5-4B系）から派生した32層ハイブリッド（Gated DeltaNet＋gated GQA）のルーティング・安全判定モデル。文章は生成しない（params_bは4B版）",
+  "params_b": 8.39,
+  "arch": "Decision 3.0の判断モデル（d3-lite／mini／flash／turbo）を凍結したまま、抽出・ルーティング用のゲート付きLoRAアダプタを足した構成。最小のvela3-fast（0.4B）とvela3-fast-vision（0.25B）はエンコーダ型。文章は生成しない（params_bはvela3-flashの基盤分）",
   "tasks": [
    "route",
    "guard",
@@ -1339,71 +1342,67 @@
    "score"
   ],
   "spec": {
-   "latency_ms": null,
-   "inputs": "テキスト最大16,384トークン（request・source・answerなどのフィールド＋質問リスト）",
-   "outputs": "Choice／Yes-No／Score／Span（根拠箇所の抜き出し）／Set",
-   "languages": "17言語（多言語タグ、日本語の明記なし）",
-   "other": "選択肢・ラベル・ルーブリックはリクエスト時に定義。安全判定・プロンプト攻撃検出・個人情報（PII）検出・根拠スパン抽出をまとめて扱える。0.3B〜9Bの4サイズ"
+   "latency_ms": 86,
+   "inputs": "テキスト・JSON（d3由来の質問では画像・動画も可）",
+   "outputs": "Choice／Yes-No／Score／Span（固有表現・関係・個人情報・根拠のない主張・根拠文を文字位置つきで抜き出し）",
+   "languages": "記載なし（vela3-fastは英語のみ。評価にMASSIVEの52言語を含む）",
+   "other": "遅延はvela3-flashでルーター判定4問86ms、スパン質問1問40ms（公式の最速条件）。vela3-fastは判定＋スパンを1回のエンコーダ処理（約14ms）で返す。サイズはvela3-fast 0.4B／fast-vision 0.25B／lite 0.8B／mini 4B／flash 9B／turbo 27B"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
    "根拠スパン抽出": true,
    "安全・PII・プロンプト攻撃検出": true,
-   "多言語（17言語）": true,
+   "固有表現・関係の抽出": true,
    "日本語対応（公式明記）": false
   },
-  "min_vram_gb": 17,
-  "rec_vram_gb": 24,
-  "vram_note": "4B版はFP32でパラメータだけ約17GB（実行時の確保分は別、公式）。GPU上はbf16 autocastで動作、FP16は非対応。0.3B/0.8B版はさらに小さい",
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式のVRAM記載なし。vela3-flashは基盤8.39B＋アダプタ約3.6GB、vela3-turboは基盤26.09B＋アダプタ約5GB。小型のvela3-fast・liteは小さいGPUやCPU向け",
   "price_note": null,
-  "speed_note": "公式の遅延数値なし",
+  "speed_note": "vela3-flash: ルーター判定4問で86〜535ms、vela3-turbo: 同469〜2,238ms（条件別、自社計測）",
   "bench": [
    {
-    "metric": "安全判定 14公開セット平均AUC",
-    "value": 0.921,
-    "note": "学習済みタスク群での値（ゼロショットではない）、モデルカード",
-    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+    "metric": "ゼロショット分類（GLiFormer 13セット、macro-F1平均）",
+    "value": 81.4,
+    "note": "vela3-turbo。論文掲載のGPT-5-mini 79.8を上回るとする（開発元）",
+    "source": "https://huggingface.co/vllm-sr/vela3-turbo"
    },
    {
-    "metric": "未知のプロンプト攻撃系統 AUC",
-    "value": 0.985,
-    "note": "モデルカード",
-    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+    "metric": "LettuceDetect v2（根拠のない主張の検出、example-F1）",
+    "value": 0.9,
+    "note": "vela3-turbo。Vela 2.0 9Bは0.885",
+    "source": "https://huggingface.co/vllm-sr/vela3-turbo"
    },
    {
-    "metric": "PII検出 F1（短文）",
-    "value": 0.985,
-    "note": "モデルカード",
-    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
-   },
-   {
-    "metric": "Jev Decision Index 0.2.1",
-    "value": 31.91,
-    "note": "較正あり（既定は31.63）",
-    "source": "https://huggingface.co/vllm-sr/Vela-2.0-4B"
+    "metric": "ジェイルブレイク・プロンプト注入検出 AUC",
+    "value": 0.967,
+    "note": "vela3-turbo、router-signal-suite。Vela 2.0 9Bは0.919",
+    "source": "https://huggingface.co/vllm-sr/vela3-turbo"
    }
   ],
-  "quality_note": "汎用の判断精度（DI）は低いが、LLMへのリクエスト振り分けと安全ガード（攻撃検出・PII・根拠確認）を1モデルでこなせる実務寄りの設計。vLLM Semantic Routerと組み合わせる前提",
-  "ja_note": "17言語対応・多言語タグがあるが、日本語の明記はない。日本語の安全判定・ルーティング精度は要検証",
+  "quality_note": "ルーティング信号の公開テスト24ファイル中20でVela 2.0 9Bを上回り、下回るものはなし（開発元）。通常の判断は基盤のd3をそのまま使うので、判断精度はd3と同じで、そこに抽出機能が加わる形",
+  "ja_note": "日本語の明記はない。基盤のd3系はQwen系で多言語の素地があるが、日本語の抽出・安全判定の精度は要検証。最小のvela3-fastは英語のみ",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "Apache-2.0",
-  "hf": "https://huggingface.co/vllm-sr/Vela-2.0-4B",
+  "hf": "https://huggingface.co/vllm-sr/vela3-flash",
   "tools": [
-   "Transformers（trust_remote_code、>=5.17）",
+   "Transformers（trust_remote_code、5.17）",
    "vLLM Semantic Router",
    "flash-linear-attention（任意）"
   ],
-  "summary_ja": "vLLM陣営のルーティング用モデルで、「この依頼をどのAIに回すか」と「危険な依頼でないか」を同時に判定します。根拠になった文の箇所も抜き出せます。",
-  "best_for_ja": "複数のLLMを使い分けるゲートウェイでの振り分けと、入力・出力の安全チェック",
-  "supersedes": [],
+  "summary_ja": "vLLM陣営のルーティング・安全判定モデルの新版で、判断モデルd3に抽出用の小さな追加部品を載せています。依頼の振り分けや危険判定に加え、人名・個人情報・根拠のない記述の箇所を抜き出せます。",
+  "best_for_ja": "複数のLLMを使い分けるゲートウェイでの振り分けと、入力・出力の安全チェックや個人情報・ハルシネーション箇所の検出",
+  "supersedes": [
+   "Vela 2.0（0.3B／0.8B／4B／9B）"
+  ],
+  "notes": "HFでは10/14〜10/21に順次公開（vela3-fast・lite 10/17、flash 10/18、turbo・fast-vision 10/21）。前回までの収録漏れ。",
   "sources": [
-   "https://huggingface.co/vllm-sr/Vela-2.0-4B",
-   "https://huggingface.co/vllm-sr",
-   "https://vllm-sr.ai/blog/vela-2-0-open-foundation-routing-models",
-   "https://krlabsorg-readme.static.hf.space/README.md",
-   "https://arxiv.org/html/2502.17125v1"
+   "https://huggingface.co/vllm-sr/vela3-turbo",
+   "https://huggingface.co/vllm-sr/vela3-flash",
+   "https://huggingface.co/collections/vllm-sr/vela-30-6ad1c430eb1718eb4754edcd",
+   "https://huggingface.co/vllm-sr"
   ],
   "confidence": "medium",
   "rank": 17

@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-26",
- "next_update": "2026-10-28",
+ "updated_at": "2026-10-28",
+ "next_update": "2026-10-31",
  "rules": [
   "重みがダウンロードできるもの（オープンウェイト）を載せます（予告を除く）。音楽・画像・動画・3D・Decision Model だけは、比べやすいように重み非公開のAPIサービスも「API提供」として載せています。",
   "各系列は最新世代だけを載せます。後継が出たら旧版は消し、詳細の「置き換えた旧版」に名前を残します。",
@@ -13,6 +13,19 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-10-28",
+   "items": [
+    "更新: Ling-3.1-flash を改良版 Ling-3.1-flash-1019（inclusionAI、10/27公開、560B-A25B・MIT）に差し替え。AA指数は41.1→43.9",
+    "追加: d1-2B（＋d1-Omni-2B）（Liquid AI、10/27発表のLFM3ファミリー。日本語を含む16言語に対応した2Bの判断モデル）",
+    "削除: d1-3B／d1-omni-600M（後継 d1-2B／d1-Omni-2B に置換）",
+    "追加: Vela 3.0（vLLM Semantic Router × KR Labs、0.4B〜27Bのルーティング・抽出モデル。前回の収録漏れ）",
+    "削除: Vela 2.0（後継 Vela 3.0 に置換）",
+    "更新: Decision 3.0 に最上位の d3-ultra（26B、10/24公開、Apache-2.0）を追記",
+    "追加: LFM3-Audio-2B（Liquid AI、10/27公開。日本語を含む18言語の音声チャット・認識・合成・翻訳）",
+    "確認: Mistral Large 4・Kimi K3.1 Pro の重みはまだ未公開（予告のまま。Kimi は11/4までに公開予定）。AA Intelligence Index（v4.3.2）はほかに変化なし。Nejumi Leaderboard 4 は据え置き"
+   ]
+  },
   {
    "date": "2026-10-27",
    "items": [
@@ -88,7 +101,7 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v4.3.2",
-   "as_of": "2026-10-25",
+   "as_of": "2026-10-28",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "note": "10種類の評価（エージェント作業、Terminal-Bench 4.0、HLE など）の合成点。v4.3 は採点が厳しく、旧版の点数とは比べられません。"
   },

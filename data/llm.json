@@ -1284,11 +1284,11 @@
  },
  {
   "id": "ling-3-1-flash",
-  "name": "Ling-3.1-flash",
+  "name": "Ling-3.1-flash-1019",
   "family": "Ling 3.x",
   "org": "Ant Group（inclusionAI / 百灵）",
   "country": "CN",
-  "release": "2026-10",
+  "release": "2026-10-27",
   "arch": "MoE（Kimi Delta Attention線形注意とGated MLAの7:1ハイブリッド）",
   "total_b": 560,
   "active_b": 25,
@@ -1302,8 +1302,8 @@
   "license": "MIT",
   "commercial": "yes",
   "license_note": null,
-  "hf": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
-  "summary_ja": "Ant GroupのLing 3.xを拡大した560B/アクティブ25Bのハイブリッド推論MoE。汎用エージェント、検索、オフィス業務、医療、ソフトウェア開発などの実務タスクで強い。",
+  "hf": "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019",
+  "summary_ja": "Ant GroupのLing 3.1-flashを追加学習で強化した560B/アクティブ25Bのハイブリッド推論MoE。汎用エージェントやオフィス業務、科学系の課題で初版より伸びた。",
   "strengths": [
    "agent",
    "coding",
@@ -1321,8 +1321,8 @@
    "tau2": null,
    "browsecomp": 91.67
   },
-  "bench_note": "モデルカード（画像表）自己申告。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 68.74、DeepSWE 59.70、Terminal-Bench 4.0 46.03、TAU3-Banking 47.80、HealthBench Professional 65.35。DeepSWE、TB4.0、SWE-bench Proは自社ハーネスLingCodeでの値。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 41.1,
+  "bench_note": "ベンチ欄は初版Ling-3.1-flashのモデルカード（画像表）自己申告。terminal_bench2欄はTerminal-Bench 2.1。1019版のカードでは、AA-Briefcase 約1400→1524 Elo、AutomationBench-AA 62%→68%、CritPt 18%→26%、SciCode 54%→57%に向上と記載。AA指数v4.3.2（2026-10-28取得）は1019版で43.9（初版41.1）。AAの1019版の個別値はHLE 43.5%、Terminal-Bench 4.0 32.8%。",
+  "aa_index": 43.9,
   "japanese_note": null,
   "deploy_note_ja": "FP8で約574GB。公式例は8×H200（TP8+EP8）、または4×GB300。bartowskiのGGUFはQ4_K_M 約358GBで512GB級Mac、IQ2_M 約213GBで256GB級機。報道ではMXFP4とブロックFP8の量子化によりHopper 4基でも動くとされる。",
   "engines": [
@@ -1331,13 +1331,15 @@
    "llama.cpp"
   ],
   "supersedes": [
+   "Ling-3.1-flash（初版）",
    "Ling-3.0-flash",
    "Ling-2.6-1T",
    "Ring-2.6-1T",
    "Ling-2.6-flash"
   ],
-  "notes": "09-30に2週間の無料試用として発表（試用中は256Kに制限）、HFリポジトリは10-13作成、コミュニティGGUFは10-15に登場したため、公開日は2026-10とした。configのmax_positionは262,144で、1Mはカード公称値。Ling 3.xは思考オン/オフ一体型で、旧推論特化系列Ringの役割も統合した（Ling-3.0-flashのカードがRing-2.6-1Tを「前の1T級フラッグシップ」と表現）。",
+  "notes": "1019版は2026-10-27にHFで公開（MIT、構成は初版と同じ560B-A25B）。09-30に2週間の無料試用として発表（試用中は256Kに制限）、HFリポジトリは10-13作成、コミュニティGGUFは10-15に登場したため、公開日は2026-10とした。configのmax_positionは262,144で、1Mはカード公称値。Ling 3.xは思考オン/オフ一体型で、旧推論特化系列Ringの役割も統合した（Ling-3.0-flashのカードがRing-2.6-1Tを「前の1T級フラッグシップ」と表現）。",
   "sources": [
+   "https://huggingface.co/inclusionAI/Ling-3.1-flash-1019",
    "https://huggingface.co/inclusionAI/Ling-3.1-flash",
    "https://huggingface.co/inclusionAI/Ling-3.0-flash",
    "https://www.kucoin.com/news/flash/ant-group-s-bailing-open-sources-ling-3-1-flash-ai-model-with-1m-context-support",
@@ -1346,7 +1348,7 @@
    "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "medium",
-  "short": "Ling 3.1 Flash",
+  "short": "Ling 3.1 Flash 1019",
   "local_q": {
    "summary_ja": "最小の量子化版（IQ1_S、約1.87bit・131GB）なら192GB機に載ります。512GB の Mac Studio なら Q4_K_M、約5.11bit・358GB まで載ります。",
    "quants": [
@@ -1419,7 +1421,7 @@
     }
    ],
    "reports": [],
-   "note_ja": "Unsloth版なし（2026-10-13公開で直後）。EXL3はturboderp等"
+   "note_ja": "Unsloth版なし（2026-10-13公開で直後）。EXL3はturboderp等 量子化版のサイズは初版Ling-3.1-flashのもの（1019版は構成が同じなので同程度）。"
   }
  },
  {
