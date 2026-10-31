@@ -517,7 +517,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   function isLocal(m) { return num(m.total_b) != null && m.total_b <= LOCAL_MAX; }
   var BIG = LLM.filter(function (m) { return !isLocal(m); });
   var LOCAL = LLM.filter(isLocal);
-  var JP = LLM.filter(function (m) { return m.country === "JP"; });
+  var JP = LLM.filter(function (m) { return m.country === "JP"; }).concat((META.jp_reference_models || []).map(function (m) { return Object.assign({}, m, { access: "api" }); }));
   function llmPid(m) { return isLocal(m) ? "local" : "llm"; }
 
   /* ── ページ構成 ── */
@@ -525,7 +525,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     { id: "home", nav: "ホーム" },
     { id: "llm", nav: "大型LLM", grp: "言語", h: "大型LLM：40B超の大型・超巨大モデル", desc: "総パラメータ40B超（ほとんどが100B以上）。賢さ（AA Index）と、載せるのに要るGPUメモリで比べる。量子化してローカル機に載るかも。", list: BIG },
     { id: "local", nav: "ローカルLLM", grp: "言語", h: "ローカルLLM：手元のGPU・Macで動く40B以下", desc: "総パラメータ40B以下（30B台まで）。4bit量子化で RTX 4090／5090 や Mac に載るかで比べる。", list: LOCAL },
-    { id: "jp", nav: "国産LLM", grp: "言語", h: "国産LLM：日本の組織が公開した重み", desc: "日本の組織が公開したLLM。フルスクラッチと海外モデルベースを区別し、日本語ベンチで比べる。", list: JP },
+    { id: "jp", nav: "国産LLM", grp: "言語", h: "国産LLM：日本の組織が開発したモデル", desc: "重み公開モデルとAPI・企業向け提供モデルをまとめて掲載。提供形態を確認しながら、日本語ベンチや公開日で比べる。", list: JP },
     { id: "asr", nav: "音声認識", grp: "音声", h: "音声認識（ASR）：日本語の書き起こし", desc: "日本語の書き起こし（ASR）。日本語CERで精度を比べる。", list: ASR },
     { id: "tts", nav: "音声合成", grp: "音声", h: "音声合成（TTS）：日本語の読み上げ・声づくり", desc: "日本語の読み上げ・声クローン（TTS）。商用利用の可否に注意。", list: TTS },
     { id: "s2s", nav: "Speech to Speech", grp: "音声", gen: true, h: "Speech to Speech：音声で聞いて、音声で返す", desc: "音声対話（全二重含む）、音声翻訳、声質変換。日本語で使えるものを中心に。" },
@@ -721,7 +721,20 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   var ORDER = function (a, b) { return (a.rank || 99) - (b.rank || 99) || byNew(a, b); };
 
   /* ── LLM 行 ── */
+  function apiLLMRow(m, pid) {
+    var spec = kv(originKV(m).concat([
+      ["提供形態", "API・企業向けオンプレミス（重み非公開）"],
+      ["規模", esc(m.size_ja)], ["文脈長", esc(m.context_ja)],
+      ["提供状況", esc(m.availability_ja)], ["ローカル実行", esc(m.local_ja)], ["料金", esc(m.price_ja)]
+    ]));
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
+      idHead(m, '<span class="chip">API提供</span>') + '</div>' +
+      '<div class="c-size"><div class="params"><b>非公表</b><span>総パラメータ</span></div><p class="note muted">重み非公開・企業向けオンプレミス対応</p></div>' +
+      '<div class="c-score"><span class="score na">—</span><span class="score-l">Nejumi LB4 未計測</span></div></div></summary>' +
+      '<div class="detail"><div><h4>仕様・利用方法</h4>' + spec + '</div>' + sources(m.sources) + '</div></details>';
+  }
   function llmRow(m, pid, opt) {
+    if (m.access === "api") return apiLLMRow(m, pid);
     opt = opt || {};
     var cfg = cfgFor(m), w = weightsGB(m), need = cfg.need(m), alt = cfg.alt(m), tier = tierFor(cfg.tiers, need), altT = tierFor(cfg.tiers, alt);
     var sc = opt.metric ? opt.metric.get(m) : scoreOf(m), scMax = opt.metric ? opt.metric.max : maxAA;
@@ -1069,8 +1082,8 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   RENDER.jp = function () {
     var f = ST.jp;
     var list = JP.filter(function (m) {
-      if (f.lin !== "all" && (f.lin === "scratch") !== !!m.from_scratch) return false;
-      if (f.size !== "all" && (f.size === "local") !== isLocal(m)) return false;
+      if (f.lin !== "all" && (f.lin === "scratch" ? !m.from_scratch : !m.base_model)) return false;
+      if (f.size !== "all" && (num(m.total_b) == null || (f.size === "local") !== isLocal(m))) return false;
       return true;
     });
     list.sort(f.sort === "new" ? byNew : f.sort === "old" ? byOld : f.sort === "heavy" ? function (a, b) { return (b.total_b || 0) - (a.total_b || 0); } :
@@ -1311,7 +1324,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     document.getElementById("lbs").innerHTML = (META.leaderboards || []).map(function (l) {
       return "<li><b>" + esc(l.name) + "</b>" + (l.as_of ? '<span class="muted mono"> ' + esc(l.as_of) + " 時点</span>" : "") + "<br>" + link(l.url) + (l.note ? '<br><span class="muted">' + esc(l.note) + "</span>" : "") + "</li>";
     }).join("");
-    ["llm", "jp"].forEach(function (pid) {
+    ["llm"].forEach(function (pid) {
       var refs = META[pid + "_reference_models"] || [];
       var refHost = document.getElementById(pid + "-closed");
       if (!refHost || !refs.length) return;

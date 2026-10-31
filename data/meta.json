@@ -168,7 +168,7 @@
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
   "llm": "Gemini 4 Carbon（AA v5で59.4）、Claude Opus 5.5（58.4）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.5）、Claude Sonnet 5.5（54.2）、GPT-6.1 Terra（51.0）、Gemini 4 Argon（50.4）、Meta Muse Wonder Full（49.7）、Qwen3.8 Max（33.6、API版）など。重みが出ているオープンの首位 DeepSeek V4.1 Flash 1017 は 32.5 で、クローズドの最上位とは約27点の差があります（重み公開待ちの Kimi K3.1 Pro は46）。",
-  "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。上の参考枠に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
+  "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "ElevenLabs Eleven v4 / v4 Turbo、Google Gemini 3.8 Flash TTS・Chirp 3 HD、Azure AI Speech Neural HD（DragonHD）、OpenAI gpt-4o-mini-tts、Fish Audio S2.1 Pro API、Aivis Cloud API など。 Mistral Voxtral TTS 3（10/20 API Public Preview。日本語を含む多言語音声合成）。",
   "s2s": "OpenAI GPT-Live-1（ChatGPT）・gpt-realtime-2・gpt-realtime-translate、Google Gemini Live 系、Alibaba Qwen3.5-Omni Plus / Flash（API）など。"
