@@ -93,6 +93,80 @@
   "pick_reason": "会話音声やIT用語でも崩れにくい"
  },
  {
+  "id": "haas-ja-v1-0",
+  "name": "Haas-ja-v1.0",
+  "org": "Third Intelligence",
+  "country": "JP",
+  "release": "2026-10-30",
+  "params_m": 616,
+  "arch": "FastConformer TDT（Parakeet-TDT系。予測ネットワークをLSTMからKimi Delta Attentionに置換）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "asr-ja-bench v1.1（5データセットの時間加重平均）",
+    "cer": 6.12,
+    "note": "開発元の評価。jacerで表記ゆれを正規化したCER strict（漢字/かなの違いも誤りとする）。同表でNemotron 3.5 Transcribe 6.89、Whisper large-v3 7.22、Parakeet TDT-CTC 0.6B ja 7.23、Qwen3-ASR-1.7B 7.59",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 5.32,
+    "note": "開発元の評価、CER strict（jacer正規化）",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "TEDxJP-10K",
+    "cer": 8.35,
+    "note": "開発元の評価、CER strict（jacer正規化）",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "FLEURS ja",
+    "cer": 3.67,
+    "note": "開発元の評価、CER strict（jacer正規化）",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "JVNV（感情音声）",
+    "cer": 4.53,
+    "note": "開発元の評価、CER strict（jacer正規化）",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "SpeechBSD（ビジネス会話）",
+    "cer": 5.47,
+    "note": "開発元の評価、CER strict（jacer正規化）",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "H200・batch 512でRTFx 3,236（1秒で約3,236秒分の音声を処理）。Parakeet TDT-CTC 0.6B ja（3,407）とほぼ同速で、Nemotron 3.5 TranscribeやWhisper large-v3より約15〜17倍速い（開発元の計測）",
+  "hardware_note": "NeMo 2.7＋flash-linear-attention（Triton/CUDA）が必要で、NVIDIA GPUのLinux環境のみ。CPU・macOSは非対応。重みは.nemo形式で約1.2GB。30秒超の音声はtranscribe_longformで無音区間ごとに分割して処理。話者ラベルはNemotron-3-Diarizationとの組み合わせで付けられる。公開直後からGGUF・ONNX・MLXのコミュニティ変換版あり",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みと推論コードともにApache-2.0。学習データはReazonSpeech、Common Voice 26.0、YODASと社内データの約4.6万時間",
+  "hf": "https://huggingface.co/third-intelligence/Haas-ja-v1.0",
+  "summary_ja": "東京のスタートアップThird Intelligenceが公開した日本語専用ASRで、Parakeet並みの速さのまま精度を上げたモデルです。開発元の5データセット評価では、比べたオープンモデルの中で最も誤りが少ない結果でした。",
+  "best_for_ja": "GPUでの大量音声の高速一括書き起こし。固有名詞の読みを登録するカスタム語彙機能もある",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/third-intelligence/Haas-ja-v1.0",
+   "https://third-intelligence.com/ja/posts/haas-ja-v1-release",
+   "https://github.com/third-intelligence/Haas-ASR",
+   "https://huggingface.co/datasets/third-intelligence/asr-ja-bench"
+  ],
+  "confidence": "medium",
+  "rank": 2,
+  "pick": "GPUで速く・高精度",
+  "pick_reason": "Parakeet並みの速さで誤りが少ない。Apache-2.0"
+ },
+ {
   "id": "ruby-asr-1-7b",
   "name": "Ruby-ASR-1.7B",
   "org": "Hao Shi ほか（独立研究者グループ。筆頭著者は京都大学所属）",
@@ -155,7 +229,7 @@
    "https://github.com/hshi-speech"
   ],
   "confidence": "medium",
-  "rank": 2
+  "rank": 3
  },
  {
   "id": "reazonspeech-k2-v2",
@@ -231,7 +305,7 @@
    "https://dev.classmethod.jp/articles/reazonspeech-v2/"
   ],
   "confidence": "high",
-  "rank": 3,
+  "rank": 4,
   "pick": "CPUで速く・軽く",
   "pick_reason": "159Mで日本語専用。読み上げ音声に強い"
  },
@@ -296,9 +370,7 @@
    "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/"
   ],
   "confidence": "high",
-  "rank": 4,
-  "pick": "GPUで最速クラス",
-  "pick_reason": "JSUT CER 6.4%。大量の書き起こしに"
+  "rank": 5
  },
  {
   "id": "whisper-large-v3",
@@ -380,7 +452,7 @@
    "https://models.handy.computer/languages/ja"
   ],
   "confidence": "high",
-  "rank": 5
+  "rank": 6
  },
  {
   "id": "whisper-large-v3-turbo",
@@ -458,7 +530,7 @@
    "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
   ],
   "confidence": "high",
-  "rank": 6
+  "rank": 7
  },
  {
   "id": "kotoba-whisper-v2-2",
@@ -547,7 +619,7 @@
    "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
   ],
   "confidence": "high",
-  "rank": 7,
+  "rank": 8,
   "pick": "話者分離・句読点付きの議事録",
   "pick_reason": "Whisper 互換で導入が簡単"
  },
@@ -622,7 +694,72 @@
    "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
   ],
   "confidence": "medium",
-  "rank": 8
+  "rank": 9
+ },
+ {
+  "id": "nemotron-3-5-transcribe-30b-a4b",
+  "name": "Nemotron 3.5 Transcribe 30B-A4B",
+  "org": "NVIDIA",
+  "country": "US",
+  "release": "2026-10-28",
+  "params_m": 34000,
+  "arch": "Speech LLM（Transformer ASRエンコーダ600M＋話者エンコーダ約99M＋Nemotron 3.5 Lightning 30B-A3BのMamba-2/Transformer MoE。稼働約4.3B）",
+  "lang": "multilingual",
+  "ja_cer": [
+   {
+    "dataset": "FLEURS ja",
+    "cer": 4.42,
+    "note": "公式モデルカード（CER）",
+    "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+   },
+   {
+    "dataset": "CoVoST2 ja",
+    "cer": 10.61,
+    "note": "公式モデルカード（CER）",
+    "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+   },
+   {
+    "dataset": "asr-ja-bench v1.1（5データセットの時間加重平均）",
+    "cer": 6.89,
+    "note": "第三者（Third Intelligence）。jacer正規化のCER strict。同表でWhisper large-v3 7.22、Qwen3-ASR-1.7B 7.59",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "JSUT basic5000",
+    "cer": 5.9,
+    "note": "第三者（Third Intelligence）、CER strict",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   },
+   {
+    "dataset": "TEDxJP-10K",
+    "cer": 9.53,
+    "note": "第三者（Third Intelligence）、CER strict",
+    "source": "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   }
+  ],
+  "features": {
+   "streaming": false,
+   "timestamps": "word",
+   "diarization": true,
+   "punctuation": true,
+   "long_form": true
+  },
+  "speed_note": "公式NIM（非公開の最適化版vLLM）ではRTX PRO 6000 Blackwell 1枚で最大2,238秒分の音声/秒、30秒音声を0.13秒で返す。オープンソース版のvLLM統合はその約半分の速さと公式が明記。H200・batch 512でRTFx 190（Third Intelligence計測）",
+  "hardware_note": "BF16の重みは約67GBで、公式の基準構成はH100 80GB×1。公式FP8・NVFP4版あり、RTX 5090はNVFP4で対応、L40S 48GBはFP8で対応と公式表に記載。DGX Spark・Jetson Thorにも対応。GGUF・MLXのコミュニティ量子化版あり",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "OpenMDW-1.1。公式に商用・非商用利用可と明記。日本語の品質区分は「Production-ready」（最上位の「Leading」ではない）。音声理解・推論・音声指示は英語でのみ評価",
+  "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+  "summary_ja": "NVIDIAの40言語対応の大型音声LLMで、最長1時間の録音を話者ラベル・単語タイムスタンプ付きで書き起こせます。日本語の精度はWhisper large-v3より少し良い程度ですが、動かすには大きなGPUが必要です。",
+  "best_for_ja": "会議録音の話者別書き起こし、用語ヒントを与えた文脈付き書き起こし、日英の音声翻訳を1モデルでまとめたいサーバー用途",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+   "https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3.5-Transcribe-Technical-Report.pdf",
+   "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+  ],
+  "confidence": "high",
+  "rank": 10
  },
  {
   "id": "voxtral-mini-4b-realtime-2602",
@@ -685,7 +822,7 @@
    "https://neosophie.com/en/blog/20260414-it-asr-benchmark"
   ],
   "confidence": "high",
-  "rank": 9,
+  "rank": 11,
   "pick": "リアルタイム字幕",
   "pick_reason": "ストリーミング対応"
  },
@@ -747,7 +884,7 @@
    "https://models.handy.computer/languages/ja"
   ],
   "confidence": "high",
-  "rank": 10
+  "rank": 12
  },
  {
   "id": "vibevoice-asr",
@@ -789,7 +926,7 @@
    "https://arxiv.org/abs/2609.02812"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 13
  },
  {
   "id": "lfm2-5-audio-1-5b-jp",
@@ -843,7 +980,7 @@
    "https://www.liquid.ai/lfm-license"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 14
  },
  {
   "id": "fun-asr-mlt-nano-2512",
@@ -884,7 +1021,7 @@
    "https://models.handy.computer/languages/ja"
   ],
   "confidence": "low",
-  "rank": 13
+  "rank": 15
  },
  {
   "id": "anime-whisper",
@@ -947,7 +1084,7 @@
    "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 16
  },
  {
   "id": "sensevoice-small",
@@ -994,7 +1131,7 @@
    "https://models.handy.computer/languages/ja"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 17
  },
  {
   "id": "moonshine-streaming-small-ja",
@@ -1043,6 +1180,6 @@
    "https://models.handy.computer/languages/ja"
   ],
   "confidence": "medium",
-  "rank": 16
+  "rank": 18
  }
 ]

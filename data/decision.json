@@ -373,7 +373,7 @@
    "inputs": "状態（チケット・メールなど、テキスト＋任意で画像）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
    "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
    "languages": "英語",
-   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
+   "other": "Baseten Model APIsで提供（公開後1週間の無料期間は終了）。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
   },
   "features": {
    "画像入力": true,
@@ -386,7 +386,7 @@
   "min_vram_gb": null,
   "rec_vram_gb": 80,
   "vram_note": "公式の要件はない（CUDA GPU 1枚で自前運用）。BF16で約55GBのため80GB級が目安",
-  "price_note": "Baseten Model APIsで公開から1週間無料。以降の料金は未発表",
+  "price_note": "Baseten Model APIsで入力 $0.10/1Mトークン、キャッシュ入力・出力は無料（公式。公開から1週間は無料だった）",
   "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
   "bench": [
    {
@@ -421,7 +421,8 @@
    "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/",
    "https://labs.baseten.co/articles/mammoth-1-and-elephant-1-frontier-decision-models",
    "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+   "https://www.baseten.co/library/mammoth-1/"
   ],
   "confidence": "high",
   "hl": {
@@ -453,7 +454,7 @@
    "inputs": "状態（チケット・メールなど、テキスト＋任意で画像）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
    "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
    "languages": "英語",
-   "other": "Baseten Model APIsで10月27日まで1週間無料。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
+   "other": "Baseten Model APIsで提供（公開後1週間の無料期間は終了）。自前ではOneJevランタイムやTransformersで動かせる。Baseten Model APIsのエンドポイントもテキストと画像を受け付ける（10月22日にモデルカードで画像入力を明記）"
   },
   "features": {
    "画像入力": true,
@@ -466,7 +467,7 @@
   "min_vram_gb": null,
   "rec_vram_gb": 24,
   "vram_note": "公式の要件はない。BF16で約19GBのため24GB級が目安",
-  "price_note": "Baseten Model APIsで公開から1週間無料。以降の料金は未発表",
+  "price_note": "Baseten Model APIsで入力 $0.035/1Mトークン、キャッシュ入力・出力は無料（公式。公開から1週間は無料だった）",
   "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
   "bench": [
    {
@@ -501,7 +502,8 @@
    "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/",
    "https://labs.baseten.co/articles/mammoth-1-and-elephant-1-frontier-decision-models",
    "https://huggingface.co/spaces/multimodalart/jev-decision-index",
-   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+   "https://www.baseten.co/library/elephant-1/"
   ],
   "confidence": "high",
   "hl": {
@@ -509,6 +511,78 @@
    "value": 64.7
   },
   "rank": 6
+ },
+ {
+  "id": "baseten-joey-1",
+  "name": "joey-1（2B）",
+  "org": "Baseten（Base Labs）",
+  "country": "US",
+  "release": "2026-10-29",
+  "access": "open-weight",
+  "params_b": 2,
+  "arch": "Qwen3.5-2Bを判断用に全体微調整した判断モデル（画像エンコーダは凍結）。全結合注意層をブロック双方向マスクにし、共通の前置き（状態）を1回読むだけで全質問の全選択肢の確率を返す。「分からない」を選べるよう学習",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 20,
+   "inputs": "状態（テキスト＋任意で画像）＋型付き質問。最大16,384トークン（超過は切り詰めずに拒否）",
+   "outputs": "Noul（はい・いいえの確率）／Choice（名前付き選択肢と確率）／Score（順序レベルと確率）",
+   "languages": "英語",
+   "other": "遅延は平均2,000トークンのリクエストでのエンドツーエンド中央値（Baseten発表、計測GPUの記載なし）。elephant-1は同条件49ms。学習は620万件（Mix 8）の判断例で1エポック、交差エントロピー＋Brier較正項。自前運用はOneJevランタイム（setup.sh）でCUDA GPU 1枚"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "判断の保留を学習": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式の要件はない。重みは約27億パラメータ分（BF16で約5.4GB、計算値）なので一般的なGPUに載る",
+  "price_note": "Baseten Model APIsで入力 $0.01/1Mトークン（公式。mammoth-1の10分の1）、ZDRが既定",
+  "speed_note": "中央値20ms/判断（平均2,000トークン、Baseten計測）。elephant-1の約2.5倍速い",
+  "bench": [
+   {
+    "metric": "Jev Decision Index 0.4（公開分）",
+    "value": 63.3,
+    "note": "230モデル中37位、4B未満で1位（Baseten発表）。同表でClef 61.71、Jev 1.14 60.70、Decider Flash v1.2 60.06、elephant-1 72.24",
+    "source": "https://huggingface.co/baselabs/joey-1"
+   },
+   {
+    "metric": "Artificial Analysis Decision Index（Basetenの再現実行）",
+    "value": 62.9,
+    "note": "AA公式ボードの値ではない。同条件でmammoth-1 65.9、elephant-1 65.2",
+    "source": "https://huggingface.co/baselabs/joey-1"
+   }
+  ],
+  "quality_note": "2Bと非常に小さく安いが、公開ベンチではJev 1.14やClefを上回る（Baseten発表）。幅広い知識が要る判断はelephant-1・mammoth-1のほうが強い",
+  "ja_note": "英語のみの記載。日本語での精度は不明",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": "MIT（ベースのQwen3.5-2BはApache-2.0）。ゲートなしでダウンロードできる",
+  "hf": "https://huggingface.co/baselabs/joey-1",
+  "tools": [
+   "Baseten Model APIs",
+   "OneJev"
+  ],
+  "summary_ja": "Basetenが公開した2Bの小さな判断モデルで、1判断あたり約0.02秒と速く、APIも100万トークン1セントと格安です。MITライセンスで商用にも使えます。",
+  "best_for_ja": "大量の振り分け・要否判定を、とにかく安く速く回したい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/baselabs/joey-1",
+   "https://www.baseten.co/blog/decisions-for-a-penny-introducing-joey-1/",
+   "https://www.baseten.co/library/joey-1/"
+  ],
+  "confidence": "high",
+  "rank": 7,
+  "notes": "HFへのアップロードは2026-10-27、公式ブログでの発表は10-29。"
  },
  {
   "id": "fastino-glide",
@@ -789,7 +863,7 @@
  },
  {
   "id": "h2o-lightning-31b",
-  "name": "H2O-Lightning-31B（v1.0.7）",
+  "name": "H2O-Lightning-31B（v1.2.4）",
   "org": "H2O.ai",
   "country": "US",
   "release": "2026-10-20",
@@ -804,11 +878,11 @@
    "classify"
   ],
   "spec": {
-   "latency_ms": 60,
+   "latency_ms": 46,
    "inputs": "テキスト（最大131,072トークン）、画像は1リクエスト最大4枚。動画は非対応",
-   "outputs": "Choice（最大255択）／Yes-No／Score。画像用のBoxは既定でオフ",
+   "outputs": "Choice（最大255択）／Yes-No／Score。画像内の位置を返すBox質問が既定で常時有効（構造化出力による1回の生成）",
    "languages": "主に英語で評価",
-   "other": "遅延はRTX PRO 6000 1枚・直列でのDecision Index実行の中央値60ms（平均186ms）。2-way読み取りにはH2O版vLLMが必要（標準vLLMは1-way）"
+   "other": "遅延はJevBench実行の中央値46ms（p95 392ms、RTX PRO 6000 96GB 1枚）。画像1回読みは中央値233ms。Decision Indexプロファイルでは中央値262ms（L40S）。文脈は96GB機で131,072トークン、H100 80GBでは81,920トークン。2-way読み取りにはH2O版vLLMが必要（標準vLLMは1-way）"
   },
   "features": {
    "画像入力": true,
@@ -821,18 +895,24 @@
   "rec_vram_gb": 96,
   "vram_note": "推奨はRTX PRO 6000（96GB）1枚でFP8重み（約32GiB）。H100 80GBでもFP8なら動く（BF16では長文が載らない）",
   "price_note": null,
-  "speed_note": "中央値60ms/判断（RTX PRO 6000、自社計測）",
+  "speed_note": "中央値46ms/判断（JevBench、RTX PRO 6000、自社計測）",
   "bench": [
    {
-    "metric": "Decision Index 0.3（テキスト、2-way）",
-    "value": 66.69,
-    "note": "自社実行。画像は76.59",
+    "metric": "Decision Index 0.3（テキスト、公開分）",
+    "value": 67.75,
+    "note": "v1.2.4、decision-indexプロファイルでの自社実行（H100×6）。画像は76.59",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-31b"
+   },
+   {
+    "metric": "JevBench composite",
+    "value": 73.44,
+    "note": "v1.2.4の自社読み（board v1.7.47）。オープンのJev級で4B版（73.82）に次ぐ2位とH2Oが記載",
     "source": "https://huggingface.co/h2oai/h2o-lightning-31b"
    },
    {
     "metric": "Jev Decision Index 0.4.1（総合）",
     "value": 66.58,
-    "note": "コミュニティボードで16位（2026-10-21時点）",
+    "note": "v1.0.7時点、コミュニティボードで16位（2026-10-21時点）",
     "source": "https://huggingface.co/spaces/multimodalart/jev-decision-index"
    }
   ],
@@ -855,8 +935,9 @@
    "https://huggingface.co/h2oai/h2o-lightning-31b",
    "https://huggingface.co/spaces/multimodalart/jev-decision-index"
   ],
-  "confidence": "high",
-  "rank": 10
+  "confidence": "medium",
+  "rank": 10,
+  "notes": "初版は2026-10-20公開。v1.2.4の公開日はカードに記載がなく（HFリポジトリの最終更新は10/29）、公開日欄は初版のまま。"
  },
  {
   "id": "shisa-de-2-1",
@@ -933,13 +1014,13 @@
  },
  {
   "id": "cloudflare-clef",
-  "name": "Clef／Clef-flash",
+  "name": "Clef／Clef-flash／Clef-Omni",
   "org": "Cloudflare",
   "country": "US",
   "release": "2026-10-01",
   "access": "open-weight",
   "params_b": 27,
-  "arch": "Qwen3.8-27B（視覚エンコーダ込み）を基にした判断モデル。全質問の全選択肢の確率を1回のフォワードパスで返す。小型のClef-flashは約9B（Qwen3.5-9B系とされる）",
+  "arch": "Qwen3.8-27B（視覚エンコーダ込み）を基にした判断モデル。全質問の全選択肢の確率を1回のフォワードパスで返す。小型のClef-flashは約9B（Qwen3.5-9B系とされる）。Clef-OmniはQwen3-Omni-30B-A3B（MoE）を基に、小さな結合スキーマヘッドを載せた音声・動画対応版",
   "tasks": [
    "predicate",
    "choice",
@@ -949,10 +1030,10 @@
   ],
   "spec": {
    "latency_ms": 209.3,
-   "inputs": "テキスト・JSON・画像・動画（テキストのみとマルチモーダルを同じバッチに混在可）",
+   "inputs": "テキスト・JSON・画像・動画（テキストのみとマルチモーダルを同じバッチに混在可）。Clef-Omniは音声（wav/mp3）と音声付き動画（mp4/webm、2fps）も可",
    "outputs": "noul（真偽）／choice（名前付き選択肢）／score（順序つき選択肢）の各選択肢の確率",
    "languages": "記載なし",
-   "other": "遅延はClefの中央値（p95 238.6ms、Decision Index社内計測）。Clef-flashは中央値38.8ms（p95 122.4ms）。Cloudflare Workers AIでホスト。報道では1リクエスト最大64質問、Workers AI価格はClef $0.24/1M・Clef-flash $0.09/1M入力（公式未確認）。リクエストデータを読まない・保存しない・学習に使わない方針。RL微調整サービスも提供（当初は担当エンジニア伴走型）"
+   "other": "遅延はClefの中央値（p95 238.6ms、Decision Index社内計測）。Clef-flashは中央値38.8ms（p95 122.4ms）。Clef-Omniはテキスト約130ms・画像約150ms・音声数百ms・21秒の音声付き動画約1.5秒（中央値、Cloudflare発表）。Cloudflare Workers AIでホスト（ホスト版の文脈長はClef 64k、Clef-flash 24k）。報道では1リクエスト最大64質問。リクエストデータを読まない・保存しない・学習に使わない方針。RL微調整サービスも提供（当初は担当エンジニア伴走型）"
   },
   "features": {
    "画像入力": true,
@@ -961,12 +1042,13 @@
    "セルフホスト可": true,
    "ホストAPIあり（Workers AI）": true,
    "RL微調整サービス": true,
+   "音声入力（Clef-Omni）": true,
    "日本語対応（公式明記）": false
   },
   "min_vram_gb": 54,
   "rec_vram_gb": 80,
-  "vram_note": "公式にVRAMの記載なし。27BをBF16で載せると重みだけで約54GB（計算値）、公式テストは単一H200。Clef-flash（約9B）ならBF16で約19GB（計算値）",
-  "price_note": null,
+  "vram_note": "公式にVRAMの記載なし。27BをBF16で載せると重みだけで約54GB（計算値）、公式テストは単一H200。Clef-flash（約9B）ならBF16で約19GB（計算値）。Clef-OmniはBF16で約64GB（公式、H200 1枚でテスト）",
+  "price_note": "Workers AIの入力料金: Clef $0.24/1M、Clef-flash $0.038/1M（$0.09から値下げ）、Clef-Omni $0.15/1M（Cloudflare公式ブログ、2026-10-09）",
   "speed_note": "Clef中央値209ms、Clef-flash中央値38.8ms（Cloudflare計測、同条件のJevは524ms）",
   "bench": [
    {
@@ -982,41 +1064,50 @@
     "source": "https://huggingface.co/Cloudflare/clef"
    },
    {
+    "metric": "BANKING77 macro-F1（Clef-Omni）",
+    "value": 94.8,
+    "note": "Clef-Omni。CLINC150+OOSは97.7、BFCLは98.2（Cloudflare発表）",
+    "source": "https://blog.cloudflare.com/clef-faster-cheaper-multimodal"
+   },
+   {
     "metric": "Jev Decision Index 0.3.1（総合）",
     "value": 53.08,
     "note": "Clef、19位。公開問題61.71に対し新ドメイン41.88と大きく低下",
     "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
    }
   ],
-  "quality_note": "ツール呼び出しや意図分類ではJevを上回るほど強い一方、GPQA・MMLU-Pro・BBHなど知識・推論系では大きく劣り、新しい分野への汎化が弱い（公開問題61.71→新ドメイン41.88）。自前運用とWorkers AIのホストを選べる",
+  "quality_note": "ツール呼び出しや意図分類ではJevを上回るほど強い一方、GPQA・MMLU-Pro・BBHなど知識・推論系では大きく劣り、新しい分野への汎化が弱い（公開問題61.71→新ドメイン41.88）。音声・動画まで読めるClef-Omniがあり、自前運用とWorkers AIのホストを選べる",
   "ja_note": "言語の記載なし。日本語での判断精度は未評価",
   "license": "Apache-2.0",
   "commercial": "yes",
-  "license_note": "重みはApache-2.0（Cloudflare/clef、Cloudflare/clef-flash）",
+  "license_note": "重みはApache-2.0（Cloudflare/clef、Cloudflare/clef-flash、Cloudflare/clef-omni）",
   "hf": "https://huggingface.co/Cloudflare/clef",
   "tools": [
    "Transformers",
    "Cloudflare Workers AI"
   ],
-  "summary_ja": "Cloudflareが公開した判断モデルで、ツールの選択や意図の分類が得意です。自社のサーバーでもCloudflareのクラウドでも動かせます。",
-  "best_for_ja": "エージェントのツール選択・意図判定・人の確認が要るかの判断。小さく速いClef-flashは高頻度の振り分け向け",
+  "summary_ja": "Cloudflareが公開した判断モデルで、ツールの選択や意図の分類が得意です。音声や動画も読めるClef-Omniがあり、自社サーバーでもCloudflareのクラウドでも動かせます。",
+  "best_for_ja": "エージェントのツール選択・意図判定・人の確認が要るかの判断。小さく速いClef-flashは高頻度の振り分け向け、通話録音や動画の判定はClef-Omni",
   "supersedes": [],
   "sources": [
    "https://huggingface.co/Cloudflare/clef",
+   "https://huggingface.co/Cloudflare/clef-omni",
+   "https://blog.cloudflare.com/clef-faster-cheaper-multimodal",
    "https://letsdatascience.com/news/cloudflare-releases-open-weight-clef-decision-models-c52886d6",
    "https://flaviocopes.com/clef/",
    "https://www.developersdigest.tech/blog/cloudflare-clef-decision-models-2026",
    "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 12,
+  "notes": "Clef／Clef-flashは2026-10-01公開。Clef-Omniは2026-10-09公開（前回までの掲載で漏れていたため追記）。"
  },
  {
   "id": "h2o-lightning-4b",
-  "name": "H2O-Lightning-4B（v1.4.0）",
+  "name": "H2O-Lightning-4B（v1.4.2）",
   "org": "H2O.ai",
   "country": "US",
-  "release": "2026-10-24",
+  "release": "2026-10-29",
   "access": "open-weight",
   "params_b": 4,
   "arch": "Qwen3.5-4Bを3段階で微調整した判断モデル（v1.4.0は画像を含む学習データで新たに微調整し、1-way／2-wayの両方の読み取りに対応）。1判断＝1フォワード・出力1トークンで、コストは入力トークンだけで決まる（カード上の表記は4B〜5Bで揺れあり）",
@@ -1029,10 +1120,10 @@
   ],
   "spec": {
    "latency_ms": 30,
-   "inputs": "テキスト（最大40,960トークン）、画像は1リクエスト最大4枚（各約1MPに縮小、1枚20MBまで）",
-   "outputs": "Choice（最大255択）／Yes-No（noul）／Score（順序尺度の確率分布）。画像用のBox（バウンディングボックス）はv1.4.0から常時有効",
+   "inputs": "テキスト（最大40,960トークン、超える記録はBM25で要所を選んで収め、長さで失敗しない）、画像は1リクエスト最大4枚（各最大1.6MPに縮小、1枚20MBまで）",
+   "outputs": "Choice（最大255択）／Yes-No（noul）／Score（順序尺度の確率分布）。画像用のBox（バウンディングボックス）は常時有効",
    "languages": "主に英語で評価（学習データの99%超が英語）",
-   "other": "推奨はH2O版vLLM 0.30.0での2-way読み取り（標準vLLMは1-way、v1.4.0の1-way精度は未計測）。遅延の公式値はv1.3系までの計測（H100 80GBで29.8ms、RTX PRO 4500で30.2ms、JevBench公開231問の直列中央値）。v1.4.0のGGUF・MLX版は未公開。Nemotron 3 Nano 4Bベースの姉妹版（h2o-lightning-4b-nemotron-nano、テキストのみ）あり"
+   "other": "推奨はH2O版vLLM 0.30.0での2-way読み取り（標準vLLMの1-wayではJevBench 202/231、Decision Indexテキスト60.86）。遅延の公式値はv1.3系までの計測（H100 80GBで29.8ms、RTX PRO 4500で30.2ms、JevBench公開231問の直列中央値）。GGUF版（h2oai/h2o-lightning-4b-gguf）と有志のMLX版あり。Nemotron 3 Nano 4Bベースの姉妹版（h2o-lightning-4b-nemotron-nano、テキストのみ）あり"
   },
   "features": {
    "画像入力": true,
@@ -1050,13 +1141,19 @@
    {
     "metric": "JevBench公開テキスト問題 正答率(%)",
     "value": 89.2,
-    "note": "v1.4.0、2-way（206/231）。前版v1.3.2は203/231。差は誤差の範囲（H2O計測）",
+    "note": "v1.4.2、2-way（206/231）。v1.4.0と同数（H2O計測）",
     "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
    },
    {
     "metric": "Decision Index 0.3（テキスト、2-way）",
-    "value": 62.38,
-    "note": "v1.4.0、H2Oによる公開キットの自社実行（ボード掲載値ではない）。画像は69.03",
+    "value": 63.21,
+    "note": "v1.4.2、H2Oによる公開キットの自社実行（ボード掲載値ではない）。画像は69.87（v1.4.0は62.38／69.03）",
+    "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
+   },
+   {
+    "metric": "ImageJevBench v0.3.0 Composite順位",
+    "value": 1,
+    "note": "v1.4.1（同じ重み）がオープンのJev級46モデル中1位（オープン・API含め55中2位）。Box部門・コンピュータ操作部門もオープン1位（H2Oのカード記載）",
     "source": "https://huggingface.co/h2oai/h2o-lightning-4b"
    },
    {
@@ -1066,7 +1163,7 @@
     "source": "https://www.financialcontent.com/article/bizwire-2026-10-12-h2o-lightning-4b-ranks-first-on-jevbench-open-weights-leaderboard"
    }
   ],
-  "quality_note": "4Bと小型ながら較正と速度に優れ、JevBenchのオープン部門で首位。v1.4.0は前版より知識・言語系の判断で上がった一方、検索結果の関連度判定とツール選択では下がったと公式が明記。JevBench総合は速度・コストを含むため小型モデルに有利で、知識・推論が要る判断では大型モデルに劣る",
+  "quality_note": "4Bと小型ながら較正と速度に優れ、JevBenchのオープン部門で上位、画像版のImageJevBenchではオープン首位。v1.4.1〜1.4.2は追加データで引数の質・関数選択・表の事実確認など6分野が大きく伸びた（50.08→67.99）一方、汎用の判断力はv1.4.0と誤差の範囲で、較正誤差はわずかに悪化（0.064→0.070）。知識・推論が要る判断では大型モデルに劣る",
   "ja_note": "学習データの99%超が英語で、日本語の記載・評価なし。日本語で使うなら自社データで要検証",
   "license": "Apache-2.0",
   "commercial": "yes",
@@ -1085,7 +1182,8 @@
    "H2O-Lightning-4B v1.1",
    "H2O-Lightning-4B v1.2.3",
    "H2O-Lightning-4B v1.3.1",
-   "H2O-Lightning-4B v1.3.2"
+   "H2O-Lightning-4B v1.3.2",
+   "H2O-Lightning-4B v1.4.0"
   ],
   "sources": [
    "https://huggingface.co/h2oai/h2o-lightning-4b",
@@ -1095,7 +1193,8 @@
   "confidence": "medium",
   "rank": 13,
   "pick": "4Bで軽い",
-  "pick_reason": "JevBench オープン部門1位"
+  "pick_reason": "JevBench オープン部門1位",
+  "notes": "v1.4.1は2026-10-26、v1.4.2（重みはv1.4.1と同じ、画像の温度・上限など配信設定を更新）は10-29にmainへ反映。"
  },
  {
   "id": "strands-decider-2b",

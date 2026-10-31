@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-28",
- "next_update": "2026-10-31",
+ "updated_at": "2026-10-31",
+ "next_update": "2026-11-01",
  "rules": [
   "重みがダウンロードできるもの（オープンウェイト）を載せます（予告を除く）。音楽・画像・動画・3D・Decision Model だけは、比べやすいように重み非公開のAPIサービスも「API提供」として載せています。",
   "各系列は最新世代だけを載せます。後継が出たら旧版は消し、詳細の「置き換えた旧版」に名前を残します。",
@@ -13,6 +13,26 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-10-31",
+   "items": [
+    "公開: Mistral Large 4（1T-A52B）（予告→公開）。10/29に重みが公開された。FP8で約1,061GB、公式NVFP4版は約610GB、文脈は1M。AA v5は26.0で、米欧のオープンウェイトでは首位。量子化版、実測報告、載せ方を追加。",
+    "更新: AA Intelligence Index が v5.0 に改定（10/27）。aa_index を v5 の値に揃え、v5 でまだ測られていないモデルは空欄にした（旧v4.3.2の値は bench_note に残した）。v5 でのオープン首位は DeepSeek-V4.1-Flash-1017（32.5）。Kimi K3.1 Pro は 55→46。closed_refs も v5 の値に更新。",
+    "追加: SenseNova-Loop-9B-Preview（SenseTime、中国、10/30公開、Apache-2.0）。ループ型のマルチモーダル試作版。",
+    "追加: Mage-VL-Cowork（Microsoft、米国、10/30公開、4B、Apache-2.0）。PC操作エージェント用。",
+    "確認: Kimi K3.1 Pro の重みは未公開（予定は11/4のまま）。Nejumi Leaderboard 4 と国産LLMは新しい動きなし。",
+    "追加: Haas-ja-v1.0（Third Intelligence、日本、10/30公開、616M、Apache-2.0）。Parakeet系の日本語専用ASR。開発元の評価ではCERが6.12%。ASRのおすすめ「GPUで速く・高精度」をこのモデルに変更。",
+    "追加: Nemotron 3.5 Transcribe 30B-A4B（NVIDIA、米国、10/28公開）。40言語対応で、話者ラベルと単語タイムスタンプ付きの長時間書き起こしに対応。日本語のFLEURS CERは4.42%。",
+    "確認: TTS・Speech to Speech は日本語対応の新しい公開なし。",
+    "追加: Pika H3 Flex（Pika、米国、10/29重み公開）。MiniMax-H3 を基にしたLoRAで、6ステップで音声付き動画を作る。",
+    "追加: Idol（Speridlabs、10/28重み公開、Apache-2.0）。画像1枚から3D Gaussian Splatを作るモデル。",
+    "追加: MAI-Image-2.7 Preview（Microsoft AI、10/27、画像編集のプレビュー）と Canva Craft（Canva、オーストラリア、10/22、API）。",
+    "更新: MiniMax-H3 に NVIDIA の 2K リファイナー Open-H3-Regenerate-2K を追記。AA Video Arena の I2V v2.1 改版に合わせて動画の ELO を更新（I2V の首位は Seedance 2.5）。",
+    "追加: joey-1（Baseten／Base Labs、2B、MIT、10/29発表）。Decision Model の4B未満で首位（Baseten の発表値）。",
+    "更新: H2O-Lightning-4B を v1.4.2 に、H2O-Lightning-31B を v1.2.4 に更新。Cloudflare Clef に Clef-Omni と料金を追記し、mammoth-1／elephant-1 の有料料金を掲載。",
+    "確認: 音楽は新しい公開・新版なし。"
+   ]
+  },
   {
    "date": "2026-10-28",
    "items": [
@@ -109,10 +129,10 @@
  ],
  "leaderboards": [
   {
-   "name": "Artificial Analysis Intelligence Index v4.3.2",
-   "as_of": "2026-10-25",
+   "name": "Artificial Analysis Intelligence Index v5.0",
+   "as_of": "2026-10-31",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "10種類の評価（エージェント作業、Terminal-Bench 4.0、HLE など）の合成点。v4.3 は採点が厳しく、旧版の点数とは比べられません。"
+   "note": "9種類の評価（AA-Briefcase、FrontierCode 2.0、Terminal-Bench 4.0、HLE-Diamond など）の合成点で、6割が非公開のテストで測られます。10月27日に v4.3 から改定され、旧版の点数とは比べられません。v5 でまだ測られていないモデルは空欄にしています。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -147,7 +167,7 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Claude Opus 5.5（AA 57.6）、Claude Sonnet 5.5（56.0）、Meta Muse Wonder Full（56）、GPT-6 Astra（52.7）、Gemini 4 Argon（52.6）、Qwen3.8 Max（45.4、API版）など。オープンの首位 MiMo-V2.6-Pro は 46.3 で、クローズドの最上位とは約11点の差があります。",
+  "llm": "Gemini 4 Carbon（AA v5で59.4）、Claude Opus 5.5（58.4）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.5）、Claude Sonnet 5.5（54.2）、GPT-6.1 Terra（51.0）、Gemini 4 Argon（50.4）、Meta Muse Wonder Full（49.7）、Qwen3.8 Max（33.6、API版）など。重みが出ているオープンの首位 DeepSeek V4.1 Flash 1017 は 32.5 で、クローズドの最上位とは約27点の差があります（重み公開待ちの Kimi K3.1 Pro は46）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。上の参考枠に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "ElevenLabs Eleven v4 / v4 Turbo、Google Gemini 3.8 Flash TTS・Chirp 3 HD、Azure AI Speech Neural HD（DragonHD）、OpenAI gpt-4o-mini-tts、Fish Audio S2.1 Pro API、Aivis Cloud API など。 Mistral Voxtral TTS 3（10/20 API Public Preview。日本語を含む多言語音声合成）。",

@@ -1471,6 +1471,73 @@
   }
  },
  {
+  "id": "mai-image-2-7-preview",
+  "name": "MAI-Image-2.7 Preview（画像編集）",
+  "org": "Microsoft AI",
+  "country": "US",
+  "access": "api",
+  "release": "2026-10-27",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": null,
+   "other": "プレビュー版で、まず画像編集のみ提供。テキストからの画像生成は「近日」とされ時期未定。シーン全体の作風変更・ライティング変更、文字や記号の書き換え、古い画像の修復・高画質化を重点機能に挙げる。Microsoft Foundry・APIでの提供時期と価格は未発表"
+  },
+  "features": {
+   "シーン全体の作風・照明変更": true,
+   "画像内の文字書き換え": true,
+   "修復・高画質化": true,
+   "テキストからの生成（近日）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "価格・API提供は未発表（2026-10-31時点）。MAI Playground・Arena・Artificial Analysisで試用できる",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1193,
+    "note": "全体2位（1位GPT Image 2.5 Sunburst 1199、3位GPT Image 2.5 Flare 1182）。MAI-Image-2.6の1151から+42。2026-10-31時点",
+    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+   },
+   {
+    "metric": "LMArena Image Edit 順位",
+    "value": 3,
+    "note": "公式発表時点で3位（開発元別では2位）",
+    "source": "https://microsoft.ai/news/mai-image-2-7-debut/"
+   }
+  ],
+  "quality_note": "公式発表によれば、AAが評価する10の用途・7種の編集操作のすべてでMAI-Image-2.6を上回り、シーン・作風の編集では次点に24 ELO差をつけて首位。AAの編集アリーナでGPT Image 2.5 Sunburstに次ぐ2位",
+  "ja_note": null,
+  "license": "API / サービス（Microsoft利用規約、プレビュー）",
+  "commercial": "conditional",
+  "license_note": "プレビュー段階で、正式なAPI・商用提供条件は未発表。試用はMAI Playground等の利用規約に従う",
+  "hf": "https://microsoft.ai/news/mai-image-2-7-debut/",
+  "tools": [
+   "MAI Playground",
+   "Arena",
+   "Artificial Analysis"
+  ],
+  "summary_ja": "Microsoftの画像モデルの次期版のプレビューで、まず画像編集だけが試せる。AAの編集ランキングで2位に入ったが、APIや価格はまだ発表されていない。",
+  "best_for_ja": "作風・照明の変更や画像内の文字差し替えなど、高品質な編集の試用",
+  "supersedes": [],
+  "sources": [
+   "https://microsoft.ai/news/mai-image-2-7-debut/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
+   "https://winbuzzer.com/2026/10/28/microsofts-image-editor-nears-openai-in-preference-tests-xcxwbn/"
+  ],
+  "confidence": "high",
+  "hl": {
+   "label": "AA 編集",
+   "value": 1193
+  },
+  "rank": 19
+ },
+ {
   "id": "nano-banana-2-1",
   "name": "Nano Banana 2.1（Gemini Image）",
   "org": "Google",
@@ -1544,7 +1611,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 19,
+  "rank": 20,
   "hl": {
    "label": "AA Arena",
    "value": 1176
@@ -1613,7 +1680,7 @@
    "label": "AA 編集",
    "value": 1151
   },
-  "rank": 20
+  "rank": 21
  },
  {
   "id": "grok-imagine-image-2-0",
@@ -1695,7 +1762,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 21,
+  "rank": 22,
   "hl": {
    "label": "AA Arena",
    "value": 1166
@@ -1716,7 +1783,7 @@
   ],
   "spec": {
    "max_resolution": null,
-   "other": "Microsoft FoundryでPublic Preview（2026-09-04）。高速版のMAI-Image-2.6-Flashもある。公式は、複数参照対応と解像度制御の強化を今後予定としている。"
+   "other": "Microsoft FoundryでPublic Preview（2026-09-04）。高速版のMAI-Image-2.6-Flashもある。公式は、複数参照対応と解像度制御の強化を今後予定としている。 2026-10-27に後継のMAI-Image-2.7が編集機能のみプレビュー公開（別エントリ）。テキストからの生成は引き続き2.6が最新"
   },
   "features": {
    "文字描画の強化": true,
@@ -1770,7 +1837,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 22,
+  "rank": 23,
   "hl": {
    "label": "AA Arena",
    "value": 1166
@@ -1857,7 +1924,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 23,
+  "rank": 24,
   "hl": {
    "label": "AA Arena",
    "value": 1100
@@ -1933,7 +2000,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 24,
+  "rank": 25,
   "hl": {
    "label": "AA Arena",
    "value": 1117
@@ -2011,7 +2078,7 @@
    "https://www.qbitai.com/2026/09/493625.html"
   ],
   "confidence": "medium",
-  "rank": 25,
+  "rank": 26,
   "hl": {
    "label": "AA Arena",
    "value": 1095
@@ -2090,7 +2157,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "medium",
-  "rank": 26,
+  "rank": 27,
   "hl": {
    "label": "AA Arena",
    "value": 1015
@@ -2148,7 +2215,7 @@
    "https://runtheprompts.com/resources/midjourney-info/midjourney-v8-2-whats-new-and-is-it-better-than-v8-1"
   ],
   "confidence": "medium",
-  "rank": 27
+  "rank": 28
  },
  {
   "id": "reve-2-1",
@@ -2219,7 +2286,7 @@
    "https://nanosceneai.com/blog/reve-2-1"
   ],
   "confidence": "medium",
-  "rank": 28,
+  "rank": 29,
   "hl": {
    "label": "LMArena",
    "value": 1302
@@ -2295,5 +2362,63 @@
    "label": "AA Arena",
    "value": 999
   }
+ },
+ {
+  "id": "canva-craft",
+  "name": "Canva Craft（craft_v1_2k）",
+  "org": "Canva",
+  "country": "AU",
+  "access": "api",
+  "release": "2026-10-22",
+  "params_b": null,
+  "arch": "2段構成（プロンプトから配置・大きさ・文字内容の構図プランを作る計画モデル＋画像を描く描画モデル）。詳細は非公開",
+  "tasks": [
+   "t2i",
+   "edit"
+  ],
+  "spec": {
+   "max_resolution": "2K",
+   "other": "30種類のアスペクト比（APIのリファレンスでは6種のみとの報道あり）。Canvaのテンプレート（ポスター、SNS投稿、インフォグラフィック、メニュー、文字主体のレイアウト等）で学習したデザイン寄りのモデル。Magic Layersで生成画像をレイヤー分けしたデザインに変換できる。参照画像入力と高度な編集は今後対応予定。低コスト版のCraft fast / Craft ultrafastを開発中"
+  },
+  "features": {
+   "デザイン・文字レイアウト特化": true,
+   "レイヤー分解（Magic Layers）": true,
+   "参照画像入力": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "Canva Dream Labで全ユーザーが利用可。Canva Connect APIではモデル名craft_v1_2kで提供。API価格は未確認",
+  "bench": [
+   {
+    "metric": "Design Arena 画像リーダーボード スコア",
+    "value": 1341,
+    "note": "公開翌日に4位（首位GPT Image 2.5 Sunburstと65点差）。報道による値で、Design Arenaの一次ページは未確認。AAのアリーナには未掲載（2026-10-31確認）",
+    "source": "https://betanews.com/article/canva-craft-ai-image-model-designarena-api/"
+   }
+  ],
+  "quality_note": "写真よりもポスターやSNS画像などデザイン物・文字組みの生成を狙ったモデル。Design Arenaでは公開直後に4位と報じられたが、汎用のAAアリーナには未掲載",
+  "ja_note": "日本語の文字描画への対応は公式に記載なし（未確認）",
+  "license": "API / サービス（Canva利用規約）",
+  "commercial": "conditional",
+  "license_note": "生成物の利用はCanvaの利用規約・AI製品規約に従う。規約本文の個別精査は未実施",
+  "hf": "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
+  "tools": [
+   "Canva（Dream Lab）",
+   "Canva Connect API",
+   "Canva MCP（予定）"
+  ],
+  "summary_ja": "デザインツールのCanvaが初めて自社開発した画像生成モデル。ポスターやSNS画像など文字入りのデザインに強く、Canva上とAPIで使える。",
+  "best_for_ja": "Canvaで作るチラシ・SNS投稿など、文字とレイアウトが主役のデザイン画像",
+  "supersedes": [],
+  "sources": [
+   "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
+   "https://betanews.com/article/canva-craft-ai-image-model-designarena-api/",
+   "https://www.cmswire.com/digital-experience/canva-debuts-inhouse-ai-image-model-craft/",
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+  ],
+  "confidence": "medium",
+  "rank": 30
  }
 ]

@@ -1,7 +1,7 @@
 {
  "aa_local": {
   "url": "https://artificialanalysis.ai/hardware-inference-stack/laptops-workstations",
-  "as_of": "2026-10-20 取得",
+  "as_of": "2026-10-31 取得（実測値は10-20取得分から変化なし。aa_indexはIntelligence Index v5.0）",
   "metric_ja": "同じエージェント作業（記録済みタスク8件・168ターン・172回のツール呼び出し、文脈は最大約56Kトークン）を最後までやり切るのにかかった時間。短いほど速い。ツールの実行時間は含まず、全構成で文脈65,536トークン・推論オン・投機デコードありで計測。",
   "workload": {
    "key": "default",
@@ -75,7 +75,7 @@
   "models": [
    {
     "model": "Qwen3.8 27B (Xhigh)",
-    "aa_index": 33.7,
+    "aa_index": 20.1,
     "total_b": 27,
     "active_b": 27,
     "quants": [
@@ -87,7 +87,7 @@
    },
    {
     "model": "Qwen3.6 35B A3B (Reasoning)",
-    "aa_index": 18.2,
+    "aa_index": null,
     "total_b": 36,
     "active_b": 3,
     "quants": [
@@ -99,7 +99,7 @@
    },
    {
     "model": "Ling 3.0 Flash",
-    "aa_index": 20.1,
+    "aa_index": null,
     "total_b": 124,
     "active_b": 5.1,
     "quants": [
@@ -375,5 +375,5 @@
    "source": "https://www.nvidia.com/en-us/products/workstations/dgx-station/"
   }
  ],
- "summary_ja": "128GB機で巨大モデルを実用速度（毎秒20トークン以上）で動かすのはまだ難しく、DeepSeek V4.1 Flash や GLM-5.3 は SSD を併用して毎秒5〜10トークン程度です。256GB機なら DeepSeek V4.1 Flash の2bitが常駐して約37 tok/s。512GB の Mac Studio なら Muse Spark Open（2〜3bit、18〜21 tok/s）や GLM-5.3（4bit、約16 tok/s）が実用圏です。Kimi K3 と Qwen3.8 2.4T は1台では厳しく、512GB の Mac を2〜4台つなぐ構成が必要です。Mac は入力の読み込み（prefill）が毎秒200トークン前後と遅いのが弱点です。なお2026年はメモリ不足で機材価格が大きく上がっており、DGX Spark は発売時の約1.7倍、RTX PRO 6000 は約1.9倍になっています。"
+ "summary_ja": "128GB機で巨大モデルを実用速度（毎秒20トークン以上）で動かすのはまだ難しく、DeepSeek V4.1 Flash や GLM-5.3 は SSD を併用して毎秒5〜10トークン程度です。256GB機なら DeepSeek V4.1 Flash の2bitが常駐して約37 tok/s。512GB の Mac Studio なら Muse Spark Open（2〜3bit、18〜21 tok/s）や GLM-5.3（4bit、約16 tok/s）、10月29日に重みが出た Mistral Large 4（2bit、約15 tok/s）が実用圏です。Kimi K3 と Qwen3.8 2.4T は1台では厳しく、512GB の Mac を2〜4台つなぐ構成が必要です。Mac は入力の読み込み（prefill）が毎秒200トークン前後と遅いのが弱点です。なお2026年はメモリ不足で機材価格が大きく上がっており、DGX Spark は発売時の約1.7倍、RTX PRO 6000 は約1.9倍になっています。"
 }

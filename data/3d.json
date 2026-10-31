@@ -589,6 +589,74 @@
   "rank": 8
  },
  {
+  "id": "idol",
+  "access": "open-weight",
+  "name": "Idol",
+  "org": "Speridlabs",
+  "country": "US",
+  "release": "2026-10-28",
+  "params_b": 1.8,
+  "arch": "DiT（370.6M）で潜在を生成し、八分木デコーダ（50.8M）とGaussianデコーダ（237.3M）で3D Gaussianに変換。入力の符号化にDINOv3 ViT-H+/16とFLUX.2 VAE、背景除去にBiRefNetを使用（全体で約1.8B）",
+  "tasks": [
+   "i23d"
+  ],
+  "spec": {
+   "output": "3D Gaussian Splat（標準3DGSの.ply）",
+   "inputs": "画像1枚（写真・CGレンダリング・生成画像）",
+   "other": "Gaussian数は32,768〜1,048,576（既定262,144）。背景除去と切り出しを自動で行い、入力画像のカメラも推定。写真用（real）とCG・生成画像用（synthetic）の2モード。Idol本体の重みは約3GB"
+  },
+  "features": {
+   "Gaussian Splat出力": true,
+   "メッシュ出力": false,
+   "PBRテクスチャ": false,
+   "背景除去を内蔵": true,
+   "10GB級GPUで動作": true
+  },
+  "min_vram_gb": 8,
+  "rec_vram_gb": null,
+  "vram_note": "公式でピークVRAM 7.2GB（重みは約3.7〜4.4GB）。RTX 3080（10GB）での実行時間も公表されている。DINOv3とFLUX.2-devのHugging Faceでの利用規約への同意（ゲート付き）が必要",
+  "speed_note": "50ステップ・262,144 Gaussianで1枚あたり、B300 3.4秒、H100 6.7秒、RTX 5090 14.1秒、RTX 4090 19.1秒、RTX 3080 46.2秒（公式、8枚の中央値）",
+  "bench": [
+   {
+    "metric": "新規7視点のDINOv2類似度",
+    "value": 0.781,
+    "note": "TRELLIS 0.754 / TripoSplat 0.743 / LGM 0.575。CLIP類似度も0.885で最高（TripoSplat・TRELLISは0.868）。開発元の自社評価",
+    "source": "https://huggingface.co/speridlabs/idol"
+   },
+   {
+    "metric": "入力視点のLPIPS（低いほど良い）",
+    "value": 0.213,
+    "note": "TripoSplat 0.225 / TRELLIS 0.235 / LGM 0.237（開発元の自社評価、H100で計測）",
+    "source": "https://huggingface.co/speridlabs/idol"
+   }
+  ],
+  "quality_note": "開発元の比較では、同じGaussian Splat出力のTripoSplatやTRELLISより新規視点の再現度・鮮明さで上回る（第三者評価はまだない）。家庭用GPUで数十秒以内に出せる軽さが特徴。メッシュは出せないため、ゲーム・CAD用途には不向き",
+  "ja_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Idolの重みとSDKのコードはApache-2.0。入力の符号化に使うDINOv3（Meta）とFLUX.2-devのVAE（Black Forest Labs）はゲート付きで、それぞれのライセンスに従う",
+  "hf": "https://huggingface.co/speridlabs/idol",
+  "tools": [
+   "idol-sdk（Python / CLI）",
+   "Gradioデモ",
+   "3DGSビューア（SuperSplat等）で閲覧"
+  ],
+  "price_note": null,
+  "summary_ja": "1枚の画像から最大約100万個のGaussianでできた3Dモデル（Splat）を作るモデルです。ピーク7.2GBのVRAMで動き、RTX 4090なら約19秒で生成できます。",
+  "best_for_ja": "家庭用GPUで、写真や生成画像から見た目重視の3D（Web・AR/VR表示用）を手早く作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/speridlabs/idol",
+   "https://github.com/speridlabs/idol-sdk",
+   "https://speridlabs.com",
+   "https://runtimewire.com/article/speridlabs-out-of-stealth-spatial-ai-3d-foundation-models",
+   "https://techcrunch.com/2026/10/05/5-startups-that-caught-vcs-attention-at-the-latest-pearx-demo-day/"
+  ],
+  "confidence": "medium",
+  "country_note": "公式サイト・GitHubに所在地の記載なし。米国のPear VC（PearX）・Base10が支援し、PearXのデモデーで紹介されたため米国と推定",
+  "rank": 9
+ },
+ {
   "id": "spar3d",
   "access": "open-weight",
   "name": "SPAR3D（Stable Point Aware 3D）",
@@ -655,7 +723,7 @@
    "https://huggingface.co/spaces/3d-arena/3d-arena"
   ],
   "confidence": "high",
-  "rank": 9,
+  "rank": 10,
   "hl": {
    "label": "3D Arena",
    "value": 1113
@@ -725,7 +793,7 @@
    "https://arxiv.org/abs/2605.16355"
   ],
   "confidence": "medium",
-  "rank": 10
+  "rank": 11
  },
  {
   "id": "hunyuan3d-part",
@@ -774,7 +842,7 @@
    "https://arxiv.org/abs/2509.08643"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 12
  },
  {
   "id": "partcrafter",
@@ -826,7 +894,7 @@
    "https://arxiv.org/abs/2506.05573"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 13
  },
  {
   "id": "skintokens-tokenrig",
@@ -882,7 +950,7 @@
    "https://arxiv.org/abs/2602.04805"
   ],
   "confidence": "medium",
-  "rank": 13,
+  "rank": 14,
   "pick": "自動リギング",
   "pick_reason": "UniRig の後継"
  },
@@ -932,7 +1000,7 @@
    "https://arxiv.org/abs/2604.08746"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 15
  },
  {
   "id": "hy-world-2-0",
@@ -995,7 +1063,7 @@
    "https://docs.clore.ai/guides/guides_v2-fr/generation-3d/hunyuan-world-2"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 16
  },
  {
   "id": "tripo-h3-1-p2",
@@ -1067,7 +1135,7 @@
    "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026"
   ],
   "confidence": "medium",
-  "rank": 16
+  "rank": 17
  },
  {
   "id": "meshy-7-1",
@@ -1146,7 +1214,7 @@
    "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
   ],
   "confidence": "medium",
-  "rank": 17,
+  "rank": 18,
   "pick": "API で最高品質",
   "pick_reason": "3D Arena 上位",
   "hl": {
@@ -1216,7 +1284,7 @@
    "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
   ],
   "confidence": "medium",
-  "rank": 18
+  "rank": 19
  },
  {
   "id": "hunyuan-3d-3-1-api",
@@ -1276,7 +1344,7 @@
    "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native"
   ],
   "confidence": "medium",
-  "rank": 19
+  "rank": 20
  },
  {
   "id": "seed3d-2-0",
@@ -1337,7 +1405,7 @@
    "https://www.therundown.ai/tools/seed-3d"
   ],
   "confidence": "medium",
-  "rank": 20
+  "rank": 21
  },
  {
   "id": "marble-1-1",
@@ -1391,6 +1459,6 @@
    "https://aihola.com/article/world-labs-marble-1-1"
   ],
   "confidence": "medium",
-  "rank": 21
+  "rank": 22
  }
 ]

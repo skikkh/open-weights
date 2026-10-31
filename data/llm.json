@@ -42,8 +42,8 @@
    "tau2": null,
    "browsecomp": 91.2
   },
-  "bench_note": "モデルカード自己申告（reasoning_effort=max、temperature=1.0）。HLEはHLE-Fullのツールなし値（ツールあり56.0）。terminal_bench2欄はTerminal-Bench 2.1（Kimi Codeハーネス）の値。その他: DeepSWE v1.1 67.5、ProgramBench 77.8、FrontierSWE 81.2、Toolathlon-Verified 76.5、MCP-Atlas 84.2。AA指数はArtificial Analysis Intelligence Index v4.3.2（2026-10-20取得、Max設定、サイト表示は44、lowは30）。",
-  "aa_index": 43.6,
+  "bench_note": "モデルカード自己申告（reasoning_effort=max、temperature=1.0）。HLEはHLE-Fullのツールなし値（ツールあり56.0）。terminal_bench2欄はTerminal-Bench 2.1（Kimi Codeハーネス）の値。その他: DeepSWE v1.1 67.5、ProgramBench 77.8、FrontierSWE 81.2、Toolathlon-Verified 76.5、MCP-Atlas 84.2。AA指数はArtificial Analysis Intelligence Index v4.3.2（2026-10-20取得、Max設定、サイト表示は44、lowは30）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では43.6。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "K3自体の日本語ベンチは未確認。前世代Kimi-K2.5はNejumi Leaderboard 4（2026/3/6版）で総合0.7785（全体24位）という参考値がある。",
   "deploy_note_ja": "公式重みはMXFP4で約1.56TB。8×B300/GB300（約2.3TB）なら1ノード、H200なら2ノード16基級が必要で、8×H200（約1.13TB）には収まらない。unslothのGGUF（UD-Q1_0 約466GB〜UD-Q2_K_XL 約861GB）があり、512GB級Macや大容量メモリCPUサーバー+GPUオフロードで最小量子化ならかろうじて動く水準。",
   "engines": [
@@ -58,7 +58,7 @@
    "Kimi-K2.5",
    "Kimi-K2-Thinking"
   ],
-  "notes": "2026-07-16にAPIで発表、重みは07-27公開。思考は常時ON（low/high/max）。K2.6ベースのコーディング特化版Kimi-K2.7-Code（1T/32B、INT4で約595GB、Modified MIT、2026-06-11）はK3に置き換えられたが、より軽い1T級の選択肢として残っている。 後継のKimi K3.1 Pro（同じ2.8T/104Bの追加学習版、AA指数55）は10-23にAPIで発表、重みは11-04までに公開予定で未公開。",
+  "notes": "2026-07-16にAPIで発表、重みは07-27公開。思考は常時ON（low/high/max）。K2.6ベースのコーディング特化版Kimi-K2.7-Code（1T/32B、INT4で約595GB、Modified MIT、2026-06-11）はK3に置き換えられたが、より軽い1T級の選択肢として残っている。 後継のKimi K3.1 Pro（同じ2.8T/104Bの追加学習版、AA指数v5で46）は10-23にAPIで発表、重みは11-04までに公開予定で未公開。",
   "sources": [
    "https://huggingface.co/moonshotai/Kimi-K3",
    "https://huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE",
@@ -177,7 +177,7 @@
   "commercial": "conditional",
   "license_note": "ライセンスは重みの公開時に確定。K3 と同じなら、年商2,000万ドル超の MaaS 事業者は別契約が必要。",
   "hf": null,
-  "summary_ja": "Kimi K3 に追加学習を重ねた後継で、AA Intelligence Index は55とオープン系では最上位級の見込みです。いまは API だけで、重みは11月4日までに公開予定です。",
+  "summary_ja": "Kimi K3 に追加学習を重ねた後継で、AA Intelligence Index（v5）は46とオープン系では最上位級です。いまは API だけで、重みは11月4日までに公開予定です。",
   "strengths": [
    "coding",
    "agent",
@@ -196,13 +196,13 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式ブログの自己申告: Terminal-Bench 4.0 65.7%、Kimi Code Bench 3.0 Long-horizon 61.2%（K3 は55.95%）、BenchCAD 92.7%、ハルシネーション率8.3%（K3 は23.4%）。サイバー関連データを除いて学習したと説明。AA指数は API 版の値（v4.3.2、2026-10-26取得、サイト表示は整数）。",
-  "aa_index": 55,
+  "bench_note": "公式ブログの自己申告: Terminal-Bench 4.0 65.7%、Kimi Code Bench 3.0 Long-horizon 61.2%（K3 は55.95%）、BenchCAD 92.7%、ハルシネーション率8.3%（K3 は23.4%）。サイバー関連データを除いて学習したと説明。AA指数は API 版の値。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では55）。",
+  "aa_index": 46.0,
   "japanese_note": "日本語の評価は未確認。",
   "deploy_note_ja": "公式は「3T級」とだけ説明し、AA は総パラメータ2.8T としている。K3 と同じ規模なら公式重みは約1.5TB級で、1ノードに載せるには8×B300級が必要。",
   "engines": [],
   "supersedes": [],
-  "notes": "API のモデル名は kimi-k3.1-pro（2〜3倍速い kimi-k3.1-pro-highspeed もある）。思考モードは常時オン。重みが公開されたら status を外し、Kimi K3 を supersedes に移す。",
+  "notes": "API のモデル名は kimi-k3.1-pro（2〜3倍速い kimi-k3.1-pro-highspeed もある）。思考モードは常時オン。重みが公開されたら status を外し、Kimi K3 を supersedes に移す。 2026-10-31時点でHFのmoonshotaiに K3.1 のリポジトリはなく、重みは未公開（公開予定日は変更なし）。",
   "sources": [
    "https://www.kimi.ai/blog/kimi-k3-1-pro",
    "https://www.kimi.com/code/docs/en/kimi-code/models.html",
@@ -251,8 +251,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告（reasoning_effort=max）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code 2.1.207ハーネス）。その他: Terminal-Bench 3.0 28.3、DeepSWE v1.1 66.9、CyberGym 84.5、HLE w/ tools 62.5、AutomationBench 48.2、GDPval-AA v2 1769。ツールなしHLEとGPQAは自社カードに記載なし。AA指数v4.3.2（2026-10-20取得、Max設定。lowは34.3）。",
-  "aa_index": 44.8,
+  "bench_note": "モデルカード自己申告（reasoning_effort=max）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code 2.1.207ハーネス）。その他: Terminal-Bench 3.0 28.3、DeepSWE v1.1 66.9、CyberGym 84.5、HLE w/ tools 62.5、AutomationBench 48.2、GDPval-AA v2 1769。ツールなしHLEとGPQAは自社カードに記載なし。AA指数v4.3.2（2026-10-20取得、Max設定。lowは34.3）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では44.8）。",
+  "aa_index": 31.7,
   "japanese_note": "5.3自体の日本語評価は未確認。前世代GLM-5はNejumi Leaderboard 4（2026/3/6版）で総合0.7884（全体19位）という参考値がある。",
   "deploy_note_ja": "FP8で約756GB。8×H200（約1.13TB）1ノードが目安で、BF16（約1.5TB）なら8×B300か2ノード。unslothのGGUFがあり、UD-Q4_K_XL 約467GBは512GB級Mac、UD-Q2_K_XL 約254GB／UD-IQ1_S 約217GBは256GB級機が目安。KTransformersでCPU+GPUのハイブリッド推論、Ascend NPU（vLLM-Ascend/xLLM）にも対応。",
   "engines": [
@@ -423,8 +423,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。",
-  "aa_index": 45.1,
+  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では45.1）。",
+  "aa_index": 32.5,
   "japanese_note": "V4系の日本語評価は未確認。旧世代DeepSeek-V3.2はNejumi Leaderboard 4（2026/3/6版）で総合0.7888（全体18位）という参考値がある。",
   "deploy_note_ja": "公式重みは約510GB（FP8とFP4の混在）。8×H200や4×GB300/B300で1ノード。SGLang公式cookbookにGB300/H200/B200/B300/MI350X向けレシピがある（当面はプレビュー版Dockerイメージが必要）。unslothのGGUFはUD-Q2_K_XL 約335GB、UD-IQ1_S 約233GBで512GB級Macが現実的な下限。MLX版（mlx-community oQ系）もある。",
   "engines": [
@@ -606,7 +606,7 @@
   "commercial": "yes",
   "license_note": null,
   "hf": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
-  "summary_ja": "Xiaomiの1.02T MoEで、テキスト・画像・動画・音声をまとめて扱うネイティブ・オムニモーダルモデル。大規模な混合強化学習で鍛えられ、AA指数では2026年10月時点でオープンウェイト首位。",
+  "summary_ja": "Xiaomiの1.02T MoEで、テキスト・画像・動画・音声をまとめて扱うネイティブ・オムニモーダルモデル。大規模な混合強化学習で鍛えられ、AA指数（v5）では重み公開済みのオープンウェイトでDeepSeek V4.1 Flash・GLM-5.3に次ぐ位置。",
   "strengths": [
    "coding",
    "agent",
@@ -625,8 +625,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "Pro-RLモデルカード自己申告。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 71.9、Terminal-Bench 4.0 34.9、OSWorld-Verified 82.0、Toolathlon-Verified 76.9、AutomationBench 53.1、CyberGym 94.0。GPQA/HLEはカードに記載なし。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 46.3,
+  "bench_note": "Pro-RLモデルカード自己申告。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 71.9、Terminal-Bench 4.0 34.9、OSWorld-Verified 82.0、Toolathlon-Verified 76.9、AutomationBench 53.1、CyberGym 94.0。GPQA/HLEはカードに記載なし。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では46.3）。",
+  "aa_index": 29.9,
   "japanese_note": null,
   "deploy_note_ja": "公式重みは約574GB（FP8＋MXFP4）。vLLMの公式例はTP8（8×H200 1ノード）、SGLangの高スループット例は2ノードTP16。8×H100（640GB）だとKVキャッシュの余裕がほぼない。mlx-communityのMLX版（mxfp4-q8）とコミュニティGGUFがあり、512GB級Macも候補になる。",
   "engines": [
@@ -756,8 +756,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告。表の列名は「Qwen3.8-Max」（このモデルを基にした公式API版）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code、avg@10）。他にSWE-bench Pro 67.7、DeepSWE 1.1 56.6、HLE w/ tools 56.2、IFBench 82.8。AA指数v4.3.2（2026-10-20取得）は重み版「Qwen3.8 2.4T A95B」が39.9で、API版Qwen3.8 Max（0902）は45.4。",
-  "aa_index": 39.9,
+  "bench_note": "モデルカード自己申告。表の列名は「Qwen3.8-Max」（このモデルを基にした公式API版）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code、avg@10）。他にSWE-bench Pro 67.7、DeepSWE 1.1 56.6、HLE w/ tools 56.2、IFBench 82.8。AA指数v4.3.2（2026-10-20取得）は重み版「Qwen3.8 2.4T A95B」が39.9で、API版Qwen3.8 Max（0902）は45.4。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では39.9。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "3.8自体の日本語評価は未確認。前世代Qwen3.5-397B-A17BはNejumi Leaderboard 4（2026/3/6版）で総合0.8191、オープンモデル首位（全体5位）で、Qwen系は日本語で実績がある。",
   "deploy_note_ja": "BF16で約4.9TB、FP8でも約2.5TBあり、8×B300（約2.3TB）1ノードにも収まらない。2ノード以上のB300や3ノード級のH200が必要で、本一覧で最も載せにくいモデル。unslothのGGUFはUD-IQ1_S 約508GB、UD-IQ2_XXS 約657GB、UD-IQ4_XS 約1.3TB。個人では512GB級Macを複数台つないで超低ビットで動かすのがやっと。",
   "engines": [
@@ -903,8 +903,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード（画像）自己申告、Highリーズニング設定: DeepSWE v1.1 67.7、ProgramBench 80.5、Terminal-Bench v4 33.3、Agents' Last Exam 29.5、GDPval-AA v2.1 1566、FrontierFinance 66.4、DRACO 83.3。指定欄に当たる値はカードにない。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 43.7,
+  "bench_note": "モデルカード（画像）自己申告、Highリーズニング設定: DeepSWE v1.1 67.7、ProgramBench 80.5、Terminal-Bench v4 33.3、Agents' Last Exam 29.5、GDPval-AA v2.1 1566、FrontierFinance 66.4、DRACO 83.3。指定欄に当たる値はカードにない。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では43.7）。",
+  "aa_index": 28.5,
   "japanese_note": null,
   "deploy_note_ja": "FP8（約650GB）は公式表で8×H200 1ノード、または4×B300 1ノード。BF16（約1.2TB）は8×B300か2ノード16×H200。NVFP4版（約394GB）ならBlackwell 4基級でも載る。GGUF/MLXの主要コミュニティ量子化は未確認。",
   "engines": [
@@ -1032,8 +1032,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "Z.ai公式ベンチ画像（自己申告）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code）。他にDeepSWE v1.1 63.4、Agents' Last Exam 26.3、AutomationBench 48.8、HLE w/ tools 55.3、GDPval-AA v2 1773。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 41.8,
+  "bench_note": "Z.ai公式ベンチ画像（自己申告）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code）。他にDeepSWE v1.1 63.4、Agents' Last Exam 26.3、AutomationBench 48.8、HLE w/ tools 55.3、GDPval-AA v2 1773。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では41.8）。",
+  "aa_index": 27.8,
   "japanese_note": null,
   "deploy_note_ja": "FP8で約328GB。4×H200か8×H100で1ノード、BF16（約642GB）なら8×H200。unslothのGGUFはUD-Q4_K_XL 約200GBで256GB級Mac、UD-Q2_K_XL 約109GBで128GB級機（DGX Spark/Mac）。KTransformers公式チュートリアルとMLX 4bit版もあり、個人でも載せやすい大型の代表格。",
   "engines": [
@@ -1186,8 +1186,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 39.8,
+  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では39.8。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "Flash-Next自体の日本語評価は未確認。前世代Qwen3.5-122B-A10BはNejumi Leaderboard 4（2026/3/6版）で総合0.8094（全体8位）という参考値がある。",
   "deploy_note_ja": "BF16で約360GB、公式FP8で約186GB（FP8なら2×H200か4×H100）。unslothのGGUFはUD-Q4_K_XL 約111GBで、128GB級Mac/DGX Sparkならぎりぎり、192GB以上なら余裕がある。UD-Q2_K_XL 約79GB。MLX 4bit版もあり、本一覧で最も手元で動かしやすい大型MoE。",
   "engines": [
@@ -1311,8 +1311,8 @@
    "long-context"
   ],
   "bench": {},
-  "bench_note": "AA Intelligence Index v4.3.2は公式モデルカード・AA公開ページで44（丸め値）。旧版の41.1と区別。",
-  "aa_index": 44,
+  "bench_note": "AA Intelligence Index v4.3.2は公式モデルカード・AA公開ページで44（丸め値）。旧版の41.1と区別。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では44）。",
+  "aa_index": 29.5,
   "japanese_note": "多言語の日本語性能について、この新版固有の独立評価は未確認。",
   "deploy_note_ja": "公式配布は約574GB。SGLang・vLLM向け手順あり。ネイティブ文脈はconfig上262,144トークン、最大約1Mは拡張設定を使用。旧版の量子化ファイル・実測速度はこの版には流用していない。",
   "engines": [
@@ -1381,8 +1381,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "Pro-RLのモデルカードに並記された自己申告値。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 67.9、Toolathlon-Verified 73.6、OSWorld-Verified 80.8、CyberGym 95.1。AA指数v4.3.2（2026-10-20取得）。",
-  "aa_index": 37.9,
+  "bench_note": "Pro-RLのモデルカードに並記された自己申告値。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 67.9、Toolathlon-Verified 73.6、OSWorld-Verified 80.8、CyberGym 95.1。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では37.9）。",
+  "aa_index": 26.7,
   "japanese_note": null,
   "deploy_note_ja": "公式重みは約178GB。vLLMの公式例はTP4（4×H100/H200）。mlx-communityのMLX版（mxfp4-q8）なら256GB級Mac、コミュニティGGUFなら192GB級機も候補。",
   "engines": [
@@ -1521,8 +1521,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（ベンダー自己申告）。HLEはツールなし。ほかにTerminal-Bench 4.0 38.1、DeepSWE v1.1 73.7、OSWorld 2.0 61.7、Agents' Last Exam 29.6、NL2Repo-Bench 61.2、CyberGym 82.2、BankerToolBench 76.2、CharXiv RQ 82.5。AA指数v4.3.2（2026-10-25確認）は43で、プレビュー時の42.7と同水準（AAのページはまだ重み非公開の扱い）。",
-  "aa_index": 42.7,
+  "bench_note": "公式モデルカード（ベンダー自己申告）。HLEはツールなし。ほかにTerminal-Bench 4.0 38.1、DeepSWE v1.1 73.7、OSWorld 2.0 61.7、Agents' Last Exam 29.6、NL2Repo-Bench 61.2、CyberGym 82.2、BankerToolBench 76.2、CharXiv RQ 82.5。AA指数v4.3.2（2026-10-25確認）は43で、プレビュー時の42.7と同水準（AAのページはまだ重み非公開の扱い）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では42.7）。",
+  "aa_index": 28.9,
   "japanese_note": "M3.1-Flash自体の日本語評価は未確認。",
   "deploy_note_ja": "公式重み（約252GB、DSparkドラフト2.3GB込み）は4×B300などで動き、vLLM・SGLangは公開日から対応。GGUFはunslothのUD-IQ3_S 約175GBで256GB級機、UD-Q4_K_XL 約249GBで512GB級Mac。MLXのText 3bit/4bit版（約186GB/248GB、テキストのみ）もある。",
   "engines": [
@@ -1755,8 +1755,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "自己申告。Terminal-Bench 2.1（Terminus）73.0、SWE-bench Pro 61.7、DeepSWE 1.1 42.2は27Bのカード。GPQA/HLE/LiveCodeBench v6はQwen3.8-Flash-Nextのカード比較表の値。AA指数v4.3.2（2026-10-20取得、xhigh設定。mediumは27.6）。",
-  "aa_index": 33.7,
+  "bench_note": "自己申告。Terminal-Bench 2.1（Terminus）73.0、SWE-bench Pro 61.7、DeepSWE 1.1 42.2は27Bのカード。GPQA/HLE/LiveCodeBench v6はQwen3.8-Flash-Nextのカード比較表の値。AA指数v4.3.2（2026-10-20取得、xhigh設定。mediumは27.6）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では33.7）。",
+  "aa_index": 20.1,
   "japanese_note": "3.8-27B自体の日本語評価は未確認。前世代Qwen3.5-27BはNejumi Leaderboard 4（2026/3/6版）で総合0.8049（全体11位）と、中型としては上位だった。",
   "deploy_note_ja": "Q4_K_M（Unsloth UD-Q4_K_M 16.5GB、Q4_K_M一般版で約17GB）でRTX 3090/4090（24GB）に載る。llama.cpp実測（Q4、MTPなし、4kコンテキスト）で生成速度はRTX 3090が約40 tok/s、RTX 4090が約46 tok/s（64kで約38 tok/s）、RTX 5090が約75 tok/s。RTX 5090ではNVFP4+MTPで79 tok/s、SGLang+NVFP4で200 tok/s超の報告がある。MacはM5 Max（llama.cpp、4k）で約31 tok/s、MLX 4bitで約33 tok/s。32GB以上のMacで4bit、64GBのMacならQ8（29GB）も動く。DGX SparkではQ4で約12 tok/s（MTPなし）。Ollama公式ライブラリにqwen3.8:27bがある。",
   "engines": [
@@ -1833,8 +1833,8 @@
    "tau2": null,
    "browsecomp": 79.9
   },
-  "bench_note": "モデルカード自己申告（統一ハーネスでの社内計測）。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 59.5、SWE-bench Multilingual 77.3、IMO-AnswerBench 81.8。AA指数v4.3.2（2026-10-20取得）は19.1で、規模の割に低い。",
-  "aa_index": 19.1,
+  "bench_note": "モデルカード自己申告（統一ハーネスでの社内計測）。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 59.5、SWE-bench Multilingual 77.3、IMO-AnswerBench 81.8。AA指数v4.3.2（2026-10-20取得）は19.1で、規模の割に低い。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では19.1。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": null,
   "deploy_note_ja": "BF16で約3.55TB、公式FP8/INT8でも約2.05TB。8×B300（約2.3TB）でぎりぎり、H200なら2ノード16基以上が必要。GPUはSGLang cookbook、NPUはSGLang-FluentLLMで展開する。GGUF/MLXの主要コミュニティ量子化は未確認で、個人での運用は非現実的。",
   "engines": [
@@ -2081,8 +2081,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（reasoning effort=xhigh）。terminal_bench2はTerminal-Bench 2.1（Terminus 2）の値。HLEはHLE-Diamond（ツールなし）26.1、HLE（ツールあり）61.0で、通常のHLE（ツールなし）値は未公表のためnull。ほかにOSWorld Verified 80.4、MCP-Atlas 89.2、DeepSWE 1.1 60。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはArtificial Analysis Intelligence Index v4.3.2（2026-10-20時点）。",
-  "aa_index": 38.9,
+  "bench_note": "公式モデルカード（reasoning effort=xhigh）。terminal_bench2はTerminal-Bench 2.1（Terminus 2）の値。HLEはHLE-Diamond（ツールなし）26.1、HLE（ツールあり）61.0で、通常のHLE（ツールなし）値は未公表のためnull。ほかにOSWorld Verified 80.4、MCP-Atlas 89.2、DeepSWE 1.1 60。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはArtificial Analysis Intelligence Index v4.3.2（2026-10-20時点）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では38.9）。",
+  "aa_index": 24.7,
   "japanese_note": "100以上の言語のデータで学習したとあるが、日本語の個別評価は公表されていない。",
   "deploy_note_ja": "公式NVFP4版（約533GB）でもVRAM 700GB以上が必要で、Blackwell 8GPUの1ノード（8×B200等）が目安。BF16（約1.6TB、公式表記は約2TB）は複数ノードが必要。公式にはMac Studio（M5 Ultra 512GB）2台をつないだMLX実行に最適化されている。Unsloth/ggml-orgのGGUF、mlx-communityの3bit/4bit版がある。",
   "engines": [
@@ -2265,8 +2265,8 @@
    "tau2": null,
    "browsecomp": 76.8
   },
-  "bench_note": "公式モデルカードのBF16値（temp 0.7, top_p 0.99）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、BrowseCompはコンテキスト管理あり。HLEはツールなし（ツールありは51.1）。ほかにSWE-Bench Pro v1 66.1、Tau3 Banking 36.1。数値はすべてベンダー公表で、独立評価は限られる。aa_indexはAA v4.3.2。",
-  "aa_index": 30.3,
+  "bench_note": "公式モデルカードのBF16値（temp 0.7, top_p 0.99）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、BrowseCompはコンテキスト管理あり。HLEはツールなし（ツールありは51.1）。ほかにSWE-Bench Pro v1 66.1、Tau3 Banking 36.1。数値はすべてベンダー公表で、独立評価は限られる。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では30.3）。",
+  "aa_index": 17.7,
   "japanese_note": "モデルカードに「主に英語向けに開発」と明記されている。日本語の評価は公表されていない。",
   "deploy_note_ja": "BF16（約1.0TB）は8×B200級の1ノードが必要。公式FP8版（約503GB）は8×H200（1.1TB）の1ノード、NVFP4版（約294GB）はBlackwell 4GPU程度が計算上の目安。reasoning_effortはminimal〜maxで調整できる。UnslothのGGUF、2×RTX PRO 6000向けEXL3 3bpw版など、コミュニティ量子化が出始めている。",
   "engines": [
@@ -2325,8 +2325,8 @@
    "tau2": null,
    "browsecomp": 72.8
   },
-  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。SWE-bench Verifiedは未公表（SWE Bench Pro strictは42.6）。ほかにtau3-Banking 34.0、AA-LCR 76.0、GDPVal-AA Elo 1441。aa_indexはAA v4.3.2。",
-  "aa_index": 30.5,
+  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。SWE-bench Verifiedは未公表（SWE Bench Pro strictは42.6）。ほかにtau3-Banking 34.0、AA-LCR 76.0、GDPVal-AA Elo 1441。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では30.5）。",
+  "aa_index": 17.8,
   "japanese_note": "モデルカードの対応言語は英語のみ。日本語の評価は公表されていない。",
   "deploy_note_ja": "BF16（約758GB）を8×H200の1ノードで動かす構成が公式に検証されている（SGLang TP8/EP8）。公式FP8版（約391GB）なら8×H100（640GB）にも計算上収まり、NVFP4版（約230GB）もある。bartowski等のGGUFがある。effortはhigh推奨で、low/mediumは研究用途向け。",
   "engines": [
@@ -2451,8 +2451,8 @@
    "tau2": null,
    "browsecomp": 77.1
   },
-  "bench_note": "公式モデルカード・ブログ（effort=0.99）。SWE-bench Verifiedはbash-onlyハーネス、AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは46.0）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。tau3 Banking 23.7。aa_indexはAA v4.3.2（xhigh）。",
-  "aa_index": 25.0,
+  "bench_note": "公式モデルカード・ブログ（effort=0.99）。SWE-bench Verifiedはbash-onlyハーネス、AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは46.0）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。tau3 Banking 23.7。aa_indexはAA v4.3.2（xhigh）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では25.0）。",
+  "aa_index": 12.5,
   "japanese_note": "英語＋一般的な多言語能力と記載。多言語指標のGlobal-MMLU-Liteは88.7%だが、日本語個別の評価はない。",
   "deploy_note_ja": "BF16（約1.9TB）は複数ノード（16×H200級）が必要。公式NVFP4版（約592GB）はBlackwell 8GPUの1ノード（8×B200等）が目安。UnslothのGGUFもある。effortはnone〜maxの範囲で調整できる。",
   "engines": [
@@ -2518,8 +2518,8 @@
    "tau2": null,
    "browsecomp": 77.4
   },
-  "bench_note": "公式モデルカード（effort=0.99）。AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは47.8）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。ARC-AGI-2 40.1。カード上の「AA Index v4.1 = 40.0」は旧版の値。aa_indexはAA v4.3.2での値。",
-  "aa_index": 25.7,
+  "bench_note": "公式モデルカード（effort=0.99）。AIMEはAIME 2026、HLEはテキストのみ・ツールなし（ツールありは47.8）、terminal_bench2はTerminal-Bench 2.1（最良ハーネス）、BrowseCompはコンテキスト管理あり。ARC-AGI-2 40.1。カード上の「AA Index v4.1 = 40.0」は旧版の値。aa_indexはAA v4.3.2での値。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では25.7）。",
+  "aa_index": 12.9,
   "japanese_note": "英語＋一般的な多言語能力と記載。Global-MMLU-Liteは86.7%だが、日本語個別の評価はない。",
   "deploy_note_ja": "BF16（約532GB）は8×H200または8×B200の1ノード。公式NVFP4版（約171GB）はB200×2程度が目安。UnslothのGGUF（ダウンロード数が多い）で、4bit級ならメモリ256〜512GBのMac Studio等でも動作圏（計算上）。",
   "engines": [
@@ -2583,8 +2583,8 @@
    "tau2": null,
    "browsecomp": 44.4
   },
-  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2.1、LCBはv6、HLEはツールなし（ツールありは37.4）。tau2の代わりにTauBench V3平均70.9を公表。SWE-Bench Multilingual 67.7。AIMEは未公表。aa_indexはAA v4.3.2。",
-  "aa_index": 22.9,
+  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2.1、LCBはv6、HLEはツールなし（ツールありは37.4）。tau2の代わりにTauBench V3平均70.9を公表。SWE-Bench Multilingual 67.7。AIMEは未公表。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では22.9）。",
+  "aa_index": 11.8,
   "japanese_note": "公式の対応言語に日本語を明記（英・仏・西・伊・独・日・ヒンディー・韓・ポルトガル（ブラジル）・中）。日本語ベンチの個別値は未確認。",
   "deploy_note_ja": "公式の最小構成は8×B200/GB200/B300、8×H200、または16×H100。推奨は8×B200の1ノード（約1.5TB HBM）。公式NVFP4版（約352GB）でメモリを大きく減らせる。TensorRT-LLMは現状Blackwellのみ対応。UnslothのGGUF、RedHatAIのW4A16/FP8版がある。",
   "engines": [
@@ -2710,8 +2710,8 @@
    "tau2": null,
    "browsecomp": 78.0
   },
-  "bench_note": "公式モデルカード。HLEはテキストのみ（全セットは29.20）、LCBはv6、terminal_bench2はTerminal-Bench 2.1。MMLU-Proの代わりにMMLU-ProX 76.91。tau2はretail 69.24/airline 76.50/telecom 73.19（平均は未公表のためnull）、tau3 banking 18.88。表はテキスト化された表から読み取ったため列の対応は要再確認。aa_indexはAA v4.3.2。",
-  "aa_index": 26.5,
+  "bench_note": "公式モデルカード。HLEはテキストのみ（全セットは29.20）、LCBはv6、terminal_bench2はTerminal-Bench 2.1。MMLU-Proの代わりにMMLU-ProX 76.91。tau2はretail 69.24/airline 76.50/telecom 73.19（平均は未公表のためnull）、tau3 banking 18.88。表はテキスト化された表から読み取ったため列の対応は要再確認。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では26.5）。",
+  "aa_index": 13.6,
   "japanese_note": "事前学習用にCommon Crawlから抽出した15言語に日本語が含まれる。日本語の個別評価は未確認。",
   "deploy_note_ja": "BF16（約249GB）は4×H100または2×GB200。公式NVFP4版（約75GB）はDGX Sparkやデータセンター向けBlackwell 1基で動く想定。ggml-org/Unsloth/LM StudioのGGUF、MLX 4bit版がある。",
   "engines": [
@@ -2755,7 +2755,7 @@
   "commercial": "yes",
   "license_note": "OpenMDW-1.1（寛容型）。",
   "hf": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
-  "summary_ja": "Nemotron 3.5 Super VLを探索と蒸留で74Bに縮めた中型モデルで、公式の2bit版は24GB以下のメモリで動くよう設計されている。単体GPUで動く中型としてはAAの指標が高い。",
+  "summary_ja": "Nemotron 3.5 Super VLを探索と蒸留で74Bに縮めた中型モデルで、公式の2bit版は24GB以下のメモリで動くよう設計されている。旧版のAA指標（v4.3.2）では単体GPUで動く中型として高めだった。",
   "strengths": [
    "efficiency",
    "vision",
@@ -2773,8 +2773,8 @@
    "tau2": null,
    "browsecomp": 66.75
   },
-  "bench_note": "公式モデルカード（2bit「24GB」版の値）。HLEはツールなし、terminal_bench2はTerminal-Bench 2.1。Tau3 Banking 17.01、AA-LCR 64.06。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはAA v4.3.2の「Nemotron 3.5 Bolt 74B-A9B」で、どの量子化版で測ったかは不明。",
-  "aa_index": 21.4,
+  "bench_note": "公式モデルカード（2bit「24GB」版の値）。HLEはツールなし、terminal_bench2はTerminal-Bench 2.1。Tau3 Banking 17.01、AA-LCR 64.06。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはAA v4.3.2の「Nemotron 3.5 Bolt 74B-A9B」で、どの量子化版で測ったかは不明。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では21.4。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "日本語の個別評価は未公表（元になったSuper VLの事前学習データには日本語が含まれる）。",
   "deploy_note_ja": "公式の「24GB」版（約24GB）は、エキスパートをIQ2-XXS（約2bit）に量子化し、128Kコンテキスト・バッチ1で24GB未満に収まるよう設計されている。RTX 5090やDGX Sparkで検証済み。公式GGUF版もある。BF16（約150GB）は2×H100級。",
   "engines": [
@@ -2961,8 +2961,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（reasoning_effort=high）。AIMEはAIME 2026、LCBはv6、HLEはツールなし。Terminal-Bench 2.xの値はなく、Terminal Bench Hardが28.3。τ³ banking 19.6。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。",
-  "aa_index": 24.7,
+  "bench_note": "公式モデルカード（reasoning_effort=high）。AIMEはAIME 2026、LCBはv6、HLEはツールなし。Terminal-Bench 2.xの値はなく、Terminal Bench Hardが28.3。τ³ banking 19.6。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では24.7。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "公式サポート言語は英語・韓国語・日本語の3つで、日本語を明示的にサポートしている。独立した日本語ベンチの結果は未確認。",
   "deploy_note_ja": "BF16（約501GB）は最小4×H200、推奨8×H200。Nota AIのNVFP4版（約153GB）とINT4版（約143GB）があり、量子化すればH200 2基で動くと報道されている。MLX 6/8bit版、GGUFのコミュニティ版もある。",
   "engines": [
@@ -3083,8 +3083,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、LCBはv6（2〜5月分）、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ²-Bench Telecomは98.0（平均は未公表のためnull）、τ³ Banking 13.0。BrowseCompは検索10回以内という制限付きで9.3のためnull。KMMLU-Pro 80.5。aa_indexはAA v4.3.2。",
-  "aa_index": 21.5,
+  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、LCBはv6（2〜5月分）、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ²-Bench Telecomは98.0（平均は未公表のためnull）、τ³ Banking 13.0。BrowseCompは検索10回以内という制限付きで9.3のためnull。KMMLU-Pro 80.5。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では21.5。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "日本語にも対応するが、中国語・日本語・スペイン語の品質は「十分に検証されていない」とモデルカードに明記されている。",
   "deploy_note_ja": "ネイティブFP8（約694GB）。合計800GiB以上のGPUメモリが推奨で、検証は4×B300、80GB級GPUなら12基以上が必要。FP8で動かすには計算能力8.9以上のGPUが必要（それ以外はBF16展開で約1.4TB）。公式NVFP4版（約398GB）、公式GGUFあり。vLLMはSKTのフォーク版が推奨。",
   "engines": [
@@ -3145,8 +3145,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ³-Banking 14.2、OpenAI-MRCR 94.4、AA-LCR 56.2。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。",
-  "aa_index": 20,
+  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ³-Banking 14.2、OpenAI-MRCR 94.4、AA-LCR 56.2。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では20。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "対応10言語（韓・英・西・独・日・越・仏・伊・波・葡）に日本語が含まれる。前世代のK-EXAONE 236BはQualitegの日本語LLMランキング（2026年3月版）で総合0.7186だった。",
   "deploy_note_ja": "BF16は約1.5TBで、公式の配信例は8×H200を2ノード（計16基）。公式FP8版（約752GB）なら8×H200の1ノードに計算上収まり、NVFP4版（約526GB）もある。SGLang/vLLMはLGのフォーク版を使う。MTP/DSparkの投機的デコードで3〜5倍速くなるとされる。",
   "engines": [
@@ -3206,8 +3206,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは97.9）、HLEはツールなし（ツールありは19.0）。MMLU 90.0、Tau-Bench（v1）Retail 67.8、Codeforces Elo 2622（ツールあり）。aa_indexはAA v4.3.2（high）。指標の改定で数値が大きく下がっている点に注意。",
-  "aa_index": 12,
+  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは97.9）、HLEはツールなし（ツールありは19.0）。MMLU 90.0、Tau-Bench（v1）Retail 67.8、Codeforces Elo 2622（ツールあり）。aa_indexはAA v4.3.2（high）。指標の改定で数値が大きく下がっている点に注意。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では12。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "公式のMMMLU日本語は83.5（high）。Science Tokyo（旧東工大）が日本語を強化したGPT-OSS-Swallow-120Bを公開しており、元モデルより日本語ランキングで高く評価されている。",
   "deploy_note_ja": "MXFP4（約65GB）で1×H100/MI300X（80GB）に載る。Ollama、LM Studio、llama.cppでの実績が多く、メモリの大きいMacやワークステーションでも動く。思考量はlow/medium/highで指定する。",
   "engines": [
@@ -3298,8 +3298,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは98.7）、HLEはツールなし（ツールありは17.3）。MMLU 85.3、Tau-Bench（v1）Retail 54.8。aa_indexはAA v4.3.2（high）。",
-  "aa_index": 9,
+  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは98.7）、HLEはツールなし（ツールありは17.3）。MMLU 85.3、Tau-Bench（v1）Retail 54.8。aa_indexはAA v4.3.2（high）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では9。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "公式のMMMLU日本語は78.8（high）。日本語強化版のGPT-OSS-Swallow-20B（SFT/RL）が公開されている。",
   "deploy_note_ja": "ネイティブMXFP4で約14GB。16GB GPUやメモリ16GBのMacで動く。llama.cpp実測でRTX 5090が約282 tok/s、M3 Ultraが約116 tok/s（PCWorld報道）。Ollama（gpt-oss:20b）、LM Studio（lms get openai/gpt-oss-20b）が公式対応。",
   "engines": [
@@ -3369,8 +3369,8 @@
    "tau2": 76.9,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。",
-  "aa_index": 15,
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では15。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "140以上の言語で事前学習し、35以上の言語を標準でサポート（日本語の個別明記はない）。前世代のGemma 3 27Bは日本語ランキング（Qualiteg 2026年3月版）の中規模で5位だった。",
   "deploy_note_ja": "Q4_K_M 18.3GB（公式QAT Q4_0は約19GB）でRTX 4090/3090（24GB）に載るが、長いコンテキストはKVキャッシュが重く24GBでは厳しい。RTX 5090のllama.cpp実測でQ4_K_M生成約69 tok/s。Q8_0は32.6GBで、64GBのMacやRTX 5090＋オフロード向け。UnslothのMLX 4bit/8bit版があり、Ollama公式（gemma4:31b）、LM Studioにも対応。",
   "engines": [
@@ -3413,31 +3413,30 @@
   "family": "Mistral Large",
   "org": "Mistral AI",
   "country": "FR",
-  "status": "announced",
-  "announced": "2026-10-06",
-  "release": "2026-10",
+  "release": "2026-10-29",
   "arch": "MoE",
   "total_b": 1000,
   "active_b": 52,
-  "native_precision": null,
-  "weights_gb": null,
-  "context_k": 524,
+  "native_precision": "FP8（128×128ブロック量子化。視覚部などはBF16）。公式NVFP4版あり",
+  "weights_gb": 1060.6,
+  "context_k": 1049,
   "modality": [
    "text",
    "image"
   ],
   "mode": "hybrid",
-  "license": "未発表（独自ライセンスになると報道）",
+  "license": "Mistral Ecosystem Open-Weight License（MIT改変）",
   "commercial": "conditional",
-  "license_note": "ライセンスは重みの公開時に確定。Large 3 の Apache-2.0 ではなく独自ライセンスになるという報道がある。",
-  "hf": null,
-  "summary_ja": "Mistral 初の1兆パラメータ級 MoE（アクティブ52B）で、画像・文書の理解にも対応します。いまは API のプレビューだけで、重みは10月末に公開予定です。",
+  "license_note": "改変・再配布・商用利用は可。自社や関連会社が Model-as-a-Service（第三者に推論・追加学習をAPI等で提供）事業を営む場合は、商用目的で使う前に Mistral と別の商用ライセンス契約が必要。社内利用や機能に組み込んだ製品は対象外。Large 3 の Apache-2.0 から変更。",
+  "hf": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+  "summary_ja": "Mistral 初の1兆パラメータ級 MoE（アクティブ52B）で、画像・文書の理解にも対応し、コーディングとサイバーセキュリティに強いモデルです。10月29日に重みが公開され、米欧のオープンウェイトでは AA 指数が最も高くなりました。",
   "strengths": [
    "agent",
    "coding",
    "multilingual",
    "vision",
-   "tool-use"
+   "tool-use",
+   "long-context"
   ],
   "bench": {
    "swe_verified": null,
@@ -3448,22 +3447,161 @@
    "mmlu_pro": null,
    "terminal_bench2": null,
    "tau2": null,
-   "browsecomp": null
+   "browsecomp": 84.5
   },
-  "bench_note": "公式ブログの自己申告（プレビュー）: Terminal-Bench 4 28.3%、DeepSWE 1.1 61.7%、SWE-Atlas-QnA 59.4%、AutomationBench 59.9%。AA指数はプレビュー API の値（v4.3.2、2026-10-26取得）。",
-  "aa_index": 38,
-  "japanese_note": "160以上の言語で学習したとしているが、日本語の評価は未確認。",
-  "deploy_note_ja": "重みのサイズと精度は未発表。プレビュー API は入力100万トークンあたり1.36ドル、出力4.18ドル。",
-  "engines": [],
-  "supersedes": [],
-  "notes": "公式は「重みは今月末」（10月6日の発表）。10月27日公開という報道もある。重みが公開されたら status を外し、旧版（Mistral Large 3）を supersedes に入れる。",
-  "sources": [
-   "https://mistral.ai/news/mistral-large-4/",
-   "https://artificialanalysis.ai/models/mistral-large-4",
-   "https://forklog.com/en/news/mistral-launches-public-preview-of-ai-model-with-1-trillion-parameters",
-   "https://betanews.com/article/mistral-large-4-preview-open-weights/"
+  "bench_note": "公式ブログ・モデルカードの自己申告（reasoning_effort=high）: Terminal-Bench 4.0 41%（プレビューの28%から13pt向上）、FrontierCode 2.0 19.7%、AA Coding Agent Index 48%（GLM-5.3とほぼ同点でトークン47%減）、AA Cyber Index 51%、FinWorkBench 73.3%、BrowseComp 84.5%。SWE-bench Verified・GPQA・HLE・AIME・LCB・MMLU-Proは未公表。aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得、High設定。Mediumは23.1）。プレビュー時のv4.3.2の値は38。",
+  "aa_index": 26.0,
+  "japanese_note": "160以上の言語で学習し、モデルカードの対応言語に日本語（ja）を明記。日本語の独立評価は未確認。",
+  "deploy_note_ja": "公式FP8は約1,061GBで、8×H200（131Kトークン文脈）や8×B200級の1ノードが目安。Blackwell向けの公式NVFP4版は約610GB。llama.cppのQ2_K（約381GB）は512GBのMac Studio（M3 Ultra）1台で生成15 tok/s、prefill 約90 tok/s（HFブログ）。Unslothの最小1bit版（約233GB）は256GB機やDGX Spark 2台に載る。投機デコード用のDSparkドラフトヘッドを同梱。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "Transformers",
+   "llama.cpp",
+   "TensorRT-LLM",
+   "MLX",
+   "Unsloth"
   ],
-  "confidence": "medium"
+  "supersedes": [
+   "Mistral Large 3"
+  ],
+  "notes": "10-06にAPIのプレビューとして発表し、10-29にHFで重みを公開（Initial releaseコミット 2026-10-29、HFブログも同日）。総パラメータは公式に「約1T」、アクティブは49B（埋め込み・出力層を含め52B）。configの最大位置は1,048,576。推論の強さはlow/medium/high（既定high）で切り替える。API料金は入力100万トークンあたり0.70ドル、出力2.10ドル。",
+  "sources": [
+   "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+   "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/commits/main",
+   "https://mistral.ai/news/mistral-large-4-oss/",
+   "https://huggingface.co/blog/mistral-large4",
+   "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4",
+   "https://artificialanalysis.ai/models/mistral-large-4",
+   "https://mistral.ai/news/mistral-large-4/"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-31",
+  "local_q": {
+   "summary_ja": "2bit（約340〜380GB）で 512GB の Mac Studio 1台に載り、生成は約15 tok/s。128GB 機1台には最小の1bit版（約233GB）でも載りません。",
+   "quants": [
+    {
+     "name": "UD-IQ1_S",
+     "bits": 1.86,
+     "size_gb": 233.0,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF",
+     "note": "Unsloth: 256GB機やDGX Spark 2台に載る"
+    },
+    {
+     "name": "UD-IQ1_M",
+     "bits": 2.08,
+     "size_gb": 259.6,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "IQ2_XXS (ggml-org)",
+     "bits": 2.38,
+     "size_gb": 297.7,
+     "source": "https://huggingface.co/ggml-org/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "UD-IQ2_XXS",
+     "bits": 2.42,
+     "size_gb": 302.5,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "MLX 2bit（テキストのみ）",
+     "bits": 2.7,
+     "size_gb": 338.1,
+     "source": "https://huggingface.co/mlx-community/Mistral-Large-4-1T-A52B-Text-2bit"
+    },
+    {
+     "name": "UD-Q2_K_XL",
+     "bits": 3.03,
+     "size_gb": 378.3,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF",
+     "note": "Unsloth推奨（top-1一致率95.6%）"
+    },
+    {
+     "name": "Q2_K (ggml-org)",
+     "bits": 3.05,
+     "size_gb": 380.7,
+     "source": "https://huggingface.co/ggml-org/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "REAP 667B NVFP4（剪定）",
+     "bits": 4.71,
+     "size_gb": 392.9,
+     "source": "https://huggingface.co/sapidlabs/Mistral-Large-4-667B-A52B-REAP-NVFP4",
+     "note": "専門家を剪定した別モデル"
+    },
+    {
+     "name": "UD-IQ3_XXS",
+     "bits": 3.39,
+     "size_gb": 423.5,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "MLX 3bit（テキストのみ）",
+     "bits": 3.67,
+     "size_gb": 459.3,
+     "source": "https://huggingface.co/mlx-community/Mistral-Large-4-1T-A52B-Text-3bit"
+    },
+    {
+     "name": "UD-Q3_K_XL",
+     "bits": 3.94,
+     "size_gb": 492.7,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "MXFP4 (AMD Quark)",
+     "bits": 4.62,
+     "size_gb": 577.9,
+     "source": "https://huggingface.co/amd/Mistral-Large-4-1T-A52B-Quark-MXFP4"
+    },
+    {
+     "name": "MLX 4bit（テキストのみ）",
+     "bits": 4.72,
+     "size_gb": 590.4,
+     "source": "https://huggingface.co/mlx-community/Mistral-Large-4-1T-A52B-Text-4bit"
+    },
+    {
+     "name": "UD-Q4_K_XL",
+     "bits": 4.84,
+     "size_gb": 604.8,
+     "source": "https://huggingface.co/unsloth/Mistral-Large-4-1T-A52B-GGUF"
+    },
+    {
+     "name": "NVFP4 (Mistral公式)",
+     "bits": 4.88,
+     "size_gb": 610.0,
+     "source": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4"
+    },
+    {
+     "name": "Q4_K_M (ggml-org)",
+     "bits": 5.08,
+     "size_gb": 634.8,
+     "source": "https://huggingface.co/ggml-org/Mistral-Large-4-1T-A52B-GGUF"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "Mac Studio M3 Ultra 512GB",
+     "quant": "Q2_K（約381GB）",
+     "gen_tok_s": 15,
+     "source": "https://huggingface.co/blog/mistral-large4"
+    },
+    {
+     "hardware": "RTX PRO 6000 ×4",
+     "quant": "IQ2_XXS（約298GB、短い文脈）",
+     "gen_tok_s": 30,
+     "source": "https://huggingface.co/blog/mistral-large4"
+    },
+    {
+     "hardware": "RTX PRO 6000 ×4",
+     "quant": "NVFP4（32K文脈）",
+     "gen_tok_s": 10,
+     "source": "https://huggingface.co/blog/mistral-large4"
+    }
+   ],
+   "note_ja": "RTX PRO 6000 ×4 の IQ2_XXS は800K文脈まで動くが、長い文脈では生成3 tok/s・prefill 129 tok/sまで落ちる（HFブログ）。bitsはファイル容量を総1Tで割った目安。"
+  }
  },
  {
   "id": "mistral-medium-3-5",
@@ -3507,8 +3645,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカードと発表時の報道。テキストで確認できたのはSWE-bench Verified 77.6とτ³-Telecom 91.4のみで、他の値は画像のみで読み取れなかった。aa_indexはAA v4.3.2。",
-  "aa_index": 14,
+  "bench_note": "公式モデルカードと発表時の報道。テキストで確認できたのはSWE-bench Verified 77.6とτ³-Telecom 91.4のみで、他の値は画像のみで読み取れなかった。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では14。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "公式の対応言語に日本語を明記（24言語）。日本語ベンチの個別値は未確認。",
   "deploy_note_ja": "ネイティブFP8（約134GB。リポジトリには2形式が同梱され合計約267GB）。4×H100/H200程度で自前運用できると報道されている（公式の起動例はTP8）。NVIDIA公式のNVFP4版（約95GB）、UnslothのGGUF、MLX 4bit版、EAGLEの投機的デコードモデルがある。",
   "engines": [
@@ -3574,8 +3712,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカードにはベンチマークの記載がない。Cohereの公表値（The Decoder経由）はτ²-Bench Telecom 85%、Terminal-Bench Hard 25%。AAによれば、AA-Omniscienceの非ハルシネーション率86%で1位。aa_indexはAA v4.3.2の値で、リリース当時の旧版では約37だった。",
-  "aa_index": 13,
+  "bench_note": "モデルカードにはベンチマークの記載がない。Cohereの公表値（The Decoder経由）はτ²-Bench Telecom 85%、Terminal-Bench Hard 25%。AAによれば、AA-Omniscienceの非ハルシネーション率86%で1位。aa_indexはAA v4.3.2の値で、リリース当時の旧版では約37だった。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では13）。",
+  "aa_index": 6.2,
   "japanese_note": "対応48言語に日本語を含む。日本語ベンチの個別値は未確認。",
   "deploy_note_ja": "公式の最小構成は、BF16（約438GB）が4×B200または8×H100、FP8（約225GB）が2×B200または4×H100、推奨のW4A4（約132GB）が1×B200または2×H100。bartowskiのGGUFがある。vLLMは0.21以上で、cohere_melodyライブラリを併用する。",
   "engines": [
@@ -4690,8 +4828,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（thinking）。terminal_bench2はTerminal-Bench 2.0。AIMEはAIME 2026、LCBはv6。TAU3-Benchは67.2（tau2ではないためnull）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 70.12、BrowseComp 48.74。aa_indexはAA v4.3.2（Reasoning。非推論は15）。",
-  "aa_index": 18,
+  "bench_note": "公式モデルカード（thinking）。terminal_bench2はTerminal-Bench 2.0。AIMEはAIME 2026、LCBはv6。TAU3-Benchは67.2（tau2ではないためnull）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 70.12、BrowseComp 48.74。aa_indexはAA v4.3.2（Reasoning。非推論は15）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では18。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "Nejumi Leaderboard 4（2026-09-01時点）で総合0.7978。40B以下ではQwen3.8-27B、Gemma 4 31Bに次ぐ。前世代Qwen3.5-35B-A3BはSwallowで日本語平均0.604。",
   "deploy_note_ja": "Unsloth UD-Q4_K_M は22.1GBで、24GB GPUには短いコンテキストでぎりぎり載る（足りない分はMoEのエキスパートをCPUへ逃がせる）。M4 Max（48〜128GB）のoMLX 4bitで生成約106〜108 tok/s（4k、コミュニティ計測）と非常に速い。Q8_0は36.9GBで、64GBのMacに向く。Ollama公式（qwen3.6:35b）、LM Studioにも対応。",
   "local_runtimes": [
@@ -4771,8 +4909,8 @@
    "tau2": 68.2,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは17.2）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 57.40、Terminal-Bench 2.1 37.22。aa_indexはAA v4.3.2（Reasoning）。",
-  "aa_index": 17,
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは17.2）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 57.40、Terminal-Bench 2.1 37.22。aa_indexはAA v4.3.2（Reasoning）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では17。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "Swallow LLM Leaderboardで日本語平均0.646（40B以下の国外オープンでGemma 4 31Bに次ぐ2位）。Nejumi Leaderboard 4（2026-09-01時点）で総合0.7872。biton（2026年10月版）は16GB帯の本命としている。",
   "deploy_note_ja": "UD-Q4_K_M 16.9GBで16〜24GBのGPUに載る。RTX 5090のllama.cpp実測でQ4_K_M生成約249 tok/s。M4 Max 128GBのoMLX（6bit）で生成約83 tok/s（4k）、64kでも約50 tok/s。Ollama公式（gemma4:26b）、LM Studio、Unsloth MLX版あり。",
   "local_runtimes": [
@@ -4849,8 +4987,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（reasoning=high）。terminal_bench2はTerminal-Bench 2.1、HLEはAA測定のテキストのみ、AIMEはAIME 2026。ほかにSWE-bench Pro 51.2、MCP Atlas 75.5、AA-LCR 80.0、τ3-Banking 23.5。aa_indexはAA v4.3.2（High）。旧版指数（v4.1系、2026-08）では35だった。",
-  "aa_index": 17,
+  "bench_note": "公式モデルカード（reasoning=high）。terminal_bench2はTerminal-Bench 2.1、HLEはAA測定のテキストのみ、AIMEはAIME 2026。ほかにSWE-bench Pro 51.2、MCP Atlas 75.5、AA-LCR 80.0、τ3-Banking 23.5。aa_indexはAA v4.3.2（High）。旧版指数（v4.1系、2026-08）では35だった。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では17）。",
+  "aa_index": 6.3,
   "japanese_note": "Nejumi Leaderboard 4（2026-09-01時点）で総合0.7754（reasoning-xhigh）。モデルカードは100以上の言語で学習とするが、日本語の個別記載はない。AA-Omniscienceの幻覚率は82%と高め（AA記事）。",
   "deploy_note_ja": "公式GGUFのK-Quant-17GB（Q4_K_M、16.8GB）で24GB GPUに載る（画像入力用mmprojとDFlashドラフタを足しても約20GB）。公式計測でRTX 5090（llama.cpp）は通常74.9 tok/s、DFlash投機的デコードで233.4 tok/s。M4 Maxは23.7→37.8 tok/s、M5 Maxは26.6→50.2 tok/s（ExecuTorch）。llama.cppはb10353以降が必要。Ollama公式（muse-glimmer:30b）、LM Studio対応。",
   "local_runtimes": [
@@ -4904,7 +5042,7 @@
   "commercial": "yes",
   "license_note": "重みはApache 2.0。途中チェックポイント・データ・学習コードは今後公開予定とされる。",
   "hf": "https://huggingface.co/IFM/K2-Horizon-MoVA-36B-A4B",
-  "summary_ja": "UAEのMBZUAIが出した独自アテンション（Mixture of Value Attention）のMoEで、40B以下ではQwen3.8-27Bに次ぐAA指数。エージェント系ベンチが強く、ネイティブ512Kの長文脈を持つ。",
+  "summary_ja": "UAEのMBZUAIが出した独自アテンション（Mixture of Value Attention）のMoEで、旧版のAA指数（v4.3.2）では40B以下でQwen3.8-27Bに次ぐ位置だった。エージェント系ベンチが強く、ネイティブ512Kの長文脈を持つ。",
   "strengths": [
    "agent",
    "reasoning",
@@ -4923,8 +5061,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（reasoning_effort=high。比較対象のベースラインはAA測定）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。ほかにτ3-Banking 26.8、SciCode 38.9、AA-LCR 66.3。aa_indexはAA v4.3.2（サイト表示は丸めて25）。",
-  "aa_index": 25.3,
+  "bench_note": "公式モデルカード（reasoning_effort=high。比較対象のベースラインはAA測定）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。ほかにτ3-Banking 26.8、SciCode 38.9、AA-LCR 66.3。aa_indexはAA v4.3.2（サイト表示は丸めて25）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では25.3。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "言語タグは英語のみで、日本語の評価は見当たらない。外部のローカル検証（MindStudio、同ファミリーの0.9B/7B/32B）で多言語タスクの不具合が指摘されている。",
   "deploy_note_ja": "公式GGUFのQ4_K_Mは22.4GBで、24GB GPUには短いコンテキストでぎりぎり。32GBのRTX 5090や48GB以上のMacが無難。llama.cppは本家b11454でK2 Horizon対応が入ったばかり（それ以前はIFMのフォークが必要）で、Ollama・LM Studioでの動作実績はまだ少ない。実測tok/sの公表はなし。",
   "local_runtimes": [
@@ -5127,8 +5265,8 @@
    "tau2": null,
    "browsecomp": 36.97
   },
-  "bench_note": "公式モデルカード（NVIDIAのNeMo Evaluator SDKでの測定）。terminal_bench2はTerminal-Bench 2.1、HLEはテキストのみ・ツールなし。ほかにSciCode 32.60、AA-LCR 52.00、IFBench 71.88。aa_indexはAA v4.3.2（発表時のv4.1.1では24）。AAの出力速度は310.7 tok/sで全モデル1位。",
-  "aa_index": 13,
+  "bench_note": "公式モデルカード（NVIDIAのNeMo Evaluator SDKでの測定）。terminal_bench2はTerminal-Bench 2.1、HLEはテキストのみ・ツールなし。ほかにSciCode 32.60、AA-LCR 52.00、IFBench 71.88。aa_indexはAA v4.3.2（発表時のv4.1.1では24）。AAの出力速度は310.7 tok/sで全モデル1位。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では13）。",
+  "aa_index": 5.5,
   "japanese_note": "モデルカードの対応言語に日本語が明記されている。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
   "deploy_note_ja": "Q4_K_Mは25.5GBと大きめなので、24GB GPUではIQ4_XS（18.9GB）が現実的。RTX 5090のllama.cpp実測でIQ4_NL生成約334 tok/s、NVFP4 GGUFで約367 tok/sと、30B級で最速クラス。llama.cppはb10362以降が必要。Ollama公式（nemotron-3.5-lightning:30b）、LM Studio対応。",
   "local_runtimes": [
@@ -5180,7 +5318,7 @@
   "commercial": "yes",
   "license_note": "リポジトリと重みともにApache 2.0。プレビュー版の位置づけ。",
   "hf": "https://huggingface.co/ai9stars/G9v3-39A5B",
-  "summary_ja": "あまり知られていないチームが出した39B MoEだが、AA指数では40B以下でQwen3.8-27B、K2 Horizon MoVAに次ぐ位置にいる。幻覚の少なさ（AA-Omniscience非幻覚率87%）が目立つ。",
+  "summary_ja": "あまり知られていないチームが出した39B MoEだが、旧版のAA指数（v4.3.2）では40B以下でQwen3.8-27B、K2 Horizon MoVAに次ぐ位置だった。幻覚の少なさ（AA-Omniscience非幻覚率87%）が目立つ。",
   "strengths": [
    "reasoning",
    "efficiency"
@@ -5196,8 +5334,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式カードにベンチマーク表はない。値はK2-Horizon-MoVAのモデルカードに載っているAA測定の比較値（terminal_bench2はTerminal-Bench 2.1、HLEはツールなし）。ほかにτ3-Banking 22.1、AA-Omniscience非幻覚率87.0。aa_indexはAA v4.3.2（推定値、独立評価は今後）。中国語版AAページの旧指数では31。",
-  "aa_index": 22,
+  "bench_note": "公式カードにベンチマーク表はない。値はK2-Horizon-MoVAのモデルカードに載っているAA測定の比較値（terminal_bench2はTerminal-Bench 2.1、HLEはツールなし）。ほかにτ3-Banking 22.1、AA-Omniscience非幻覚率87.0。aa_indexはAA v4.3.2（推定値、独立評価は今後）。中国語版AAページの旧指数では31。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では22。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "対応言語は英語と中国語のみと記載。日本語の評価は見当たらない。",
   "deploy_note_ja": "独自アーキテクチャでtrust_remote_codeが必要（Transformers 5.6以上、vLLM 0.21以上、SGLang 0.5.12以上）。HF上にコミュニティ量子化が7件あるが、llama.cpp/Ollamaで動くかは未確認。4bitなら単純計算で20GB台前半だが、実ファイルサイズとtok/sの報告は見当たらない。",
   "local_runtimes": [
@@ -5260,8 +5398,8 @@
    "tau2": 79.5,
    "browsecomp": 42.8
   },
-  "bench_note": "公式モデルカード。AIMEはAIME 25、LCBはv6。aa_indexはAA v4.3.2（推定値）。AAはこのモデルを旧版扱い（deprecated）にしている。",
-  "aa_index": 15,
+  "bench_note": "公式モデルカード。AIMEはAIME 25、LCBはv6。aa_indexはAA v4.3.2（推定値）。AAはこのモデルを旧版扱い（deprecated）にしている。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では15。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "言語タグは英語と中国語のみ。日本語のリーダーボード結果は見当たらない。",
   "deploy_note_ja": "Q4_K_M 18.3GB（UD-Q4_K_XL 17.5GB）で24GB GPUや32GB以上のMacに載る。Ollama公式（glm-4.7-flash）、LM Studio、llama.cppで動く。Q8_0は31.8GB。",
   "local_runtimes": [
@@ -5326,8 +5464,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2（バージョン表記どおり）。SWE-bench Multilingual 55.7。第三者表では SWE-bench Verified 65.8 の報告もある。aa_indexはAA v4.3.2（非推論）。AAは旧版扱い。",
-  "aa_index": 8,
+  "bench_note": "公式モデルカード。terminal_bench2はTerminal-Bench 2（バージョン表記どおり）。SWE-bench Multilingual 55.7。第三者表では SWE-bench Verified 65.8 の報告もある。aa_indexはAA v4.3.2（非推論）。AAは旧版扱い。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では8。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "日本語の評価は見当たらない。",
   "deploy_note_ja": "Q4_K_M 14.3GBで16GB以上のGPU、24GBなら長めのコンテキストも取れる。Q8_0は25.1GB。Ollama公式（devstral-small-2:24b）、LM Studio、llama.cppに対応。Mistral Vibe CLIなどのコーディングエージェントと組み合わせる前提。",
   "local_runtimes": [
@@ -5394,8 +5532,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。aa_indexはAA v4.3.2。",
-  "aa_index": 13,
+  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では13。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "モデルカードのテスト済み言語に日本語が含まれる。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
   "deploy_note_ja": "Ollama公式（granite4.2:30b）のQ4_K_Mが約18GBで、24GB GPUに載る。ネイティブ128K、512Kまでの拡張あり。LM Studio、llama.cppでも動く。tok/sの実測報告は見当たらない。",
   "local_runtimes": [
@@ -5535,8 +5673,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード。AIMEはAIME 2026、LCBはv6。τ2-Benchはドメイン別（Retail 77.9、Airline 56.5、Telecom 73.0）のためnull。MMMU 78.7、MMMU-Pro 68.6。aa_indexはAA v4.3.2（推定値）。",
-  "aa_index": 13,
+  "bench_note": "公式モデルカード。AIMEはAIME 2026、LCBはv6。τ2-Benchはドメイン別（Retail 77.9、Airline 56.5、Telecom 73.0）のためnull。MMMU 78.7、MMMU-Pro 68.6。aa_indexはAA v4.3.2（推定値）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では13。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "6言語のタグがあるが内訳は未記載で、韓国語に重点を置く。日本語の評価は見当たらない。",
   "deploy_note_ja": "公式GGUFでQ4_K_M 20GB（IQ4_XS 18GB）。24GB GPUに載る。llama.cppはb9453以降で公式対応。Ollama（hf.co経由）とLM Studioで動く。Q8_0は35.1GB。",
   "local_runtimes": [
@@ -5603,8 +5741,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード。SWE-bench VerifiedはOpenHands使用時（AgentLessでは47）、AIMEはAIME 2025（2024は91.7）、LCBはv6。MMMLU 78.4。aa_indexはAA v4.3.2（推定値）。AAは旧版扱い。",
-  "aa_index": 12,
+  "bench_note": "公式モデルカード。SWE-bench VerifiedはOpenHands使用時（AgentLessでは47）、AIMEはAIME 2025（2024は91.7）、LCBはv6。MMMLU 78.4。aa_indexはAA v4.3.2（推定値）。AAは旧版扱い。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では12。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "国際用途向けに最適化とあり、多言語のMMMLUは78.4。日本語リーダーボードの結果は見当たらない。",
   "deploy_note_ja": "Q4_K_M 21.8GB（bartowski）で24GB GPUにぎりぎり載るが、長文脈はKVキャッシュで厳しい。Q8_0は38.4GBで64GBのMac向け。llama.cpp系（Ollamaはhf.co経由、LM Studio）で動く。",
   "local_runtimes": [
@@ -5667,8 +5805,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード。AIMEはAIME 2025（2024は80.6）。LiveCodeBenchはv3で83.3（v6ではないためnull）。IFEval 93.8、MMLU 86.4。aa_indexはAA v4.3.2（推定値）。",
-  "aa_index": 7,
+  "bench_note": "公式モデルカード。AIMEはAIME 2025（2024は80.6）。LiveCodeBenchはv3で83.3（v6ではないためnull）。IFEval 93.8、MMLU 86.4。aa_indexはAA v4.3.2（推定値）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では7。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "日本語の評価は見当たらない（英語中心）。",
   "deploy_note_ja": "Ollama公式（olmo-3.1:32b、Q4で19GB）で24GB GPUに載る。コンテキストは約64K。Thinkと Instructの2種類がある。",
   "local_runtimes": [
@@ -5735,8 +5873,8 @@
    "tau2": 69.0,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし、tau2は3ドメイン平均。MMMLU 83.4、MMMU Pro 69.1。aa_indexはAA v4.3.2（推定値）。",
-  "aa_index": 14,
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし、tau2は3ドメイン平均。MMMLU 83.4、MMMU Pro 69.1。aa_indexはAA v4.3.2（推定値）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では14。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "biton（2026年10月版）は日本語○の評価。多言語のMMMLUは83.4。日本語リーダーボードの個別スコアは見当たらない。",
   "deploy_note_ja": "Q4_K_M 7.12GBで8GB GPUや16GBのMacでも動く。RTX 5090のllama.cpp実測でQ4_K_M生成約145 tok/s。Ollama公式（gemma4:12b）、LM Studio対応。Q8_0は12.7GB。",
   "local_runtimes": [
@@ -5789,7 +5927,7 @@
   "commercial": "yes",
   "license_note": "重み・データ・学習レシピ・コードまで公開された完全オープン。",
   "hf": "https://huggingface.co/IFM/K2-Horizon-7B",
-  "summary_ja": "7B級ながらAA指数21で、Qwen3.6-35B-A3B（18）を上回る小型推論モデル。ただしSWE-benchで答えを取得していた実行が見つかったと開発元自身が公表しており、数値の扱いには注意が要る。",
+  "summary_ja": "7B級ながら旧版のAA指数（v4.3.2）で21と、Qwen3.6-35B-A3B（18）を上回った小型推論モデル。ただしSWE-benchで答えを取得していた実行が見つかったと開発元自身が公表しており、数値の扱いには注意が要る。",
   "strengths": [
    "coding",
    "agent",
@@ -5808,8 +5946,8 @@
    "tau2": null,
    "browsecomp": 59.0
   },
-  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、AIMEはAIME 2025。GPQA/AIME/LCBは「anti-doom-loop」段階前の値（後は75.6/90.3/72.7）。SWE-bench Verifiedはローンチ表では68.4。IFMは、別の7B実行がSWE-benchの答えを取得し82まで水増しされたことを公表している。aa_indexはAA v4.3.2。",
-  "aa_index": 21,
+  "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、AIMEはAIME 2025。GPQA/AIME/LCBは「anti-doom-loop」段階前の値（後は75.6/90.3/72.7）。SWE-bench Verifiedはローンチ表では68.4。IFMは、別の7B実行がSWE-benchの答えを取得し82まで水増しされたことを公表している。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では21。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "言語タグは英語のみ。外部のローカル検証（MindStudio）で多言語タスクの不具合が指摘されている。",
   "deploy_note_ja": "BF16で約17GB（HFのメタデータ上は9Bパラメータ）。4bit量子化なら8GB級GPUが目安とされるが、実ファイルサイズとtok/sの実測は見当たらない。llama.cppは本家b11454でK2 Horizon対応が入ったばかりで、Ollama・LM Studioの実績はまだ少ない。",
   "local_runtimes": [
@@ -6075,8 +6213,8 @@
    "tau2": 56.2,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（推奨のEntropy Boundサンプラー使用）。aimeはAIME 2026（ツールなし）、lcbはLiveCodeBench v6、hleはツールなし、tau2は3回平均。同じ表の通常版Gemma 4 26B A4BはMMLU Pro 82.6、AIME 2026 88.3、GPQA 82.3、LCB v6 77.1。aa_indexはAA v4.3.2の推定値（*）で、通常版（16.7）を大きく下回る。",
-  "aa_index": 9.5,
+  "bench_note": "公式モデルカード（推奨のEntropy Boundサンプラー使用）。aimeはAIME 2026（ツールなし）、lcbはLiveCodeBench v6、hleはツールなし、tau2は3回平均。同じ表の通常版Gemma 4 26B A4BはMMLU Pro 82.6、AIME 2026 88.3、GPQA 82.3、LCB v6 77.1。aa_indexはAA v4.3.2の推定値（*）で、通常版（16.7）を大きく下回る。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では9.5。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "35以上の言語に対応（事前学習は140以上）。日本語の個別評価は見当たらない。",
   "deploy_note_ja": "BF16で約52GB。量子化すれば18GB以内でRTX 4090/5090に載るとGoogleは説明している。unslothのGGUF（Q4_K_M 16.8GB）はllama.cppの拡散用ブランチとllama-diffusion-cliでしか動かず、llama-serverやOllamaでは使えない。速度の利点はApple Siliconなどユニファイドメモリ機では出にくい。vLLM、Transformers、MLX、NVIDIA NIMに対応。",
   "local_runtimes": [
@@ -6197,7 +6335,7 @@
   "commercial": "yes",
   "license_note": "Apache-2.0。",
   "hf": "https://huggingface.co/sarvamai/sarvam-30b",
-  "summary_ja": "インドのSarvam AIがIndiaAI Missionの計算資源でゼロから学習した30B MoE（稼働2.4B、16兆トークン）。インドの22公用語で同サイズ最高水準をうたい、音声通話中のツール呼び出しなど軽い実運用向け。汎用の知能指標（AA）は6.6（推定）と同クラスでは低め。",
+  "summary_ja": "インドのSarvam AIがIndiaAI Missionの計算資源でゼロから学習した30B MoE（稼働2.4B、16兆トークン）。インドの22公用語で同サイズ最高水準をうたい、音声通話中のツール呼び出しなど軽い実運用向け。汎用の知能指標（AA、旧v4.3.2）は6.6（推定）と同クラスでは低め。",
   "strengths": [
    "multilingual",
    "efficiency",
@@ -6215,8 +6353,8 @@
    "tau2": 45.7,
    "browsecomp": 35.5
   },
-  "bench_note": "公式モデルカード（自己申告、最大65,536トークンで評価）。aimeはAIME 25（ツールなし。ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 97.0、HMMT（Feb 25）73.3、MILU 76.8。aa_indexはAA v4.3.2の推定値（*）。",
-  "aa_index": 6.6,
+  "bench_note": "公式モデルカード（自己申告、最大65,536トークンで評価）。aimeはAIME 25（ツールなし。ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 97.0、HMMT（Feb 25）73.3、MILU 76.8。aa_indexはAA v4.3.2の推定値（*）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では6.6。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "インドの言語と英語が中心で、日本語への言及や評価はない。",
   "deploy_note_ja": "HFの本体はFP32で約129GBと大きい。公式FP8版は38.6GB、公式GGUFのQ4_K_Mは19.6GB（ファイル名の拡張子が.gguf.ggufと二重）で24GB GPUに載る。vLLMはカードの時点で本家未対応のため、同梱のhotpatch_vllm.pyかフォークを使う。SGLangは対応。",
   "local_runtimes": [
@@ -6405,7 +6543,7 @@
   "commercial": "yes",
   "license_note": "Apache-2.0。",
   "hf": "https://huggingface.co/sarvamai/sarvam-105b",
-  "summary_ja": "Sarvam AIがインドでゼロから学習した105B MoE（稼働10.3B、12兆トークン）で、インドの22公用語に強い主権AIの旗艦。公表値ではgpt-oss-120bやGLM-4.5-Airと並ぶが、AAの知能指標は8.8（推定）とgpt-oss-120b（12）を下回る。",
+  "summary_ja": "Sarvam AIがインドでゼロから学習した105B MoE（稼働10.3B、12兆トークン）で、インドの22公用語に強い主権AIの旗艦。公表値ではgpt-oss-120bやGLM-4.5-Airと並ぶが、AAの知能指標（旧v4.3.2）は8.8（推定）とgpt-oss-120b（12）を下回る。",
   "strengths": [
    "multilingual",
    "reasoning",
@@ -6423,8 +6561,8 @@
    "tau2": 68.3,
    "browsecomp": 49.5
   },
-  "bench_note": "公式モデルカード（自己申告）。swe_verifiedはSWE-Agentハーネス、aimeはAIME 25（ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 98.6、HMMT（Feb 25）85.8、MMLU 90.6。aa_indexはAA v4.3.2の推定値（*）。",
-  "aa_index": 8.8,
+  "bench_note": "公式モデルカード（自己申告）。swe_verifiedはSWE-Agentハーネス、aimeはAIME 25（ツールありは96.7）、lcbはLiveCodeBench v6、tau2はτ²-Bench平均。ほかにMath500 98.6、HMMT（Feb 25）85.8、MMLU 90.6。aa_indexはAA v4.3.2の推定値（*）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では8.8。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "インドの言語と英語が中心で、日本語への言及や評価はない。",
   "deploy_note_ja": "HFの本体はFP32で約424GB。公式FP8版は約113GBでH100 2枚から、公式GGUFのQ4_K_Mは64.2GBで96GB以上のMacや大容量メモリ機向け。コミュニティのIQ2_M（37.3GB）なら48GB級でも載る。vLLMは同梱のhotpatch_vllm.pyかフォークが必要。",
   "engines": [
@@ -6645,7 +6783,7 @@
   "commercial": "yes",
   "license_note": "MIT（「Built with Motif 3」などの表記をお願いしている）。",
   "hf": "https://huggingface.co/Motif-Technologies/Motif-3",
-  "summary_ja": "韓国のMotif Technologiesが独自設計でゼロから学習した314B MoE（稼働13.2B、12.5兆トークン）。公表値はTerminal-Bench 2.1 74.9、SWE-bench Verified 76.2とエージェント・ツール利用に強い。AAの知能指標は33.6（推定）で、韓国のオープンモデルでは最上位。",
+  "summary_ja": "韓国のMotif Technologiesが独自設計でゼロから学習した314B MoE（稼働13.2B、12.5兆トークン）。公表値はTerminal-Bench 2.1 74.9、SWE-bench Verified 76.2とエージェント・ツール利用に強い。AAの知能指標（旧v4.3.2）は33.6（推定）で、韓国のオープンモデルでは最上位だった。",
   "strengths": [
    "agent",
    "coding",
@@ -6664,8 +6802,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（temperature 1.0、262Kトークン）。terminal_bench2はTerminal-Bench 2.1。ほかにτ²-Bench Telecom 94.7、τ³-Banking 35.3、GDPval v2 38.7、SciCode 40.6、IMOAnswerBench 83.2、AA-LCR 72.3、IFBench 78.2。aa_indexはAA v4.3.2の推定値（*）。正式版の前に出たMotif 3 Beta（0714）のAA推定値は32.3。",
-  "aa_index": 33.6,
+  "bench_note": "公式モデルカード（temperature 1.0、262Kトークン）。terminal_bench2はTerminal-Bench 2.1。ほかにτ²-Bench Telecom 94.7、τ³-Banking 35.3、GDPval v2 38.7、SciCode 40.6、IMOAnswerBench 83.2、AA-LCR 72.3、IFBench 78.2。aa_indexはAA v4.3.2の推定値（*）。正式版の前に出たMotif 3 Beta（0714）のAA推定値は32.3。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では33.6。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "jp_bench": {
    "nejumi": 0.707
   },
@@ -7015,7 +7153,7 @@
   "commercial": "yes",
   "license_note": "Apache-2.0。",
   "hf": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
-  "summary_ja": "Qwenのコーディングエージェント・ローカル開発向けモデルで、80Bのうち稼働3Bと軽く、Claude CodeやQwen Codeなど各種CLI/IDEで使える非思考型。Qwen3.8世代に後継のコーダーはまだ出ておらず系列の最新だが、汎用のQwen3.8-Flash-Next（AA 39.8）と比べると総合力は大きく劣る（AA 9.2）。",
+  "summary_ja": "Qwenのコーディングエージェント・ローカル開発向けモデルで、80Bのうち稼働3Bと軽く、Claude CodeやQwen Codeなど各種CLI/IDEで使える非思考型。Qwen3.8世代に後継のコーダーはまだ出ておらず系列の最新だが、汎用のQwen3.8-Flash-Nextと比べると総合力は大きく劣る（旧AA v4.3.2で39.8対9.2）。",
   "strengths": [
    "coding",
    "agent",
@@ -7034,8 +7172,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式（Hugging Faceの評価結果欄、自己申告）。terminal_bench2はTerminal-Bench 2.0（2.1ではない）。ほかにSWE-bench Pro 44.3。詳しいベンチはQwenブログの画像のみ。aa_indexはAA v4.3.2（推定ではない実測）。",
-  "aa_index": 9.2,
+  "bench_note": "公式（Hugging Faceの評価結果欄、自己申告）。terminal_bench2はTerminal-Bench 2.0（2.1ではない）。ほかにSWE-bench Pro 44.3。詳しいベンチはQwenブログの画像のみ。aa_indexはAA v4.3.2（推定ではない実測）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では9.2。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "日本語の個別評価は見当たらない。",
   "deploy_note_ja": "BF16で約159GB。公式GGUFのQ4_K_Mは48.4GBで64GB機、unslothのUD-Q2_K_XL（26.8GB）なら32GB機にも載る。MLX 4bit（44.8GB）もあり、Ollama・LM Studio・llama.cppで動く。SGLang 0.5.8以降、vLLMに対応。",
   "local_runtimes": [
@@ -7146,7 +7284,7 @@
   "commercial": "yes",
   "license_note": null,
   "hf": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
-  "summary_ja": "DeepSeek-V4-Proの正式版（プレビュー版0424の後継）で、総1.6T・アクティブ49Bの同社最大のオープンウェイト。エージェント性能が大きく伸び、公表値はTerminal-Bench 2.1 87.9とKimi K3並み。AAの知能指標は36.0で、後発の軽量なV4.1-Flash（45.1）を下回る。",
+  "summary_ja": "DeepSeek-V4-Proの正式版（プレビュー版0424の後継）で、総1.6T・アクティブ49Bの同社最大のオープンウェイト。エージェント性能が大きく伸び、公表値はTerminal-Bench 2.1 87.9とKimi K3並み。AAの知能指標（v5）は23.1で、後発の軽量なV4.1-Flash（32.5）を下回る。",
   "strengths": [
    "coding",
    "agent",
@@ -7165,8 +7303,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（max effort、DeepSeek Harness）。HLEはツールなし（ツールありは60.0）、terminal_bench2はTerminal-Bench 2.1。ほかにNL2Repo 61.5、Cybergym 83.3、DeepSWE 62.7、Toolathlon-Verified 74.1、AutomationBench（Public）31.8。AA指数v4.3.2（Max設定。Non-reasoningは20.4）。",
-  "aa_index": 36.0,
+  "bench_note": "公式モデルカード（max effort、DeepSeek Harness）。HLEはツールなし（ツールありは60.0）、terminal_bench2はTerminal-Bench 2.1。ほかにNL2Repo 61.5、Cybergym 83.3、DeepSWE 62.7、Toolathlon-Verified 74.1、AutomationBench（Public）31.8。AA指数v4.3.2（Max設定。Non-reasoningは20.4）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では36.0）。",
+  "aa_index": 23.1,
   "jp_bench": {
    "nejumi": 0.7984
   },
@@ -7259,7 +7397,7 @@
   "commercial": "yes",
   "license_note": "OpenMDW-1.1（寛容型）。",
   "hf": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking",
-  "summary_ja": "米Arcee AIがDatologyと組んでゼロから17兆トークン学習したTrinity-Largeの推論・エージェント版（398B MoE、稼働13B）。τ²-Benchなどツール利用で高い公表値を出す一方、AAの知能指標は10.8と同規模の中国勢に大きく離されている。米国発でゼロから学習した大型オープンモデルとしては数少ない存在。",
+  "summary_ja": "米Arcee AIがDatologyと組んでゼロから17兆トークン学習したTrinity-Largeの推論・エージェント版（398B MoE、稼働13B）。τ²-Benchなどツール利用で高い公表値を出す一方、AAの知能指標（旧v4.3.2）は10.8と同規模の中国勢に大きく離されている。米国発でゼロから学習した大型オープンモデルとしては数少ない存在。",
   "strengths": [
    "agent",
    "tool-use",
@@ -7278,8 +7416,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（SWE-bench Verifiedはmini-swe-agent-v2）。aimeはAIME25。ほかにτ²-Airline 88.0、τ²-Telecom 94.7、PinchBench 91.9、BFCL v4 70.1、IFBench 52.3。aa_indexはAA v4.3.2（推定ではない実測）。",
-  "aa_index": 10.8,
+  "bench_note": "公式モデルカード（SWE-bench Verifiedはmini-swe-agent-v2）。aimeはAIME25。ほかにτ²-Airline 88.0、τ²-Telecom 94.7、PinchBench 91.9、BFCL v4 70.1、IFBench 52.3。aa_indexはAA v4.3.2（推定ではない実測）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では10.8。v5とは尺度が違い比べられない）。",
+  "aa_index": null,
   "japanese_note": "対応言語の一覧に日本語はない。前段のTrinity-Large-PreviewはNejumi Leaderboard 4で総合0.627。",
   "deploy_note_ja": "BF16で約797GB。公式NVFP4版は約235GB、公式GGUFはQ4_K_M 242GB、IQ2_XXS 106GB、IQ1_S 81GB。会話履歴には思考トークンを残す必要がある（消すとツール呼び出しが崩れることがある）。OpenRouterで提供されている。",
   "engines": [
@@ -8028,5 +8166,102 @@
    "MLX"
   ],
   "supersedes": []
+ },
+ {
+  "id": "sensenova-loop-9b-preview",
+  "name": "SenseNova-Loop-9B-Preview",
+  "short": "SenseNova-Loop 9B",
+  "family": "SenseNova-Loop",
+  "org": "SenseTime（商湯科技）",
+  "country": "CN",
+  "release": "2026-10-30",
+  "arch": "Dense（ループ型デコーダ＋2系統mHC、線形注意と全注意の3:1ハイブリッド）",
+  "total_b": 9.656,
+  "active_b": null,
+  "native_precision": "BF16（mHCのルーティングはFP32）",
+  "weights_gb": 38.1,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
+  "summary_ja": "24層を同じ重みで2回通す「ループ型」の9B級マルチモーダルモデルで、重みを増やさずに計算を深くする試作版。長い文書の理解やコーディング、ツールを使うエージェント作業向け。",
+  "strengths": [
+   "agent",
+   "coding",
+   "vision",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {},
+  "bench_note": "ベンチマークは画像のみで数値の文字情報なし。技術レポートは未公開（TBD）。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの対応言語は英語・中国語のみ。日本語の評価は未確認。",
+  "deploy_note_ja": "配布ファイルは約38GB（FP32で保存）。推論時の実効計算は約14.6B相当。Transformers 5.18のカスタムコード（trust_remote_code）で動き、llama.cpp等の対応や4bit版は未確認。MTPによる高速化に対応。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリ作成は10-28、モデルカードのNewsでは2026-10-30公開。32種類の層で56層分を計算する。",
+  "sources": [
+   "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
+   "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview/commits/main",
+   "https://github.com/OpenSenseNova/SenseNova-Loop"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-31",
+  "q4_unverified": true
+ },
+ {
+  "id": "microsoft-mage-vl-cowork",
+  "name": "Mage-VL-Cowork",
+  "short": "Mage-VL-Cowork 4B",
+  "family": "Mage-VL",
+  "org": "Microsoft（Mage Team）",
+  "country": "US",
+  "release": "2026-10-30",
+  "arch": "Dense（Mage-ViT＋Qwen3-4B）",
+  "total_b": 4.0,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 9.48,
+  "context_k": 32.768,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "hf": "https://huggingface.co/microsoft/Mage-VL-Cowork",
+  "summary_ja": "画面を見てマウス・キーボードで操作する方法と、bashでコードを実行する方法を自分で使い分けるPC操作エージェント用の4Bモデル。OSWorld-Verifiedで66.0%と、4B級では最高水準をうたう。",
+  "strengths": [
+   "agent",
+   "vision",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {},
+  "bench_note": "公式モデルカード: OSWorld-Verified 66.0%（50ステップ、2回平均、361タスク）、OSWorld-G 56.9%、ScreenSpot-v2 87.2%。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの対応言語は英語のみ。日本語環境での操作性能は未確認。",
+  "deploy_note_ja": "BF16で約9.5GB。学習・推論の文脈は32Kトークン（構造上は262Kまで）。専用ハーネス（MAGEHybridAgent）と画面操作用のサンドボックスが前提。4bit版は未確認。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "base_model": "Mage-VL（Qwen3-4B-Instruct-2507ベース）",
+  "sources": [
+   "https://huggingface.co/microsoft/Mage-VL-Cowork",
+   "https://microsoft.github.io/Mage/cowork/",
+   "https://github.com/microsoft/Mage/tree/main/mage_vl_cowork"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-10-31",
+  "q4_unverified": true
  }
 ]

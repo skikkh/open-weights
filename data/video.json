@@ -16,7 +16,7 @@
    "audio"
   ],
   "spec": {
-   "max_resolution": "768p（短辺768px。2K化はAPI専用のH3-Regenerate-2Kが必要）",
+   "max_resolution": "768p（短辺768px。公式の2K化はAPI専用のH3-Regenerate-2K。2026-10-26にNVIDIA（NVlabs）がその代替となるオープンなOpen-H3-Regenerate-2K（768p下書きを2560×1440へ3ステップで再生成するLoRA）を公開）",
    "max_duration_s": 15,
    "fps": 24,
    "other": "4〜15秒。32kHzステレオ音声を映像と同時生成。チェックポイントは2種（FL2VA: テキスト＋0〜2枚の画像で首尾フレーム指定 / Ref2VA: 最大9画像・3動画・3音声、計12ファイルまでの参照）。前処理のH3-Context-IRと2K再生成はAPIのみで非公開。CFG蒸留済みBF16。約13BはAdaLN分岐で推論専用なら読み込み不要とモデルカードに記載"
@@ -28,7 +28,7 @@
    "参照動画・参照音声の入力": true,
    "多言語セリフ（日本語含む）": true,
    "ComfyUI公式対応": true,
-   "2K出力（ローカル）": false
+   "2K出力（NVIDIA製の外部リファイナーOpen-H3-Regenerate-2K）": true
   },
   "min_vram_gb": 24,
   "rec_vram_gb": 80,
@@ -37,30 +37,30 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, AA-Video-T2V v2.1）ELO",
-    "value": 1158,
-    "note": "全体4〜5位（信頼区間で1〜7位タイ）、オープンウェイト1位。768p版。2026-10-25時点",
+    "value": 1161,
+    "note": "全体3位（1位Wan 3.0 1175、2位Utopai X 1166）、オープンウェイト1位。768p版。2026-10-31時点",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
-    "value": 1121,
-    "note": "全体2位（1位Wan 3.0の1135に次ぐ）、オープンウェイト1位",
+    "value": 1120,
+    "note": "オープンウェイト1位（上位5件はHeyGen Video 1 1143、MiniMax H3 Max 1140など。2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, AA-Video-I2V v1.1）ELO",
-    "value": 1140,
-    "note": "全体1位（オープン・クローズド含む）",
+    "metric": "Artificial Analysis I2V Arena（音声あり, AA-Video-I2V v2.1）ELO",
+    "value": 1128,
+    "note": "全体4位、オープンウェイト1位（1位Seedance 2.5 1153）。I2V v2.1への改版で旧版（v1.1）の全体1位から変動。2026-10-31時点",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
-    "value": 1356,
-    "note": "全体4位、オープンウェイト1位",
+    "metric": "Artificial Analysis I2V Arena（音声なし, AA-Video-I2V-Silent v2.1）ELO",
+    "value": 1112,
+    "note": "オープンウェイト1位（AAのFAQ記載、2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "2026年10月時点でオープンウェイト動画モデルの品質トップ。AAのI2V（音声あり）では全モデル中1位で、T2VでもWan 3.0やSeedance 2.5と統計的に並ぶ。Kandinsky 6.0論文の人手比較でも、画質・アーティファクト・動きのリアルさでKandinsky 6.0 Proを有意に上回った。弱みはローカル版が768pまでであること、前処理（Context-IR）と2K再生成が非公開であること、モデルが重いこと",
+  "quality_note": "2026年10月時点でオープンウェイト動画モデルの品質トップ。AAのT2V（音声あり）で全体3位、I2V（音声あり、v2.1）で4位と、Wan 3.0やSeedance 2.5と並ぶ最上位グループ。Kandinsky 6.0論文の人手比較でも、画質・アーティファクト・動きのリアルさでKandinsky 6.0 Proを有意に上回った。弱みはローカル版が768pまでであること（NVIDIAのOpen-H3-Regenerate-2Kで2K化は可能）、前処理（Context-IR）が非公開であること、モデルが重いこと。派生としてPika H3 Flex（6ステップ版）も公開された",
   "ja_note": "モデルカードで日本語を含む11言語（アラビア語・中国語・英語・仏・独・伊・日・韓・葡・露・西）のセリフに安定対応と明記。PC Watchも日本語対応を報じている",
   "license": "MiniMax H3 Community License",
   "commercial": "conditional",
@@ -86,16 +86,83 @@
    "https://pc.watch.impress.co.jp/docs/news/2129989.html",
    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "https://arxiv.org/html/2610.05608"
+   "https://arxiv.org/html/2610.05608",
+   "https://huggingface.co/Efficient-Large-Model/Open-H3-Regenerate-2K",
+   "https://nvlabs.github.io/Sana/Open-H3-Regenerate-2K/"
   ],
   "confidence": "medium",
   "rank": 1,
   "pick": "オープンで最高品質",
-  "pick_reason": "AA Video Arena I2V 全体1位。日本語のセリフに対応",
+  "pick_reason": "AA Video Arena T2V（音声あり）全体3位・オープン1位。日本語のセリフに対応",
   "hl": {
    "label": "AA Arena",
-   "value": 1158
+   "value": 1161
   }
+ },
+ {
+  "id": "pika-h3-flex",
+  "access": "open-weight",
+  "name": "Pika H3 Flex（FL2VA / Ref2VA）",
+  "org": "Pika（Pika Labs / Mellis, Inc.）",
+  "country": "US",
+  "release": "2026-10-29",
+  "params_b": 33,
+  "arch": "MiniMax-H3（33B）を追加学習したLoRAアダプタ2種（FL2VA / Ref2VA、rank 128）。6ステップ生成に蒸留。ベース部品（Qwen3-VL系テキストエンコーダ・映像VAE・音声VAE）はH3のものを使用",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "768p（ローカル。1080p・2K・4KはPika APIのDraft to videoで別途アップスケール）",
+   "max_duration_s": 15,
+   "fps": 24,
+   "output": "MP4（H.264映像＋AAC 32kHzステレオ音声）",
+   "inputs": "テキスト、先頭・末尾フレーム画像、参照（画像最大9・動画最大3・音声最大3、計12ファイル）",
+   "other": "5〜15秒（整数秒指定）。11種のアスペクト比（21:9〜9:21）。プロンプト最大8,000文字。6ステップで生成。音声ステム分離とプロンプト補強はPika APIのみ。Pikaはアップサンプラーも今後オープン化するとしている"
+  },
+  "features": {
+   "音声同時生成": true,
+   "首尾フレーム指定": true,
+   "参照被写体の保持（R2V）": true,
+   "参照動画・参照音声の入力": true,
+   "6ステップ高速生成": true,
+   "ComfyUI公式対応": true,
+   "2K/4K出力（ローカル）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": 80,
+  "vram_note": "公式の検証はH100 80GBのみ。480p・5秒で約66〜69GiBを使用。768p・15秒は80GBを超えるため--cpu-offloadが必要で、その場合GPU約29〜32GiB・ホストRAM約94GiB（いずれもサンプリング部分のみ、最小要件ではないと明記）。ベース部品は約211GBのディスクが必要。ComfyUI向けBF16 LoRAが同梱されており、量子化したH3と組み合わせれば24GB級でも動く可能性があるが未検証",
+  "speed_note": "生成は6ステップ（通常は約50ステップ）。Pika公表値では8×B300で768p・5秒の推論が3.409秒→2.129秒、Fal H3 Maxより平均約1.8倍速い（いずれも自社計測）",
+  "bench": [],
+  "quality_note": "Pikaの自社評価では、768pでMiniMax H3・H3 Max（Fal）・HeyGen Videoより画質・音質の指標で上回り、人体・複雑な構図・音声同期で人手評価も優位とする。一方、物理挙動・マルチシーン・照明などでは他社モデルが好まれた。AAのアリーナには未掲載（2026-10-31確認）で、第三者評価はまだない",
+  "ja_note": "Pikaの資料に対応言語の記載はない。ベースのMiniMax-H3はモデルカードで日本語を含む11言語のセリフに対応とされるが、Flex版での日本語の品質は未確認",
+  "license": "MiniMax H3 Community License",
+  "commercial": "conditional",
+  "license_note": "アダプタはMiniMax-H3の派生物としてMiniMax H3 Community Licenseで配布（UIへのMiniMax H3表示、年商2,000万ドル超は書面許可、米国・EU・英国・韓国は適用地域外などの条件はH3と同じ）。推論コードはApache-2.0、Qwen系テキストエンコーダはApache-2.0",
+  "price_note": "Pika API（ホスト版）はT2V/I2Vが$0.01/秒〜、R2Vが$0.03/秒〜（Pika公式ブログの比較表）",
+  "hf": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+  "tools": [
+   "ComfyUI",
+   "Diffusers",
+   "Pika CLI（pika-h3-pro）",
+   "Pika API"
+  ],
+  "summary_ja": "動画生成サービスのPikaが初めて重みを公開したモデルで、MiniMax H3を追加学習し6ステップで音声付き動画を作れるようにしたもの。テキスト・首尾フレーム・参照素材から最長15秒・768pの動画を生成できる。",
+  "best_for_ja": "MiniMax H3系の品質を少ないステップ数で速く回したい制作（80GB級GPUかCPUオフロード前提）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+   "https://github.com/Pika-Labs/Pika-H3-Flex",
+   "https://github.com/Pika-Labs/Pika-H3-Flex/blob/main/docs/hardware.md",
+   "https://pika.art/blog/pika-h3-flex-research",
+   "https://dev.pika.art/models/pika/pika-h3-flex/draft-to-video",
+   "https://www.nocode.mba/ai-release-tracker/2026/10"
+  ],
+  "confidence": "high",
+  "rank": 2
  },
  {
   "id": "ltx-2-5",
@@ -140,8 +207,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 949,
-    "note": "LTX-2.5 Fast（API提供ティア）。全体24位、オープンウェイト2〜3位。Proティアは945（25位）。2026-10-25時点",
+    "value": 947,
+    "note": "LTX-2.5 Fast（API提供ティア）。全体25位、オープンウェイト2位。Proティアは944（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video/open-weights"
    },
    {
@@ -151,9 +218,9 @@
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 984,
-    "note": "Fast。全体20位、オープンウェイト3位（Proは958で22位）",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 918,
+    "note": "Fast。全体25位、オープンウェイト2位（Proは910）。2026-10-31時点",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
    },
    {
@@ -194,12 +261,12 @@
    "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
   ],
   "confidence": "high",
-  "rank": 2,
+  "rank": 3,
   "pick": "16GBで動く・音声付き",
   "pick_reason": "T2V・I2V・音声駆動まで1つで",
   "hl": {
    "label": "AA Arena",
-   "value": 949
+   "value": 947
   }
  },
  {
@@ -269,7 +336,7 @@
    "https://comfyui-wiki.com/en/models/kandinsky"
   ],
   "confidence": "high",
-  "rank": 3
+  "rank": 4
  },
  {
   "id": "kandinsky-6-0-video-lite",
@@ -335,7 +402,7 @@
    "https://arxiv.org/html/2610.05608"
   ],
   "confidence": "high",
-  "rank": 4
+  "rank": 5
  },
  {
   "id": "magi-2-preview",
@@ -369,18 +436,18 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1042,
-    "note": "全体14位前後。AAのAPI価格は「Coming soon」（2026-10-25時点）",
+    "value": 1044,
+    "note": "全体15位。AAのAPI価格は「Coming soon」（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
     "value": 1046,
-    "note": "全体11位、オープンウェイト2位（H3に次ぎLTX-2.5より上）",
+    "note": "旧版v1.1での値（全体11位）。2026-10-31時点のI2V v2.1（音声あり）には未掲載",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
    }
   ],
-  "quality_note": "I2Vの品質はオープンでH3に次ぐ2番手。千億級のオープンMoE動画モデルとして話題になったが、Preview版で10秒固定、推論はtorchrun＋Dockerの公式パイプラインのみ",
+  "quality_note": "T2V（音声あり）はAAで15位。旧I2Vアリーナ（v1.1）ではオープンでH3に次ぐ2番手だったが、改版後のv2.1には未掲載。千億級のオープンMoE動画モデルとして話題になったが、Preview版で10秒固定、推論はtorchrun＋Dockerの公式パイプラインのみ",
   "ja_note": null,
   "license": "Apache-2.0",
   "commercial": "yes",
@@ -391,7 +458,7 @@
    "公式PyTorch（torchrun）",
    "Docker"
   ],
-  "summary_ja": "Sand AIの114B MoE音声付き動画モデル（プレビュー版）で、I2V品質はオープンで2番手。H100級GPUが8基必要なため、個人のPCでは動かせない。",
+  "summary_ja": "Sand AIの114B MoE音声付き動画モデル（プレビュー版）で、品質はオープンで上位。H100級GPUが8基必要なため、個人のPCでは動かせない。",
   "best_for_ja": "H100/H200クラスタを持つ研究機関・企業が、Apache 2.0で高品質な音声付きI2Vを自前運用したい場合",
   "supersedes": [
    "MAGI-1"
@@ -403,10 +470,10 @@
    "https://artificialanalysis.ai/video/leaderboard/image-to-video/open-weights"
   ],
   "confidence": "medium",
-  "rank": 5,
+  "rank": 6,
   "hl": {
    "label": "AA Arena",
-   "value": 1042
+   "value": 1044
   }
  },
  {
@@ -477,7 +544,7 @@
    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
   ],
   "confidence": "medium",
-  "rank": 6,
+  "rank": 7,
   "hl": {
    "label": "AA Arena",
    "value": 1275
@@ -551,7 +618,7 @@
    "https://huggingface.co/meituan-longcat/LongCat-Video"
   ],
   "confidence": "high",
-  "rank": 7
+  "rank": 8
  },
  {
   "id": "wan2-2-i2v-a14b",
@@ -621,7 +688,7 @@
    "https://huggingface.co/meituan-longcat/LongCat-Video"
   ],
   "confidence": "high",
-  "rank": 8
+  "rank": 9
  },
  {
   "id": "wan2-2-ti2v-5b",
@@ -676,7 +743,7 @@
    "https://www.thundercompute.com/blog/best-open-source-ai-video-generation-models"
   ],
   "confidence": "high",
-  "rank": 9,
+  "rank": 10,
   "pick": "8GB（GGUF）で動く定番",
   "pick_reason": "Apache 2.0。ComfyUI の定番"
  },
@@ -750,7 +817,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "high",
-  "rank": 10
+  "rank": 11
  },
  {
   "id": "skyreels-v3-r2v-14b",
@@ -811,7 +878,7 @@
    "https://github.com/SkyworkAI/SkyReels-V3/blob/main/LICENSE.txt"
   ],
   "confidence": "medium",
-  "rank": 11,
+  "rank": 12,
   "pick": "R2V：参照した人物・物を保つ",
   "pick_reason": "参照画像の見た目を崩さずに動画化"
  },
@@ -872,7 +939,7 @@
    "https://huggingface.co/ByteDance/BindWeave"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 13
  },
  {
   "id": "wan2-2-animate-2-14b",
@@ -928,7 +995,7 @@
    "https://howaiworks.ai/blog/alibaba-wan-open-weights-stopped-at-2-2"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 14
  },
  {
   "id": "longcat-video-avatar-1-5",
@@ -992,7 +1059,7 @@
    "https://huggingface.co/szwagros/LongCat-Video-Avatar-1.5-fp8"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 15
  },
  {
   "id": "skyreels-v3-a2v-19b",
@@ -1052,7 +1119,7 @@
    "https://github.com/SkyworkAI/SkyReels-V3/blob/main/LICENSE.txt"
   ],
   "confidence": "medium",
-  "rank": 15
+  "rank": 16
  },
  {
   "id": "wan-3-0",
@@ -1087,19 +1154,19 @@
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
     "value": 1175,
-    "note": "全体1位（2026-10-25時点）",
+    "note": "全体1位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
-    "value": 1135,
-    "note": "全体1位",
+    "value": 1133,
+    "note": "全体4位（2026-10-31時点。1位HeyGen Video 1 1143）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1127,
-    "note": "全体5位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1111,
+    "note": "全体9位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    },
    {
@@ -1109,7 +1176,7 @@
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "2026-10時点でAAのT2V（音声あり・なし）首位。I2Vでは5位",
+  "quality_note": "2026-10時点でAAのT2V（音声あり）首位。T2V無音は4位、I2V（音声あり、v2.1）は9位",
   "ja_note": null,
   "license": "API（Alibaba Cloud Model Studio利用規約）",
   "commercial": "conditional",
@@ -1133,7 +1200,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 16,
+  "rank": 17,
   "pick": "API で最高品質（T2V）",
   "pick_reason": "AA Video Arena T2V（音声あり）1位",
   "hl": {
@@ -1175,12 +1242,24 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1160,
-    "note": "全体3位（Wan 3.0 1175、Utopai X 1167に次ぐ。2026-10-25時点）。I2Vアリーナには未掲載",
+    "value": 1156,
+    "note": "全体6位（Wan 3.0 1175、Utopai X 1166、MiniMax H3 1161などに次ぐ。2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
+    "value": 1143,
+    "note": "全体1位（2026-10-31時点）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1120,
+    "note": "全体6位（2026-10-31時点）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "AAのT2V（音声あり）で全体3位と、Seedance 2.5やMiniMax H3と並ぶ上位。公式は上位モデルに並ぶ品質を数分の1の秒単価で出せるとする。開発者向けページにMiniMax H3をベースに追加学習したとの記載があったとされるが、確認できていない",
+  "quality_note": "AAのT2V（音声なし）で全体1位、T2V（音声あり）で6位、I2V（音声あり）で6位と、Seedance 2.5やMiniMax H3と並ぶ上位。公式は上位モデルに並ぶ品質を数分の1の秒単価で出せるとする。開発者向けページにMiniMax H3をベースに追加学習したとの記載があったとされるが、確認できていない",
   "ja_note": "公式ページに対応言語の記載はなく、日本語のセリフ品質は未確認",
   "license": "API（HeyGen利用規約）",
   "commercial": "yes",
@@ -1192,7 +1271,7 @@
    "Runware",
    "ComfyUI"
   ],
-  "summary_ja": "アバター動画で知られる米HeyGenが初めて出した汎用の動画生成モデルで、音声付きで最長15秒の動画を作れます。AAのT2Vランキングで3位ながら、1秒$0.01〜0.02と安いのが特徴です。",
+  "summary_ja": "アバター動画で知られる米HeyGenが初めて出した汎用の動画生成モデルで、音声付きで最長15秒の動画を作れます。AAのT2V（音声なし）で1位ながら、1秒$0.01〜0.02と安いのが特徴です。",
   "best_for_ja": "上位クラスの音声付き動画を安くAPIで大量に作りたい場合",
   "supersedes": [],
   "sources": [
@@ -1201,14 +1280,15 @@
    "https://openrouter.ai/heygen/heygen-video-1-20260930",
    "https://help.heygen.com/en/articles/17272995-introducing-heygen-video-generate-cinematic-clips-from-a-prompt",
    "https://runware.ai/docs/models/heygen-video-1-0/guides",
-   "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
   ],
   "confidence": "medium",
   "hl": {
    "label": "AA Arena",
-   "value": 1160
+   "value": 1156
   },
-  "rank": 17
+  "rank": 18
  },
  {
   "id": "seedance-2-5",
@@ -1245,8 +1325,8 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1158,
-    "note": "全体5位（信頼区間で上位タイ、2026-10-25時点）",
+    "value": 1157,
+    "note": "全体4位（信頼区間で上位タイ、2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
@@ -1256,13 +1336,13 @@
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1138,
-    "note": "全体3位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1153,
+    "note": "全体1位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "T2V・I2Vとも最上位グループ。参照素材の数（画像30・動画10・音声10）が突出して多い。前世代の2.0は著作権・肖像権で米ハリウッド各社から強い抗議を受けた",
+  "quality_note": "T2V・I2Vとも最上位グループで、I2V（音声あり、v2.1）は全体1位。参照素材の数（画像30・動画10・音声10）が突出して多い。前世代の2.0は著作権・肖像権で米ハリウッド各社から強い抗議を受けた",
   "ja_note": null,
   "license": "API（ByteDance / BytePlus利用規約）",
   "commercial": "conditional",
@@ -1270,7 +1350,7 @@
   "price_note": "Runway API経由: 出力$0.20/$0.30/$0.68/秒（480/720/1080p）＋入力動画$0.10〜$0.34/秒。AA掲載は1080p換算$34.12/分（主要モデル中で最も高い）",
   "hf": "https://seed.bytedance.com/en/seedance",
   "tools": [],
-  "summary_ja": "ByteDanceの最新動画モデルで、AAのT2V・I2Vとも上位3位以内。参照素材を大量に入れて長尺の音声付き動画を作れるが、料金は高め。",
+  "summary_ja": "ByteDanceの最新動画モデルで、AAのI2Vで1位、T2Vでも4位。参照素材を大量に入れて長尺の音声付き動画を作れるが、料金は高め。",
   "best_for_ja": "多数の参照素材を使って被写体と演出を細かく固定した広告・映像制作",
   "supersedes": [
    "Seedance 2.0",
@@ -1284,10 +1364,10 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 18,
+  "rank": 19,
   "hl": {
    "label": "AA Arena",
-   "value": 1158
+   "value": 1157
   }
  },
  {
@@ -1327,24 +1407,24 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1155,
-    "note": "FLUX 3 Max（720p）。全体6位。無印FLUX 3は1145で8位（2026-10-25時点）",
+    "value": 1157,
+    "note": "FLUX 3 Max（720p）。全体5位。無印FLUX 3は1144で8位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
     "value": 1094,
-    "note": "FLUX 3（無印）。全体5位",
+    "note": "FLUX 3（無印）。2026-10-25時点。FLUX 3 Maxは1135で全体3位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1138,
-    "note": "FLUX 3 Max（720p）。全体2位。無印FLUX 3は1086で8位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1071,
+    "note": "FLUX 3（無印）。全体11位。FLUX 3 Maxは1064で12位（2026-10-31時点。旧v1.1ではMaxが2位）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "画像生成のFLUXの動画版。Max版はT2V・I2Vとも最上位グループで、AA掲載価格では上位勢の中で最安クラス。R2Vは未対応",
+  "quality_note": "画像生成のFLUXの動画版。Max版はT2V（音声あり5位・音声なし3位）で最上位グループ。I2V（v2.1）では11〜12位とやや後退した。AA掲載価格では上位勢の中で最安クラス。R2Vは未対応",
   "ja_note": "公式ブログで日本語を含む多言語のリップシンク（英・中・西・仏・独・日・ヒンディー等）に対応と明記",
   "license": "API（BFL利用規約）",
   "commercial": "conditional",
@@ -1352,7 +1432,7 @@
   "price_note": "AA掲載: FLUX 3 Max（720p）$2.55/分、FLUX 3 $17.40/分（1080p換算）。ドラフト生成は本生成の数分の一",
   "hf": "https://bfl.ai/blog/flux-3-video",
   "tools": [],
-  "summary_ja": "Black Forest LabsのFLUX 3動画版で、Max版はAAのT2V・I2Vとも上位。日本語のリップシンクにも公式対応している。",
+  "summary_ja": "Black Forest LabsのFLUX 3動画版で、Max版はAAのT2Vで上位。日本語のリップシンクにも公式対応している。",
   "best_for_ja": "日本語セリフ付きの動画を、上位品質かつ安い単価で作りたい場合",
   "supersedes": [],
   "sources": [
@@ -1362,10 +1442,10 @@
    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
   ],
   "confidence": "medium",
-  "rank": 19,
+  "rank": 20,
   "hl": {
    "label": "AA Arena",
-   "value": 1155
+   "value": 1157
   }
  },
  {
@@ -1403,20 +1483,20 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1154,
-    "note": "全体7位（2026-10-25時点）",
+    "value": 1149,
+    "note": "全体7位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
     "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
-    "value": 1119,
-    "note": "全体3位",
+    "value": 1140,
+    "note": "全体2位（1位HeyGen Video 1 1143）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1125,
-    "note": "全体6位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1117,
+    "note": "全体8位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
@@ -1428,7 +1508,7 @@
   "price_note": "Runway API経由: h3_max $0.05/秒（480p）・$0.08/秒（768p）、hailuo3 $0.10/秒（768p）・$0.15/秒（2K）＋参照画像1枚$0.02。AA掲載は$4.80/分",
   "hf": "https://www.minimax.io/blog/minimax-h3",
   "tools": [],
-  "summary_ja": "MiniMax H3のAPI版で、オープン版にない2K出力と前処理が使える。品質はAAのT2V無音で3位と最上位級。",
+  "summary_ja": "MiniMax H3のAPI版で、オープン版にない2K出力と前処理が使える。品質はAAのT2V無音で2位と最上位級。",
   "best_for_ja": "H3の品質を2Kで、GPUを用意せず安く使いたい場合",
   "supersedes": [
    "Hailuo 2.3",
@@ -1443,10 +1523,10 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 20,
+  "rank": 21,
   "hl": {
    "label": "AA Arena",
-   "value": 1154
+   "value": 1149
   }
  },
  {
@@ -1484,14 +1564,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1130,
-    "note": "Gemini Omni Flash 1.1。全体10位。参考: Veo 3.1は963で21位（2026-10-25時点）",
+    "value": 1128,
+    "note": "Gemini Omni Flash 1.1。全体10位。参考: Veo 3.1は962で22位（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1132,
-    "note": "全体4位。参考: Veo 3.1は1028で14位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1046,
+    "note": "全体14位。参考: Veo 3.1は957で21位（2026-10-31時点。旧v1.1では4位）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    },
    {
@@ -1524,10 +1604,10 @@
    "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights"
   ],
   "confidence": "medium",
-  "rank": 21,
+  "rank": 22,
   "hl": {
    "label": "AA Arena",
-   "value": 1130
+   "value": 1128
   }
  },
  {
@@ -1563,14 +1643,14 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1056,
-    "note": "全体12位。Lite版は992（2026-10-25時点）",
+    "value": 1059,
+    "note": "全体13位。Lite版は991（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO",
-    "value": 1067,
-    "note": "全体9位",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1052,
+    "note": "全体13位。Lite版は999（2026-10-31時点）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
@@ -1595,10 +1675,10 @@
    "https://docs.dev.runwayml.com/guides/pricing/"
   ],
   "confidence": "medium",
-  "rank": 22,
+  "rank": 23,
   "hl": {
    "label": "AA Arena",
-   "value": 1056
+   "value": 1059
   }
  },
  {
@@ -1636,18 +1716,18 @@
   "bench": [
    {
     "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
-    "value": 1020,
-    "note": "Kling 4.0はAA未掲載（2026-10-25確認）。参考値として前世代を記載（17位）。Kling 3.0 1080p ProはELOの基準点1000（18位）。首位はWan 3.0の1175",
+    "value": 1023,
+    "note": "Kling 4.0はAA未掲載（2026-10-31確認）。参考値として前世代を記載（18位）。Kling 3.0 1080p ProはELOの基準点1000（19位）。首位はWan 3.0の1175",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
-    "value": 1004,
-    "note": "18位（参考値、2026-10-25確認）。首位はMiniMax H3の1140",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
+    "value": 1000,
+    "note": "18位（参考値、2026-10-31確認。v2.1ではKling 3.0 1080p Proが基準点1000）。首位はSeedance 2.5の1153",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "2026-10-20時点でAAのT2V・I2Vアリーナには未掲載で、第三者の品質評価はまだない。前世代のKling 3.0はAAで中位（16〜19位）",
+  "quality_note": "2026-10-31時点でAAのT2V・I2Vアリーナには未掲載で、第三者の品質評価はまだない。前世代のKling 3.0はAAで中位（17〜19位）",
   "ja_note": "第三者のまとめ（CometAPI、fal）では、台詞音声の対応言語に日本語を含む（中・英・日・韓・西など）。公式ページに言語一覧はなく、日本語の品質評価も見当たらない",
   "license": "API / サービス（Kling利用規約）",
   "commercial": "conditional",
@@ -1678,10 +1758,10 @@
    "https://unifically.com/blogs/kling-4.0"
   ],
   "confidence": "medium",
-  "rank": 23,
+  "rank": 24,
   "hl": {
    "label": "AA Arena",
-   "value": 1020
+   "value": 1023
   }
  },
  {
@@ -1742,7 +1822,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 24,
+  "rank": 25,
   "hl": {
    "label": "AA Arena",
    "value": 1247
@@ -1801,7 +1881,7 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 25
+  "rank": 26
  },
  {
   "id": "vidu-q4-preview",
@@ -1840,9 +1920,9 @@
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v1.1）ELO（前世代Vidu Q3 Pro）",
-    "value": 1016,
-    "note": "16位（参考値、2026-10-25確認）",
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO（前世代Vidu Q3 Pro）",
+    "value": 930,
+    "note": "23位（参考値、2026-10-31確認）",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
@@ -1872,7 +1952,7 @@
    "https://costbench.com/software/ai-video-generators/vidu/free-plan/"
   ],
   "confidence": "medium",
-  "rank": 26,
+  "rank": 27,
   "hl": {
    "label": "AA Arena",
    "value": 935
@@ -1935,7 +2015,7 @@
    "https://comfyui-wiki.com/en/news/2026-06-09-scail-2-character-animation"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 14
  },
  {
   "id": "davinci-magihuman",
@@ -2002,7 +2082,7 @@
    "https://arxiv.org/abs/2603.21986"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 18
  },
  {
   "id": "hy-nomas",
@@ -2052,7 +2132,7 @@
    "https://huggingface.co/tencent/Hy-Nomas/blob/main/LICENSE"
   ],
   "confidence": "high",
-  "rank": 10,
+  "rank": 11,
   "verified_at": "2026-10-28",
   "release_note": "公式コード・デモの告知は10/21、HF重みアップロード履歴は10/23。"
  }
