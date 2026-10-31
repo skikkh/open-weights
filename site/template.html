@@ -1325,7 +1325,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
             return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>';
           }).join('') + '</dl><p>出典：' + (m.sources || []).map(function (u, i) { return link(u, i === 0 ? "公式発表" : "出典 " + (i + 1)); }).join(' · ') + '</p></article>';
       }).join('');
-      refHost.parentNode.insertBefore(box, refHost);
+      refHost.parentNode.insertBefore(box, pid === "jp" ? document.getElementById("jp-picks") : refHost);
     });
     var closed = META.closed_refs || {};
     Object.keys(closed).forEach(function (k) {
