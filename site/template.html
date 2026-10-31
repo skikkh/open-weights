@@ -693,6 +693,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       .map(function (c) { return [c, cname(c) + " " + cnt[c]]; }));
   }
   function sortCtl(pid, opts) {
+    opts = opts.filter(function (o) { return o[0] === "new"; }).concat(opts.filter(function (o) { return o[0] !== "new"; }));
     return '<label class="ctrl">並び <select data-k="sort" id="' + pid + '-sort">' + opts.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + "</option>"; }).join("") + "</select></label>";
   }
   function checkCtl(pid, k, text) { return '<label class="ctrl"><input type="checkbox" data-k="' + k + '" id="' + pid + "-" + k + '"> ' + esc(text) + "</label>"; }
@@ -1016,10 +1017,11 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   /* ── LLM ページ（大型・ローカル） ── */
   function buildLLMPage(pid) {
     var p = PAGE[pid], cfg = LCFG[pid];
-    ST[pid] = { country: "all", hw: "all", q: false, com: false, sort: "score" };
+    ST[pid] = { country: "all", hw: "all", q: false, com: false, sort: "new" };
     var top = '<div class="chart-box"><div class="chart-title"><h3>賢さ × 重さ</h3><span>左上ほど「軽いのに賢い」。点を押すと詳細へ移動します。</span></div>' +
       '<div class="chart-scroll"><div class="chart" id="' + pid + '-chart"></div></div><div class="legend" id="' + pid + '-legend"></div></div>' +
       (pid === "llm" ? recipesBox() + quantTable() : aaLocalBox());
+    if (pid === "llm") top = '<details class="box"><summary>比較グラフ・ローカルでの動かし方を見る</summary>' + top + "</details>";
     var filters = chipRow("開発国", "country", countryOpts(p.list), "all") +
       chipRow(pid === "llm" ? "手元の環境" : "手元のGPU・Mac", "hw", [["all", "制限なし"]].concat(cfg.hw), "all").replace("</div>", "") +
       (pid === "llm" ? checkCtl(pid, "q", "4bit量子化してでも載せる") : checkCtl(pid, "q", "公式重み（量子化なし）で載せる")) + "</div>" +
@@ -1057,7 +1059,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   var JPM = { label: "Nejumi LB4", max: nejMax, get: function (m) { return m.jp_bench ? num(m.jp_bench.nejumi) : null; } };
   function buildJP() {
     var p = PAGE.jp;
-    ST.jp = { country: "all", lin: "all", size: "all", sort: "nejumi" };
+    ST.jp = { country: "all", lin: "all", size: "all", sort: "new" };
     var filters = chipRow("系統", "lin", [["all", "すべて"], ["scratch", "フルスクラッチ"], ["based", "海外モデルベース"]], "all") +
       chipRow("大きさ", "size", [["all", "すべて"], ["big", "大型（40B超）"], ["local", "ローカル（40B以下）"]], "all") +
       '<div class="frow"><span class="fl">並び順</span>' + sortCtl("jp", [["nejumi", "日本語ベンチ順"], NEW_O, OLD_O, ["heavy", "大きい順"]]) + "</div>";
@@ -1105,7 +1107,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       "</div></details>";
   }
   function buildASR() {
-    ST.asr = { country: "all", lang: "all", sort: "rank" };
+    ST.asr = { country: "all", lang: "all", sort: "new" };
     return shell(PAGE.asr, "", chipRow("開発国", "country", countryOpts(ASR), "all") +
       chipRow("対応言語", "lang", [["all", "すべて"], ["ja-only", "日本語専用"], ["multilingual", "多言語"]], "all") +
       '<div class="frow"><span class="fl">並び順</span>' + sortCtl("asr", [["rank", "おすすめ順"], NEW_O, OLD_O, ["cer", "CERが低い順"]]) + "</div>");
@@ -1146,7 +1148,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       "</div></details>";
   }
   function buildTTS() {
-    ST.tts = { country: "all", tf: "all", sort: "rank" };
+    ST.tts = { country: "all", tf: "all", sort: "new" };
     return shell(PAGE.tts, "", chipRow("開発国", "country", countryOpts(TTS), "all") +
       chipRow("絞り込み", "tf", [["all", "すべて"], ["com", "商用OK"], ["clone", "ゼロショット声クローン"], ["stream", "ストリーミング"], ["native", "日本語ネイティブ"]], "all") +
       '<div class="frow"><span class="fl">並び順</span>' + sortCtl("tts", [["rank", "おすすめ順"], NEW_O, OLD_O]) + "</div>");
@@ -1220,7 +1222,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     list.forEach(function (m) { (m.tasks || []).forEach(function (t) { tasks[t] = true; }); });
     var tl = TASK_ORDER.filter(function (t) { return tasks[t]; }).concat(Object.keys(tasks).filter(function (t) { return TASK_ORDER.indexOf(t) < 0; }));
     var hasApi = list.some(function (m) { return m.access === "api"; });
-    ST[p.id] = { country: "all", task: "all", access: "all", vram: "all", com: false, sort: "rank" };
+    ST[p.id] = { country: "all", task: "all", access: "all", vram: "all", com: false, sort: "new" };
     var filters = chipRow("できること", "task", [["all", "すべて"]].concat(tl.map(function (t) { return [t, taskJa(t, p.id)]; })), "all") +
       (hasApi ? chipRow("提供形態", "access", [["all", "すべて"], ["open-weight", "オープンウェイト"], ["api", "API提供"]], "all") : "") +
       chipRow("開発国", "country", countryOpts(list), "all") +
