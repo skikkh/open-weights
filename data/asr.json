@@ -98,8 +98,8 @@
   "org": "Third Intelligence",
   "country": "JP",
   "release": "2026-10-30",
-  "params_m": 616,
-  "arch": "FastConformer TDT（Parakeet-TDT系。予測ネットワークをLSTMからKimi Delta Attentionに置換）",
+  "params_m": 615.8,
+  "arch": "FastConformerエンコーダ＋TDTデコーダ。Parakeet-TDTの構造を参考に、予測ネットワークをLSTMからKimi Delta Attentionに変更。Third Intelligenceによるスクラッチ学習",
   "lang": "ja-only",
   "ja_cer": [
    {
@@ -143,28 +143,38 @@
    "streaming": false,
    "timestamps": null,
    "diarization": false,
-   "punctuation": true,
-   "long_form": true
+   "punctuation": null,
+   "long_form": true,
+   "live_captions": true
   },
-  "speed_note": "H200・batch 512でRTFx 3,236（1秒で約3,236秒分の音声を処理）。Parakeet TDT-CTC 0.6B ja（3,407）とほぼ同速で、Nemotron 3.5 TranscribeやWhisper large-v3より約15〜17倍速い（開発元の計測）",
-  "hardware_note": "NeMo 2.7＋flash-linear-attention（Triton/CUDA）が必要で、NVIDIA GPUのLinux環境のみ。CPU・macOSは非対応。重みは.nemo形式で約1.2GB。30秒超の音声はtranscribe_longformで無音区間ごとに分割して処理。話者ラベルはNemotron-3-Diarizationとの組み合わせで付けられる。公開直後からGGUF・ONNX・MLXのコミュニティ変換版あり",
+  "speed_note": "公式計測はH200 1枚・BF16・batch 512でRTFx 3,236（音声長÷処理時間）。大量バッチの処理量であり、1発話の応答遅延ではない。同じ評価表でParakeetは3,407、Nemotron 3.5 Transcribeは190、Whisper large-v3は212（Whisperのみbatch 256）。B200・batch 128では1時間の音声を約1秒で処理した公式デモあり。",
+  "hardware_note": "公式NeMo版はLinux＋NVIDIA GPU、Python 3.11以上、NeMo 2.7、flash-linear-attention（Triton/CUDA）が必要。この公式実装はCPU・macOS非対応。.nemo配布ファイルは1,232,384,000バイト（約1.23GB）で、必要VRAMとは別。最低VRAMは公式に明記なし。30秒超の音声はtranscribe_longformで無音付近を分割。非公式ONNX版（Sanami）はCPU／Mac、MLX版（mrjnzzz）はApple Silicon用で、別実装を使用する。公式版と同じ精度・速度を保証するものではなく、当サイトでは実機未検証。",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "重みと推論コードともにApache-2.0。学習データはReazonSpeech、Common Voice 26.0、YODASと社内データの約4.6万時間",
   "hf": "https://huggingface.co/third-intelligence/Haas-ja-v1.0",
-  "summary_ja": "東京のスタートアップThird Intelligenceが公開した日本語専用ASRで、Parakeet並みの速さのまま精度を上げたモデルです。開発元の5データセット評価では、比べたオープンモデルの中で最も誤りが少ない結果でした。",
-  "best_for_ja": "GPUでの大量音声の高速一括書き起こし。固有名詞の読みを登録するカスタム語彙機能もある",
+  "summary_ja": "日本のThird Intelligenceがスクラッチ学習した615.8Mの日本語専用ASR。開発元のasr-ja-bench v1.1で時間加重CER strictは6.12%。オフライン型だが、公式のライブ字幕デモも公開されています。",
+  "best_for_ja": "大量音声の一括書き起こしや、再認識方式のライブ字幕。カスタム語彙で表記と読みを指定できるが、誤挿入の可能性があり、フィラーを含む逐語録や出力形式の自由な制御には向かない。",
   "supersedes": [],
   "sources": [
    "https://huggingface.co/third-intelligence/Haas-ja-v1.0",
    "https://third-intelligence.com/ja/posts/haas-ja-v1-release",
    "https://github.com/third-intelligence/Haas-ASR",
-   "https://huggingface.co/datasets/third-intelligence/asr-ja-bench"
+   "https://huggingface.co/datasets/third-intelligence/asr-ja-bench",
+   "https://github.com/third-intelligence/Haas-ASR/blob/main/demos/README.md",
+   "https://huggingface.co/third-intelligence/Haas-ja-v1.0/commits/main",
+   "https://huggingface.co/Sanami/haas-ja-onnx",
+   "https://huggingface.co/mrjnzzz/Haas-ja-v1.0-mlx"
   ],
   "confidence": "medium",
   "rank": 2,
   "pick": "GPUで速く・高精度",
-  "pick_reason": "Parakeet並みの速さで誤りが少ない。Apache-2.0"
+  "pick_reason": "Parakeet並みの速さで誤りが少ない。Apache-2.0",
+  "streaming_label": "ネイティブストリーミング",
+  "capability_note": "モデル自体は発話全体を見るオフライン型。公式のライブ字幕デモは約250msごとに現在の発話を再認識する方式で、B200のデモではネットワーク込みの更新遅延中央値が約180ms。最終確定までの遅延とは異なる。話者分離は単体機能ではなく、別モデルNemotron-3-Diarizationとの組み合わせ。 句読点の付与機能は今回の公式資料で明確な保証を確認できず、対応は未確認として扱う。",
+  "release_note": "日付欄は公式発表の2026-10-30。HF履歴には10/22の重み登録があるが、その時点で一般公開されていたかは履歴だけでは判断できない。",
+  "verified_at": "2026-11-01",
+  "verified_hf_revision": "660728d39019e5e065046154beca44ac9a66a540"
  },
  {
   "id": "ruby-asr-1-7b",

@@ -119,11 +119,14 @@ supersedes[], sources[], confidence, rank, pick, pick_reason
 
 ```
 id, name, org, country, release, params_m, arch, ja_support("native"|"multilingual"|"community"),
-voice_cloning("zero-shot"|"fine-tune"|"preset-only"),
+voice_cloning("zero-shot"|"fine-tune"|"preset-only"|"voice-design"|"external-service"|"unknown"),
+voice_cloning_note, voice_cloning_sources[], voice_cloning_verified_at,
 features{streaming, emotion_control, instruction_control, dialogue, accent_control},
 ja_metrics[{metric, value, note, source}], quality_note, latency_note, hardware_note,
 license, commercial, license_note, hf, summary_ja, best_for_ja, supersedes[], sources[], confidence, rank, pick, pick_reason
 ```
+
+TTSの声づくりはチェックポイント単位で判定する。Base / CustomVoice / VoiceDesign など機能が違うものは行を分け、別版のベンチマークや制御機能をコピーしない。ゼロショットは「対象話者の追加学習が不要」の意味で、参照音声・書き起こしが不要という意味ではない。`preset-only` は学習済み話者モデルの選択（外部モデル導入を含む）、`voice-design` は文章からの声づくり、`external-service` は外部サービスによる声データ作成、`unknown` は確認できない場合。公開版のゼロショット絞り込みには外部サービスのみの機能を含めない。各行に条件・公式出典・確認日を残す。
 
 ### 汎用（s2s / music / image / video / 3d / decision）
 
@@ -153,3 +156,11 @@ decision のみ: access("api"|"open-weight"), price_note
 `data/meta.json` の `jp_reference_models` は国産LLMのAPI・企業向け提供データ。画面では重み公開モデルと同じ一覧に統合し、公開日順の並び替え・件数・デビュー時期に含める。提供開始日（release）、料金（price_ja）、オンプレミスの契約形態と重みの一般公開を区別して更新する。
 
 4bit配布版や実行互換性を確認できないLLMには `q4_unverified: true` を付ける。サイズからの推計だけでGPUに「載る」と断定しない。公式4bit版を確認できたら容量・出典を追加し、このフラグを外す。
+
+### フロンティア・有料モデル（`data/frontier.json`）
+
+上部の「公開モデル中心／フロンティア・有料」で切り替える。後者はLLM・国産LLM・ASR・TTS・Speech to Speech・音楽・画像・動画・3D・判断モデルの10カテゴリ。既存の汎用データの `access: "api"` と国産APIデータは有料側にも統合する。公開側の汎用カテゴリはAPIを除いた重み公開モデルを表示する。国産LLMのPLaMoは通常一覧での統合を維持する。
+
+新規のAPIモデルは `data/frontier.json` に `id, name, series, category, org, country, release, access, summary_ja, availability_ja, price_note, detail_note, context_note, local_note, hf, sources[], verified_at, license, commercial` を保持する。初公開日と仕様の更新日・知識カットオフ・重み公開予定を混同しない。不明な初公開日は null。価格には通貨・課金単位・長文等の割増条件を明記する。サブスクとAPIの料金は別。
+
+同じ役割の系列は最新版のみを掲載する。例: GPT Solは6.1のみで、5.6や6を現行として併記しない。Astra、Terra、Lunaのような役割違い、Flashと上位版、通常とHighspeedは分ける。後継への自動転送だけの旧API名を別モデルとして増やさない。OpenAIの非推奨GPT-4o Mini TTSは新しい有料一覧に追加していない。

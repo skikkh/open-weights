@@ -80,6 +80,9 @@ h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-
 
 /* ── 上部ナビ ── */
 .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.catalog-mode { display: flex; gap: 6px; padding-top: 6px; padding-bottom: 4px; }
+.catalog-mode a { font-size: 13px; font-weight: 700; text-decoration: none; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 3px 10px; }
+.catalog-mode a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
 .topbar .wrap { display: flex; align-items: center; gap: 18px; min-width: 0; }
 .brand { font-family: var(--font-display); font-size: 17px; color: var(--fg); text-decoration: none; white-space: nowrap; padding-block: 10px; flex: none; }
 .nav { display: flex; align-items: stretch; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; }
@@ -223,7 +226,7 @@ h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-
 .cer span { font-size: 12px; border: 1px solid var(--line); border-radius: 3px; padding: 0 6px; white-space: nowrap; }
 .cer b { font-family: var(--font-mono); font-weight: 600; font-variant-numeric: tabular-nums; }
 .feat { display: flex; flex-wrap: wrap; gap: 4px; }
-.feat span { font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; white-space: nowrap; }
+.feat span { max-width: 100%; overflow-wrap: anywhere; font-size: 11.5px; line-height: 1.6; padding: 0 7px; border-radius: 3px; white-space: normal; }
 .feat .on { background: var(--surface-2); color: var(--fg); }
 .feat .off { background: transparent; color: var(--muted); border: 1px dashed var(--line-strong); padding: 0 6px; }
 .feat .off::before { content: "× "; }
@@ -338,6 +341,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 <body>
 
 <div class="topbar">
+  <div class="wrap catalog-mode" aria-label="モデルの掲載区分"><a id="mode-open" href="#llm" aria-current="true">公開モデル中心</a><a id="mode-frontier" href="#frontier-llm">フロンティア・有料</a></div>
   <div class="wrap">
     <a class="brand" href="#home">AIモデル図鑑</a>
     <nav class="nav" id="nav" aria-label="カテゴリ"></nav>
@@ -350,8 +354,8 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     <div class="hero">
       <div class="wrap hero-row">
         <div>
-          <h1><small>Open weights you can host, and the APIs to compare</small>AIモデル図鑑</h1>
-          <p class="lede">国内外の最新AIモデルを、カテゴリごとに一覧にしています。中心は自前のGPUやPCに「頑張れば載せられる」オープンウェイトモデルです。各系列は最新世代だけを載せ、Flash／Pro など用途の違う版は分けています。LLMは大型（40B超）とローカル（40B以下）に分け、音声系は日本語に強いものを中心に集めました。音楽・画像・動画・3D・Decision Model は、比べやすいように重み非公開のAPIサービスも載せています。</p>
+          <h1><small>公開モデルからフロンティア・有料サービスまで</small>AIモデル図鑑</h1>
+          <p class="lede">国内外の最新AIモデルを、カテゴリごとに一覧にしています。中心は自前のGPUやPCに「頑張れば載せられる」オープンウェイトモデルです。各系列は最新世代だけを載せ、Flash／Pro など用途の違う版は分けています。LLMは大型（40B超）とローカル（40B以下）に分け、音声系は日本語に強いものを中心に集めました。上部の切り替えから、LLM・音声・音楽・画像・動画・3D・判断モデルのフロンティア・有料サービスも探せます。</p>
         </div>
         <dl class="stamp">
           <dt>最終更新</dt><dd id="st-upd">—</dd>
@@ -537,7 +541,19 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     { id: "about", nav: "見方・更新履歴" }
   ];
   var PAGE = {};
-  PAGES.forEach(function (p) { if (p.gen) p.list = GEN[p.id] || []; PAGE[p.id] = p; });
+  var FRONTIER = (D.frontier || []).slice();
+  Object.keys(GEN).forEach(function (cat) {
+    (GEN[cat] || []).filter(function (m) { return m.access === "api"; }).forEach(function (m) {
+      FRONTIER.push(Object.assign({}, m, { category: cat }));
+    });
+  });
+  (META.jp_reference_models || []).forEach(function (m) { FRONTIER.push(Object.assign({}, m, { category: "llm", access: "api", price_note: m.price_ja, local_note: m.local_ja })); });
+  var frontierSeen = {};
+  FRONTIER = FRONTIER.filter(function (m) { if (frontierSeen[m.id]) return false; frontierSeen[m.id] = true; return true; });
+  [["llm", "LLM", "言語"], ["jp", "国産LLM", "言語"], ["asr", "音声認識", "音声"], ["tts", "音声合成", "音声"], ["s2s", "Speech to Speech", "音声"], ["music", "音楽生成", "音声"], ["image", "画像生成", "ビジュアル"], ["video", "動画生成", "ビジュアル"], ["3d", "3D生成", "ビジュアル"], ["decision", "判断モデル", "判断"]].forEach(function (x) {
+    PAGES.push({ id: "frontier-" + x[0], nav: x[1], grp: x[2], frontier: true, base: x[0], h: x[1] + "：フロンティア・有料モデル", desc: "API・有料サービスを新しい順に掲載。国、提供状況、料金の単位と条件を確認できます。初公開日が未確認のものは日付不明として末尾に並べます。", list: FRONTIER.filter(function (m) { return x[0] === "jp" ? m.category === "llm" && m.country === "JP" : m.category === x[0]; }) });
+  });
+  PAGES.forEach(function (p) { if (p.gen) p.list = (GEN[p.id] || []).filter(function (m) { return m.access !== "api"; }); PAGE[p.id] = p; });
 
   /* ── メモリの段階 ── */
   // 大型LLM：データセンターGPU（公式重み）
@@ -1098,7 +1114,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     var cerHtml = cer.length ? '<div class="cer">' + cer.slice(0, 4).map(function (c) { return "<span>" + esc(c.dataset) + " <b>" + esc(c.cer) + "%</b></span>"; }).join("") + "</div>" : '<span class="muted" style="font-size:12.5px">共通データセットでのCER公表値なし</span>';
     var best = cer.length ? Math.min.apply(null, cer.map(function (c) { return c.cer; })) : null;
     var ts = f.timestamps && f.timestamps !== "none" ? (f.timestamps === "word" ? "単語タイムスタンプ" : "区間タイムスタンプ") : null;
-    var feats = featChips([["ストリーミング", f.streaming], [ts || "タイムスタンプ", f.timestamps == null ? null : !!ts], ["話者分離", f.diarization], ["句読点", f.punctuation], ["長時間音声", f.long_form]]);
+    var feats = featChips([[m.streaming_label || "ストリーミング", f.streaming], ["再認識方式のライブ字幕", f.live_captions], [ts || "タイムスタンプ", f.timestamps == null ? null : !!ts], ["話者分離", f.diarization], ["句読点", f.punctuation], ["長時間音声", f.long_form]]);
     var detail = kv(originKV(m).concat([
       ["構造", esc(m.arch)], ["サイズ", esc(fmtM(m.params_m))],
       ["対応言語", m.lang === "ja-only" ? "日本語専用" : "多言語（日本語含む）"],
@@ -1108,6 +1124,8 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       return "<tr><td>" + (c.source ? link(c.source, c.dataset) : esc(c.dataset)) + (c.note ? '<br><span class="muted" style="font-size:12px">' + esc(c.note) + "</span>" : "") + "</td><td>" + esc(c.cer) + "</td></tr>";
     }).join("") + "</table></div>" : "";
     var notes = "";
+    if (m.release_note) notes += '<p class="note"><b>公開日の根拠：</b>' + esc(m.release_note) + "</p>";
+    if (m.capability_note) notes += '<p class="note"><b>機能の補足：</b>' + esc(m.capability_note) + "</p>";
     if (m.speed_note) notes += '<p class="note"><b>速度：</b>' + esc(m.speed_note) + "</p>";
     if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
     if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
@@ -1135,25 +1153,29 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 
   /* ── TTS ── */
   var JA_SUP = { native: "日本語ネイティブ", multilingual: "多言語（日本語公式対応）", community: "有志の日本語版" };
-  var CLONE = { "zero-shot": "ゼロショット声クローン", "fine-tune": "追加学習で声づくり", "preset-only": "用意された声のみ" };
+  var CLONE = { "zero-shot": "ゼロショット声クローン", "fine-tune": "追加学習で声づくり", "preset-only": "学習済みの声を選択", "voice-design": "文章からの声づくり", "external-service": "外部サービスで声を作成", "unknown": "声クローンは未確認" };
   var COM_BIG = { yes: ["OK", "var(--ok)"], conditional: ["条件付", "var(--warn)"], no: ["不可", "var(--bad)"] };
   function ttsRow(m) {
     var f = m.features || {};
-    var feats = featChips([["ストリーミング", f.streaming], ["感情・スタイル指定", f.emotion_control], ["自然文で声質指定", f.instruction_control], ["複数話者の対話", f.dialogue], ["アクセント調整", f.accent_control]]);
+    var feats = featChips([["ストリーミング", f.streaming], ["感情・スタイル指定", f.emotion_control], ["自然文での指示", f.instruction_control], ["複数話者の対話", f.dialogue], ["アクセント調整", f.accent_control]]);
     var detail = kv(originKV(m).concat([
       ["構造", esc(m.arch)], ["サイズ", esc(fmtM(m.params_m))],
-      ["日本語", esc(JA_SUP[m.ja_support] || m.ja_support)], ["声", esc(CLONE[m.voice_cloning] || m.voice_cloning)],
+      ["日本語", esc(JA_SUP[m.ja_support] || m.ja_support)], ["声", esc(CLONE[m.voice_cloning] || "声クローンは未確認")],
+      ["声づくりの条件", esc(m.voice_cloning_note)],
+      ["確認日", esc(m.voice_cloning_verified_at)],
       ["ライセンス", licKV(m)], ["配布元", repoLink(m.hf)], ["置き換えた旧版", supKV(m)]
     ]));
     var notes = "";
     if (m.quality_note) notes += '<p class="note"><b>日本語の品質：</b>' + esc(m.quality_note) + "</p>";
     if (m.latency_note) notes += '<p class="note"><b>速度：</b>' + esc(m.latency_note) + "</p>";
     if (m.hardware_note) notes += '<p class="note"><b>必要環境：</b>' + esc(m.hardware_note) + "</p>";
+    if ((m.voice_cloning_sources || []).length) notes += '<p class="note"><b>声づくりの根拠：</b>' + m.voice_cloning_sources.map(function (u, i) { return link(u, "公式資料 " + (i + 1)); }).join(" · ") + "</p>";
     if (m.best_for_ja) notes += '<p class="note"><b>向いている用途：</b>' + esc(m.best_for_ja) + "</p>";
     var cb = COM_BIG[m.commercial] || ["?", "var(--muted)"];
     return '<details class="row" id="tts-' + esc(m.id) + '"><summary><div class="sg">' +
       idHead(m, "") + "</div>" +
       '<div class="c-size"><div class="params"><b>' + esc(fmtM(m.params_m)) + '</b><span>パラメータ</span><span class="tagx">' + esc(JA_SUP[m.ja_support] || m.ja_support || "") + '</span><span class="tagx">' + esc(CLONE[m.voice_cloning] || m.voice_cloning || "") + "</span></div>" + feats +
+      (m.voice_cloning_note ? '<p class="note">' + esc(m.voice_cloning_note) + "</p>" : "") +
       (m.best_for_ja ? '<span class="muted" style="font-size:12.5px">' + esc(m.best_for_ja) + "</span>" : "") + "</div>" +
       '<div class="c-score"><span class="score" style="font-size:20px;color:' + cb[1] + '">' + esc(cb[0]) + '</span><span class="score-l">商用利用</span></div>' +
       "</div></summary>" +
@@ -1162,8 +1184,8 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   }
   function buildTTS() {
     ST.tts = { country: "all", tf: "all", sort: "new" };
-    return shell(PAGE.tts, "", chipRow("開発国", "country", countryOpts(TTS), "all") +
-      chipRow("絞り込み", "tf", [["all", "すべて"], ["com", "商用OK"], ["clone", "ゼロショット声クローン"], ["stream", "ストリーミング"], ["native", "日本語ネイティブ"]], "all") +
+    return shell(PAGE.tts, '<p class="note muted">ゼロショット声クローンは、対象話者の追加学習なしで声を再現する機能です。参照音声や、その書き起こしが必要な場合があります。文章からの声づくり・学習済み話者の選択・外部サービスでの声作成は区別しています。</p>', chipRow("開発国", "country", countryOpts(TTS), "all") +
+      chipRow("絞り込み", "tf", [["all", "すべて"], ["com", "商用OK"], ["clone", "ゼロショット声クローン（公開版）"], ["stream", "ストリーミング"], ["native", "日本語ネイティブ"]], "all") +
       '<div class="frow"><span class="fl">並び順</span>' + sortCtl("tts", [["rank", "おすすめ順"], NEW_O, OLD_O]) + "</div>");
   }
   RENDER.tts = function () {
@@ -1258,6 +1280,35 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     setList(pid, all, list, function (m) { return genRow(m, pid); });
   }
 
+  function frontierRow(m, pid) {
+    var sp = m.spec || {};
+    var price = m.price_note || m.price_ja || "最新の公式料金を確認";
+    var availability = m.availability_ja || "API・サービス提供（利用条件は公式で確認）";
+    var details = kv(originKV(m).concat([
+      ["提供状況", esc(availability)], ["料金", esc(price)],
+      ["文脈・入出力", esc(m.context_note || m.context_ja || sp.inputs)],
+      ["規模", num(m.params_b) != null ? esc(fmtB(m.params_b)) : esc(m.size_ja)],
+      ["ローカル実行", esc(m.local_note || "一般向けの重み配布なし。API・サービスで利用。")],
+      ["対応言語", esc(sp.languages || m.ja_note)], ["出力", esc(sp.output || sp.outputs)],
+      ["声づくり・利用条件", esc(m.detail_note)], ["仕様の補足", esc(sp.other)],
+      ["確認日", esc(m.verified_at || "確認日の記録なし")],
+      ["公式", repoLink(m.hf)]
+    ]));
+    var notes = [m.quality_note, m.speed_note, m.best_for_ja].filter(Boolean).map(function (x) { return '<p class="note">' + esc(x) + '</p>'; }).join("");
+    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
+      idHead(m, '<span class="chip">API・サービス</span>') + '</div><div class="c-size"><p class="note">' + esc(price) + '</p><p class="note muted">' + esc(availability) + '</p></div><div class="c-score"><span class="score" style="font-size:18px">有料・API</span><span class="score-l">無料枠は提供元による</span></div></div></summary>' +
+      '<div class="detail"><div><h4>仕様・利用条件</h4>' + details + notes + '</div>' + listBench(m.bench, "評価値") + sources(m.sources) + '</div></details>';
+  }
+  function buildFrontier(p) {
+    ST[p.id] = { country: "all", sort: "new" };
+    RENDER[p.id] = function () {
+      var f = ST[p.id], list = p.list.filter(function (m) { return passCountry(p.id, m); }).slice();
+      list.sort(f.sort === "old" ? byOld : byNew);
+      setList(p.id, p.list, list, function (m) { return frontierRow(m, p.id); });
+    };
+    return shell(p, "", chipRow("開発国", "country", countryOpts(p.list), "all") + '<div class="frow"><span class="fl">並び順</span>' + sortCtl(p.id, [NEW_O, OLD_O]) + '</div>');
+  }
+
   /* ── ホーム ── */
   function bestBy(list, f) { var b = null; list.forEach(function (m) { if (!isAnn(m) && f(m) != null && (b == null || f(m) > f(b))) b = m; }); return b; }
   var HOME_PICKS = [];
@@ -1301,7 +1352,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       }).join("") + "</div>";
     } else nb.hidden = true;
 
-    document.getElementById("cats").innerHTML = PAGES.filter(function (p) { return p.grp; }).map(function (p) {
+    document.getElementById("cats").innerHTML = PAGES.filter(function (p) { return p.grp && !p.frontier; }).map(function (p) {
       var list = p.list || [], picks;
       if (p.id === "llm" || p.id === "local") {
         picks = cards.filter(function (c) { return llmPid(c.m) === p.id && c.k.indexOf("国産") < 0; }).slice(0, 3).map(function (c) {
@@ -1351,10 +1402,10 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   }
 
   /* ── ナビとページ切替 ── */
-  function buildNav() {
+  function buildNav(mode) {
     var html = "", last = null;
     PAGES.forEach(function (p) {
-      if (p.id === "home") return;
+      if (p.id === "home" || !!p.frontier !== (mode === "frontier")) return;
       if (p.grp && p.grp !== last) { html += '<span class="grp">' + esc(p.grp) + "</span>"; last = p.grp; }
       if (!p.grp) html += '<span class="grp">&nbsp;</span>';
       html += '<a href="#' + p.id + '" data-nav="' + p.id + '">' + esc(p.nav) + "</a>";
@@ -1364,6 +1415,13 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   var current = null;
   function showPage(id, keepScroll) {
     if (!PAGE[id]) id = "home";
+    var frontierMode = !!PAGE[id].frontier;
+    buildNav(frontierMode ? "frontier" : "open");
+    var base = PAGE[id].base || id;
+    document.getElementById("mode-open").href = "#" + (PAGE[base] && !PAGE[base].frontier ? base : "llm");
+    document.getElementById("mode-frontier").href = "#frontier-" + (PAGE["frontier-" + base] ? base : "llm");
+    document.getElementById("mode-open").setAttribute("aria-current", String(!frontierMode));
+    document.getElementById("mode-frontier").setAttribute("aria-current", String(frontierMode));
     document.querySelectorAll(".page").forEach(function (s) { s.hidden = s.getAttribute("data-page") !== id; });
     document.querySelectorAll("[data-nav]").forEach(function (a) {
       if (a.getAttribute("data-nav") === id) { a.setAttribute("aria-current", "page"); try { a.scrollIntoView({ block: "nearest", inline: "nearest" }); } catch (e) {} }
@@ -1391,7 +1449,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     }
     var a = t.closest && t.closest("[data-open]"); if (!a) return;
     e.preventDefault();
-    var rid = a.getAttribute("data-open"), page = rid.slice(0, rid.indexOf("-"));
+    var rid = a.getAttribute("data-open"), page = Object.keys(PAGE).sort(function (a, b) { return b.length - a.length; }).find(function (p) { return rid.indexOf(p + "-") === 0; });
     if (page !== current) { try { history.pushState(null, "", "#" + page); } catch (x) {} showPage(page); }
     setTimeout(function () { openRow(rid); }, 30);
   });
@@ -1405,7 +1463,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   window.addEventListener("hashchange", function () { showPage((location.hash || "").slice(1)); });
 
   /* ── 起動 ── */
-  var total = 0; PAGES.forEach(function (p) { if (p.list && p.id !== "jp") total += p.list.length; });
+  var totalIds = {}; PAGES.forEach(function (p) { (p.list || []).forEach(function (m) { totalIds[m.id] = true; }); }); var total = Object.keys(totalIds).length;
   document.getElementById("st-upd").textContent = META.updated_at || "—";
   // 定期更新は毎月 1・4・7…31日の 9時（日本時間）に動く（cron 0 0 */3 * *）。次の実行日を更新日から計算する
   function nextRun(from) {
@@ -1420,13 +1478,13 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   document.getElementById("st-count").textContent = total + " モデル";
   buildNav();
   var html = buildLLMPage("llm") + buildLLMPage("local") + buildJP() + buildASR() + buildTTS();
-  PAGES.forEach(function (p) { if (p.gen) html += buildGen(p); });
+  PAGES.forEach(function (p) { if (p.gen) html += buildGen(p); if (p.frontier) html += buildFrontier(p); });
   document.getElementById("pages").outerHTML = html;
   PAGES.forEach(function (p) {
     if (!p.list) return;
     RENDER[p.id]();
     var tl = document.getElementById(p.id + "-tl");
-    if (tl) { tl.innerHTML = timeline(p.list, p.id); tl.open = p.list.length <= 24; if (!p.list.length) tl.hidden = true; }
+    if (tl) { tl.innerHTML = timeline(p.list, p.id); tl.open = !p.frontier && p.list.length <= 24; if (!p.list.length) tl.hidden = true; }
     if (p.id !== "llm" && p.id !== "local") pickCards(p.id, p.list);
   });
   renderHome(); renderAbout(); renderRDev();

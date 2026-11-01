@@ -52,6 +52,11 @@ def check(kind, items, required, errors):
         for u in [m.get("hf")] + list(m.get("sources") or []):
             if u and not str(u).startswith(("http://", "https://")):
                 errors.append(f"{label}: URL が不正 {u}")
+        if kind == "tts":
+            if m.get("voice_cloning") not in {"zero-shot", "fine-tune", "preset-only", "voice-design", "external-service", "unknown"}:
+                errors.append(f"{label}: 声づくりの分類が不正です")
+            if not m.get("voice_cloning_note") or not m.get("voice_cloning_sources"):
+                errors.append(f"{label}: 声づくりの条件と公式出典が必要です")
         if kind in GEN_PAGES:
             for k in ("params_b", "min_vram_gb", "rec_vram_gb"):
                 v = m.get(k)
@@ -70,6 +75,7 @@ def main():
     tts = load("tts.json")
     meta = load("meta.json")
     gen = {k: load(f"{k}.json", []) for k in GEN_PAGES}
+    frontier = load("frontier.json", [])
     hw = load("hardware.json", {})
     recipes = load("recipes.json", {})
 
@@ -79,11 +85,20 @@ def main():
     check("tts", tts, TTS_REQUIRED, errors)
     for k, items in gen.items():
         check(k, items, GEN_REQUIRED, errors)
+    check("frontier", frontier, ["id", "name", "org", "country", "category", "availability_ja", "sources", "verified_at"], errors)
+    frontier_series = set()
+    for m in frontier:
+        series = m.get("series")
+        if not series or series in frontier_series:
+            errors.append(f"frontier {m.get('id')}: 同じ系列の現行版は1件だけにしてください")
+        frontier_series.add(series)
+        if m.get("category") not in {"llm", "asr", "tts", "s2s", "music", "image", "video", "3d", "decision"}:
+            errors.append(f"frontier {m.get('id')}: カテゴリが不正です")
     if errors:
         print("検証エラー:", *errors, sep="\n  ")
         sys.exit(1)
 
-    payload = json.dumps({"meta": meta, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw, "recipes": recipes}, ensure_ascii=False, separators=(",", ":"))
+    payload = json.dumps({"meta": meta, "frontier": frontier, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw, "recipes": recipes}, ensure_ascii=False, separators=(",", ":"))
     payload = payload.replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8")
     if "/*__DATA__*/" not in html:

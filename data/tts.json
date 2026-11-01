@@ -63,7 +63,13 @@
   "confidence": "high",
   "rank": 1,
   "pick": "日本語の読みが正確・商用OK",
-  "pick_reason": "MIT。読み正答率93%（作者評価）"
+  "pick_reason": "MIT。読み正答率93%（作者評価）",
+  "voice_cloning_note": "参照音声から対象話者の追加学習なしで合成。参照音声の文字起こしは公式の基本CLIでは不要。30秒以上のきれいな参照音声を推奨。文章だけのVoice Designは別の生成方法。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small",
+   "https://github.com/Aratako/Irodori-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "sarashina2-2-tts",
@@ -133,7 +139,12 @@
   "confidence": "high",
   "rank": 2,
   "pick": "声クローンの再現度（研究用途）",
-  "pick_reason": "話者類似度が最高水準。商用は別契約"
+  "pick_reason": "話者類似度が最高水準。商用は別契約",
+  "voice_cloning_note": "数秒の参照音声から声・話し方を再現でき、対象話者の追加学習は不要。参照音声からスタイルを引き継ぐ機能で、自由な自然文指示による声質設計とは区別する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/sbintuitions/sarashina2.2-tts"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "style-bert-vits2-jp-extra",
@@ -175,7 +186,12 @@
   "confidence": "high",
   "rank": 3,
   "pick": "キャラクター音声・感情表現",
-  "pick_reason": "自分の声データで学習して作り込む"
+  "pick_reason": "自分の声データで学習して作り込む",
+  "voice_cloning_note": "新しい話者の声には音声と書き起こしを用いた追加学習が必要。推論時のスタイル音声・スタイルベクトルの変更は、未学習話者のゼロショットクローンを意味しない。",
+  "voice_cloning_sources": [
+   "https://github.com/litagin02/Style-Bert-VITS2"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "aivisspeech-engine",
@@ -219,7 +235,12 @@
   "confidence": "medium",
   "rank": 4,
   "pick": "アプリですぐ使う",
-  "pick_reason": "インストールするだけ。VOICEVOX互換API"
+  "pick_reason": "インストールするだけ。VOICEVOX互換API",
+  "voice_cloning_note": "学習済みAIVMX話者モデルを読み込んで使うエンジン。同梱声以外のモデルも導入可能だが、エンジンに参照音声を渡して新しい話者を即時クローンする機能とは異なる。Aivis Cloud APIの機能も混同しない。",
+  "voice_cloning_sources": [
+   "https://github.com/Aivis-Project/AivisSpeech-Engine"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "irodori-tts-v4-large",
@@ -279,7 +300,12 @@
    "https://www.issoh.co.jp/tech/details/12221/"
   ],
   "confidence": "high",
-  "rank": 5
+  "rank": 5,
+  "voice_cloning_note": "参照音声によるゼロショットクローンと、文章からのVoice Designの両方に対応。参照音声は合計120秒まで。対象話者ごとの追加学習は不要。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4-Large"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "irodori-tts-v4-1-small-mf",
@@ -328,7 +354,12 @@
    "https://www.issoh.co.jp/tech/details/12221/"
   ],
   "confidence": "high",
-  "rank": 6
+  "rank": 6,
+  "voice_cloning_note": "通常版と同じ参照音声によるゼロショットクローン・Voice Designに対応。4ステップの高速化版であり、声づくりに追加学習が必須となったものではない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small-MF"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "fish-audio-s2-pro",
@@ -389,11 +420,17 @@
    "https://github.com/index-tts/index-tts"
   ],
   "confidence": "high",
-  "rank": 7
+  "rank": 7,
+  "voice_cloning_note": "公開S2 Pro系列の参照音声による声クローンに対応。参照テキストの要否・入力形式は使用するFish Speechの推論経路で確認する。S2.1 Pro APIやDrama 3の機能・API仕様をそのまま流用しない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/fishaudio/s2-pro",
+   "https://github.com/fishaudio/fish-speech"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "qwen3-tts-1-7b",
-  "name": "Qwen3-TTS-12Hz-1.7B（Base / CustomVoice / VoiceDesign）",
+  "name": "Qwen3-TTS-12Hz-1.7B-Base",
   "org": "Alibaba Qwen",
   "country": "CN",
   "release": "2026-01-22",
@@ -403,8 +440,8 @@
   "voice_cloning": "zero-shot",
   "features": {
    "streaming": true,
-   "emotion_control": true,
-   "instruction_control": true,
+   "emotion_control": false,
+   "instruction_control": false,
    "dialogue": false,
    "accent_control": false
   },
@@ -432,23 +469,17 @@
     "value": 3.406,
     "note": "Sarashina2.2-TTS論文の比較で最高値。SIMは69.86",
     "source": "https://arxiv.org/html/2606.25369v1"
-   },
-   {
-    "metric": "CER（感情付き日本語プロンプト）",
-    "value": 8.6,
-    "note": "%、CustomVoice 1.7B（話者Ryan）、faster-whisper-large-v3で書き起こし、120サンプル。同評価でFish S1-mini 12.7、VoxCPM2 18.6",
-    "source": "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
    }
   ],
-  "quality_note": "音質（UTMOS）は高く、一般文の誤り率も低いが、難しい漢字の読み分けは弱く、スタイルによって誤りが大きく揺れるとの他社評価がある（Sarashina2.2-TTS論文）。日本語ネイティブのプリセット話者はOno_Anna（CustomVoice）。日本語は参照音声つき（Base）で使う方が安定するとの記事あり。個人比較では日本語の自然さ4/5。",
+  "quality_note": "日本語の指標はこのBase版に対応するものだけ掲載。プリセット話者や自然文の声質設計は別チェックポイントの機能。",
   "latency_note": "ストリーミング対応、1文字入力で最初の音声パケットを出せ、エンドツーエンド最短97ms（公式）。個人計測でRTF 0.22（RTX 5090）。",
   "hardware_note": "公式VRAM目安なし。FlashAttention 2推奨（fp16/bf16）。個人計測で1.7B推論時VRAM約4.2GB。pip install qwen-ttsで導入可。",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "コード・重みともApache-2.0で商用利用可。声のクローンは本人の同意を得るなど一般的な配慮が必要。",
   "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
-  "summary_ja": "Alibabaが公開した10言語対応のTTSで、3秒の参照音声からの声のクローン（Base）、プリセット話者＋指示（CustomVoice）、文章からの声づくり（VoiceDesign）の3種がある。Apache-2.0で商用利用しやすく、低遅延ストリーミングに対応する。",
-  "best_for_ja": "商用の音声エージェント・リアルタイム応答、多言語混在の読み上げ、指示による声質デザイン",
+  "summary_ja": "1.7BのBase版。参照音声から声をクローンするチェックポイントで、既定話者のCustomVoiceや文章から声を作るVoiceDesignとは別です。",
+  "best_for_ja": "参照音声を使う日本語・多言語の声クローン。対象話者の追加学習は不要。",
   "supersedes": [],
   "sources": [
    "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
@@ -463,7 +494,13 @@
   "confidence": "high",
   "rank": 8,
   "pick": "多言語＋日本語、商用OK",
-  "pick_reason": "Apache 2.0。ゼロショット声クローン"
+  "pick_reason": "Apache 2.0。ゼロショット声クローン",
+  "voice_cloning_note": "参照音声から対象話者の追加学習なしでクローン。通常はref_textも渡す。x_vector_only_mode=Trueなら書き起こし不要だが、クローン品質が下がる可能性あり。CustomVoice・VoiceDesignとは別チェックポイント。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "gpt-sovits-v5",
@@ -505,7 +542,12 @@
    "https://huggingface.co/lj1995/GPT-SoVITS"
   ],
   "confidence": "medium",
-  "rank": 9
+  "rank": 9,
+  "voice_cloning_note": "5秒程度の参照音声によるゼロショット合成と、約1分の音声による追加学習の両方を提供。「追加学習にも対応する」ことは「追加学習が必須」という意味ではない。参照音声とその内容のテキストを使う通常経路がある。",
+  "voice_cloning_sources": [
+   "https://github.com/RVC-Boss/GPT-SoVITS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "voicevox",
@@ -549,7 +591,12 @@
    "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
   ],
   "confidence": "high",
-  "rank": 10
+  "rank": 10,
+  "voice_cloning_note": "公開VVMに含まれる学習済みキャラクター・スタイルを選ぶ方式。任意の録音を入力して未学習話者の声を即時クローンする公開APIではない。",
+  "voice_cloning_sources": [
+   "https://github.com/VOICEVOX/voicevox_engine"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "drama-3-japanese",
@@ -604,7 +651,12 @@
    "https://huggingface.co/fishaudio/drama-3"
   ],
   "confidence": "high",
-  "rank": 11
+  "rank": 11,
+  "voice_cloning_note": "同じ話者の参照クリップを最大3本指定してクローン。日本語へのLoRA学習は配布モデルの作成工程であり、利用者が毎回対象話者を追加学習する必要があるという意味ではない。Voice Designとクローンは別モード。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Aratako/Drama-3-Japanese"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "fish-audio-drama-3",
@@ -642,7 +694,12 @@
    "https://comfyui-wiki.com/en/news/2026-10-13-fish-audio-drama-3"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 12,
+  "voice_cloning_note": "参照音声と対応するテキストを渡すクローン用の公式API例あり。声を参照するクローンと、指示から新しい声を作るVoice Design、話者IDで対話を組む機能は区別する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/fishaudio/drama-3"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "voxcpm2",
@@ -702,7 +759,12 @@
    "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
   ],
   "confidence": "high",
-  "rank": 13
+  "rank": 13,
+  "voice_cloning_note": "通常のクローンはreference_wav_pathの音声だけで可能。Ultimate Cloningは音声と正確な文字起こしを追加して高忠実度を狙う別経路。どちらも対象話者の追加学習は不要。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/openbmb/VoxCPM2"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "indextts-2-5",
@@ -761,7 +823,12 @@
    "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
   ],
   "confidence": "medium",
-  "rank": 14
+  "rank": 14,
+  "voice_cloning_note": "1本の参照音声からゼロショットクローン。公式の基本推論例はspk_audio_promptを渡し、参照音声の文字起こしは不要。感情参照や感情指示は話者参照と別の条件。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/IndexTeam/IndexTTS-2.5"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "fun-cosyvoice3-0-5b",
@@ -814,7 +881,12 @@
    "https://qiita.com/GeneLab_999/items/bc07147b589a93bf6114"
   ],
   "confidence": "high",
-  "rank": 15
+  "rank": 15,
+  "voice_cloning_note": "inference_zero_shotは参照音声と対応するテキストを使用。cross-lingual経路では参照音声だけを使える。対象話者の追加学習は不要だが、使用モードごとの入力条件を確認する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "magpie-tts-multilingual-357m",
@@ -865,7 +937,12 @@
    "https://www.plushcap.com/content/huggingface/blog/huggingface-build-low-latency-multilingual-voice-agents-open-weights-full-deployment-control-with-nvidia-magpie-tts"
   ],
   "confidence": "high",
-  "rank": 16
+  "rank": 16,
+  "voice_cloning_note": "公開チェックポイントは5つの学習済み話者から選択。公式カードが「ゼロショット声クローン向けではない」と明記。追加学習できることと、任意の音声から即時クローンできることは別。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/nvidia/magpie_tts_multilingual_357m"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "miotts-1-7b",
@@ -904,11 +981,16 @@
    "https://huggingface.co/k2-fsa/OmniVoice"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 17,
+  "voice_cloning_note": "公式カードが短い参照音声からのゼロショット声クローンを明記。対象話者の追加学習は不要。MioTTSの別サイズや別モデルの指示制御を継承したとは扱わない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Aratako/MioTTS-1.7B"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "qwen3-tts-0-6b",
-  "name": "Qwen3-TTS-12Hz-0.6B（Base / CustomVoice）",
+  "name": "Qwen3-TTS-12Hz-0.6B-Base",
   "org": "Alibaba Qwen",
   "country": "CN",
   "release": "2026-01-22",
@@ -937,15 +1019,15 @@
     "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base"
    }
   ],
-  "quality_note": "1.7Bより日本語の誤り率は高い（6.4 vs 3.8）が、話者類似度はほぼ同等。指示による話し方制御（instruction control）とVoiceDesignは1.7Bのみで、0.6BはBase（クローン）とCustomVoice（プリセット話者）だけ。漢字の読み分けの弱さは1.7Bと同系統と考えられる（0.6B単独の外部評価は未確認）。",
+  "quality_note": "日本語の指標はこのBase版に対応するものだけ掲載。プリセット話者や自然文の声質設計は別チェックポイントの機能。",
   "latency_note": "ストリーミング対応（公式の97msは系列全体の最短値）。0.6B単独の実測値は未確認。",
   "hardware_note": "公式VRAM目安なし（HF表示はBF16で0.9B）。1.7Bより軽い。",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "Apache-2.0で商用利用可。",
   "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
-  "summary_ja": "Qwen3-TTSの軽量版で、声のクローンとプリセット話者に対応し、少ないGPU資源で動かせる。日本語の正確さは1.7B版に劣る。",
-  "best_for_ja": "GPUの小さい環境での商用音声応答、声のクローンの試作",
+  "summary_ja": "0.6BのBase版。参照音声から声をクローンするチェックポイントで、既定話者のCustomVoiceや文章から声を作るVoiceDesignとは別です。",
+  "best_for_ja": "参照音声を使う日本語・多言語の声クローン。対象話者の追加学習は不要。",
   "supersedes": [],
   "sources": [
    "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
@@ -953,7 +1035,13 @@
    "https://github.com/QwenLM/Qwen3-TTS"
   ],
   "confidence": "high",
-  "rank": 18
+  "rank": 18,
+  "voice_cloning_note": "参照音声から対象話者の追加学習なしでクローン。通常はref_textも渡す。x_vector_only_mode=Trueなら書き起こし不要だが、クローン品質が下がる可能性あり。CustomVoice・VoiceDesignとは別チェックポイント。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "chatterbox-multilingual-v3",
@@ -993,7 +1081,13 @@
    "https://qiita.com/0h-n0/items/8f78f7acd31000612d13"
   ],
   "confidence": "medium",
-  "rank": 19
+  "rank": 19,
+  "voice_cloning_note": "Multilingual V3はaudio_prompt_pathに参照音声を渡してクローン。日本語を含む言語間クローンに対応。英語専用Turboの機能をMultilingual V3へそのまま適用しない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/ResembleAI/chatterbox",
+   "https://github.com/resemble-ai/chatterbox"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "kokoro-82m",
@@ -1030,7 +1124,13 @@
    "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
   ],
   "confidence": "high",
-  "rank": 20
+  "rank": 20,
+  "voice_cloning_note": "配布済みの声ベクトルを選ぶ公開推論経路。参照音声を入力する声クローン機能の公開を確認できず、声の混合やスタイルベクトルの選択をゼロショットクローンとは扱わない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/hexgrad/Kokoro-82M",
+   "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "zonos2",
@@ -1071,7 +1171,13 @@
    "https://gigazine.net/news/20260615-tts-zonos2-amd-zyphra"
   ],
   "confidence": "medium",
-  "rank": 13
+  "rank": 13,
+  "voice_cloning_note": "公式SDKで参照音声から話者埋め込みを作り、その埋め込みで合成。対象話者の追加学習や参照音声の文字起こしを必要としない経路を確認。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Zyphra/ZONOS2",
+   "https://github.com/Zyphra/ZONOS2"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "supertonic-3",
@@ -1082,7 +1188,7 @@
   "params_m": 99,
   "arch": "ONNX Runtimeで動く軽量の非自己回帰TTS（テキストエンコーダ・継続長予測器・ベクトル推定器・ボコーダの4モデル構成、公開ONNX合計で約99M）",
   "ja_support": "multilingual",
-  "voice_cloning": "preset-only",
+  "voice_cloning": "external-service",
   "features": {
    "streaming": null,
    "emotion_control": false,
@@ -1118,7 +1224,12 @@
    "https://musicbusinessworldwide.com/hybe-winds-down-ai-voice-company-supertone-after-investing-nearly-35m"
   ],
   "confidence": "medium",
-  "rank": 21
+  "rank": 21,
+  "voice_cloning_note": "公開パッケージは既定の声スタイルでローカル合成。独自の声スタイルJSONを参照音声から作るには外部の有料Voice Builderを使い、購入した埋め込みを導入する。声の作成まで公開重みだけで完結するゼロショットクローンとしては掲載しない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Supertone/supertonic-3"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "kaburi-tts",
@@ -1168,23 +1279,29 @@
    "https://arxiv.org/html/2609.07200v1"
   ],
   "confidence": "medium",
-  "rank": 19
+  "rank": 19,
+  "voice_cloning_note": "任意の話者A/Bの参照音声（各3〜10秒）から参照パックを作れる。参照パック作成やbootstrap refinementは対象話者の重みを追加学習する工程ではない。自然な対話音声を参照する方が安定する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/llm-jp/kaburi-tts",
+   "https://github.com/llm-jp/kaburi-tts"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "firered-tts3",
-  "name": "FireRedTTS3",
+  "name": "FireRedTTS3-Base",
   "org": "FireRed Team（小紅書）",
   "country": "CN",
-  "release": "2026-08-13",
+  "release": "2026-08-05",
   "params_m": null,
-  "arch": "LLM＋音響モデルの統合型（Base と Instruct）",
+  "arch": "参照音声・対応テキストを使うゼロショットTTS（Base）",
   "ja_support": "multilingual",
   "voice_cloning": "zero-shot",
   "features": {
    "streaming": null,
-   "emotion_control": true,
-   "instruction_control": true,
-   "dialogue": true,
+   "emotion_control": null,
+   "instruction_control": false,
+   "dialogue": null,
    "accent_control": false
   },
   "ja_metrics": [],
@@ -1195,8 +1312,8 @@
   "commercial": "yes",
   "license_note": "利用上の注意事項（なりすまし禁止など）がモデルカードにある。",
   "hf": "https://huggingface.co/FireRedTeam/FireRedTTS3",
-  "summary_ja": "小紅書の FireRed チームが出した24言語対応の音声合成。自然文の指示で話し方や速さ・高さを変えられ、複数話者の対話も作れる。",
-  "best_for_ja": "多言語のナレーションや、指示で声の雰囲気を調整したいとき（日本語の品質は要確認）",
+  "summary_ja": "24言語対応のゼロショット声クローン用Base版。自然文の声質設計や音声編集はInstruct版の機能です。",
+  "best_for_ja": "日本語の参照音声と書き起こしを使う声クローン。",
   "supersedes": [
    "FireRedTTS-2"
   ],
@@ -1204,7 +1321,12 @@
    "https://huggingface.co/FireRedTeam/FireRedTTS3",
    "https://github.com/FireRedTeam/FireRedTTS3"
   ],
-  "confidence": "medium"
+  "confidence": "medium",
+  "voice_cloning_note": "参照音声と対応するprompt_textを使用し、対象話者の追加学習は不要。最良の結果には生成先と同じ言語の参照音声を推奨。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/FireRedTeam/FireRedTTS3"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "moss-tts-v1-5",
@@ -1237,7 +1359,12 @@
   "sources": [
    "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5"
   ],
-  "confidence": "medium"
+  "confidence": "medium",
+  "voice_cloning_note": "公式カードがゼロショットクローンを明記。参照音声をprocessor.build_user_messageのreferenceへ渡す例があり、対象話者の追加学習は不要。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "ming-3-0-tts-0-5b",
@@ -1287,7 +1414,12 @@
   ],
   "confidence": "high",
   "rank": 20,
-  "verified_at": "2026-10-28"
+  "verified_at": "2026-10-28",
+  "voice_cloning_note": "ゼロショットクローンに対応。日本語のmultilingual経路は参照音声と対応する書き起こしを使用する。英中向け感情・方言制御など、別モードの機能を日本語クローンへ一括適用しない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  },
  {
   "id": "ming-3-0-tts-tiny",
@@ -1337,6 +1469,182 @@
   ],
   "confidence": "high",
   "rank": 21,
-  "verified_at": "2026-10-28"
+  "verified_at": "2026-10-28",
+  "voice_cloning_note": "日本語のmultilingual経路は参照音声と書き起こしが必要。podcastは話者ごとの参照音声・書き起こしを用意する。voice_designとipは参照なしの別タスクで、クローンと同一機能ではない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
+ },
+ {
+  "id": "qwen3-tts-1-7b-customvoice",
+  "name": "Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01-22",
+  "params_m": 1700,
+  "arch": "LLM+コーデック（12Hz多コードブックのQwen3-TTS-Tokenizer、デュアルトラックのストリーミング生成）",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [
+   {
+    "metric": "CER（感情付き日本語プロンプト）",
+    "value": 8.6,
+    "note": "%、CustomVoice 1.7B（話者Ryan）、faster-whisper-large-v3で書き起こし、120サンプル。同評価でFish S1-mini 12.7、VoxCPM2 18.6",
+    "source": "https://voice-ping.com/blog/research-ja-zh-emotional-tts-benchmark/"
+   }
+  ],
+  "quality_note": "Base版の声クローン評価値をこのチェックポイントの評価として流用しない。",
+  "latency_note": "公式にストリーミング対応。系列全体の最短97msをこの版の実測値とは扱わない。",
+  "hardware_note": "公式VRAM目安なし。FlashAttention 2推奨（fp16/bf16）。個人計測で1.7B推論時VRAM約4.2GB。pip install qwen-ttsで導入可。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "コード・重みともApache-2.0で商用利用可。声のクローンは本人の同意を得るなど一般的な配慮が必要。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "summary_ja": "1.7Bの既定話者版。9話者から選んで日本語を含む10言語で読み上げます。参照音声による声クローンはBase版を使用します。",
+  "best_for_ja": "学習済み話者での読み上げ。日本語ネイティブ話者Ono_Annaなどから選択。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "voice_cloning_note": "9つの学習済み話者を選んで合成。参照音声で任意話者をクローンするのはBase版の機能。話し方を自然文で指示できるが、任意話者のクローンではない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
+ },
+ {
+  "id": "qwen3-tts-1-7b-voicedesign",
+  "name": "Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01-22",
+  "params_m": 1700,
+  "arch": "LLM+コーデック（12Hz多コードブックのQwen3-TTS-Tokenizer、デュアルトラックのストリーミング生成）",
+  "ja_support": "multilingual",
+  "voice_cloning": "voice-design",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "Base版・CustomVoice版の評価を流用しない。",
+  "latency_note": "公式にストリーミング対応。系列全体の最短97msをこの版の実測値とは扱わない。",
+  "hardware_note": "公式VRAM目安なし。FlashAttention 2推奨（fp16/bf16）。個人計測で1.7B推論時VRAM約4.2GB。pip install qwen-ttsで導入可。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "コード・重みともApache-2.0で商用利用可。声のクローンは本人の同意を得るなど一般的な配慮が必要。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "summary_ja": "自然文の説明から声質や話し方を設計する1.7B版。参照音声によるクローン用のBase版とは役割が異なります。",
+  "best_for_ja": "文章で声の雰囲気を指定して新しい声を作る用途。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "confidence": "high",
+  "rank": 8,
+  "voice_cloning_note": "自然文の説明から新しい声を生成する版。参照音声の入力で実在の特定話者をクローンするAPIではない。生成した声をBase版へ渡して再利用する手順とは区別する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
+ },
+ {
+  "id": "qwen3-tts-0-6b-customvoice",
+  "name": "Qwen3-TTS-12Hz-0.6B-CustomVoice",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-01-22",
+  "params_m": 600,
+  "arch": "LLM+コーデック（12Hz多コードブックトークナイザ、ストリーミング生成）",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "Base版の声クローン評価値をこのチェックポイントの評価として流用しない。",
+  "latency_note": "公式にストリーミング対応。系列全体の最短97msをこの版の実測値とは扱わない。",
+  "hardware_note": "公式VRAM目安なし（HF表示はBF16で0.9B）。1.7Bより軽い。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0で商用利用可。",
+  "hf": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+  "summary_ja": "0.6Bの既定話者版。9話者から選んで日本語を含む10言語で読み上げます。参照音声による声クローンはBase版を使用します。",
+  "best_for_ja": "学習済み話者での読み上げ。日本語ネイティブ話者Ono_Annaなどから選択。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "confidence": "high",
+  "rank": 18,
+  "voice_cloning_note": "9つの学習済み話者を選んで合成。参照音声で任意話者をクローンするのはBase版の機能。0.6B版は指示による話し方制御も対象外。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+   "https://github.com/QwenLM/Qwen3-TTS"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
+ },
+ {
+  "id": "firered-tts3-instruct",
+  "name": "FireRedTTS3-Instruct",
+  "org": "FireRed Team（小紅書）",
+  "country": "CN",
+  "release": "2026-08-13",
+  "params_m": null,
+  "arch": "ゼロショットクローン＋Voice Design・音声編集の指示モデル（Instruct）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "features": {
+   "streaming": null,
+   "emotion_control": true,
+   "instruction_control": true,
+   "dialogue": null,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "系列のBase評価値をInstruct版の個別評価として流用しない。日本語での指示追従精度は要検証。",
+  "latency_note": null,
+  "hardware_note": null,
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "利用上の注意事項（なりすまし禁止など）がモデルカードにある。",
+  "hf": "https://huggingface.co/FireRedTeam/FireRedTTS3",
+  "summary_ja": "ゼロショット声クローンに加え、文章からのVoice Designと音声編集に対応するInstruct版。Base版と分けて掲載。",
+  "best_for_ja": "多言語のナレーションや、指示で声の雰囲気を調整したいとき（日本語の品質は要確認）",
+  "supersedes": [
+   "FireRedTTS-2"
+  ],
+  "sources": [
+   "https://huggingface.co/FireRedTeam/FireRedTTS3",
+   "https://github.com/FireRedTeam/FireRedTTS3"
+  ],
+  "confidence": "medium",
+  "voice_cloning_note": "公式Instruct APIのgenerate_ttsで参照音声とprompt_textを使うゼロショットクローンに対応。generate_voice_designは参照なしの別機能。音速・高さ・音量の編集指示には固定テンプレートの制限がある。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/FireRedTeam/FireRedTTS3"
+  ],
+  "voice_cloning_verified_at": "2026-11-01"
  }
 ]
