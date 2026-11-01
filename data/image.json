@@ -1383,8 +1383,8 @@
   "rank": 17
  },
  {
-  "id": "gpt-image-2-5",
-  "name": "GPT Image 2.5（Sunburst / Flare）",
+  "id": "gpt-image-2-5-sunburst",
+  "name": "GPT Image 2.5 Sunburst",
   "org": "OpenAI",
   "country": "US",
   "access": "api",
@@ -1398,8 +1398,9 @@
    "inpaint"
   ],
   "spec": {
-   "max_resolution": null,
-   "other": "API版は2モデル。Flareは既定・高速向けで、GPT-Image-2比でレイテンシ50%減。Sunburstは高精度な編集・制作向けで、生成時間が長い。参照写真からの被写体保持、複数ターン編集の一貫性、透過背景に対応。ChatGPTではSketch（手描き入力）やテンプレート機能もある。"
+   "inputs": "テキスト・画像",
+   "output": "画像",
+   "other": "Sunburstは品質重視、Flareは速度重視。quality設定だけの違いは別モデルとして増やさない。"
   },
   "features": {
    "複数ターン編集の一貫性": true,
@@ -1411,33 +1412,14 @@
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": "Flareは公式でImages 2.0比最大50%の低レイテンシ。Manusの評価ではGPT-Image-2の2〜4倍速。",
-  "price_note": "トークン課金（第三者まとめによる公式料金: 画像出力$30/100万トークン、テキスト入力$5、画像入力$8）。1024²の目安は低品質約$0.006〜最高品質約$0.211/枚（CometAPI試算）。AA掲載価格は最高設定で$210.7/1000枚。FlareとSunburstはトークン単価が同じ。",
-  "bench": [
-   {
-    "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1222,
-    "note": "Sunburst（max）で全体1位。Flare（max）は1207で2位",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
-   },
-   {
-    "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1199,
-    "note": "Sunburst（max）で全体1位。Flareは1182で2位",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
-   },
-   {
-    "metric": "LMArena Image Edit スコア",
-    "value": 1524,
-    "note": "Sunburstで1位（暫定値）。Flareは1481で2位（2026-10-06時点）",
-    "source": "https://arena.ai/leaderboard/image-edit"
-   }
-  ],
-  "quality_note": "2026年10月時点で、T2I・編集とも主要アリーナの首位。指定箇所だけを変える精密編集と、複数ターンでの画質維持が強み。最高設定は高価。",
+  "price_note": "入力・出力画像トークン、サイズ・品質・枚数により変動。版別の公式料金を確認。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": "公式発表の作例に、日本語テキストを含むステッカー告知ポスターがある。前世代のChatGPT Images 2.0（2026年4月）で、日本語を含む非ラテン文字の描画精度が改善したと報じられている（PC Watch）。2.5の日本語精度を体系的に検証した結果は未確認。",
   "license": "API（OpenAI利用規約）",
   "commercial": "yes",
   "license_note": "OpenAIの規約上、出力の権利は利用者に帰属し、商用利用できる。コンテンツポリシーの制約あり。C2PAメタデータと不可視透かしが付与される。",
-  "hf": "https://openai.com/index/introducing-chatgpt-images-2-5/",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
   "tools": [
    "OpenAI Images API",
    "ChatGPT",
@@ -1452,23 +1434,75 @@
    "GPT Image 1.5"
   ],
   "sources": [
-   "https://openai.com/index/introducing-chatgpt-images-2-5/",
-   "https://developers.openai.com/api/docs/pricing#image-generation",
-   "https://grida.co/docs/models/gpt-image-2.5",
-   "https://www.cometapi.com/gpt-image-2-5-price-api-cost-per-image/",
-   "https://pc.watch.impress.co.jp/docs/news/2103626.html",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
-   "https://arena.ai/leaderboard/image-edit"
+   "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+   "https://developers.openai.com/api/reference/resources/images/methods/generate"
   ],
   "confidence": "high",
   "rank": 18,
-  "pick": "API で最高品質",
-  "pick_reason": "AA Arena 総合1位。日本語の作例あり",
-  "hl": {
-   "label": "AA Arena",
-   "value": 1222
-  }
+  "verified_at": "2026-11-01",
+  "series": "OpenAI GPT Image flagship",
+  "availability_tier": "general"
+ },
+ {
+  "id": "gpt-image-2-5-flare",
+  "name": "GPT Image 2.5 Flare",
+  "org": "OpenAI",
+  "country": "US",
+  "access": "api",
+  "release": "2026-09-08",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref",
+   "inpaint"
+  ],
+  "spec": {
+   "inputs": "テキスト・画像",
+   "output": "画像",
+   "other": "Sunburstは品質重視、Flareは速度重視。quality設定だけの違いは別モデルとして増やさない。"
+  },
+  "features": {
+   "複数ターン編集の一貫性": true,
+   "透過背景": true,
+   "参照写真の被写体保持": true,
+   "C2PA・不可視透かし": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": "Flareは公式でImages 2.0比最大50%の低レイテンシ。Manusの評価ではGPT-Image-2の2〜4倍速。",
+  "price_note": "入力・出力画像トークン、サイズ・品質・枚数により変動。版別の公式料金を確認。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": "公式発表の作例に、日本語テキストを含むステッカー告知ポスターがある。前世代のChatGPT Images 2.0（2026年4月）で、日本語を含む非ラテン文字の描画精度が改善したと報じられている（PC Watch）。2.5の日本語精度を体系的に検証した結果は未確認。",
+  "license": "API（OpenAI利用規約）",
+  "commercial": "yes",
+  "license_note": "OpenAIの規約上、出力の権利は利用者に帰属し、商用利用できる。コンテンツポリシーの制約あり。C2PAメタデータと不可視透かしが付与される。",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+  "tools": [
+   "OpenAI Images API",
+   "ChatGPT",
+   "Codex",
+   "Adobe Firefly",
+   "Runway"
+  ],
+  "summary_ja": "OpenAIの最新画像モデルで、2026年10月時点の総合首位。精密な編集と複数回の修正に強い。",
+  "best_for_ja": "品質最優先の広告・商品画像、細かな指示の部分編集",
+  "supersedes": [
+   "GPT Image 2",
+   "GPT Image 1.5"
+  ],
+  "sources": [
+   "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+   "https://developers.openai.com/api/reference/resources/images/methods/generate"
+  ],
+  "confidence": "high",
+  "rank": 18,
+  "verified_at": "2026-11-01",
+  "series": "OpenAI GPT Image fast",
+  "availability_tier": "general"
  },
  {
   "id": "mai-image-2-7-preview",
@@ -1535,7 +1569,9 @@
    "label": "AA 編集",
    "value": 1193
   },
-  "rank": 19
+  "rank": 19,
+  "series": "Microsoft MAI Image editing",
+  "availability_tier": "general"
  },
  {
   "id": "nano-banana-2-1",
@@ -1615,11 +1651,13 @@
   "hl": {
    "label": "AA Arena",
    "value": 1176
-  }
+  },
+  "series": "Google Nano Banana standard",
+  "availability_tier": "general"
  },
  {
-  "id": "krea-3",
-  "name": "Krea 3（Ultra / Fast）",
+  "id": "krea-3-ultra",
+  "name": "Krea 3 Ultra",
   "org": "Krea",
   "country": "US",
   "access": "api",
@@ -1645,16 +1683,9 @@
   "rec_vram_gb": null,
   "vram_note": "APIのみ（重み非公開）",
   "speed_note": null,
-  "price_note": "公式: 1Kで$0.03/枚、2Kで$0.06/枚。AA掲載の料金はUltra $270/1,000枚、Fast $70/1,000枚で、公式と食い違う",
-  "bench": [
-   {
-    "metric": "Artificial Analysis Image Editing ELO",
-    "value": 1151,
-    "note": "Ultra。全体3〜6位タイ（2026-10-25時点）。Fastは1126で7〜16位",
-    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
-   }
-  ],
-  "quality_note": "AAの編集アリーナでGPT Image 2.5、Nano Banana 2.1、MAI-Image-2.6に並ぶ上位。編集中に商品・人物・文字が崩れにくいとうたう",
+  "price_note": "Ultra／Fast、解像度、利用先で料金・プラン条件が異なる。AAの評価用価格を一律の料金にしない。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": "日本語の文字描画についての記載はない",
   "license": "API（Krea利用規約）",
   "commercial": "yes",
@@ -1673,14 +1704,70 @@
   "sources": [
    "https://www.krea.ai/blog/introducing-krea-3",
    "https://www.krea.ai/blog/krea-3-benchmarks",
-   "https://artificialanalysis.ai/image/leaderboard/editing"
+   "https://www.krea.ai/pricing"
   ],
   "confidence": "high",
-  "hl": {
-   "label": "AA 編集",
-   "value": 1151
+  "rank": 21,
+  "verified_at": "2026-11-01",
+  "series": "Krea editing Ultra",
+  "availability_tier": "general"
+ },
+ {
+  "id": "krea-3-fast",
+  "name": "Krea 3 Fast",
+  "org": "Krea",
+  "country": "US",
+  "access": "api",
+  "release": "2026-10-15",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "edit",
+   "multi-ref",
+   "t2i"
+  ],
+  "spec": {
+   "max_resolution": "2K（ネイティブ）",
+   "other": "画像編集が中心のモデル。1回の編集に参照画像を最大6枚使え、スタイル参照で連作の見た目をそろえられる。krea.aiのほか fal・Together AI・OpenRouter・Replicate などで提供"
   },
-  "rank": 21
+  "features": {
+   "指示で編集": true,
+   "複数参照（最大6枚）": true,
+   "ネイティブ2K": true,
+   "重み公開": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "speed_note": null,
+  "price_note": "Ultra／Fast、解像度、利用先で料金・プラン条件が異なる。AAの評価用価格を一律の料金にしない。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": "日本語の文字描画についての記載はない",
+  "license": "API（Krea利用規約）",
+  "commercial": "yes",
+  "license_note": "Kreaの利用規約に従う。エンタープライズ契約あり",
+  "hf": "https://www.krea.ai/blog/introducing-krea-3",
+  "tools": [
+   "krea.ai",
+   "fal",
+   "Together AI",
+   "OpenRouter",
+   "Replicate"
+  ],
+  "summary_ja": "Kreaの画像編集モデルで、参照画像を最大6枚使って2Kで編集できます。AAの編集ランキングで5位の上位です。",
+  "best_for_ja": "商品写真や人物を崩さずに、安く高品質な画像編集をAPIで行いたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://www.krea.ai/blog/introducing-krea-3",
+   "https://www.krea.ai/blog/krea-3-benchmarks",
+   "https://www.krea.ai/pricing"
+  ],
+  "confidence": "high",
+  "rank": 21,
+  "verified_at": "2026-11-01",
+  "series": "Krea editing Fast",
+  "availability_tier": "general"
  },
  {
   "id": "grok-imagine-image-2-0",
@@ -1766,7 +1853,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1166
-  }
+  },
+  "series": "xAI Grok Imagine Image",
+  "availability_tier": "general"
  },
  {
   "id": "mai-image-2-6",
@@ -1841,7 +1930,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1166
-  }
+  },
+  "series": "Microsoft MAI Image generation",
+  "availability_tier": "general"
  },
  {
   "id": "seedream-5-0-pro",
@@ -1928,7 +2019,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1100
-  }
+  },
+  "series": "ByteDance Seedream Pro",
+  "availability_tier": "general"
  },
  {
   "id": "flux-3-image",
@@ -2004,7 +2097,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1117
-  }
+  },
+  "series": "BFL FLUX Image flagship",
+  "availability_tier": "general"
  },
  {
   "id": "qwen-image-3-0-pro",
@@ -2082,7 +2177,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1095
-  }
+  },
+  "series": "Alibaba Qwen Image flagship Pro",
+  "availability_tier": "general"
  },
  {
   "id": "ideogram-4-5",
@@ -2161,7 +2258,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1015
-  }
+  },
+  "series": "Ideogram flagship",
+  "availability_tier": "general"
  },
  {
   "id": "midjourney-v8-2",
@@ -2215,7 +2314,9 @@
    "https://runtheprompts.com/resources/midjourney-info/midjourney-v8-2-whats-new-and-is-it-better-than-v8-1"
   ],
   "confidence": "medium",
-  "rank": 28
+  "rank": 28,
+  "series": "Midjourney flagship",
+  "availability_tier": "general"
  },
  {
   "id": "reve-2-1",
@@ -2290,7 +2391,9 @@
   "hl": {
    "label": "LMArena",
    "value": 1302
-  }
+  },
+  "series": "Reve flagship",
+  "availability_tier": "general"
  },
  {
   "id": "ming-image-0-1-design",
@@ -2419,6 +2522,8 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 30
+  "rank": 30,
+  "series": "Canva Craft",
+  "availability_tier": "general"
  }
 ]

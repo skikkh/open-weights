@@ -1066,12 +1066,12 @@
   "rank": 16
  },
  {
-  "id": "tripo-h3-1-p2",
+  "id": "tripo-h3-1",
   "access": "api",
-  "name": "Tripo H3.1 / P2.0",
+  "name": "Tripo H3.1",
   "org": "VAST（Tripo AI）",
   "country": "CN",
-  "release": "2026-09",
+  "release": null,
   "params_b": null,
   "arch": "ネイティブ3D拡散（非公開）",
   "tasks": [
@@ -1082,8 +1082,8 @@
    "rig"
   ],
   "spec": {
-   "output": "GLB（FBX等へ変換可）+ PBR",
-   "other": "H3.1（API名 v3.1-20260211）は高精細フラッグシップ、P2.0（P2-20260801、2026-09-21発表）はネイティブ四角形メッシュ・面数違いを最大4種同時生成・Smart UV。テクスチャv3.5（2026-08）、リグv3.0（2026-09）、パーツ分割、Smart Low-poly（500〜20,000面）、多視点入力（前・左・後・右）"
+   "output": "3Dモデル",
+   "other": "H3.1とP2.0は役割が異なる現行系列。公開記事・SDKの日付を初提供日と断定しない。"
   },
   "features": {
    "PBRテクスチャ": true,
@@ -1098,15 +1098,8 @@
   "rec_vram_gb": null,
   "vram_note": "API提供のためローカルGPU不要。",
   "speed_note": "Top 3D AIアリーナの計測でv3.1が約1.5分/生成。P1.0は約2秒でエンジン向け低ポリを出すとされる（第三者ガイド）。",
-  "bench": [
-   {
-    "metric": "Top 3D AI アリーナ ELO（総合品質）",
-    "value": 1042,
-    "note": "v3.1、1位・勝率88.6%、2026-08-03時点（186,939票）。掲載元のSloydは同アリーナ3位の競合のため留意",
-    "source": "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
-   }
-  ],
-  "quality_note": "第三者アリーナで総合1位。P系列はゲーム向けのクリーンなトポロジー、H系列は高精細という2系統。旧v2 APIは2026-10-31に終了しapiv3へ移行。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": null,
   "license": "API（利用規約）",
   "commercial": "conditional",
@@ -1118,7 +1111,7 @@
    "ComfyUIノード",
    "Blender・Unityプラグイン"
   ],
-  "price_note": "クレジット制（サブスク＋API従量）。Top 3D AIアリーナ掲載の1生成あたり目安はv3.1で約0.30ドル。正確な単価は公式で要確認。",
+  "price_note": "H3.1は高精細、P2.0は編集しやすい低ポリゴン向け。Webのクレジット料金とAPI料金は別。",
   "summary_ja": "Tripo AIの商用3D生成で、高精細なH3.1とゲーム向けの綺麗なメッシュを出すP2.0の2系統があります。テクスチャ・リグ・パーツ分割までAPIで揃います。",
   "best_for_ja": "ゲーム・アプリ向けに、トポロジーの整った3D素材をAPIで量産したい場合",
   "supersedes": [
@@ -1127,15 +1120,78 @@
    "Tripo v2.5"
   ],
   "sources": [
-   "https://github.com/VAST-AI-Research/tripo-python-sdk/blob/main/docs/API.md",
-   "https://github.com/VAST-AI-Research/tripo-python-sdk/blob/main/CHANGELOG.md",
-   "https://www.morningstar.com/news/pr-newswire/20260921sf53561/tripo-ai-releases-latest-model-tripo-p20-advancing-ai-3d-generation-with-production-ready-assets",
-   "https://www.digitaljournal.com/article/tripo-ai-unveils-new-3d-generation-model-at-gdc-2026/",
-   "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings",
-   "https://app.cinevva.com/guides/ai-3d-model-generation-timeline-2026"
+   "https://www.tripo3d.ai/product-doc/getting-started/pricing-credits",
+   "https://www.tripo3d.ai/blog/tripo-studio-vs-3d-ai-studio"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 17,
+  "verified_at": "2026-11-01",
+  "series": "Tripo high detail",
+  "availability_tier": "general"
+ },
+ {
+  "id": "tripo-p2-0",
+  "access": "api",
+  "name": "Tripo P2.0",
+  "org": "VAST（Tripo AI）",
+  "country": "CN",
+  "release": null,
+  "params_b": null,
+  "arch": "ネイティブ3D拡散（非公開）",
+  "tasks": [
+   "i23d",
+   "t23d",
+   "texture",
+   "part",
+   "rig"
+  ],
+  "spec": {
+   "output": "3Dモデル",
+   "other": "H3.1とP2.0は役割が異なる現行系列。公開記事・SDKの日付を初提供日と断定しない。"
+  },
+  "features": {
+   "PBRテクスチャ": true,
+   "テクスチャ生成": true,
+   "複数視点入力": true,
+   "綺麗なトポロジー": true,
+   "パーツ分割": true,
+   "リギング": true,
+   "テキスト入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のためローカルGPU不要。",
+  "speed_note": "Top 3D AIアリーナの計測でv3.1が約1.5分/生成。P1.0は約2秒でエンジン向け低ポリを出すとされる（第三者ガイド）。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "conditional",
+  "license_note": "有料プランで商用利用とされる。公式の料金・規約ページは取得できなかった（403）ため要確認。",
+  "hf": "https://platform.tripo3d.ai/",
+  "tools": [
+   "REST API（apiv3）",
+   "公式SDK（Python / JS / Go / Rust / Java）",
+   "ComfyUIノード",
+   "Blender・Unityプラグイン"
+  ],
+  "price_note": "H3.1は高精細、P2.0は編集しやすい低ポリゴン向け。Webのクレジット料金とAPI料金は別。",
+  "summary_ja": "Tripo AIの商用3D生成で、高精細なH3.1とゲーム向けの綺麗なメッシュを出すP2.0の2系統があります。テクスチャ・リグ・パーツ分割までAPIで揃います。",
+  "best_for_ja": "ゲーム・アプリ向けに、トポロジーの整った3D素材をAPIで量産したい場合",
+  "supersedes": [
+   "Tripo v3.0",
+   "Tripo P1.0",
+   "Tripo v2.5"
+  ],
+  "sources": [
+   "https://www.tripo3d.ai/product-doc/getting-started/pricing-credits",
+   "https://www.tripo3d.ai/blog/tripo-studio-vs-3d-ai-studio"
+  ],
+  "confidence": "medium",
+  "rank": 17,
+  "verified_at": "2026-11-01",
+  "series": "Tripo smart mesh",
+  "availability_tier": "general"
  },
  {
   "id": "meshy-7-1",
@@ -1220,7 +1276,9 @@
   "hl": {
    "label": "3D Arena",
    "value": 1312
-  }
+  },
+  "series": "Meshy flagship",
+  "availability_tier": "general"
  },
  {
   "id": "rodin-gen-2-5",
@@ -1284,7 +1342,9 @@
    "https://www.sloyd.ai/blog/ai-3d-model-generator-rankings"
   ],
   "confidence": "medium",
-  "rank": 19
+  "rank": 19,
+  "series": "Hyper Human Rodin",
+  "availability_tier": "general"
  },
  {
   "id": "hunyuan-3d-3-1-api",
@@ -1344,7 +1404,9 @@
    "https://blog.comfy.org/p/trellis2-and-pixal3d-are-now-native"
   ],
   "confidence": "medium",
-  "rank": 20
+  "rank": 20,
+  "series": "Tencent Hunyuan three dimensional",
+  "availability_tier": "general"
  },
  {
   "id": "seed3d-2-0",
@@ -1405,12 +1467,14 @@
    "https://www.therundown.ai/tools/seed-3d"
   ],
   "confidence": "medium",
-  "rank": 21
+  "rank": 21,
+  "series": "ByteDance Seed three dimensional",
+  "availability_tier": "general"
  },
  {
   "id": "marble-1-1",
   "access": "api",
-  "name": "Marble 1.1 / 1.1 Plus",
+  "name": "Marble 1.1",
   "org": "World Labs",
   "country": "US",
   "release": "2026-04-02",
@@ -1435,7 +1499,7 @@
   "vram_note": "API・Webサービスのため生成にローカルGPU不要（閲覧は一般GPUでリアルタイム描画可）。",
   "speed_note": "公式の数値なし。",
   "bench": [],
-  "quality_note": "編集可能な3Dワールドを生成する商用サービスの代表格。投票型ベンチの公開値は見当たらない。World Labsは2026-09-28にAMDへの合流を発表しており、今後の提供形態に注意。",
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": null,
   "license": "API（利用規約）",
   "commercial": "conditional",
@@ -1446,19 +1510,75 @@
    "Marble Webアプリ",
    "Spark 2.0（Web向け3DGSストリーミング）"
   ],
-  "price_note": "World API: 1,250クレジット=1ドル（最低5ドル、失効なし）。1ワールド約1,500〜1,600クレジット（約1.2〜1.3ドル）、Draft 150〜250、1.1 Plusは最大+1,500。HQメッシュGLB出力は3,500クレジット（2.80ドル）、PLYは無料。アプリは月20〜95ドル程度のプラン（第三者情報）。",
+  "price_note": "生成・拡張・メッシュ出力などの操作ごとに課金。1.1とPlusの条件は公式料金を確認。",
   "summary_ja": "World Labsの3Dワールド生成サービスで、テキストや画像から歩き回れる空間をGaussian Splatやメッシュで出力します。",
   "best_for_ja": "ゲーム・映像・VR用の背景ワールドを手軽に作りたい場合",
   "supersedes": [
    "Marble 1.0"
   ],
   "sources": [
-   "https://docs.worldlabs.ai/api/pricing",
-   "https://www.worldlabs.ai/blog",
-   "https://www.worldlabs.ai/blog/atlas",
-   "https://aihola.com/article/world-labs-marble-1-1"
+   "https://docs.worldlabs.ai/api/models",
+   "https://docs.worldlabs.ai/api/pricing"
   ],
   "confidence": "medium",
-  "rank": 22
+  "rank": 22,
+  "verified_at": "2026-11-01",
+  "series": "World Labs Marble standard",
+  "availability_tier": "general"
+ },
+ {
+  "id": "marble-1-1-plus",
+  "access": "api",
+  "name": "Marble 1.1 Plus",
+  "org": "World Labs",
+  "country": "US",
+  "release": null,
+  "params_b": null,
+  "arch": "マルチモーダル・ワールドモデル（非公開）",
+  "tasks": [
+   "scene"
+  ],
+  "spec": {
+   "output": "3D Gaussian Splat（PLY）、HQメッシュGLB（テクスチャ版・頂点色版）",
+   "other": "入力: テキスト・画像・パノラマ・複数画像・動画。1.1 Plusは自動拡張する大規模ワールド。次世代のAtlas（omniワールドモデル）は2026-09-01から一部パートナーの早期アクセスのみ"
+  },
+  "features": {
+   "シーン生成": true,
+   "テキスト入力": true,
+   "複数視点入力": true,
+   "Gaussian Splat出力": true,
+   "メッシュ出力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・Webサービスのため生成にローカルGPU不要（閲覧は一般GPUでリアルタイム描画可）。",
+  "speed_note": "公式の数値なし。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": null,
+  "license": "API（利用規約）",
+  "commercial": "conditional",
+  "license_note": "第三者情報ではアプリの商用利用権はProプラン以上。API利用はWorld Labs Platformの規約に従う。",
+  "hf": "https://docs.worldlabs.ai/api/pricing",
+  "tools": [
+   "World API",
+   "Marble Webアプリ",
+   "Spark 2.0（Web向け3DGSストリーミング）"
+  ],
+  "price_note": "生成・拡張・メッシュ出力などの操作ごとに課金。1.1とPlusの条件は公式料金を確認。",
+  "summary_ja": "World Labsの3Dワールド生成サービスで、テキストや画像から歩き回れる空間をGaussian Splatやメッシュで出力します。",
+  "best_for_ja": "ゲーム・映像・VR用の背景ワールドを手軽に作りたい場合",
+  "supersedes": [
+   "Marble 1.0"
+  ],
+  "sources": [
+   "https://docs.worldlabs.ai/api/models",
+   "https://docs.worldlabs.ai/api/pricing"
+  ],
+  "confidence": "medium",
+  "rank": 22,
+  "verified_at": "2026-11-01",
+  "series": "World Labs Marble Plus",
+  "availability_tier": "general"
  }
 ]

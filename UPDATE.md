@@ -17,6 +17,8 @@
 | `data/llm.json` | LLM（海外＋国産）。国産は `country: "JP"` |
 | `data/asr.json` | 日本語音声認識 |
 | `data/tts.json` | 日本語音声合成 |
+| `data/frontier.json` | フロンティア・有料のLLM・音声等。全カテゴリの定期更新対象 |
+| `data/frontier-review.json` | AA各一覧との照合台帳。掲載・旧版・日本語対象外・保留を記録 |
 | `data/s2s.json` `music.json` `image.json` `video.json` `3d.json` `decision.json` | 汎用カテゴリ（同じスキーマ） |
 | `data/meta.json` | 更新日、次回予定、収録ルール、更新履歴、出典、重み非公開モデルの参考メモ |
 | `data/recipes.json` | 大型LLMを Artificial Analysis「Laptops & Workstations」の5機種に載せるレシピ（大型LLMページの「載せるなら」表） |
@@ -26,17 +28,19 @@
 
 ## 2. 収録ルール（全カテゴリ共通）
 
-1. 重みがダウンロードできるもの（オープンウェイト）だけ。例外は Decision Model ページで、API 提供のもの（OpenAI Decisions API、TypeSafe Jev など）も `access: "api"` で載せる。
-2. **各系列の最新世代だけ**。後継が出たら旧版のエントリを消し、新エントリの `supersedes` に旧版名を足す。
+1. **公開モデル中心とフロンティア・有料の両側、全カテゴリを毎回更新する**。公開側は重み配布あり、有料側はAPI・会員サービス・契約提供を対象とする。国産LLMではAPIも通常一覧に統合する。音楽・画像・動画・3Dも重み公開の有無に限定しない。
+2. **同じ系列・役割は最新の提供版だけ**。後継が提供されたら旧行を消し、新行の `supersedes` に旧版名を残す。単なるAPI別名・推論effort・提供業者違いで件数を増やさない。限定後継の一般提供までは一般提供の現行版を保持する。
 3. 同じ世代でも Flash／Pro、サイズ違い、T2V版／I2V版など用途が分かれるものは別エントリ。
-4. LLM は総パラメータ 100B 以上の大型〜超巨大が中心。主要系列の注目中型（単体GPUに載るもの）は少数だけ。
+4. 公開LLMは40B超を大型、40B以下をローカルに分類。100B以上と40〜100Bの規模も明示する。有料モデルのパラメータ数は非公表なら推測しない。
 5. ASR・TTS・Speech to Speech は日本語で使えるものを中心にする。
 6. **予告も載せる**: 公式に発表され、重み（API提供カテゴリはサービス）の公開日や公開予定が示されているが、まだ出ていないモデルは「予告」として載せる。`status: "announced"`、`announced`（発表日）を付け、`release` には公開予定日（分からなければ予定月）を入れる。予告のエントリには `supersedes` と `pick` を付けず、旧版は重みが出るまで消さない。根拠は公式発表（ブログ・公式X・ドキュメント）で取り、報道だけなら confidence を medium か low にする。半年以上動きのない予告は消す。
-7. 件数の目安: LLM 海外 25〜35／国産 8〜14、ASR 10〜16、TTS 12〜18、その他各 10〜18。
+7. 件数合わせで旧版を残したり役割の違う現行版を省いたりしない。ASR・TTSの日本語非対応・未確認候補も照合台帳に理由を残す。日本語のWebページがあるだけでは日本語音声対応の根拠にならない。
 
 ## 3. 更新作業
 
 1. `data/meta.json` の `updated_at`（前回更新日）以降のニュースを、カテゴリごとに検索する。
+   - **有料側も必須**: `data/frontier.json`、各汎用データの `access: "api"`、`meta.jp_reference_models` をすべて対象とする。
+   - 下のAA各一覧の埋め込みデータ／表を取得し、前回の `frontier-review.json` と比較する。AAは候補発見・測定値の出典であり、最新版・提供開始・対応言語は公式の現行モデル表と変更履歴で確認する。AAの評価追加日をデビュー日として転記しない。
    - **Web検索だけに頼らず、Hugging Face の新着も直接見る**（検索に出る前のモデルを見落とさないため）。例: `curl -s 'https://huggingface.co/api/models?sort=createdAt&direction=-1&limit=200&filter=text-generation'`、`?sort=trendingScore&limit=100`。主要な開発元（Qwen、deepseek-ai、zai-org、moonshotai、XiaomiMiMo、MiniMaxAI、stepfun-ai、inclusionAI、tencent、meta-models、nvidia、google、mistralai、Nanbeige、llm-jp、tokyotech-llm、sbintuitions、pfnet、elyza など）は `?author=<名前>&sort=createdAt&direction=-1` で前回更新日以降の公開を確認する。
    - 新しく重みが公開されたモデル、既存系列の新版、ライセンス変更、重みの取り下げ。
    - 例: 「open weights model release」「Hugging Face 新モデル」「オープンウェイト 公開」「日本語 LLM 公開」「text-to-video open source」など。
@@ -49,7 +53,7 @@
    - `updated_at` を今日に。`next_update` は次の実行日（毎月 1・4・7…28・31日）に。ページの「次回更新予定」は updated_at から自動計算される。
    - `changelog` の先頭に `{"date": "YYYY-MM-DD", "items": ["追加: …", "更新: …", "削除: …（後継 … に置換）"]}` を足す。変更がなければ `"items": ["新しい公開・更新なし（確認のみ）"]`。古い履歴は 30 件を超えたら末尾から消す。
    - `closed_refs`（重み非公開のSOTAの参考名）も最新に。
-7. `python3 scripts/build.py` を実行し、`OK:` が出ることを確認する。検証エラーが出たらデータを直す。
+7. `data/frontier-review.json` の確認日・候補・掲載先・保留理由を更新する。`python3 scripts/check_frontier.py` と `python3 scripts/build.py`、`git diff --check` を実行する。有料側は全ファイルを統合して系列重複・置換済み旧版・台帳の参照先を検査する。変更カテゴリの実ブラウザ表示を375px／1280pxで確認する。
 8. コミットして `main` に push する。メッセージ例: `データ更新 2026-10-23: Qwen3.8 系を追加、DeepSeek V4.1 の AA 値を更新`。
 
 ## 4. スキーマ
@@ -164,3 +168,26 @@ decision のみ: access("api"|"open-weight"), price_note
 新規のAPIモデルは `data/frontier.json` に `id, name, series, category, org, country, release, access, summary_ja, availability_ja, price_note, detail_note, context_note, local_note, hf, sources[], verified_at, license, commercial` を保持する。初公開日と仕様の更新日・知識カットオフ・重み公開予定を混同しない。不明な初公開日は null。価格には通貨・課金単位・長文等の割増条件を明記する。サブスクとAPIの料金は別。
 
 同じ役割の系列は最新版のみを掲載する。例: GPT Solは6.1のみで、5.6や6を現行として併記しない。Astra、Terra、Lunaのような役割違い、Flashと上位版、通常とHighspeedは分ける。後継への自動転送だけの旧API名を別モデルとして増やさない。OpenAIの非推奨GPT-4o Mini TTSは新しい有料一覧に追加していない。
+
+すべての有料行（汎用API行・国産API行も含む）に、版番号を含めない固定の `series` を付ける。`availability_tier` は `general`（通常）、`limited`（対象者を限定）、`preview`（プレビュー）、`rollout`（段階的展開）。同一系列・役割の二重掲載はビルドエラー。例外は一般提供中の現行版と、公式に確認した限定後継1件の組み合わせだけ。型や推論設定の違いだけで系列キーを作り直さない。
+
+### 毎回照合する一覧
+
+| 対象 | AAの一覧 |
+|---|---|
+| LLM | https://artificialanalysis.ai/leaderboards/models |
+| 画像生成／編集 | https://artificialanalysis.ai/image/leaderboard/text-to-image ／ https://artificialanalysis.ai/image/leaderboard/editing |
+| 動画T2V／I2V | https://artificialanalysis.ai/video/leaderboard/text-to-video ／ https://artificialanalysis.ai/video/leaderboard/image-to-video |
+| ASR | https://artificialanalysis.ai/speech-to-text |
+| TTS各社の声／同条件の声 | https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice ／ https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice |
+| 音声対話 | https://artificialanalysis.ai/speech-to-speech |
+| 音楽ボーカル／インスト | https://artificialanalysis.ai/music/leaderboard/vocals ／ https://artificialanalysis.ai/music/leaderboard/instrumental |
+| 判断モデル | https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index |
+
+AAの3D評価はLLMによる3D作品制作の評価で、3D生成モデルを網羅した一覧ではない。3D・国内音声・国産LLMは各社公式を別途確認する。TTSの英語Arena順位やASRの英語WERを日本語の品質評価にしない。公式が日本語非対応とする版、公式情報だけでは提供を確認できない版は台帳に記録し、未確認の現行行を作らない。
+
+### 実行する定期更新
+
+Claudeの既存クラウドルーティン「AIモデル図鑑の定期更新」（`trig_017rA4Kmf3674Pdi8CdRGeC7`）を使用。2026-11-01に公開・有料の両側を対象とする指示へ更新して読み戻した。対象は `skikkh/open-weights`、既存の環境・実行モデルを維持。
+
+既存のcronはUTC `0 0 */3 * *`、毎月1・4・7…28・31日の日本時間9時ごろ。月末から翌月初は72時間より短くなる。次回表示は2026-11-04 09:05 JST。重複した定期タスクを作らない。更新・commit・mainへのpush・Pages反映は利用者の許可済みの範囲で実施し、追加確認で停止しない。

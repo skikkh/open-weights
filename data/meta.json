@@ -3,7 +3,7 @@
  "next_update": "2026-11-04",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
-  "各系列は最新世代だけを載せます。後継が出たら旧版は消し、詳細の「置き換えた旧版」に名前を残します。",
+  "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
   "公式に発表されていて重みがまだ出ていないモデルも「予告」として載せます。公開日の欄は公開予定日で、おすすめやランキングの1位には入れません。重みが出たら通常のエントリに切り替えます。",
   "同じ世代でも Flash／Pro、サイズ違い、T2V版／I2V版など用途が分かれるものは別々に載せます。",
   "LLM は総パラメータ40B超を「大型LLM」、40B以下を「ローカルLLM」に分けます。国産LLMは大きさに関係なく「国産LLM」ページにもまとめています。",
@@ -13,6 +13,17 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-01",
+   "items": [
+    "掲載漏れ調査: AAの12一覧から421候補を記録。公式の現行提供を確認した有料モデル74件を追加し、版の分離と合わせて有料側を70件から152件へ。AA既定LLMの非公開モデル15件は全件に掲載先を記録。",
+    "追加: Muse Wonder／Full、Claude Fable 5.1、Qwen Max／Flash、Simba 3.5、Universal-3.6 Pro Realtime、PKSHA Voice AI、Koto、Aivis Cloud APIなど。Gemini 4 Carbonは限定提供と明記。",
+    "分離: Suno v6／wild／mini、GPT Image Sunburst／Flare、Krea Ultra／Fast、Wan通常／Prime、FLUX通常／Max、Tripo H3.1／P2.0、Marble通常／Plus。",
+    "定期更新: 既存の3日ごとのクラウドルーティンを公開・有料両側の全カテゴリ対象に変更。同系列の旧版・重複をビルド時に検査。",
+    "保留: 日本語対応・一般提供・正確な初公開日を確認できない候補は照合台帳に理由を残し、現行モデルとして推測掲載しない。",
+    "補完: 公式現行表に残るNano Banana Pro／Lite、Luma Uni-1.1／Max、Recraft V4.1の標準／Pro／Utility／Utility Proを用途別に掲載。"
+   ]
+  },
   {
    "date": "2026-11-01",
    "items": [
@@ -226,7 +237,9 @@
     "https://www.preferred.jp/ja/news/pr20261027",
     "https://www.preferred.jp/ja/blog/tech/plamo-3-1-prime-release",
     "https://x.com/preferrednetjp/status/2114905933180781023"
-   ]
+   ],
+   "series": "PFN PLaMo Prime",
+   "availability_tier": "general"
   }
  ]
 }

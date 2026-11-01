@@ -83,7 +83,9 @@
   "confidence": "high",
   "rank": 1,
   "pick": "ChatGPT（OpenAI）の判断API",
-  "pick_reason": "GPT-6 Luna。画像入力も可"
+  "pick_reason": "GPT-6 Luna。画像入力も可",
+  "series": "openai-decisions-api",
+  "availability_tier": "general"
  },
  {
   "id": "typesafe-jev",
@@ -192,7 +194,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 58
-  }
+  },
+  "series": "typesafe-jev",
+  "availability_tier": "general"
  },
  {
   "id": "microsoft-decision-1",
@@ -280,7 +284,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 54
-  }
+  },
+  "series": "Microsoft Decision",
+  "availability_tier": "general"
  },
  {
   "id": "liquid-d1-ultra",
@@ -350,7 +356,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 65.2
-  }
+  },
+  "series": "liquid-d1-ultra",
+  "availability_tier": "general"
  },
  {
   "id": "baseten-mammoth-1",

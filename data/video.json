@@ -1124,10 +1124,10 @@
  {
   "id": "wan-3-0",
   "access": "api",
-  "name": "Wan 3.0（Wan-3.0 / Wan-3.0-Prime）",
+  "name": "Wan 3.0",
   "org": "Alibaba",
   "country": "CN",
-  "release": "2026-08",
+  "release": null,
   "params_b": null,
   "arch": null,
   "tasks": [
@@ -1137,10 +1137,9 @@
    "audio"
   ],
   "spec": {
-   "max_resolution": "1080p",
+   "max_resolution": "1080P",
    "max_duration_s": 30,
-   "fps": null,
-   "other": "2026-08-06に公開ベータ、2026-08-24から一般提供。2〜30秒（smart-duration）。Wan-3.0-Primeは参照画像・動画・音声を組み合わせたR2Vに対応。4Kなし。重みは非公開（Wan 2.5以降4世代連続でクローズド）"
+   "other": "通常・Primeともテキスト、始終フレーム、参照画像・動画・音声から生成。Primeは速度最適化。"
   },
   "features": {
    "音声同時生成": true,
@@ -1150,38 +1149,13 @@
   "rec_vram_gb": null,
   "vram_note": "API提供のみ",
   "speed_note": null,
-  "bench": [
-   {
-    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1175,
-    "note": "全体1位（2026-10-31時点）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
-   },
-   {
-    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
-    "value": 1133,
-    "note": "全体4位（2026-10-31時点。1位HeyGen Video 1 1143）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
-   },
-   {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
-    "value": 1111,
-    "note": "全体9位（2026-10-31時点）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
-   },
-   {
-    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
-    "value": 1362,
-    "note": "全体2〜3位タイ",
-    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
-   }
-  ],
-  "quality_note": "2026-10時点でAAのT2V（音声あり）首位。T2V無音は4位、I2V（音声あり、v2.1）は9位",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": null,
   "license": "API（Alibaba Cloud Model Studio利用規約）",
   "commercial": "conditional",
   "license_note": "API出力の商用利用は利用規約に従う（規約本文は本調査では未確認）",
-  "price_note": "Alibaba公式API: 480P ¥0.3/秒、720P ¥0.6/秒、1080P ¥1.2/秒（Atlas Cloud記事による）。Runway API経由は$0.05/$0.10/$0.20/秒（480/720/1080p）、Primeは$0.068〜$0.28/秒。AA掲載は1080p換算$12.00/分",
+  "price_note": "地域・解像度・モード別の秒単価。公式料金を確認。",
   "hf": "https://wan.video",
   "tools": [],
   "summary_ja": "Alibabaの最新動画モデルで、AAのテキスト→動画ランキングで1位。重みは公開されておらず、APIでのみ使える。",
@@ -1192,21 +1166,66 @@
    "Wan 2.5"
   ],
   "sources": [
-   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "https://www.atlascloud.ai/blog/tips/is-wan-3.0-open-source",
-   "https://howaiworks.ai/blog/alibaba-wan-open-weights-stopped-at-2-2",
-   "https://docs.dev.runwayml.com/guides/pricing/",
-   "https://pinggy.io/blog/best_video_generation_ai_models/"
+   "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
   ],
   "confidence": "medium",
   "rank": 17,
-  "pick": "API で最高品質（T2V）",
-  "pick_reason": "AA Video Arena T2V（音声あり）1位",
-  "hl": {
-   "label": "AA Arena",
-   "value": 1175
-  }
+  "verified_at": "2026-11-01",
+  "series": "Alibaba Wan video standard",
+  "availability_tier": "general"
+ },
+ {
+  "id": "wan-3-0-prime",
+  "access": "api",
+  "name": "Wan 3.0 Prime",
+  "org": "Alibaba",
+  "country": "CN",
+  "release": null,
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080P",
+   "max_duration_s": 30,
+   "other": "通常・Primeともテキスト、始終フレーム、参照画像・動画・音声から生成。Primeは速度最適化。"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照被写体の保持（R2V）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ",
+  "speed_note": null,
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": null,
+  "license": "API（Alibaba Cloud Model Studio利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は本調査では未確認）",
+  "price_note": "地域・解像度・モード別の秒単価。公式料金を確認。",
+  "hf": "https://wan.video",
+  "tools": [],
+  "summary_ja": "Alibabaの最新動画モデルで、AAのテキスト→動画ランキングで1位。重みは公開されておらず、APIでのみ使える。",
+  "best_for_ja": "最高品質の音声付きT2Vを、比較的安いAPI料金で使いたい場合",
+  "supersedes": [
+   "Wan 2.7",
+   "Wan 2.6",
+   "Wan 2.5"
+  ],
+  "sources": [
+   "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+  ],
+  "confidence": "medium",
+  "rank": 17,
+  "verified_at": "2026-11-01",
+  "series": "Alibaba Wan video Prime",
+  "availability_tier": "general"
  },
  {
   "id": "heygen-video-1",
@@ -1288,7 +1307,9 @@
    "label": "AA Arena",
    "value": 1156
   },
-  "rank": 18
+  "rank": 18,
+  "series": "HeyGen Video",
+  "availability_tier": "general"
  },
  {
   "id": "seedance-2-5",
@@ -1368,12 +1389,14 @@
   "hl": {
    "label": "AA Arena",
    "value": 1157
-  }
+  },
+  "series": "ByteDance Seedance flagship",
+  "availability_tier": "general"
  },
  {
   "id": "flux-3-video",
   "access": "api",
-  "name": "FLUX 3 Video（FLUX 3 / FLUX 3 Max）",
+  "name": "FLUX 3 Video",
   "org": "Black Forest Labs",
   "country": "DE",
   "release": "2026-08-04",
@@ -1387,10 +1410,7 @@
    "audio"
   ],
   "spec": {
-   "max_resolution": "1080p（ネイティブ720p＋アップスケール）",
-   "max_duration_s": 20,
-   "fps": null,
-   "other": "最長20秒。開始・終了・複数キーフレーム指定、最大4秒の既存動画からの続き生成、1クリップ内のマルチショット、安価なドラフトモード。参照ベース生成は今後対応予定。FLUX 3 Max（720p）は2026-10にFal経由で登場。オープンウェイトのFLUX 3 Devは予告のみで未公開"
+   "other": "通常版は最大20秒・ネイティブ音声。Maxは高速・高品質の別提供。細かな出力条件は版別に確認。"
   },
   "features": {
    "音声同時生成": true,
@@ -1404,49 +1424,80 @@
   "rec_vram_gb": null,
   "vram_note": "API提供のみ（オープン版FLUX 3 Devは計画段階）",
   "speed_note": null,
-  "bench": [
-   {
-    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1157,
-    "note": "FLUX 3 Max（720p）。全体5位。無印FLUX 3は1144で8位（2026-10-31時点）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
-   },
-   {
-    "metric": "Artificial Analysis T2V Arena（音声なし, v2.1）ELO",
-    "value": 1094,
-    "note": "FLUX 3（無印）。2026-10-25時点。FLUX 3 Maxは1135で全体3位（2026-10-31時点）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
-   },
-   {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
-    "value": 1071,
-    "note": "FLUX 3（無印）。全体11位。FLUX 3 Maxは1064で12位（2026-10-31時点。旧v1.1ではMaxが2位）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
-   }
-  ],
-  "quality_note": "画像生成のFLUXの動画版。Max版はT2V（音声あり5位・音声なし3位）で最上位グループ。I2V（v2.1）では11〜12位とやや後退した。AA掲載価格では上位勢の中で最安クラス。R2Vは未対応",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": "公式ブログで日本語を含む多言語のリップシンク（英・中・西・仏・独・日・ヒンディー等）に対応と明記",
   "license": "API（BFL利用規約）",
   "commercial": "conditional",
   "license_note": "API出力の商用利用は利用規約に従う（規約本文は未確認）",
-  "price_note": "AA掲載: FLUX 3 Max（720p）$2.55/分、FLUX 3 $17.40/分（1080p換算）。ドラフト生成は本生成の数分の一",
+  "price_note": "版・解像度・生成秒数別。公式料金を確認。",
   "hf": "https://bfl.ai/blog/flux-3-video",
   "tools": [],
   "summary_ja": "Black Forest LabsのFLUX 3動画版で、Max版はAAのT2Vで上位。日本語のリップシンクにも公式対応している。",
   "best_for_ja": "日本語セリフ付きの動画を、上位品質かつ安い単価で作りたい場合",
   "supersedes": [],
   "sources": [
-   "https://bfl.ai/blog/flux-3-video",
-   "https://bfl.ai/blog",
-   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   "https://bfl.ai/models/",
+   "https://bfl.ai/blog/flux-3-video"
   ],
   "confidence": "medium",
   "rank": 20,
-  "hl": {
-   "label": "AA Arena",
-   "value": 1157
-  }
+  "verified_at": "2026-11-01",
+  "series": "BFL FLUX Video standard",
+  "availability_tier": "general"
+ },
+ {
+  "id": "flux-3-video-max",
+  "access": "api",
+  "name": "FLUX 3 Max",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "release": null,
+  "params_b": null,
+  "arch": "マルチモーダルFlowモデル（FLUX 3 Real World Models）",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "v2v",
+   "audio"
+  ],
+  "spec": {
+   "other": "通常版は最大20秒・ネイティブ音声。Maxは高速・高品質の別提供。細かな出力条件は版別に確認。"
+  },
+  "features": {
+   "音声同時生成": true,
+   "首尾フレーム指定": true,
+   "キーフレーム複数指定": true,
+   "マルチショット": true,
+   "動画延長": true,
+   "参照被写体の保持（R2V）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API提供のみ（オープン版FLUX 3 Devは計画段階）",
+  "speed_note": null,
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": "公式ブログで日本語を含む多言語のリップシンク（英・中・西・仏・独・日・ヒンディー等）に対応と明記",
+  "license": "API（BFL利用規約）",
+  "commercial": "conditional",
+  "license_note": "API出力の商用利用は利用規約に従う（規約本文は未確認）",
+  "price_note": "版・解像度・生成秒数別。公式料金を確認。",
+  "hf": "https://bfl.ai/blog/flux-3-video",
+  "tools": [],
+  "summary_ja": "Black Forest LabsのFLUX 3動画版で、Max版はAAのT2Vで上位。日本語のリップシンクにも公式対応している。",
+  "best_for_ja": "日本語セリフ付きの動画を、上位品質かつ安い単価で作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://bfl.ai/models/",
+   "https://bfl.ai/blog/flux-3-video"
+  ],
+  "confidence": "medium",
+  "rank": 20,
+  "verified_at": "2026-11-01",
+  "series": "BFL FLUX Video Max",
+  "availability_tier": "general"
  },
  {
   "id": "minimax-h3-max",
@@ -1527,7 +1578,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1149
-  }
+  },
+  "series": "MiniMax Hailuo Max",
+  "availability_tier": "general"
  },
  {
   "id": "gemini-omni-flash-1-1",
@@ -1608,7 +1661,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1128
-  }
+  },
+  "series": "Google video flagship",
+  "availability_tier": "general"
  },
  {
   "id": "grok-imagine-video-1-5",
@@ -1679,7 +1734,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1059
-  }
+  },
+  "series": "xAI Grok Imagine Video standard",
+  "availability_tier": "general"
  },
  {
   "id": "kling-4-0",
@@ -1762,7 +1819,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1023
-  }
+  },
+  "series": "Kling flagship",
+  "availability_tier": "general"
  },
  {
   "id": "runway-gen-4-5",
@@ -1826,7 +1885,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1247
-  }
+  },
+  "series": "Runway flagship",
+  "availability_tier": "general"
  },
  {
   "id": "luma-ray3-2",
@@ -1881,7 +1942,9 @@
    "https://pinggy.io/blog/best_video_generation_ai_models/"
   ],
   "confidence": "medium",
-  "rank": 26
+  "rank": 26,
+  "series": "Luma Ray",
+  "availability_tier": "general"
  },
  {
   "id": "vidu-q4-preview",
@@ -1956,7 +2019,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 935
-  }
+  },
+  "series": "Vidu flagship",
+  "availability_tier": "general"
  },
  {
   "id": "scail-2",

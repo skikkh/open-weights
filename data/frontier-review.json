@@ -1,0 +1,6338 @@
+{
+ "as_of": "2026-11-01",
+ "scope_ja": "AA各ページの既定埋め込みテーブル。LLMは既定表示の非公開モデル、ASRはホスト重複を除外。画像・動画・TTS・音楽は旧版を含む全行。全世界のモデルやAA全LLMフィルターの網羅を意味しない。",
+ "boards": [
+  {
+   "id": "llm",
+   "category": "llm",
+   "url": "https://artificialanalysis.ai/leaderboards/models",
+   "rows": 15,
+   "snapshot_sha256": "c9d1d85bb33e575cfcf573b55cddb463ee2f1f3775daaf479cd6f837957351db"
+  },
+  {
+   "id": "image",
+   "category": "image",
+   "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "rows": 106,
+   "snapshot_sha256": "76e6c1caf01b51a1cc196b24b8f7677534f8e6b18cac89d3cf9f67a0296a9a97"
+  },
+  {
+   "id": "editing",
+   "category": "image",
+   "url": "https://artificialanalysis.ai/image/leaderboard/editing",
+   "rows": 77,
+   "snapshot_sha256": "0d10029229fe57ba9deadc05822c5bc3dbe5c2d6a7c7f3f4a2acc8ea9c0a902d"
+  },
+  {
+   "id": "video",
+   "category": "video",
+   "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+   "rows": 36,
+   "snapshot_sha256": "8007df1aff942de7084652ce8f8478942baa3c7d9ec7c21bf792de1a0a7f372d"
+  },
+  {
+   "id": "video-image",
+   "category": "video",
+   "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "rows": 33,
+   "snapshot_sha256": "0f743207029b5139a20fac26b0a4ed433befec440efc72b4f8b51737f00e4963"
+  },
+  {
+   "id": "provider",
+   "category": "tts",
+   "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+   "rows": 100,
+   "snapshot_sha256": "e045357b9391be1981067895c0a632c6142c9b9581cc6c8765bcad19359ffe65"
+  },
+  {
+   "id": "controlled",
+   "category": "tts",
+   "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
+   "rows": 49,
+   "snapshot_sha256": "0696dd2e745241d097a55c72463d3944d7357c947845c3e4c9470579dcd28d32"
+  },
+  {
+   "id": "asr",
+   "category": "asr",
+   "url": "https://artificialanalysis.ai/speech-to-text",
+   "rows": 57,
+   "snapshot_sha256": "45ae4b68da0f5d7608ad33477b0e37bf78f2ee65ba0e649e614778eb5a62d785"
+  },
+  {
+   "id": "speech",
+   "category": "s2s",
+   "url": "https://artificialanalysis.ai/speech-to-speech",
+   "rows": 30,
+   "snapshot_sha256": "ae5132138d17131cefda6c11086953b75f6e77adc3acd8456d0caa9fa23871c0"
+  },
+  {
+   "id": "music-vocals",
+   "category": "music",
+   "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
+   "rows": 13,
+   "snapshot_sha256": "4c34aaee7152b75005c37a359a977c9e8d90663be5107d1d8936b310e80a5041"
+  },
+  {
+   "id": "music-instrumental",
+   "category": "music",
+   "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
+   "rows": 19,
+   "snapshot_sha256": "24fc0d54a550be9807ec2db543feeb90ec7b1e4ee80d4dd59e5f9759b9bd1ad6"
+  },
+  {
+   "id": "decision-new",
+   "category": "decision",
+   "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+   "rows": 35,
+   "snapshot_sha256": "401c316e789cd0d5e630cd4dc548c91f558fcfa1214fcb837a11d6635758ac78"
+  }
+ ],
+ "candidates": [
+  {
+   "category": "llm",
+   "name": "GPT-6 Astra (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-astra"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6-astra"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Opus 5.5 (Max, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-opus-5-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.anthropic.com/claude-opus-5-5"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.1 (Max, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.anthropic.com/claude/fable",
+    "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Grok 4.7 (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-4-7"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://docs.x.ai/developers/models/grok-4.7"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Kimi K3.1 Pro",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "kimi-k3-1-pro-api"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.kimi.com/code/docs/en/",
+    "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6-luna"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Haiku 5.5 (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-haiku-5-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.anthropic.com/claude-haiku-5-5"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3.8 Flash (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-flash"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Carbon (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-carbon"
+   ],
+   "reason": "限定提供として掲載。一般提供中のArgonは提供開始まで保持。Highは同じモデルの推論設定。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 Max (0902)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-max-0902"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-sonnet-5-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.anthropic.com/claude-sonnet-5-5"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Sol (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-sol"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Wonder Full (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-wonder-full"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://research.meta.ai/blog/muse-wonder",
+    "https://dev.meta.ai/docs/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Wonder (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-wonder"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://research.meta.ai/blog/muse-wonder",
+    "https://dev.meta.ai/docs/models"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 2.5 Sunburst (max)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-image-2-5-sunburst"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 2.5 Flare (max)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-image-2-5-flare"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 2 (high)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Image 2.5 Sunburst／Flareに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Nano Banana 2.1",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "nano-banana-2-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/nano-banana-2-1",
+    "https://yourstory.com/ai-story/nano-banana-21-google-ai-image-generation-cheaper",
+    "https://www.orcarouter.ai/de/blog/gemini-nano-banana-2-1-ga"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.6",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-image-2-6"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
+    "https://arena.ai/leaderboard/image-edit"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Grok Imagine Image 2.0",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-imagine-image-2-0"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://x.ai/news/grok-imagine-image-2",
+    "https://docs.x.ai/developers/model-capabilities/images/generation",
+    "https://arena.ai/leaderboard/image/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Nano Banana 2.1に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Muse Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-image"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://dev.meta.ai/models/muse-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 1.5 (high)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Image 2.5 Sunburst／Flareに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.6-Flash",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-image-2-6-flash"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Nano Banana Pro (Gemini 3 Pro Image)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "nano-banana-pro"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://ai.google.dev/gemini-api/docs/models",
+    "https://ai.google.dev/gemini-api/docs/image-generation"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.5",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MAI-Image-2.6／Flash、編集は2.7 Previewに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX 3 Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-3-image"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://openrouter.ai/black-forest-labs/flux-3-image",
+    "https://kingy.ai/ai-launch-tracker/flux-3-image-2026-10-01/",
+    "https://bfl.ai/blog"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.5-Pro",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MAI-Image-2.6／Flash、編集は2.7 Previewに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "nano-banana-lite"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://ai.google.dev/gemini-api/docs/models",
+    "https://ai.google.dev/gemini-api/docs/image-generation"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Seedream 5.0 Pro",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "seedream-5-0-pro"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://seed.bytedance.com/en/seedream5_0_pro",
+    "https://zalify.com/ai-models/seedream-5-0-pro",
+    "https://www.atlascloud.ai/de/blog/ai-updates/seedream-5-0-pro-price"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen-Image-3.0-Pro",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-image-3-0-pro"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://arena.ai/leaderboard/image/text-to-image",
+    "https://www.alibabacloud.com/blog/qwen-image-3-0-rich-content-authentic-details-deep-knowledge_603385",
+    "https://docs.qwencloud.com/developer-guides/getting-started/model-prices"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen-Image-3.0",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen-Image-2.1-Pro",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-image-2-1-pro-api"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "grok-imagine-image-quality",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Grok Imagine Image 2.0に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX 3 Image Klein",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-3-image-klein-api",
+    "flux-3-image-klein"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://bfl.ai/blog/flux-3-image-klein",
+    "https://huggingface.co/black-forest-labs/flux-3-image-klein"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen-Image-2.1",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-image-2-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/Qwen/Qwen-Image-2.1",
+    "https://github.com/QwenLM/Qwen-Image-2.1",
+    "https://huggingface.co/Qwen/Qwen-Image-2.1/blob/main/LICENSE"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Fibo 2.0",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "fibo-2-0"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/briaai/Fibo-2.0-dev",
+    "https://huggingface.co/briaai/Fibo-2.0-edit-turbo"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Krea 2 Large",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image 2.0 Pro (2026-04-22)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.5-Flash",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MAI-Image-2.6／Flash、編集は2.7 Previewに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen-Image-2.1-Turbo",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-image-2-1-turbo-api",
+    "qwen-image-2-1-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+    "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+    "https://github.com/QwenLM/Qwen-Image-2.1"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Wan 2.6 Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Recraft V4.1 Utility",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "recraft-v4-1-utility"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://www.recraft.ai/pricing?tab=api",
+    "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+    "https://www.recraft.ai/about"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Seedream 4.5",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [flex]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.0 (Quality)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Luma UNI 1 Max",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "luma-uni-1-1-max"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://lumalabs.ai/news/uni-1-1-api",
+    "https://lumalabs.ai/legal/training-content-summary-uni"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "grok-imagine-image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Grok Imagine Image 2.0に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [max]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Krea 2 Medium Turbo",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Recraft V4.1 Utility Pro",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "recraft-v4-1-utility-pro"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://www.recraft.ai/pricing?tab=api",
+    "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+    "https://www.recraft.ai/about"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HiDream-O1-Image-1.5",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Seedream 5.0 Lite",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.5 (High)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ideogram-4-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://ideogram.ai/models/4.5/",
+    "https://arena.ai/leaderboard/image-edit"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Wan2.6 Text to Image",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 1 (high)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Image 2.5 Sunburst／Flareに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Krea 2 Medium",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [pro]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.0",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [dev]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-2-dev"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+    "https://vdf.ai/blog/best-local-image-generation-models/",
+    "https://www.spheron.network/tools/gpu-recommender/black-forest-labs/FLUX.2-dev/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ming-Image-0.1-Design",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ming-image-0-1-design"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design",
+    "https://github.com/inclusionAI/Ming-Image",
+    "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design-Layer"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Ideogram (High)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [dev] Turbo",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Cosmos3-Super-Text2Image (agentic)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Luma UNI 1",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "luma-uni-1-1"
+   ],
+   "reason": "公式の現行モデル一覧で別の役割として提供。古い日付だけで省略しない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://lumalabs.ai/news/uni-1-1-api",
+    "https://lumalabs.ai/legal/training-content-summary-uni"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Ideogram (Very High)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image 2.0 (2026-03-03)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HunyuanImage 3.0 (Tencent Cloud)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [dev] Flash",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HunyuanImage 3.0 Instruct",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "hunyuanimage-3-0-instruct"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct",
+    "https://huggingface.co/tencent/HunyuanImage-3.0-Instruct-Distil",
+    "https://github.com/Tencent-Hunyuan/HunyuanImage-3.0"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Wan 2.7",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Wan 3.0。編集専用版は別途確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Cosmos3-Super-Text2Image",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Nano Banana (Gemini 2.5 Flash Image)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Nano Banana 2.1に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.0 Fast (Quality)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.0 Instant",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Wan 2.7 Pro",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Wan 3.0。編集専用版は別途確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HiDream-O1-Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "hidream-o1-image"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/HiDream-ai/HiDream-O1-Image",
+    "https://arxiv.org/pdf/2605.11061v1",
+    "https://beta.pinokio.co/posts/01kr99431493406je43zzqvpyy"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Ideogram (Medium)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Cosmos3-Super-Text2Image-4Step",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HunyuanImage 3.5 (Preview)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 4.0 Fast",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Ideogram (Low)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image Plus 2601",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Recraft V4.1 Flash",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "recraft-v4-1-flash"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://www.recraft.ai/about",
+    "https://www.recraft.ai/blog/meet-recraft-v4-1-flash",
+    "https://www.recraft.ai/docs"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 1 Mini (medium)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Image 2.5 Sunburst／Flareに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Z-Image Turbo",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "z-image-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+    "https://github.com/Tongyi-MAI/Z-Image",
+    "https://vdf.ai/blog/best-local-image-generation-models/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HunyuanImage 3.0",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Dreamina 3.1",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [klein] 9B",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 Kontext [max]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Kling Image 3.0 Omni",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 Kontext [pro]",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "ERNIE Image Turbo",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ernie-image-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/baidu/ERNIE-Image-Turbo",
+    "https://huggingface.co/baidu/ERNIE-Image",
+    "https://pinggy.io/blog/best_free_open_source_ai_image_generators_to_self_host/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Ideogram 3.0",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Ideogram 4.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Ideogram (Very Low)",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "ERNIE Image",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 Krea [dev]",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Vidu Q2",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Z-Image Base",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GLM-Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "glm-image"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/zai-org/GLM-Image",
+    "https://vdf.ai/blog/best-local-image-generation-models/",
+    "https://huggingface.co/baidu/ERNIE-Image-Turbo"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Lucid Origin Ultra",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX1.1 [pro]",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Lucid Origin Fast",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "LongCat Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX1.1 [pro] Ultra",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FIBO",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Luma Photon",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.2 [klein] 4B",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-2-klein-4b"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+    "https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF",
+    "https://vdf.ai/blog/best-local-image-generation-models/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Phoenix 0.9 Ultra",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Phoenix 1.0 Fast",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "SRPO",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 [dev]",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FIBO Lite",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HiDream-O1-Image-Dev",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Luma Photon Flash",
+   "boards": [
+    "image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 [schnell]",
+   "boards": [
+    "image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "OmniGen V2",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Bagel",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.7-Preview",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-image-2-7-preview"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing",
+    "https://microsoft.ai/news/mai-image-2-7-debut/",
+    "https://winbuzzer.com/2026/10/28/microsofts-image-editor-nears-openai-in-preference-tests-xcxwbn/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Krea 3 (Ultra)",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "krea-3-ultra"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing",
+    "https://www.krea.ai/blog/introducing-krea-3",
+    "https://www.krea.ai/blog/krea-3-benchmarks",
+    "https://www.krea.ai/pricing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Krea 3 (Fast)",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "krea-3-fast"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing",
+    "https://www.krea.ai/blog/introducing-krea-3",
+    "https://www.krea.ai/blog/krea-3-benchmarks",
+    "https://www.krea.ai/pricing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "DreamImage 2.0",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Step Image Edit 2",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image Edit Plus 2511",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Reve V1 (December)",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "P-Image-Edit",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image Edit Max 2601",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image Edit Plus 2509",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Kling Image O1",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FIBO Edit",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "SeedEdit 3.0",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Qwen Image Edit",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Image-2.1系／用途別の現行版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "FLUX.1 Kontext [dev]",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、用途に応じFLUX 3 Image／Klein／Videoの現行提供版に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HiDream-E1.1",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Step1X-Edit",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Wan 3.0",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "wan-3-0"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Utopai X",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "utopai-x"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://www.utopaistudios.com/en/pai/utopai-x",
+    "https://www.utopaistudios.com/en/blog/introducing-the-all-new-pai-and-utopai-x"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "MiniMax H3 (768p)",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-h3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+    "https://www.minimax.io/blog/minimax-h3",
+    "https://comfyui-wiki.com/en/news/2026-08-03-minimax-h3-open-weights-comfyui"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Dreamina Seedance 2.5",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "seedance-2-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://en.wikipedia.org/wiki/Seedance_2.0",
+    "https://docs.dev.runwayml.com/guides/pricing/",
+    "https://pinggy.io/blog/best_video_generation_ai_models/"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "FLUX 3 Max",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-3-video-max"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://bfl.ai/models/",
+    "https://bfl.ai/blog/flux-3-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "HeyGen Video 1",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "heygen-video-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://www.heygen.com/models/heygen-video",
+    "https://openrouter.ai/heygen/heygen-video-1",
+    "https://openrouter.ai/heygen/heygen-video-1-20260930"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "MiniMax H3 Max",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-h3-max"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://www.minimax.io/blog/minimax-h3",
+    "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+    "https://docs.dev.runwayml.com/guides/pricing/"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "FLUX 3",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "flux-3-video"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://bfl.ai/models/",
+    "https://bfl.ai/blog/flux-3-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Dreamina Seedance 2.0",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Dreamina Seedance 2.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Gemini Omni Flash 1.1",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-omni-flash-1-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://ai.google.dev/gemini-api/docs/video",
+    "https://en.wikipedia.org/wiki/Veo_(text-to-video_model)",
+    "https://docs.dev.runwayml.com/guides/pricing/"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "P-Video-2-Pro",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "p-video-2-pro"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.api.pruna.ai/guides/models/p-video-2-pro",
+    "https://docs.api.pruna.ai/terms"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Agnes-Video-2.5",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "agnes-video-2-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://wiki.agnes-ai.com/en/docs/pricing.md",
+    "https://github.com/AgnesAI-Labs/skills/blob/main/agnes-ai-models/references/model_catalog.md"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Grok Imagine Video 1.5",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-imagine-video-1-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.x.ai/docs/models",
+    "https://docs.x.ai/developers/models/grok-imagine-video-1.5",
+    "https://docs.dev.runwayml.com/guides/pricing/"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "HappyHorse-1.1",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "happyhorse-1-1-t2v",
+    "happyhorse-1-1-i2v",
+    "happyhorse-1-1-r2v"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "MAGI-2 Preview",
+   "boards": [
+    "video"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "magi-2-preview"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://huggingface.co/sand-ai/MAGI-2-preview",
+    "https://comfyui-wiki.com/en/news/2026-08-05-magi-2-preview"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Wan2.7-260612",
+   "boards": [
+    "video"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Wan 3.0。編集専用版は別途確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "HappyHorse-1.0",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、HappyHorse 1.1に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Kling 3.0 Omni 1080p (Pro)",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Kling 4.0。専用用途の差は公式で確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Kling 3.0 1080p (Pro)",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Kling 4.0。専用用途の差は公式で確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Grok Imagine Video 1.5 Lite",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-imagine-video-1-5-lite"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.x.ai/developers/models/grok-imagine-video-1.5-lite",
+    "https://docs.x.ai/developers/model-capabilities/video/overview"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "PixVerse V6",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "pixverse-v6"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://docs.platform.pixverse.ai/changelog-2394996m0"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Veo 3.1",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Veo 3.1 Fast",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Veo 3.1 Lite",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "LTX-2.5 Fast",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "LTX-2.5 Pro",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Vidu Q3 Pro",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Vidu Q4 Previewに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Vidu Q3 Turbo",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Vidu Q4 Previewに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "LTX-2.3 Pro",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、LTX-2.5（公開側）に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "LTX-2.3 Fast",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、LTX-2.5（公開側）に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Boreal",
+   "boards": [
+    "video"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Bach 1.0 Pro",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Runway Gen-4.5 (720p)",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "runway-gen-4-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://runway.com/research/introducing-runway-gen-4.5",
+    "https://docs.dev.runwayml.com/guides/pricing/",
+    "https://en.wikipedia.org/wiki/Runway_(company)"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Kling O1 Pro (January)",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Kling 4.0。専用用途の差は公式で確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Pika 2.5",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "P-Video",
+   "boards": [
+    "video"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、P-Video-2／Proに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Hyperflow H3",
+   "boards": [
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Eleven v4 Turbo",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "eleven-v4-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://elevenlabs.io/blog/eleven-v4",
+    "https://elevenlabs.io/v4",
+    "https://elevenlabs.io/agents/v4-turbo"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Eleven v4",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "eleven-v4"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://elevenlabs.io/blog/eleven-v4",
+    "https://elevenlabs.io/v4",
+    "https://elevenlabs.io/agents/v4-turbo"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Qwen-Audio-3.1-TTS-Plus",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-audio-3-1-tts-plus"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://www.alibabacloud.com/help/ja/model-studio/tts-model",
+    "https://www.alibabacloud.com/help/ja/model-studio/qwen-audio-tts-voice-list"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Sonic 3.6",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "sonic-3-6"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.cartesia.ai/build-with-cartesia/tts-models",
+    "https://www.cartesia.ai/ja/blog/sonic-3.6"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 3.8 Flash TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-flash-tts"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Fish Audio Drama 3",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "fish-drama-3-api",
+    "fish-audio-drama-3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://beta.fish.audio/blog/fish-audio-drama-3/",
+    "https://huggingface.co/fishaudio/drama-3"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Qwen-Audio-3.0-TTS-Plus",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Audio-3.1-TTS-Plus／Flashに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Realtime TTS-2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "inworld-tts-2"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.inworld.ai/tts/tts-models",
+    "https://docs.inworld.ai/release-notes/tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Lightning V3.1 Pro (Oct 2026)",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "lightning-v3-1-pro"
+   ],
+   "reason": "10月版プレビューは3言語のみ。日本語はstableのProを掲載。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.smallest.ai/model-cards/text-to-speech/lightning-v-3-1-pro",
+    "https://docs.smallest.ai/changelog/lightning-v-3-1"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 3.8 Flash-Lite TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-flash-lite-tts"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Simba 3.2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [
+    "simba-3-5"
+   ],
+   "reason": "日本語対応の推奨現行モデルはSimba 3.5。3.2は英語専用。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.speechify.ai/build/guides/concepts/models",
+    "https://docs.speechify.ai/build/changelog/2026/10/18",
+    "https://docs.speechify.ai/build/changelog/2026/10/21"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Fish Audio Drama 3 Preview",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Fish Audio Drama 3。別の速度専用役割は要確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Breeze TTS 2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "公開モデルの公式READMEは英語・中国語。サービス全体の50言語表示と混同しない。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://github.com/breezeblue-ai/breeze-tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "AssemblyAI-TTS-1",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "初期提供は英・西・仏・独・伊・葡の6言語。日本語追加を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://www.assemblyai.com/blog/text-to-speech-api"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Voxtral 3 TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "voxtral-mini-tts-3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://mistral.ai/news/voxtral-3/"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Realtime TTS-2 Flash",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "inworld-tts-2-flash"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.inworld.ai/tts/tts-models",
+    "https://docs.inworld.ai/release-notes/tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "v3 Conversational",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven v4／v4 Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "StepAudio 2.5 TTS (Aug 2026)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 3.1 Flash TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "Gemini 3.8のTTSの対応する役割へ集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Luna TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Sonic 3.5",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Sonic 3.6に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Fish Audio S2.1 Pro (Oct 2026)",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [
+    "fish-drama-3-api"
+   ],
+   "reason": "現在の旗艦はDrama 3。プレビューと安定版を二重計上しない。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://beta.fish.audio/blog/fish-audio-drama-3/",
+    "https://huggingface.co/fishaudio/drama-3"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Eleven v3",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven v4／v4 Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Ming-3.0-tts",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ming-3-0-tts-0-5b",
+    "ming-3-0-tts-tiny"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B",
+    "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B/commits/main",
+    "https://github.com/inclusionAI/Ming-3.0-tts",
+    "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Soniox TTS Real-Time v2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "soniox-tts-v2"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.soniox.com/tts/models",
+    "https://docs.soniox.com/tts/concepts/voices"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gradium TTS (Sep 2026)",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "クラウドの現行は英・仏・西・葡・独の5言語。日本語カスタム契約と一般提供を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://gradium.ai/content/best-multilingual-tts-apis-2026"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech 2.8 HD",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-speech-2-8-hd"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+    "https://platform.minimax.io/subscribe/token-plan"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "SpaceXAI TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Falcon 2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "公式ではFalcon 2.1が10/19に提供済み。日本語の版別対応を確認してから採用する。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://murf.ai/api/docs/text-to-speech-models/falcon-2-1"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gradium TTS (Aug 2026)",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Gradium TTS Sep（日本語は別途確認）に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech 2.8 Turbo",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-speech-2-8-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+    "https://platform.minimax.io/subscribe/token-plan"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Azure HD 2.5",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Async Flash v1.5",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Step TTS 2 (Mar 2026)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Async Pro v1.0",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech 2.6 HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Speech 2.8 HD／Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech 2.6 Turbo",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Speech 2.8 HD／Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Simba 3.0",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "日本語対応の推奨現行はSimba 3.5。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.speechify.ai/build/guides/concepts/models"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Chatterbox HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Fish Audio S2 Pro",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "fish-audio-s2-pro"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://huggingface.co/fishaudio/s2-pro",
+    "https://huggingface.co/fishaudio/s2-pro/blob/main/LICENSE.md",
+    "https://arxiv.org/abs/2603.08823"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech-02-HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Speech 2.8 HD／Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "TTS-1 HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Step Audio EditX (Mar 2026)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech 2.6",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Speech 2.8 HD／Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Turbo v2.5",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven v4／v4 Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Multilingual v2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven v4／v4 Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Speech-02-Turbo",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Speech 2.8 HD／Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Voxtral TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Voxtral 3 TTSに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "TTS-1",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "OpenAudio S1",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Fish Audio Drama 3。別の速度専用役割は要確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 2.5 Flash Lite TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "Gemini 3.8のTTSの対応する役割へ集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Flash v2.5",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven v4／v4 Turboに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Journey",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "GPT-Realtime-2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Studio",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "T2A-01-HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 2.5 Flash TTS (Dec 2025)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "Gemini 3.8のTTSの対応する役割へ集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Magpie-Multilingual 357M (Feb 2026)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "magpie-tts-multilingual-357m"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://huggingface.co/nvidia/magpie_tts_multilingual_357m",
+    "https://www.plushcap.com/content/huggingface/blog/huggingface-build-low-latency-multilingual-voice-agents-open-weights-full-deployment-control-with-nvidia-magpie-tts"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Polly Generative",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Maya 2 Flash",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Chirp 3: HD",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Kokoro 82M v1.0",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "kokoro-82m"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://huggingface.co/hexgrad/Kokoro-82M",
+    "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Octave 2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Sonic 3",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Sonic 3.6に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "MiMo-V2.5-TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Coda",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Flux TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Async Flash v1.0",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Maya 2 Global",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Maya1",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "OpenAudio S1 Mini",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Fish Audio Drama 3。別の速度専用役割は要確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gemini 2.5 Pro (Dec 2025)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "Gemini 3.8のTTSの対応する役割へ集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Octave TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Higgs Audio V3 TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Bland Speech v3",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Azure Neural",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "MAI-Voice-1",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "T2A-01-Turbo",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Polly Long-Form",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Chatterbox",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Lightning v3.1",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Raon SpeechLM",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Zonos-v0.1",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Murf Speech Gen 2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "OpenVoice v2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "VibeVoice 1.5B",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Neuphonic TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Qwen3 TTS Flash",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Qwen3 TTS",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Kugel 3",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "WaveNet",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "XTTS v2",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Mist V2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Polly Neural",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Neural2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "StyleTTS 2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Standard",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Noiz TTS",
+   "boards": [
+    "provider",
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "MetaVoice v1",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Polly Standard",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "HeyGen Voice",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "heygen-voice"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
+    "https://www.heygen.com/models/heygen-voice",
+    "https://www.heygen.com/blog/heygen-voice-turbo"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "HeyGen Voice Turbo",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "heygen-voice-turbo"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
+    "https://www.heygen.com/models/heygen-voice",
+    "https://www.heygen.com/blog/heygen-voice-turbo"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "StepAudio 2.5 TTS",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Fish Audio S1",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Fish Audio Drama 3。別の速度専用役割は要確認に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Magpie TTS Zeroshot",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Nemotron 3.5 Transcribe",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "nemotron-3-5-transcribe-30b-a4b"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+    "https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3.5-Transcribe-Technical-Report.pdf",
+    "https://huggingface.co/third-intelligence/Haas-ja-v1.0"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Voxtral Small Transcribe 3",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "voxtral-small-transcribe-3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://mistral.ai/news/voxtral-3/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Voxtral Mini Transcribe 3",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "voxtral-mini-transcribe-3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://mistral.ai/news/voxtral-3/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Grok Voice Transcribe 2.0",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-voice-transcribe-2"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://docs.x.ai/developers/model-capabilities/audio/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "StepAudio 3 ASR",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "MAI-Transcribe-2",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-transcribe-2"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe",
+    "https://microsoft.ai/news/our-first-streaming-transcription-model/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 3.5 Transcribe",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-5-transcribe"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Melia",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "speechmatics-melia-1"
+   ],
+   "reason": "MeliaはEnhancedの置換ではなく多言語の別系列。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://docs.speechmatics.com/speech-to-text/models",
+    "https://docs.speechmatics.com/speech-to-text/languages",
+    "https://www.speechmatics.com/company/articles-and-news/introducing-melia-multilingual-speech-to-text-model"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Soniox v5 Async",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "soniox-v5-async"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://docs.soniox.com/stt/models",
+    "https://soniox.com/blog/soniox-v5-async"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Solaria-3, Gladia",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "MAI-Transcribe-1.5",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MAI-Transcribe-2に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Cohere Transcribe",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "cohere-transcribe-03-2026"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026",
+    "https://cohere.com/blog/transcribe",
+    "https://models.handy.computer/models/cohere-transcribe-03-2026"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 3.1 Pro Preview (High)",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 3.1 Pro Preview (Low)",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Smallest AI Pulse",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Voxtral Mini Transcribe 2, Mistral",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Voxtral 3系列に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Scribe v2, ElevenLabs",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "scribe-v2"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://elevenlabs.io/docs/overview/models",
+    "https://elevenlabs.io/blog/introducing-scribe-v2"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Smallest AI Pulse Pro",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 3 Flash (High), Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Nova 2 Pro, Amazon",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Parakeet TDT 0.6B V3, NVIDIA",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Canary Qwen 2.5B, NVIDIA",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Voxtral Small, Mistral",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Voxtral 3系列に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Parakeet TDT 0.6B V2, NVIDIA",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "GPT-4o Transcribe, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Transcribe／Live Transcribeに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "GPT-4o Mini Transcribe, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT Transcribe／Live Transcribeに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Chirp 3, Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Nova-3, Deepgram",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Amazon Transcribe",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Whisper Large v3, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "whisper-large-v3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://huggingface.co/openai/whisper-large-v3",
+    "https://huggingface.co/kotoba-tech/kotoba-whisper-v2.0",
+    "https://arxiv.org/abs/2609.27289"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Speechmatics Enhanced",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Rev AI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "GPT Transcribe, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-transcribe"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://developers.openai.com/api/docs/models/gpt-transcribe"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Inworld STT 1",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Modulate STT Batch English VFast",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Resonant-1",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Zoom Scribe V2 Pro",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Universal-3.5 Pro, AssemblyAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "universal-3-5-pro"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://www.assemblyai.com/roadmap"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "StepAudio 2.5 ASR, StepFun",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Qwen3.5 Omni Flash",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Qwen3.5 Omni Plus",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Universal-3 Pro, AssemblyAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、録音はUniversal-3.5 Pro、ライブは3.6 Proに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gradium Speech-to-Text",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 2.5 Lite, Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Voxtral Mini Transcribe, Mistral",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Voxtral 3系列に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 2.5 Flash, Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 2.5 Pro, Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Solaria-1, Gladia",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Universal, AssemblyAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、録音はUniversal-3.5 Pro、ライブは3.6 Proに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Whisper Large v3 Turbo, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "whisper-large-v3-turbo"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://huggingface.co/openai/whisper-large-v3-turbo",
+    "https://dev.classmethod.jp/articles/japanese-asr-l40s-fleurs-benchmark/",
+    "https://models.handy.computer/languages/ja",
+    "https://huggingface.co/efwkjn/whisper-ja-760M/blob/main/BENCH.md"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Parakeet RNNT 1.1B, NVIDIA",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Nova-2, Deepgram",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Cloud Speech-To-Text (Chirp), Google",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Speechmatics Standard",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Whisper Large v2, OpenAI",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Gemini 3.1 Flash-Lite Preview (Minimal)",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Fun-Realtime-ASR-preview",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Cartesia Managed Agents",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "統合サービス",
+   "model_ids": [],
+   "reason": "モデル固定ではない複数段のエージェント基盤。同名のTTSモデルや単一S2S重みとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Gemini 3.1 Flash Live Minimal",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Gemini 3.8 Live／Extended Thinkingに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Gemini 3.8 Live",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-live"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Gemini 3.1 Flash Live High",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Gemini 3.8 Live／Extended Thinkingに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Grok Voice 3.0",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-voice-3"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech",
+    "https://docs.x.ai/developers/release-notes"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Live-1 (Sol, low)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-live-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developers.openai.com/api/docs/models/gpt-live-1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Live-1 (Astra, medium)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-live-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developers.openai.com/api/docs/models/gpt-live-1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Phonic 1 (High)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-1.5",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Grok Voice 2.0",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Grok Voice 3.0に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Eleven Realtime v1 Max",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "eleven-realtime-v1-max"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://elevenlabs.io/docs/overview/models",
+    "https://elevenlabs.io/docs/changelog"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "ElevenLabs Agents (Default Cascaded System)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "統合サービス",
+   "model_ids": [],
+   "reason": "モデル固定ではない複数段のエージェント基盤。同名のTTSモデルや単一S2S重みとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Eleven Realtime v1 Mini",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "eleven-realtime-v1-mini"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://elevenlabs.io/docs/overview/models",
+    "https://elevenlabs.io/docs/changelog"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT Realtime (Aug '25)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Gemini 3.8 Live Extended Thinking (High)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-live-extended-thinking"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extended-thinking"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Nova 2.0 Sonic (Mar 2026)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "公式モデルカードの対応言語に日本語なし。AAの更新月を初公開日とみなさない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://docs.aws.amazon.com/ai/responsible-ai/nova-2-sonic/overview.html"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-2.1 Minimal",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-realtime-2.1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developers.openai.com/api/docs/models/gpt-realtime-2.1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-2.1 High",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-realtime-2.1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developers.openai.com/api/docs/models/gpt-realtime-2.1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT Realtime Mini (Oct '25)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-2 (High)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-2 (Minimal)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、GPT-Realtime-2.1／Mini。推論設定は同一行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Nova Sonic",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Grok Voice 1.0",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Grok Voice 3.0に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Deepgram Voice Agent (Default Cascaded System)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "統合サービス",
+   "model_ids": [],
+   "reason": "モデル固定ではない複数段のエージェント基盤。同名のTTSモデルや単一S2S重みとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Inworld Realtime (Default Cascaded System)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "統合サービス",
+   "model_ids": [],
+   "reason": "モデル固定ではない複数段のエージェント基盤。同名のTTSモデルや単一S2S重みとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Qwen Audio 3.0 Realtime Flash",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Audio-3.1-Realtime Plus／Flashに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Qwen3.5 Omni Plus Realtime",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Audio-3.1-Realtime Plus／Flashに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "GPT-Realtime-2.1 Mini Minimal",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-realtime-2.1-mini"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developers.openai.com/api/docs/models/gpt-realtime-2.1-mini"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Qwen3.5 Omni Flash Realtime",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Audio-3.1-Realtime Plus／Flashに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Qwen Audio 3.0 Realtime Plus",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Qwen-Audio-3.1-Realtime Plus／Flashに集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Suno v6",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "suno-v6"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://help.suno.com/en/articles/13924801",
+    "https://help.suno.com/en/articles/13924737",
+    "https://suno.com/pricing"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Suno v6-mini",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "suno-v6-mini"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://help.suno.com/en/articles/13924801",
+    "https://help.suno.com/en/articles/13924737",
+    "https://suno.com/pricing"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Mureka V9.5",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mureka-v9-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://www.mureka.ai/",
+    "https://platform.mureka.ai/docs/",
+    "https://alphasignal.ai/news/artificial-analysis-music-arena-v1-1-crowns-suno-v6-across-1-000-harder-prompts"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Mureka V9",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Mureka V9.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Lyria 3.5",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "lyria-3-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://ai.google.dev/gemini-api/docs/music-generation",
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://deepmind.google/models/lyria/"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Lyria 3 Pro",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Lyria 3.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Eleven Music v2.5",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "eleven-music-v2-5"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://elevenlabs.io/music",
+    "https://elevenlabs.io/pricing/api",
+    "https://the-decoder.com/elevenlabs-makes-music-v2-5-available-via-app-and-api-with-free-and-pro-tier-options/"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Eleven Music v2",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven Music v2.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "MiniMax Music 3.0",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-music-3"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://huggingface.co/MiniMaxAI/MiniMax-Music3",
+    "https://huggingface.co/MiniMaxAI/MiniMax-Music3/blob/main/LICENSE",
+    "https://github.com/MiniMax-AI/MiniMax-Music3",
+    "https://docs.comfy.org/tutorials/audio/minimax/minimax-music-3"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Eleven Music",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Eleven Music v2.5に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "MiniMax Music 2.6",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Music 3（公開側）に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "MiniMax Music 2.5+",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、MiniMax Music 3（公開側）に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Melodia v3",
+   "boards": [
+    "music-vocals",
+    "music-instrumental"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AA掲載名と公式サービスの現行提供版・初公開日を確定できず。停止を扱う4/1記事だけで現在も停止中とは断定しない。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://blog.sonauto.ai/2026/04/01/pausing-melodia-v3/"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Stable Audio 3 Large",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "stable-audio-3-large"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental",
+    "https://docs.stability.ai/pricing",
+    "https://github.com/Stability-AI/stable-audio-3",
+    "https://the-decoder.com/stability-ai-launches-stable-audio-3-0-with-up-to-six-minute-tracks-and-open-weights/"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Stable Audio 3 Medium",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "stable-audio-3-medium"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental",
+    "https://github.com/Stability-AI/stable-audio-3",
+    "https://huggingface.co/stabilityai/stable-audio-3-optimized",
+    "https://arxiv.org/abs/2605.17991"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Stable Audio 2.5",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Stable Audio 3 Small",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "stable-audio-3-small-music",
+    "stable-audio-3-small-sfx"
+   ],
+   "reason": "対応する掲載行に統合。公開側と有料側、サイズ・用途の違いを確認。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental",
+    "https://github.com/Stability-AI/stable-audio-3",
+    "https://huggingface.co/stabilityai/stable-audio-3-small-music",
+    "https://the-decoder.com/stability-ai-launches-stable-audio-3-0-with-up-to-six-minute-tracks-and-open-weights/",
+    "https://stability.ai/license"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "Lyria 2",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "MusicGen",
+   "boards": [
+    "music-instrumental"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/instrumental"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Haiku 5.5 (Max)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Haiku 5.5 (High)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Haiku 5.5 (Low)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Haiku 5.5 (Medium)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Haiku 5.5 (Xhigh)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Opus 5.5 (Max, Default Fallback)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Claude Opus 5.5 (Low, Default Fallback)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Elephant 9B",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Celeris-1 Decision",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Clef",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Clef-Flash",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Clef-Omni",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Gemma 4 31B (Reasoning)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GLiDE",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Mercury Decide",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d1-ultra",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-d1-ultra"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://www.liquid.ai/blog/d1-ultra",
+    "https://benchlm.ai/md/decision-models.md"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Drex Max",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Drex 1.5",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Drex 2.0",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6.1 Sol (Max)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6.1 Sol (Low)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (Max)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (Decisions)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (High)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (Low)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (Medium)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GPT-6 Luna (Non-reasoning)",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Microsoft-Decision-1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "microsoft-decision-1"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
+    "https://ai.azure.com/catalog/models/Microsoft-Decision-1",
+    "https://www.eesel.ai/blog/microsoft-decision-1"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Decider Flash v1.2",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Decider v1.1 27B",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Decider v1.2",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "SubQ Snap 1.1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "比較対象",
+   "model_ids": [],
+   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Jev 1.13",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行一覧には追加せず、Jev 1.14に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Jev 1.14",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "typesafe-jev"
+   ],
+   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://docs.typesafe.ai/concepts/system-one",
+    "https://docs.typesafe.ai/models",
+    "https://forkast.news/typesafe-ais-jev-is-not-an-llm-and-that-may-be-the-point/"
+   ]
+  }
+ ],
+ "follow_up_ja": "要確認は掲載確定を意味しない。次の3日ごとの更新で一次情報を追跡する。既定LLM15件は全件に掲載先を記録。古い長尾モデル・専用サービスまで全仕様を検証したという主張はしない。",
+ "added_model_ids": [
+  "gemini-4-carbon",
+  "muse-wonder",
+  "muse-wonder-full",
+  "muse-spark-1-3",
+  "claude-fable-5-1",
+  "qwen3-8-max-0902",
+  "qwen3-8-flash-api",
+  "mercury-2-5",
+  "solar-pro-4",
+  "solar-mini-4",
+  "scribe-v2",
+  "scribe-v2-realtime",
+  "scribe-v2-medical",
+  "soniox-v5-async",
+  "soniox-v5-realtime",
+  "mai-transcribe-2",
+  "mai-transcribe-2-streaming",
+  "gemini-3-5-transcribe",
+  "gemini-3-5-transcribe-live",
+  "grok-voice-transcribe-2",
+  "universal-3-5-pro",
+  "universal-3-6-pro-realtime",
+  "pksha-voice-ai",
+  "aivis-cloud-api",
+  "koto-asr-api",
+  "koto-tts-api",
+  "koto-s2s-api",
+  "sonic-3-6",
+  "inworld-tts-2",
+  "inworld-tts-2-flash",
+  "simba-3-5",
+  "lightning-v3-1-pro",
+  "soniox-tts-v2",
+  "qwen-audio-3-1-tts-plus",
+  "qwen-audio-3-1-tts-flash",
+  "minimax-speech-2-8-hd",
+  "minimax-speech-2-8-turbo",
+  "fish-drama-3-api",
+  "heygen-voice",
+  "heygen-voice-turbo",
+  "qwen-audio-3-1-realtime-plus",
+  "qwen-audio-3-1-realtime-flash",
+  "eleven-realtime-v1-max",
+  "eleven-realtime-v1-mini",
+  "grok-voice-3",
+  "muse-image",
+  "mai-image-2-6-flash",
+  "flux-3-image-klein-api",
+  "qwen-image-2-1-pro-api",
+  "qwen-image-2-1-turbo-api",
+  "happyhorse-1-1-t2v",
+  "happyhorse-1-1-i2v",
+  "happyhorse-1-1-r2v",
+  "agnes-video-2-5",
+  "agnes-video-2-5-flash",
+  "pixverse-v6",
+  "pixverse-v6-max",
+  "utopai-x",
+  "p-video-2",
+  "p-video-2-pro",
+  "grok-imagine-video-1-5-lite",
+  "recraft-v4-1-flash",
+  "qwen-audio-3-1-asr-flash",
+  "qwen-audio-3-1-asr-flash-streaming",
+  "qwen-audio-3-1-asr-flash-message",
+  "speechmatics-melia-1",
+  "nano-banana-pro",
+  "nano-banana-lite",
+  "luma-uni-1-1",
+  "luma-uni-1-1-max",
+  "recraft-v4-1-standard",
+  "recraft-v4-1-pro",
+  "recraft-v4-1-utility",
+  "recraft-v4-1-utility-pro"
+ ],
+ "known_date_conflicts": [
+  {
+   "name": "Qwen-Audio-3.1-TTS-Plus",
+   "reason": "AAの9/24と公式Model Studioの10/21が不一致。初公開日はnull。"
+  },
+  {
+   "name": "Scribe v2 Medical",
+   "reason": "公式変更履歴の9/11と公式告知の9/22が不一致。初公開日はnull。"
+  },
+  {
+   "name": "Sonic 3.6",
+   "reason": "AAは8/17。公式の版別一覧と告知は8/27。8/27を採用。"
+  },
+  {
+   "name": "Soniox TTS Realtime v2",
+   "reason": "AAは8/12、公式変更履歴は8/11。8/11を採用。"
+  }
+ ]
+}

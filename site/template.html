@@ -199,6 +199,10 @@ h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-
 .score-l { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
 .score-bar { width: 72px; height: 4px; border-radius: 2px; background: var(--surface-2); margin-top: 6px; overflow: hidden; }
 .score-bar i { display: block; height: 100%; background: var(--accent); }
+.frontier-row .sg { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.5fr) 150px; }
+.frontier-row .c-score { min-width: 0; }
+.frontier-row .score { font-size: 17px; line-height: 1.35; }
+.frontier-row .score-l { white-space: normal; line-height: 1.5; }
 
 .detail { border-top: 1px dashed var(--line); padding: 14px 16px 16px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .detail > div { min-width: 0; }
@@ -252,6 +256,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 @media (max-width: 760px) {
   /* スマホ: 名前・メタとスコアだけ横に並べ、説明・札・サイズは全幅 */
   .sg { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
+  .frontier-row .sg { grid-template-columns: minmax(0, 1fr) auto; }
   .c-id { display: contents; }
   .c-id > .nm { grid-column: 1; grid-row: 1; }
   .c-id > .meta { grid-column: 1; grid-row: 2; }
@@ -634,7 +639,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   // 予告（発表済み・重みは未公開）。release は重みの公開予定日、announced は発表日
   function isAnn(m) { return m.status === "announced"; }
   function annDebut(m) { return '<span class="debut" title="重みの公開予定日">' + (m.release ? esc(fmtDate(m.release)) : "時期未定") + " 公開予定" + (m.announced ? "<em>" + esc(fmtDate(m.announced)) + " 発表</em>" : "") + '</span><span class="ann" title="発表済みで、重みはまだ公開されていません">予告</span>'; }
-  function debut(rel) { return rel ? '<span class="debut" title="公開日">' + esc(fmtDate(rel)) + " 公開<em>" + esc(relAge(rel)) + "</em></span>" : '<span class="debut muted">公開日 不明</span>'; }
+  function debut(rel, kind) { var label = kind === "announcement" ? "発表" : "公開"; return rel ? '<span class="debut" title="' + label + '日">' + esc(fmtDate(rel)) + " " + label + "<em>" + esc(relAge(rel)) + "</em></span>" : '<span class="debut muted">公開日 不明</span>'; }
   function sources(list) {
     if (!list || !list.length) return "";
     return '<div><h4>出典</h4><ul class="srcs">' + list.slice(0, 8).map(function (u) { return "<li>" + link(u) + "</li>"; }).join("") + "</ul></div>";
@@ -646,11 +651,11 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   function licKV(m) { return esc(m.license) + (m.license_note ? '<br><span class="muted">' + esc(m.license_note) + "</span>" : ""); }
   function originKV(m) {
     if (isAnn(m)) return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["状態", '<span class="ann">予告</span> 発表済み・重みは未公開'], ["発表日", m.announced ? esc(fmtDate(m.announced)) : null], ["公開予定日", m.release ? esc(fmtDate(m.release)) : "未定"]];
-    return [["開発国", ccChip(m.country) + " " + esc(m.org)], ["公開日", esc(fmtDate(m.release)) + (m.release ? '<span class="muted">（' + esc(relAge(m.release)) + "）</span>" : "")]];
+    return [["開発国", ccChip(m.country) + " " + esc(m.org)], [m.release_kind === "announcement" ? "発表日" : "公開日", esc(fmtDate(m.release)) + (m.release ? '<span class="muted">（' + esc(relAge(m.release)) + "）</span>" : "")]];
   }
   function idHead(m, extra) {
     return '<div class="c-id"><div class="nm">' + esc(m.name) + "</div>" +
-      '<div class="meta">' + ccChip(m.country) + "<span>" + esc(m.org) + "</span>" + (isAnn(m) ? annDebut(m) : debut(m.release) + newChip(m.release)) + (extra || "") + "</div>" +
+      '<div class="meta">' + ccChip(m.country) + "<span>" + esc(m.org) + "</span>" + (isAnn(m) ? annDebut(m) : debut(m.release, m.release_kind) + newChip(m.release)) + (extra || "") + "</div>" +
       (m.summary_ja ? '<p class="sum">' + esc(m.summary_ja) + "</p>" : "");
   }
   var BENCH_JA = [["swe_verified", "SWE-bench Verified"], ["terminal_bench2", "Terminal-Bench 2"], ["gpqa", "GPQA Diamond"], ["hle", "Humanity's Last Exam"], ["aime", "AIME"], ["lcb", "LiveCodeBench"], ["mmlu_pro", "MMLU-Pro"], ["tau2", "τ²-bench"], ["browsecomp", "BrowseComp"]];
@@ -1282,21 +1287,25 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 
   function frontierRow(m, pid) {
     var sp = m.spec || {};
+    var tier = m.availability_tier || "general";
+    var tierLabel = { limited: "限定提供", preview: "プレビュー", rollout: "段階的に提供" }[tier] || "API・サービス";
     var price = m.price_note || m.price_ja || "最新の公式料金を確認";
     var availability = m.availability_ja || "API・サービス提供（利用条件は公式で確認）";
     var details = kv(originKV(m).concat([
       ["提供状況", esc(availability)], ["料金", esc(price)],
+      ["日付の根拠", esc(m.release_note)],
       ["文脈・入出力", esc(m.context_note || m.context_ja || sp.inputs)],
       ["規模", num(m.params_b) != null ? esc(fmtB(m.params_b)) : esc(m.size_ja)],
       ["ローカル実行", esc(m.local_note || "一般向けの重み配布なし。API・サービスで利用。")],
       ["対応言語", esc(sp.languages || m.ja_note)], ["出力", esc(sp.output || sp.outputs)],
-      ["声づくり・利用条件", esc(m.detail_note)], ["仕様の補足", esc(sp.other)],
+      ["補足・利用条件", esc(m.detail_note)], ["仕様の補足", esc(sp.other)],
+      ["置き換えた旧版", supKV(m)],
       ["確認日", esc(m.verified_at || "確認日の記録なし")],
       ["公式", repoLink(m.hf)]
     ]));
     var notes = [m.quality_note, m.speed_note, m.best_for_ja].filter(Boolean).map(function (x) { return '<p class="note">' + esc(x) + '</p>'; }).join("");
-    return '<details class="row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
-      idHead(m, '<span class="chip">API・サービス</span>') + '</div><div class="c-size"><p class="note">' + esc(price) + '</p><p class="note muted">' + esc(availability) + '</p></div><div class="c-score"><span class="score" style="font-size:18px">有料・API</span><span class="score-l">無料枠は提供元による</span></div></div></summary>' +
+    return '<details class="row frontier-row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
+      idHead(m, '<span class="chip">' + esc(tierLabel) + '</span>') + '</div><div class="c-size"><p class="note">' + esc(price) + '</p><p class="note muted">' + esc(availability) + '</p></div><div class="c-score"><span class="score">' + (tier === "limited" ? "一般提供待ち" : "有料・API") + '</span><span class="score-l">' + (tier === "limited" ? "対象者を限定" : "無料枠は提供元による") + '</span></div></div></summary>' +
       '<div class="detail"><div><h4>仕様・利用条件</h4>' + details + notes + '</div>' + listBench(m.bench, "評価値") + sources(m.sources) + '</div></details>';
   }
   function buildFrontier(p) {

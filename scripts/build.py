@@ -4,6 +4,7 @@
 使い方: python3 scripts/build.py
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -23,6 +24,40 @@ TTS_REQUIRED = ["id", "name", "org", "country", "release", "license", "commercia
 GEN_REQUIRED = ["id", "name", "org", "country", "license", "commercial", "tasks"]
 # 汎用ページ（data/<id>.json）。ファイルがなければ空として扱う
 GEN_PAGES = ["s2s", "music", "image", "video", "3d", "decision"]
+
+
+def check_frontier(frontier, gen, meta, errors):
+    """表示に統合される全ファイルで、同系列・同役割の旧版と重複を防ぐ。"""
+    pool = list(frontier)
+    for category, items in gen.items():
+        pool.extend(dict(m, category=category) for m in items if m.get("access") == "api")
+    pool.extend(dict(m, category="llm") for m in meta.get("jp_reference_models", []))
+    seen_ids, seen_series = set(), {}
+    current_names = {m["name"].casefold(): m["id"] for m in pool}
+    for m in pool:
+        mid, series = m["id"], m.get("series")
+        if mid in seen_ids:
+            errors.append(f"有料一覧 {mid}: ファイルをまたいでidが重複しています")
+        seen_ids.add(mid)
+        if not series or re.search(r"\d+\.\d+", series):
+            errors.append(f"有料一覧 {mid}: 版番号を含まない固定のseriesが必要です")
+        tier = m.get("availability_tier", "general")
+        if tier not in {"general", "limited", "preview", "rollout"}:
+            errors.append(f"有料一覧 {mid}: 提供段階が不正です")
+        key = (m["category"], series)
+        if key in seen_series:
+            previous = seen_series[key]
+            other = previous[0]
+            # 限定後継を待つ間の一般提供版のみ併載できる。
+            if len(previous) != 1 or {tier, other.get("availability_tier", "general")} != {"limited", "general"}:
+                errors.append(f"有料一覧 {mid}: 同じ系列・役割の現行版が重複 ({other['id']})")
+            previous.append(m)
+        else:
+            seen_series[key] = [m]
+        for old in m.get("supersedes", []):
+            if old.casefold() in current_names:
+                errors.append(f"有料一覧 {mid}: 置換済みの旧版 {old} が現行一覧に残っています")
+    return pool
 
 
 def load(name, default=None):
@@ -86,14 +121,10 @@ def main():
     for k, items in gen.items():
         check(k, items, GEN_REQUIRED, errors)
     check("frontier", frontier, ["id", "name", "org", "country", "category", "availability_ja", "sources", "verified_at"], errors)
-    frontier_series = set()
     for m in frontier:
-        series = m.get("series")
-        if not series or series in frontier_series:
-            errors.append(f"frontier {m.get('id')}: 同じ系列の現行版は1件だけにしてください")
-        frontier_series.add(series)
         if m.get("category") not in {"llm", "asr", "tts", "s2s", "music", "image", "video", "3d", "decision"}:
             errors.append(f"frontier {m.get('id')}: カテゴリが不正です")
+    paid_pool = check_frontier(frontier, gen, meta, errors)
     if errors:
         print("検証エラー:", *errors, sep="\n  ")
         sys.exit(1)
@@ -108,7 +139,7 @@ def main():
     OUT.write_text(html.replace("/*__DATA__*/", payload), encoding="utf-8")
     jp = sum(1 for m in llm if m.get("country") == "JP")
     extra = " / ".join(f"{k} {len(v)}" for k, v in gen.items())
-    print(f"OK: {OUT.relative_to(ROOT)}  LLM {len(llm)}（国産 {jp}） / ASR {len(asr)} / TTS {len(tts)} / {extra}  {OUT.stat().st_size // 1024}KB")
+    print(f"OK: {OUT.relative_to(ROOT)}  LLM {len(llm)}（国産 {jp}） / ASR {len(asr)} / TTS {len(tts)} / {extra} / 有料 {len(paid_pool)}  {OUT.stat().st_size // 1024}KB")
 
 
 if __name__ == "__main__":

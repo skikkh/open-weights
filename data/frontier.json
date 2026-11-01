@@ -20,7 +20,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-6 Astra"
+  "series": "OpenAI GPT Astra",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-6.1-sol",
@@ -47,7 +49,9 @@
   "supersedes": [
    "GPT-5.6 Sol",
    "GPT-6 Sol"
-  ]
+  ],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-6.1-terra",
@@ -73,7 +77,9 @@
   "series": "OpenAI GPT Terra",
   "supersedes": [
    "GPT-5.6 Terra"
-  ]
+  ],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-6-luna",
@@ -96,7 +102,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-6 Luna"
+  "series": "OpenAI GPT Luna",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "claude-opus-5-5",
@@ -119,7 +127,8 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Claude Opus 5.5"
+  "series": "Anthropic Claude Opus",
+  "availability_tier": "general"
  },
  {
   "id": "claude-sonnet-5-5",
@@ -142,7 +151,8 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Claude Sonnet 5.5"
+  "series": "Anthropic Claude Sonnet",
+  "availability_tier": "general"
  },
  {
   "id": "gemini-4-argon",
@@ -167,7 +177,8 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 4 Argon"
+  "series": "Google Gemini flagship",
+  "availability_tier": "general"
  },
  {
   "id": "gemini-3-8-flash",
@@ -190,7 +201,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 3.8 Flash"
+  "series": "Google Gemini Flash",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-transcribe",
@@ -213,7 +226,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Transcribe"
+  "series": "OpenAI Transcribe batch",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-live-transcribe",
@@ -236,7 +251,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Live-Transcribe"
+  "series": "OpenAI Transcribe live",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-live-1",
@@ -259,7 +276,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Live 1"
+  "series": "OpenAI Live flagship",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-realtime-2.1",
@@ -282,7 +301,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Realtime-2.1"
+  "series": "OpenAI Realtime standard",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-realtime-2.1-mini",
@@ -305,7 +326,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Realtime-2.1 Mini"
+  "series": "OpenAI Realtime mini",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gpt-realtime-translate",
@@ -328,7 +351,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "GPT-Realtime-Translate"
+  "series": "OpenAI Realtime translate",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gemini-3-8-live",
@@ -351,7 +376,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 3.8 Live"
+  "series": "Google Gemini Live standard",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gemini-3-8-live-extended-thinking",
@@ -374,7 +401,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 3.8 Live Extended Thinking"
+  "series": "Google Gemini Live extended thinking",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gemini-3-8-flash-tts",
@@ -397,7 +426,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 3.8 Flash TTS"
+  "series": "Google Gemini TTS Flash",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "gemini-3-8-flash-lite-tts",
@@ -420,7 +451,9 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Gemini 3.8 Flash-Lite TTS"
+  "series": "Google Gemini TTS Flash Lite",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "id": "eleven-v4",
@@ -445,7 +478,8 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Eleven v4"
+  "series": "ElevenLabs TTS flagship",
+  "availability_tier": "general"
  },
  {
   "id": "eleven-v4-turbo",
@@ -470,7 +504,8 @@
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Eleven v4 Turbo"
+  "series": "ElevenLabs TTS Turbo",
+  "availability_tier": "general"
  },
  {
   "id": "voxtral-small-transcribe-3",
@@ -493,7 +528,8 @@
   "local_note": "企業向け自己環境への導入は公式へ相談。一般向けの重み配布は未確認。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Voxtral Small Transcribe 3"
+  "series": "Mistral Voxtral Transcribe Small",
+  "availability_tier": "general"
  },
  {
   "id": "voxtral-mini-transcribe-3",
@@ -516,7 +552,8 @@
   "local_note": "企業向け自己環境への導入は公式へ相談。一般向けの重み配布は未確認。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Voxtral Mini Transcribe 3"
+  "series": "Mistral Voxtral Transcribe Mini",
+  "availability_tier": "general"
  },
  {
   "id": "voxtral-mini-transcribe-realtime-3",
@@ -539,7 +576,8 @@
   "local_note": "企業向け自己環境への導入は公式へ相談。一般向けの重み配布は未確認。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Voxtral Mini Transcribe Realtime 3"
+  "series": "Mistral Voxtral Transcribe Realtime",
+  "availability_tier": "general"
  },
  {
   "id": "voxtral-mini-tts-3",
@@ -562,7 +600,8 @@
   "local_note": "企業向け自己環境への導入は公式へ相談。一般向けの重み配布は未確認。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Voxtral Mini TTS 3"
+  "series": "Mistral Voxtral TTS Mini",
+  "availability_tier": "general"
  },
  {
   "category": "llm",
@@ -583,7 +622,8 @@
   "sources": [
    "https://www.anthropic.com/claude-haiku-5-5"
   ],
-  "series": "Claude Haiku 5.5"
+  "series": "Anthropic Claude Haiku",
+  "availability_tier": "general"
  },
  {
   "category": "llm",
@@ -604,7 +644,9 @@
   "sources": [
    "https://docs.x.ai/developers/models/grok-4.7"
   ],
-  "series": "Grok 4.7"
+  "series": "xAI Grok flagship",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "category": "llm",
@@ -628,7 +670,9 @@
    "https://www.kimi.com/en/blog/kimi-k3-1-pro"
   ],
   "context_note": "最大1Mトークン。会員プラン・API経路により利用条件が異なる。",
-  "series": "Kimi K3.1 Pro"
+  "series": "Moonshot Kimi Pro",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "category": "llm",
@@ -652,7 +696,9 @@
    "https://www.kimi.com/en/blog/kimi-k3-1-pro"
   ],
   "context_note": "最大1Mトークン。会員プラン・API経路により利用条件が異なる。",
-  "series": "Kimi K3.1 Pro Highspeed"
+  "series": "Moonshot Kimi Pro Highspeed",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
   "category": "llm",
@@ -676,6 +722,1991 @@
    "https://api-docs.deepseek.com/news/news260910/"
   ],
   "context_note": null,
-  "series": "DeepSeek V4.1 Flash 1017（API）"
+  "series": "DeepSeek Flash",
+  "availability_tier": "general"
+ },
+ {
+  "id": "gemini-4-carbon",
+  "name": "Gemini 4 Carbon",
+  "category": "llm",
+  "series": "Google Gemini flagship",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-10-28",
+  "access": "api",
+  "summary_ja": "長時間の開発・サイバー防御向け。一般APIは提供待ち。",
+  "availability_ja": "限定提供：一部のサイバー防御者・Fairwind提携先。一般の開発者・企業・個人向けは提供待ち。",
+  "price_note": "一般提供時の予告価格：100万トークンあたり入力$2／出力$10、導入期間後は$4／$20。現時点の一般API料金ではない。",
+  "hf": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+  "sources": [
+   "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "limited",
+  "detail_note": "一般提供中のGemini 4 Argonを併載。Carbonの一般提供を確認した時点で同じ旗艦系列を置換する。",
+  "release_kind": "announcement"
+ },
+ {
+  "id": "muse-wonder",
+  "name": "Muse Wonder",
+  "category": "llm",
+  "series": "Meta Muse Wonder",
+  "org": "Meta",
+  "country": "US",
+  "release": "2026-10-12",
+  "access": "api",
+  "summary_ja": "長いコーディング・エージェント作業向け。Model APIとMuse Codeで利用。",
+  "availability_ja": "Meta Model API（muse-wonder-1.0）・Muse Codeで提供。",
+  "price_note": "Model API：100万トークンあたり入力$4／キャッシュ入力$0.20／出力$20。",
+  "hf": "https://research.meta.ai/blog/muse-wonder",
+  "sources": [
+   "https://research.meta.ai/blog/muse-wonder",
+   "https://dev.meta.ai/docs/models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "context_note": "1Mトークン。通常Wonderのmax effortとWonder Fullは別。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "muse-wonder-full",
+  "name": "Muse Wonder Full",
+  "category": "llm",
+  "series": "Meta Muse Wonder Full",
+  "org": "Meta",
+  "country": "US",
+  "release": "2026-10-12",
+  "access": "api",
+  "summary_ja": "長いコーディング・エージェント作業向け。Muse Code会員向けの上位版。",
+  "availability_ja": "Muse CodeのPower Usage／Maximum Usage会員向け。一般Model APIには未提供。",
+  "price_note": "Muse Codeの対象会員プラン。一般APIのトークン単価は適用しない。",
+  "hf": "https://research.meta.ai/blog/muse-wonder",
+  "sources": [
+   "https://research.meta.ai/blog/muse-wonder",
+   "https://dev.meta.ai/docs/models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "context_note": "1Mトークン。通常Wonderのmax effortとWonder Fullは別。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "muse-spark-1-3",
+  "name": "Muse Spark 1.3",
+  "category": "llm",
+  "series": "Meta Muse Spark",
+  "org": "Meta",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "低価格・高頻度のエージェント処理を担うSpark系列の現行版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "Standard：100万トークンあたり入力$1.25／キャッシュ$0.15／出力$4.25。Contributorはデータ利用条件が異なるため別料金。",
+  "hf": "https://dev.meta.ai/docs/models",
+  "sources": [
+   "https://dev.meta.ai/docs/models",
+   "https://dev.meta.ai/products/meta-model-api"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Muse Spark 1.1",
+   "Muse Spark 1.2"
+  ],
+  "context_note": "1Mトークン。Wonderとは価格・用途が異なる。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "claude-fable-5-1",
+  "name": "Claude Fable 5.1",
+  "category": "llm",
+  "series": "Anthropic Claude Fable",
+  "org": "Anthropic",
+  "country": "US",
+  "release": "2026-09-01",
+  "access": "api",
+  "summary_ja": "難しい知識作業・コーディング・長期タスク向け。",
+  "availability_ja": "Claude Pro／Max／Team／Enterprise、Claude Platform等で提供中。",
+  "price_note": "100万トークンあたり入力$10／出力$50。キャッシュ読み出し$0.25。会員サービスの利用料は別。",
+  "hf": "https://www.anthropic.com/claude/fable",
+  "sources": [
+   "https://www.anthropic.com/claude/fable",
+   "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Claude Fable 5"
+  ],
+  "detail_note": "Mythos 5.1は同じモデルに異なる安全策を適用した信頼済み組織向けの構成。一般向けの独立モデルとして水増ししない。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "qwen3-8-max-0902",
+  "name": "Qwen3.8-Max-0902",
+  "category": "llm",
+  "series": "Alibaba Qwen Max",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-09-02",
+  "access": "api",
+  "summary_ja": "Qwenの商用旗艦。長い開発作業・ツール連携・視覚理解向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863",
+  "sources": [
+   "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen3.8-Max（旧スナップショット）",
+   "Qwen3.7-Max",
+   "Qwen3.5-Max"
+  ],
+  "context_note": "1Mトークン。qwen3.8-maxは0902スナップショットに更新済み。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "qwen3-8-flash-api",
+  "name": "Qwen3.8-Flash（API）",
+  "category": "llm",
+  "series": "Alibaba Qwen Flash",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-08-26",
+  "access": "api",
+  "summary_ja": "費用と速度を重視するQwenのマルチモーダルAPI。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-flash",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/qwen3-8-flash",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen3.7-Flash",
+   "Qwen3.5-Flash"
+  ],
+  "context_note": "1Mトークン。APIの初提供日と8月27日の重み発表日、米国リージョン追加日を区別。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "mercury-2-5",
+  "name": "Mercury 2.5",
+  "category": "llm",
+  "series": "Inception Mercury",
+  "org": "Inception",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "拡散方式のLLM。速度を重視する推論・検索・音声アプリ向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "通常：100万トークンあたり入力$0.20／出力$0.75。発表時の80%割引は終了条件を公式で確認。",
+  "hf": "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5",
+  "sources": [
+   "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Mercury 1",
+   "Mercury 2"
+  ],
+  "context_note": "260Kトークン。速度は提供元の評価条件による。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "solar-pro-4",
+  "name": "Solar Pro 4",
+  "category": "llm",
+  "series": "Upstage Solar Pro",
+  "org": "Upstage",
+  "country": "KR",
+  "release": null,
+  "access": "api",
+  "summary_ja": "企業向けエージェントの旗艦。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "100万トークンあたり入力$0.30／キャッシュ$0.06／出力$1.20。",
+  "hf": "https://www.upstage.ai/pricing/api",
+  "sources": [
+   "https://www.upstage.ai/pricing/api"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Solar Pro 2",
+   "Solar Pro 3"
+  ],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "solar-mini-4",
+  "name": "Solar Mini 4",
+  "category": "llm",
+  "series": "Upstage Solar Mini",
+  "org": "Upstage",
+  "country": "KR",
+  "release": null,
+  "access": "api",
+  "summary_ja": "企業向けエージェントの小型・低価格版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "100万トークンあたり入力$0.10／キャッシュ$0.01。出力単価は公式料金を確認。",
+  "hf": "https://www.upstage.ai/pricing/api",
+  "sources": [
+   "https://www.upstage.ai/pricing/api"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Solar Mini 2",
+   "Solar Mini 3"
+  ],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "scribe-v2",
+  "name": "Scribe v2",
+  "category": "asr",
+  "series": "ElevenLabs Scribe",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": "2026-01-09",
+  "access": "api",
+  "summary_ja": "長い録音の書き起こし・字幕向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://elevenlabs.io/docs/overview/models",
+  "sources": [
+   "https://elevenlabs.io/docs/overview/models",
+   "https://elevenlabs.io/blog/introducing-scribe-v2"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む90以上の言語。医療評価の改善率を日本語精度とみなさない。",
+  "detail_note": null,
+  "availability_tier": "general"
+ },
+ {
+  "id": "scribe-v2-realtime",
+  "name": "Scribe v2 Realtime",
+  "category": "asr",
+  "series": "ElevenLabs Scribe Realtime",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": "2025-11-11",
+  "access": "api",
+  "summary_ja": "会話や字幕のリアルタイム認識向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://elevenlabs.io/docs/overview/models",
+  "sources": [
+   "https://elevenlabs.io/docs/overview/models",
+   "https://elevenlabs.io/blog/introducing-scribe-v2-realtime"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む90以上の言語。医療評価の改善率を日本語精度とみなさない。",
+  "detail_note": null,
+  "availability_tier": "general"
+ },
+ {
+  "id": "scribe-v2-medical",
+  "name": "Scribe v2 Medical",
+  "category": "asr",
+  "series": "ElevenLabs Scribe Medical",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "医療音声に特化したバッチ認識。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://elevenlabs.io/docs/overview/models",
+  "sources": [
+   "https://elevenlabs.io/docs/overview/models",
+   "https://elevenlabs.io/blog/scribe-v2-medical-generally-available"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む90以上の言語。医療評価の改善率を日本語精度とみなさない。",
+  "detail_note": "Medicalの一般提供日は公式変更履歴9/11と発表記事9/22が不一致のため未確定。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "soniox-v5-async",
+  "name": "Soniox v5 Async",
+  "category": "asr",
+  "series": "Soniox STT async",
+  "org": "Soniox",
+  "country": "US",
+  "release": "2026-06-11",
+  "access": "api",
+  "summary_ja": "録音処理向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.soniox.com/stt/models",
+  "sources": [
+   "https://docs.soniox.com/stt/models",
+   "https://soniox.com/blog/soniox-v5-async"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Soniox v4 async",
+   "Soniox v3 async"
+  ],
+  "ja_note": "日本語を含む60以上の言語。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "soniox-v5-realtime",
+  "name": "Soniox v5 Realtime",
+  "category": "asr",
+  "series": "Soniox STT realtime",
+  "org": "Soniox",
+  "country": "US",
+  "release": "2026-06-16",
+  "access": "api",
+  "summary_ja": "ライブ音声認識・話者分離・翻訳向け。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.soniox.com/stt/models",
+  "sources": [
+   "https://docs.soniox.com/stt/models",
+   "https://soniox.com/blog/soniox-v5-async"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Soniox v4 realtime",
+   "Soniox v3 realtime"
+  ],
+  "ja_note": "日本語を含む60以上の言語。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "mai-transcribe-2",
+  "name": "MAI-Transcribe-2",
+  "category": "asr",
+  "series": "Microsoft MAI Transcribe batch",
+  "org": "Microsoft AI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Microsoftの録音向け音声認識。",
+  "availability_ja": "Microsoft Foundry／Azure Speechでパブリックプレビュー。リージョンによって機能が異なる。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe",
+  "sources": [
+   "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe",
+   "https://microsoft.ai/news/our-first-streaming-transcription-model/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "preview",
+  "ja_note": "日本語を含む60言語。",
+  "detail_note": "公式API仕様で呼び出せる名前は2。別の紹介ページの「2.1」表記だけを新API版と扱わない。",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "mai-transcribe-2-streaming",
+  "name": "MAI-Transcribe-2-Streaming",
+  "category": "asr",
+  "series": "Microsoft MAI Transcribe streaming",
+  "org": "Microsoft AI",
+  "country": "US",
+  "release": "2026-10-01",
+  "access": "api",
+  "summary_ja": "Microsoftのリアルタイム音声認識。",
+  "availability_ja": "Microsoft Foundry／Azure Speechでパブリックプレビュー。リージョンによって機能が異なる。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe",
+  "sources": [
+   "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/mai-transcribe",
+   "https://microsoft.ai/news/our-first-streaming-transcription-model/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "preview",
+  "ja_note": "日本語を含む60言語。",
+  "detail_note": "公式API仕様で呼び出せる名前は2。別の紹介ページの「2.1」表記だけを新API版と扱わない。"
+ },
+ {
+  "id": "gemini-3-5-transcribe",
+  "name": "Gemini 3.5 Transcribe",
+  "category": "asr",
+  "series": "Google Gemini Transcribe batch",
+  "org": "Google",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Googleの録音ファイル書き起こしモデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
+  "sources": [
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "多言語対応。日本語の提供条件は版別の公式対応言語を確認。",
+  "context_note": "Liveは逐次処理。通常版は録音の同期処理。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "gemini-3-5-transcribe-live",
+  "name": "Gemini 3.5 Transcribe Live",
+  "category": "asr",
+  "series": "Google Gemini Transcribe live",
+  "org": "Google",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Googleのライブ音声書き起こしモデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
+  "sources": [
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "多言語対応。日本語の提供条件は版別の公式対応言語を確認。",
+  "context_note": "Liveは逐次処理。通常版は録音の同期処理。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "grok-voice-transcribe-2",
+  "name": "Grok Voice Transcribe 2.0",
+  "category": "asr",
+  "series": "xAI Grok Voice Transcribe",
+  "org": "xAI / SpaceXSI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "録音とWebSocketの両方を扱うGrokの現行音声認識。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-text",
+  "sources": [
+   "https://docs.x.ai/developers/model-capabilities/audio/speech-to-text"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Grok Voice Transcribe 1.0"
+  ],
+  "ja_note": "日本語を含む38以上の言語。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "universal-3-5-pro",
+  "name": "Universal-3.5 Pro（録音）",
+  "category": "asr",
+  "series": "AssemblyAI Universal batch",
+  "org": "AssemblyAI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "録音処理向けの現行安定版。リアルタイム版とは更新を分けて扱う。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.assemblyai.com/roadmap",
+  "sources": [
+   "https://www.assemblyai.com/roadmap"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Universal-2",
+   "Universal-3 Pro"
+  ],
+  "ja_note": "日本語対応。Universal-2の日本語リクエストも3.5 Proへ自動転送。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "universal-3-6-pro-realtime",
+  "name": "Universal-3.6 Pro Realtime",
+  "category": "asr",
+  "series": "AssemblyAI Universal realtime",
+  "org": "AssemblyAI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "会話向けのリアルタイム認識。32言語間のコードスイッチに対応。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.assemblyai.com/blog/universal-3-6-pro-realtime-supported-languages",
+  "sources": [
+   "https://www.assemblyai.com/blog/universal-3-6-pro-realtime-supported-languages",
+   "https://www.assemblyai.com/blog/universal-3-6-pro-realtime"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Universal-3.5 Pro Realtime"
+  ],
+  "ja_note": "日本語（ja）を公式の対応表に明記。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "pksha-voice-ai",
+  "name": "PKSHA Voice AI",
+  "category": "asr",
+  "series": "PKSHA Voice AI",
+  "org": "PKSHA Technology",
+  "country": "JP",
+  "release": "2026-08-01",
+  "access": "api",
+  "summary_ja": "日本のコールセンター等で使われる音声認識エンジンの外部API。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "法人向けの提供条件・見積もりを公式で確認。",
+  "hf": "https://www.pkshatech.com/news/20260731/",
+  "sources": [
+   "https://www.pkshatech.com/news/20260731/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語の企業向け認識。公開のモデル版番号・重みは未確認。",
+  "detail_note": "7月31日は発表日、API提供開始は8月1日。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "aivis-cloud-api",
+  "name": "Aivis Cloud API",
+  "category": "tts",
+  "series": "Aivis Cloud API",
+  "org": "Aivis Project",
+  "country": "JP",
+  "release": null,
+  "access": "api",
+  "summary_ja": "日本語の読み・アクセント指定とストリーミングに対応する国内音声合成サービス。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://aivis-project.com/cloud-api/",
+  "sources": [
+   "https://aivis-project.com/cloud-api/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "APIは国内クラウド。対応する公開話者モデルはAivisSpeechでも利用可能。利用条件は各モデルで異なる。",
+  "supersedes": [],
+  "ja_note": "日本語に特化。モデル共有基盤の各話者モデルを選択するサービスで、単一の基盤モデル名ではない。",
+  "detail_note": "既定・共有・持ち込み話者モデルを選択。声の作成はAivisBuilder等の工程であり、APIに参照音声を渡すゼロショット合成と一括りにしない。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "koto-asr-api",
+  "name": "Koto STT",
+  "category": "asr",
+  "series": "Kotoba Koto STT",
+  "org": "Kotoba Technologies",
+  "country": "US",
+  "release": "2026-05-28",
+  "access": "api",
+  "summary_ja": "東アジア言語に強い音声基盤モデルKotoのSTT提供。",
+  "availability_ja": "Kotoba API／SDKはAlpha提供。TTS・STTのfal提供も公式発表あり。S2Sの利用枠は公式で確認。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://site.kotoba.tech/",
+  "sources": [
+   "https://site.kotoba.tech/",
+   "https://site.kotoba.tech/news",
+   "https://site.kotoba.tech/company"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "一般向け重み配布は未確認。オンプレミス・端末向け導入は契約提供。",
+  "supersedes": [],
+  "ja_note": "日本語を重視。米国本社・東京研究開発拠点の日米企業。",
+  "availability_tier": "preview",
+  "detail_note": "公開のモデル版番号・ゼロショット条件は未確認。",
+  "release_note": "公式ニュースのAPI／SDK Alpha発表日。fal追加は10/19で、初デビューとは別。"
+ },
+ {
+  "id": "koto-tts-api",
+  "name": "Koto TTS",
+  "category": "tts",
+  "series": "Kotoba Koto TTS",
+  "org": "Kotoba Technologies",
+  "country": "US",
+  "release": "2026-05-28",
+  "access": "api",
+  "summary_ja": "東アジア言語に強い音声基盤モデルKotoのTTS提供。",
+  "availability_ja": "Kotoba API／SDKはAlpha提供。TTS・STTのfal提供も公式発表あり。S2Sの利用枠は公式で確認。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://site.kotoba.tech/",
+  "sources": [
+   "https://site.kotoba.tech/",
+   "https://site.kotoba.tech/news",
+   "https://site.kotoba.tech/company"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "一般向け重み配布は未確認。オンプレミス・端末向け導入は契約提供。",
+  "supersedes": [],
+  "ja_note": "日本語を重視。米国本社・東京研究開発拠点の日米企業。",
+  "availability_tier": "preview",
+  "detail_note": "公開のモデル版番号・ゼロショット条件は未確認。",
+  "release_note": "公式ニュースのAPI／SDK Alpha発表日。fal追加は10/19で、初デビューとは別。"
+ },
+ {
+  "id": "koto-s2s-api",
+  "name": "Koto Speech to Speech",
+  "category": "s2s",
+  "series": "Kotoba Koto Speech to Speech",
+  "org": "Kotoba Technologies",
+  "country": "US",
+  "release": "2026-05-28",
+  "access": "api",
+  "summary_ja": "東アジア言語に強い音声基盤モデルKotoのSpeech to Speech提供。",
+  "availability_ja": "Kotoba API／SDKはAlpha提供。TTS・STTのfal提供も公式発表あり。S2Sの利用枠は公式で確認。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://site.kotoba.tech/",
+  "sources": [
+   "https://site.kotoba.tech/",
+   "https://site.kotoba.tech/news",
+   "https://site.kotoba.tech/company"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "一般向け重み配布は未確認。オンプレミス・端末向け導入は契約提供。",
+  "supersedes": [],
+  "ja_note": "日本語を重視。米国本社・東京研究開発拠点の日米企業。",
+  "availability_tier": "preview",
+  "detail_note": "公開のモデル版番号・ゼロショット条件は未確認。",
+  "release_note": "公式ニュースのAPI／SDK Alpha発表日。fal追加は10/19で、初デビューとは別。"
+ },
+ {
+  "id": "sonic-3-6",
+  "name": "Sonic 3.6",
+  "category": "tts",
+  "series": "Cartesia Sonic",
+  "org": "Cartesia",
+  "country": "US",
+  "release": "2026-08-27",
+  "access": "api",
+  "summary_ja": "低遅延の音声対話向けTTS。言語・声・ロケールを選択できる。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.cartesia.ai/build-with-cartesia/tts-models",
+  "sources": [
+   "https://docs.cartesia.ai/build-with-cartesia/tts-models",
+   "https://www.cartesia.ai/ja/blog/sonic-3.6"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Sonic 3",
+   "Sonic 3.5"
+  ],
+  "ja_note": "日本語を含む44言語。",
+  "detail_note": "Instant Voice Cloningに対応。参照音声が必要で、プリセットの選択とは別。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "inworld-tts-2",
+  "name": "Inworld Realtime TTS-2",
+  "category": "tts",
+  "series": "Inworld TTS flagship",
+  "org": "Inworld AI",
+  "country": "US",
+  "release": "2026-05-05",
+  "access": "api",
+  "summary_ja": "会話向けの高品質・自然言語による演技制御版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.inworld.ai/tts/tts-models",
+  "sources": [
+   "https://docs.inworld.ai/tts/tts-models",
+   "https://docs.inworld.ai/release-notes/tts"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Inworld TTS-1",
+   "Inworld TTS-1.5 Max"
+  ],
+  "ja_note": "日本語を含む200以上の言語・ロケール。",
+  "detail_note": "Instant Voice Cloning対応。TTSの初回バイト遅延はサーバー側P90であり、会話全体の往復遅延ではない。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "inworld-tts-2-flash",
+  "name": "Inworld Realtime TTS-2 Flash",
+  "category": "tts",
+  "series": "Inworld TTS Flash",
+  "org": "Inworld AI",
+  "country": "US",
+  "release": "2026-08-09",
+  "access": "api",
+  "summary_ja": "会話向けの低遅延・低価格版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.inworld.ai/tts/tts-models",
+  "sources": [
+   "https://docs.inworld.ai/tts/tts-models",
+   "https://docs.inworld.ai/release-notes/tts"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Inworld TTS-1",
+   "Inworld TTS-1.5 Mini"
+  ],
+  "ja_note": "日本語を含む200以上の言語・ロケール。",
+  "detail_note": "Instant Voice Cloning対応。TTSの初回バイト遅延はサーバー側P90であり、会話全体の往復遅延ではない。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "simba-3-5",
+  "name": "Simba 3.5",
+  "category": "tts",
+  "series": "Speechify Simba multilingual",
+  "org": "Speechify",
+  "country": "US",
+  "release": "2026-10-18",
+  "access": "api",
+  "summary_ja": "48言語を単一モデルで読み上げる、Speechifyの推奨現行版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.speechify.ai/build/guides/concepts/models",
+  "sources": [
+   "https://docs.speechify.ai/build/guides/concepts/models",
+   "https://docs.speechify.ai/build/changelog/2026/10/18",
+   "https://docs.speechify.ai/build/changelog/2026/10/21"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Simba 3.0",
+   "Simba Multilingual"
+  ],
+  "ja_note": "日本語（ja、ja-JP）を公式対応。Simba 3.2は英語のみ。",
+  "detail_note": "有料プランでゼロショットの声クローンに対応。10/18に利用可能・推奨、10/21に正式告知。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "lightning-v3-1-pro",
+  "name": "Lightning v3.1 Pro",
+  "category": "tts",
+  "series": "Smallest Lightning Pro",
+  "org": "Smallest AI",
+  "country": "IN",
+  "release": "2026-05-15",
+  "access": "api",
+  "summary_ja": "日本語の専用話者も用意されたPro音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.smallest.ai/model-cards/text-to-speech/lightning-v-3-1-pro",
+  "sources": [
+   "https://docs.smallest.ai/model-cards/text-to-speech/lightning-v-3-1-pro",
+   "https://docs.smallest.ai/changelog/lightning-v-3-1"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語はstableのlightning_v3.1_proと日本語話者を使用。",
+  "detail_note": "声クローン対応。10月版プレビューは英語・スペイン語・ヒンディー語のみで、日本語の新版ではない。7/3に日本語等を追加。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "soniox-tts-v2",
+  "name": "Soniox TTS Realtime v2",
+  "category": "tts",
+  "series": "Soniox TTS realtime",
+  "org": "Soniox",
+  "country": "US",
+  "release": "2026-08-11",
+  "access": "api",
+  "summary_ja": "数字や固有表現を含む、会話向けのストリーミング合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.soniox.com/tts/models",
+  "sources": [
+   "https://docs.soniox.com/tts/models",
+   "https://docs.soniox.com/tts/concepts/voices"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Soniox TTS Realtime v1"
+  ],
+  "ja_note": "日本語を含む60以上の言語。",
+  "detail_note": "公式の話者一覧を選択できる。参照音声による声クローンの提供条件は今回未確認。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "qwen-audio-3-1-tts-plus",
+  "name": "Qwen-Audio-3.1-TTS-Plus",
+  "category": "tts",
+  "series": "Alibaba Qwen Audio TTS Plus",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Qwen-Audioの上位音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/ja/model-studio/tts-model",
+  "sources": [
+   "https://www.alibabacloud.com/help/ja/model-studio/tts-model",
+   "https://www.alibabacloud.com/help/ja/model-studio/qwen-audio-tts-voice-list"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Audio-3.0-TTS-Plus"
+  ],
+  "ja_note": "クローン音声は日本語対応。既定の旗艦話者やVoice Designにも同じ言語対応があると一括りにしない。",
+  "detail_note": "システム音声・クローン音声・デザイン音声で対応言語と作成工程が異なる。参照音声からのクローンは公式ガイドの条件を確認。",
+  "availability_tier": "general",
+  "release_note": "AAには9/24、公式Model Studioの提供記録には10/21。初提供日・地域差を解消できず日付不明。"
+ },
+ {
+  "id": "qwen-audio-3-1-tts-flash",
+  "name": "Qwen-Audio-3.1-TTS-Flash",
+  "category": "tts",
+  "series": "Alibaba Qwen Audio TTS Flash",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-10-12",
+  "access": "api",
+  "summary_ja": "Qwen-Audioの高速音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/ja/model-studio/tts-model",
+  "sources": [
+   "https://www.alibabacloud.com/help/ja/model-studio/tts-model",
+   "https://www.alibabacloud.com/help/ja/model-studio/qwen-audio-tts-voice-list",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Audio-3.0-TTS-Flash"
+  ],
+  "ja_note": "日本語は対応する多言語システム音声またはクローン音声を選択。Voice Designの対応言語を合成全体と混同しない。",
+  "detail_note": "システム音声・クローン音声・デザイン音声で対応言語と作成工程が異なる。参照音声からのクローンは公式ガイドの条件を確認。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "minimax-speech-2-8-hd",
+  "name": "MiniMax Speech 2.8 HD",
+  "category": "tts",
+  "series": "MiniMax Speech HD",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "MiniMaxの品質重視の音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "100万文字あたり$100。Rapid Voice Cloningは$1.5/声、Voice Designは$3/声。プランにより異なる。",
+  "hf": "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+  "sources": [
+   "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+   "https://platform.minimax.io/subscribe/token-plan"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "MiniMax Speech 2.6 HD",
+   "MiniMax Speech 2.5 HD"
+  ],
+  "detail_note": "既定話者・Rapid Voice Cloning・Voice Designの課金と工程は別。日本語の言語指定は公式API仕様を確認。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "minimax-speech-2-8-turbo",
+  "name": "MiniMax Speech 2.8 Turbo",
+  "category": "tts",
+  "series": "MiniMax Speech Turbo",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "MiniMaxの速度重視の音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "100万文字あたり$60。Rapid Voice Cloningは$1.5/声、Voice Designは$3/声。プランにより異なる。",
+  "hf": "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+  "sources": [
+   "https://platform.minimax.io/docs/api-reference/speech-t2a-websocket",
+   "https://platform.minimax.io/subscribe/token-plan"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "MiniMax Speech 2.6 Turbo",
+   "MiniMax Speech 2.5 Turbo"
+  ],
+  "detail_note": "既定話者・Rapid Voice Cloning・Voice Designの課金と工程は別。日本語の言語指定は公式API仕様を確認。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "fish-drama-3-api",
+  "name": "Fish Audio Drama 3（API）",
+  "category": "tts",
+  "series": "Fish Audio flagship",
+  "org": "Fish Audio",
+  "country": "US",
+  "release": "2026-10-13",
+  "access": "api",
+  "summary_ja": "自然言語で演技を指示できるFish Audioの現行合成モデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "通常$50/100万文字。10/13〜11/12は導入価格$10/100万文字。",
+  "hf": "https://beta.fish.audio/blog/fish-audio-drama-3/",
+  "sources": [
+   "https://beta.fish.audio/blog/fish-audio-drama-3/",
+   "https://huggingface.co/fishaudio/drama-3"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重み公開版も存在。API利用とローカル利用は別経路。",
+  "supersedes": [
+   "Fish Audio S2.1 Pro",
+   "Fish Audio Drama 3 Preview"
+  ],
+  "detail_note": "参照音声による声クローン・複数人物の演技に対応。公開重み版のローカル条件は公開モデル側に掲載。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "heygen-voice",
+  "name": "HeyGen Voice",
+  "category": "tts",
+  "series": "HeyGen Voice standard",
+  "org": "HeyGen",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "動画の場面・演技に合わせる音声合成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$30/100万文字。Professional Voice Clone追加契約は別。",
+  "hf": "https://www.heygen.com/models/heygen-voice",
+  "sources": [
+   "https://www.heygen.com/models/heygen-voice",
+   "https://www.heygen.com/blog/heygen-voice-turbo"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "短い録音から作るInstant Voiceと、長い録音で学習するProfessional Voice Cloneを区別。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "heygen-voice-turbo",
+  "name": "HeyGen Voice Turbo",
+  "category": "tts",
+  "series": "HeyGen Voice Turbo",
+  "org": "HeyGen",
+  "country": "US",
+  "release": "2026-10-21",
+  "access": "api",
+  "summary_ja": "動画の場面・演技に合わせる音声合成。高速モード。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "無料APIモデルは2026/11/30まで・容量制限あり。有料単価は公式料金を確認。",
+  "hf": "https://www.heygen.com/models/heygen-voice",
+  "sources": [
+   "https://www.heygen.com/models/heygen-voice",
+   "https://www.heygen.com/blog/heygen-voice-turbo"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "公開話者・Instant Voiceを使用。Professional Voice Cloneは通常のheygen-voice-1が必要。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "qwen-audio-3-1-realtime-plus",
+  "name": "Qwen-Audio-3.1-Realtime-Plus",
+  "category": "s2s",
+  "series": "Alibaba Qwen Audio Realtime Plus",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-09-20",
+  "access": "api",
+  "summary_ja": "音声の入力・出力を同時に扱う双方向会話モデル。上位版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/qwen-audio-realtime-user-guides",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/qwen-audio-realtime-user-guides",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen Audio 3.0 Realtime Plus",
+   "Qwen3.5 Omni Plus Realtime"
+  ],
+  "ja_note": "日本語を含む14言語。出力言語指定はベストエフォートで、完全な保証ではない。",
+  "detail_note": "システム音声とクローン音声に対応。PlusではWeb検索とFunction Callingを同時に有効化できない。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "qwen-audio-3-1-realtime-flash",
+  "name": "Qwen-Audio-3.1-Realtime-Flash",
+  "category": "s2s",
+  "series": "Alibaba Qwen Audio Realtime Flash",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-10-27",
+  "access": "api",
+  "summary_ja": "音声の入力・出力を同時に扱う双方向会話モデル。高速版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/qwen-audio-realtime-user-guides",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/qwen-audio-realtime-user-guides",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen Audio 3.0 Realtime Flash",
+   "Qwen3.5 Omni Flash Realtime"
+  ],
+  "ja_note": "日本語を含む14言語。出力言語指定はベストエフォートで、完全な保証ではない。",
+  "detail_note": "システム音声とクローン音声に対応。PlusではWeb検索とFunction Callingを同時に有効化できない。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "eleven-realtime-v1-max",
+  "name": "Eleven Realtime v1 Max",
+  "category": "s2s",
+  "series": "ElevenLabs Realtime Max",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": "2026-10-19",
+  "access": "api",
+  "summary_ja": "音声認識・LLM・合成を統合設定する会話サービス。複雑なツール操作向け。",
+  "availability_ja": "ElevenAgents・Realtime APIで段階的に展開。ワークスペースの利用可能モデルを確認。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://elevenlabs.io/docs/overview/models",
+  "sources": [
+   "https://elevenlabs.io/docs/overview/models",
+   "https://elevenlabs.io/docs/changelog"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む90以上の言語。",
+  "availability_tier": "rollout",
+  "detail_note": "複数の処理をまとめたモデル構成。単一の音声生成重みが公開されたという意味ではない。"
+ },
+ {
+  "id": "eleven-realtime-v1-mini",
+  "name": "Eleven Realtime v1 Mini",
+  "category": "s2s",
+  "series": "ElevenLabs Realtime Mini",
+  "org": "ElevenLabs",
+  "country": "US",
+  "release": "2026-10-19",
+  "access": "api",
+  "summary_ja": "音声認識・LLM・合成を統合設定する会話サービス。速度・費用重視。",
+  "availability_ja": "ElevenAgents・Realtime APIで段階的に展開。ワークスペースの利用可能モデルを確認。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://elevenlabs.io/docs/overview/models",
+  "sources": [
+   "https://elevenlabs.io/docs/overview/models",
+   "https://elevenlabs.io/docs/changelog"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む90以上の言語。",
+  "availability_tier": "rollout",
+  "detail_note": "複数の処理をまとめたモデル構成。単一の音声生成重みが公開されたという意味ではない。"
+ },
+ {
+  "id": "grok-voice-3",
+  "name": "Grok Voice 3.0",
+  "category": "s2s",
+  "series": "xAI Grok Voice",
+  "org": "xAI / SpaceXSI",
+  "country": "US",
+  "release": "2026-10-14",
+  "access": "api",
+  "summary_ja": "Grokの現行音声対話モデル。最新エイリアスも3.0へ転送される。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech",
+  "sources": [
+   "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech",
+   "https://docs.x.ai/developers/release-notes"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Grok Voice 1.0",
+   "Grok Voice 2.0"
+  ],
+  "ja_note": "日本語（ja）を公式対応表に明記。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "muse-image",
+  "name": "Muse Image",
+  "category": "image",
+  "series": "Meta Muse Image",
+  "org": "Meta",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "検索・コード実行を利用しながら生成・編集・参照合成を行う画像モデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.01/画像。検索等の追加条件は公式料金を確認。",
+  "hf": "https://dev.meta.ai/models/muse-image",
+  "sources": [
+   "https://dev.meta.ai/models/muse-image"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "mai-image-2-6-flash",
+  "name": "MAI-Image-2.6-Flash",
+  "category": "image",
+  "series": "Microsoft MAI Image Flash",
+  "org": "Microsoft AI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "MAI-Image-2.6の低コスト・高速版。",
+  "availability_ja": "Microsoft Foundryでパブリックプレビュー。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
+  "sources": [
+   "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "MAI-Image-2.5-Flash"
+  ],
+  "availability_tier": "preview",
+  "detail_note": "2.7の編集プレビューとは役割・提供段階が異なる。",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "flux-3-image-klein-api",
+  "name": "FLUX 3 Image Klein（API）",
+  "category": "image",
+  "series": "BFL FLUX Image Klein",
+  "org": "Black Forest Labs",
+  "country": "DE",
+  "release": "2026-10-15",
+  "access": "api",
+  "summary_ja": "生成・編集・複数参照に対応する軽量版の公式API。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.009/1K画像から。",
+  "hf": "https://bfl.ai/blog/flux-3-image-klein",
+  "sources": [
+   "https://bfl.ai/blog/flux-3-image-klein"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "5.6Bの重み公開版も存在。APIの利用料とセルフホストのライセンス条件は別。",
+  "supersedes": [
+   "FLUX.2 Klein（API）"
+  ],
+  "availability_tier": "general"
+ },
+ {
+  "id": "qwen-image-2-1-pro-api",
+  "name": "Qwen-Image-2.1-Pro",
+  "category": "image",
+  "series": "Alibaba Qwen Image transparent Pro",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-10-02",
+  "access": "api",
+  "summary_ja": "軽量な2.1系の商用API。透明画像の生成・編集に対応するPro版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Image-2.0-Pro"
+  ],
+  "detail_note": "3.0-Proは複雑なレイアウト・文字描画を重視する旗艦。2.1系は7Bの生成部・透過対応を持つ別用途の系統として掲載。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "qwen-image-2-1-turbo-api",
+  "name": "Qwen-Image-2.1-Turbo",
+  "category": "image",
+  "series": "Alibaba Qwen Image transparent Turbo",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-10-09",
+  "access": "api",
+  "summary_ja": "軽量な2.1系の商用API。透明画像の生成・編集に対応するTurbo版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Image-2.0-Turbo"
+  ],
+  "detail_note": "3.0-Proは複雑なレイアウト・文字描画を重視する旗艦。2.1系は7Bの生成部・透過対応を持つ別用途の系統として掲載。",
+  "availability_tier": "general",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "happyhorse-1-1-t2v",
+  "name": "HappyHorse 1.1 T2V",
+  "category": "video",
+  "series": "Alibaba HappyHorse t2v",
+  "org": "Alibaba",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "テキストから動画を作る音声付きモデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model",
+  "sources": [
+   "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "HappyHorse 1.0 T2V"
+  ],
+  "context_note": "480P〜1080P、3〜15秒、24fps。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "happyhorse-1-1-i2v",
+  "name": "HappyHorse 1.1 I2V",
+  "category": "video",
+  "series": "Alibaba HappyHorse i2v",
+  "org": "Alibaba",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "画像から動画を作る音声付きモデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model",
+  "sources": [
+   "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "HappyHorse 1.0 I2V"
+  ],
+  "context_note": "480P〜1080P、3〜15秒、24fps。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "happyhorse-1-1-r2v",
+  "name": "HappyHorse 1.1 R2V",
+  "category": "video",
+  "series": "Alibaba HappyHorse r2v",
+  "org": "Alibaba",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "参照から動画を作る音声付きモデル。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model",
+  "sources": [
+   "https://docs.modelstudio.console.alibabacloud.com/en/model-studio/video-generate-edit-model"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "HappyHorse 1.0 R2V"
+  ],
+  "context_note": "480P〜1080P、3〜15秒、24fps。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "agnes-video-2-5",
+  "name": "Agnes Video 2.5",
+  "category": "video",
+  "series": "Agnes Video standard",
+  "org": "Sapiens AI（Agnes AI）",
+  "country": "SG",
+  "release": null,
+  "access": "api",
+  "summary_ja": "音声・画像等の参照を用いる動画生成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "720P $0.025/秒、1080P $0.040/秒、2K $0.055/秒。",
+  "hf": "https://wiki.agnes-ai.com/en/docs/pricing.md",
+  "sources": [
+   "https://wiki.agnes-ai.com/en/docs/pricing.md",
+   "https://github.com/AgnesAI-Labs/skills/blob/main/agnes-ai-models/references/model_catalog.md"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "agnes-video-2-5-flash",
+  "name": "Agnes Video 2.5 Flash",
+  "category": "video",
+  "series": "Agnes Video Flash",
+  "org": "Sapiens AI（Agnes AI）",
+  "country": "SG",
+  "release": null,
+  "access": "api",
+  "summary_ja": "音声・画像等の参照を用いる動画生成。高速版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "720Pの期間限定無料プロモーション。終了条件は公式で確認。",
+  "hf": "https://wiki.agnes-ai.com/en/docs/pricing.md",
+  "sources": [
+   "https://wiki.agnes-ai.com/en/docs/pricing.md",
+   "https://github.com/AgnesAI-Labs/skills/blob/main/agnes-ai-models/references/model_catalog.md"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "pixverse-v6",
+  "name": "PixVerse V6",
+  "category": "video",
+  "series": "PixVerse standard",
+  "org": "PixVerse / AIsphere",
+  "country": "CN",
+  "release": "2026-03-30",
+  "access": "api",
+  "summary_ja": "ネイティブ音声付きの動画生成。参照生成など複数のワークフローに対応。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.platform.pixverse.ai/changelog-2394996m0",
+  "sources": [
+   "https://docs.platform.pixverse.ai/changelog-2394996m0"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "PixVerse V5.6"
+  ],
+  "detail_note": null,
+  "availability_tier": "general"
+ },
+ {
+  "id": "pixverse-v6-max",
+  "name": "PixVerse V6 Max",
+  "category": "video",
+  "series": "PixVerse Max",
+  "org": "PixVerse / AIsphere",
+  "country": "CN",
+  "release": null,
+  "access": "api",
+  "summary_ja": "ネイティブ音声付きの動画生成。MaxモードはT2V・I2Vに対応。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.platform.pixverse.ai/changelog-2394996m0",
+  "sources": [
+   "https://docs.platform.pixverse.ai/changelog-2394996m0"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "Maxの10/22は公式ドキュメントの対応追加日。初提供日と断定しない。",
+  "availability_tier": "general",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "utopai-x",
+  "name": "Utopai X",
+  "category": "video",
+  "series": "Utopai video",
+  "org": "Utopai Studios",
+  "country": "US",
+  "release": "2026-09-30",
+  "access": "api",
+  "summary_ja": "映画制作向けの映像生成。PAI内でショットや参照を管理して利用する。",
+  "availability_ja": "PAIサービス内で利用。一般向けAPIの提供は確認できていない。",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.utopaistudios.com/en/pai/utopai-x",
+  "sources": [
+   "https://www.utopaistudios.com/en/pai/utopai-x",
+   "https://www.utopaistudios.com/en/blog/introducing-the-all-new-pai-and-utopai-x"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": []
+ },
+ {
+  "id": "p-video-2",
+  "name": "P-Video-2",
+  "category": "video",
+  "series": "Pruna Video standard",
+  "org": "Pruna AI",
+  "country": "DE",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Prunaの動画生成。テキスト・画像・音声条件から生成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.api.pruna.ai/guides/models/p-video-2",
+  "sources": [
+   "https://docs.api.pruna.ai/guides/models/p-video-2",
+   "https://docs.api.pruna.ai/terms"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "P-Video"
+  ],
+  "context_note": "Proは5〜15秒、480P／768Pからの高解像度アップスケール。通常版は最大20秒・1080P。",
+  "detail_note": "speed／quality／cost、draft等の推論設定は同じモデルの設定としてまとめる。",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "p-video-2-pro",
+  "name": "P-Video-2 Pro",
+  "category": "video",
+  "series": "Pruna Video Pro",
+  "org": "Pruna AI",
+  "country": "DE",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Prunaの動画生成。MiniMax H3を基にした高品質版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.api.pruna.ai/guides/models/p-video-2-pro",
+  "sources": [
+   "https://docs.api.pruna.ai/guides/models/p-video-2-pro",
+   "https://docs.api.pruna.ai/terms"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "P-Video Pro"
+  ],
+  "context_note": "Proは5〜15秒、480P／768Pからの高解像度アップスケール。通常版は最大20秒・1080P。",
+  "detail_note": "speed／quality／cost、draft等の推論設定は同じモデルの設定としてまとめる。",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "grok-imagine-video-1-5-lite",
+  "name": "Grok Imagine Video 1.5 Lite",
+  "category": "video",
+  "series": "xAI Grok Imagine Video Lite",
+  "org": "xAI / SpaceXSI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "テキスト・画像から音声付き動画を作る低価格版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "出力480P $0.02/秒、720P $0.03/秒、1080P $0.14/秒。入力画像等は別課金。",
+  "hf": "https://docs.x.ai/developers/models/grok-imagine-video-1.5-lite",
+  "sources": [
+   "https://docs.x.ai/developers/models/grok-imagine-video-1.5-lite",
+   "https://docs.x.ai/developers/model-capabilities/video/overview"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "context_note": "最大15秒。1080Pは720Pからアップスケール。",
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "recraft-v4-1-flash",
+  "name": "Recraft V4.1 Flash",
+  "category": "image",
+  "series": "Recraft Flash",
+  "org": "Recraft",
+  "country": "GB",
+  "release": "2026-09-23",
+  "access": "api",
+  "summary_ja": "デザイン・ブランド素材向けの画像生成。高速版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.recraft.ai/blog/meet-recraft-v4-1-flash",
+  "sources": [
+   "https://www.recraft.ai/about",
+   "https://www.recraft.ai/blog/meet-recraft-v4-1-flash",
+   "https://www.recraft.ai/docs"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "米国で創業し、英国ロンドンに本社。無料・有料プランの出力条件は公式を確認。"
+ },
+ {
+  "id": "qwen-audio-3-1-asr-flash",
+  "name": "Qwen-Audio-3.1-ASR-Flash",
+  "category": "asr",
+  "series": "Alibaba Qwen Audio ASR 録音",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-09-21",
+  "access": "api",
+  "summary_ja": "Qwenの録音向け音声認識。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Audio-3.0-ASR-Flash"
+  ],
+  "ja_note": "公式対応言語に日本語を明記。",
+  "detail_note": "話者分離等の機能は録音・Streaming・Messageで異なる。各版の対応表を確認。",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "qwen-audio-3-1-asr-flash-streaming",
+  "name": "Qwen-Audio-3.1-ASR-Flash-Streaming",
+  "category": "asr",
+  "series": "Alibaba Qwen Audio ASR ストリーミング",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-09-21",
+  "access": "api",
+  "summary_ja": "Qwenのストリーミング向け音声認識。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Audio-3.0-ASR-Flash-streaming"
+  ],
+  "ja_note": "公式対応言語に日本語を明記。",
+  "detail_note": "話者分離等の機能は録音・Streaming・Messageで異なる。各版の対応表を確認。",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "qwen-audio-3-1-asr-flash-message",
+  "name": "Qwen-Audio-3.1-ASR-Flash-Message",
+  "category": "asr",
+  "series": "Alibaba Qwen Audio ASR 音声メッセージ",
+  "org": "Alibaba Qwen",
+  "country": "CN",
+  "release": "2026-09-21",
+  "access": "api",
+  "summary_ja": "Qwenの音声メッセージ向け音声認識。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+  "sources": [
+   "https://www.alibabacloud.com/help/en/model-studio/asr-model/",
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [
+   "Qwen-Audio-3.0-ASR-Flash-message"
+  ],
+  "ja_note": "公式対応言語に日本語を明記。",
+  "detail_note": "話者分離等の機能は録音・Streaming・Messageで異なる。各版の対応表を確認。",
+  "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
+ },
+ {
+  "id": "speechmatics-melia-1",
+  "name": "Speechmatics Melia 1",
+  "category": "asr",
+  "series": "Speechmatics Melia",
+  "org": "Speechmatics",
+  "country": "GB",
+  "release": "2026-06-17",
+  "access": "api",
+  "summary_ja": "複数言語が混じる録音・ライブ音声を一続きに認識する。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://docs.speechmatics.com/speech-to-text/models",
+  "sources": [
+   "https://docs.speechmatics.com/speech-to-text/models",
+   "https://docs.speechmatics.com/speech-to-text/languages",
+   "https://www.speechmatics.com/company/articles-and-news/introducing-melia-multilingual-speech-to-text-model"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "日本語を含む55以上の言語。languageはmultiを指定し、autoは使用不可。",
+  "detail_note": "Standard／Enhancedとは機能・用途が異なる系列。独自辞書や一部の分析機能には制約がある。"
+ },
+ {
+  "id": "nano-banana-pro",
+  "name": "Nano Banana Pro",
+  "category": "image",
+  "series": "Google Nano Banana Pro",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "複雑なレイアウト・4K素材向けのPro版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://ai.google.dev/gemini-api/docs/models",
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/models",
+   "https://ai.google.dev/gemini-api/docs/image-generation"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "通常のNano Banana 2.1と役割が異なる。公式の現行モデル一覧でPro／Liteを別提供している。"
+ },
+ {
+  "id": "nano-banana-lite",
+  "name": "Nano Banana 2 Lite",
+  "category": "image",
+  "series": "Google Nano Banana Lite",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "低価格・低遅延の画像生成・編集向けLite版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://ai.google.dev/gemini-api/docs/models",
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/models",
+   "https://ai.google.dev/gemini-api/docs/image-generation"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "通常のNano Banana 2.1と役割が異なる。公式の現行モデル一覧でPro／Liteを別提供している。"
+ },
+ {
+  "id": "luma-uni-1-1",
+  "name": "Luma Uni-1.1",
+  "category": "image",
+  "series": "Luma Uni standard",
+  "org": "Luma AI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "推論と画像生成・自然言語編集を統合した標準版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://lumalabs.ai/news/uni-1-1-api",
+  "sources": [
+   "https://lumalabs.ai/news/uni-1-1-api",
+   "https://lumalabs.ai/legal/training-content-summary-uni"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "API名uni-1／uni-1-maxと表示名を別モデルとして二重計上しない。",
+  "release_note": "公式API発表は5/5、別の公式資料はuni-1の1.1への切り替えを5/11と記録。初提供日は未確定。"
+ },
+ {
+  "id": "luma-uni-1-1-max",
+  "name": "Luma Uni-1.1 Max",
+  "category": "image",
+  "series": "Luma Uni max",
+  "org": "Luma AI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "推論と画像生成・自然言語編集を統合した高品質版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "hf": "https://lumalabs.ai/news/uni-1-1-api",
+  "sources": [
+   "https://lumalabs.ai/news/uni-1-1-api",
+   "https://lumalabs.ai/legal/training-content-summary-uni"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "API名uni-1／uni-1-maxと表示名を別モデルとして二重計上しない。",
+  "release_note": "公式API発表は5/5、別の公式資料はuni-1の1.1への切り替えを5/11と記録。初提供日は未確定。"
+ },
+ {
+  "id": "recraft-v4-1-standard",
+  "name": "Recraft V4.1",
+  "category": "image",
+  "series": "Recraft standard",
+  "org": "Recraft",
+  "country": "GB",
+  "release": "2026-05-14",
+  "access": "api",
+  "summary_ja": "デザイン向けの美的な構図を重視する画像生成。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.035/生成画像。モデル・出力形式・操作で課金が異なる。",
+  "hf": "https://www.recraft.ai/pricing?tab=api",
+  "sources": [
+   "https://www.recraft.ai/pricing?tab=api",
+   "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+   "https://www.recraft.ai/about"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "米国で創業、英国ロンドン本社。Vector・Stylesは別の出力／用途の提供。"
+ },
+ {
+  "id": "recraft-v4-1-pro",
+  "name": "Recraft V4.1 Pro",
+  "category": "image",
+  "series": "Recraft Pro",
+  "org": "Recraft",
+  "country": "GB",
+  "release": null,
+  "access": "api",
+  "summary_ja": "デザイン向けの美的な構図を重視する画像生成。 高品質のPro版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.21/生成画像。モデル・出力形式・操作で課金が異なる。",
+  "hf": "https://www.recraft.ai/pricing?tab=api",
+  "sources": [
+   "https://www.recraft.ai/pricing?tab=api",
+   "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+   "https://www.recraft.ai/about"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "米国で創業、英国ロンドン本社。Vector・Stylesは別の出力／用途の提供。"
+ },
+ {
+  "id": "recraft-v4-1-utility",
+  "name": "Recraft V4.1 Utility",
+  "category": "image",
+  "series": "Recraft Utility",
+  "org": "Recraft",
+  "country": "GB",
+  "release": "2026-05-14",
+  "access": "api",
+  "summary_ja": "デザイン向けの簡素な構図・均一な照明を重視するUtility版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.035/生成画像。モデル・出力形式・操作で課金が異なる。",
+  "hf": "https://www.recraft.ai/pricing?tab=api",
+  "sources": [
+   "https://www.recraft.ai/pricing?tab=api",
+   "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+   "https://www.recraft.ai/about"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "米国で創業、英国ロンドン本社。Vector・Stylesは別の出力／用途の提供。"
+ },
+ {
+  "id": "recraft-v4-1-utility-pro",
+  "name": "Recraft V4.1 Utility Pro",
+  "category": "image",
+  "series": "Recraft Utility Pro",
+  "org": "Recraft",
+  "country": "GB",
+  "release": null,
+  "access": "api",
+  "summary_ja": "デザイン向けの簡素な構図・均一な照明を重視するUtility版。 高品質のPro版。",
+  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
+  "price_note": "$0.21/生成画像。モデル・出力形式・操作で課金が異なる。",
+  "hf": "https://www.recraft.ai/pricing?tab=api",
+  "sources": [
+   "https://www.recraft.ai/pricing?tab=api",
+   "https://www.recraft.ai/blog/recraft-v4-1-more-beautiful-by-nature",
+   "https://www.recraft.ai/about"
+  ],
+  "verified_at": "2026-11-01",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "detail_note": "米国で創業、英国ロンドン本社。Vector・Stylesは別の出力／用途の提供。"
  }
 ]

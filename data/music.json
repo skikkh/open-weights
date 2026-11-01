@@ -1049,7 +1049,7 @@
  {
   "id": "suno-v6",
   "access": "api",
-  "name": "Suno v6（v6 / v6-wild / v6-mini）",
+  "name": "Suno v6",
   "org": "Suno",
   "country": "US",
   "release": "2026-09-09",
@@ -1062,9 +1062,8 @@
    "a2m"
   ],
   "spec": {
-   "max_duration_s": null,
-   "sample_rate": null,
-   "other": "テキスト・音声・画像・動画から生成。セクション単位の自然言語編集、歌詞1行の差し替え、自作曲のマッシュアップ、リフのサンプリング/楽器分離。v6=安定志向、v6-wild=意外性重視、v6-mini=高速・無料"
+   "max_duration_s": 480,
+   "other": "各版とも最大8分。v6・wildはPro／Premier向け、miniは全プラン。公式の一般APIは未提供。"
   },
   "features": {
    "日本語歌詞": true,
@@ -1079,28 +1078,9 @@
   "rec_vram_gb": null,
   "vram_note": "クラウドAPI/サービスのため自前GPU不要",
   "speed_note": "非公表",
-  "price_note": "公式料金（年払い時の月額）: Free $0（50クレジット/日、v6-miniのみ、DL不可、商用不可）/ Pro $8（2,500クレジット/月、DL 20曲/月、v6・v6-wild、商用可）/ Premier $24（10,000クレジット/月、DL 60曲/月、Suno Studio）。月払いはPro $10・Premier $30との報道。一般向けの公式APIは未提供",
-  "bench": [
-   {
-    "metric": "Artificial Analysis Music Arena ボーカル Elo",
-    "value": 1147,
-    "note": "1位（v6-mini=1130で2位）。2026-10-25取得",
-    "source": "https://artificialanalysis.ai/music/leaderboard/vocals"
-   },
-   {
-    "metric": "Artificial Analysis Music Arena インスト Elo",
-    "value": 1148,
-    "note": "1位。2026-10-20取得",
-    "source": "https://artificialanalysis.ai/music/leaderboard/instrumental"
-   },
-   {
-    "metric": "WildSongBench SongBench Avg",
-    "value": 6.5562,
-    "note": "YuE2開発チーム評価。同評価ではSuno v5（6.8721）の方が高い",
-    "source": "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md"
-   }
-  ],
-  "quality_note": "AA Music Arena v1.1（1,000プロンプト・17ジャンル・採用評価者のブラインド投票）でボーカル・インストとも1位。一方YuE2チームのWildSongBenchではv6がv5を下回るなど評価系で順位は変わる。旧モデル（v4〜v5.5）は順次退役",
+  "price_note": "v6・wildはPro／Premier、miniは全プラン。プラン料金・商用権は公式を確認。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
   "ja_note": "公式の対応言語一覧は今回確認できず。HeartMuLa論文の日本語ベンチでSuno v5（PER 0.35）・v4.5（0.29）が評価対象になっており、前世代で日本語歌唱が可能なことは確認できる。v6の日本語の定量評価は未確認",
   "license": "サービス利用規約（Suno）",
   "commercial": "conditional",
@@ -1111,7 +1091,7 @@
    "モバイルアプリ",
    "Suno Studio（Premier）"
   ],
-  "summary_ja": "音楽アリーナで首位の商用音楽生成サービスの最新版。プロンプトから歌もの・インストを作り、部分編集やマッシュアップもできる。",
+  "summary_ja": "Sunoの標準モデル。安定した生成・編集向け。",
   "best_for_ja": "最高品質の歌もの・インストをすぐ作りたい人（商用利用はPro以上）。",
   "supersedes": [
    "Suno v5.5",
@@ -1119,23 +1099,144 @@
    "Suno v4.5"
   ],
   "sources": [
-   "https://suno.com/pricing",
-   "https://help.suno.com/en/categories/550145-rights-ownership",
-   "https://datanorth.ai/news/suno-launches-v6-v6-wild-and-v6-mini",
-   "https://alphasignal.ai/news/artificial-analysis-music-arena-v1-1-crowns-suno-v6-across-1-000-harder-prompts",
-   "https://artificialanalysis.ai/music/leaderboard/vocals",
-   "https://artificialanalysis.ai/music/leaderboard/instrumental",
-   "https://huggingface.co/datasets/m-a-p/WildSongBench/blob/main/benchmark/results.md",
-   "https://arxiv.org/abs/2601.10547"
+   "https://help.suno.com/en/articles/13924801",
+   "https://help.suno.com/en/articles/13924737",
+   "https://suno.com/pricing"
   ],
   "confidence": "medium",
   "rank": 15,
-  "pick": "API で最高品質",
-  "pick_reason": "AA Music Arena 1位",
-  "hl": {
-   "label": "AA Arena",
-   "value": 1147
-  }
+  "verified_at": "2026-11-01",
+  "series": "Suno standard",
+  "availability_ja": "Web・アプリのサービス。一般向け公式APIは未提供。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "suno-v6-wild",
+  "access": "api",
+  "name": "Suno v6-wild",
+  "org": "Suno",
+  "country": "US",
+  "release": "2026-09-09",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 480,
+   "other": "各版とも最大8分。v6・wildはPro／Premier向け、miniは全プラン。公式の一般APIは未提供。"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "ステム/トラック分離出力": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "v6・wildはPro／Premier、miniは全プラン。プラン料金・商用権は公式を確認。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": "公式の対応言語一覧は今回確認できず。HeartMuLa論文の日本語ベンチでSuno v5（PER 0.35）・v4.5（0.29）が評価対象になっており、前世代で日本語歌唱が可能なことは確認できる。v6の日本語の定量評価は未確認",
+  "license": "サービス利用規約（Suno）",
+  "commercial": "conditional",
+  "license_note": "無料プランの曲は個人・非商用のみ（収益化不可）。Pro/Premier加入中に作った曲は商用利用・配信可（加入前の無料曲には遡及しない）。自作歌詞の権利は本人に帰属。DL数に月間上限。v6はWarner Music・BMG・Believe/TuneCoreとの提携下で開発（WMGは2025-11に訴訟和解）だが、学習データ全体の内訳は非公開。著作権の扱いは地域で異なり、権利侵害リスクは利用者側",
+  "hf": "https://suno.com/pricing",
+  "tools": [
+   "Webアプリ",
+   "モバイルアプリ",
+   "Suno Studio（Premier）"
+  ],
+  "summary_ja": "意外な展開・ジャンル混合を重視する実験的な版。",
+  "best_for_ja": "最高品質の歌もの・インストをすぐ作りたい人（商用利用はPro以上）。",
+  "supersedes": [
+   "Suno v5.5",
+   "Suno v5",
+   "Suno v4.5"
+  ],
+  "sources": [
+   "https://help.suno.com/en/articles/13924801",
+   "https://help.suno.com/en/articles/13924737",
+   "https://suno.com/pricing"
+  ],
+  "confidence": "medium",
+  "rank": 15,
+  "verified_at": "2026-11-01",
+  "series": "Suno wild",
+  "availability_ja": "Web・アプリのサービス。一般向け公式APIは未提供。",
+  "availability_tier": "general"
+ },
+ {
+  "id": "suno-v6-mini",
+  "access": "api",
+  "name": "Suno v6-mini",
+  "org": "Suno",
+  "country": "US",
+  "release": "2026-09-09",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "song",
+   "instrumental",
+   "edit",
+   "a2m"
+  ],
+  "spec": {
+   "max_duration_s": 480,
+   "other": "各版とも最大8分。v6・wildはPro／Premier向け、miniは全プラン。公式の一般APIは未提供。"
+  },
+  "features": {
+   "日本語歌詞": true,
+   "ボーカル生成": true,
+   "インスト生成": true,
+   "参照音源から生成": true,
+   "部分編集": true,
+   "ステム/トラック分離出力": true,
+   "商用利用（条件付き含む）": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "クラウドAPI/サービスのため自前GPU不要",
+  "speed_note": "非公表",
+  "price_note": "v6・wildはPro／Premier、miniは全プラン。プラン料金・商用権は公式を確認。",
+  "bench": [],
+  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
+  "ja_note": "公式の対応言語一覧は今回確認できず。HeartMuLa論文の日本語ベンチでSuno v5（PER 0.35）・v4.5（0.29）が評価対象になっており、前世代で日本語歌唱が可能なことは確認できる。v6の日本語の定量評価は未確認",
+  "license": "サービス利用規約（Suno）",
+  "commercial": "conditional",
+  "license_note": "無料プランの曲は個人・非商用のみ（収益化不可）。Pro/Premier加入中に作った曲は商用利用・配信可（加入前の無料曲には遡及しない）。自作歌詞の権利は本人に帰属。DL数に月間上限。v6はWarner Music・BMG・Believe/TuneCoreとの提携下で開発（WMGは2025-11に訴訟和解）だが、学習データ全体の内訳は非公開。著作権の扱いは地域で異なり、権利侵害リスクは利用者側",
+  "hf": "https://suno.com/pricing",
+  "tools": [
+   "Webアプリ",
+   "モバイルアプリ",
+   "Suno Studio（Premier）"
+  ],
+  "summary_ja": "軽量・高速で、無料プランでも利用できる版。",
+  "best_for_ja": "最高品質の歌もの・インストをすぐ作りたい人（商用利用はPro以上）。",
+  "supersedes": [
+   "Suno v5.5",
+   "Suno v5",
+   "Suno v4.5"
+  ],
+  "sources": [
+   "https://help.suno.com/en/articles/13924801",
+   "https://help.suno.com/en/articles/13924737",
+   "https://suno.com/pricing"
+  ],
+  "confidence": "medium",
+  "rank": 15,
+  "verified_at": "2026-11-01",
+  "series": "Suno mini",
+  "availability_ja": "Web・アプリのサービス。一般向け公式APIは未提供。",
+  "availability_tier": "general"
  },
  {
   "id": "mureka-v9-5",
@@ -1222,7 +1323,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1107
-  }
+  },
+  "series": "Mureka flagship",
+  "availability_tier": "general"
  },
  {
   "id": "lyria-3-5",
@@ -1300,7 +1403,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1053
-  }
+  },
+  "series": "Google Lyria flagship",
+  "availability_tier": "general"
  },
  {
   "id": "eleven-music-v2-5",
@@ -1376,7 +1481,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1015
-  }
+  },
+  "series": "ElevenLabs Music",
+  "availability_tier": "general"
  },
  {
   "id": "stable-audio-3-large",
@@ -1446,7 +1553,9 @@
   "hl": {
    "label": "AA Arena",
    "value": 1014
-  }
+  },
+  "series": "Stability Audio Large",
+  "availability_tier": "general"
  },
  {
   "id": "udio",
@@ -1500,6 +1609,8 @@
    "https://www.musicbusinessworldwide.com/warner-music-settles-udio-lawsuit-strikes-licensing-deal-with-ai-platform/"
   ],
   "confidence": "low",
-  "rank": 20
+  "rank": 20,
+  "series": "Udio Allegro",
+  "availability_tier": "general"
  }
 ]
