@@ -177,7 +177,7 @@
   "commercial": "conditional",
   "license_note": "ライセンスは重みの公開時に確定。K3 と同じなら、年商2,000万ドル超の MaaS 事業者は別契約が必要。",
   "hf": null,
-  "summary_ja": "Kimi K3 に追加学習を重ねた後継で、AA Intelligence Index（v5）は46とオープン系では最上位級です。いまは API だけで、重みは11月4日までに公開予定です。",
+  "summary_ja": "Kimi K3 に追加学習を重ねた後継で、AA Intelligence Index（v5）は46.5とオープン系では最上位級です。いまは API だけで、重みは11月4日までに公開予定です。",
   "strengths": [
    "coding",
    "agent",
@@ -196,13 +196,13 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式ブログの自己申告: Terminal-Bench 4.0 65.7%、Kimi Code Bench 3.0 Long-horizon 61.2%（K3 は55.95%）、BenchCAD 92.7%、ハルシネーション率8.3%（K3 は23.4%）。サイバー関連データを除いて学習したと説明。AA指数は API 版の値。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では55）。",
-  "aa_index": 46.0,
+  "bench_note": "公式ブログの自己申告: Terminal-Bench 4.0 65.7%、Kimi Code Bench 3.0 Long-horizon 61.2%（K3 は55.95%）、BenchCAD 92.7%、ハルシネーション率8.3%（K3 は23.4%）。サイバー関連データを除いて学習したと説明。AA指数は API 版の値。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では55）。",
+  "aa_index": 46.5,
   "japanese_note": "日本語の評価は未確認。",
   "deploy_note_ja": "公式は「3T級」とだけ説明し、AA は総パラメータ2.8T としている。K3 と同じ規模なら公式重みは約1.5TB級で、1ノードに載せるには8×B300級が必要。",
   "engines": [],
   "supersedes": [],
-  "notes": "API のモデル名は kimi-k3.1-pro（2〜3倍速い kimi-k3.1-pro-highspeed もある）。思考モードは常時オン。重みが公開されたら status を外し、Kimi K3 を supersedes に移す。 2026-10-31時点でHFのmoonshotaiに K3.1 のリポジトリはなく、重みは未公開（公開予定日は変更なし）。",
+  "notes": "API のモデル名は kimi-k3.1-pro（2〜3倍速い kimi-k3.1-pro-highspeed もある）。思考モードは常時オン。重みが公開されたら status を外し、Kimi K3 を supersedes に移す。 2026-10-31時点でHFのmoonshotaiに K3.1 のリポジトリはなく、重みは未公開（公開予定日は変更なし）。 2026-11-04 09時（日本時間）時点でもHFのmoonshotaiにK3.1のリポジトリはなく、重みは未公開。公式の公開予定（11月4日まで）は変更の告知なし。次回も確認。",
   "sources": [
    "https://www.kimi.ai/blog/kimi-k3-1-pro",
    "https://www.kimi.com/code/docs/en/kimi-code/models.html",
@@ -423,8 +423,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では45.1）。",
-  "aa_index": 32.5,
+  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では45.1）。",
+  "aa_index": 32.6,
   "japanese_note": "V4系の日本語評価は未確認。旧世代DeepSeek-V3.2はNejumi Leaderboard 4（2026/3/6版）で総合0.7888（全体18位）という参考値がある。",
   "deploy_note_ja": "公式重みは約510GB（FP8とFP4の混在）。8×H200や4×GB300/B300で1ノード。SGLang公式cookbookにGB300/H200/B200/B300/MI350X向けレシピがある（当面はプレビュー版Dockerイメージが必要）。unslothのGGUFはUD-Q2_K_XL 約335GB、UD-IQ1_S 約233GBで512GB級Macが現実的な下限。MLX版（mlx-community oQ系）もある。",
   "engines": [
@@ -1311,8 +1311,8 @@
    "long-context"
   ],
   "bench": {},
-  "bench_note": "AA Intelligence Index v4.3.2は公式モデルカード・AA公開ページで44（丸め値）。旧版の41.1と区別。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では44）。",
-  "aa_index": 29.5,
+  "bench_note": "AA Intelligence Index v4.3.2は公式モデルカード・AA公開ページで44（丸め値）。旧版の41.1と区別。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では44）。",
+  "aa_index": 29.6,
   "japanese_note": "多言語の日本語性能について、この新版固有の独立評価は未確認。",
   "deploy_note_ja": "公式配布は約574GB。SGLang・vLLM向け手順あり。ネイティブ文脈はconfig上262,144トークン、最大約1Mは拡張設定を使用。旧版の量子化ファイル・実測速度はこの版には流用していない。",
   "engines": [
@@ -1521,8 +1521,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（ベンダー自己申告）。HLEはツールなし。ほかにTerminal-Bench 4.0 38.1、DeepSWE v1.1 73.7、OSWorld 2.0 61.7、Agents' Last Exam 29.6、NL2Repo-Bench 61.2、CyberGym 82.2、BankerToolBench 76.2、CharXiv RQ 82.5。AA指数v4.3.2（2026-10-25確認）は43で、プレビュー時の42.7と同水準（AAのページはまだ重み非公開の扱い）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では42.7）。",
-  "aa_index": 28.9,
+  "bench_note": "公式モデルカード（ベンダー自己申告）。HLEはツールなし。ほかにTerminal-Bench 4.0 38.1、DeepSWE v1.1 73.7、OSWorld 2.0 61.7、Agents' Last Exam 29.6、NL2Repo-Bench 61.2、CyberGym 82.2、BankerToolBench 76.2、CharXiv RQ 82.5。AA指数v4.3.2（2026-10-25確認）は43で、プレビュー時の42.7と同水準（AAのページはまだ重み非公開の扱い）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では42.7）。",
+  "aa_index": 29.1,
   "japanese_note": "M3.1-Flash自体の日本語評価は未確認。",
   "deploy_note_ja": "公式重み（約252GB、DSparkドラフト2.3GB込み）は4×B300などで動き、vLLM・SGLangは公開日から対応。GGUFはunslothのUD-IQ3_S 約175GBで256GB級機、UD-Q4_K_XL 約249GBで512GB級Mac。MLXのText 3bit/4bit版（約186GB/248GB、テキストのみ）もある。",
   "engines": [
@@ -2081,8 +2081,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（reasoning effort=xhigh）。terminal_bench2はTerminal-Bench 2.1（Terminus 2）の値。HLEはHLE-Diamond（ツールなし）26.1、HLE（ツールあり）61.0で、通常のHLE（ツールなし）値は未公表のためnull。ほかにOSWorld Verified 80.4、MCP-Atlas 89.2、DeepSWE 1.1 60。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはArtificial Analysis Intelligence Index v4.3.2（2026-10-20時点）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では38.9）。",
-  "aa_index": 24.7,
+  "bench_note": "公式モデルカード（reasoning effort=xhigh）。terminal_bench2はTerminal-Bench 2.1（Terminus 2）の値。HLEはHLE-Diamond（ツールなし）26.1、HLE（ツールあり）61.0で、通常のHLE（ツールなし）値は未公表のためnull。ほかにOSWorld Verified 80.4、MCP-Atlas 89.2、DeepSWE 1.1 60。SWE-bench Verified、AIME、LCB、MMLU-Proは未公表。aa_indexはArtificial Analysis Intelligence Index v4.3.2（2026-10-20時点）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では38.9）。",
+  "aa_index": 24.9,
   "japanese_note": "100以上の言語のデータで学習したとあるが、日本語の個別評価は公表されていない。",
   "deploy_note_ja": "公式NVFP4版（約533GB）でもVRAM 700GB以上が必要で、Blackwell 8GPUの1ノード（8×B200等）が目安。BF16（約1.6TB、公式表記は約2TB）は複数ノードが必要。公式にはMac Studio（M5 Ultra 512GB）2台をつないだMLX実行に最適化されている。Unsloth/ggml-orgのGGUF、mlx-communityの3bit/4bit版がある。",
   "engines": [
@@ -3450,7 +3450,7 @@
    "browsecomp": 84.5
   },
   "bench_note": "公式ブログ・モデルカードの自己申告（reasoning_effort=high）: Terminal-Bench 4.0 41%（プレビューの28%から13pt向上）、FrontierCode 2.0 19.7%、AA Coding Agent Index 48%（GLM-5.3とほぼ同点でトークン47%減）、AA Cyber Index 51%、FinWorkBench 73.3%、BrowseComp 84.5%。SWE-bench Verified・GPQA・HLE・AIME・LCB・MMLU-Proは未公表。aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得、High設定。Mediumは23.1）。プレビュー時のv4.3.2の値は38。",
-  "aa_index": 26.0,
+  "aa_index": 26.1,
   "japanese_note": "160以上の言語で学習し、モデルカードの対応言語に日本語（ja）を明記。日本語の独立評価は未確認。",
   "deploy_note_ja": "公式FP8は約1,061GBで、8×H200（131Kトークン文脈）や8×B200級の1ノードが目安。Blackwell向けの公式NVFP4版は約610GB。llama.cppのQ2_K（約381GB）は512GBのMac Studio（M3 Ultra）1台で生成15 tok/s、prefill 約90 tok/s（HFブログ）。Unslothの最小1bit版（約233GB）は256GB機やDGX Spark 2台に載る。投機デコード用のDSparkドラフトヘッドを同梱。",
   "engines": [
@@ -6012,8 +6012,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカードの自己申告（思考は最大、preserve_thinking=true）。Terminal-Bench 2.1 80.9、Terminal-Bench 4.0 23.8、DeepSWE 65.5、SWE-Bench Pro 60.3、GDPval 84.8、AA-LCR 84.0、AIME 2026 95.2。比較相手は Qwen3.8-27B・Muse-Glimmer-30B・Gemma4-31B。Artificial Analysis は未計測（2026-10-26 時点）。",
-  "aa_index": null,
+  "bench_note": "モデルカードの自己申告（思考は最大、preserve_thinking=true）。Terminal-Bench 2.1 80.9、Terminal-Bench 4.0 23.8、DeepSWE 65.5、SWE-Bench Pro 60.3、GDPval 84.8、AA-LCR 84.0、AIME 2026 95.2。比較相手は Qwen3.8-27B・Muse-Glimmer-30B・Gemma4-31B。 aa_indexはAA Intelligence Index v5.0（2026-11-04取得、思考ありの既定表示）の値。",
+  "aa_index": 20.4,
   "japanese_note": "公式の対応言語は英語と中国語で、日本語の評価は公開されていない。",
   "deploy_note_ja": "BF16 で約66GB。4bit（Q4_K_M 約21GB）なら RTX 4090 / 5090 や GPU に24GB以上使える Mac に載る。公開翌日から bartowski などの GGUF、NVFP4、EXL3、MLX 版が出ている。",
   "local_runtimes": [

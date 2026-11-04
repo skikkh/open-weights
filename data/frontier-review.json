@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-01",
+ "as_of": "2026-11-04",
  "scope_ja": "AA各ページの既定埋め込みテーブル。LLMは既定表示の非公開モデル、ASRはホスト重複を除外。画像・動画・TTS・音楽は旧版を含む全行。全世界のモデルやAA全LLMフィルターの網羅を意味しない。",
  "boards": [
   {
@@ -7,84 +7,84 @@
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "rows": 15,
-   "snapshot_sha256": "c9d1d85bb33e575cfcf573b55cddb463ee2f1f3775daaf479cd6f837957351db"
+   "snapshot_sha256": "23c92b431aa2659f96d6183458aac523700da00d8d6c98ca799159aaab80d0c8"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
    "rows": 106,
-   "snapshot_sha256": "76e6c1caf01b51a1cc196b24b8f7677534f8e6b18cac89d3cf9f67a0296a9a97"
+   "snapshot_sha256": "be95e6f12c2fdb2df8baa3c8b129d0660f0d21c46f40ebfe8ba93e3315a66016"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
    "rows": 77,
-   "snapshot_sha256": "0d10029229fe57ba9deadc05822c5bc3dbe5c2d6a7c7f3f4a2acc8ea9c0a902d"
+   "snapshot_sha256": "1a6db6153ae00a3eec7d4eb00a8b70d4aeccba6f3eb69e5db6cbd99c758704ab"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "rows": 36,
-   "snapshot_sha256": "8007df1aff942de7084652ce8f8478942baa3c7d9ec7c21bf792de1a0a7f372d"
+   "snapshot_sha256": "c17c1af191c767d42927eeb4dffe5ec92cc60d44ce1dd9cb3fe1697625b78895"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
    "rows": 33,
-   "snapshot_sha256": "0f743207029b5139a20fac26b0a4ed433befec440efc72b4f8b51737f00e4963"
+   "snapshot_sha256": "35a09f2ae2dd8d2671ca19fe8efe7b1ca7c96e07e963924bf5f8ad4b02b9a98a"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
-   "rows": 100,
-   "snapshot_sha256": "e045357b9391be1981067895c0a632c6142c9b9581cc6c8765bcad19359ffe65"
+   "rows": 103,
+   "snapshot_sha256": "43d2239e9b4d3a0e0cb25ed1829e449a0dfd76e10185091689d4aa99098e27d0"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 49,
-   "snapshot_sha256": "0696dd2e745241d097a55c72463d3944d7357c947845c3e4c9470579dcd28d32"
+   "snapshot_sha256": "ff332ce3d671450770c740cb6afb27679b18434464a43c3f6bd9dd380112ca3c"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 57,
-   "snapshot_sha256": "45ae4b68da0f5d7608ad33477b0e37bf78f2ee65ba0e649e614778eb5a62d785"
+   "snapshot_sha256": "7bfde5ef7d2ecf96461633c229bc50100f4861e439a5ee98420645dae9039291"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 30,
-   "snapshot_sha256": "ae5132138d17131cefda6c11086953b75f6e77adc3acd8456d0caa9fa23871c0"
+   "snapshot_sha256": "689978a0ea496631a5dfefc1011a8b2585eace8555e19f3555c920ae054ae3ec"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 13,
-   "snapshot_sha256": "4c34aaee7152b75005c37a359a977c9e8d90663be5107d1d8936b310e80a5041"
+   "snapshot_sha256": "d95740e1c52040f92b646a3fc88343e7931bf79a4674034ab9b6121dc5a25b76"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "24fc0d54a550be9807ec2db543feeb90ec7b1e4ee80d4dd59e5f9759b9bd1ad6"
+   "snapshot_sha256": "d9213c81a430d186d649391a55244e7dd2d93fbd9005fd7212f4e9d3a610a6cd"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
    "rows": 35,
-   "snapshot_sha256": "401c316e789cd0d5e630cd4dc548c91f558fcfa1214fcb837a11d6635758ac78"
+   "snapshot_sha256": "0db5f2d1bb9774496e4b5657a75c749984a4593b4c03a3deaf8b4d1c8cce87af"
   }
  ],
  "candidates": [
@@ -6238,6 +6238,99 @@
     "https://docs.typesafe.ai/models",
     "https://forkast.news/typesafe-ais-jev-is-not-an-llm-and-that-may-be-the-point/"
    ]
+  },
+  {
+   "category": "asr",
+   "name": "Ink-2",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "cartesia-ink-2"
+   ],
+   "reason": "2026-11-04に追加。公式モデル表で日本語対応・Stableを確認。初公開日は英語版発表と多言語版が異なるためnull。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://docs.cartesia.ai/build-with-cartesia/stt-models",
+    "https://cartesia.ai/pricing"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Coda v2",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "2026-11-04にAAで新規確認（AA掲載日10/22）。Rime公式変更履歴ではオンプレ版v2の更新（10/28）は確認できたが、Coda全体の日本語対応がv2クラウド版にも当てはまるか・料金・一般提供日は未確認。次回追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.rime.ai/docs/changelog.md",
+    "https://docs.rime.ai/docs/voices.md"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Gradium TTS (Oct 2026)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "2026-11-04にAAで新規確認（Sep 2026版の更新）。公式資料の対応言語は英・仏・独・西・葡の5言語で日本語なし。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://gradium.ai/content/best-multilingual-tts-apis-2026"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Phonon 31M (English)",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "2026-11-04にAAで新規確認。Gradiumの英語専用の公開重みモデル（HF gradium/phonon-31m-en、AA上は非商用）。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://huggingface.co/gradium/phonon-31m-en"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Rime Prism",
+   "boards": [],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "2026-10-28に公式変更履歴で提供開始。対応は英語・4声のみ。",
+   "sources": [
+    "https://docs.rime.ai/docs/changelog.md"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LongCat-2.5-Preview",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "美団のAPI限定プレビュー（第三者情報では9/25）。公式発表・料金・日本語対応・重み公開を一次情報で未確認。重み公開版のLongCat-2.0は公開側に掲載中。",
+   "sources": [
+    "https://www.nocode.mba/ai-release-tracker/releases/longcat-2-5-preview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Rosalind Research",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "生命科学向けの限定アクセス版との報道（10/30ごろ）。OpenAI公式ページで名称・提供条件を未確認。汎用LLMの一般提供ではないため現行行を作らない。",
+   "sources": [
+    "https://www.all-ai.de/news/news26top/openai-gpt-6-rosalind"
+   ]
   }
  ],
  "follow_up_ja": "要確認は掲載確定を意味しない。次の3日ごとの更新で一次情報を追跡する。既定LLM15件は全件に掲載先を記録。古い長尾モデル・専用サービスまで全仕様を検証したという主張はしない。",
@@ -6315,7 +6408,8 @@
   "recraft-v4-1-standard",
   "recraft-v4-1-pro",
   "recraft-v4-1-utility",
-  "recraft-v4-1-utility-pro"
+  "recraft-v4-1-utility-pro",
+  "cartesia-ink-2"
  ],
  "known_date_conflicts": [
   {

@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-01",
- "next_update": "2026-11-04",
+ "updated_at": "2026-11-04",
+ "next_update": "2026-11-07",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,15 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-04",
+   "items": [
+    "追加: Cartesia Ink-2（有料・音声認識）。公式モデル表で日本語対応・Stableを確認。初公開日は英語版発表と多言語版が異なるため未確定。",
+    "更新: AA Intelligence Index v5.0の最新値に合わせ、Kimi K3.1 Pro 46.5、DeepSeek V4.1 Flash 32.6、Ling-3.1-flash 29.6、MiniMax-M3.1-Flash 29.1、Mistral Large 4 26.1、Muse Spark Open 24.9。Nanbeige4.3-33Bに初計測の20.4を追加。",
+    "確認: Kimi K3.1 Proの重みは11/4朝時点でHF未公開のため予告のまま。主要開発元のHF新着に11/1以降の公式公開はなし。",
+    "保留: Rime Coda v2（v2の日本語対応・料金が未確認）、LongCat-2.5-Preview、GPT-6 Rosalind Research（公式情報未確認）。日本語対象外: Gradium TTS 10月版、Phonon 31M（英語専用）、Rime Prism。"
+   ]
+  },
   {
    "date": "2026-11-01",
    "items": [
@@ -156,7 +165,7 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0",
-   "as_of": "2026-10-31",
+   "as_of": "2026-11-04",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "note": "9種類の評価（AA-Briefcase、FrontierCode 2.0、Terminal-Bench 4.0、HLE-Diamond など）の合成点で、6割が非公開のテストで測られます。10月27日に v4.3 から改定され、旧版の点数とは比べられません。v5 でまだ測られていないモデルは空欄にしています。"
   },

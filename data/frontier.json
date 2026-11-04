@@ -2512,6 +2512,34 @@
   "detail_note": "Standard／Enhancedとは機能・用途が異なる系列。独自辞書や一部の分析機能には制約がある。"
  },
  {
+  "id": "cartesia-ink-2",
+  "name": "Ink-2",
+  "category": "asr",
+  "series": "Cartesia Ink STT",
+  "org": "Cartesia",
+  "country": "US",
+  "release": null,
+  "release_note": "英語版の発表は2026年5月（日付の記載なし）。日本語を含む多言語版は公式モデル表で2026-09-17。初公開日は未確定のためnull。",
+  "access": "api",
+  "summary_ja": "音声エージェント向けのストリーミング音声認識。",
+  "availability_ja": "Cartesia APIで提供中（Stable）。別に同じ言語のink-previewがある。",
+  "price_note": "音声1秒あたり3クレジット。Scaleプランで1時間あたり0.39米ドル。プランごとに月間の含まれる時間と超過料金（100万クレジットあたり38〜65米ドル）が異なる。",
+  "hf": "https://docs.cartesia.ai/build-with-cartesia/stt-models",
+  "sources": [
+   "https://docs.cartesia.ai/build-with-cartesia/stt-models",
+   "https://docs.cartesia.ai/changelog/2026",
+   "https://cartesia.ai/pricing"
+  ],
+  "verified_at": "2026-11-04",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "公式モデル表の対応言語は英・仏・ヒンディー・日・西の5言語。日本語の精度評価は未確認。",
+  "detail_note": "モデルIDはink-2。AAのASR一覧に系列名は出るが、英語WERを日本語精度として扱わない。旧ink-whisperとは別系統。",
+  "availability_tier": "general"
+ },
+ {
   "id": "nano-banana-pro",
   "name": "Nano Banana Pro",
   "category": "image",
