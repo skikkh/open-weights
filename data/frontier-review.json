@@ -1,90 +1,102 @@
 {
- "as_of": "2026-11-04",
- "scope_ja": "AA各ページの既定埋め込みテーブル。LLMは既定表示の非公開モデル、ASRはホスト重複を除外。画像・動画・TTS・音楽は旧版を含む全行。全世界のモデルやAA全LLMフィルターの網羅を意味しない。",
+ "as_of": "2026-11-05",
+ "scope_ja": "AAの12一覧を取得。今回はLLMの埋め込み全281設定（旧来の既定非公開15行より広い範囲）、ASRはホスト重複を除外。他カテゴリも旧版を含む。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "rows": 15,
-   "snapshot_sha256": "23c92b431aa2659f96d6183458aac523700da00d8d6c98ca799159aaab80d0c8"
+   "rows": 281,
+   "snapshot_sha256": "f0476d61684b3f29285151263e53909a30eb6fb921d38979a1352d825963a011",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
    "rows": 106,
-   "snapshot_sha256": "be95e6f12c2fdb2df8baa3c8b129d0660f0d21c46f40ebfe8ba93e3315a66016"
+   "snapshot_sha256": "46faf34ec5acb6503e777a36018a72d7328030d3e51d96fa3ae6416f407470b3",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
    "rows": 77,
-   "snapshot_sha256": "1a6db6153ae00a3eec7d4eb00a8b70d4aeccba6f3eb69e5db6cbd99c758704ab"
+   "snapshot_sha256": "f80c8ba2d32975e683c793c3b8f463455022d6bf8dcd866eafd63bb3e070c336",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "rows": 36,
-   "snapshot_sha256": "c17c1af191c767d42927eeb4dffe5ec92cc60d44ce1dd9cb3fe1697625b78895"
+   "snapshot_sha256": "4d02eb469c127fa0220984ccba52d7c4cecfe08cb4cf950c0981fa73e96a85a1",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "rows": 33,
-   "snapshot_sha256": "35a09f2ae2dd8d2671ca19fe8efe7b1ca7c96e07e963924bf5f8ad4b02b9a98a"
+   "rows": 36,
+   "snapshot_sha256": "08a3ba41128a424e16330ee53f3880537df1b5b7a03a50442472411393675c90",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
    "rows": 103,
-   "snapshot_sha256": "43d2239e9b4d3a0e0cb25ed1829e449a0dfd76e10185091689d4aa99098e27d0"
+   "snapshot_sha256": "1d65c50e7e0e0fb7f0b0ad5708671b6ded4c232c201d54503a585bb940c2cace",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 49,
-   "snapshot_sha256": "ff332ce3d671450770c740cb6afb27679b18434464a43c3f6bd9dd380112ca3c"
+   "snapshot_sha256": "a79953b0c88f9a2a997ed26d6c2f88bbac524df22d0f650d0fa799eab77c3571",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 57,
-   "snapshot_sha256": "7bfde5ef7d2ecf96461633c229bc50100f4861e439a5ee98420645dae9039291"
+   "snapshot_sha256": "e4742d40fbaab54060c65dd81aa93ac9bb6cc931e8eadc5585dc1425dcec8ab2",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 30,
-   "snapshot_sha256": "689978a0ea496631a5dfefc1011a8b2585eace8555e19f3555c920ae054ae3ec"
+   "snapshot_sha256": "6d25abf7825bb1d87bcd1e3516fa6f12494d932ab5d526b53b844fd4c909b92d",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 13,
-   "snapshot_sha256": "d95740e1c52040f92b646a3fc88343e7931bf79a4674034ab9b6121dc5a25b76"
+   "snapshot_sha256": "744156bd6e5794c441abefa108d3ec374125ee3322e6d45114a2981f0f36cb73",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "d9213c81a430d186d649391a55244e7dd2d93fbd9005fd7212f4e9d3a610a6cd"
+   "snapshot_sha256": "f784286179c9c5e991f60e8e3a8bfa140e62e7485dace8ec66a5cba31be21a5c",
+   "checked_at": "2026-11-05"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-   "rows": 35,
-   "snapshot_sha256": "0db5f2d1bb9774496e4b5657a75c749984a4593b4c03a3deaf8b4d1c8cce87af"
+   "rows": 36,
+   "snapshot_sha256": "33c88fc98fedc662267465f3b13e603d37d67523bfdb9830f51229ebe69499a6",
+   "checked_at": "2026-11-05"
   }
  ],
  "candidates": [
@@ -161,13 +173,19 @@
    ],
    "disposition": "掲載",
    "model_ids": [
+    "kimi-k3-1-pro",
     "kimi-k3-1-pro-api"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/5に公式配布ファイルを確認し公開済みに変更。APIの推論強度と別重みを混同しない。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
     "https://www.kimi.com/code/docs/en/",
-    "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+    "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+    "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+    "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE",
+    "https://huggingface.co/api/models/moonshotai/Kimi-K3.1-Pro?blobs=true",
+    "https://www.kimi.ai/blog/kimi-k3-1-pro",
+    "https://artificialanalysis.ai/models/kimi-k3-1-pro"
    ]
   },
   {
@@ -2404,7 +2422,8 @@
    "category": "video",
    "name": "MAGI-2 Preview",
    "boards": [
-    "video"
+    "video",
+    "video-image"
    ],
    "disposition": "掲載",
    "model_ids": [
@@ -3199,12 +3218,18 @@
    "boards": [
     "provider"
    ],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "公式ではFalcon 2.1が10/19に提供済み。日本語の版別対応を確認してから採用する。",
+   "disposition": "掲載",
+   "model_ids": [
+    "murf-falcon-2-1"
+   ],
+   "reason": "公式の後継はFalcon 2.1。Falcon 2.1の話者表でja-JPを確認。旧IDは2.1へ転送。",
    "sources": [
     "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
-    "https://murf.ai/api/docs/text-to-speech-models/falcon-2-1"
+    "https://murf.ai/api/docs/text-to-speech-models/falcon-2-1",
+    "https://murf.ai/api/docs/voices-styles/voice-library",
+    "https://murf.ai/api/docs/changelog",
+    "https://help.murf.ai/what-languages-is-voice-cloning-available-in",
+    "https://murf.ai/legal/impressum"
    ]
   },
   {
@@ -6262,13 +6287,20 @@
    "boards": [
     "provider"
    ],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "2026-11-04にAAで新規確認（AA掲載日10/22）。Rime公式変更履歴ではオンプレ版v2の更新（10/28）は確認できたが、Coda全体の日本語対応がv2クラウド版にも当てはまるか・料金・一般提供日は未確認。次回追跡。",
+   "disposition": "掲載",
+   "model_ids": [
+    "rime-coda-v2"
+   ],
+   "reason": "公式10/23発表・現行料金・言語表で日本語を確認し、11/5に保留を解消。発音辞書の6言語と音声出力の10言語を区別。",
    "sources": [
     "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
     "https://docs.rime.ai/docs/changelog.md",
-    "https://docs.rime.ai/docs/voices.md"
+    "https://docs.rime.ai/docs/voices.md",
+    "https://www.rime.ai/resources/coda-v2-phonemes",
+    "https://docs.rime.ai/docs/models",
+    "https://docs.rime.ai/docs/voices",
+    "https://www.rime.ai/pricing",
+    "https://www.rime.ai/terms"
    ]
   },
   {
@@ -6331,9 +6363,3853 @@
    "sources": [
     "https://www.all-ai.de/news/news26top/openai-gpt-6-rosalind"
    ]
+  },
+  {
+   "category": "llm",
+   "name": "JT-35B-Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 Omni Plus",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Omni (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 122B A10B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 12B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-sonnet-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 3 270M",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.1 (Low, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-1"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Apodex 1.1",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Sol (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-sol"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3.5 Flash-Lite",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Step 5 Preview",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "step-5-preview"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 2B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3 Omni 30B A3B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.2 3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Carbon (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-carbon"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Pro Preview (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Inkling (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "tml-inkling"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 397B A17B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.2 30B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ibm-granite-4-2-30b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon 7B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ifm-k2-horizon-7b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiMo-V2.6-Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mimo-v2-6-flash"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mistral Small 4 (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Solar Pro 4",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "solar-pro-4"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "gpt-oss-20b (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "openai-gpt-oss-20b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "o3",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K-EXAONE 2.0",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "lg-k-exaone-2-0"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GLM-5.3-Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "glm-5-3-flash"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "North Mini Code",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Astra (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-astra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Omni (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.0 Micro",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Haiku 5.5 (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-haiku-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Grok 4.7 (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-4-7"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 9B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 122B A10B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hermes 4 - Llama-3.1 70B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron 3 Nano 30B A3B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiMo-V2.6-Pro",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mimo-v2-6-pro"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Sonnet 5.5 (High, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-sonnet-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3 Next 80B A3B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Grok 4.7 (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "grok-4-7"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniMax-M3",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mistral Large 4 (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mistral-large-4"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3.5 Lightning",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Phi-4 Multimodal Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 9B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron Nano 9B V2 (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Command A+",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "cohere-command-a-plus"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "EXAONE 4.0 32B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "G9v3-3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 4B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 397B A17B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon 3.7B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Olmo 3 7B Think",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "HyperCLOVA X SEED Think (32B)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "HyperNova 60B 2605 (High, Based on gpt-oss-120b)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova Micro",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "EXAONE 4.5 33B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "lg-exaone-4-5-33b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 27B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-27b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Spark Open (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "meta-muse-spark-open"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "INTELLECT-3 (Based on GLM-4.5-Air)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "gpt-oss-20b (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "openai-gpt-oss-20b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Wonder (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-wonder"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Olmo 3.1 32B Think",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ai2-olmo-3-1-32b-think"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.1 (Medium, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-1"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Sol (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-sol"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Command A",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "cohere-command-a-plus"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2.5-VL-1.6B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "JT-MINI",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Molmo2-8B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mistral Small 4 (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 0.8B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Haiku 5.5 (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-haiku-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Haiku 5.5 (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-haiku-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ling-3.0-flash-VL",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniCPM-V 4.6 1.3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Opus 5.5 (Low, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-opus-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "EXAONE 4.0 32B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Sarvam 105B (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "sarvam-105b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 3.1 Instruct 405B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "JT-4.1 Flash 236B A21B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ring-flash-2.0",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2.5-1.2B-Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Apertus 70B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nanbeige4.3-33B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "nanbeige-4-3-33b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Doubao Seed Code",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "EXAONE 4.5 33B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "lg-exaone-4-5-33b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 E4B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ling 3.1 Flash 1019",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ling-3-1-flash-1019"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon MoVA 36B A4B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ifm-k2-horizon-mova-36b-a4b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.0 350M",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-v4-1-flash",
+    "deepseek-v4-1-flash-1017-api"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Glimmer (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Kimi Linear 48B A3B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Solar Open 100B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-5.3 Codex (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2.5-1.2B-Thinking",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Think V2",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LongCat 2.0",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "longcat-2-0"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 2B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Tri-21B-Think",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.0 H Small",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 3.2 Instruct 11B (Vision)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LongCat Flash Lite",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3.5 Bolt E4B 4GB (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Lite (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Solar Mini 4",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "solar-mini-4"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniCPM5-2B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 4B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 27B (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-27b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Motif-2-12.7B-Reasoning",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.6 35B A3B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-6-35b-a3b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ministral 3 3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Beam 1.0",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "reflection-beam-1-0"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hermes 4 - Llama-3.1 70B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ling-3.0-flash-Fin",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 26B A4B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-gemma-4-26b-a4b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron Nano 12B v2 VL (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 Omni Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Lite (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Magistral Small 1.2",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 26B A4B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-gemma-4-26b-a4b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ministral 3 14B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Inkling Small",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "tml-inkling-small"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3.8 Flash (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-flash"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 E2B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Sarvam 30B (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "sarvam-30b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mercury 2.5",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mercury-2-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Lite (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4 Flash Vision (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniCPM5-1B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Jamba 1.7 Large",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3.5 Bolt 74B-A9B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nanbeige4.1-3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 27B (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-27b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Solar Open2 250B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ling 3.0 Tiny",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Celeris-1",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Tiny Aya Global",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "A.X-K2",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "skt-ax-k2"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Exaone 4.0 1.2B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hermes 4 - Llama-3.1 405B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4 Pro 0813 (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-v4-pro-0813"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Magistral Medium 1.2",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.6 35B A3B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-6-35b-a3b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Apertus 8B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Kimi K2.7 Code",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 2.4T A95B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-2-4t-a95b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Olmo 3 7B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "JT-4.1 Flash 236B A21B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 4 Maverick",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Sol (Daybreak Blue, max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Olmo 3.1 32B Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ministral 3 8B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-sonnet-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 3.3 Instruct 70B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron Cascade 2 30B A3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "R1 1776",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8-Flash-Next",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-flash-next"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-1"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 3.2 Instruct 90B (Vision)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.1 (High, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-1"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon 0.9B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron 3 Nano 4B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Phi-4 Mini Instruct",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Pro Preview (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Sol (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-sol"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2-V2 (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Astra (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-astra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3 Deep Think",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "ERNIE 5.0 Thinking Preview",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ling 3.1 Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.0 H 350M",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.5 0.8B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Apriel-v1.6-15B-Thinker",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.7 Plus",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepHermes 3 - Mistral 24B Preview (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron Nano 12B v2 VL (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Step3 VL 10B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 4 Scout",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.2 8B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "ERNIE 4.5 300B A47B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Haiku 5.5 (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-haiku-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Molmo 7B-D",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3.8 27B (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-8-27b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Motif 3",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "motif-3"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 E2B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hy3",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Omni (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Carbon (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-carbon"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Jamba 1.7 Mini",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Trinity Large Thinking",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "arcee-trinity-large-thinking"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepHermes 3 - Llama-3.1 8B Preview (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3 Omni 30B A3B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon 375B A23B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ifm-k2-horizon-375b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-sonnet-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3.1 Pro Preview",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Luna (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-luna"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "G9v3-39A5B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "ai9stars-g9v3-39a5b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4.1 Flash 1017 (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-v4-1-flash",
+    "deepseek-v4-1-flash-1017-api"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DiffusionGemma 26B A4B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-diffusiongemma-26b-a4b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-5.5 Instant (June 2026)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Falcon-H1R-7B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3 Next 80B A3B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "gpt-oss-120b (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "openai-gpt-oss-120b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GLM-5.3 (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "glm-5-3"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 31B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-gemma-4-31b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GLM-5.3 (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "glm-5-3"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Llama 3.1 Nemotron Ultra 253B v1 (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 31B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-gemma-4-31b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hy4",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "tencent-hy4-api"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniCPM5-1B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Argon (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-argon"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hermes 4 - Llama-3.1 405B (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "MiniMax-M3.1-Flash",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-m3-1-flash"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-v4-pro-0813"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Exaone 4.0 1.2B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 E4B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2-V2 (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Granite 4.0 H 1B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Reka Flash 3",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mistral Medium 3.5",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mistral-medium-3-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2-V2 (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mi:dm K 2.5 Pro",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-opus-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Astra (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-astra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2.5-2.6B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2.5-8B-A1B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nemotron 3.5 Super VL",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-5.5 Pro (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova Premier",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Sol (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-sol"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Astra (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-astra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.1 Terra (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.1-terra"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mistral Large 4 (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mistral-large-4"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Cogito v2.1 (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Opus 5.5 (Medium, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-opus-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ring-2.6-1T",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Phi-4",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "gpt-oss-120b (High)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "openai-gpt-oss-120b"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "DeepSeek V4.1 Flash 1017 (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-v4-1-flash",
+    "deepseek-v4-1-flash-1017-api"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "NVIDIA Nemotron Nano 9B V2 (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Opus 5.5 (High, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-opus-5-5"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Agnes 2.5 Pro Beta",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Pro Preview (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 3.8 Flash (Low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-3-8-flash"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Jamba Reasoning 3B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Quasar 438B (Max, Based on GLM-5.2)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM2 24B A2B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Nova 2.0 Lite (Medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "KAT Coder Pro V2",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen3 Coder Next",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen3-coder-next"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemma 4 12B (Reasoning)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/5にAAの候補として取得。過去版・設定違いも含むため、新しい公開と断定せず一次情報を追跡。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "HiDream-O1-Video-1.0",
+   "boards": [
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AA I2Vの追加を確認。正確な版別の一般提供・公式仕様を確認できず保留。評価追加をモデルの初公開とみなさない。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Ray 3.2",
+   "boards": [
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "luma-ray3-2"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GLiDE v1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "現行v1.2へ集約。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "GLiDE v1.2",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "fastino-glide"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Falcon 2.1",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "murf-falcon-2-1"
+   ],
+   "reason": "公式10/19提供開始と日本語話者を確認し保留を解消。Enterpriseのクローン条件も区別。",
+   "sources": [
+    "https://murf.ai/api/docs/text-to-speech-models/falcon-2-1",
+    "https://murf.ai/api/docs/voices-styles/voice-library",
+    "https://murf.ai/api/docs/changelog",
+    "https://help.murf.ai/what-languages-is-voice-cloning-available-in",
+    "https://murf.ai/legal/impressum"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "ZEN-TTS",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "zen-tts"
+   ],
+   "reason": "国内の公式重み配布を補完。4話者選択式でクローン機能なし。改変・再配布等の制限を明記。",
+   "sources": [
+    "https://github.com/zenryokukikai/zen-tts",
+    "https://github.com/zenryokukikai/zen-tts/blob/main/LICENSE.md",
+    "https://prtimes.jp/main/html/rd/p/000000020.000052416.html"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Ripple-65B Preview",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "ripple-65b-preview"
+   ],
+   "reason": "11/4の公式重みを確認。65BのDenseなので40B以下のローカル枠に入れない。NVFP4の実ファイル容量を掲載。",
+   "sources": [
+    "https://www.ricursive.com/ripple",
+    "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+    "https://huggingface.co/ricursiveAI/Ripple-65B-Preview-NVFP4",
+    "https://huggingface.co/api/models/ricursiveAI/Ripple-65B-Preview-NVFP4?blobs=true"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Genie 4",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "google-genie-4"
+   ],
+   "reason": "10/27発表の限定研究プレビュー。一般向けAPIやUltraの提供済みとは扱わない。",
+   "sources": [
+    "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+    "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Hy-Image-3.5 Preview",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "hunyuan-image-3-5-preview-api"
+   ],
+   "reason": "公式の現行モデル表で提供を確認して補完。提供版・速度重視版を分離。",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130051"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Seedream 5.0 Flash",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "seedream-5-0-flash"
+   ],
+   "reason": "公式の現行モデル表で提供を確認して補完。提供版・速度重視版を分離。",
+   "sources": [
+    "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-release?lang=zh",
+    "https://docs.volcengine.com/docs/ark/seedream-5-0-pro?lang=en",
+    "https://cloud.tencent.com/document/product/1823/130051"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "WAND-Vega-Image-1.0 Lite／Flash／Pro",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "TokenHubに現行の提供を確認。開発元の版別公式資料・初公開日・後継関係を追加確認してから掲載する。ホストを開発元と推測しない。",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130051"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "WAND-Vega-Video-1.0 Lite",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "TokenHubに現行の提供を確認。開発元の版別公式資料・初公開日・後継関係を追加確認してから掲載する。ホストを開発元と推測しない。",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130051"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Kling-Image-v3／v3-omni",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "TokenHubに現行の提供を確認。開発元の版別公式資料・初公開日・後継関係を追加確認してから掲載する。ホストを開発元と推測しない。",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130051"
+   ]
   }
  ],
- "follow_up_ja": "要確認は掲載確定を意味しない。次の3日ごとの更新で一次情報を追跡する。既定LLM15件は全件に掲載先を記録。古い長尾モデル・専用サービスまで全仕様を検証したという主張はしない。",
+ "follow_up_ja": "次回11/7も全カテゴリを確認。Hy4正式版の重み、HiDream-O1-Video-1.0の公式提供、Qwen AudioGen／Melodia／LongCat-2.5-Previewを追跡。要確認は最新モデルとしての掲載確定を意味しない。",
  "added_model_ids": [
   "gemini-4-carbon",
   "muse-wonder",
@@ -6409,7 +10285,15 @@
   "recraft-v4-1-pro",
   "recraft-v4-1-utility",
   "recraft-v4-1-utility-pro",
-  "cartesia-ink-2"
+  "cartesia-ink-2",
+  "tencent-hy4-api",
+  "rime-coda-v2",
+  "murf-falcon-2-1",
+  "google-genie-4",
+  "zen-tts",
+  "ripple-65b-preview",
+  "hunyuan-image-3-5-preview-api",
+  "seedream-5-0-flash"
  ],
  "known_date_conflicts": [
   {

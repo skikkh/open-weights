@@ -643,13 +643,13 @@
     "source": "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model"
    },
    {
-    "metric": "Artificial Analysis Decision Index v1.0",
-    "value": 54,
-    "note": "API公開時の版。Microsoft-Decision-1と同点。When2Call 84、WildGuardTest 95",
-    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+    "metric": "AA Decision Index",
+    "value": 65.0,
+    "note": "v1.2、2026-11-05取得。",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
-  "quality_note": "V1.2はコミュニティのDecision Index 0.4.1で首位とされ、オープンな判断モデルで最上位級。ただし首位の主張はFastinoのモデルカードによるもので、AAなど第三者の新しい計測はまだない。公開時の版はAAでJev 1.13を下回っていた（54対58）",
+  "quality_note": "AA Decision Indexは65.0（v1.2、2026-11-05取得）。旧v1は53.9で、別の現行行にしない。日本語の品質を直接示す値ではない。",
   "ja_note": "言語の記載なし。日本語での精度は不明（基盤のQwen3.8は多言語LLM）",
   "license": "Fastino Community License",
   "commercial": "conditional",
@@ -670,7 +670,8 @@
    "https://docs.fastino.ai/concepts/glide",
    "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model",
    "https://benchlm.ai/models/fastino-glide",
-   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 7,

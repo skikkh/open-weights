@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04",
+ "updated_at": "2026-11-05",
  "next_update": "2026-11-07",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
@@ -13,6 +13,17 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-05",
+   "items": [
+    "公開確認: Kimi K3.1 Proの公式重み96ファイル（約1,561.3GB）を確認し、予告から公開済みに変更。旧K3と専用レシピ5件を除外し、旧版の量子化・実測値を引き継がない。重みの初公開日は月単位で表示。",
+    "追加: Ripple-65B Preview（米国、11/4、Apache-2.0）。公式NVFP4版は実ファイル約57.2GB。65Bなので大型LLMへ。",
+    "国内音声の補完: ZEN-TTS（日本、10/27発表、SDK 1.1.0）。4話者選択式でクローン機能なし。CPU／ブラウザ動作と独自ライセンスの制約を掲載。",
+    "有料側を補完: Hy4正式版API、Coda v2、Falcon 2.1、Genie 4。Hy4正式版の重み公開は未確認、Genie 4は限定研究プレビューと明記。 画像はHy-Image-3.5 PreviewとSeedream 5.0 Flashも補完。",
+    "更新: AA Indexをv5.0.1表記・11/5照合に更新。Ray3.2のI2V評価とGLiDE v1.2のDecision Indexを反映。AAの12一覧と主要33開発元のHF新着を確認。",
+    "確認範囲内では、国産LLM・ASR・公開S2S・音楽・3Dに追加確定の新しい新版なし。未確認候補は台帳へ残し、提供済みと推測しない。"
+   ]
+  },
   {
    "date": "2026-11-04",
    "items": [
@@ -164,10 +175,10 @@
  ],
  "leaderboards": [
   {
-   "name": "Artificial Analysis Intelligence Index v5.0",
-   "as_of": "2026-11-04",
+   "name": "Artificial Analysis Intelligence Index v5.0.1",
+   "as_of": "2026-11-05",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9種類の評価（AA-Briefcase、FrontierCode 2.0、Terminal-Bench 4.0、HLE-Diamond など）の合成点で、6割が非公開のテストで測られます。10月27日に v4.3 から改定され、旧版の点数とは比べられません。v5 でまだ測られていないモデルは空欄にしています。"
+   "note": "9評価の合成点。11/3のv5.0.1の表を11/5に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -202,10 +213,10 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Gemini 4 Carbon（AA v5で59.4）、Claude Opus 5.5（58.4）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.5）、Claude Sonnet 5.5（54.2）、GPT-6.1 Terra（51.0）、Gemini 4 Argon（50.4）、Meta Muse Wonder Full（49.7）、Qwen3.8 Max（33.6、API版）など。重みが出ているオープンの首位 DeepSeek V4.1 Flash 1017 は 32.5 で、クローズドの最上位とは約27点の差があります（重み公開待ちの Kimi K3.1 Pro は46）。",
+  "llm": "Gemini 4 Carbon（AA v5.0.1で60.0、限定提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-05取得）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
-  "tts": "ElevenLabs Eleven v4 / v4 Turbo、Google Gemini 3.8 Flash TTS・Chirp 3 HD、Azure AI Speech Neural HD（DragonHD）、OpenAI gpt-4o-mini-tts、Fish Audio S2.1 Pro API、Aivis Cloud API など。 Mistral Voxtral TTS 3（10/20 API Public Preview。日本語を含む多言語音声合成）。",
+  "tts": "Eleven v4／Turbo、Gemini 3.8 Flash TTS／Flash-Lite TTS、Sonic 3.6、Fish Audio Drama 3 API、Aivis Cloud API、Mistral Voxtral Mini TTS 3など。日本語対応を確認したCoda v2とFalcon 2.1も有料TTS一覧に掲載。",
   "s2s": "OpenAI GPT-Live-1（ChatGPT）・gpt-realtime-2・gpt-realtime-translate、Google Gemini Live 系、Alibaba Qwen3.5-Omni Plus / Flash（API）など。"
  },
  "footer": "各モデルの公式発表・Hugging Face・各種リーダーボードをもとにまとめています。数値は出典ごとに条件が違うので目安として使い、導入前に必ず公式情報とライセンスを確認してください。3日ごとに自動で更新しています。",

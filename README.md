@@ -8,4 +8,4 @@
 - ページの雛形: `site/template.html`
 - ビルド: `python3 scripts/build.py`（検証して `docs/index.html` を生成。GitHub Pages は `main` の `/docs` を配信）
 - 定期更新の手順: [UPDATE.md](UPDATE.md)（3日ごとに自動実行）
-- 最新の掲載調査: [AAとの照合・有料152件への補完](audits/2026-11-01-AA掲載漏れと定期更新.md)（確認範囲・保留理由も記録）
+- 最新の更新記録: [11月5日の即時更新](audits/2026-11-05-即時更新.md)（Kimi公開確認・8行の補完・確認範囲と保留理由）

@@ -1921,8 +1921,15 @@
   "rec_vram_gb": null,
   "vram_note": "API・サービス提供のみ",
   "speed_note": null,
-  "bench": [],
-  "quality_note": "AAの現行アリーナには未掲載。HDR/EXR出力やキーフレーム16枚など、ポスプロ向けの機能が独自の強み。音声は生成しない",
+  "bench": [
+   {
+    "metric": "AA I2V Elo（音声なし）",
+    "value": 822.9,
+    "note": "2026-11-05取得。英語中心の人手比較。",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "AA I2V（音声なし）の2026-11-05取得Eloは822.9。HDR/EXR等の編集機能とは別の評価で、日本語性能を示さない。",
   "ja_note": null,
   "license": "API / サービス（Luma利用規約）",
   "commercial": "conditional",
@@ -1939,7 +1946,8 @@
   "sources": [
    "https://lumalabs.ai/ray",
    "https://en.wikipedia.org/wiki/Luma_AI",
-   "https://pinggy.io/blog/best_video_generation_ai_models/"
+   "https://pinggy.io/blog/best_video_generation_ai_models/",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video"
   ],
   "confidence": "medium",
   "rank": 26,

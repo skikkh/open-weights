@@ -1646,5 +1646,47 @@
    "https://huggingface.co/FireRedTeam/FireRedTTS3"
   ],
   "voice_cloning_verified_at": "2026-11-01"
+ },
+ {
+  "id": "zen-tts",
+  "name": "ZEN-TTS（SDK 1.1.0・4話者）",
+  "org": "全力機械",
+  "country": "JP",
+  "release": "2026-10-27",
+  "params_m": null,
+  "arch": "G2P・韻律予測・NSFデコーダ（int8 / fp16、44.1kHz）",
+  "ja_support": "native",
+  "voice_cloning": "preset-only",
+  "voice_cloning_note": "配布済みのマリン・ハシロウ・カイ・キッカの4話者から選ぶ。公式READMEはボイスクローン機能なしと明記。別話者の作成は開発元への依頼。",
+  "voice_cloning_sources": [
+   "https://github.com/zenryokukikai/zen-tts"
+  ],
+  "voice_cloning_verified_at": "2026-11-05",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": true
+  },
+  "ja_metrics": [],
+  "quality_note": "日本語の共通品質ベンチマークは未確認。5感情の配合・文中遷移とアクセント編集に対応。 10/27はモデル・SDKの配布発表日で、現行SDK 1.1.0の更新日とは区別。",
+  "latency_note": "開発元公表: Xeon Silver 4316・CPU1スレッドのRTF 0.042、文単位ストリーミングの最初のチャンク約0.1秒。環境依存で、独立計測ではない。",
+  "hardware_note": "GPUサーバー不要。ブラウザのWebGPU／WASM SIMDとNode.jsのCPUで実行。声1つ約26.1MB＋共通G2P約4.99MB。",
+  "license": "ZEN-TTS License 1.0（独自ライセンス）",
+  "commercial": "conditional",
+  "license_note": "リンク付きクレジット表示が必須。ソース・重みの改変と再配布は禁止。ソース・重み・生成音声を他モデルの学習・蒸留・評価データに使うことも禁止。無料配布だがApache/MITのような許諾ではない。",
+  "hf": "https://github.com/zenryokukikai/zen-tts",
+  "summary_ja": "日本製の軽量TTS。配布された4話者の声で日本語を読み上げ、CPUやスマホのブラウザ内でも動かせる。",
+  "best_for_ja": "GPUを使わない日本語読み上げ、Webアバター、感情とアクセントを手で調整する用途",
+  "supersedes": [],
+  "sources": [
+   "https://github.com/zenryokukikai/zen-tts",
+   "https://github.com/zenryokukikai/zen-tts/blob/main/LICENSE.md",
+   "https://prtimes.jp/main/html/rd/p/000000020.000052416.html"
+  ],
+  "confidence": "high",
+  "rank": 32,
+  "release_note": "10/27の開発元発表でモデル・SDK配布を確認。SDKの最新表記1.1.0と、音声モデルの初公開日は区別する。"
  }
 ]
