@@ -1,102 +1,102 @@
 {
- "as_of": "2026-11-05",
- "scope_ja": "AAの12一覧を取得。今回はLLMの埋め込み全281設定（旧来の既定非公開15行より広い範囲）、ASRはホスト重複を除外。他カテゴリも旧版を含む。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
+ "as_of": "2026-11-07",
+ "scope_ja": "AAの12一覧を11/7に再取得し、埋め込みデータの公開日（releaseDate）と台帳の候補名を照合。11/2以降の日付を持つ行と台帳にない行を確認した。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "rows": 281,
-   "snapshot_sha256": "f0476d61684b3f29285151263e53909a30eb6fb921d38979a1352d825963a011",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "f6f140c9cd0d9eae22875ed8665866e50c7f8a816a659c15bddc395aaca335f7",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-   "rows": 106,
-   "snapshot_sha256": "46faf34ec5acb6503e777a36018a72d7328030d3e51d96fa3ae6416f407470b3",
-   "checked_at": "2026-11-05"
+   "rows": 108,
+   "snapshot_sha256": "d16b6e769e0c75e1a621b98419d48b107eb468f10a5baa77fe0d812e65d4aa7d",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
-   "rows": 77,
-   "snapshot_sha256": "f80c8ba2d32975e683c793c3b8f463455022d6bf8dcd866eafd63bb3e070c336",
-   "checked_at": "2026-11-05"
+   "rows": 79,
+   "snapshot_sha256": "7bfde334ede78db5773303fca072421d8e20dea85750805b97bb99733010a800",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "rows": 36,
-   "snapshot_sha256": "4d02eb469c127fa0220984ccba52d7c4cecfe08cb4cf950c0981fa73e96a85a1",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "fd597b6b1892ce93a95c42785cfc5ccc18bb7b65eb7ebf27e68c639aad8495bd",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "rows": 36,
-   "snapshot_sha256": "08a3ba41128a424e16330ee53f3880537df1b5b7a03a50442472411393675c90",
-   "checked_at": "2026-11-05"
+   "rows": 37,
+   "snapshot_sha256": "e330dd4b208678430e10e44b18fc4e9c3339f28275ed77fe2881ceae518f35ac",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
-   "rows": 103,
-   "snapshot_sha256": "1d65c50e7e0e0fb7f0b0ad5708671b6ded4c232c201d54503a585bb940c2cace",
-   "checked_at": "2026-11-05"
+   "rows": 104,
+   "snapshot_sha256": "977670e5d6857d0dc6c2935687b734c5e052968c3d2907f0f679bc7954cecd34",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 49,
-   "snapshot_sha256": "a79953b0c88f9a2a997ed26d6c2f88bbac524df22d0f650d0fa799eab77c3571",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "00da38cf873fac9ae2b6002de593463917dbc7c6da980be95384036254df8c47",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 57,
-   "snapshot_sha256": "e4742d40fbaab54060c65dd81aa93ac9bb6cc931e8eadc5585dc1425dcec8ab2",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "da39de8d30c69cf50fa02e1b8a54fa36a9cd536fa3639b7f777385db2c9ac723",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 30,
-   "snapshot_sha256": "6d25abf7825bb1d87bcd1e3516fa6f12494d932ab5d526b53b844fd4c909b92d",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "8c08f93b58d7f88d9c744c5b860ad4047b93116693385e95bb533a28e6bb9793",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 13,
-   "snapshot_sha256": "744156bd6e5794c441abefa108d3ec374125ee3322e6d45114a2981f0f36cb73",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "16f4a62bd9997cc312b448fdca1cc245ecf2ccfc7b03b39018e0dc5c661b7722",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "f784286179c9c5e991f60e8e3a8bfa140e62e7485dace8ec66a5cba31be21a5c",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "38c355e4f239c56b17407039958649322f15a49dd497374f7b59c5dcfa4afddf",
+   "checked_at": "2026-11-07"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
    "rows": 36,
-   "snapshot_sha256": "33c88fc98fedc662267465f3b13e603d37d67523bfdb9830f51229ebe69499a6",
-   "checked_at": "2026-11-05"
+   "snapshot_sha256": "c887560410290ed0c4ce195223f1dc7d6c348630b0e4749051a2a80b30be3ad0",
+   "checked_at": "2026-11-07"
   }
  ],
  "candidates": [
@@ -357,15 +357,14 @@
     "image",
     "editing"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-image-2-5-sunburst"
+    "gpt-image-2-6-sunburst"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/4提供開始の2.6に置換（OpenAI公式変更履歴）。2.5の評価値は2.6へ引き継がない。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-    "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
-    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -375,15 +374,14 @@
     "image",
     "editing"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-image-2-5-flare"
+    "gpt-image-2-6-flare"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/4提供開始の2.6に置換（OpenAI公式変更履歴）。2.5の評価値は2.6へ引き継がない。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-    "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
-    "https://developers.openai.com/api/reference/resources/images/methods/generate"
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -10207,9 +10205,132 @@
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130051"
    ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 2.6 Sunburst (max)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-image-2-6-sunburst"
+   ],
+   "reason": "OpenAI公式変更履歴で11/4提供開始、公式モデルページで料金を確認。AAのmax設定は品質設定であり別モデルにしない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://developers.openai.com/api/docs/changelog",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "GPT Image 2.6 Flare (max)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-image-2-6-flare"
+   ],
+   "reason": "OpenAI公式変更履歴で11/4提供開始、公式モデルページで料金を確認。AAのmax設定は品質設定であり別モデルにしない。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://developers.openai.com/api/docs/changelog",
+    "https://developers.openai.com/api/docs/models/gpt-image-2.6-flare"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Inkling 2 Small",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "tml-inkling-2-small"
+   ],
+   "reason": "11/5公式発表。Tinker経由で提供、重みは翌週Apache-2.0で公開予定のため予告として掲載。AA指数はTinker提供版の評価。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://thinkingmachines.ai/news/inkling-2-small/"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Simba 3.5",
+   "boards": [
+    "provider"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "simba-3-5"
+   ],
+   "reason": "AA各社の声一覧に追加（AA表記の公開日11/3）。公式変更履歴の提供開始10/18を維持し、AAの日付で初公開日を変えない。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
+    "https://docs.speechify.ai/build/changelog/2026/10/18"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6-Cyber",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-cyber"
+   ],
+   "reason": "OpenAI公式変更履歴（11/5）とモデルページで確認。Daybreak Redの承認が必要な限定提供として掲載。",
+   "sources": [
+    "https://developers.openai.com/api/docs/changelog",
+    "https://developers.openai.com/api/docs/models/gpt-6-cyber"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6 Rosalind",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "公式変更履歴（10/30）で信頼アクセス承認組織への限定提供を確認したが、公式モデルページ（gpt-6-rosalind）は11/7時点で404。料金・仕様を確認してから掲載する。",
+   "sources": [
+    "https://developers.openai.com/api/docs/changelog"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Vidu Q4 Preview",
+   "boards": [
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "vidu-q4-preview"
+   ],
+   "reason": "AAのI2V一覧に11/3追加（Elo 1028.4）。既存行に本体の値を反映。AAの公開日10/7とAA掲載日を混同しない。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Tencent Hy4",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "tencent-hy4-api"
+   ],
+   "reason": "AAのLLM一覧の表記名。既存のHy4正式版API行に統合。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
   }
  ],
- "follow_up_ja": "次回11/7も全カテゴリを確認。Hy4正式版の重み、HiDream-O1-Video-1.0の公式提供、Qwen AudioGen／Melodia／LongCat-2.5-Previewを追跡。要確認は最新モデルとしての掲載確定を意味しない。",
+ "follow_up_ja": "次回11/10も全カテゴリを確認。Inkling 2 Smallの重み公開（予定は11/9の週）、ERNIE 5.5 Flashの事後学習版、GPT-6 Rosalindのモデルページ、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodia／LongCat-2.5-Previewを追跡。",
  "added_model_ids": [
   "gemini-4-carbon",
   "muse-wonder",
@@ -10293,7 +10414,10 @@
   "zen-tts",
   "ripple-65b-preview",
   "hunyuan-image-3-5-preview-api",
-  "seedream-5-0-flash"
+  "seedream-5-0-flash",
+  "gpt-image-2-6-sunburst",
+  "gpt-image-2-6-flare",
+  "gpt-6-cyber"
  ],
  "known_date_conflicts": [
   {
@@ -10311,6 +10435,10 @@
   {
    "name": "Soniox TTS Realtime v2",
    "reason": "AAは8/12、公式変更履歴は8/11。8/11を採用。"
+  },
+  {
+   "name": "Simba 3.5",
+   "reason": "AAの公開日11/3と公式変更履歴の10/18が不一致。掲載は公式の10/18を維持。"
   }
  ]
 }

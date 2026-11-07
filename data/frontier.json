@@ -2909,5 +2909,31 @@
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "confidence": "high"
+ },
+ {
+  "id": "gpt-6-cyber",
+  "name": "GPT-6-Cyber",
+  "category": "llm",
+  "series": "OpenAI GPT Cyber",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2026-11-05",
+  "access": "api",
+  "summary_ja": "脆弱性の調査、許可された試験環境での再現、修正の検証に特化したセキュリティ業務向けモデル。",
+  "availability_ja": "限定提供：組織ごとのDaybreak Redアクセスと承認が必要。一般の開発者はそのまま利用できない。",
+  "price_note": "100万トークンあたり入力$20（キャッシュ$2）、出力$100。キャッシュ書き込みは保持30分で$25、12時間で$50（米ドル、公式モデルページ）。",
+  "detail_note": "汎用の旗艦（Astra等）とは用途が異なるため別系列として掲載。",
+  "context_note": "1,050,000トークン（入力は最大922,000）、最大出力128,000トークン。Chat Completions／Responsesのみ。",
+  "local_note": "一般向けの重み配布なし。API・サービスで利用。",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-6-cyber",
+  "sources": [
+   "https://developers.openai.com/api/docs/models/gpt-6-cyber",
+   "https://developers.openai.com/api/docs/changelog"
+  ],
+  "verified_at": "2026-11-07",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "supersedes": [],
+  "availability_tier": "limited"
  }
 ]

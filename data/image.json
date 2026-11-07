@@ -1383,12 +1383,12 @@
   "rank": 17
  },
  {
-  "id": "gpt-image-2-5-sunburst",
-  "name": "GPT Image 2.5 Sunburst",
+  "id": "gpt-image-2-6-sunburst",
+  "name": "GPT Image 2.6 Sunburst",
   "org": "OpenAI",
   "country": "US",
   "access": "api",
-  "release": "2026-09-08",
+  "release": "2026-11-04",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -1400,26 +1400,25 @@
   "spec": {
    "inputs": "テキスト・画像",
    "output": "画像",
-   "other": "Sunburstは品質重視、Flareは速度重視。quality設定だけの違いは別モデルとして増やさない。"
+   "other": "Sunburstは品質重視、Flareは対話的な生成・編集向けの速度重視。2.6でcomplexity設定、SVG出力、アニメーションGIF出力を追加。quality設定だけの違いは別モデルとして増やさない。"
   },
   "features": {
-   "複数ターン編集の一貫性": true,
-   "透過背景": true,
-   "参照写真の被写体保持": true,
-   "C2PA・不可視透かし": true
+   "SVG・アニメGIF出力": true,
+   "マークアップ指示の編集": true,
+   "complexity設定": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
-  "speed_note": "Flareは公式でImages 2.0比最大50%の低レイテンシ。Manusの評価ではGPT-Image-2の2〜4倍速。",
-  "price_note": "入力・出力画像トークン、サイズ・品質・枚数により変動。版別の公式料金を確認。",
+  "speed_note": "速度の公式数値は2.6のモデルページに記載なし。2.5 Flareの「Images 2.0比最大50%低レイテンシ」は2.6へ引き継がない。",
+  "price_note": "100万トークンあたり：テキスト入力$5（キャッシュ$1.25）、画像入力$8（キャッシュ$2）、画像出力$30（米ドル、公式モデルページ）。1枚あたりの料金はサイズ・品質・complexity設定で変動。",
   "bench": [],
-  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
-  "ja_note": "公式発表の作例に、日本語テキストを含むステッカー告知ポスターがある。前世代のChatGPT Images 2.0（2026年4月）で、日本語を含む非ラテン文字の描画精度が改善したと報じられている（PC Watch）。2.5の日本語精度を体系的に検証した結果は未確認。",
+  "quality_note": "AAの画像Arena（11/7取得）ではSunburst（max）が生成・編集とも首位級。英語中心のArena Eloで日本語の文字描画品質を示すものではない。 透過背景・C2PA等の2.5時点の機能は2.6の公式ページで個別に確認できていないため表示していない。",
+  "ja_note": "2.6で日本語テキスト描画を体系的に検証した公式資料は未確認。前世代の作例・報道は2.6の性能として扱わない。",
   "license": "API（OpenAI利用規約）",
   "commercial": "yes",
   "license_note": "OpenAIの規約上、出力の権利は利用者に帰属し、商用利用できる。コンテンツポリシーの制約あり。C2PAメタデータと不可視透かしが付与される。",
-  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
   "tools": [
    "OpenAI Images API",
    "ChatGPT",
@@ -1427,29 +1426,31 @@
    "Adobe Firefly",
    "Runway"
   ],
-  "summary_ja": "OpenAIの最新画像モデルで、2026年10月時点の総合首位。精密な編集と複数回の修正に強い。",
+  "summary_ja": "OpenAIの画像生成・編集の品質重視版（2.6）。2.5からcomplexity設定、SVG・アニメGIF出力、マークアップ指示の編集が加わった。",
   "best_for_ja": "品質最優先の広告・商品画像、細かな指示の部分編集",
   "supersedes": [
+   "GPT Image 2.5 Sunburst",
    "GPT Image 2",
    "GPT Image 1.5"
   ],
   "sources": [
-   "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst",
+   "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
+   "https://developers.openai.com/api/docs/changelog",
    "https://developers.openai.com/api/reference/resources/images/methods/generate"
   ],
   "confidence": "high",
   "rank": 18,
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-07",
   "series": "OpenAI GPT Image flagship",
   "availability_tier": "general"
  },
  {
-  "id": "gpt-image-2-5-flare",
-  "name": "GPT Image 2.5 Flare",
+  "id": "gpt-image-2-6-flare",
+  "name": "GPT Image 2.6 Flare",
   "org": "OpenAI",
   "country": "US",
   "access": "api",
-  "release": "2026-09-08",
+  "release": "2026-11-04",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -1461,26 +1462,25 @@
   "spec": {
    "inputs": "テキスト・画像",
    "output": "画像",
-   "other": "Sunburstは品質重視、Flareは速度重視。quality設定だけの違いは別モデルとして増やさない。"
+   "other": "Sunburstは品質重視、Flareは対話的な生成・編集向けの速度重視。2.6でcomplexity設定、SVG出力、アニメーションGIF出力を追加。quality設定だけの違いは別モデルとして増やさない。"
   },
   "features": {
-   "複数ターン編集の一貫性": true,
-   "透過背景": true,
-   "参照写真の被写体保持": true,
-   "C2PA・不可視透かし": true
+   "SVG・アニメGIF出力": true,
+   "マークアップ指示の編集": true,
+   "complexity設定": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
-  "speed_note": "Flareは公式でImages 2.0比最大50%の低レイテンシ。Manusの評価ではGPT-Image-2の2〜4倍速。",
-  "price_note": "入力・出力画像トークン、サイズ・品質・枚数により変動。版別の公式料金を確認。",
+  "speed_note": "速度の公式数値は2.6のモデルページに記載なし。2.5 Flareの「Images 2.0比最大50%低レイテンシ」は2.6へ引き継がない。",
+  "price_note": "100万トークンあたり：テキスト入力$5（キャッシュ$1.25）、画像入力$8（キャッシュ$2）、画像出力$30（米ドル、公式モデルページ）。1枚あたりの料金はサイズ・品質・complexity設定で変動。",
   "bench": [],
-  "quality_note": "版別の仕様・提供条件は公式資料を参照。旧行に束ねられていた別版の評価値は引き継がない。",
-  "ja_note": "公式発表の作例に、日本語テキストを含むステッカー告知ポスターがある。前世代のChatGPT Images 2.0（2026年4月）で、日本語を含む非ラテン文字の描画精度が改善したと報じられている（PC Watch）。2.5の日本語精度を体系的に検証した結果は未確認。",
+  "quality_note": "AAの画像Arena（11/7取得）ではSunburst（max）が生成・編集とも首位級。英語中心のArena Eloで日本語の文字描画品質を示すものではない。 透過背景・C2PA等の2.5時点の機能は2.6の公式ページで個別に確認できていないため表示していない。",
+  "ja_note": "2.6で日本語テキスト描画を体系的に検証した公式資料は未確認。前世代の作例・報道は2.6の性能として扱わない。",
   "license": "API（OpenAI利用規約）",
   "commercial": "yes",
   "license_note": "OpenAIの規約上、出力の権利は利用者に帰属し、商用利用できる。コンテンツポリシーの制約あり。C2PAメタデータと不可視透かしが付与される。",
-  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-image-2.6-flare",
   "tools": [
    "OpenAI Images API",
    "ChatGPT",
@@ -1488,19 +1488,21 @@
    "Adobe Firefly",
    "Runway"
   ],
-  "summary_ja": "OpenAIの最新画像モデルで、2026年10月時点の総合首位。精密な編集と複数回の修正に強い。",
-  "best_for_ja": "品質最優先の広告・商品画像、細かな指示の部分編集",
+  "summary_ja": "OpenAIの画像生成・編集の速度重視版（2.6）。対話的な試行錯誤向けで、SVG・アニメGIF出力とマークアップ指示の編集に対応。",
+  "best_for_ja": "素早い試作と日常的な画像編集",
   "supersedes": [
+   "GPT Image 2.5 Flare",
    "GPT Image 2",
    "GPT Image 1.5"
   ],
   "sources": [
-   "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare",
+   "https://developers.openai.com/api/docs/models/gpt-image-2.6-flare",
+   "https://developers.openai.com/api/docs/changelog",
    "https://developers.openai.com/api/reference/resources/images/methods/generate"
   ],
   "confidence": "high",
   "rank": 18,
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-07",
   "series": "OpenAI GPT Image fast",
   "availability_tier": "general"
  },

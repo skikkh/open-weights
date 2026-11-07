@@ -8193,5 +8193,119 @@
    "note_ja": "必要メモリ・対応環境は開発元の案内。実機速度の独立した計測は未確認。"
   },
   "q4_gb": 57.214
+ },
+ {
+  "id": "ernie-5-5-flash-base",
+  "name": "ERNIE-5.5-Flash-Base",
+  "short": "ERNIE 5.5 Flash Base",
+  "family": "ERNIE",
+  "org": "Baidu",
+  "country": "CN",
+  "release": "2026-11-05",
+  "arch": "MoE",
+  "total_b": 280,
+  "active_b": 14,
+  "native_precision": "FP8（BF16版も別リポジトリで配布）",
+  "weights_gb": 288.5,
+  "context_k": 1000,
+  "modality": [
+   "text"
+  ],
+  "mode": "base",
+  "license": "ERNIE 5.5 Flash Base Model License Agreement v1.0",
+  "commercial": "conditional",
+  "license_note": "利用地域はEU・英国・韓国を除く。非商用は無償。関連製品の年間売上5,000万米ドル以下の商用利用は、初回前の利用通知と「Powered by ERNIE」表示で可。超える場合は事前の書面許諾が必要。派生モデル・蒸留にも同ライセンスが及ぶ。",
+  "hf": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+  "summary_ja": "百度の280B（稼働14B）MoEの事前学習済みベースモデル。指示調整前のチェックポイントで、追加学習・研究の出発点向け。事後学習版は後日公開予定（日付未定）。",
+  "strengths": [
+   "efficiency",
+   "long-context",
+   "multilingual"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": 60.2,
+   "hle": null,
+   "aime": null,
+   "lcb": 40.1,
+   "mmlu_pro": 78.4,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式ブログのベースモデル評価（MMLU-Pro・GPQAは5-shot、LiveCodeBenchは1-shot）。MMLU 93.3、HumanEval+ 82.3、LongBench-v2 48.7。指示調整済みモデルの値と直接比べない。AA Indexは未掲載。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの言語表記は英語・中国語。日本語の評価は未確認。",
+  "deploy_note_ja": "公式FP8版は実ファイル合計約288.5GB、BF16版は約573GB。学習時文脈は128K、追加学習・推論で1Mに対応と説明。ベースモデルなのでチャット用途には指示調整が必要。量子化GGUFの実ファイルは未確認。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "notes": "HFのリポジトリ作成日は10/21だが、ライセンス・公式ブログの公開日は11/5。公開日は11/5とした。",
+  "sources": [
+   "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+   "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
+   "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base/blob/main/LICENSE",
+   "https://huggingface.co/api/models/baidu/ERNIE-5.5-Flash-Base?blobs=true",
+   "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16"
+  ],
+  "confidence": "high",
+  "q4_unverified": true
+ },
+ {
+  "id": "tml-inkling-2-small",
+  "name": "Inkling 2 Small",
+  "short": "Inkling 2 Small",
+  "family": "Inkling",
+  "org": "Thinking Machines Lab",
+  "country": "US",
+  "status": "announced",
+  "announced": "2026-11-05",
+  "release": "2026-11",
+  "arch": "MoE",
+  "total_b": 594,
+  "active_b": 17,
+  "native_precision": null,
+  "weights_gb": null,
+  "context_k": null,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0（公開予定）",
+  "commercial": "yes",
+  "license_note": "重みは外部の安全性試験の後、Apache-2.0で公開予定と公式発表。公開時に再確認する。",
+  "hf": null,
+  "summary_ja": "Thinking Machines Labの第2世代モデル（594B、稼働17B）。現在はTinker経由で利用でき、重みは発表翌週にApache-2.0で公開予定。画像入力に対応し、音声入力には非対応。",
+  "strengths": [
+   "coding",
+   "agent",
+   "reasoning",
+   "vision"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式発表（effort 0.99、温度1.0）: SWE-bench Pro v2 Hard 86.3%、DeepSWE v1.1 72.1%、FrontierCode v2.0 25.4%、HLE-Diamond 28.7%、MMMU Pro 81.6%。AA IndexはTinker提供版の評価（v5.0.1、11/7取得）で、公開重みの独立実測ではない。",
+  "aa_index": 30.6,
+  "japanese_note": "日本語の評価・対応の記載なし。",
+  "deploy_note_ja": "重みは未公開。594B規模のため、公開されてもBF16では複数GPUのサーバー級が必要。文脈長は公式に単一の値の記載なし（学習は512K／1M、AAの表記は1,024,000トークン）。",
+  "engines": [],
+  "supersedes": [],
+  "notes": "重みが公開されたら status を外し、旧Inkling-Smallとの置換関係を公式情報で確認する（現時点では後継と明記されていないため旧版を削除しない）。",
+  "sources": [
+   "https://thinkingmachines.ai/news/inkling-2-small/",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high"
  }
 ]
