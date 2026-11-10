@@ -1,102 +1,102 @@
 {
- "as_of": "2026-11-07",
- "scope_ja": "AAの12一覧を11/7に再取得し、埋め込みデータの公開日（releaseDate）と台帳の候補名を照合。11/2以降の日付を持つ行と台帳にない行を確認した。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
+ "as_of": "2026-11-10",
+ "scope_ja": "AAの12一覧を11/10に再取得。LLM・画像・動画・音楽は行名を、TTSは各行の名前を、S2S・判断モデルは埋め込みデータの行名を抽出して台帳の候補名と照合した（ASRは行名を構造化抽出できず、公開日の照合のみ）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "rows": 281,
-   "snapshot_sha256": "f6f140c9cd0d9eae22875ed8665866e50c7f8a816a659c15bddc395aaca335f7",
-   "checked_at": "2026-11-07"
+   "rows": 285,
+   "snapshot_sha256": "f6a9c8c95b691ae1438780ac07f226703c2d22b7e68e4b5129baccf58023df43",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-   "rows": 108,
-   "snapshot_sha256": "d16b6e769e0c75e1a621b98419d48b107eb468f10a5baa77fe0d812e65d4aa7d",
-   "checked_at": "2026-11-07"
+   "rows": 66,
+   "snapshot_sha256": "2e1dc00c3465688b9e7a8cf176f43a384db7c815ca55c9ba0e82dc4437f15c14",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
    "rows": 79,
-   "snapshot_sha256": "7bfde334ede78db5773303fca072421d8e20dea85750805b97bb99733010a800",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "ee107a92dd60bdf9cc3e4cf733be2e3e3b2947d9548ee0e52be4f4ae8cc5ae34",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "rows": 36,
-   "snapshot_sha256": "fd597b6b1892ce93a95c42785cfc5ccc18bb7b65eb7ebf27e68c639aad8495bd",
-   "checked_at": "2026-11-07"
+   "rows": 24,
+   "snapshot_sha256": "9a65411c39200dcf9ccad9991f7df5e18eea5934ec6a74090c10a9600741dde8",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "rows": 37,
-   "snapshot_sha256": "e330dd4b208678430e10e44b18fc4e9c3339f28275ed77fe2881ceae518f35ac",
-   "checked_at": "2026-11-07"
+   "rows": 34,
+   "snapshot_sha256": "94be0ace42ca5ee400d1f2e835547ffce85a5910219f6ada7074bb330786a0a7",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
    "rows": 104,
-   "snapshot_sha256": "977670e5d6857d0dc6c2935687b734c5e052968c3d2907f0f679bc7954cecd34",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "f0202f5440f3652d1499ccef4bd3819f0f7f6c06467fdc8e6be9493b28623822",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 49,
-   "snapshot_sha256": "00da38cf873fac9ae2b6002de593463917dbc7c6da980be95384036254df8c47",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "d7aac46c80ae0e881f5d7b2a899d7eb0fb10d466677495729ee99a26c7fa8dfc",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 57,
-   "snapshot_sha256": "da39de8d30c69cf50fa02e1b8a54fa36a9cd536fa3639b7f777385db2c9ac723",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "49a661aee44d9fe1756ec7b6e1ff5ff69cabac3ffb8db06a1c5d800db8123ff9",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
-   "rows": 30,
-   "snapshot_sha256": "8c08f93b58d7f88d9c744c5b860ad4047b93116693385e95bb533a28e6bb9793",
-   "checked_at": "2026-11-07"
+   "rows": 47,
+   "snapshot_sha256": "7df5f6aaa577e2d6807eddf58c37f0edf2dc690606369f669fdd46d71c4f8322",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 13,
-   "snapshot_sha256": "16f4a62bd9997cc312b448fdca1cc245ecf2ccfc7b03b39018e0dc5c661b7722",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "a19eb4a339178aa8d3b29cb14de02b65cc01c18b8e92db9581dbeb7178a28902",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "38c355e4f239c56b17407039958649322f15a49dd497374f7b59c5dcfa4afddf",
-   "checked_at": "2026-11-07"
+   "snapshot_sha256": "258f431bafe2dac623b4ea8ce94b2b61026962cab91a554e93837663005bef02",
+   "checked_at": "2026-11-10"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-   "rows": 36,
-   "snapshot_sha256": "c887560410290ed0c4ce195223f1dc7d6c348630b0e4749051a2a80b30be3ad0",
-   "checked_at": "2026-11-07"
+   "rows": 17,
+   "snapshot_sha256": "819e470641a19a0679e63ad4566fc4ee3a9c0c2f841506d241beb4467a8df4cd",
+   "checked_at": "2026-11-10"
   }
  ],
  "candidates": [
@@ -138,11 +138,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "claude-fable-5-1"
-   ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Claude Fable 5.2（11/9一般提供）に置換。5.1は旧モデル欄で当面提供継続。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
     "https://www.anthropic.com/claude/fable",
@@ -2330,11 +2328,9 @@
     "video",
     "video-image"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "gemini-omni-flash-1-1"
-   ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Gemini Omni 1.2 Flash（11/5一般提供）に置換。12/3から1.2へ自動転送。",
    "sources": [
     "https://artificialanalysis.ai/video/leaderboard/text-to-video",
     "https://ai.google.dev/gemini-api/docs/video",
@@ -4399,11 +4395,9 @@
    "boards": [
     "asr"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "soniox-v5-async"
-   ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Soniox v6（11/3）に置換。v5は12/15廃止。",
    "sources": [
     "https://artificialanalysis.ai/speech-to-text",
     "https://docs.soniox.com/stt/models",
@@ -5903,11 +5897,12 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "比較対象",
+   "disposition": "旧版",
    "model_ids": [],
-   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "reason": "判断専用モデル（前回の「LLMの評価設定」は誤り）。後継Celeris-1.1 Decision（11/5）を掲載。",
    "sources": [
-    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://celeris.ai/blog"
    ]
   },
   {
@@ -6024,11 +6019,12 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "比較対象",
+   "disposition": "要確認",
    "model_ids": [],
-   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "reason": "Nace.AIの判断専用モデル（前回の「LLMの評価設定」は誤り）。Drex Max v1.1と合わせて提供条件・料金を追跡。Drex 2.0は公開重みと案内されるが未確認。",
    "sources": [
-    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://www.nace.ai/drex"
    ]
   },
   {
@@ -6037,11 +6033,12 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "比較対象",
+   "disposition": "要確認",
    "model_ids": [],
-   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "reason": "Nace.AIの判断専用モデル（前回の「LLMの評価設定」は誤り）。Drex Max v1.1と合わせて提供条件・料金を追跡。Drex 2.0は公開重みと案内されるが未確認。",
    "sources": [
-    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://www.nace.ai/drex"
    ]
   },
   {
@@ -6050,11 +6047,12 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "比較対象",
+   "disposition": "要確認",
    "model_ids": [],
-   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "reason": "Nace.AIの判断専用モデル（前回の「LLMの評価設定」は誤り）。Drex Max v1.1と合わせて提供条件・料金を追跡。Drex 2.0は公開重みと案内されるが未確認。",
    "sources": [
-    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://www.nace.ai/drex"
    ]
   },
   {
@@ -6344,11 +6342,12 @@
    "category": "llm",
    "name": "LongCat-2.5-Preview",
    "boards": [],
-   "disposition": "要確認",
+   "disposition": "旧版",
    "model_ids": [],
-   "reason": "美団のAPI限定プレビュー（第三者情報では9/25）。公式発表・料金・日本語対応・重み公開を一次情報で未確認。重み公開版のLongCat-2.0は公開側に掲載中。",
+   "reason": "API限定プレビュー。正式版LongCat-2.5の重み公開を確認し、公開側の行に統合。",
    "sources": [
-    "https://www.nocode.mba/ai-release-tracker/releases/longcat-2-5-preview"
+    "https://www.nocode.mba/ai-release-tracker/releases/longcat-2-5-preview",
+    "https://huggingface.co/meituan-longcat/LongCat-2.5"
    ]
   },
   {
@@ -6461,11 +6460,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "claude-fable-5-1"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Claude Fable 5.2（11/9一般提供）に置換。5.1は旧モデル欄で当面提供継続。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -7325,11 +7322,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "claude-fable-5-1"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Claude Fable 5.2（11/9一般提供）に置換。5.1は旧モデル欄で当面提供継続。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -7805,13 +7800,12 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "longcat-2-0"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。 11/10に後継LongCat-2.5（重み公開）へ置換。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://huggingface.co/meituan-longcat/LongCat-2.5"
    ]
   },
   {
@@ -8690,11 +8684,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "claude-fable-5-1"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Claude Fable 5.2（11/9一般提供）に置換。5.1は旧モデル欄で当面提供継続。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -8718,11 +8710,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "claude-fable-5-1"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Claude Fable 5.2（11/9一般提供）に置換。5.1は旧モデル欄で当面提供継続。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -10292,11 +10282,14 @@
    "category": "llm",
    "name": "GPT-6 Rosalind",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "公式変更履歴（10/30）で信頼アクセス承認組織への限定提供を確認したが、公式モデルページ（gpt-6-rosalind）は11/7時点で404。料金・仕様を確認してから掲載する。",
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6-rosalind"
+   ],
+   "reason": "公式料金ページ（Life sciences models）で料金と限定提供の条件を確認し、限定提供として掲載。モデルページは11/10時点でも404のため文脈長等は未確認。",
    "sources": [
-    "https://developers.openai.com/api/docs/changelog"
+    "https://developers.openai.com/api/docs/changelog",
+    "https://developers.openai.com/api/docs/pricing"
    ]
   },
   {
@@ -10328,15 +10321,417 @@
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.2 (Max, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-2"
+   ],
+   "reason": "AAのeffort別の行。11/9一般提供のClaude Fable 5.2に統合（Fable 5.1は後継の提供により現行一覧から外した）。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://platform.claude.com/docs/en/release-notes/overview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-2"
+   ],
+   "reason": "AAのeffort別の行。11/9一般提供のClaude Fable 5.2に統合（Fable 5.1は後継の提供により現行一覧から外した）。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://platform.claude.com/docs/en/release-notes/overview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.2 (High, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-2"
+   ],
+   "reason": "AAのeffort別の行。11/9一般提供のClaude Fable 5.2に統合（Fable 5.1は後継の提供により現行一覧から外した）。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://platform.claude.com/docs/en/release-notes/overview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-2"
+   ],
+   "reason": "AAのeffort別の行。11/9一般提供のClaude Fable 5.2に統合（Fable 5.1は後継の提供により現行一覧から外した）。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://platform.claude.com/docs/en/release-notes/overview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Fable 5.2 (Low, Default Fallback)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "claude-fable-5-2"
+   ],
+   "reason": "AAのeffort別の行。11/9一般提供のClaude Fable 5.2に統合（Fable 5.1は後継の提供により現行一覧から外した）。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://platform.claude.com/docs/en/release-notes/overview"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Ember (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-ember"
+   ],
+   "reason": "AAのeffort別の行。11/9公開のMuse Ember（Model API）に統合。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://research.meta.ai/blog/muse-ember"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Muse Ember (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "muse-ember"
+   ],
+   "reason": "AAのeffort別の行。11/9公開のMuse Ember（Model API）に統合。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://research.meta.ai/blog/muse-ember"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Agnes 2.5 Pro Theta",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAの公開日11/7、AA指数24.0。公式ドキュメントでモデルID・料金（100万トークンあたり入力$0.10／出力$0.30）は確認したが、提供条件は「アカウント・APIキーの権限次第」で、公式の提供開始日と運営会社の国（規約の準拠法はシンガポール）を確定できない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://wiki.agnes-ai.com/en/docs/agnes-25-pro-theta.md",
+    "https://wiki.agnes-ai.com/en/docs/pricing.md"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LongCat-2.5",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "longcat-2-5"
+   ],
+   "reason": "HFで公式重み（MIT、BF16約3,562GB）を11/10に確認。LongCat-2.0を置換。一般公開の正確な日時は未確定のため月単位。",
+   "sources": [
+    "https://huggingface.co/meituan-longcat/LongCat-2.5"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "PLaMo 3.0 Fin",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "plamo-3-0-fin"
+   ],
+   "reason": "PFN公式発表（11/9）とHF（pfnet/plamo-3-8b-fin-instruct）で確認。金融特化の別用途として追加。",
+   "sources": [
+    "https://www.preferred.jp/ja/news/pr20261109",
+    "https://huggingface.co/pfnet/plamo-3-8b-fin-instruct"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "PLaMo 3 Translate",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "plamo-3-translate-31b",
+    "plamo-3-translate-8b",
+    "plamo-3-translate-2b",
+    "plamo-3-translate-0-8b"
+   ],
+   "reason": "PFN公式発表（11/5）。前回の確認漏れを補完。4サイズを別行で掲載。",
+   "sources": [
+    "https://www.preferred.jp/ja/news/pr20261105",
+    "https://huggingface.co/pfnet/plamo-3-translate-31b"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "ZONOS3-Mini",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Zyphra（米国、11/9、Apache-2.0、総800M・稼働約100M）。参照音声のみ（書き起こし不要）のゼロショット複製と声の調整に対応。テキスト正規化の対象に日本語はあるが、公式の対応言語一覧・日本語の評価・日本語の既定話者がなく、日本語音声の対応を確認できないため保留。前版ZONOS2（日本語Tier 1）は掲載継続。",
+   "sources": [
+    "https://huggingface.co/Zyphra/ZONOS3-Mini",
+    "https://www.zyphra.com/our-work/zonos3-mini"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Soniox v6 (stt-async-v6 / stt-rt-v6)",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "soniox-v6-async",
+    "soniox-v6-realtime"
+   ],
+   "reason": "公式モデル一覧の変更履歴（11/3）でv5の後継と確認。v5は12/15廃止・自動転送。",
+   "sources": [
+    "https://docs.soniox.com/stt/models"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Gemini Omni 1.2 Flash",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-omni-flash-1-2"
+   ],
+   "reason": "Gemini API変更履歴（11/5一般提供）で確認。1.1は12/3から1.2へ自動転送。AAの動画一覧は11/10時点で1.1のみのため、評価値は流用しない。",
+   "sources": [
+    "https://ai.google.dev/gemini-api/docs/changelog"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "SkyReels V4",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAに11/3追加（T2V 1138・I2V 1125）。AAの公開日は2026-03-18、論文初版は2026-02-25でAA掲載日とは別。重みは非公開。Skywork公式のAPI提供経路・料金を確認できない（再販業者の価格のみ）ため保留。既存のSkyReels-V3（公開重み）とは別。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://arxiv.org/abs/2602.21818"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Pika H3 Flex",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "pika-h3-flex"
+   ],
+   "reason": "AAに掲載（MiniMax H3派生、公開重み）。既存行にT2V 1125・I2V 1114を反映。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Mammoth 27B",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "baseten-mammoth-1"
+   ],
+   "reason": "AA Decision Index 72.4。既存のBaseten Mammoth行と同一モデル。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Celeris-1.1 Decision",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "celeris-1-1-decision"
+   ],
+   "reason": "公式ブログ（11/5）・料金ページで確認。AA Decision Index 63.5。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://celeris.ai/blog",
+    "https://celeris.ai/pricing"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Drex Max v1.1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AA Decision Index 73.4（首位）。Nace.AI（米国）の判断専用モデルでConsole・OpenRouterで提供と案内されるが、v1.1の提供開始日と版ごとの料金（OpenRouterのエンドポイントはdrex-max-20261016）を公式に確定できない。v1はHFで重み公開（Nace.AI Open RAIL-M）。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://www.nace.ai/drex",
+    "https://www.nace.ai/pricing",
+    "https://huggingface.co/nace-ai/drex-max-v1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Deepslate Opal",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Deepslate（ドイツ）のAPI専用の音声対話。公式に「27言語」とあるが日本語の明記がなく、提供開始日も未確認。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://deepslate.eu"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Grok Voice Fast 1.0",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "xAI初代のVoice Agent API。公式の現行モデル表はGrok Voice 2.0／3.0のみで、Grok Voice 3.0に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://docs.x.ai/developers/release-notes"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Step-Audio R1.1 (Realtime)",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "StepFun（2026-01）。モデルカード・公式資料に日本語対応の記載なし。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://huggingface.co/stepfun-ai/Step-Audio-R1.1"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "StepAudio 3 Realtime",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "StepFunのAPI（2026-09）。公式資料で日本語対応を確認できない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://arxiv.org/abs/2609.14005"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Raon SpeechChat",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "Krafton（韓国）。モデルカードに英語の全二重会話と明記、CC-BY-NC-4.0。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://huggingface.co/KRAFTON/Raon-SpeechChat-9B"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Higgs Realtime",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Boson AI（米国）のAPI。「100以上の言語」は宣伝文句で日本語の明記なし。後継Higgs Realtime Duplex（11/5発表）は料金未公開。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://boson.ai",
+    "https://docs.boson.ai/pricing.md"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "FLM-Audio",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "CofeAI（中国、2025-07）。対応言語は中国語・英語。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://huggingface.co/CofeAI/FLM-Audio"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Nemotron Voicechat",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "NVIDIAの2026-03早期アクセス版（英語のみ）。公開後継のNemotronLabs VoiceChat 11Bを掲載済み。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech",
+    "https://developer.nvidia.com/nemotron-voicechat-early-access"
+   ]
   }
  ],
- "follow_up_ja": "次回11/10も全カテゴリを確認。Inkling 2 Smallの重み公開（予定は11/9の週）、ERNIE 5.5 Flashの事後学習版、GPT-6 Rosalindのモデルページ、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodia／LongCat-2.5-Previewを追跡。",
+ "follow_up_ja": "次回11/13も全カテゴリを確認。Inkling 2 Smallの重み公開（予定の週）、ZONOS3-Miniの日本語対応、Drex Max v1.1の提供開始日・料金、SkyReels V4の公式提供経路、Agnes 2.5 Pro Thetaの提供条件、Gemini Omni 1.2 FlashのAA評価、LongCat-2.5の公式文脈長とAA評価、GPT-6 Rosalindのモデルページ、ERNIE 5.5 Flashの事後学習版、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodiaを追跡。",
  "added_model_ids": [
   "gemini-4-carbon",
   "muse-wonder",
   "muse-wonder-full",
   "muse-spark-1-3",
-  "claude-fable-5-1",
   "qwen3-8-max-0902",
   "qwen3-8-flash-api",
   "mercury-2-5",
@@ -10345,8 +10740,6 @@
   "scribe-v2",
   "scribe-v2-realtime",
   "scribe-v2-medical",
-  "soniox-v5-async",
-  "soniox-v5-realtime",
   "mai-transcribe-2",
   "mai-transcribe-2-streaming",
   "gemini-3-5-transcribe",
@@ -10417,7 +10810,20 @@
   "seedream-5-0-flash",
   "gpt-image-2-6-sunburst",
   "gpt-image-2-6-flare",
-  "gpt-6-cyber"
+  "gpt-6-cyber",
+  "claude-fable-5-2",
+  "muse-ember",
+  "gpt-6-rosalind",
+  "soniox-v6-async",
+  "soniox-v6-realtime",
+  "gemini-omni-flash-1-2",
+  "celeris-1-1-decision",
+  "longcat-2-5",
+  "plamo-3-0-fin",
+  "plamo-3-translate-31b",
+  "plamo-3-translate-8b",
+  "plamo-3-translate-2b",
+  "plamo-3-translate-0-8b"
  ],
  "known_date_conflicts": [
   {
@@ -10439,6 +10845,14 @@
   {
    "name": "Simba 3.5",
    "reason": "AAの公開日11/3と公式変更履歴の10/18が不一致。掲載は公式の10/18を維持。"
+  },
+  {
+   "name": "SkyReels V4",
+   "reason": "AAの掲載日11/3、AAの公開日2026-03-18、論文初版2026-02-25が異なる。台帳では論文・AA公開日を初公開の参考とし、AA掲載日を公開日にしない。"
+  },
+  {
+   "name": "LongCat-2.5",
+   "reason": "モデル発表11/2（第三者情報）、HFリポジトリ作成11/4、11/7時点で未確認、11/10に公開を確認。重みの公開は2026年11月の月単位で表示。"
   }
  ]
 }

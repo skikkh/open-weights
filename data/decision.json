@@ -361,6 +361,76 @@
   "availability_tier": "general"
  },
  {
+  "id": "celeris-1-1-decision",
+  "name": "Celeris-1.1 Decision",
+  "org": "Celeris（Marqo Inc.）",
+  "country": "US",
+  "release": "2026-11-05",
+  "access": "api",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "predicate",
+   "choice",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": 40,
+   "inputs": "テキスト・構造化データ・画像",
+   "outputs": "型付きの判断と確率、1文の説明（無料）",
+   "languages": "公式に対応言語の記載なし",
+   "other": "Celeris-1 Decisionの後継。公式ブログは中央値36〜44msとする"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力$0.004/100万トークン、出力（説明文を含む）は無料（米ドル、公式料金ページ）。",
+  "speed_note": "公式の中央値36〜44ms。AAの計測は約56ms。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v2",
+    "value": 63.5,
+    "note": "2026-11-10取得。参考：首位はDrex Max v1.1の73.4",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
+    "metric": "jev-bench（%）",
+    "value": 80.2,
+    "note": "Celeris公式発表の自社比較",
+    "source": "https://celeris.ai/blog"
+   }
+  ],
+  "quality_note": "公式は5つの判断APIの中でjev-bench・typed-decisionsが最も高いとするが、自社計測。AAの総合指数では中位。",
+  "ja_note": "対応言語の公式記載なし。日本語での判断精度は未確認。",
+  "license": "API（利用規約）",
+  "commercial": "yes",
+  "license_note": "Celeris（Marqo Inc.）の利用規約に従う。準拠法は米国カリフォルニア州",
+  "hf": "https://celeris.ai/decisions",
+  "tools": [],
+  "summary_ja": "約40msで答えを返す、速さ重視の判断専用API。出力は無料で、入力も非常に安い。",
+  "best_for_ja": "遅延とコストを最優先に、大量の振り分け・分類を回したい場合",
+  "supersedes": [
+   "Celeris-1 Decision"
+  ],
+  "sources": [
+   "https://celeris.ai/decisions",
+   "https://celeris.ai/pricing",
+   "https://celeris.ai/blog",
+   "https://celeris.ai/terms",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": 5,
+  "series": "Celeris Decision",
+  "availability_tier": "general"
+ },
+ {
   "id": "baseten-mammoth-1",
   "name": "mammoth-1（27B）",
   "org": "Baseten（Base Labs）",

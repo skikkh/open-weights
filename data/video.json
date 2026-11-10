@@ -136,7 +136,20 @@
   "rec_vram_gb": 80,
   "vram_note": "公式の検証はH100 80GBのみ。480p・5秒で約66〜69GiBを使用。768p・15秒は80GBを超えるため--cpu-offloadが必要で、その場合GPU約29〜32GiB・ホストRAM約94GiB（いずれもサンプリング部分のみ、最小要件ではないと明記）。ベース部品は約211GBのディスクが必要。ComfyUI向けBF16 LoRAが同梱されており、量子化したH3と組み合わせれば24GB級でも動く可能性があるが未検証",
   "speed_note": "生成は6ステップ（通常は約50ステップ）。Pika公表値では8×B300で768p・5秒の推論が3.409秒→2.129秒、Fal H3 Maxより平均約1.8倍速い（いずれも自社計測）",
-  "bench": [],
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1125,
+    "note": "全体13位（2026-11-10取得）。AAではMiniMax H3（768p）の派生として掲載",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1114,
+    "note": "全体10位（2026-11-10取得）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
   "quality_note": "Pikaの自社評価では、768pでMiniMax H3・H3 Max（Fal）・HeyGen Videoより画質・音質の指標で上回り、人体・複雑な構図・音声同期で人手評価も優位とする。一方、物理挙動・マルチシーン・照明などでは他社モデルが好まれた。AAのアリーナには未掲載（2026-10-31確認）で、第三者評価はまだない",
   "ja_note": "Pikaの資料に対応言語の記載はない。ベースのMiniMax-H3はモデルカードで日本語を含む11言語のセリフに対応とされるが、Flex版での日本語の品質は未確認",
   "license": "MiniMax H3 Community License",
@@ -159,7 +172,8 @@
    "https://github.com/Pika-Labs/Pika-H3-Flex/blob/main/docs/hardware.md",
    "https://pika.art/blog/pika-h3-flex-research",
    "https://dev.pika.art/models/pika/pika-h3-flex/draft-to-video",
-   "https://www.nocode.mba/ai-release-tracker/2026/10"
+   "https://www.nocode.mba/ai-release-tracker/2026/10",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video"
   ],
   "confidence": "high",
   "rank": 2
@@ -1583,12 +1597,12 @@
   "availability_tier": "general"
  },
  {
-  "id": "gemini-omni-flash-1-1",
+  "id": "gemini-omni-flash-1-2",
   "access": "api",
-  "name": "Gemini Omni Flash 1.1（Veo 3.1の後継）",
+  "name": "Gemini Omni 1.2 Flash",
   "org": "Google DeepMind",
   "country": "US",
-  "release": "2026-08",
+  "release": "2026-11-05",
   "params_b": null,
   "arch": null,
   "tasks": [
@@ -1600,10 +1614,10 @@
    "audio"
   ],
   "spec": {
-   "max_resolution": "4K（Runway API上で360p/720p/1080p/4Kの料金設定）",
-   "max_duration_s": null,
+   "max_resolution": "4K（1080p・4Kはアップサンプル）",
+   "max_duration_s": 15,
    "fps": null,
-   "other": "モデルID gemini-omni-1.1-flash。画像・音声・動画の入力、Interactions APIによる対話的な複数ターン編集に対応。Gemini APIのドキュメントは動画生成の既定としてOmni Flashを推奨し、Veo 3.1のプレビューIDは2026-10-22に提供終了予定"
+   "other": "モデルID gemini-omni-1.2-flash。最長15秒の生成・対話的な編集（1.1は10秒）。最初と最後のフレーム補間は3〜10秒、1ターンごとの延長は3〜10秒で合計30秒まで。参照画像は最大6枚。2026-12-03から1.1へのリクエストは1.2へ自動転送"
   },
   "features": {
    "音声同時生成": true,
@@ -1613,55 +1627,31 @@
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": "API提供のみ",
-  "speed_note": "VentureBeatの比較ではAPIで52秒（Veo 3.1は8秒動画で70秒）",
-  "bench": [
-   {
-    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
-    "value": 1128,
-    "note": "Gemini Omni Flash 1.1。全体10位。参考: Veo 3.1は962で22位（2026-10-31時点）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
-   },
-   {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
-    "value": 1046,
-    "note": "全体14位。参考: Veo 3.1は957で21位（2026-10-31時点。旧v1.1では4位）",
-    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
-   },
-   {
-    "metric": "Artificial Analysis I2V Arena（音声なし, v1.0）ELO",
-    "value": 1368,
-    "note": "Gemini Omni Flash。全体1位",
-    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
-   }
-  ],
-  "quality_note": "Googleの現行の主力動画モデルで、無音I2Vでは全体首位。Veo 3.1よりAAのスコアが大幅に高い",
+  "speed_note": null,
+  "bench": [],
+  "quality_note": "公式は人物・被写体の一貫性の向上と動画出力料金の30%値下げを案内。AAの動画一覧（11/10）は1.1のみ掲載で、1.2の評価値はまだない（1.1の値は流用しない）。",
   "ja_note": null,
   "license": "API（Google Gemini API / Vertex AI利用規約）",
   "commercial": "conditional",
   "license_note": "有料APIでの商用利用は規約に従う（規約本文は未確認）。Veo系はSynthID透かし付き",
-  "price_note": "Runway API経由: 360p $0.034/秒、720p $0.10/秒、1080p $0.15/秒、4K $0.30/秒＋参照画像・入力動画1秒ごとに$0.01。AA掲載は1080p換算$9.12/分",
+  "price_note": "Gemini API有料枠：100万トークンあたり入力$1.50、出力はテキスト$9／動画$12（米ドル）。720p動画は1秒あたり5,792トークンで課金（約$0.07/秒）。解像度ごとの料金は公式料金ページを確認。",
   "hf": "https://ai.google.dev/gemini-api/docs/video",
   "tools": [],
-  "summary_ja": "Googleの最新動画モデルで、Veo 3.1の後継として推奨されている。無音のI2VではAAで全体1位。",
+  "summary_ja": "Googleの現行の主力動画モデル。1.1から最長15秒に伸び、料金は約30%下がった。",
   "best_for_ja": "Googleのエコシステム（Gemini API・Vertex AI・Flow）で、編集まで含めて動画を作りたい場合",
   "supersedes": [
+   "Gemini Omni Flash 1.1",
    "Gemini Omni Flash",
    "Veo 3.1"
   ],
   "sources": [
-   "https://ai.google.dev/gemini-api/docs/video",
-   "https://en.wikipedia.org/wiki/Veo_(text-to-video_model)",
-   "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "https://docs.dev.runwayml.com/guides/pricing/",
-   "https://venturebeat.com/technology/ltx-2-5-can-generate-a-10-second-ai-video-from-an-image-in-just-6-8-seconds-on-nvidia-superchips-and-its-open-weights"
+   "https://ai.google.dev/gemini-api/docs/changelog",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+   "https://ai.google.dev/gemini-api/docs/video"
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "rank": 22,
-  "hl": {
-   "label": "AA Arena",
-   "value": 1128
-  },
   "series": "Google video flagship",
   "availability_tier": "general"
  },

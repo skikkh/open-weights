@@ -834,31 +834,62 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "claude-fable-5-1",
-  "name": "Claude Fable 5.1",
+  "id": "muse-ember",
+  "name": "Muse Ember",
+  "category": "llm",
+  "series": "Meta Muse Ember",
+  "org": "Meta",
+  "country": "US",
+  "release": "2026-11-09",
+  "access": "api",
+  "summary_ja": "Muse系列で最小・最安の新しい段（Wonder＞Spark＞Ember）。大量の定型処理を安く回す用途で、上位モデルと組み合わせる前提。",
+  "availability_ja": "Meta Model API（muse-ember-1.0、Standard modeのみ）とMuse Codeで提供。公式ブログはGoogle Cloud・Oracle Cloudでの提供も案内。",
+  "price_note": "100万トークンあたり（米ドル）：入力20万トークン以下は入力$0.10／キャッシュ入力$0.004／出力$0.50、20万トークン超は$0.30／$0.012／$1.50（超えたリクエストは全量が高い方の料金）。",
+  "context_note": "1,048,576トークン、最大出力524,288トークン。入力はテキスト・画像・動画・音声・PDF。effortはminimal〜max（既定max）。AA Intelligence Index v5.0.1は36.0（Max）。",
+  "detail_note": "Sparkの後継ではなく別の段として掲載。Muse Wonder Fullを使って学習した初のモデル。",
+  "hf": "https://dev.meta.ai/docs/muse-ember",
+  "sources": [
+   "https://research.meta.ai/blog/muse-ember",
+   "https://dev.meta.ai/docs/muse-ember",
+   "https://dev.meta.ai/docs/pricing-rate-limits"
+  ],
+  "verified_at": "2026-11-10",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの公開は確認できない（公式の重み公開モデル一覧に含まれない）。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "availability_tier": "general"
+ },
+ {
+  "id": "claude-fable-5-2",
+  "name": "Claude Fable 5.2",
   "category": "llm",
   "series": "Anthropic Claude Fable",
   "org": "Anthropic",
   "country": "US",
-  "release": "2026-09-01",
+  "release": "2026-11-09",
   "access": "api",
-  "summary_ja": "難しい知識作業・コーディング・長期タスク向け。",
-  "availability_ja": "Claude Pro／Max／Team／Enterprise、Claude Platform等で提供中。",
-  "price_note": "100万トークンあたり入力$10／出力$50。キャッシュ読み出し$0.25。会員サービスの利用料は別。",
+  "summary_ja": "Anthropicの最上位。難しい推論・長期のエージェント作業向けで、AA Intelligence Index v5.0.1は64.6（Max）。",
+  "availability_ja": "Claude API（claude-fable-5-2）、Amazon Bedrock、Google Cloud、Microsoft Foundry、claude.aiのPro／Max／Ultra／Team／Enterpriseで一般提供。30日間のデータ保持が必須で、ZDR契約では原則使えない。",
+  "price_note": "100万トークンあたり入力$8／出力$40（米ドル）。キャッシュ書き込み5分$10・1時間$16、キャッシュ読み出し$0.20。Batchは半額、Fast modeは入力$16／出力$80、US限定推論は1.1倍。1Mまで長文脈の割増なし。会員サービスの利用料は別。",
   "hf": "https://www.anthropic.com/claude/fable",
   "sources": [
    "https://www.anthropic.com/claude/fable",
-   "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+   "https://platform.claude.com/docs/en/release-notes/overview",
+   "https://platform.claude.com/docs/en/about-claude/models/overview",
+   "https://platform.claude.com/docs/en/about-claude/pricing"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-10",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "Claude Fable 5.1",
    "Claude Fable 5"
   ],
-  "detail_note": "Mythos 5.1は同じモデルに異なる安全策を適用した信頼済み組織向けの構成。一般向けの独立モデルとして水増ししない。",
-  "availability_tier": "general"
+  "detail_note": "Mythos 5.2は同じ能力に異なる安全策を適用した検証済み組織向けの構成（料金は同額）。一般向けの独立モデルとして水増ししない。Fable 5.1は旧モデル欄で当面提供が続くが、後継の一般提供に合わせて現行一覧から外した。",
+  "availability_tier": "general",
+  "context_note": "1Mトークン、最大出力128Kトークン。思考は常時オン（adaptive thinking）、effort既定はhigh。"
  },
  {
   "id": "qwen3-8-max-0902",
@@ -1079,59 +1110,61 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "soniox-v5-async",
-  "name": "Soniox v5 Async",
+  "id": "soniox-v6-async",
+  "name": "Soniox v6 Async",
   "category": "asr",
   "series": "Soniox STT async",
   "org": "Soniox",
   "country": "US",
-  "release": "2026-06-11",
+  "release": "2026-11-03",
   "access": "api",
-  "summary_ja": "録音処理向け。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "summary_ja": "録音ファイルの文字起こし向け（stt-async-v6）。",
+  "availability_ja": "API（stt-async-v6）で一般提供。v5は2026-12-15に廃止され、以降はv6へ自動転送。",
+  "price_note": "公式料金ページで非同期$0.10/時間（米ドル、音声1時間あたり。v6専用の表記はない）。",
   "hf": "https://docs.soniox.com/stt/models",
   "sources": [
    "https://docs.soniox.com/stt/models",
-   "https://soniox.com/blog/soniox-v5-async"
+   "https://soniox.com/pricing"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-10",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "Soniox v5 async",
    "Soniox v4 async",
    "Soniox v3 async"
   ],
-  "ja_note": "日本語を含む60以上の言語。",
+  "ja_note": "公式の対応言語表に日本語（リアルタイム・非同期の両方）。",
   "availability_tier": "general"
  },
  {
-  "id": "soniox-v5-realtime",
-  "name": "Soniox v5 Realtime",
+  "id": "soniox-v6-realtime",
+  "name": "Soniox v6 Realtime",
   "category": "asr",
   "series": "Soniox STT realtime",
   "org": "Soniox",
   "country": "US",
-  "release": "2026-06-16",
+  "release": "2026-11-03",
   "access": "api",
-  "summary_ja": "ライブ音声認識・話者分離・翻訳向け。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "summary_ja": "ライブ音声認識・話者分離・翻訳向け（stt-rt-v6）。音声エージェント向けにエージェント発話の同時入力に対応。",
+  "availability_ja": "API（stt-rt-v6）で一般提供。v5は2026-12-15に廃止され、以降はv6へ自動転送。",
+  "price_note": "公式料金ページでリアルタイム$0.12/時間（米ドル、音声1時間あたり）。",
   "hf": "https://docs.soniox.com/stt/models",
   "sources": [
    "https://docs.soniox.com/stt/models",
-   "https://soniox.com/blog/soniox-v5-async"
+   "https://soniox.com/pricing"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-10",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "Soniox v5 realtime",
    "Soniox v4 realtime",
    "Soniox v3 realtime"
   ],
-  "ja_note": "日本語を含む60以上の言語。",
+  "ja_note": "公式の対応言語表に日本語（リアルタイム・非同期の両方）。",
   "availability_tier": "general"
  },
  {
@@ -2931,6 +2964,32 @@
    "https://developers.openai.com/api/docs/changelog"
   ],
   "verified_at": "2026-11-07",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "supersedes": [],
+  "availability_tier": "limited"
+ },
+ {
+  "id": "gpt-6-rosalind",
+  "name": "GPT-6 Rosalind",
+  "category": "llm",
+  "series": "OpenAI GPT Rosalind",
+  "org": "OpenAI",
+  "country": "US",
+  "release": "2026-10-30",
+  "access": "api",
+  "summary_ja": "生命科学の研究向けモデル。信頼アクセス制度で承認された組織だけが使える。",
+  "availability_ja": "限定提供：trusted-accessプログラムで承認された研究のみ。一般の開発者はそのまま利用できない。",
+  "price_note": "100万トークンあたり入力$15（キャッシュ$1.50）、出力$75。キャッシュ書き込みは保持30分で$18.75、12時間で$37.50（米ドル、公式料金ページ「Life sciences models」）。データレジデンシー経由は10%増。",
+  "detail_note": "汎用の旗艦とは用途が異なるため別系列。同じ料金欄のgpt-rosalind-research／gpt-rosalind-discoveryは仕様未確認のため掲載していない。",
+  "context_note": "公式モデルページが11/10時点で404のため、文脈長・最大出力は未確認。",
+  "local_note": "一般向けの重み配布なし。API・サービスで利用。",
+  "hf": "https://developers.openai.com/api/docs/pricing",
+  "sources": [
+   "https://developers.openai.com/api/docs/changelog",
+   "https://developers.openai.com/api/docs/pricing"
+  ],
+  "verified_at": "2026-11-10",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "supersedes": [],

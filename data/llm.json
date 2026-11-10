@@ -1654,66 +1654,67 @@
   "short": "Qwen3.8 27B"
  },
  {
-  "id": "longcat-2-0",
-  "name": "LongCat-2.0",
+  "id": "longcat-2-5",
+  "name": "LongCat-2.5",
+  "short": "LongCat-2.5",
   "family": "LongCat-2.0",
   "org": "Meituan（LongCat）",
   "country": "CN",
-  "release": "2026-07-05",
-  "arch": "MoE（LongCat Sparse Attention、N-gram埋め込み）",
+  "release": "2026-11",
+  "arch": "MoE（LongCat Sparse Attention、N-gram埋め込み、ゼロ計算エキスパート）",
   "total_b": 1600,
   "active_b": 48,
-  "native_precision": "BF16（公式FP8版・INT8版あり）",
-  "weights_gb": 3551.7,
-  "context_k": 1000,
+  "native_precision": "BF16（公式W4A4版あり）",
+  "weights_gb": 3562.0,
+  "context_k": null,
   "modality": [
-   "text"
+   "text",
+   "image"
   ],
   "mode": "hybrid",
   "license": "MIT",
   "commercial": "yes",
   "license_note": null,
-  "hf": "https://huggingface.co/meituan-longcat/LongCat-2.0",
-  "summary_ja": "Meituanの1.6T MoE（アクティブ約48B）で、学習から運用まで国産AI ASIC上で行ったことが特徴。独自の疎注意LSAで1M文脈を扱い、Claude Codeなどのハーネスでのコーディング/エージェント用途を想定している。",
+  "hf": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+  "summary_ja": "LongCat-2.0の後継で、画像も扱えるようになった1.6T MoE（稼働約48B）。長時間のコード作業・エージェント作業向けで、MITライセンスで重みを公開。",
   "strengths": [
    "agent",
    "coding",
+   "vision",
    "long-context"
   ],
   "bench": {
    "swe_verified": null,
-   "gpqa": 88.9,
-   "hle": null,
+   "gpqa": null,
+   "hle": 63.1,
    "aime": null,
    "lcb": null,
    "mmlu_pro": null,
-   "terminal_bench2": 70.8,
+   "terminal_bench2": 88.4,
    "tau2": null,
-   "browsecomp": 79.9
+   "browsecomp": 91.9
   },
-  "bench_note": "モデルカード自己申告（統一ハーネスでの社内計測）。terminal_bench2欄はTerminal-Bench 2.1。他にSWE-bench Pro 59.5、SWE-bench Multilingual 77.3、IMO-AnswerBench 81.8。AA指数v4.3.2（2026-10-20取得）は19.1で、規模の割に低い。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では19.1。v5とは尺度が違い比べられない）。",
+  "bench_note": "公式モデルカード自己申告（思考オン、temperature 1.0）。terminal_bench2欄はTerminal-Bench v2.1（Claude Codeハーネス、3回平均）、hle欄はツールありのテキストのみ部分集合。ほかにTerminal-Bench v4.0 38.5、MCP Atlas 83.1、DeepSWE v1.1 64.6。旧LongCat-2.0の値は引き継がない。AA Intelligence Index（v5.0.1、11/10照合）には未掲載のためaa_indexは空欄。",
   "aa_index": null,
-  "japanese_note": null,
-  "deploy_note_ja": "BF16で約3.55TB、公式FP8/INT8でも約2.05TB。8×B300（約2.3TB）でぎりぎり、H200なら2ノード16基以上が必要。GPUはSGLang cookbook、NPUはSGLang-FluentLLMで展開する。GGUF/MLXの主要コミュニティ量子化は未確認で、個人での運用は非現実的。",
+  "japanese_note": "日本語の評価は未確認。",
+  "deploy_note_ja": "BF16の重み210ファイルで約3,562GB、公式W4A4版でも約1,336GB。公式の展開手順はNPU向けSGLang-FluentLLMで、GPU向けの公式手順・GGUF等の主要コミュニティ量子化は未確認。個人での運用は非現実的。",
   "engines": [
-   "SGLang"
+   "SGLang-FluentLLM"
   ],
   "supersedes": [
+   "LongCat-2.0",
    "LongCat-Flash-Chat",
    "LongCat-Flash-Thinking-2601",
    "LongCat-Flash-Omni"
   ],
-  "notes": "06-30に発表、重みは07-05公開。総パラメータ1.6TにはN-gram埋め込み135Bが含まれる（HF上の総数は約1.78T）。configの既定max_positionは262,144だが、カードと報道では1M文脈とされる。小型系列のLongCat-Flash-Lite-Sparse（69B、2026-07-31）は別系統。",
+  "notes": "HFリポジトリは11/4作成・11/9最終更新。11/7の確認時点では公開を確認できず、一般公開の正確な日時を確定できないため、重みのデビューは2026年11月の月単位で表示する。API限定のLongCat-2.5-Previewとは別に扱う。総1.6TはN-gram埋め込みを含む公式表記（HF集計は約1.78T）。configのmax_position_embeddingsは524,288だが、公式の対応文脈長は一次情報で未確認のためcontext_kは空欄。",
   "sources": [
-   "https://huggingface.co/meituan-longcat/LongCat-2.0",
-   "https://huggingface.co/meituan-longcat/LongCat-2.0-FP8",
-   "https://rits.shanghai.nyu.edu/ai/meituan-open-sources-longcat-2-0-a-1-6t-model-trained-on-chinese-chips/",
-   "https://comfyui-wiki.com/en/news/2026-06-30-longcat-2-moe-meituan",
-   "https://docs.sglang.io/cookbook/autoregressive/Meituan/LongCat-2.0",
-   "https://artificialanalysis.ai/leaderboards/models"
+   "https://huggingface.co/meituan-longcat/LongCat-2.5",
+   "https://huggingface.co/meituan-longcat/LongCat-2.5-W4A4",
+   "https://huggingface.co/api/models/meituan-longcat/LongCat-2.5?blobs=true",
+   "https://longcat.ai/blog/longcat-2.5/"
   ],
-  "confidence": "medium",
-  "short": "LongCat-2.0"
+  "confidence": "medium"
  },
  {
   "id": "intern-s2-397b",
@@ -4444,6 +4445,313 @@
    "https://huggingface.co/collections/pfnet/plamo-3"
   ],
   "confidence": "medium"
+ },
+ {
+  "id": "plamo-3-0-fin",
+  "name": "PLaMo 3.0 Fin（plamo-3-8b-fin-instruct）",
+  "short": "PLaMo 3.0 Fin",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）",
+  "country": "JP",
+  "release": "2026-11-09",
+  "arch": "Dense",
+  "total_b": 8.5,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 17.1,
+  "context_k": 262,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "PLaMoコミュニティライセンス。直近事業年度の収入または売上が10億円以下の企業・個人は商用・非商用とも無償（商用は事前登録）。それを超える企業の商用利用はPFNの別途ライセンスが必要。再配布時は「Built with PLaMo」の表示と、派生モデル名に「PLaMo」を含める条件がある。",
+  "hf": "https://huggingface.co/pfnet/plamo-3-8b-fin-instruct",
+  "summary_ja": "PFNの金融特化の小型モデル。PLaMo 3 NICTの事前学習モデルに日本の金融データを追加学習し、日本語で考えてから答える。関数呼び出しにも対応。",
+  "strengths": [
+   "japanese",
+   "tool-use",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "PFN公表: japanese-lm-fin-harness平均55.8（比較のQwen3.5-9Bは60.1、Ministral 3 14Bは62.8）、pfmt-bench-fin-ja 8.35、金融tool-useベンチ71.3"
+  },
+  "jp_bench_note": "金融分野の公式評価のみ。汎用の日本語ベンチ（Nejumi等）は未掲載。",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "日本の金融実務・用語に特化。推論過程も日本語で出力する。汎用用途の性能は公表されていない。",
+  "deploy_note_ja": "BF16で約17.1GB。公式は「GPU1枚から運用可能」とだけ記載（必要メモリのGB値はない）。trust_remote_codeが必要。PLaMo API／Chat（β）の無料プランでも試せる。",
+  "engines": [
+   "Transformers"
+  ],
+  "supersedes": [],
+  "notes": "文脈長はベースの最大262,144トークン（金融コーパスでの継続事前学習は最長32,768トークン）。事後学習の一部をPFNのMN-Core 2で実施。HFの作成は11/8、公式発表は11/9。",
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-8b-fin-instruct",
+   "https://www.preferred.jp/ja/news/pr20261109",
+   "https://www.preferred.jp/ja/blog/tech/plamo-3-fin-development"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "plamo-3-translate-31b",
+  "name": "PLaMo 3 Translate 31B",
+  "short": "PLaMo 3 Translate 31B",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）",
+  "country": "JP",
+  "release": "2026-11-05",
+  "arch": "Dense",
+  "total_b": 31.8,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 63.5,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "PLaMoコミュニティライセンス。直近事業年度の収入または売上が10億円以下の企業・個人は商用・非商用とも無償（商用は事前登録）。それを超える企業の商用利用はPFNの別途ライセンスが必要。再配布時は「Built with PLaMo」の表示と、派生モデル名に「PLaMo」を含める条件がある。",
+  "hf": "https://huggingface.co/pfnet/plamo-3-translate-31b",
+  "summary_ja": "PFNの翻訳専用モデル（4サイズのうち31B）。日本語・英語を含む53言語を、クラウドを介さず手元の機器で翻訳できる。",
+  "strengths": [
+   "japanese",
+   "multilingual",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "公式モデルカード（BF16）: WMT24++ COMET-22（英→日）0.8799"
+  },
+  "jp_bench_note": "翻訳品質の公式評価のみ。汎用の日本語ベンチ（Nejumi等）の対象ではない。",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "翻訳専用。チャットや汎用の質問応答向けではない。PLaMo 3 NICTの事前学習モデルに数百億トークンの翻訳データを追加学習した翻訳専用モデル。53言語間の翻訳、文脈・用語集の指定、日本語出力の常体／敬体の切り替えに対応。学習時の入出力合計は最大32,768トークンで、長文は分割を推奨。公式のFP8・W4A16・W4AFP8・NVFP4・GGUF・MLX版あり。",
+  "deploy_note_ja": "BF16で約63.5GB。公式GGUF Q4_K_Mは約19.53GB。vLLM・Transformers・llama.cpp・MLXの手順が公式カードにある。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリは10/26〜27に作成、公式発表と公開は11/5。前回（11/7）の定期更新で見落としていたため11/10に追加。",
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-translate-31b",
+   "https://www.preferred.jp/ja/news/pr20261105",
+   "https://www.preferred.jp/en/blog/tech/plamo-3-translate-weight-release"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "plamo-3-translate-8b",
+  "name": "PLaMo 3 Translate 8B",
+  "short": "PLaMo 3 Translate 8B",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）",
+  "country": "JP",
+  "release": "2026-11-05",
+  "arch": "Dense",
+  "total_b": 8.5,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 17.1,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "PLaMoコミュニティライセンス。直近事業年度の収入または売上が10億円以下の企業・個人は商用・非商用とも無償（商用は事前登録）。それを超える企業の商用利用はPFNの別途ライセンスが必要。再配布時は「Built with PLaMo」の表示と、派生モデル名に「PLaMo」を含める条件がある。",
+  "hf": "https://huggingface.co/pfnet/plamo-3-translate-8b",
+  "summary_ja": "PFNの翻訳専用モデル（4サイズのうち8B）。日本語・英語を含む53言語を、クラウドを介さず手元の機器で翻訳できる。",
+  "strengths": [
+   "japanese",
+   "multilingual",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "公式モデルカード（BF16）: WMT24++ COMET-22（英→日）0.8805"
+  },
+  "jp_bench_note": "翻訳品質の公式評価のみ。汎用の日本語ベンチ（Nejumi等）の対象ではない。",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "翻訳専用。チャットや汎用の質問応答向けではない。PLaMo 3 NICTの事前学習モデルに数百億トークンの翻訳データを追加学習した翻訳専用モデル。53言語間の翻訳、文脈・用語集の指定、日本語出力の常体／敬体の切り替えに対応。学習時の入出力合計は最大32,768トークンで、長文は分割を推奨。公式のFP8・W4A16・W4AFP8・NVFP4・GGUF・MLX版あり。",
+  "deploy_note_ja": "BF16で約17.1GB。公式GGUF Q4_K_Mは約5.28GB。vLLM・Transformers・llama.cpp・MLXの手順が公式カードにある。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリは10/26〜27に作成、公式発表と公開は11/5。前回（11/7）の定期更新で見落としていたため11/10に追加。",
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-translate-8b",
+   "https://www.preferred.jp/ja/news/pr20261105",
+   "https://www.preferred.jp/en/blog/tech/plamo-3-translate-weight-release"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "plamo-3-translate-2b",
+  "name": "PLaMo 3 Translate 2B",
+  "short": "PLaMo 3 Translate 2B",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）",
+  "country": "JP",
+  "release": "2026-11-05",
+  "arch": "Dense",
+  "total_b": 2.9,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 5.8,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "PLaMoコミュニティライセンス。直近事業年度の収入または売上が10億円以下の企業・個人は商用・非商用とも無償（商用は事前登録）。それを超える企業の商用利用はPFNの別途ライセンスが必要。再配布時は「Built with PLaMo」の表示と、派生モデル名に「PLaMo」を含める条件がある。",
+  "hf": "https://huggingface.co/pfnet/plamo-3-translate-2b",
+  "summary_ja": "PFNの翻訳専用モデル（4サイズのうち2B）。日本語・英語を含む53言語を、クラウドを介さず手元の機器で翻訳できる。",
+  "strengths": [
+   "japanese",
+   "multilingual",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "公式モデルカード（BF16）: WMT24++ COMET-22（英→日）0.878"
+  },
+  "jp_bench_note": "翻訳品質の公式評価のみ。汎用の日本語ベンチ（Nejumi等）の対象ではない。",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "翻訳専用。チャットや汎用の質問応答向けではない。PLaMo 3 NICTの事前学習モデルに数百億トークンの翻訳データを追加学習した翻訳専用モデル。53言語間の翻訳、文脈・用語集の指定、日本語出力の常体／敬体の切り替えに対応。学習時の入出力合計は最大32,768トークンで、長文は分割を推奨。公式のFP8・W4A16・W4AFP8・NVFP4・GGUF・MLX版あり。",
+  "deploy_note_ja": "BF16で約5.8GB。公式GGUF Q4_K_Mは約1.81GB。vLLM・Transformers・llama.cpp・MLXの手順が公式カードにある。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリは10/26〜27に作成、公式発表と公開は11/5。前回（11/7）の定期更新で見落としていたため11/10に追加。",
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-translate-2b",
+   "https://www.preferred.jp/ja/news/pr20261105",
+   "https://www.preferred.jp/en/blog/tech/plamo-3-translate-weight-release"
+  ],
+  "confidence": "high"
+ },
+ {
+  "id": "plamo-3-translate-0-8b",
+  "name": "PLaMo 3 Translate 0.8B",
+  "short": "PLaMo 3 Translate 0.8B",
+  "family": "PLaMo",
+  "org": "Preferred Networks（PFN）",
+  "country": "JP",
+  "release": "2026-11-05",
+  "arch": "Dense",
+  "total_b": 0.89,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 1.8,
+  "context_k": 32,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "from_scratch": true,
+  "base_model": null,
+  "license": "PLaMo Community License",
+  "commercial": "conditional",
+  "license_note": "PLaMoコミュニティライセンス。直近事業年度の収入または売上が10億円以下の企業・個人は商用・非商用とも無償（商用は事前登録）。それを超える企業の商用利用はPFNの別途ライセンスが必要。再配布時は「Built with PLaMo」の表示と、派生モデル名に「PLaMo」を含める条件がある。",
+  "hf": "https://huggingface.co/pfnet/plamo-3-translate-0.8b",
+  "summary_ja": "PFNの翻訳専用モデル（4サイズのうち0.8B）。日本語・英語を含む53言語を、クラウドを介さず手元の機器で翻訳できる。",
+  "strengths": [
+   "japanese",
+   "multilingual",
+   "efficiency"
+  ],
+  "jp_bench": {
+   "nejumi": null,
+   "swallow_avg": null,
+   "jmmlu": null,
+   "ja_mtbench": null,
+   "other": "公式モデルカードに翻訳評価の比較図あり（0.8Bの数値表は本サイト未転記）"
+  },
+  "jp_bench_note": "翻訳品質の公式評価のみ。汎用の日本語ベンチ（Nejumi等）の対象ではない。",
+  "bench": {
+   "gpqa": null,
+   "mmlu_pro": null,
+   "aime": null,
+   "lcb": null,
+   "swe_verified": null
+  },
+  "japanese_note": "翻訳専用。チャットや汎用の質問応答向けではない。PLaMo 3 NICTの事前学習モデルに数百億トークンの翻訳データを追加学習した翻訳専用モデル。53言語間の翻訳、文脈・用語集の指定、日本語出力の常体／敬体の切り替えに対応。学習時の入出力合計は最大32,768トークンで、長文は分割を推奨。公式のFP8・W4A16・W4AFP8・NVFP4・GGUF・MLX版あり。",
+  "deploy_note_ja": "BF16で約1.8GB。公式はスマートフォン（機内モード）での翻訳例を示している。vLLM・Transformers・llama.cpp・MLXの手順が公式カードにある。",
+  "engines": [
+   "Transformers",
+   "vLLM",
+   "llama.cpp",
+   "MLX"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリは10/26〜27に作成、公式発表と公開は11/5。前回（11/7）の定期更新で見落としていたため11/10に追加。",
+  "sources": [
+   "https://huggingface.co/pfnet/plamo-3-translate-0.8b",
+   "https://www.preferred.jp/ja/news/pr20261105",
+   "https://www.preferred.jp/en/blog/tech/plamo-3-translate-weight-release"
+  ],
+  "confidence": "high"
  },
  {
   "id": "gpt-oss-swallow-20b-rl",

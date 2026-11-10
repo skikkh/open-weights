@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-07",
- "next_update": "2026-11-10",
+ "updated_at": "2026-11-10",
+ "next_update": "2026-11-13",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,17 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-10",
+   "items": [
+    "置換（有料）: Claude Fable 5.1 → Claude Fable 5.2（Anthropic、11/9一般提供）。100万トークンあたり入力$8／出力$40に値下げ、AA Intelligence Index v5.0.1は64.6（Max）で掲載中の最高値。限定提供のMythos 5.2は同一能力の別構成として別行にしない。",
+    "追加（有料）: Muse Ember（Meta、11/9）。Wonder・Sparkより下の最小・最安の段で、100万トークンあたり入力$0.10／出力$0.50（20万トークン超は3倍）。GPT-6 Rosalind（OpenAI、生命科学向けの限定提供）も公式料金ページで料金を確認して追加。",
+    "置換（公開）: LongCat-2.0 → LongCat-2.5（Meituan、中国、MIT）。1.6T（稼働約48B）で画像入力に対応。BF16重みは約3,562GB、公式W4A4版は約1,336GB。重みの一般公開日を確定できないため月単位で表示。",
+    "追加（国産）: PLaMo 3.0 Fin（PFN、11/9、8B、金融特化）と、11/5公開のPLaMo 3 Translate 0.8B／2B／8B／31B（53言語の翻訳専用）。Translateは前回の確認漏れの補完。いずれもPLaMoコミュニティライセンス。",
+    "置換（有料）: Gemini Omni Flash 1.1 → Gemini Omni 1.2 Flash（11/5一般提供、最長15秒、動画出力料金約30%減）、Soniox v5 → v6（11/3、Async／Realtime、日本語対応）。追加: Celeris-1.1 Decision（11/5、入力$0.004/100万トークン・出力無料）。",
+    "更新: Pika H3 FlexにAAの動画評価（T2V 1125、I2V 1114）を反映。保留: ZONOS3-Mini（日本語の公式対応を確認できず）、Drex Max v1.1（提供開始日・版ごとの料金が未確認）、SkyReels V4（公式の提供経路・料金が未確認）、Agnes 2.5 Pro Theta（公式の提供開始日・提供条件が未確認）。公開LLMのAA指数は変更なし。"
+   ]
+  },
   {
    "date": "2026-11-07",
    "items": [
@@ -187,9 +198,9 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0.1",
-   "as_of": "2026-11-05",
+   "as_of": "2026-11-10",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/3のv5.0.1の表を11/5に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。11/3のv5.0.1の表を11/10に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -224,9 +235,9 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Gemini 4 Carbon（AA v5.0.1で60.0、限定提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-05取得）。",
+  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、Gemini 4 Carbon（60.0、限定提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-10取得）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
-  "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
+  "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、Soniox v6（11/3）、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "Eleven v4／Turbo、Gemini 3.8 Flash TTS／Flash-Lite TTS、Sonic 3.6、Fish Audio Drama 3 API、Aivis Cloud API、Mistral Voxtral Mini TTS 3など。日本語対応を確認したCoda v2とFalcon 2.1も有料TTS一覧に掲載。",
   "s2s": "OpenAI GPT-Live-1（ChatGPT）・gpt-realtime-2・gpt-realtime-translate、Google Gemini Live 系、Alibaba Qwen3.5-Omni Plus / Flash（API）など。"
  },
