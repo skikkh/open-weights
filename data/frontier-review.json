@@ -8211,11 +8211,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "mercury-2-5"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "11/12に公式現行表でMercury 3を確認。2.5は既存利用も11/15まで。評価を新版へ移さない。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -10723,6 +10721,19 @@
    "sources": [
     "https://artificialanalysis.ai/speech-to-speech",
     "https://developer.nvidia.com/nemotron-voicechat-early-access"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Mercury 3",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "mercury-3"
+   ],
+   "reason": "11/12の料金比較機能で公式現行表を照合。旧版2.5を置換。",
+   "sources": [
+    "https://www.inceptionlabs.ai/models"
    ]
   }
  ],

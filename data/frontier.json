@@ -165,19 +165,20 @@
   "summary_ja": "深い推論・コード・複数段階のエージェント作業向け。",
   "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
   "price_note": "2026/11/30まで100万トークンあたり入力$2／出力$10。12/1以降は$4／$20。検索等の利用料は別。",
-  "detail_note": null,
+  "detail_note": "公式はCarbonと併用する効率重視の現行役割としてArgonを案内。通常の開発・知識作業向け。",
   "context_note": "入出力を合わせ1,048,576トークン。長い出力には専用の実行設定が必要。",
   "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
   "sources": [
    "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
-   "https://ai.google.dev/gemini-api/docs/latest-model"
+   "https://ai.google.dev/gemini-api/docs/latest-model",
+   "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
   ],
   "verified_at": "2026-11-01",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "series": "Google Gemini flagship",
+  "series": "Google Gemini efficient flagship",
   "availability_tier": "general"
  },
  {
@@ -736,23 +737,25 @@
   "series": "Google Gemini flagship",
   "org": "Google DeepMind",
   "country": "US",
-  "release": "2026-10-28",
+  "release": "2026-11-10",
   "access": "api",
-  "summary_ja": "長時間の開発・サイバー防御向け。一般APIは提供待ち。",
-  "availability_ja": "限定提供：一部のサイバー防御者・Fairwind提携先。一般の開発者・企業・個人向けは提供待ち。",
-  "price_note": "一般提供時の予告価格：100万トークンあたり入力$2／出力$10、導入期間後は$4／$20。現時点の一般API料金ではない。",
+  "summary_ja": "長時間の開発・科学推論・知識作業向けのGemini 4上位モデル。Argonより難しいタスク向け。",
+  "availability_ja": "11/10に有料Gemini APIの開発者向け一般提供を開始。AI Ultra等にも展開。",
+  "price_note": "11/30まで100万トークン当たり入力$2・出力$10・キャッシュ$0.10。12/1以降は$4・$20・$0.20。",
   "hf": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
   "sources": [
-   "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+   "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+   "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+   "https://aistudio.google.com/docs/pricing"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-12",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [],
-  "availability_tier": "limited",
-  "detail_note": "一般提供中のGemini 4 Argonを併載。Carbonの一般提供を確認した時点で同じ旗艦系列を置換する。",
-  "release_kind": "announcement"
+  "availability_tier": "general",
+  "detail_note": "10/28の限定発表と11/10の一般提供を区別。Argonは効率重視の別の現行役割として公式が案内。",
+  "announced": "2026-10-28"
  },
  {
   "id": "muse-wonder",
@@ -949,32 +952,33 @@
   "release_note": "Alibaba Cloudの公式新着モデル表の提供日。評価追加日・米国リージョン追加日とは区別。"
  },
  {
-  "id": "mercury-2-5",
-  "name": "Mercury 2.5",
+  "id": "mercury-3",
+  "name": "Mercury 3",
   "category": "llm",
   "series": "Inception Mercury",
   "org": "Inception",
   "country": "US",
   "release": null,
   "access": "api",
-  "summary_ja": "拡散方式のLLM。速度を重視する推論・検索・音声アプリ向け。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "通常：100万トークンあたり入力$0.20／出力$0.75。発表時の80%割引は終了条件を公式で確認。",
-  "hf": "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5",
+  "summary_ja": "拡散型の言語モデルMercuryの現行旗艦。高速な推論・ツール操作・構造化出力向け。",
+  "availability_ja": "通常APIで提供。旧Mercury 2.5は新規利用を終了し既存利用も11/15まで。",
+  "price_note": "導入割引中は100万トークン当たり入力$0.10・キャッシュ$0.01・出力$0.35。通常表示は$0.20・$0.02・$0.70。割引終了日は未確認。",
+  "hf": "https://www.inceptionlabs.ai/models",
   "sources": [
-   "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5"
+   "https://www.inceptionlabs.ai/models",
+   "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-12",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
-   "Mercury 1",
-   "Mercury 2"
+   "Mercury 2.5"
   ],
-  "context_note": "260Kトークン。速度は提供元の評価条件による。",
+  "context_note": "1Mトークン。",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
+  "detail_note": "Mercury 2.5の料金・評価を流用しない。Mercury 3の1M文脈。割引終了日と正確な初公開日は未確認。"
  },
  {
   "id": "solar-pro-4",

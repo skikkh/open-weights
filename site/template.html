@@ -257,6 +257,53 @@ h1, h2, h3, h4, p, dd, .nm, .sum, .pick .v, .uc .v, .cat p, .note, .lede { word-
 
 footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size: 12.5px; color: var(--muted); }
 
+/* API料金比較 */
+.pricing-callout { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin: 0 0 18px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); font-size: 13px; }
+.pricing-callout a { font-weight: 700; }
+.pricing-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+.pricing-controls label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+.pricing-controls input, .pricing-controls select { width: 100%; min-width: 0; font: inherit; font-size: 14px; color: var(--fg); background: var(--surface); border: 1px solid var(--line-strong); padding: 8px 10px; border-radius: var(--r); }
+.pricing-box { padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); margin-bottom: 20px; }
+.pricing-box h3 { font-family: var(--font-body); font-size: 15px; margin-bottom: 12px; }
+.pricing-box > summary { cursor: pointer; font-size: 13px; font-weight: 600; }
+.pricing-box[open] > summary { margin-bottom: 12px; }
+.pricing-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.pricing-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pricing-status { display: flex; gap: 8px 20px; justify-content: space-between; flex-wrap: wrap; margin: 18px 0 10px; font-size: 12px; color: var(--muted); }
+.pricing-group { margin: 22px 0; }
+.pricing-group h3 { font-family: var(--font-body); font-size: 17px; margin-bottom: 9px; }
+.pricing-table { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+.price-grid { display: grid; grid-template-columns: minmax(230px, 2.3fr) repeat(3, minmax(90px, .8fr)) minmax(140px, 1.2fr); gap: 12px; align-items: start; }
+.price-head { padding: 9px 14px; background: var(--surface-2); border-radius: var(--r) var(--r) 0 0; font-size: 11px; color: var(--muted); }
+.price-row { border-top: 1px solid var(--line); padding: 14px; scroll-margin-top: 110px; }
+.price-name { font-size: 14px; font-weight: 700; line-height: 1.5; margin-bottom: 5px; }
+.price-provider { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.price-value { font-family: var(--font-mono); font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
+.price-value small { display: block; font-family: var(--font-body); font-size: 11px; color: var(--muted); font-weight: 400; }
+.price-cost { color: var(--accent); }
+.price-label { display: none; }
+.price-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; font-size: 10px; color: var(--muted); }
+.price-tags span { padding: 0 5px; border-radius: 3px; background: var(--surface-2); }
+.price-terms { margin-top: 10px; font-size: 12px; color: var(--muted); }
+.price-terms summary { cursor: pointer; width: fit-content; }
+.price-terms p { margin: 6px 0; }
+.price-notice { padding: 12px 16px; background: var(--warn-soft); color: var(--fg); border-radius: var(--r); font-size: 13px; }
+.price-unavailable { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 16px; font-size: 13px; }
+.price-unavailable li { margin-block: 6px; }
+@media (max-width: 760px) {
+  .pricing-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pricing-box { padding: 12px; }
+  .price-head { display: none; }
+  .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 8px; }
+  .price-grid > :first-child, .price-grid > :last-child { grid-column: 1 / -1; }
+  .price-row:first-of-type { border-top: 0; }
+  .price-label { display: block; color: var(--muted); font-family: var(--font-body); font-size: 10px; font-weight: 400; margin-bottom: 3px; }
+  .price-value { font-size: 14px; }
+  .price-cost { border-top: 1px dashed var(--line); padding-top: 8px; }
+  .price-cost .price-value { display: inline-block; margin-right: 16px; }
+}
+
 @media (max-width: 760px) {
   /* スマホ: 名前・メタとスコアだけ横に並べ、説明・札・サイズは全幅 */
   .sg { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; }
@@ -463,6 +510,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
 </footer>
 
 <script id="data" type="application/json">/*__DATA__*/</script>
+<script>/*__PRICING_CORE__*/</script>
 <script>
 (function () {
   "use strict";
@@ -558,6 +606,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
     { id: "about", nav: "見方・更新履歴" }
   ];
   var PAGE = {};
+  var PRICING = D.pricing || { models: [], providers: [], quotes: [], classes: [] };
   var FRONTIER = (D.frontier || []).slice();
   Object.keys(GEN).forEach(function (cat) {
     (GEN[cat] || []).filter(function (m) { return m.access === "api"; }).forEach(function (m) {
@@ -570,6 +619,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   [["llm", "LLM", "言語"], ["jp", "国産LLM", "言語"], ["asr", "音声認識", "音声"], ["tts", "音声合成", "音声"], ["s2s", "Speech to Speech", "音声"], ["music", "音楽生成", "音声"], ["image", "画像生成", "ビジュアル"], ["video", "動画生成", "ビジュアル"], ["3d", "3D生成", "ビジュアル"], ["decision", "判断モデル", "判断"]].forEach(function (x) {
     PAGES.push({ id: "frontier-" + x[0], nav: x[1], grp: x[2], frontier: true, base: x[0], h: x[1] + "：フロンティア・有料モデル", desc: "API・有料サービスを新しい順に掲載。国、提供状況、料金の単位と条件を確認できます。初公開日が未確認のものは日付不明として末尾に並べます。", list: FRONTIER.filter(function (m) { return x[0] === "jp" ? m.category === "llm" && m.country === "JP" : m.category === x[0]; }) });
   });
+  PAGES.push({ id: "frontier-pricing", nav: "API料金比較", grp: "料金", frontier: true, pricing: true, base: "llm", h: "API料金を、同じ条件で比べる", desc: "入力・出力・キャッシュ単価と費用を、会社別・同じモデル・同等クラスで比較。テキストLLMが対象です。" });
   PAGES.forEach(function (p) { if (p.gen) p.list = (GEN[p.id] || []).filter(function (m) { return m.access !== "api"; }); PAGE[p.id] = p; });
 
   /* ── メモリの段階 ── */
@@ -1316,6 +1366,7 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       ["公式", repoLink(m.hf)]
     ]));
     var notes = [m.quality_note, m.speed_note, m.best_for_ja].filter(Boolean).map(function (x) { return '<p class="note">' + esc(x) + '</p>'; }).join("");
+    if (PRICING.models.some(function (p) { return p.id === m.id; })) notes += '<p><a href="#frontier-pricing" data-price-model="' + esc(m.id) + '">このモデルのAPIトークン料金を比較 →</a></p>';
     return '<details class="row frontier-row" id="' + esc(pid + "-" + m.id) + '"><summary><div class="sg">' +
       idHead(m, '<span class="chip">' + esc(tierLabel) + '</span>') + '</div><div class="c-size"><p class="note">' + esc(price) + '</p><p class="note muted">' + esc(availability) + '</p></div><div class="c-score"><span class="score">' + (tier === "limited" ? "一般提供待ち" : "有料・API") + '</span><span class="score-l">' + (tier === "limited" ? "対象者を限定" : "無料枠は提供元による") + '</span></div></div></summary>' +
       '<div class="detail"><div><h4>仕様・利用条件</h4>' + details + notes + '</div>' + listBench(m.bench, "評価値") + sources(m.sources) + '</div></details>';
@@ -1327,8 +1378,153 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
       list.sort(f.sort === "old" ? byOld : byNew);
       setList(p.id, p.list, list, function (m) { return frontierRow(m, p.id); });
     };
-    return shell(p, "", chipRow("開発国", "country", countryOpts(p.list), "all") + '<div class="frow"><span class="fl">並び順</span>' + sortCtl(p.id, [NEW_O, OLD_O]) + '</div>');
+    var priceLink = p.base === "llm" || p.base === "jp" ? '<div class="pricing-callout"><a href="#frontier-pricing">APIトークン料金を比較する →</a><span>入出力単価・キャッシュ・同じモデルの提供元違い</span></div>' : "";
+    return shell(p, priceLink, chipRow("開発国", "country", countryOpts(p.list), "all") + '<div class="frow"><span class="fl">並び順</span>' + sortCtl(p.id, [NEW_O, OLD_O]) + '</div>');
   }
+
+  /* ── APIトークン料金比較 ── */
+  var priceModels = {}, priceProviders = {}, priceClasses = {}, priceCatalog = {};
+  LLM.concat(FRONTIER).forEach(function (m) { priceCatalog[m.id] = m; });
+  PRICING.models.forEach(function (m) { priceModels[m.id] = Object.assign({}, priceCatalog[m.id] || {}, m); });
+  PRICING.providers.forEach(function (p) { priceProviders[p.id] = p.name; });
+  PRICING.classes.forEach(function (p) { priceClasses[p.id] = p.label; });
+  var pricePlanNames = { standard: "通常・従量課金", batch: "Batch（非同期）", off_peak: "オフピーク", flex: "Flex（遅延許容）", priority: "Priority（優先処理）" };
+  function priceOptions(options, selected) {
+    return options.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (o[0] === selected ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join("");
+  }
+  function priceSelect(id, label, options, selected) {
+    return '<label>' + esc(label) + '<select data-price="' + id + '" id="price-' + id + '">' + priceOptions(options, selected) + '</select></label>';
+  }
+  function priceInput(id, label, value, max) {
+    return '<label>' + esc(label) + '<input id="price-' + id + '" data-price="' + id + '" type="number" min="0" step="1" max="' + max + '" value="' + value + '" inputmode="numeric" required></label>';
+  }
+  function buildPricing() {
+    var companies = Object.keys(priceModels).map(function (id) { return priceModels[id].developer; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).sort();
+    var modelOptions = Object.keys(priceModels).sort(function (a, b) { return byNew(priceModels[a], priceModels[b]); }).map(function (id) { return [id, priceModels[id].name]; });
+    var controls = '<details class="pricing-box" id="price-usage"><summary id="price-usage-summary">使用量を指定して試算</summary><div class="pricing-controls">' +
+      priceInput("input", "1回の入力（キャッシュ分を含む）", 10000, 100000000) + priceInput("output", "1回の出力（思考分も含む）", 2000, 100000000) +
+      priceInput("count", "1か月のリクエスト数", 1000, 1000000000) + priceInput("hit", "入力のキャッシュ命中率（%）", 0, 100) + '</div>' +
+      '<p class="pricing-hint">文字数ではなくトークン数を入力。試算は入力・出力・キャッシュ読込の合計です。書込・保存・検索・ツール・税・入金手数料は含めません。</p></details>';
+    var filters = '<div class="pricing-controls pricing-filters">' +
+      priceSelect("group", "まとめ方", [["developer", "開発会社別"], ["model", "同じモデルの提供元を比較"], ["class", "同等クラスで会社を横断"], ["provider", "API提供会社別"]], "developer") +
+      priceSelect("model", "比較するモデル・系列", [["all", "すべてのモデル"]].concat(modelOptions), "all") +
+      priceSelect("sort", "並び順", [["new", "モデルの公開日が新しい順"], ["cost", "試算が安い順（同じ通貨内）"], ["input", "入力単価が安い順（同じ通貨内）"], ["output", "出力単価が安い順（同じ通貨内）"]], "new") + '</div><details class="price-terms" id="price-advanced"><summary>会社・クラス・課金方式・通貨で絞り込む</summary><div class="pricing-controls pricing-filters">' +
+      priceSelect("developer", "モデルの開発会社", [["all", "すべての開発会社"]].concat(companies.map(function (s) { return [s, s]; })), "all") +
+      priceSelect("provider", "APIの提供会社・経路", [["all", "すべての提供会社"]].concat(PRICING.providers.map(function (p) { return [p.id, p.name]; })), "all") +
+      priceSelect("class", "比較クラス（用途の目安）", [["all", "すべてのクラス"]].concat(PRICING.classes.map(function (p) { return [p.id, p.label]; })), "all") +
+      priceSelect("plan", "課金方式", [["standard", "通常・従量課金"], ["batch", "Batch（非同期）"], ["off_peak", "オフピーク"], ["flex", "Flex（遅延許容）"], ["priority", "Priority（優先処理）"], ["all", "すべて（条件が異なります）"]], "standard") +
+      priceSelect("currency", "表示通貨", [["native", "原通貨で表示"], ["USD", "米ドルに換算"], ["JPY", "日本円に換算"]], "native") + '</div>' +
+      '<details class="price-terms"><summary>換算レートを指定</summary><div class="pricing-controls">' +
+      '<label>1米ドル＝何円<input data-price="usd_jpy" id="price-usd_jpy" type="number" min="0.0001" step="any" placeholder="換算する場合に入力" inputmode="decimal"></label>' +
+      '<label>1中国元＝何円<input data-price="cny_jpy" id="price-cny_jpy" type="number" min="0.0001" step="any" placeholder="換算する場合に入力" inputmode="decimal"></label></div><p>指定したレートによる試算です。為替・決済手数料を自動取得する機能ではありません。</p></details></details>';
+    return '<section class="page wrap panel" id="p-frontier-pricing" data-page="frontier-pricing" hidden>' +
+      '<div class="panel-head"><span class="grp">料金比較</span><h2>' + esc(PAGE["frontier-pricing"].h) + '</h2><p>' + esc(PAGE["frontier-pricing"].desc) + '</p></div>' +
+      '<div class="pricing-callout"><span><b>' + esc(PRICING.as_of) + '</b> 料金確認 · 単価は100万トークン</span><a href="#frontier-llm">モデルの仕様 →</a></div>' + controls + filters +
+      '<p class="pricing-hint">クラスは用途による編集上の区分で、同じ性能を保証するものではありません。同じモデルでも量子化・速度・地域・データ利用条件が異なります。</p>' +
+      '<div class="pricing-status"><span id="pricing-count" aria-live="polite"></span><button type="button" class="chip-btn" id="price-reset">条件をリセット</button></div>' +
+      '<p id="price-alert" class="price-notice" role="status" hidden></p><div id="pricing-results"></div><div id="pricing-unavailable" class="price-unavailable"></div></section>';
+  }
+  function priceControl(id) { return document.getElementById("price-" + id); }
+  function priceReadNumber(id) { var v = priceControl(id).value; return v.trim() === "" ? NaN : Number(v); }
+  function priceMoney(value, currency) {
+    if (value == null || !isFinite(value)) return "—";
+    var digits = value === 0 ? 0 : Math.abs(value) < 0.01 ? 6 : Math.abs(value) < 1 ? 4 : 2;
+    return ({ USD: "$", JPY: "¥", CNY: "CN¥" }[currency] || currency + " ") + value.toLocaleString("ja-JP", { maximumFractionDigits: digits });
+  }
+  function renderPricing() {
+    var today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()), currency = priceControl("currency").value;
+    var usage = { input: priceReadNumber("input"), output: priceReadNumber("output"), count: priceReadNumber("count"), hit: priceReadNumber("hit") };
+    var fx = { usd_jpy: priceReadNumber("usd_jpy"), cny_jpy: priceReadNumber("cny_jpy") };
+    var invalid = ["input", "output", "count", "hit"].some(function (id) { return !priceControl(id).checkValidity(); });
+    document.getElementById("price-usage-summary").textContent = invalid ? "使用量を指定して試算（入力値を確認）" : "使用量で試算：入力 " + usage.input.toLocaleString("ja-JP") + " · 出力 " + usage.output.toLocaleString("ja-JP") + " · 月 " + usage.count.toLocaleString("ja-JP") + "回";
+    var candidates = PRICING.quotes.filter(function (q) {
+      var m = priceModels[q.model_id];
+      return (priceControl("developer").value === "all" || m.developer === priceControl("developer").value) &&
+        (priceControl("provider").value === "all" || q.provider_id === priceControl("provider").value) &&
+        (priceControl("class").value === "all" || m.class === priceControl("class").value) &&
+        (priceControl("model").value === "all" || m.id === priceControl("model").value) &&
+        (priceControl("plan").value === "all" || q.plan === priceControl("plan").value);
+    });
+    var rows = candidates.filter(function (q) { return q.status === "available"; }).map(function (q) {
+      var result = CatalogPricing.estimate(q, usage, today), cur = currency === "native" ? q.currency : currency;
+      var val = function (v) { return CatalogPricing.convert(v, q.currency, cur, fx); };
+      return { q: q, m: priceModels[q.model_id], e: result, cur: cur, cost: val(result.total), input: val(result.rates && result.rates.input), output: val(result.rates && result.rates.output), convert: val };
+    });
+    var alert = document.getElementById("price-alert"), notices = [];
+    if (invalid) notices.push("使用量は0以上の整数、命中率は0〜100で入力してください。空欄・上限外の値では試算しません。");
+    if (currency !== "native" && rows.some(function (r) { return r.q.currency !== currency && r.convert(1) == null; })) notices.push("異なる通貨の換算にはレートの入力が必要です。未入力の料金は原通貨で表示し、費用順位に混ぜません。");
+    if ((Date.parse(today) - Date.parse(PRICING.as_of)) / 864e5 > 7) notices.push("料金の確認から7日以上経過しています。各行の公式出典で最新条件を確認してください。");
+    alert.textContent = notices.join(" "); alert.hidden = !notices.length;
+    var groupBy = priceControl("group").value, sort = priceControl("sort").value;
+    rows.sort(function (a, b) {
+      if (sort === "new") return byNew(a.m, b.m) || a.m.name.localeCompare(b.m.name, "ja");
+      var av = a[sort], bv = b[sort];
+      if (a.q.currency !== b.q.currency && currency === "native") return a.q.currency.localeCompare(b.q.currency);
+      return (av == null ? Infinity : av) - (bv == null ? Infinity : bv) || byNew(a.m, b.m);
+    });
+    var groups = {}, keys = [];
+    rows.forEach(function (r) {
+      var key = groupBy === "model" ? r.m.name : groupBy === "class" ? priceClasses[r.m.class] : groupBy === "provider" ? priceProviders[r.q.provider_id] : r.m.developer;
+      if (!groups[key]) { groups[key] = []; keys.push(key); } groups[key].push(r);
+    });
+    function amount(r, n) {
+      var v = r.convert(n);
+      return v == null && n != null ? esc(priceMoney(n, r.q.currency)) + '<small>原通貨・未換算</small>' : esc(priceMoney(v, r.cur));
+    }
+    function rowHtml(r) {
+      var q = r.q, e = r.e, rates = e.rates || {}, m = r.m;
+      var billing = e.error || (invalid ? "入力値を確認" : r.cost == null ? "換算レート未入力" : "");
+      var specs = [];
+      if (q.context) specs.push("文脈上限 " + q.context.toLocaleString("ja-JP") + " tokens");
+      if (q.max_input) specs.push("入力上限 " + q.max_input.toLocaleString("ja-JP"));
+      if (q.max_output) specs.push("出力上限 " + q.max_output.toLocaleString("ja-JP"));
+      if (q.tiers) specs.push(q.tiers.map(function (t) { return t.label; }).join("／") + "は全量に適用");
+      var write = [];
+      if (rates.cache_write_short != null) write.push("短期 " + priceMoney(rates.cache_write_short, q.currency));
+      if (rates.cache_write_long != null) write.push("長期 " + priceMoney(rates.cache_write_long, q.currency));
+      var future = (q.future_rates || []).map(function (t) { return t.from + "以降：入力 " + priceMoney(t.rates.input, q.currency) + "／出力 " + priceMoney(t.rates.output, q.currency); }).join("。 ");
+      return '<article class="price-row" data-quote="' + esc(q.id) + '" data-model="' + esc(m.id) + '" data-currency="' + esc(r.cur) + '"><div class="price-grid">' +
+        '<div><div class="price-name">' + esc(m.name) + '</div><div class="price-provider">' + esc(priceProviders[q.provider_id]) + '</div><div class="price-tags"><span>' + esc(cname(m.country)) + '開発</span><span>' + esc(priceClasses[m.class]) + '</span><span>' + esc(pricePlanNames[q.plan] || q.plan) + '</span>' + (q.quantization ? '<span>' + esc(q.quantization) + '</span>' : '') + '</div></div>' +
+        '<div class="price-value"><span class="price-label">入力 / 100万</span>' + amount(r, rates.input) + '</div>' +
+        '<div class="price-value"><span class="price-label">出力 / 100万</span>' + amount(r, rates.output) + '</div>' +
+        '<div class="price-value"><span class="price-label">キャッシュ読込</span>' + amount(r, rates.cache_read) + '</div>' +
+        '<div class="price-cost">' + (billing ? '<span class="price-provider">' + esc(billing) + '</span>' : '<span class="price-value">' + esc(priceMoney(r.convert(e.per_request), r.cur)) + '<small>1リクエスト</small></span><span class="price-value">' + esc(priceMoney(r.cost, r.cur)) + '<small>1か月の試算</small></span>') + '</div></div>' +
+        '<details class="price-terms"><summary>条件・内訳・公式出典</summary><p>' + esc(q.note_ja) + '</p><p>適用：' + esc(e.tier || "—") + ' · ' + esc(q.currency) + ' · 確認 ' + esc(q.verified_at) + '</p>' +
+        (q.route ? '<p>経路指定：' + esc(q.route) + '</p>' : '') + (specs.length ? '<p>' + esc(specs.join(" · ")) + '</p>' : '') +
+        (write.length ? '<p>キャッシュ書込 / 100万：' + esc(write.join("／")) + '（試算に含めない。保持時間は上記の条件を確認）</p>' : '') +
+        (future ? '<p>改定予定：' + esc(future) + '</p>' : '') +
+        (!billing ? '<p>1回の内訳：通常入力 ' + esc(priceMoney(r.convert(e.fresh_cost), r.cur)) + ' ＋ キャッシュ読込 ' + esc(priceMoney(r.convert(e.cache_cost), r.cur)) + ' ＋ 出力 ' + esc(priceMoney(r.convert(e.output_cost), r.cur)) + '</p>' : '') +
+        '<p>' + q.sources.map(function (u, i) { return link(u, "公式出典 " + (i + 1)); }).join(" · ") + '</p></details></article>';
+    }
+    document.getElementById("pricing-results").innerHTML = keys.map(function (k) {
+      return '<section class="pricing-group"><h3>' + esc(k) + '</h3><div class="pricing-table"><div class="price-grid price-head"><span>モデル・API提供元</span><span>入力 / 100万</span><span>出力 / 100万</span><span>キャッシュ読込</span><span>1回・1か月の試算</span></div>' + groups[k].map(rowHtml).join("") + '</div></section>';
+    }).join("") || '<p class="muted">この条件で比較できる料金経路がありません。</p>';
+    var unavailable = candidates.filter(function (q) { return q.status !== "available"; });
+    document.getElementById("pricing-unavailable").innerHTML = unavailable.length ? '<h3>個別条件・トークン単価のない提供</h3><ul>' + unavailable.map(function (q) { return '<li>' + esc(priceModels[q.model_id].name) + '：' + esc(q.unavailable_ja || "単価未確認") + '。' + esc(q.note_ja) + ' ' + link(q.sources[0], "公式") + '</li>'; }).join("") + '</ul>' : "";
+    document.getElementById("pricing-unavailable").hidden = !unavailable.length;
+    var models = rows.map(function (r) { return r.m.id; }).filter(function (x, i, a) { return a.indexOf(x) === i; });
+    document.getElementById("pricing-count").textContent = models.length + "モデル · " + rows.length + "料金経路を表示。単価は100万トークン、試算は上の使用量。";
+  }
+  document.addEventListener("input", function (e) {
+    if (e.target.hasAttribute && e.target.hasAttribute("data-price")) renderPricing();
+  });
+  document.addEventListener("click", function (e) {
+    var modelLink = e.target.closest && e.target.closest("[data-price-model]");
+    if (modelLink) {
+      e.preventDefault();
+      priceControl("model").value = modelLink.getAttribute("data-price-model");
+      priceControl("group").value = "model";
+      ["developer", "provider", "class"].forEach(function (id) { priceControl(id).value = "all"; });
+      renderPricing();
+      location.hash = "frontier-pricing";
+      return;
+    }
+    var reset = e.target.closest && e.target.closest("#price-reset");
+    if (!reset) return;
+    document.querySelectorAll("#p-frontier-pricing input").forEach(function (el) { el.value = el.defaultValue; });
+    document.querySelectorAll("#p-frontier-pricing select").forEach(function (el) { var opt = Array.from(el.options).find(function (o) { return o.defaultSelected; }); el.value = opt ? opt.value : el.options[0].value; });
+    renderPricing();
+  });
 
   /* ── ホーム ── */
   function bestBy(list, f) { var b = null; list.forEach(function (m) { if (!isAnn(m) && f(m) != null && (b == null || f(m) > f(b))) b = m; }); return b; }
@@ -1499,8 +1695,10 @@ footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size:
   document.getElementById("st-count").textContent = total + " モデル";
   buildNav();
   var html = buildLLMPage("llm") + buildLLMPage("local") + buildJP() + buildASR() + buildTTS();
-  PAGES.forEach(function (p) { if (p.gen) html += buildGen(p); if (p.frontier) html += buildFrontier(p); });
+  PAGES.forEach(function (p) { if (p.gen) html += buildGen(p); if (p.frontier && !p.pricing) html += buildFrontier(p); });
+  html += buildPricing();
   document.getElementById("pages").outerHTML = html;
+  renderPricing();
   PAGES.forEach(function (p) {
     if (!p.list) return;
     RENDER[p.id]();

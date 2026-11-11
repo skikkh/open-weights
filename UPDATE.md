@@ -19,6 +19,7 @@
 | `data/tts.json` | 日本語音声合成 |
 | `data/frontier.json` | フロンティア・有料のLLM・音声等。全カテゴリの定期更新対象 |
 | `data/frontier-review.json` | AA各一覧との照合台帳。掲載・旧版・日本語対象外・保留を記録 |
+| `data/pricing.json` | API料金比較。モデル・開発会社・API提供会社・課金方式・100万トークン単価・長文条件・改定予定・公式出典 |
 | `data/s2s.json` `music.json` `image.json` `video.json` `3d.json` `decision.json` | 汎用カテゴリ（同じスキーマ） |
 | `data/meta.json` | 更新日、次回予定、収録ルール、更新履歴、出典、重み非公開モデルの参考メモ |
 | `data/recipes.json` | 大型LLMを Artificial Analysis「Laptops & Workstations」の5機種に載せるレシピ（大型LLMページの「載せるなら」表） |
@@ -53,8 +54,9 @@
    - `updated_at` を今日に。`next_update` は次の実行日（毎月 1・4・7…28・31日）に。ページの「次回更新予定」は updated_at から自動計算される。
    - `changelog` の先頭に `{"date": "YYYY-MM-DD", "items": ["追加: …", "更新: …", "削除: …（後継 … に置換）"]}` を足す。変更がなければ `"items": ["新しい公開・更新なし（確認のみ）"]`。古い履歴は 30 件を超えたら末尾から消す。
    - `closed_refs`（重み非公開のSOTAの参考名）も最新に。
-7. `data/frontier-review.json` の確認日・候補・掲載先・保留理由を更新する。`python3 scripts/check_frontier.py` と `python3 scripts/build.py`、`git diff --check` を実行する。有料側は全ファイルを統合して系列重複・置換済み旧版・台帳の参照先を検査する。変更カテゴリの実ブラウザ表示を375px／1280pxで確認する。
-8. コミットして `main` に push する。メッセージ例: `データ更新 2026-10-23: Qwen3.8 系を追加、DeepSeek V4.1 の AA 値を更新`。
+7. **API料金比較も3日ごとの更新対象**。`data/pricing.json` を各社公式料金と照合し、確認した行の `verified_at` と全体の `as_of` を更新する。同じモデルの提供会社別価格は、直販とOpenRouter経由を区別する。更新方法・条件は下の「API料金比較」を参照。
+8. `data/frontier-review.json` の確認日・候補・掲載先・保留理由を更新する。`python3 scripts/check_frontier.py`、`node scripts/check_pricing.js`、`python3 scripts/build.py`、`git diff --check` を実行する。有料側は全ファイルを統合して系列重複・置換済み旧版・台帳の参照先を検査する。変更カテゴリの実ブラウザ表示を375px／1280pxで確認する。
+9. コミットして `main` に push する。メッセージ例: `データ更新 2026-10-23: Qwen3.8 系を追加、DeepSeek V4.1 の AA 値を更新`。
 
 ## 4. スキーマ
 
@@ -171,7 +173,20 @@ decision のみ: access("api"|"open-weight"), price_note
 
 すべての有料行（汎用API行・国産API行も含む）に、版番号を含めない固定の `series` を付ける。`availability_tier` は `general`（通常）、`limited`（対象者を限定）、`preview`（プレビュー）、`rollout`（段階的展開）。同一系列・役割の二重掲載はビルドエラー。例外は一般提供中の現行版と、公式に確認した限定後継1件の組み合わせだけ。型や推論設定の違いだけで系列キーを作り直さない。
 
-### 毎回照合する一覧
+### API料金比較
+
+有料側の `#frontier-pricing`。テキストLLMの100万トークン単価を比較する。音声・画像・動画の文字・秒・枚数課金をテキストのトークンへ換算しない。推論APIを実行せず、公開料金表・公開価格APIを使う。
+
+- `models` は掲載カタログのidを参照する。モデルを最新版へ置換したら、料金の参照先も更新し、旧版の料金・ベンチを流用しない。同じモデルの推論強度・別名を新モデルにしない。
+- `providers` はAPI提供会社・契約経路。開発会社の `developer` と別。OpenRouter経由のDeepInfra等は直販と表示を分け、経路ごとの公式 `/api/v1/models/{author}/{model}/endpoints` を取得する。モデル一覧の最安値を固定経路の価格とみなさない。`service_tier` の通常／Flex／Priorityと量子化を保持する。
+- `quotes[].rates` は原通貨で100万トークンあたりの `input`、`output`、`cache_read`、`cache_write_short`、`cache_write_long`。不明はnull。APIの1トークン単価は100万倍する。米セントと米ドルを取り違えない。
+- `tiers` は入力が `over_input` を**超えた**ときにリクエスト全量へ適用する上書き。以上条件なら `inclusive: true`。キャッシュ読み書きの入力も閾値に含める。OpenAI 272K超、Haiku 100K超、Ember 200K超、Grok 200K以上のような境界を公式表から確認する。
+- `future_rates` は公式の改定予定だけを日付順に保存する。期間限定価格の終了日・割引率を推測しない。終了日が不明なら条件に明記して次回追跡。提供条件が変わった場合は削除・単価未確認へ変更する。
+- 通常／Batch／オフピーク／Flex／Priorityの価格を混ぜない。会費・限定アクセス・単価未確認は `status` と理由を保存し、0円の従量課金として比較しない。長文・地域・商用・学習へのデータ利用などの条件を `note_ja` と公式 `sources` に残す。
+- 試算は入力・出力・キャッシュ読込のトークン料。書込・保存・ツール・検索・税・入金手数料は別と表示する。原通貨を保持し、換算レートは利用者が指定する。異通貨の未換算額を同じ順位にしない。
+- `site/pricing.js` が計算、`scripts/pricing_data.py` がビルド時検証。`node scripts/check_pricing.js` で境界・通貨・割引等を確認する。新しい料金条件で挙動を変えたときだけ、関係する確認を更新する。
+
+### AAで照合する一覧
 
 | 対象 | AAの一覧 |
 |---|---|

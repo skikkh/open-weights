@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from pricing_data import validate_pricing
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -113,6 +114,7 @@ def main():
     frontier = load("frontier.json", [])
     hw = load("hardware.json", {})
     recipes = load("recipes.json", {})
+    pricing = load("pricing.json")
 
     errors = []
     check("llm", llm, LLM_REQUIRED, errors)
@@ -125,17 +127,20 @@ def main():
         if m.get("category") not in {"llm", "asr", "tts", "s2s", "music", "image", "video", "3d", "decision"}:
             errors.append(f"frontier {m.get('id')}: カテゴリが不正です")
     paid_pool = check_frontier(frontier, gen, meta, errors)
+    model_ids = {m["id"] for m in llm + paid_pool}
+    errors.extend(validate_pricing(pricing, model_ids))
     if errors:
         print("検証エラー:", *errors, sep="\n  ")
         sys.exit(1)
 
-    payload = json.dumps({"meta": meta, "frontier": frontier, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw, "recipes": recipes}, ensure_ascii=False, separators=(",", ":"))
+    payload = json.dumps({"meta": meta, "frontier": frontier, "llm": llm, "asr": asr, "tts": tts, "gen": gen, "hw": hw, "recipes": recipes, "pricing": pricing}, ensure_ascii=False, separators=(",", ":"))
     payload = payload.replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8")
-    if "/*__DATA__*/" not in html:
-        print("template.html にデータ差し込み位置 /*__DATA__*/ がありません")
+    if "/*__DATA__*/" not in html or "/*__PRICING_CORE__*/" not in html:
+        print("template.html にデータまたは料金計算の差し込み位置がありません")
         sys.exit(1)
     OUT.parent.mkdir(exist_ok=True)
+    html = html.replace("/*__PRICING_CORE__*/", (ROOT / "site" / "pricing.js").read_text(encoding="utf-8"))
     OUT.write_text(html.replace("/*__DATA__*/", payload), encoding="utf-8")
     jp = sum(1 for m in llm if m.get("country") == "JP")
     extra = " / ".join(f"{k} {len(v)}" for k, v in gen.items())

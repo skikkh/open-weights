@@ -1,0 +1,2401 @@
+{
+ "as_of": "2026-11-12",
+ "unit_tokens": 1000000,
+ "scope_ja": "テキストLLMの有料API。100万トークン単価。音声・画像・動画の秒・文字・枚数課金は各カテゴリに掲載。",
+ "classes": [
+  {
+   "id": "frontier",
+   "label": "フロンティア上位"
+  },
+  {
+   "id": "mainstream",
+   "label": "汎用・主力"
+  },
+  {
+   "id": "efficient",
+   "label": "軽量・高速"
+  },
+  {
+   "id": "specialist",
+   "label": "専門特化"
+  }
+ ],
+ "models": [
+  {
+   "id": "gpt-6-astra",
+   "developer": "OpenAI",
+   "family": "GPT Astra",
+   "class": "frontier"
+  },
+  {
+   "id": "gpt-6.1-sol",
+   "developer": "OpenAI",
+   "family": "GPT Sol",
+   "class": "mainstream"
+  },
+  {
+   "id": "gpt-6.1-terra",
+   "developer": "OpenAI",
+   "family": "GPT Terra",
+   "class": "efficient"
+  },
+  {
+   "id": "gpt-6-luna",
+   "developer": "OpenAI",
+   "family": "GPT Luna",
+   "class": "efficient"
+  },
+  {
+   "id": "gpt-6-cyber",
+   "developer": "OpenAI",
+   "family": "GPT Cyber",
+   "class": "specialist"
+  },
+  {
+   "id": "gpt-6-rosalind",
+   "developer": "OpenAI",
+   "family": "GPT Rosalind",
+   "class": "specialist"
+  },
+  {
+   "id": "claude-fable-5-2",
+   "developer": "Anthropic",
+   "family": "Claude Fable",
+   "class": "frontier"
+  },
+  {
+   "id": "claude-opus-5-5",
+   "developer": "Anthropic",
+   "family": "Claude Opus",
+   "class": "frontier"
+  },
+  {
+   "id": "claude-sonnet-5-5",
+   "developer": "Anthropic",
+   "family": "Claude Sonnet",
+   "class": "mainstream"
+  },
+  {
+   "id": "claude-haiku-5-5",
+   "developer": "Anthropic",
+   "family": "Claude Haiku",
+   "class": "efficient"
+  },
+  {
+   "id": "gemini-4-carbon",
+   "developer": "Google",
+   "family": "Gemini 上位",
+   "class": "frontier"
+  },
+  {
+   "id": "gemini-4-argon",
+   "developer": "Google",
+   "family": "Gemini 効率重視",
+   "class": "mainstream"
+  },
+  {
+   "id": "gemini-3-8-flash",
+   "developer": "Google",
+   "family": "Gemini Flash",
+   "class": "efficient"
+  },
+  {
+   "id": "grok-4-7",
+   "developer": "xAI",
+   "family": "Grok",
+   "class": "frontier"
+  },
+  {
+   "id": "kimi-k3-1-pro-api",
+   "developer": "Moonshot AI",
+   "family": "Kimi Pro",
+   "class": "frontier"
+  },
+  {
+   "id": "kimi-k3-1-pro-highspeed-api",
+   "developer": "Moonshot AI",
+   "family": "Kimi Pro Highspeed",
+   "class": "frontier"
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api",
+   "developer": "DeepSeek",
+   "family": "DeepSeek Flash",
+   "class": "mainstream"
+  },
+  {
+   "id": "deepseek-v4-pro-0813",
+   "developer": "DeepSeek",
+   "family": "DeepSeek Pro",
+   "class": "mainstream"
+  },
+  {
+   "id": "muse-wonder",
+   "developer": "Meta",
+   "family": "Muse Wonder",
+   "class": "frontier"
+  },
+  {
+   "id": "muse-wonder-full",
+   "developer": "Meta",
+   "family": "Muse Wonder Full",
+   "class": "frontier"
+  },
+  {
+   "id": "muse-spark-1-3",
+   "developer": "Meta",
+   "family": "Muse Spark",
+   "class": "mainstream"
+  },
+  {
+   "id": "muse-ember",
+   "developer": "Meta",
+   "family": "Muse Ember",
+   "class": "efficient"
+  },
+  {
+   "id": "qwen3-8-max-0902",
+   "developer": "Alibaba",
+   "family": "Qwen Max",
+   "class": "mainstream"
+  },
+  {
+   "id": "qwen3-8-flash-api",
+   "developer": "Alibaba",
+   "family": "Qwen Flash",
+   "class": "efficient"
+  },
+  {
+   "id": "mercury-3",
+   "developer": "Inception",
+   "family": "Mercury",
+   "class": "efficient"
+  },
+  {
+   "id": "solar-pro-4",
+   "developer": "Upstage",
+   "family": "Solar Pro",
+   "class": "mainstream"
+  },
+  {
+   "id": "solar-mini-4",
+   "developer": "Upstage",
+   "family": "Solar Mini",
+   "class": "efficient"
+  },
+  {
+   "id": "tencent-hy4-api",
+   "developer": "Tencent",
+   "family": "Hy flagship",
+   "class": "mainstream"
+  },
+  {
+   "id": "plamo-3-1-prime",
+   "developer": "Preferred Networks",
+   "family": "PLaMo Prime",
+   "class": "mainstream"
+  },
+  {
+   "id": "glm-5-3",
+   "developer": "Z AI",
+   "family": "GLM flagship",
+   "class": "mainstream"
+  },
+  {
+   "id": "glm-5-3-flash",
+   "developer": "Z AI",
+   "family": "GLM Flash",
+   "class": "efficient"
+  }
+ ],
+ "providers": [
+  {
+   "id": "openai",
+   "name": "OpenAI API"
+  },
+  {
+   "id": "anthropic",
+   "name": "Anthropic API"
+  },
+  {
+   "id": "google",
+   "name": "Google Gemini API"
+  },
+  {
+   "id": "xai",
+   "name": "xAI API"
+  },
+  {
+   "id": "moonshot",
+   "name": "Kimi API"
+  },
+  {
+   "id": "deepseek",
+   "name": "DeepSeek API"
+  },
+  {
+   "id": "meta",
+   "name": "Meta Model API"
+  },
+  {
+   "id": "alibaba",
+   "name": "Alibaba Model Studio"
+  },
+  {
+   "id": "inception",
+   "name": "Inception API"
+  },
+  {
+   "id": "upstage",
+   "name": "Upstage API"
+  },
+  {
+   "id": "tencent",
+   "name": "Tencent TokenHub"
+  },
+  {
+   "id": "pfn",
+   "name": "PLaMo API"
+  },
+  {
+   "id": "zai",
+   "name": "Z AI API"
+  },
+  {
+   "id": "or-relace",
+   "name": "OpenRouter → Relace"
+  },
+  {
+   "id": "or-wafer",
+   "name": "OpenRouter → Wafer"
+  },
+  {
+   "id": "or-deepinfra",
+   "name": "OpenRouter → DeepInfra"
+  },
+  {
+   "id": "or-fireworks",
+   "name": "OpenRouter → Fireworks"
+  },
+  {
+   "id": "or-together",
+   "name": "OpenRouter → Together"
+  },
+  {
+   "id": "or-novita",
+   "name": "OpenRouter → Novita"
+  },
+  {
+   "id": "or-siliconflow",
+   "name": "OpenRouter → SiliconFlow"
+  },
+  {
+   "id": "or-sambanova",
+   "name": "OpenRouter → SambaNova"
+  }
+ ],
+ "quotes": [
+  {
+   "id": "gpt-6-astra--openai--0",
+   "model_id": "gpt-6-astra",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 10,
+    "output": 50,
+    "cache_read": 1,
+    "cache_write_short": 12.5,
+    "cache_write_long": 25.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 20,
+      "output": 75.0,
+      "cache_read": 2,
+      "cache_write_short": 25.0,
+      "cache_write_long": 50
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6-astra--openai--1",
+   "model_id": "gpt-6-astra",
+   "provider_id": "openai",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 5.0,
+    "output": 25.0,
+    "cache_read": 0.5,
+    "cache_write_short": 6.25,
+    "cache_write_long": 12.5
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 10.0,
+      "output": 37.5,
+      "cache_read": 1.0,
+      "cache_write_short": 12.5,
+      "cache_write_long": 25.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6.1-sol--openai--2",
+   "model_id": "gpt-6.1-sol",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.1,
+    "cache_write_short": 2.5,
+    "cache_write_long": 5.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 4,
+      "output": 15.0,
+      "cache_read": 0.2,
+      "cache_write_short": 5.0,
+      "cache_write_long": 10
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6.1-sol--openai--3",
+   "model_id": "gpt-6.1-sol",
+   "provider_id": "openai",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.0,
+    "output": 5.0,
+    "cache_read": 0.05,
+    "cache_write_short": 1.25,
+    "cache_write_long": 2.5
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 2.0,
+      "output": 7.5,
+      "cache_read": 0.1,
+      "cache_write_short": 2.5,
+      "cache_write_long": 5.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6.1-terra--openai--4",
+   "model_id": "gpt-6.1-terra",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1,
+    "output": 5,
+    "cache_read": 0.05,
+    "cache_write_short": 1.25,
+    "cache_write_long": 2.5
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 2,
+      "output": 7.5,
+      "cache_read": 0.1,
+      "cache_write_short": 2.5,
+      "cache_write_long": 5
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6.1-terra--openai--5",
+   "model_id": "gpt-6.1-terra",
+   "provider_id": "openai",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.5,
+    "output": 2.5,
+    "cache_read": 0.025,
+    "cache_write_short": 0.625,
+    "cache_write_long": 1.25
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 1.0,
+      "output": 3.75,
+      "cache_read": 0.05,
+      "cache_write_short": 1.25,
+      "cache_write_long": 2.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6-luna--openai--6",
+   "model_id": "gpt-6-luna",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01,
+    "cache_write_short": 0.125,
+    "cache_write_long": 0.25
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 0.2,
+      "output": 0.75,
+      "cache_read": 0.02,
+      "cache_write_short": 0.25,
+      "cache_write_long": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6-luna--openai--7",
+   "model_id": "gpt-6-luna",
+   "provider_id": "openai",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.05,
+    "output": 0.25,
+    "cache_read": 0.005,
+    "cache_write_short": 0.0625,
+    "cache_write_long": 0.125
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
+   "context": 1050000,
+   "max_output": 128000,
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 0.1,
+      "output": 0.375,
+      "cache_read": 0.01,
+      "cache_write_short": 0.125,
+      "cache_write_long": 0.25
+     }
+    }
+   ]
+  },
+  {
+   "id": "gpt-6-cyber--openai--8",
+   "model_id": "gpt-6-cyber",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "limited",
+   "rates": {
+    "input": 20,
+    "output": 100,
+    "cache_read": 2.0,
+    "cache_write_short": 25.0,
+    "cache_write_long": 50.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。",
+   "unavailable_ja": "限定アクセス・利用審査あり"
+  },
+  {
+   "id": "gpt-6-rosalind--openai--9",
+   "model_id": "gpt-6-rosalind",
+   "provider_id": "openai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "limited",
+   "rates": {
+    "input": 15,
+    "output": 75,
+    "cache_read": 1.5,
+    "cache_write_short": 18.75,
+    "cache_write_long": 37.5
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ],
+   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。",
+   "unavailable_ja": "限定アクセス・利用審査あり"
+  },
+  {
+   "id": "claude-fable-5-2--anthropic--10",
+   "model_id": "claude-fable-5-2",
+   "provider_id": "anthropic",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 8,
+    "output": 40,
+    "cache_read": 0.2,
+    "cache_write_short": 10.0,
+    "cache_write_long": 16
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-fable-5-2--anthropic--11",
+   "model_id": "claude-fable-5-2",
+   "provider_id": "anthropic",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 4.0,
+    "output": 20.0,
+    "cache_read": 0.1,
+    "cache_write_short": 5.0,
+    "cache_write_long": 8.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-opus-5-5--anthropic--12",
+   "model_id": "claude-opus-5-5",
+   "provider_id": "anthropic",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 4,
+    "output": 20,
+    "cache_read": 0.2,
+    "cache_write_short": 5.0,
+    "cache_write_long": 8
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-opus-5-5--anthropic--13",
+   "model_id": "claude-opus-5-5",
+   "provider_id": "anthropic",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2.0,
+    "output": 10.0,
+    "cache_read": 0.1,
+    "cache_write_short": 2.5,
+    "cache_write_long": 4.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-sonnet-5-5--anthropic--14",
+   "model_id": "claude-sonnet-5-5",
+   "provider_id": "anthropic",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.1,
+    "cache_write_short": 2.5,
+    "cache_write_long": 4
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-sonnet-5-5--anthropic--15",
+   "model_id": "claude-sonnet-5-5",
+   "provider_id": "anthropic",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.0,
+    "output": 5.0,
+    "cache_read": 0.05,
+    "cache_write_short": 1.25,
+    "cache_write_long": 2.0
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。1Mまで長文の追加倍率なし。",
+   "context": 1000000
+  },
+  {
+   "id": "claude-haiku-5-5--anthropic--16",
+   "model_id": "claude-haiku-5-5",
+   "provider_id": "anthropic",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01,
+    "cache_write_short": 0.125,
+    "cache_write_long": 0.2
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。Haikuはキャッシュ込み入力10万超で全量5倍。",
+   "context": 1000000,
+   "tiers": [
+    {
+     "over_input": 100000,
+     "label": "入力10万超の長文料金",
+     "rates": {
+      "input": 0.5,
+      "output": 2.5,
+      "cache_read": 0.05,
+      "cache_write_short": 0.625,
+      "cache_write_long": 1.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "claude-haiku-5-5--anthropic--17",
+   "model_id": "claude-haiku-5-5",
+   "provider_id": "anthropic",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.05,
+    "output": 0.25,
+    "cache_read": 0.005,
+    "cache_write_short": 0.0625,
+    "cache_write_long": 0.1
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "note_ja": "キャッシュ書込は5分／1時間。通常のグローバル料金。Haikuはキャッシュ込み入力10万超で全量5倍。",
+   "context": 1000000,
+   "tiers": [
+    {
+     "over_input": 100000,
+     "label": "入力10万超の長文料金",
+     "rates": {
+      "input": 0.25,
+      "output": 1.25,
+      "cache_read": 0.025,
+      "cache_write_short": 0.3125,
+      "cache_write_long": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-4-carbon--google--18",
+   "model_id": "gemini-4-carbon",
+   "provider_id": "google",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.1,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-11-30まで導入価格、2026-12-01以降2倍。思考トークンも出力課金。暗黙キャッシュのみ。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2026-12-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 4,
+      "output": 20,
+      "cache_read": 0.2,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-4-carbon--google--19",
+   "model_id": "gemini-4-carbon",
+   "provider_id": "google",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.0,
+    "output": 5.0,
+    "cache_read": 0.05,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-11-30まで導入価格、2026-12-01以降2倍。思考トークンも出力課金。暗黙キャッシュのみ。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2026-12-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 2.0,
+      "output": 10.0,
+      "cache_read": 0.1,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-4-argon--google--20",
+   "model_id": "gemini-4-argon",
+   "provider_id": "google",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.1,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-11-30まで導入価格、2026-12-01以降2倍。思考トークンも出力課金。暗黙キャッシュのみ。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2026-12-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 4,
+      "output": 20,
+      "cache_read": 0.2,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-4-argon--google--21",
+   "model_id": "gemini-4-argon",
+   "provider_id": "google",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.0,
+    "output": 5.0,
+    "cache_read": 0.05,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-11-30まで導入価格、2026-12-01以降2倍。思考トークンも出力課金。暗黙キャッシュのみ。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2026-12-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 2.0,
+      "output": 10.0,
+      "cache_read": 0.1,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-3-8-flash--google--22",
+   "model_id": "gemini-3-8-flash",
+   "provider_id": "google",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.75,
+    "output": 3.75,
+    "cache_read": 0.075,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-12-31まで導入価格、2027-01-01以降2倍。思考トークンも出力課金。明示キャッシュ保存料は別。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2027-01-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 1.5,
+      "output": 7.5,
+      "cache_read": 0.15,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "gemini-3-8-flash--google--23",
+   "model_id": "gemini-3-8-flash",
+   "provider_id": "google",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.375,
+    "output": 1.875,
+    "cache_read": 0.0375,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://aistudio.google.com/docs/pricing"
+   ],
+   "note_ja": "2026-12-31まで導入価格、2027-01-01以降2倍。思考トークンも出力課金。明示キャッシュ保存料は別。",
+   "context": 1048576,
+   "future_rates": [
+    {
+     "from": "2027-01-01",
+     "label": "導入期間終了後",
+     "rates": {
+      "input": 0.75,
+      "output": 3.75,
+      "cache_read": 0.075,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "grok-4-7--xai--24",
+   "model_id": "grok-4-7",
+   "provider_id": "xai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 6,
+    "cache_read": 0.5,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://docs.x.ai/developers/pricing"
+   ],
+   "note_ja": "グローバルAPI。入力20万以上は全量2倍（公式料金表の≥を採用）。US限定リージョンは別途10%増。",
+   "context": 500000,
+   "tiers": [
+    {
+     "over_input": 200000,
+     "inclusive": true,
+     "label": "入力20万以上の長文料金",
+     "rates": {
+      "input": 4,
+      "output": 12,
+      "cache_read": 1,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "kimi-k3-1-pro-api--moonshot--25",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "moonshot",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 10,
+    "cache_read": 0.2,
+    "cache_write_short": 2,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.kimi.ai/"
+   ],
+   "note_ja": "Kimi Code会費とは別の従量課金。標準キャッシュ書込の単価を表示。延長保持の単価は未確認。通常版とHighspeedは役割別。",
+   "context": 1048576
+  },
+  {
+   "id": "kimi-k3-1-pro-api--moonshot--26",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "moonshot",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.2,
+    "output": 6.0,
+    "cache_read": null,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.kimi.ai/docs/pricing/chat"
+   ],
+   "note_ja": "非同期Batch。標準料金の60%。Batchのキャッシュ単価は未確認。",
+   "context": 1048576
+  },
+  {
+   "id": "kimi-k3-1-pro-highspeed-api--moonshot--27",
+   "model_id": "kimi-k3-1-pro-highspeed-api",
+   "provider_id": "moonshot",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 4,
+    "output": 20,
+    "cache_read": 0.2,
+    "cache_write_short": 4,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://platform.kimi.ai/"
+   ],
+   "note_ja": "Kimi Code会費とは別の従量課金。標準キャッシュ書込の単価を表示。延長保持の単価は未確認。通常版とHighspeedは役割別。",
+   "context": 1048576
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--deepseek--28",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "deepseek",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/"
+   ],
+   "note_ja": "ピーク／オフピークの適用時間は公式を確認。通常比較は割引のないピーク料金。思考・非思考は同じ課金系列。",
+   "context": 1048576,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--deepseek--29",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "deepseek",
+   "plan": "off_peak",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/"
+   ],
+   "note_ja": "ピーク／オフピークの適用時間は公式を確認。通常比較は割引のないピーク料金。思考・非思考は同じ課金系列。",
+   "context": 1048576,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-pro-0813--deepseek--30",
+   "model_id": "deepseek-v4-pro-0813",
+   "provider_id": "deepseek",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.32,
+    "output": 3.96,
+    "cache_read": 0.044,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/"
+   ],
+   "note_ja": "ピーク／オフピークの適用時間は公式を確認。通常比較は割引のないピーク料金。思考・非思考は同じ課金系列。",
+   "context": 1048576,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-pro-0813--deepseek--31",
+   "model_id": "deepseek-v4-pro-0813",
+   "provider_id": "deepseek",
+   "plan": "off_peak",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.66,
+    "output": 1.98,
+    "cache_read": 0.022,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/"
+   ],
+   "note_ja": "ピーク／オフピークの適用時間は公式を確認。通常比較は割引のないピーク料金。思考・非思考は同じ課金系列。",
+   "context": 1048576,
+   "max_output": 393216
+  },
+  {
+   "id": "muse-wonder--meta--32",
+   "model_id": "muse-wonder",
+   "provider_id": "meta",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 4,
+    "output": 20,
+    "cache_read": 0.2,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://dev.meta.ai/docs/pricing-rate-limits"
+   ],
+   "note_ja": "Standardモード。学習利用許可と引換のContributor割引は別条件なので混ぜない。",
+   "context": 1000000
+  },
+  {
+   "id": "muse-spark-1-3--meta--33",
+   "model_id": "muse-spark-1-3",
+   "provider_id": "meta",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.25,
+    "output": 4.25,
+    "cache_read": 0.15,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://dev.meta.ai/docs/pricing-rate-limits"
+   ],
+   "note_ja": "Standardモード。学習利用許可と引換のContributor割引は別条件なので混ぜない。",
+   "context": 1000000
+  },
+  {
+   "id": "muse-ember--meta--34",
+   "model_id": "muse-ember",
+   "provider_id": "meta",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.004,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://dev.meta.ai/docs/pricing-rate-limits"
+   ],
+   "note_ja": "Standardモード。学習利用許可と引換のContributor割引は別条件なので混ぜない。",
+   "context": 1000000,
+   "tiers": [
+    {
+     "over_input": 200000,
+     "label": "入力20万超の長文料金",
+     "rates": {
+      "input": 0.3,
+      "output": 1.5,
+      "cache_read": 0.012,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "muse-wonder-full--meta--35",
+   "model_id": "muse-wonder-full",
+   "provider_id": "meta",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "subscription",
+   "rates": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://dev.meta.ai/docs/pricing-rate-limits"
+   ],
+   "note_ja": "Muse Codeの会員提供。トークン単価0円として比較しない。",
+   "unavailable_ja": "会員向け・公開API単価なし"
+  },
+  {
+   "id": "qwen3-8-max-0902--alibaba--36",
+   "model_id": "qwen3-8-max-0902",
+   "provider_id": "alibaba",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 6,
+    "cache_read": null,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+   ],
+   "note_ja": "International提供のUSD料金。中国地域と課金条件が異なる。版別のキャッシュ単価は未確定のため空欄。",
+   "context": 1000000,
+   "region": "International"
+  },
+  {
+   "id": "qwen3-8-flash-api--alibaba--37",
+   "model_id": "qwen3-8-flash-api",
+   "provider_id": "alibaba",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.15,
+    "output": 0.47,
+    "cache_read": null,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+   ],
+   "note_ja": "International提供のUSD料金。中国地域と課金条件が異なる。版別のキャッシュ単価は未確定のため空欄。",
+   "context": 1000000,
+   "region": "International"
+  },
+  {
+   "id": "mercury-3--inception--38",
+   "model_id": "mercury-3",
+   "provider_id": "inception",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.1,
+    "output": 0.35,
+    "cache_read": 0.01,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.inceptionlabs.ai/models"
+   ],
+   "note_ja": "50%導入割引の表示価格。通常表示は入力$0.20・出力$0.70・キャッシュ$0.02。終了日は未確認のため定期追跡。",
+   "context": 1000000
+  },
+  {
+   "id": "solar-pro-4--upstage--39",
+   "model_id": "solar-pro-4",
+   "provider_id": "upstage",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.06,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.upstage.ai/pricing/api"
+   ],
+   "note_ja": "通常のUSDトークン料金。終了済みの無料・割引期間を適用しない。"
+  },
+  {
+   "id": "solar-mini-4--upstage--40",
+   "model_id": "solar-mini-4",
+   "provider_id": "upstage",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.1,
+    "output": 0.4,
+    "cache_read": 0.01,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.upstage.ai/pricing/api"
+   ],
+   "note_ja": "通常のUSDトークン料金。終了済みの無料・割引期間を適用しない。"
+  },
+  {
+   "id": "tencent-hy4-api--tencent--41",
+   "model_id": "tencent-hy4-api",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 3,
+    "output": 9,
+    "cache_read": 0.15,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "12/31まで50%割引。2027/1/1から通常単価の入力6・出力18・キャッシュ0.3中国元へ戻る。",
+   "context": 1048576,
+   "max_input": 960000,
+   "max_output": 64000,
+   "future_rates": [
+    {
+     "from": "2027-01-01",
+     "label": "割引終了後",
+     "rates": {
+      "input": 6,
+      "output": 18,
+      "cache_read": 0.3,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "kimi-k3-1-pro-api--tencent--42",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 13,
+    "output": 68,
+    "cache_read": 1.3,
+    "cache_write_short": 13,
+    "cache_write_long": 26
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国元の従量課金。Kimiのキャッシュ書込は5分／1時間。上流の開発元APIとは契約・データ経路が異なる。",
+   "context": 1048576
+  },
+  {
+   "id": "kimi-k3-1-pro-highspeed-api--tencent--43",
+   "model_id": "kimi-k3-1-pro-highspeed-api",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 26,
+    "output": 136,
+    "cache_read": 1.3,
+    "cache_write_short": 26,
+    "cache_write_long": 52
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国元の従量課金。Kimiのキャッシュ書込は5分／1時間。上流の開発元APIとは契約・データ経路が異なる。",
+   "context": 1048576
+  },
+  {
+   "id": "glm-5-3--tencent--44",
+   "model_id": "glm-5-3",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 8,
+    "output": 28,
+    "cache_read": 2,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国元の従量課金。Kimiのキャッシュ書込は5分／1時間。上流の開発元APIとは契約・データ経路が異なる。",
+   "context": 1048576
+  },
+  {
+   "id": "glm-5-3-flash--tencent--45",
+   "model_id": "glm-5-3-flash",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 0.8,
+    "output": 2.8,
+    "cache_read": 0.23,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国元の従量課金。Kimiのキャッシュ書込は5分／1時間。上流の開発元APIとは契約・データ経路が異なる。",
+   "context": 1048576
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--tencent--46",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "tencent",
+   "plan": "standard",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 2,
+    "output": 8,
+    "cache_read": 0.04,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国標準時の平日9–12時・14–18時がピーク。それ以外と土日は半額。課金時刻はサーバー受信時。",
+   "context": 1048576
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--tencent--47",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "tencent",
+   "plan": "off_peak",
+   "currency": "CNY",
+   "status": "available",
+   "rates": {
+    "input": 1.0,
+    "output": 4.0,
+    "cache_read": 0.02,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://cloud.tencent.com/document/product/1823/130055/"
+   ],
+   "note_ja": "中国標準時の平日9–12時・14–18時がピーク。それ以外と土日は半額。課金時刻はサーバー受信時。",
+   "context": 1048576
+  },
+  {
+   "id": "plamo-3-1-prime--pfn--48",
+   "model_id": "plamo-3-1-prime",
+   "provider_id": "pfn",
+   "plan": "standard",
+   "currency": "JPY",
+   "status": "available",
+   "rates": {
+    "input": 60,
+    "output": 250,
+    "cache_read": null,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://www.preferred.jp/ja/news/pr20261027"
+   ],
+   "note_ja": "Standardプランの円単価。PLaMo Chat会費・オンプレミス見積もりとは別。キャッシュの割引単価は未確認。"
+  },
+  {
+   "id": "glm-5-3--zai--49",
+   "model_id": "glm-5-3",
+   "provider_id": "zai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.4,
+    "output": 4.4,
+    "cache_read": 0.26,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://docs.z.ai/guides/overview/pricing"
+   ],
+   "note_ja": "通常のUSD料金。キャッシュ保存料の期間限定無料はトークン単価と別。",
+   "context": 1048576
+  },
+  {
+   "id": "glm-5-3-flash--zai--50",
+   "model_id": "glm-5-3-flash",
+   "provider_id": "zai",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.15,
+    "output": 0.5,
+    "cache_read": 0.03,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://docs.z.ai/guides/overview/pricing"
+   ],
+   "note_ja": "通常のUSD料金。キャッシュ保存料の期間限定無料はトークン単価と別。",
+   "context": 1048576
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-relace--51",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-relace",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.2375,
+    "output": 8.4085,
+    "cache_read": 0.2,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "relace/fp4",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-wafer--52",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.25,
+    "output": 10.0,
+    "cache_read": 0.18,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/us",
+   "quantization": "mxfp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-wafer--53",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.8,
+    "output": 9.0,
+    "cache_read": 0.18,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/mxfp4",
+   "quantization": "mxfp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-deepinfra--54",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-deepinfra",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.9,
+    "output": 9.5,
+    "cache_read": 0.19,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "deepinfra/bf16",
+   "quantization": "bf16",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-fireworks--55",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-fireworks",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2.0,
+    "output": 10.0,
+    "cache_read": 0.2,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "kimi-k3-1-pro-api--or-together--56",
+   "model_id": "kimi-k3-1-pro-api",
+   "provider_id": "or-together",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2.0,
+    "output": 10.0,
+    "cache_read": 0.2,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "together",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-relace--57",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-relace",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.006,
+    "output": 0.5,
+    "cache_read": 0.005,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "relace/fp4",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-wafer--58",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.038,
+    "output": 0.5,
+    "cache_read": 0.01,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/us",
+   "quantization": "mxfp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-wafer--59",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.066,
+    "output": 0.5,
+    "cache_read": 0.0065,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/mxfp4",
+   "quantization": "mxfp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-deepinfra--60",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-deepinfra",
+   "plan": "flex",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.0784,
+    "output": 0.2352,
+    "cache_read": 0.002352,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "deepinfra/fp8/flex",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-deepinfra--61",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-deepinfra",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.098,
+    "output": 0.294,
+    "cache_read": 0.00294,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "deepinfra/fp8",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-deepinfra--62",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-deepinfra",
+   "plan": "priority",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.147,
+    "output": 0.441,
+    "cache_read": 0.00441,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "deepinfra/fp8/priority",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-novita--63",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-novita",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.165,
+    "output": 0.66,
+    "cache_read": 0.0033,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "novita/fp8",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-siliconflow--64",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-siliconflow",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.3,
+    "output": 0.55,
+    "cache_read": 0.006,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "siliconflow/fp8",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 393216
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-together--65",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-together",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "together",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-fireworks--66",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-fireworks",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017-api--or-fireworks--67",
+   "model_id": "deepseek-v4-1-flash-1017-api",
+   "provider_id": "or-fireworks",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.45,
+    "output": 1.8,
+    "cache_read": 0.009,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks/us",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-wafer--68",
+   "model_id": "glm-5-3",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.0699,
+    "output": 1.4,
+    "cache_read": 0.0689,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/us",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-relace--69",
+   "model_id": "glm-5-3",
+   "provider_id": "or-relace",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.0703,
+    "output": 4.3843,
+    "cache_read": 0.0703,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "relace/fp4",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 131072
+  },
+  {
+   "id": "glm-5-3--or-wafer--70",
+   "model_id": "glm-5-3",
+   "provider_id": "or-wafer",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.179,
+    "output": 1.4,
+    "cache_read": 0.178,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "wafer/fp4",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-deepinfra--71",
+   "model_id": "glm-5-3",
+   "provider_id": "or-deepinfra",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.5625,
+    "output": 2.5,
+    "cache_read": 0.125,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "deepinfra/fp4",
+   "quantization": "fp4",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 131072
+  },
+  {
+   "id": "glm-5-3--or-novita--72",
+   "model_id": "glm-5-3",
+   "provider_id": "or-novita",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.63,
+    "output": 1.98,
+    "cache_read": 0.117,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "novita/fp8",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 131072
+  },
+  {
+   "id": "glm-5-3--or-siliconflow--73",
+   "model_id": "glm-5-3",
+   "provider_id": "or-siliconflow",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.7,
+    "output": 2.2,
+    "cache_read": 0.13,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "siliconflow/fp8",
+   "quantization": "fp8",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 262144
+  },
+  {
+   "id": "glm-5-3--or-fireworks--74",
+   "model_id": "glm-5-3",
+   "provider_id": "or-fireworks",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 0.98,
+    "output": 3.08,
+    "cache_read": 0.182,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks/spot",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-sambanova--75",
+   "model_id": "glm-5-3",
+   "provider_id": "or-sambanova",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.4,
+    "output": 4.4,
+    "cache_read": 0.07,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "sambanova",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-together--76",
+   "model_id": "glm-5-3",
+   "provider_id": "or-together",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.4,
+    "output": 4.4,
+    "cache_read": 0.26,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "together",
+   "quantization": "unknown",
+   "context": 1048575,
+   "max_input": null,
+   "max_output": 943717
+  },
+  {
+   "id": "glm-5-3--or-fireworks--77",
+   "model_id": "glm-5-3",
+   "provider_id": "or-fireworks",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.4,
+    "output": 4.4,
+    "cache_read": 0.26,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  },
+  {
+   "id": "glm-5-3--or-fireworks--78",
+   "model_id": "glm-5-3",
+   "provider_id": "or-fireworks",
+   "plan": "priority",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 2.1,
+    "output": 6.6,
+    "cache_read": 0.39,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-12",
+   "sources": [
+    "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
+   ],
+   "note_ja": "OpenRouter経由の経路指定価格。提供元へ直接契約した価格ではない。量子化・速度・データポリシーは経路別。入金時の手数料等は試算に含めない。",
+   "route": "fireworks/fast",
+   "quantization": "unknown",
+   "context": 1048576,
+   "max_input": null,
+   "max_output": 943718
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://developers.openai.com/api/docs/pricing.md",
+   "snapshot_sha256": "57af767674cca405b46ecf2cbea46941baacbbfc94176faf0a4cd4888c10c3b9"
+  },
+  {
+   "url": "https://platform.claude.com/docs/en/about-claude/pricing.md",
+   "snapshot_sha256": "a94bce7294d5b8e8c5f2b15e7d33b47b4a0c25e3862c871dc0608f21f0a339ec"
+  },
+  {
+   "url": "https://aistudio.google.com/docs/pricing",
+   "snapshot_sha256": "078505c4d20427d720c0e715f8c9034349a9d6424bfef25edb306e65be150126"
+  },
+  {
+   "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+   "snapshot_sha256": "24c86ff9a0ddc6bbe8ce6e6e3f74e61363b990b9460a0f2bfc2c6e13e4c01e24"
+  },
+  {
+   "url": "https://platform.kimi.ai/docs/pricing/chat",
+   "snapshot_sha256": "f25dcaa3671702a48e5b445585ebe723213ab71e3cf8ca3b29e983aa04fd239d"
+  },
+  {
+   "url": "https://platform.kimi.ai/docs/pricing/chat.md",
+   "snapshot_sha256": "fd493803b19d516fc64252f0cd4e8494edb3b868c4e9f145f2143291f8685e61"
+  },
+  {
+   "url": "https://docs.x.ai/developers/pricing",
+   "snapshot_sha256": "3798ec1f76d8e267e318d71420f7f69f881b8b1d0155565fd3104db222bac272"
+  },
+  {
+   "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+   "snapshot_sha256": "027bba6c9e038c25b3cb760ef9f2c803f1325489ebb28c57a97947041033789b"
+  },
+  {
+   "url": "https://www.upstage.ai/pricing/api",
+   "snapshot_sha256": "9469d2e9ffdc542c0b0dfb68a2e24c2c22f38250283c10f43e9465ff426f2ae4"
+  },
+  {
+   "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5",
+   "snapshot_sha256": "b2af5dcf5880afed12b2904e0afd88c4309c29d907b6e1c43ae0326069c614bf"
+  },
+  {
+   "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+   "snapshot_sha256": "59a9d484b9c4ed844404d1eca5f7712b93f69f6c93b9c19b83f179ce02a15707"
+  },
+  {
+   "url": "https://docs.z.ai/guides/overview/pricing",
+   "snapshot_sha256": "437d0333db0d9e5cb37646cb05e184c518e9a027e0bb8ab0b1e6f4d45cbd75a7"
+  },
+  {
+   "url": "https://openrouter.ai/api/v1/models",
+   "snapshot_sha256": "367f739ef7f354ab71678fabf456ad91b172b074ec9249a32cfcb2085ed604f6"
+  },
+  {
+   "url": "https://cloud.tencent.com/product/tokenhub",
+   "snapshot_sha256": "061b0ba20b98b54df4eeb5edc146e1714771a2f2f9d2d9fc159986317b2caf70"
+  },
+  {
+   "url": "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints",
+   "snapshot_sha256": "d9bfd1fdb0b8fdcf9ec11bc6d26cae0e181c8308277d03a0fcd8202c6d9cf552"
+  },
+  {
+   "url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints",
+   "snapshot_sha256": "abf9fea4e96cc8dd7eaa1cf21d621af3a1c76ecfc9392028962fd87e1f439027"
+  },
+  {
+   "url": "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints",
+   "snapshot_sha256": "fff235c9ca00d4852e9a2d4241b6e36e8ecddf6c186ca66d40f6bdec3888b3c9"
+  }
+ ]
+}
