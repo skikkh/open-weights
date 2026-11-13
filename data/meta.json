@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-10",
- "next_update": "2026-11-13",
+ "updated_at": "2026-11-13",
+ "next_update": "2026-11-16",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,17 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-13",
+   "items": [
+    "公開: Inkling 2 Small（Thinking Machines Lab、米国、11/12、Apache-2.0）の重みを確認し予告から公開済みに変更。594B（稼働17B）、公式NVFP4版は約393.5GB、MXFP8版は約622.8GB、文脈長は最大1M。旧Inkling-Smallは後継の明記がないため残す。",
+    "置換（公開）: Rakuten AI 3.0 → 3.0.1（楽天、11/4、安全性の事後学習版、FP8約688.6GB）。前回の確認漏れの補完。3.0のNejumi値・量子化版・載せ方レシピは別チェックポイントのため引き継がない。Nex-N2.5-Pro → Nex-N2.6（中国、11/10、GLM-5.3-Flashベースの約321B、Apache-2.0）。pplx-decider v1.2 → v1.3（Perplexity、11/9、抜き出し機能Locateを追加、AA評価はまだv1.2のみ）。",
+    "追加（公開）: MiniMax-H3-Image（中国、11/10、33B画像生成・編集）。AAで編集1138・T2I 1067とオープンウェイト上位。米国・EU・英国・韓国は利用対象外で、年商100万米ドル超は書面許諾が必要。TTSはZONOS3-Mini（日本語が11/10に対応言語へ追記）とM5-TTS 50M（VoiceClone／CustomVoiceを別行）。",
+    "置換（有料）: Gemini 3.8 Flash → Gemini 4 Hydrogen（11/12一般提供、100万トークンあたり入力$1.50／出力$7.50、AA指数53.9）。公式が3.8 Flashからの推奨移行先と明記。料金比較の参照も更新。Scribe v2／v2 Realtime → Scribe v3／v3 Live（11/9、日本語対応、1時間$0.20／$0.22）。",
+    "追加（有料）: Seedream 5.5（ByteDance、火山方舟、出力1枚0.13元〜。公開月は10月）、MiniMax-H3-Image Highspeed（API専用）、Gemini Decision 1（11/11、判断専用、入力$0.10/100万トークン・出力0）。更新: Gemini Omni 1.2 FlashにAAの動画評価（T2V 1154、I2V 1086）を反映。",
+    "保留: Qwen4-Max-Preview（定額プランのみの期間限定）、SubQ Snap 1.2（公式料金の内訳未確認）、ACE Music v1（開発元情報未確認）、ADM 3 Cloud（API提供なし）、Underdog Woof Japanese（開発元の国が未確認）、Hyperflow H3 Flash（派生物の扱い）。公開LLMのAA指数は変更なし。国産LLM（Nejumiは今回未再取得）・ASR・S2S・音楽・3Dは確認範囲内で追加なし。"
+   ]
+  },
   {
    "date": "2026-11-12",
    "items": [
@@ -207,9 +218,9 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0.1",
-   "as_of": "2026-11-10",
+   "as_of": "2026-11-13",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/3のv5.0.1の表を11/10に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。11/3のv5.0.1の表を11/13に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -244,9 +255,9 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、Gemini 4 Carbon（60.0、限定提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-10取得）。",
+  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、Gemini 4 Carbon（60.0、11/10一般提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、Gemini 4 Hydrogen（53.9、11/12一般提供）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-13取得）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
-  "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v2 / v2 Realtime、Soniox v6（11/3）、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
+  "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v3 / v3 Live（11/9）、Soniox v6（11/3）、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "Eleven v4／Turbo、Gemini 3.8 Flash TTS／Flash-Lite TTS、Sonic 3.6、Fish Audio Drama 3 API、Aivis Cloud API、Mistral Voxtral Mini TTS 3など。日本語対応を確認したCoda v2とFalcon 2.1も有料TTS一覧に掲載。",
   "s2s": "OpenAI GPT-Live-1（ChatGPT）・gpt-realtime-2・gpt-realtime-translate、Google Gemini Live 系、Alibaba Qwen3.5-Omni Plus / Flash（API）など。"
  },

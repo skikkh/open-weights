@@ -182,29 +182,38 @@
   "availability_tier": "general"
  },
  {
-  "id": "gemini-3-8-flash",
-  "name": "Gemini 3.8 Flash",
+  "id": "gemini-4-hydrogen",
+  "name": "Gemini 4 Hydrogen",
   "category": "llm",
   "org": "Google DeepMind",
   "country": "US",
-  "release": null,
+  "release": "2026-11-12",
   "access": "api",
-  "summary_ja": "速度と能力のバランスを重視したFlash版。Argonとは別用途として掲載。",
-  "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
-  "price_note": "プラン・利用量で変動。最新の公式料金を確認。",
-  "detail_note": "仕様ページの更新月は2026年9月。初公開日は未確認。",
-  "context_note": null,
-  "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+  "summary_ja": "日常のコーディング・エージェント作業を速く安く回すGemini 4の高速版。Gemini 3.8 Flashからの推奨移行先。",
+  "availability_ja": "11/12にGemini APIの無料枠・有料枠で一般提供。Geminiアプリ、AI Studio、Antigravity等にも展開。",
+  "price_note": "有料枠の100万トークンあたり（米ドル）：入力$1.50、出力$7.50（思考トークン込み）、キャッシュ$0.075（暗黙キャッシュのみ）。Batch・Flexは入力$0.75／出力$3.75。検索グラウンディングは月5,000件まで無料、以降$14／1,000件。",
+  "detail_note": "公式はCarbonから派生した高速版で、Carbon・Argonと組み合わせる作業役・検証役としても案内。思考レベルはlow／medium／high（既定）／xhigh。AA Intelligence Index v5.0.1は53.9（xhigh、11/13照合）。旧Gemini 3.8 Flashは廃止告知前だが、公式が「3.8 Flashからの推奨アップグレード」と明記したため置換。",
+  "context_note": "入出力を合わせ1,048,576トークン。同期出力は最大65,536トークン、long decodeで最大1M。",
+  "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen",
   "sources": [
-   "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"
+   "https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen",
+   "https://ai.google.dev/gemini-api/docs/whats-new-gemini-4-hydrogen",
+   "https://ai.google.dev/gemini-api/docs/changelog",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://deepmind.google/models/model-cards/gemini-4-hydrogen/",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-13",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
   "series": "Google Gemini Flash",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "Gemini API変更履歴で11/12の一般提供（GA）を確認。モデルカードの公開日も11/12。",
+  "supersedes": [
+   "Gemini 3.8 Flash"
+  ],
+  "ja_note": "モデル単位の対応言語一覧は未確認。日本語の個別評価の公式記載なし。"
  },
  {
   "id": "gpt-transcribe",
@@ -1035,55 +1044,62 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "scribe-v2",
-  "name": "Scribe v2",
+  "id": "scribe-v3",
+  "name": "Scribe v3",
   "category": "asr",
   "series": "ElevenLabs Scribe",
   "org": "ElevenLabs",
   "country": "US",
-  "release": "2026-01-09",
+  "release": "2026-11-09",
   "access": "api",
-  "summary_ja": "長い録音の書き起こし・字幕向け。",
+  "summary_ja": "録音音声の書き起こし向け。v2よりFLEURS（102言語）で単語誤りが27%少ないと公式が説明。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "price_note": "APIで音声1時間あたり$0.20（米ドル、公式API料金ページ）。プラン・追加機能で異なる。",
   "hf": "https://elevenlabs.io/docs/overview/models",
   "sources": [
+   "https://elevenlabs.io/docs/changelog",
    "https://elevenlabs.io/docs/overview/models",
-   "https://elevenlabs.io/blog/introducing-scribe-v2"
+   "https://elevenlabs.io/docs/overview/capabilities/speech-to-text",
+   "https://elevenlabs.io/pricing/api"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-13",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
-  "supersedes": [],
-  "ja_note": "日本語を含む90以上の言語。医療評価の改善率を日本語精度とみなさない。",
-  "detail_note": null,
+  "supersedes": [
+   "Scribe v2"
+  ],
+  "ja_note": "公式の機能ページでScribe v3が日本語（jpn）を含む90以上の言語に対応と明記。日本語単独の誤り率は未公表。",
+  "detail_note": "モデルID scribe_v3。数字の書き方指定、混在言語の指定を追加。公式は「v2の後継、v2は引き続き提供」と案内。AAの英語中心のWERは日本語精度として扱わない。",
   "availability_tier": "general"
  },
  {
-  "id": "scribe-v2-realtime",
-  "name": "Scribe v2 Realtime",
+  "id": "scribe-v3-live",
+  "name": "Scribe v3 Live",
   "category": "asr",
   "series": "ElevenLabs Scribe Realtime",
   "org": "ElevenLabs",
   "country": "US",
-  "release": "2025-11-11",
+  "release": "2026-11-09",
   "access": "api",
-  "summary_ja": "会話や字幕のリアルタイム認識向け。",
+  "summary_ja": "会話や字幕のリアルタイム認識向け。話者の発話終了を予測して区切る機能を追加。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "price_note": "APIで音声1時間あたり$0.22（米ドル、公式API料金ページ）。",
   "hf": "https://elevenlabs.io/docs/overview/models",
   "sources": [
+   "https://elevenlabs.io/docs/changelog",
    "https://elevenlabs.io/docs/overview/models",
-   "https://elevenlabs.io/blog/introducing-scribe-v2-realtime"
+   "https://elevenlabs.io/pricing/api"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-13",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
-  "supersedes": [],
-  "ja_note": "日本語を含む90以上の言語。医療評価の改善率を日本語精度とみなさない。",
-  "detail_note": null,
+  "supersedes": [
+   "Scribe v2 Realtime"
+  ],
+  "ja_note": "公式機能ページの日本語対応の記載はScribe v3・v2が対象。Live版の日本語を個別に明記した記載は未確認。",
+  "detail_note": "モデルID scribe_v3_live。v2 Realtimeより意味的な単語誤り率が44%低い（FLEURS 73言語、公式）。多言語モードと最大1万語の用語集に対応。v2 Realtimeは引き続き提供。",
   "availability_tier": "general"
  },
  {
@@ -2998,5 +3014,64 @@
   "commercial": "conditional",
   "supersedes": [],
   "availability_tier": "limited"
+ },
+ {
+  "id": "minimax-h3-image-highspeed",
+  "name": "MiniMax-H3-Image Highspeed",
+  "category": "image",
+  "series": "MiniMax H3 Image Highspeed",
+  "org": "MiniMax",
+  "country": "CN",
+  "release": "2026-11-10",
+  "release_note": "MiniMax公式リリースノート（Nov. 10, 2026 MiniMax H3 Image）で確認。",
+  "access": "api",
+  "availability_tier": "general",
+  "availability_ja": "MiniMax APIで提供。重みが公開されたのは標準版のMiniMax-H3-Imageのみ（公開モデル側に掲載）。",
+  "summary_ja": "MiniMax-H3-Imageの高速版。標準版と同じ生成・編集を短時間で返すAPI専用の段。",
+  "price_note": "100万トークンあたり（米ドル）：テキスト入力$2.30、画像入力$3.00、画像出力$7.60。公式試算で1K画像の生成は約$0.035/枚。11/17 16:00 UTCまで16.6M画素以上の出力は50%引き。標準版は画像入力$1.50・出力$3.80。",
+  "detail_note": "AAの画像一覧でT2I 1071（22位）、編集1134（13位）、11/13取得。重みは非公開（AAも公開重みなし）。",
+  "local_note": "重みの一般配布なし。API提供。",
+  "hf": "https://platform.minimax.io/docs/guides/pricing-paygo",
+  "sources": [
+   "https://platform.minimax.io/docs/release-notes/models",
+   "https://platform.minimax.io/docs/guides/pricing-paygo",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
+  ],
+  "verified_at": "2026-11-13",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "confidence": "high",
+  "ja_note": "日本語の明記なし。"
+ },
+ {
+  "id": "seedream-5-5",
+  "name": "Seedream 5.5",
+  "category": "image",
+  "series": "ByteDance Seedream",
+  "org": "ByteDance（Seed）",
+  "country": "CN",
+  "release": "2026-10",
+  "release_note": "火山方舟の模型发布公告は2026年10月の項に掲載（doubao-seedream-5-5-261028）。日付単位の公式発表は未確認。AAの掲載日（11/9〜10）は提供開始日として扱わない。",
+  "access": "api",
+  "availability_tier": "general",
+  "availability_ja": "火山方舟（中国）の画像生成APIで提供。海外のBytePlusでの提供・料金は未確認。",
+  "summary_ja": "Seedream 5.0 Pro／Flashの能力を基に強化した画像生成・編集モデル。5.0 Pro・Flashは料金表に残るため別段として掲載。",
+  "price_note": "火山方舟（人民元、1枚あたり）：入力画像0.05元、出力画像は総画素2.61M以下0.13元・2.61M超〜4.63M以下0.23元。",
+  "detail_note": "AAの画像一覧でT2I 1135（10位）、編集1159（6位）、11/13取得。",
+  "local_note": "重みの一般配布なし。API提供。",
+  "hf": "https://seed.bytedance.com/en/seedream5_5",
+  "sources": [
+   "https://seed.bytedance.com/en/seedream5_5",
+   "https://docs.volcengine.com/docs/zh/ark/seedream-5-5.md",
+   "https://docs.volcengine.com/docs/zh/ark/model-pricing.md",
+   "https://docs.volcengine.com/docs/zh/ark/model-release-announcement.md",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+  ],
+  "verified_at": "2026-11-13",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "confidence": "medium",
+  "ja_note": "日本語の公式記載なし。OCR対応フォント一覧にも日本語フォントは見当たらない。"
  }
 ]

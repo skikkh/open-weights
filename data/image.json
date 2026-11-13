@@ -1,5 +1,79 @@
 [
  {
+  "id": "minimax-h3-image",
+  "name": "MiniMax-H3-Image",
+  "org": "MiniMax",
+  "country": "CN",
+  "access": "open-weight",
+  "release": "2026-11-10",
+  "params_b": 33.1,
+  "arch": "単一ストリームDiT（50層、33.1B、H3-Baseから音声部分を除いた構成）＋MiniMax-H3のテキストエンコーダ（別リポジトリ、約66.7GB）＋画像VAE。6ステップ蒸留・CFGなし",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "約16MP（1:1で4096×4096、21:9で6272×2688）をアップスケーラーなしで直接生成",
+   "other": "生成と編集を1つのチェックポイントに統合。参照画像は最大16枚。短い指示を詳しい説明文に広げるPE（MiniMax-H3-Image-PE、NVFP4・17.9GB）を任意で併用。"
+  },
+  "features": {
+   "生成と編集の統合": true,
+   "複数参照画像(最大16枚)": true,
+   "16MP直接生成": true,
+   "商用利用可": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "公式は最低VRAMを公表していない。DiT（BF16）66.28GB＋VAE 2.34GB＋テキストエンコーダ約66.7GBで、公式例はH200・RTX PRO 6000 Blackwell・MI350X等の1GPU、低遅延は4GPU並列。家庭用GPUでの動作報告は未確認。",
+  "speed_note": "6ステップ蒸留（6 NFE）。具体的な生成秒数は公式カードで未確認。",
+  "price_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1067,
+    "note": "全体23位（11/13閲覧）。API専用のH3-Image Highspeedは1071",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1138,
+    "note": "全体12位（11/13閲覧）。オープンウェイトの掲載モデルでは最上位",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
+   }
+  ],
+  "quality_note": "AAではT2I・編集ともにQwen-Image-2.1を上回り、オープンウェイトの上位。ただし重みは33Bの画像本体に66.7GBのエンコーダが加わり、家庭用GPUでは重い。",
+  "ja_note": "モデルカードの言語表記は英語のみ。PEは「どの言語の短い指示でも」詳しい説明文にできるとするが、日本語の文字描画の記載・検証は見つかっていない（中国語・英語の文字描画例はある）。",
+  "license": "MiniMax-H3-Image Community License Agreement",
+  "commercial": "conditional",
+  "license_note": "利用可能地域から欧州連合・英国・韓国・米国を除外。年商100万米ドル超、または第三者へのホスティング提供は事前の書面許諾が必要。商用製品では「MiniMax-H3-Image」の表示と「Powered by MiniMax-H3-Image」の掲示が必要。日本は対象地域に含まれる。",
+  "hf": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+  "tools": [
+   "diffusers",
+   "SGLang-Diffusion",
+   "MiniMax API"
+  ],
+  "summary_ja": "MiniMaxが11/10に重みを公開した33Bの画像生成・編集モデル。約16MPを直接生成し、参照画像は最大16枚。AAの評価でオープンウェイトの上位に入った。",
+  "best_for_ja": "データセンター級GPUで、高解像度の生成と複数参照の編集を自前で動かしたい場合（米国・EU・英国・韓国は対象外）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+   "https://github.com/MiniMax-AI/MiniMax-H3-Image",
+   "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image/blob/main/LICENSE",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
+  ],
+  "confidence": "medium",
+  "rank": 1,
+  "pick": "オープンで最高品質（AA）",
+  "pick_reason": "AAのT2I 1067・編集1138でオープンウェイト上位。地域・年商の制限あり",
+  "hl": {
+   "label": "AA編集",
+   "value": 1138
+  },
+  "verified_at": "2026-11-13"
+ },
+ {
   "id": "qwen-image-2-1",
   "name": "Qwen-Image-2.1",
   "org": "Alibaba Qwen（Tongyi Lab）",
@@ -57,7 +131,7 @@
     "source": "https://arena.ai/leaderboard/image-edit"
    }
   ],
-  "quality_note": "AAとLMArenaの両方で、T2Iと編集ともにオープンウェイト首位（2026年10月時点）。7Bと小型だが、旧Qwen-Image(20B)をAA T2Iで約140点上回る。公式は文字組み・人物の照明・細部の改善と、人物や商品の同一性保持を強調している。ただしクローズド首位のGPT Image 2.5とはAA T2Iで約180点差がある。GenEval等の公式ベンチ値はモデルカードに載っていない。",
+  "quality_note": "AAとLMArenaの両方で、T2Iと編集ともにオープンウェイト首位（2026年10月時点）。7Bと小型だが、旧Qwen-Image(20B)をAA T2Iで約140点上回る。公式は文字組み・人物の照明・細部の改善と、人物や商品の同一性保持を強調している。ただしクローズド首位のGPT Image 2.5とはAA T2Iで約180点差がある。GenEval等の公式ベンチ値はモデルカードに載っていない。 11/13時点のAAでは、11/10公開のMiniMax-H3-Image（T2I 1067・編集1138）がオープンウェイトの上位になった。",
   "ja_note": "公式は文字描画の改善をうたうが、日本語対応は明記していない。日本語プロンプトはPE（プロンプト拡張）モデルを通すと改善したとの第三者検証がある。旧Qwen-Imageでは日本語文字が崩れるという個人検証が複数あり、2.1の日本語文字描画を体系的に検証した記事は見つかっていない。",
   "license": "Qwen Research License Agreement（2026-09-20）",
   "commercial": "no",
@@ -95,8 +169,8 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 1,
-  "pick": "オープンで最高品質",
+  "rank": 2,
+  "pick": "7Bで高品質・透過PNG",
   "pick_reason": "AA Arena オープン首位。非商用",
   "hl": {
    "label": "AA Arena",
@@ -174,7 +248,7 @@
    "label": "AA Arena",
    "value": 1039
   },
-  "rank": 2
+  "rank": 3
  },
  {
   "id": "qwen-image-2-1-turbo",
@@ -244,7 +318,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
   ],
   "confidence": "medium",
-  "rank": 3,
+  "rank": 4,
   "hl": {
    "label": "AA Arena",
    "value": 1029
@@ -333,7 +407,7 @@
    "https://artificialanalysis.ai/image/leaderboard/editing"
   ],
   "confidence": "medium",
-  "rank": 4,
+  "rank": 5,
   "pick": "8GBで動く最新FLUX",
   "pick_reason": "AA T2Iでオープン1位（僅差）。BFL の最新世代の軽量版",
   "hl": {
@@ -437,7 +511,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 5,
+  "rank": 6,
   "hl": {
    "label": "AA Arena",
    "value": 1000
@@ -523,7 +597,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 6,
+  "rank": 7,
   "hl": {
    "label": "AA Arena",
    "value": 837
@@ -611,7 +685,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 7,
+  "rank": 8,
   "hl": {
    "label": "AA Arena",
    "value": 1026
@@ -680,7 +754,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 8,
+  "rank": 9,
   "hl": {
    "label": "LMArena",
    "value": 1113
@@ -760,7 +834,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 9,
+  "rank": 10,
   "hl": {
    "label": "AA Arena",
    "value": 1064
@@ -861,7 +935,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 10,
+  "rank": 11,
   "hl": {
    "label": "AA Arena",
    "value": 974
@@ -929,7 +1003,7 @@
    "https://huggingface.co/models?pipeline_tag=text-to-image&sort=trending"
   ],
   "confidence": "medium",
-  "rank": 11
+  "rank": 12
  },
  {
   "id": "z-image-turbo",
@@ -1016,7 +1090,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 12,
+  "rank": 13,
   "pick": "16GBで動く定番・商用OK",
   "pick_reason": "Apache 2.0。速い",
   "hl": {
@@ -1097,7 +1171,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 13,
+  "rank": 14,
   "hl": {
    "label": "AA Arena",
    "value": 914
@@ -1173,7 +1247,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 14,
+  "rank": 15,
   "hl": {
    "label": "AA Arena",
    "value": 990
@@ -1257,7 +1331,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 15,
+  "rank": 16,
   "hl": {
    "label": "AA Arena",
    "value": 887
@@ -1319,7 +1393,7 @@
    "https://docs.comfy.org/tutorials/image/anima/anima.md"
   ],
   "confidence": "medium",
-  "rank": 16,
+  "rank": 17,
   "pick": "アニメ絵を軽く",
   "pick_reason": "約7GBで動く"
  },
@@ -1380,7 +1454,7 @@
    "https://huggingface.co/cagliostrolab/animagine-xl-4.0"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 18
  },
  {
   "id": "gpt-image-2-6-sunburst",
@@ -2462,7 +2536,7 @@
    "https://deepinfra.com/blog/ming-design-with-ai"
   ],
   "confidence": "medium",
-  "rank": 9,
+  "rank": 10,
   "hl": {
    "label": "AA Arena",
    "value": 999

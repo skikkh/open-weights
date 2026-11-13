@@ -670,27 +670,6 @@
    "device": "rtx5090-32",
    "verdict": "ram-offload",
    "host_ram_gb": 256,
-   "engine": "llama.cpp（DeepSeek-V3系アーキテクチャ）",
-   "engine_url": "https://github.com/ggml-org/llama.cpp",
-   "quant": "mmnga-o Q2_K",
-   "file_gb": 244.1,
-   "tricks": [
-    "-ngl 99 --n-cpu-moe N（または -ot でエキスパートをCPUへ）"
-   ],
-   "gen_tok_s": null,
-   "prefill_tok_s": null,
-   "context": "—",
-   "measured": false,
-   "measured_on": "—",
-   "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf",
-   "note_ja": "実測なし。RAM 256GB＋VRAM 32GBでぎりぎり。DeepSeek-V3系なのでKTransformersでも動く可能性があるが未確認。",
-   "confidence": "low",
-   "llm_id": "rakuten-ai-3-0"
-  },
-  {
-   "device": "rtx5090-32",
-   "verdict": "ram-offload",
-   "host_ram_gb": 256,
    "engine": "llama.cpp",
    "engine_url": "https://github.com/ggml-org/llama.cpp",
    "quant": "Unsloth UD-IQ1_S",
@@ -1555,25 +1534,6 @@
    "note_ja": "4台で動いた報告はあるが1人あたり約5 tok/sで対話には遅い。2台＋2bit GGUF（llama.cpp RPC）も約5 tok/s。",
    "confidence": "medium",
    "llm_id": "nvidia-nemotron-3-ultra"
-  },
-  {
-   "device": "dgx-spark-128",
-   "verdict": "no",
-   "units": 1,
-   "engine": "llama.cpp（GGUF）",
-   "engine_url": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf",
-   "quant": "Q2_K（最小）",
-   "file_gb": 244.1,
-   "tricks": [],
-   "gen_tok_s": null,
-   "prefill_tok_s": null,
-   "context": "128K（モデル上限）",
-   "measured": false,
-   "measured_on": "実測なし",
-   "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf",
-   "note_ja": "実測なし。最小のQ2_Kでも244GBで1台に載らず、Sparkでの連結報告も見つからなかった。",
-   "confidence": "medium",
-   "llm_id": "rakuten-ai-3-0"
   },
   {
    "device": "dgx-spark-128",

@@ -1628,8 +1628,21 @@
   "rec_vram_gb": null,
   "vram_note": "API提供のみ",
   "speed_note": null,
-  "bench": [],
-  "quality_note": "公式は人物・被写体の一貫性の向上と動画出力料金の30%値下げを案内。AAの動画一覧（11/10）は1.1のみ掲載で、1.2の評価値はまだない（1.1の値は流用しない）。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO",
+    "value": 1154,
+    "note": "全体5位（範囲3〜8、11/13取得）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   },
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO",
+    "value": 1086,
+    "note": "全体14位（11/13取得）",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   }
+  ],
+  "quality_note": "公式は人物・被写体の一貫性の向上と動画出力料金の30%値下げを案内。AAの動画一覧ではT2V 1154（5位）、I2V 1086（14位）（11/13取得）。",
   "ja_note": null,
   "license": "API（Google Gemini API / Vertex AI利用規約）",
   "commercial": "conditional",
@@ -1653,7 +1666,11 @@
   "confidence": "high",
   "rank": 22,
   "series": "Google video flagship",
-  "availability_tier": "general"
+  "availability_tier": "general",
+  "hl": {
+   "label": "AA T2V",
+   "value": 1154
+  }
  },
  {
   "id": "grok-imagine-video-1-5",

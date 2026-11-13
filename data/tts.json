@@ -1688,5 +1688,126 @@
   "confidence": "high",
   "rank": 32,
   "release_note": "10/27の開発元発表でモデル・SDK配布を確認。SDKの最新表記1.1.0と、音声モデルの初公開日は区別する。"
+ },
+ {
+  "id": "zonos3-mini",
+  "name": "ZONOS3-Mini",
+  "org": "Zyphra",
+  "country": "US",
+  "release": "2026-11-09",
+  "params_m": 800,
+  "arch": "潜在MoE（64エキスパート・上位2つ、11層）の自己回帰モデル。総800M・稼働約100M。15Hzの音声コーデックZAC-1のトークンを生成。話者は参照音声（最長60秒）または192次元の話者埋め込みで指定",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "voice_cloning_note": "参照音声1本から声をまねる（SGLang-Omni経由では書き起こし不要と公式カードに明記）。対象話者の追加学習は不要。既定話者27声に日本語の声はない。年齢・アクセント・声質から声をつくる機能もあるが日本語での動作は未確認。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/Zyphra/ZONOS3-Mini"
+  ],
+  "voice_cloning_verified_at": "2026-11-13",
+  "features": {
+   "streaming": true,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "公式は43言語対応とし、11/10のカード更新で対応言語表に日本語が加わった。日本語はテキスト正規化の対象にも入る。公式の品質図はZTTS2-Eval（55言語サブセットの話者類似度とWER）だが、日本語単独の評価値はない。",
+  "latency_note": "公式はスマホ・ノートPCやブラウザ（WebGPU）でもリアルタイム動作とする。初回音声までの遅延値は未確認。",
+  "hardware_note": "CUDA・MLX（Apple Silicon）・C++/ggml（CPU等）・ブラウザWebGPUの各実行系を公式が用意。GGUF版あり。リポジトリ全体は約30.6GBだが複数形式の合計で、1形式の容量は未集計。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（HFモデルカード）。",
+  "hf": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+  "summary_ja": "Zyphraの小型TTS（総800M・稼働約100M）。参照音声から声をまね、ブラウザやCPUでも動く。日本語は11/10に対応言語へ追記された。",
+  "best_for_ja": "商用OKで、端末やブラウザ上で動く軽い多言語TTS・声のクローンを試したい場合（日本語品質は要確認）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/Zyphra/ZONOS3-Mini",
+   "https://www.zyphra.com/our-work/zonos3-mini"
+  ],
+  "confidence": "medium",
+  "rank": 33
+ },
+ {
+  "id": "m5-tts-50m-voiceclone",
+  "name": "M5-TTS 50M VoiceClone",
+  "org": "ASLP@NPU（西北工業大学）・LycheeAI Lab",
+  "country": "CN",
+  "release": "2026-11-09",
+  "params_m": 50,
+  "arch": "言語モデル50M（時間方向30M＋局所デコーダ20M、コーデックは別）の多トークン予測TTS。中国語方言にも対応",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "voice_cloning_note": "参照音声とその正確な書き起こしを与えて声をまねる（公式README）。対象話者の追加学習は不要。プリセット話者は別チェックポイント（CustomVoice）。",
+  "voice_cloning_sources": [
+   "https://github.com/ASLP-lab/M5-TTS",
+   "https://huggingface.co/ASLP-lab/M5-TTS-50M-VoiceClone"
+  ],
+  "voice_cloning_verified_at": "2026-11-13",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "対応6言語（中・英・独・仏・日・韓）に日本語を含む。公表値はSeed-ZH CER 1.37%・Seed-EN WER 2.91%（GRPO版）で、日本語の評価値はない。",
+  "latency_note": "公式は4コアCPUでのストリーミング生成に対応とする。日本語での遅延値は未確認。",
+  "hardware_note": "HFの重みは約0.30GB。GPUではBF16＋FlashAttention 2、CPUはONNX版（M5-TTS-50M-ONNX）で動く。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。学習コードは非公開。",
+  "hf": "https://huggingface.co/ASLP-lab/M5-TTS-50M-VoiceClone",
+  "summary_ja": "中国の大学研究室による50Mの超小型TTSの声まね版。日本語を含む6言語に対応し、CPUでも動く。",
+  "best_for_ja": "CPUや小さな端末で、書き起こし付きの参照音声から声をまねたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ASLP-lab/M5-TTS-50M-VoiceClone",
+   "https://github.com/ASLP-lab/M5-TTS"
+  ],
+  "confidence": "medium",
+  "rank": 34
+ },
+ {
+  "id": "m5-tts-50m-customvoice",
+  "name": "M5-TTS 50M CustomVoice",
+  "org": "ASLP@NPU（西北工業大学）・LycheeAI Lab",
+  "country": "CN",
+  "release": "2026-11-10",
+  "params_m": 50,
+  "arch": "M5-TTSのプリセット話者専用チェックポイント（言語モデル50M、コーデックは別）",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "voice_cloning_note": "学習済みの話者IDを選ぶだけで合成。参照音声・書き起こしは不要（公式カード）。声のクローンはVoiceClone版の機能で、このチェックポイントにはない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/ASLP-lab/M5-TTS-50M-CustomVoice"
+  ],
+  "voice_cloning_verified_at": "2026-11-13",
+  "features": {
+   "streaming": true,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "カードの言語に日本語を含む。日本語の評価値・日本語話者の内訳は未確認。VoiceClone版の評価値は流用しない。",
+  "latency_note": null,
+  "hardware_note": "HFの重みは約0.60GB。CPUでも動く（ONNX版あり）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0。",
+  "hf": "https://huggingface.co/ASLP-lab/M5-TTS-50M-CustomVoice",
+  "summary_ja": "M5-TTSのプリセット話者版。参照音声なしで、用意された声で6言語を読み上げる。",
+  "best_for_ja": "参照音声を用意せず、軽いモデルで決まった声を使いたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/ASLP-lab/M5-TTS-50M-CustomVoice",
+   "https://github.com/ASLP-lab/M5-TTS"
+  ],
+  "confidence": "medium",
+  "rank": 35
  }
 ]

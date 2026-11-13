@@ -3660,42 +3660,42 @@
   "short": "Laguna S 2.1"
  },
  {
-  "id": "rakuten-ai-3-0",
-  "name": "Rakuten AI 3.0",
+  "id": "rakuten-ai-3-0-1",
+  "name": "Rakuten AI 3.0.1",
   "family": "Rakuten AI",
   "org": "楽天グループ",
   "country": "JP",
-  "release": "2026-03-17",
+  "release": "2026-11-04",
   "arch": "MoE",
   "total_b": 671,
   "active_b": 37,
   "native_precision": "FP8（E4M3・ブロック量子化）",
-  "weights_gb": 673.2,
+  "weights_gb": 688.6,
   "context_k": 128,
   "modality": [
    "text"
   ],
   "mode": "instruct",
   "from_scratch": false,
-  "base_model": "非公開（DeepSeek-V3 と同じ構成）",
+  "base_model": "RakutenAI-3.0（DeepSeek-V3と同じ構成）を安全性向けに事後学習",
   "license": "Apache License 2.0",
   "commercial": "yes",
-  "license_note": "Apache 2.0で商用可。ベースモデルの出所を楽天が明かしていないため、社内のコンプライアンス確認が必要になる場合がある",
-  "hf": "https://huggingface.co/Rakuten/RakutenAI-3.0",
-  "summary_ja": "楽天がGENIACで開発した約7,000億パラメータ（総671B・アクティブ37B）のMoEモデルで、国産の公開重みとしては最大級。強力なオープンモデルを基に、楽天の日英データで日本語向けに追加学習している。",
+  "license_note": "Apache 2.0で商用可。ただしモデルカードでEU・EEAの利用者向けには提供しないと明記。ベースモデルの出所を楽天が明かしていないため、社内のコンプライアンス確認が必要になる場合がある",
+  "hf": "https://huggingface.co/Rakuten/RakutenAI-3.0.1",
+  "summary_ja": "楽天の約7,000億パラメータ（総671B・稼働37B）MoE「Rakuten AI 3.0」を、安全性の面で追加の事後学習をした版（11/4公開）。日英の有害な依頼への無害応答率が3.0の80.0%から93.2%に上がった。",
   "strengths": [
    "japanese",
    "math",
    "long-context"
   ],
   "jp_bench": {
-   "nejumi": 0.6761,
+   "nejumi": null,
    "swallow_avg": null,
    "jmmlu": null,
-   "ja_mtbench": 8.88,
-   "other": "楽天の公表値: JamC-QA 76.9 / MMLU-ProX(ja) 71.7 / MATH-100(ja) 86.9 / M-IFEval(ja) 72.1。同じ表でGPT-OSS-Swallow-120B-RL-v0.1は63.0 / 77.5 / 96.0 / 69.5、gpt-4oは74.7 / 64.9 / 75.8 / 67.3"
+   "ja_mtbench": null,
+   "other": "楽天の公表値: 日英の単発の有害依頼に対する無害応答率 93.2%（3.0は80.0%、DeepSeek-V3-0324は79.0%）"
   },
-  "jp_bench_note": "日本語MT-Benchは2025-12-18発表時の楽天公表値（judge: gpt-4o-2024-08-06、10点満点）。その他は2026-03-17のプレスリリースにある楽天の自社評価。Swallow LLM Leaderboard v2やNejumiでの第三者評価は確認できなかった",
+  "jp_bench_note": "3.0.1自体の日本語性能ベンチ（Nejumi・MT-Bench等）は未公表・未確認。3.0の値（Nejumi 0.6761、日本語MT-Bench 8.88等）は別チェックポイントのため流用しない。",
   "bench": {
    "gpqa": null,
    "mmlu_pro": null,
@@ -3703,89 +3703,39 @@
    "lcb": null,
    "swe_verified": null
   },
-  "japanese_note": "楽天の自社評価では、日本知識（JamC-QA）と日本語の指示追従でGPT-4oを上回る。一方、MMLU-ProXと数学ではGPT-OSS-Swallow-120Bに劣る。thinkingモードの記載はない。第三者による検証はまだ少ない。　ベースモデル：非公開。公式は「オープンソースコミュニティの最良モデル」を基に追加学習したと説明。config.jsonはDeepseekV3ForCausalLM（deepseek_v3）で、61層・hidden 7168・256エキスパートとDeepSeek-V3と同構成",
-  "deploy_note_ja": "FP8の重みが約673GB。公式例はSGLangのDockerで--tp 8。8×H200/B200級が目安で、8×H100 80GB（計640GB）では足りないため2ノード構成が必要。コミュニティのGGUF量子化版もある。",
+  "japanese_note": "対応言語は日本語・英語（モデルカード）。3.0からの変更点は安全性の事後学習で、日本語の能力評価は公表されていない。カードでEU・EEA向けには提供しないと明記。",
+  "deploy_note_ja": "FP8の重みが約688.6GB。公式例はSGLang（v0.5.13）で--tp 8。8×H200/B200級が目安で、8×H100 80GB（計640GB）では足りない。3.0.1の量子化版は11/13時点でHFに見当たらない。",
   "engines": [
-   "SGLang",
-   "llama.cpp",
-   "Ollama",
-   "LM Studio"
+   "SGLang"
   ],
   "supersedes": [
+   "Rakuten AI 3.0",
    "RakutenAI-2.0-8x7B-instruct",
    "RakutenAI-2.0-mini-instruct",
    "RakutenAI-7B-instruct"
   ],
   "sources": [
+   "https://huggingface.co/Rakuten/RakutenAI-3.0.1",
+   "https://ai.rakuten.com/ja/rakutens-approach-to-safe-and-helpful-ai/",
    "https://huggingface.co/Rakuten/RakutenAI-3.0",
-   "https://corp.rakuten.co.jp/news/press/2026/0317_01.html",
-   "https://global.rakuten.com/corp/news/press/2025/1218_01.html",
-   "https://innovatopia.jp/ai/ai-news/87602/"
+   "https://corp.rakuten.co.jp/news/press/2026/0317_01.html"
   ],
   "confidence": "medium",
-  "short": "Rakuten AI 3.0",
+  "short": "Rakuten AI 3.0.1",
   "pick": "国産最大級（671B MoE）",
-  "pick_reason": "8×H100 1台に載る。Apache 2.0",
+  "pick_reason": "安全性を強化した最新版。8×H200級1台に載る。Apache 2.0",
   "local_q": {
-   "summary_ja": "最小の量子化版（Q2_K、約2.91bit・244GB）なら512GBのMac Studioに載ります。",
+   "summary_ja": "3.0.1の量子化版は未確認。公式FP8（約688.6GB）のみで、家庭用の1台には載りません。",
    "quants": [
     {
-     "name": "Q2_K (mmnga-o)",
-     "bits": 2.91,
-     "size_gb": 244.1,
-     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
-    },
-    {
-     "name": "Q3_K_M (mmnga-o)",
-     "bits": 3.81,
-     "size_gb": 319.3,
-     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
-    },
-    {
-     "name": "AWQ (aixsatoshi)",
-     "bits": 4.19,
-     "size_gb": 351.5,
-     "source": "https://huggingface.co/aixsatoshi/RakutenAI-3.0-AWQ"
-    },
-    {
-     "name": "MXFP4_MOE (mmnga-o)",
-     "bits": 4.36,
-     "size_gb": 365.4,
-     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
-    },
-    {
-     "name": "MLX 4bit",
-     "bits": 4.5,
-     "size_gb": 377.6,
-     "source": "https://huggingface.co/mlx-community/RakutenAI-3.0-MLX-4bit"
-    },
-    {
-     "name": "NVFP4 (rakuten-junliu)",
-     "bits": 4.71,
-     "size_gb": 394.9,
-     "source": "https://huggingface.co/rakuten-junliu/RakutenAI-3.0-NVFP4"
-    },
-    {
-     "name": "W4A16 (rakuten-junliu)",
-     "bits": 4.79,
-     "size_gb": 402.1,
-     "source": "https://huggingface.co/rakuten-junliu/RakutenAI-3.0-W4A16"
-    },
-    {
-     "name": "Q4_K_M (mmnga-o)",
-     "bits": 4.82,
-     "size_gb": 404.5,
-     "source": "https://huggingface.co/mmnga-o/RakutenAI-3.0-gguf"
-    },
-    {
      "name": "公式FP8",
-     "bits": 8.03,
-     "size_gb": 673.2,
-     "source": "https://huggingface.co/Rakuten/RakutenAI-3.0"
+     "bits": 8.21,
+     "size_gb": 688.6,
+     "source": "https://huggingface.co/Rakuten/RakutenAI-3.0.1"
     }
    ],
    "reports": [],
-   "note_ja": "AA Intelligence Index一覧に未掲載"
+   "note_ja": "3.0のGGUF等は別チェックポイントなので載せない。AA Intelligence Index一覧に未掲載"
   }
  },
  {
@@ -7174,19 +7124,19 @@
   }
  },
  {
-  "id": "nex-n2-5-pro",
-  "name": "Nex-N2.5-Pro",
-  "short": "Nex-N2.5 Pro",
-  "family": "Nex-N2.5",
+  "id": "nex-n2-6",
+  "name": "Nex-N2.6",
+  "short": "Nex-N2.6",
+  "family": "Nex-N2.6",
   "org": "Nex-AGI（上海奇績智峰智能科技・上海創智学院）",
   "country": "CN",
-  "release": "2026-09-08",
-  "arch": "MoE（Gated DeltaNet＋Gated Attentionのハイブリッド。Qwen3.5-397B-A17Bと同構成）",
-  "total_b": 397,
-  "active_b": 17,
-  "native_precision": "FP8（compressed-tensors）で配布",
-  "weights_gb": 407.1,
-  "context_k": 262,
+  "release": "2026-11-10",
+  "arch": "MoE（GLM-5.3-Flashと同構成）",
+  "total_b": 321,
+  "active_b": 18,
+  "native_precision": "FP8で配布",
+  "weights_gb": 328.3,
+  "context_k": 1049,
   "modality": [
    "text",
    "image"
@@ -7194,9 +7144,9 @@
   "mode": "hybrid",
   "license": "Apache License 2.0",
   "commercial": "yes",
-  "license_note": "Apache-2.0。Qwen3.5-397B-A17Bを起点にしたNex-N2-Proの後継（Qwen3.5もApache-2.0）。",
-  "hf": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
-  "summary_ja": "上海のNex-AGIのエージェント特化モデルの中核で、Qwen3.5-397B-A17B系にPC・ブラウザ操作やコーディングの追加学習を重ねた397B MoE。公表値はTerminal-Bench 2.1 82.7、OSWorld-Verified 82.2とクローズドの上位に迫り、日本語のNejumiも0.784と高い。",
+  "license_note": "Apache-2.0。GLM-5.3-Flashを土台にしたエージェント特化モデルで、カードはNex-N2.5-Proに続く版と説明。",
+  "hf": "https://huggingface.co/nex-agi/Nex-N2.6",
+  "summary_ja": "上海のNex-AGIのエージェント特化モデルの新版。土台をQwen3.5-397BからGLM-5.3-Flash（320B、稼働18B）に替え、推論の繰り返しを減らしツール指定の順守を高めた。公表値はOSWorld 83.0、Terminal-Bench 2.1 84.1。",
   "strengths": [
    "agent",
    "coding",
@@ -7211,90 +7161,77 @@
    "aime": null,
    "lcb": null,
    "mmlu_pro": null,
-   "terminal_bench2": 82.7,
+   "terminal_bench2": 84.1,
    "tau2": null,
-   "browsecomp": 89.7
+   "browsecomp": null
   },
-  "bench_note": "公式モデルカード（自社評価が中心、temperature 0.7、NexAUハーネス）。terminal_bench2はTerminal-Bench 2.1、BrowseCompは文脈圧縮あり。ほかにSWE-Bench Pro 61.2、DeepSWE v1.1 55.8、Toolathlon Verified 68.5、GDPval-AA v2 1628、OSWorld-Verified 82.2、OSWorld-2 56.4、OSWorld-G 87.4。AA指数は未掲載（前世代のNex-N2-ProはAA v4.3.2で28.2・推定）。",
+  "bench_note": "公式モデルカード（Nex-AGIの自社評価）: OSWorld 83.0（N2.5-Proは82.2）、Terminal-Bench 2.1 84.1、AutomationBench 45.7。自社の再現評価で推論の繰り返し率16.0%→1.6%。AA指数は未掲載。",
   "aa_index": null,
   "jp_bench": {
-   "nejumi": 0.7836
+   "nejumi": null
   },
-  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-27 時点、W&B 公開データから再構成）。reasoning-highでの評価",
-  "japanese_note": "Nejumi Leaderboard 4で総合0.784（reasoning-high。前世代Nex-N2-Proは0.789）。",
-  "deploy_note_ja": "公式重みはFP8で約407GB。カードの例は8×H100 1ノード（SGLangのNex版パッチ入りDocker）。bartowskiのGGUFはQ4_K_M 251GB、IQ2_XXS 115GB、IQ1_S 88GB。OpenRouterに無料枠がある。",
+  "jp_bench_note": "N2.6のNejumi評価は未確認。N2.5-Proの0.784は土台の違う別モデルなので流用しない。",
+  "japanese_note": "モデルカードに日本語の記載・評価なし。",
+  "deploy_note_ja": "公式重みはFP8で約328GB（総約321B）。SGLangのGLM-5.3-Flash向け手順でFP8対応構成を使う。bartowskiのGGUFはQ3_K_M 155GB、IQ2_XXS 97GB、IQ1_S 75GB。OpenRouterでも提供。稼働18Bと最大文脈1,048,576はconfigが土台のGLM-5.3-Flashと同構成であることから記載（カードに直接の記載なし）。",
   "engines": [
    "SGLang",
    "llama.cpp"
   ],
   "supersedes": [
+   "Nex-N2.5-Pro",
    "Nex-N2-Pro"
   ],
-  "notes": "base_model: Qwen/Qwen3.5-397B-A17B（Nex-N2-Proのモデルカードに明記。N2.5はN2の土台を継続）。同時公開の最上位Nex-N2.5-Max（1.6T、DeepSeek-V4-Pro-Base起点、FP8で約1.65TB）は対象外にした。",
+  "notes": "Nex-N2.5-Pro（Qwen3.5-397B起点）からの置換。カードは「Following Nex-N2.5-Pro」と後継の位置づけ。Nex-N2.5-mini・Maxは別役割として扱う。",
   "sources": [
-   "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
-   "https://huggingface.co/nex-agi/Nex-N2-Pro",
-   "https://nex-agi.com/",
-   "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF",
-   "https://openrouter.ai/nex-agi/nex-n2.5-pro-20260907",
-   "https://artificialanalysis.ai/models/nex-n2-pro",
-   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA"
+   "https://huggingface.co/nex-agi/Nex-N2.6",
+   "https://github.com/sii-nex/Nex-N2.6",
+   "https://huggingface.co/bartowski/Nex-N2.6-GGUF",
+   "https://openrouter.ai/nex-agi/nex-n2.6",
+   "https://huggingface.co/zai-org/GLM-5.3-Flash-BF16"
   ],
   "confidence": "medium",
   "local_q": {
-   "summary_ja": "最小の量子化版（IQ1_S、約1.8bit・88GB）なら128GB機に載りますが品質低下が大きめです。2bit級（IQ2_XXS、115GB）は128GB機でぎりぎり、4bit級（Q4_K_M、251GB）は384GB以上の機械が目安です。",
+   "summary_ja": "最小の量子化版（IQ1_S、約1.9bit・75GB）なら128GB機に載りますが品質低下が大きめです。2bit級（IQ2_XXS、97GB）も128GB機に載り、3bit級（Q3_K_M、155GB）は192GB以上が目安です。",
    "quants": [
     {
      "name": "IQ1_S",
-     "bits": 1.77,
-     "size_gb": 87.87,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+     "bits": 1.87,
+     "size_gb": 74.85,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     },
     {
      "name": "IQ2_XXS",
-     "bits": 2.32,
-     "size_gb": 115.09,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+     "bits": 2.41,
+     "size_gb": 96.63,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     },
     {
      "name": "Q2_K",
-     "bits": 3.04,
-     "size_gb": 150.75,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
-    },
-    {
-     "name": "IQ3_XXS",
-     "bits": 3.42,
-     "size_gb": 169.55,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+     "bits": 3.13,
+     "size_gb": 125.67,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     },
     {
      "name": "Q3_K_M",
-     "bits": 3.83,
-     "size_gb": 189.95,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+     "bits": 3.86,
+     "size_gb": 155.02,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     },
     {
-     "name": "Q4_K_M",
-     "bits": 5.06,
-     "size_gb": 250.83,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
-    },
-    {
-     "name": "FP8（公式）",
-     "bits": 8.21,
-     "size_gb": 407.13,
-     "source": "https://huggingface.co/nex-agi/Nex-N2.5-Pro"
+     "name": "IQ4_XS",
+     "bits": 4.43,
+     "size_gb": 177.74,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     },
     {
      "name": "Q8_0",
-     "bits": 8.5,
-     "size_gb": 421.58,
-     "source": "https://huggingface.co/bartowski/Nex-N2.5-Pro-GGUF"
+     "bits": 8.51,
+     "size_gb": 341.5,
+     "source": "https://huggingface.co/bartowski/Nex-N2.6-GGUF"
     }
    ],
    "reports": [],
-   "note_ja": "サイズはHugging Faceの実ファイル（GB）。公式の配布はFP8のみ"
+   "note_ja": "bitsは実ファイル容量÷321Bの実効値。N2.5-Proの量子化版・実測は別モデルなので引き継がない。"
   }
  },
  {
@@ -8567,25 +8504,23 @@
   "family": "Inkling",
   "org": "Thinking Machines Lab",
   "country": "US",
-  "status": "announced",
-  "announced": "2026-11-05",
-  "release": "2026-11",
+  "release": "2026-11-12",
   "arch": "MoE",
   "total_b": 594,
   "active_b": 17,
-  "native_precision": null,
-  "weights_gb": null,
-  "context_k": null,
+  "native_precision": "NVFP4（事前学習から事後学習までNVFP4。MXFP8版も公式配布）",
+  "weights_gb": 393.5,
+  "context_k": 1000,
   "modality": [
    "text",
    "image"
   ],
   "mode": "hybrid",
-  "license": "Apache-2.0（公開予定）",
+  "license": "Apache-2.0",
   "commercial": "yes",
-  "license_note": "重みは外部の安全性試験の後、Apache-2.0で公開予定と公式発表。公開時に再確認する。",
-  "hf": null,
-  "summary_ja": "Thinking Machines Labの第2世代モデル（594B、稼働17B）。現在はTinker経由で利用でき、重みは発表翌週にApache-2.0で公開予定。画像入力に対応し、音声入力には非対応。",
+  "license_note": "Apache-2.0で商用可。別途、公式の利用ポリシー（Acceptable Use）へのリンクがある。gatedではない。",
+  "hf": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+  "summary_ja": "Thinking Machines Labの第2世代モデル（594B、稼働17B）。11/12に重みをApache-2.0で公開。NVFP4で学習した版が本体で、MXFP8版もある。画像入力に対応し、最大1Mトークンの文脈を扱える。",
   "strengths": [
    "coding",
    "agent",
@@ -8603,17 +8538,43 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式発表（effort 0.99、温度1.0）: SWE-bench Pro v2 Hard 86.3%、DeepSWE v1.1 72.1%、FrontierCode v2.0 25.4%、HLE-Diamond 28.7%、MMMU Pro 81.6%。AA IndexはTinker提供版の評価（v5.0.1、11/7取得）で、公開重みの独立実測ではない。",
+  "bench_note": "公式発表（effort 0.99、温度1.0）: SWE-bench Pro v2 Hard 86.3%、DeepSWE v1.1 72.1%、FrontierCode v2.0 25.4%、HLE-Diamond 28.7%、MMMU Pro 81.6%。AA Index 30.6はTinker提供版の評価（v5.0.1、11/13照合でも同値）で、公開重みの独立実測ではない。",
   "aa_index": 30.6,
-  "japanese_note": "日本語の評価・対応の記載なし。",
-  "deploy_note_ja": "重みは未公開。594B規模のため、公開されてもBF16では複数GPUのサーバー級が必要。文脈長は公式に単一の値の記載なし（学習は512K／1M、AAの表記は1,024,000トークン）。",
-  "engines": [],
+  "japanese_note": "モデルカードは「英語＋一般的な多言語能力」とのみ記載。日本語の個別の評価・対応明記はない。",
+  "deploy_note_ja": "公式NVFP4版は実ファイル約393.5GBで、合計500GB以上のVRAMを持つGPUクラスタが必要（公式カード）。MXFP8版は約622.8GBで800GB以上。BF16版の配布はない。SGLang・vLLM・TokenSpeed・Unsloth・Transformersに対応。文脈長はカード記載の最大1Mトークン。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "TokenSpeed",
+   "Unsloth",
+   "Transformers"
+  ],
   "supersedes": [],
-  "notes": "重みが公開されたら status を外し、旧Inkling-Smallとの置換関係を公式情報で確認する（現時点では後継と明記されていないため旧版を削除しない）。",
   "sources": [
+   "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+   "https://huggingface.co/thinkingmachines/Inkling-2-Small-MXFP8",
    "https://thinkingmachines.ai/news/inkling-2-small/",
    "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "confidence": "high"
+  "confidence": "high",
+  "local_q": {
+   "summary_ja": "公式の配布はNVFP4（約393.5GB）とMXFP8（約622.8GB）のみ。家庭用の1台に載る量子化版は公開直後で未確認です。",
+   "quants": [
+    {
+     "name": "公式NVFP4",
+     "bits": 5.3,
+     "size_gb": 393.5,
+     "source": "https://huggingface.co/thinkingmachines/Inkling-2-Small"
+    },
+    {
+     "name": "公式MXFP8",
+     "bits": 8.39,
+     "size_gb": 622.8,
+     "source": "https://huggingface.co/thinkingmachines/Inkling-2-Small-MXFP8"
+    }
+   ],
+   "reports": [],
+   "note_ja": "bitsは実ファイル容量÷594Bの実効値（スケール等を含む）。旧Inkling-Smallの後継とは公式に書かれていないため、旧版は残している。"
+  }
  }
 ]

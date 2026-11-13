@@ -1,102 +1,102 @@
 {
- "as_of": "2026-11-10",
- "scope_ja": "AAの12一覧を11/10に再取得。LLM・画像・動画・音楽は行名を、TTSは各行の名前を、S2S・判断モデルは埋め込みデータの行名を抽出して台帳の候補名と照合した（ASRは行名を構造化抽出できず、公開日の照合のみ）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
+ "as_of": "2026-11-13",
+ "scope_ja": "AAの12一覧を11/13に再取得。LLM・画像・動画・音楽・ASRは表の行名を、TTSは各行の名前を、判断モデルは埋め込みデータの行名を抽出し、台帳の候補名と照合した（S2Sは表の構造が変わり行名の抽出が不完全なため、行数は前回値のまま）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "rows": 285,
-   "snapshot_sha256": "f6a9c8c95b691ae1438780ac07f226703c2d22b7e68e4b5129baccf58023df43",
-   "checked_at": "2026-11-10"
+   "rows": 288,
+   "snapshot_sha256": "00d63b058f958ce287833d2dd914b00e72d2b44c6fdf2eb49417e9c252b9100f",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-   "rows": 66,
-   "snapshot_sha256": "2e1dc00c3465688b9e7a8cf176f43a384db7c815ca55c9ba0e82dc4437f15c14",
-   "checked_at": "2026-11-10"
+   "rows": 112,
+   "snapshot_sha256": "528edd57263052ecb17018298221278c54ed9257e891d89a7f10c1937fec8133",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
-   "rows": 79,
-   "snapshot_sha256": "ee107a92dd60bdf9cc3e4cf733be2e3e3b2947d9548ee0e52be4f4ae8cc5ae34",
-   "checked_at": "2026-11-10"
+   "rows": 83,
+   "snapshot_sha256": "2b92e85cf38f1de7b27061f092badf09abc9ba7434a58560ac9eb19e55d13466",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "rows": 24,
-   "snapshot_sha256": "9a65411c39200dcf9ccad9991f7df5e18eea5934ec6a74090c10a9600741dde8",
-   "checked_at": "2026-11-10"
+   "rows": 34,
+   "snapshot_sha256": "9f0f207655d596ac4f0ef2f8c5c372b1731045121e3102a53c5bffc7cfa7e8e5",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
-   "rows": 34,
-   "snapshot_sha256": "94be0ace42ca5ee400d1f2e835547ffce85a5910219f6ada7074bb330786a0a7",
-   "checked_at": "2026-11-10"
+   "rows": 35,
+   "snapshot_sha256": "3736947fe0faa1d7a71fe64eb814e32d1df01127fa57bbf8429e239a3d1a8551",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
-   "rows": 104,
-   "snapshot_sha256": "f0202f5440f3652d1499ccef4bd3819f0f7f6c06467fdc8e6be9493b28623822",
-   "checked_at": "2026-11-10"
+   "rows": 105,
+   "snapshot_sha256": "e68f7f387b3c34c18f7e96c0da1670e0cd199d67c244d97f0659bc8b2146f1e4",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
-   "rows": 49,
-   "snapshot_sha256": "d7aac46c80ae0e881f5d7b2a899d7eb0fb10d466677495729ee99a26c7fa8dfc",
-   "checked_at": "2026-11-10"
+   "rows": 51,
+   "snapshot_sha256": "3c559079d8aa838b279763010852d63897729c5031a74a732c70e9691abddbe1",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
-   "rows": 57,
-   "snapshot_sha256": "49a661aee44d9fe1756ec7b6e1ff5ff69cabac3ffb8db06a1c5d800db8123ff9",
-   "checked_at": "2026-11-10"
+   "rows": 64,
+   "snapshot_sha256": "6554cf6e4b84518bd2fe8dbfbf59819ed4e665a0b3af05dfc49dfc67c0301052",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 47,
-   "snapshot_sha256": "7df5f6aaa577e2d6807eddf58c37f0edf2dc690606369f669fdd46d71c4f8322",
-   "checked_at": "2026-11-10"
+   "snapshot_sha256": "e98cfff5c4557caf3452c7e79398d9ee172444dd94a6270ffa65890cb1f29e96",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
-   "rows": 13,
-   "snapshot_sha256": "a19eb4a339178aa8d3b29cb14de02b65cc01c18b8e92db9581dbeb7178a28902",
-   "checked_at": "2026-11-10"
+   "rows": 14,
+   "snapshot_sha256": "0cc8b5f8c96f0e9c622e2360834364f40b89c24228473587335837741e300437",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "258f431bafe2dac623b4ea8ce94b2b61026962cab91a554e93837663005bef02",
-   "checked_at": "2026-11-10"
+   "snapshot_sha256": "80f56fea0ce4e541861a6adfad69ec08d99bdb8ddf2898fb96f2a546057702c9",
+   "checked_at": "2026-11-13"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-   "rows": 17,
-   "snapshot_sha256": "819e470641a19a0679e63ad4566fc4ee3a9c0c2f841506d241beb4467a8df4cd",
-   "checked_at": "2026-11-10"
+   "rows": 19,
+   "snapshot_sha256": "331bfecad3af08ce01fc2616d8437fa737e0622f7eda74405cd8dc7e90a7a1b9",
+   "checked_at": "2026-11-13"
   }
  ],
  "candidates": [
@@ -224,11 +224,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "gemini-3-8-flash"
-   ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Gemini 4 Hydrogen（11/12一般提供、公式が3.8 Flashからの推奨移行先と明記）に置換。3.8 Flashは廃止告知前で当面提供。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
     "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"
@@ -2741,9 +2739,10 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AAで候補を確認。最新版・提供・日本語対応の一次情報を次回も追跡。",
+   "reason": "Video Rebirth（国未確認）。HFでhyperflow-h3-flash（13.7B／13.9B、MiniMax H3 community license、11/6）を確認したが、MiniMax-H3の圧縮・少ステップ化した派生物で、日本語の記載なし。公開側の掲載基準（派生の扱い）を次回判断。",
    "sources": [
-    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+    "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash"
    ]
   },
   {
@@ -4506,15 +4505,14 @@
    "boards": [
     "asr"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "scribe-v2"
-   ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Scribe v3（11/9提供開始）に置換。v2は当面提供継続（公式変更履歴）。",
    "sources": [
     "https://artificialanalysis.ai/speech-to-text",
     "https://elevenlabs.io/docs/overview/models",
-    "https://elevenlabs.io/blog/introducing-scribe-v2"
+    "https://elevenlabs.io/blog/introducing-scribe-v2",
+    "https://elevenlabs.io/docs/changelog"
    ]
   },
   {
@@ -8168,11 +8166,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "gemini-3-8-flash"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Gemini 4 Hydrogen（11/12一般提供、公式が3.8 Flashからの推奨移行先と明記）に置換。3.8 Flashは廃止告知前で当面提供。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -9913,11 +9909,9 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
-   "model_ids": [
-    "gemini-3-8-flash"
-   ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "disposition": "旧版",
+   "model_ids": [],
+   "reason": "後継Gemini 4 Hydrogen（11/12一般提供、公式が3.8 Flashからの推奨移行先と明記）に置換。3.8 Flashは廃止告知前で当面提供。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models"
    ]
@@ -10495,9 +10489,11 @@
    "category": "tts",
    "name": "ZONOS3-Mini",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "Zyphra（米国、11/9、Apache-2.0、総800M・稼働約100M）。参照音声のみ（書き起こし不要）のゼロショット複製と声の調整に対応。テキスト正規化の対象に日本語はあるが、公式の対応言語一覧・日本語の評価・日本語の既定話者がなく、日本語音声の対応を確認できないため保留。前版ZONOS2（日本語Tier 1）は掲載継続。",
+   "disposition": "掲載",
+   "model_ids": [
+    "zonos3-mini"
+   ],
+   "reason": "11/10のカード更新で対応言語表に日本語が加わったため掲載（日本語の評価値・日本語の既定話者はなし）。ZONOS2は大型の別段として掲載継続。",
    "sources": [
     "https://huggingface.co/Zyphra/ZONOS3-Mini",
     "https://www.zyphra.com/our-work/zonos3-mini"
@@ -10602,7 +10598,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AA Decision Index 73.4（首位）。Nace.AI（米国）の判断専用モデルでConsole・OpenRouterで提供と案内されるが、v1.1の提供開始日と版ごとの料金（OpenRouterのエンドポイントはdrex-max-20261016）を公式に確定できない。v1はHFで重み公開（Nace.AI Open RAIL-M）。",
+   "reason": "AA Decision Index 72.6（11/13、前回73.4）。Nace.AI（米国）の判断専用モデルでConsole・OpenRouterで提供と案内されるが、v1.1の提供開始日と版ごとの料金（OpenRouterのエンドポイントはdrex-max-20261016）を公式に確定できない。v1はHFで重み公開（Nace.AI Open RAIL-M）。",
    "sources": [
     "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
     "https://www.nace.ai/drex",
@@ -10735,106 +10731,358 @@
    "sources": [
     "https://www.inceptionlabs.ai/models"
    ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Hydrogen (xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-hydrogen"
+   ],
+   "reason": "11/12一般提供。AA指数53.9（xhigh）。high／medium／lowは同じ行に統合。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://ai.google.dev/gemini-api/docs/changelog"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Hydrogen (high)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-hydrogen"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Hydrogen (medium)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-hydrogen"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Hydrogen (low)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-hydrogen"
+   ],
+   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Seedream 5.5",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "seedream-5-5"
+   ],
+   "reason": "火山方舟の料金表・発布公告で確認（10月の項）。AAの掲載日11/9〜10は提供開始日に使わない。5.0 Pro／Flashは料金表に残るため別段として保持。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://docs.volcengine.com/docs/zh/ark/model-pricing.md"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "H3-Image",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-h3-image"
+   ],
+   "reason": "MiniMax、11/10。重み公開（MiniMax-H3-Image Community License、米国・EU・英国・韓国は対象外）。公開側に掲載。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "H3-Image Highspeed",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "minimax-h3-image-highspeed"
+   ],
+   "reason": "MiniMax APIのみの高速版（11/10）。標準版とは別の料金段。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://platform.minimax.io/docs/guides/pricing-paygo"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "ADM 3 Cloud (Image)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Apple（米国）。Apple Intelligence（Image Playground等）に組み込まれたサーバー側モデルで、開発者向けAPI・料金なし。公式の提供開始日も確認できないため保留。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Gemini Omni Flash 1.2",
+   "boards": [
+    "video",
+    "video-image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-omni-flash-1-2"
+   ],
+   "reason": "AAに1.2が掲載（T2V 1154、I2V 1086）。値を反映。前回の「AAは1.1のみ」は11/10時点の取得で、AAの追加は11/6の可能性がある。",
+   "sources": [
+    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
+    "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Scribe v3, ElevenLabs",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "scribe-v3"
+   ],
+   "reason": "11/9提供開始、v2の後継（v2は提供継続）。日本語対応は公式機能ページで確認。AAの英語WERは日本語精度として扱わない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://elevenlabs.io/docs/changelog"
+   ]
+  },
+  {
+   "category": "music",
+   "name": "ACE Music v1",
+   "boards": [
+    "music-vocals"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAではACE Studioの表記でボーカル1位。AAの追加は10/23で今回初めて台帳に記録。ACE Studioの公式資料に記載がなく、国・提供形態・料金・日本語歌詞・重み公開を確認できない。ACE-Stepと同一とは断定しない。",
+   "sources": [
+    "https://artificialanalysis.ai/music/leaderboard/vocals",
+    "https://acestudio.ai"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Gemini Decision 1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-decision-1"
+   ],
+   "reason": "11/11提供開始（Gemini API変更履歴）。入力/bin/bash.10/100万トークン、出力0。AA Decision Index 66.0。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://ai.google.dev/gemini-api/docs/models/gemini-decision-1"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "SubQ Snap 1.2",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Subquadratic（米国）の判断モデル。AA Decision Index 72.6。公式サイトに「$0.04 per 1M tokens」とあるが入出力の内訳・提供開始日を公式本文で確認できないため保留。前回1.1を「LLMの評価設定」とした分類も次回見直す。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://subq.ai"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen4-Max-Preview",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Alibaba（11/11）。Token Plan（定額）のみの期間限定プレビューで、11/25（UTC+8）に終了予定。従量課金なし。一般提供版を待つ。",
+   "sources": [
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Underdog Woof Japanese",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Conway Research（国を公式情報で確認できない）、11/10、日本語専用の小型TTS（約40MB、CPU、2話者・クローンなし）。Underdog Non-Commercial 1.0。国と開発元情報を確認でき次第掲載を判断。",
+   "sources": [
+    "https://huggingface.co/ConwayResearch/Underdog-Woof-Japanese"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "H2O-Lightning-12B",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "h2oai（11/8）。gatedでモデルカードを読めず、仕様・ライセンス条件を確認できない。",
+   "sources": [
+    "https://huggingface.co/h2oai"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d3.1-nano",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "vllm-sr（11/12、2.21B、Apache-2.0）。Decision 3.0系の追加サイズ。既存行の系列内の扱いを次回判断。",
+   "sources": [
+    "https://huggingface.co/vllm-sr/d3.1-nano"
+   ]
   }
  ],
- "follow_up_ja": "次回11/13も全カテゴリを確認。Inkling 2 Smallの重み公開（予定の週）、ZONOS3-Miniの日本語対応、Drex Max v1.1の提供開始日・料金、SkyReels V4の公式提供経路、Agnes 2.5 Pro Thetaの提供条件、Gemini Omni 1.2 FlashのAA評価、LongCat-2.5の公式文脈長とAA評価、GPT-6 Rosalindのモデルページ、ERNIE 5.5 Flashの事後学習版、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodiaを追跡。",
+ "follow_up_ja": "次回11/16も全カテゴリを確認。Qwen4-Max-Preview（11/25終了予定）の一般提供、SubQ Snap 1.2・Drex Max v1.1の公式料金と提供開始日、ACE Music v1の開発元・提供形態、ADM 3 Cloud、Underdog Woof Japaneseの開発元・国、Hyperflow H3 Flash（派生物の扱い）、pplx-decider v1.3とInkling 2 Small（公開重み）のAA評価、Nex-N2.6・Rakuten AI 3.0.1の量子化版と評価、SkyReels V4、Agnes 2.5 Pro Theta、GPT-6 Rosalindのモデルページ、ERNIE 5.5 Flashの事後学習版、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodia、Lara-4-Mini（gated）を追跡。",
  "added_model_ids": [
-  "gemini-4-carbon",
-  "muse-wonder",
-  "muse-wonder-full",
-  "muse-spark-1-3",
-  "qwen3-8-max-0902",
-  "qwen3-8-flash-api",
-  "mercury-2-5",
-  "solar-pro-4",
-  "solar-mini-4",
-  "scribe-v2",
-  "scribe-v2-realtime",
-  "scribe-v2-medical",
-  "mai-transcribe-2",
-  "mai-transcribe-2-streaming",
-  "gemini-3-5-transcribe",
-  "gemini-3-5-transcribe-live",
-  "grok-voice-transcribe-2",
-  "universal-3-5-pro",
-  "universal-3-6-pro-realtime",
-  "pksha-voice-ai",
-  "aivis-cloud-api",
-  "koto-asr-api",
-  "koto-tts-api",
-  "koto-s2s-api",
-  "sonic-3-6",
-  "inworld-tts-2",
-  "inworld-tts-2-flash",
-  "simba-3-5",
-  "lightning-v3-1-pro",
-  "soniox-tts-v2",
-  "qwen-audio-3-1-tts-plus",
-  "qwen-audio-3-1-tts-flash",
-  "minimax-speech-2-8-hd",
-  "minimax-speech-2-8-turbo",
-  "fish-drama-3-api",
-  "heygen-voice",
-  "heygen-voice-turbo",
-  "qwen-audio-3-1-realtime-plus",
-  "qwen-audio-3-1-realtime-flash",
-  "eleven-realtime-v1-max",
-  "eleven-realtime-v1-mini",
-  "grok-voice-3",
-  "muse-image",
-  "mai-image-2-6-flash",
-  "flux-3-image-klein-api",
-  "qwen-image-2-1-pro-api",
-  "qwen-image-2-1-turbo-api",
-  "happyhorse-1-1-t2v",
-  "happyhorse-1-1-i2v",
-  "happyhorse-1-1-r2v",
   "agnes-video-2-5",
   "agnes-video-2-5-flash",
-  "pixverse-v6",
-  "pixverse-v6-max",
-  "utopai-x",
-  "p-video-2",
-  "p-video-2-pro",
+  "aivis-cloud-api",
+  "cartesia-ink-2",
+  "celeris-1-1-decision",
+  "claude-fable-5-2",
+  "eleven-realtime-v1-max",
+  "eleven-realtime-v1-mini",
+  "fish-drama-3-api",
+  "flux-3-image-klein-api",
+  "gemini-3-5-transcribe",
+  "gemini-3-5-transcribe-live",
+  "gemini-4-carbon",
+  "gemini-4-hydrogen",
+  "gemini-decision-1",
+  "gemini-omni-flash-1-2",
+  "google-genie-4",
+  "gpt-6-cyber",
+  "gpt-6-rosalind",
+  "gpt-image-2-6-flare",
+  "gpt-image-2-6-sunburst",
   "grok-imagine-video-1-5-lite",
-  "recraft-v4-1-flash",
-  "qwen-audio-3-1-asr-flash",
-  "qwen-audio-3-1-asr-flash-streaming",
-  "qwen-audio-3-1-asr-flash-message",
-  "speechmatics-melia-1",
-  "nano-banana-pro",
-  "nano-banana-lite",
+  "grok-voice-3",
+  "grok-voice-transcribe-2",
+  "happyhorse-1-1-i2v",
+  "happyhorse-1-1-r2v",
+  "happyhorse-1-1-t2v",
+  "heygen-voice",
+  "heygen-voice-turbo",
+  "hunyuan-image-3-5-preview-api",
+  "inworld-tts-2",
+  "inworld-tts-2-flash",
+  "koto-asr-api",
+  "koto-s2s-api",
+  "koto-tts-api",
+  "lightning-v3-1-pro",
+  "longcat-2-5",
   "luma-uni-1-1",
   "luma-uni-1-1-max",
-  "recraft-v4-1-standard",
-  "recraft-v4-1-pro",
-  "recraft-v4-1-utility",
-  "recraft-v4-1-utility-pro",
-  "cartesia-ink-2",
-  "tencent-hy4-api",
-  "rime-coda-v2",
+  "mai-image-2-6-flash",
+  "mai-transcribe-2",
+  "mai-transcribe-2-streaming",
+  "mercury-2-5",
+  "minimax-h3-image-highspeed",
+  "minimax-speech-2-8-hd",
+  "minimax-speech-2-8-turbo",
   "murf-falcon-2-1",
-  "google-genie-4",
-  "zen-tts",
-  "ripple-65b-preview",
-  "hunyuan-image-3-5-preview-api",
-  "seedream-5-0-flash",
-  "gpt-image-2-6-sunburst",
-  "gpt-image-2-6-flare",
-  "gpt-6-cyber",
-  "claude-fable-5-2",
   "muse-ember",
-  "gpt-6-rosalind",
-  "soniox-v6-async",
-  "soniox-v6-realtime",
-  "gemini-omni-flash-1-2",
-  "celeris-1-1-decision",
-  "longcat-2-5",
+  "muse-image",
+  "muse-spark-1-3",
+  "muse-wonder",
+  "muse-wonder-full",
+  "nano-banana-lite",
+  "nano-banana-pro",
+  "p-video-2",
+  "p-video-2-pro",
+  "pixverse-v6",
+  "pixverse-v6-max",
+  "pksha-voice-ai",
   "plamo-3-0-fin",
+  "plamo-3-translate-0-8b",
+  "plamo-3-translate-2b",
   "plamo-3-translate-31b",
   "plamo-3-translate-8b",
-  "plamo-3-translate-2b",
-  "plamo-3-translate-0-8b"
+  "qwen-audio-3-1-asr-flash",
+  "qwen-audio-3-1-asr-flash-message",
+  "qwen-audio-3-1-asr-flash-streaming",
+  "qwen-audio-3-1-realtime-flash",
+  "qwen-audio-3-1-realtime-plus",
+  "qwen-audio-3-1-tts-flash",
+  "qwen-audio-3-1-tts-plus",
+  "qwen-image-2-1-pro-api",
+  "qwen-image-2-1-turbo-api",
+  "qwen3-8-flash-api",
+  "qwen3-8-max-0902",
+  "recraft-v4-1-flash",
+  "recraft-v4-1-pro",
+  "recraft-v4-1-standard",
+  "recraft-v4-1-utility",
+  "recraft-v4-1-utility-pro",
+  "rime-coda-v2",
+  "ripple-65b-preview",
+  "scribe-v2-medical",
+  "scribe-v3",
+  "scribe-v3-live",
+  "seedream-5-0-flash",
+  "seedream-5-5",
+  "simba-3-5",
+  "solar-mini-4",
+  "solar-pro-4",
+  "sonic-3-6",
+  "soniox-tts-v2",
+  "soniox-v6-async",
+  "soniox-v6-realtime",
+  "speechmatics-melia-1",
+  "tencent-hy4-api",
+  "universal-3-5-pro",
+  "universal-3-6-pro-realtime",
+  "utopai-x",
+  "zen-tts"
  ],
  "known_date_conflicts": [
   {
@@ -10864,6 +11112,10 @@
   {
    "name": "LongCat-2.5",
    "reason": "モデル発表11/2（第三者情報）、HFリポジトリ作成11/4、11/7時点で未確認、11/10に公開を確認。重みの公開は2026年11月の月単位で表示。"
+  },
+  {
+   "name": "Seedream 5.5",
+   "reason": "火山方舟の発布公告は2026年10月の項、AA・報道は11/9。日付単位の公式発表がないため公開日は月単位（2026-10）。"
   }
  ]
 }
