@@ -1259,5 +1259,57 @@
   "best_for_ja": "端末側で動く日本語の音声対話・画像についての音声質問",
   "supersedes": [],
   "rank": 11
+ },
+ {
+  "id": "higurashi-haru-4b",
+  "name": "Haru-4B",
+  "org": "higurashi株式会社",
+  "country": "JP",
+  "release": "2026-11-12",
+  "params_b": 4,
+  "arch": "全二重の音声対話基盤モデル。Qwen3.5-4Bを土台に、ユーザー音声・モデル音声・テキストの3ストリームを133msごと（7.5Hz）に足し合わせて処理。音声は64次元の連続潜在（VibeVoiceの音響トークナイザ）を小型MLPヘッドがMeanFlowで1ステップ生成。HFの重みはコーデック込みで約52.7億パラメータ（約10.6GB、bf16）",
+  "tasks": [
+   "dialogue"
+  ],
+  "spec": {
+   "latency_ms": 65,
+   "languages": "英・西・葡・独・仏・中・日・露・韓の9言語が主（学習データは160言語以上）",
+   "other": "M1 Max搭載MacBook（int8、独自Metalカーネル）でEnd-to-End約65ms（フレーム化による最大133msは含まない）。B300 GPUでは1ステップ約15ms。最長60分の全二重対話で学習"
+  },
+  "features": {
+   "全二重（割り込み可）": true,
+   "相づち・間合いの学習": true,
+   "日本語対応": true,
+   "日本語専用": false,
+   "リアルタイム": true,
+   "CPU動作": false
+  },
+  "min_vram_gb": 12,
+  "rec_vram_gb": null,
+  "vram_note": "公式カード: NVIDIA GPUで約12GB。MLX実装とmacOSアプリ、vLLM-Omniのプラグインもある",
+  "speed_note": "公式ブログ: MacBook（M1 Max、int8）でEnd-to-End約65ms（p50）。音声フレーム化で最大133msの遅延が加わる",
+  "bench": [],
+  "quality_note": "公式の日本語の数値評価はなし（日本語デモ2本を公開）。事前学習済みのベースモデルで研究向け。事実の正確さや指示への従い方はアシスタント並みではないとカードに明記。",
+  "ja_note": "主要9言語に日本語を含み、公式ブログに日本語の雑談デモあり。開発元は「日本語に対応したオープンな全二重音声対話モデルとして2番目のモデルシリーズ」とする（J-Moshi系に続くもの）。",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "重みはApache-2.0。声は参照音声（1話者・3秒〜3分）で指定し、標準の声は同梱されない。権利のある声だけを使うようカードで注意喚起",
+  "hf": "https://huggingface.co/higurashi-ai/Haru-4B",
+  "tools": [
+   "haru（PyTorch、Web UI）",
+   "MLX・macOSアプリ",
+   "vLLM-Omni"
+  ],
+  "summary_ja": "東京のhigurashiが公開した4Bの全二重音声対話モデル。聞きながら話せ、相づちや割り込みも学習。日本語を含む9言語に対応し、短い参照音声で声を指定できる。Apache-2.0。",
+  "best_for_ja": "日本語を含む全二重音声対話の研究・追加学習のベース。手元のMacやGPU（約12GB）で低遅延に動かしたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/higurashi-ai/Haru-4B",
+   "https://blog.higurashi.ai/melte/haru4b-ja/",
+   "https://github.com/higurashi-ai/Haru",
+   "https://higurashi.ai/company"
+  ],
+  "confidence": "high",
+  "rank": 15
  }
 ]

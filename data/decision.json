@@ -343,9 +343,7 @@
   ],
   "summary_ja": "Liquid AIのAPI専用・画像対応の判断モデルです。確率の「自信の度合い」が実際の正しさとずれにくいよう鍛えたとしています。",
   "best_for_ja": "画像を含む判定で、確信度をしきい値に使って自動処理と人の確認を切り分けたい場合",
-  "supersedes": [
-   "d1（クラウド版）"
-  ],
+  "supersedes": [],
   "sources": [
    "https://www.liquid.ai/blog/d1-ultra",
    "https://benchlm.ai/md/decision-models.md",
@@ -787,8 +785,15 @@
   "vram_note": "公式カード: BF16の重み約49GiB＋作業メモリが必要なCUDA GPU。Flash版（4B、約9.6GB）ならずっと小さいGPUで動く",
   "price_note": null,
   "speed_note": "公式カードに遅延の数値なし（画像解像度を上げるとメモリと遅延が増えるとのみ記載）",
-  "bench": [],
-  "quality_note": "公式カードは「判断タスク全般で性能と頑健性が向上」とするが、v1.3の数値は11/13時点で未確認。AAのDecision Indexはv1.2のみ評価済み（v1.2: 56.17、Flash v1.2: 50.15）のため、v1.3の値としては載せない",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 70.4,
+    "note": "2026-11-16取得（AAの埋め込みデータの値70.41を丸め）。同時点でFlash v1.3は64.1。参考：首位はDrex Max v1.1・SubQ Snap 1.2の72.6。旧v1.2は同版で69.8で、以前の版の値（56.17）とは尺度が異なる",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "AA Decision Index v2.1で70.4（11/16取得、Flash v1.3は64.1）。公式カードは「判断タスク全般で性能と頑健性が向上」とするのみで、日本語の品質を直接示す値ではない",
   "ja_note": "言語の記載なし。Qwen3.8ベースで多言語の素地はあるが、日本語での判断精度は未評価",
   "license": "Apache-2.0",
   "commercial": "yes",
@@ -811,7 +816,11 @@
    "https://huggingface.co/perplexity-ai/pplx-decider-v1.2"
   ],
   "confidence": "medium",
-  "rank": 8
+  "rank": 8,
+  "hl": {
+   "label": "AA判断",
+   "value": 70.4
+  }
  },
  {
   "id": "vllm-sr-decision-3",
@@ -821,7 +830,7 @@
   "release": "2026-10-24",
   "access": "open-weight",
   "params_b": 26.09,
-  "arch": "マルチモーダル判断モデル群。旗艦d3はQwen3.8-27B、小型版はQwen3.5系（9B/4B/2B/0.8B）が基盤。文章を生成せず1フォワードで各答えの確率を返す。0.59B〜26.09Bの6サイズ＋d3-turbo＋最上位のd3-ultra（26.09B、10/24公開）",
+  "arch": "マルチモーダル判断モデル群。旗艦d3はQwen3.8-27B、小型版はQwen3.5系（9B/4B/2B/0.8B）が基盤。文章を生成せず1フォワードで各答えの確率を返す。0.59B〜26.09Bの6サイズ＋d3-turbo＋最上位のd3-ultra（26.09B、10/24公開）。11/12にQwen3.5-2Bを基にした2Bの追加サイズd3.1-nano（2.21B、視覚エンコーダ0.33B込み、Apache-2.0、画像・動画入力対応）も公開",
   "tasks": [
    "predicate",
    "choice",
@@ -910,7 +919,8 @@
    "https://huggingface.co/vllm-sr/d3-turbo",
    "https://huggingface.co/vllm-sr/d3-flash",
    "https://huggingface.co/vllm-sr",
-   "https://www.orcarouter.ai/blog/decision-3-0-open-multimodal-decision-models"
+   "https://www.orcarouter.ai/blog/decision-3-0-open-multimodal-decision-models",
+   "https://huggingface.co/vllm-sr/d3.1-nano"
   ],
   "confidence": "medium",
   "rank": 9,
@@ -1946,5 +1956,141 @@
   "series": "Google Gemini Decision",
   "availability_tier": "general",
   "verified_at": "2026-11-13"
+ },
+ {
+  "id": "subq-snap-1-2",
+  "name": "SubQ Snap 1.2",
+  "org": "Subquadratic",
+  "country": "US",
+  "release": "2026-11-11",
+  "access": "api",
+  "params_b": null,
+  "arch": "非公開（長文脈の判断専用モデル）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト・画像などのマルチモーダル（文脈長384Kトークン）",
+   "outputs": "判断（はい/いいえ・選択・採点）。出力生成の課金なし",
+   "languages": "公式に対応言語の記載なし",
+   "other": "Snap 1.1から選択肢の並び順への頑健性と長文脈の精度を改善。旧版の利用者は1.2へ無償で自動移行"
+  },
+  "features": {
+   "画像入力": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（重み非公開）",
+  "price_note": "入力$0.04／100万トークン（米ドル）、出力は無料。新規ユーザーは100Mトークン無料（公式）。",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 72.6,
+    "note": "2026-11-16取得。Drex Max v1.1と並び首位。旧1.1は67.9",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "AAの判断モデル総合指数で首位タイ。日本語の判断精度を示す値ではない。",
+  "ja_note": "対応言語の公式記載なし。日本語での判断精度は未確認。",
+  "license": "API（Subquadratic利用規約）",
+  "commercial": "conditional",
+  "license_note": "API提供のみ。",
+  "hf": "https://subq.ai/subq-snap-1-2",
+  "tools": [
+   "SubQ API（console.subq.ai）"
+  ],
+  "summary_ja": "米Subquadraticの判断専用API。384Kトークンの長い資料を読んで判断でき、AAの判断モデル指数で首位タイ。入力100万トークン$0.04・出力無料。",
+  "best_for_ja": "リポジトリ全体や長い記録を丸ごと渡して、安く判断・振り分けしたい場合",
+  "supersedes": [
+   "SubQ Snap 1.1",
+   "SubQ Snap"
+  ],
+  "sources": [
+   "https://subq.ai/subq-snap-1-2",
+   "https://subq.ai/pricing",
+   "https://docs.subq.ai",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "high",
+  "rank": null,
+  "series": "Subquadratic SubQ Snap",
+  "availability_tier": "general",
+  "verified_at": "2026-11-16"
+ },
+ {
+  "id": "liquid-d1-1",
+  "name": "d1.1",
+  "org": "Liquid AI",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "params_b": null,
+  "arch": "非公開（Liquid APIの既定の判断モデル）",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "spec": {
+   "latency_ms": null,
+   "inputs": "テキスト・画像",
+   "outputs": "Noul（はい/いいえ）・Choice・Scoreの確率（生成トークン0）",
+   "languages": "公式に対応言語の記載なし",
+   "other": "上位のd1-ultraと同じエンドポイント・形式。公式文書は難しい判断ではd1-ultraへの切り替えを案内"
+  },
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "重み公開": false,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "APIのみ（公開重みのd1-2Bとは別物）",
+  "price_note": "入力$0.02・キャッシュ入力$0.02／100万トークン（米ドル）、出力$0（公式料金ページ。d1-ultraは入力$0.042）。",
+  "speed_note": null,
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 66.5,
+    "note": "2026-11-16取得。旧d1は60.8、d1-ultraは70.6",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   }
+  ],
+  "quality_note": "d1-ultraより下位の安価な既定モデル。日本語の判断精度を示す値ではない。",
+  "ja_note": "対応言語の公式記載なし。日本語での判断精度は未確認。",
+  "license": "API（Liquid AI利用規約）",
+  "commercial": "conditional",
+  "license_note": "Liquid API（Console）で提供。旧d1・d1-ultraはOpenRouter等にもある。",
+  "hf": "https://docs.liquid.ai/lfm/models/d1",
+  "tools": [
+   "Liquid API"
+  ],
+  "summary_ja": "Liquid AIのAPIで既定となった安価な判断モデル。入力100万トークン$0.02・出力無料で、上位のd1-ultraより安い。初提供日は公式で未確認。",
+  "best_for_ja": "大量の簡単な判断・振り分けを最安クラスで回したい場合",
+  "supersedes": [
+   "d1（クラウド版）"
+  ],
+  "sources": [
+   "https://docs.liquid.ai/lfm/models/d1",
+   "https://www.liquid.ai/pricing",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "confidence": "medium",
+  "rank": null,
+  "series": "Liquid d1",
+  "availability_tier": "general",
+  "verified_at": "2026-11-16",
+  "release_note": "公式の初提供日は未確認。OpenRouterのID末尾（20261027）やAAの追加日は代用しない。"
  }
 ]

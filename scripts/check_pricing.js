@@ -72,7 +72,7 @@ test("換算レートなし・ゼロで異通貨を比較しない", () => {
 });
 test("OpenRouterの1トークン単価を100万に変換", () => {
  const q = data.quotes.find(q => q.model_id === "kimi-k3-1-pro-api" && q.provider_id === "or-relace");
- near(q.rates.input, .2375); near(q.rates.output, 8.4085);
+ near(q.rates.input, .2403); near(q.rates.output, 8.4023);
 });
 test("同じモデルを複数の提供元で比較", () => {
  const q = data.quotes.filter(q => q.model_id === "kimi-k3-1-pro-api");

@@ -1,102 +1,102 @@
 {
- "as_of": "2026-11-13",
- "scope_ja": "AAの12一覧を11/13に再取得。LLM・画像・動画・音楽・ASRは表の行名を、TTSは各行の名前を、判断モデルは埋め込みデータの行名を抽出し、台帳の候補名と照合した（S2Sは表の構造が変わり行名の抽出が不完全なため、行数は前回値のまま）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
+ "as_of": "2026-11-16",
+ "scope_ja": "AAの12一覧を11/16に再取得。LLM・画像・動画・音楽・ASR・TTSは表の行名を、判断モデルは埋め込みデータの行名と指数を抽出し、台帳・掲載名と照合した（新規はKling Image 4.0 (preview)のみ。S2Sは表の構造の違いで行数は前回値のまま）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "rows": 288,
-   "snapshot_sha256": "00d63b058f958ce287833d2dd914b00e72d2b44c6fdf2eb49417e9c252b9100f",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "4d4883e3465367bea11c606017726593d1513af013b0e98a5f2c2360470b5792",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-   "rows": 112,
-   "snapshot_sha256": "528edd57263052ecb17018298221278c54ed9257e891d89a7f10c1937fec8133",
-   "checked_at": "2026-11-13"
+   "rows": 114,
+   "snapshot_sha256": "2eda99a24f94e9cad20f1a3326c5dfeb2819f30da82c339d444b922894d4acec",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
-   "rows": 83,
-   "snapshot_sha256": "2b92e85cf38f1de7b27061f092badf09abc9ba7434a58560ac9eb19e55d13466",
-   "checked_at": "2026-11-13"
+   "rows": 84,
+   "snapshot_sha256": "509610e84c12c52b1f5ff1eb8a1e676970f9b8bdca508d37f5c78b8bf39aab95",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "rows": 34,
-   "snapshot_sha256": "9f0f207655d596ac4f0ef2f8c5c372b1731045121e3102a53c5bffc7cfa7e8e5",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "2561086a23015bda436f1c745461c69735c24d6977fbc40afcc67f1b11385807",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
    "rows": 35,
-   "snapshot_sha256": "3736947fe0faa1d7a71fe64eb814e32d1df01127fa57bbf8429e239a3d1a8551",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "964ecfaaf35d3c020a9d606e0ee61f890faaa8842152de96c5692902cffe2250",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
    "rows": 105,
-   "snapshot_sha256": "e68f7f387b3c34c18f7e96c0da1670e0cd199d67c244d97f0659bc8b2146f1e4",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "c162824944c22c2b3ef075e4cc2b8dbc94179569364c4a0047cddbe7505530e7",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 51,
-   "snapshot_sha256": "3c559079d8aa838b279763010852d63897729c5031a74a732c70e9691abddbe1",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "a5dbe180e34af2e77f5f96216a3a34c045508957f90e941796525eef5f7439d2",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 64,
-   "snapshot_sha256": "6554cf6e4b84518bd2fe8dbfbf59819ed4e665a0b3af05dfc49dfc67c0301052",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "b392b0330d6eebd0cd6d50dcae0ca66f0eea20687c5b4f11173bf171135212fd",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 47,
-   "snapshot_sha256": "e98cfff5c4557caf3452c7e79398d9ee172444dd94a6270ffa65890cb1f29e96",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "8f27d5a48955a0becf940315fde661494097e3d0d98ec90235f2d48b4f6eec4c",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 14,
-   "snapshot_sha256": "0cc8b5f8c96f0e9c622e2360834364f40b89c24228473587335837741e300437",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "5852636eb80399d7522058a2afc816e5e6e68cb5b9d6dd0854dcbb88ae256045",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "80f56fea0ce4e541861a6adfad69ec08d99bdb8ddf2898fb96f2a546057702c9",
-   "checked_at": "2026-11-13"
+   "snapshot_sha256": "25497b1b9d0a193a096b32e7272d3abab341d3ab01f032763a8db9c415b12801",
+   "checked_at": "2026-11-16"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-   "rows": 19,
-   "snapshot_sha256": "331bfecad3af08ce01fc2616d8437fa737e0622f7eda74405cd8dc7e90a7a1b9",
-   "checked_at": "2026-11-13"
+   "rows": 22,
+   "snapshot_sha256": "26b252ea208f692f37d6c632f617063ab9fd409c58da136aae16481a548385c6",
+   "checked_at": "2026-11-16"
   }
  ],
  "candidates": [
@@ -2739,7 +2739,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "Video Rebirth（国未確認）。HFでhyperflow-h3-flash（13.7B／13.9B、MiniMax H3 community license、11/6）を確認したが、MiniMax-H3の圧縮・少ステップ化した派生物で、日本語の記載なし。公開側の掲載基準（派生の扱い）を次回判断。",
+   "reason": "Video Rebirth（国未確認）。HFでhyperflow-h3-flash（13.7B／13.9B、MiniMax H3 community license、11/6）を確認したが、MiniMax-H3の圧縮・少ステップ化した派生物で、日本語の記載なし。公開側の掲載基準（派生の扱い）を次回判断。 11/16時点で公式リポジトリに変化なし（第三者の量子化が増えたのみ）。",
    "sources": [
     "https://artificialanalysis.ai/video/leaderboard/image-to-video",
     "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash"
@@ -5976,8 +5976,10 @@
    ],
    "disposition": "比較対象",
    "model_ids": [],
-   "reason": "判断モデルの比較に使うLLMの評価設定。独立した新Decision Modelとして数えない。",
+   "reason": "Inception（米国）。入力$0.02/100万トークン（通常$0.04の50%割引、終了日記載なし）・出力$0、AA Decision Index 62.1。Mercury API全体が2026-12-28で終了予定と公式告知があり、掲載は見送り（11/16）。",
    "sources": [
+    "https://docs.inceptionlabs.ai/get-started/models.md",
+    "https://docs.inceptionlabs.ai/support/wind-down",
     "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    ]
   },
@@ -10017,7 +10019,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AA I2Vの追加を確認。正確な版別の一般提供・公式仕様を確認できず保留。評価追加をモデルの初公開とみなさない。",
+   "reason": "AA I2Vの追加を確認。正確な版別の一般提供・公式仕様を確認できず保留。評価追加をモデルの初公開とみなさない。 11/16もAA I2V 1101のみで、公式の提供経路・価格を確認できず。",
    "sources": [
     "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    ]
@@ -10434,11 +10436,12 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AAの公開日11/7、AA指数24.0。公式ドキュメントでモデルID・料金（100万トークンあたり入力$0.10／出力$0.30）は確認したが、提供条件は「アカウント・APIキーの権限次第」で、公式の提供開始日と運営会社の国（規約の準拠法はシンガポール）を確定できない。",
+   "reason": "AAの公開日11/7、AA指数24.0。公式ドキュメントでモデルID・料金（100万トークンあたり入力$0.10／出力$0.30）は確認したが、提供条件は「アカウント・APIキーの権限次第」で、公式の提供開始日と運営会社の国（規約の準拠法はシンガポール）を確定できない。 11/15にHFのAgnes-AI（個人アカウント）へ同名の重み（総187.8B、稼働数の記載なし、Apache-2.0、BF16約375.5GB、文脈長262K、対応言語は英・中のみ記載）が出たが、公式サイトからのリンクがなくAAも重み非公開扱いのまま。公式配布か・国・稼働数を確認できるまで保留（11/16）。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
     "https://wiki.agnes-ai.com/en/docs/agnes-25-pro-theta.md",
-    "https://wiki.agnes-ai.com/en/docs/pricing.md"
+    "https://wiki.agnes-ai.com/en/docs/pricing.md",
+    "https://huggingface.co/Agnes-AI/Agnes-2.5-Pro-Theta"
    ]
   },
   {
@@ -10535,7 +10538,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AAに11/3追加（T2V 1138・I2V 1125）。AAの公開日は2026-03-18、論文初版は2026-02-25でAA掲載日とは別。重みは非公開。Skywork公式のAPI提供経路・料金を確認できない（再販業者の価格のみ）ため保留。既存のSkyReels-V3（公開重み）とは別。",
+   "reason": "AAに11/3追加（T2V 1138・I2V 1125）。AAの公開日は2026-03-18、論文初版は2026-02-25でAA掲載日とは別。重みは非公開。Skywork公式のAPI提供経路・料金を確認できない（再販業者の価格のみ）ため保留。既存のSkyReels-V3（公開重み）とは別。 11/16もSkywork公式のAPI・料金を確認できず（再販業者の価格のみ）。",
    "sources": [
     "https://artificialanalysis.ai/video/leaderboard/text-to-video",
     "https://arxiv.org/abs/2602.21818"
@@ -10598,7 +10601,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AA Decision Index 72.6（11/13、前回73.4）。Nace.AI（米国）の判断専用モデルでConsole・OpenRouterで提供と案内されるが、v1.1の提供開始日と版ごとの料金（OpenRouterのエンドポイントはdrex-max-20261016）を公式に確定できない。v1はHFで重み公開（Nace.AI Open RAIL-M）。",
+   "reason": "AA Decision Index 72.6（11/13、前回73.4）。Nace.AI（米国）の判断専用モデルでConsole・OpenRouterで提供と案内されるが、v1.1の提供開始日と版ごとの料金（OpenRouterのエンドポイントはdrex-max-20261016）を公式に確定できない。v1はHFで重み公開（Nace.AI Open RAIL-M）。 11/16：公式は「$0.03 per 1k decisions（50%の発売記念価格）」のみで、100万トークン単価・終了日・提供開始日は記載なし。保留継続。",
    "sources": [
     "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
     "https://www.nace.ai/drex",
@@ -10928,12 +10931,15 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "Subquadratic（米国）の判断モデル。AA Decision Index 72.6。公式サイトに「$0.04 per 1M tokens」とあるが入出力の内訳・提供開始日を公式本文で確認できないため保留。前回1.1を「LLMの評価設定」とした分類も次回見直す。",
+   "disposition": "掲載",
+   "model_ids": [
+    "subq-snap-1-2"
+   ],
+   "reason": "公式ブログ（11/11、全ユーザーに提供）と料金ページ（入力$0.04/100万トークン・出力無料、384K）で確認し11/16に掲載。AA Decision Index 72.6。",
    "sources": [
-    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-    "https://subq.ai"
+    "https://subq.ai/subq-snap-1-2",
+    "https://subq.ai/pricing",
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    ]
   },
   {
@@ -10942,7 +10948,7 @@
    "boards": [],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "Alibaba（11/11）。Token Plan（定額）のみの期間限定プレビューで、11/25（UTC+8）に終了予定。従量課金なし。一般提供版を待つ。",
+   "reason": "Alibaba（11/11）。Token Plan（定額）のみの期間限定プレビューで、11/25（UTC+8）に終了予定。従量課金なし。一般提供版を待つ。 11/16も Token Plan のみのプレビューで、一般提供・従量料金の記載なし。",
    "sources": [
     "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
    ]
@@ -10953,7 +10959,7 @@
    "boards": [],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "Conway Research（国を公式情報で確認できない）、11/10、日本語専用の小型TTS（約40MB、CPU、2話者・クローンなし）。Underdog Non-Commercial 1.0。国と開発元情報を確認でき次第掲載を判断。",
+   "reason": "Conway Research（国を公式情報で確認できない）、11/10、日本語専用の小型TTS（約40MB、CPU、2話者・クローンなし）。Underdog Non-Commercial 1.0。国と開発元情報を確認でき次第掲載を判断。 11/16もHFは11/10から更新なく、国は公式情報で未確認（第三者DBのみ）。",
    "sources": [
     "https://huggingface.co/ConwayResearch/Underdog-Woof-Japanese"
    ]
@@ -10964,24 +10970,349 @@
    "boards": [],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "h2oai（11/8）。gatedでモデルカードを読めず、仕様・ライセンス条件を確認できない。",
+   "reason": "h2oai（11/8、v1.0、gemma-4-12B-itベース、11.96B）。カードを確認：H2O Model Non-Commercial Licence v1.1（非商用・非本番、gated）。同時期のh2o-lightning-e4b（11/1）・h2o-lightning-bolt-74b（11/1、74B/稼働9B）も同じ条件。既存31B・4B行のライセンス表記と系列の整理を次回まとめて行うため保留（11/16）。",
    "sources": [
-    "https://huggingface.co/h2oai"
+    "https://huggingface.co/h2oai/h2o-lightning-12b",
+    "https://huggingface.co/h2oai/h2o-lightning-e4b",
+    "https://huggingface.co/h2oai/h2o-lightning-bolt-74b"
    ]
   },
   {
    "category": "decision",
    "name": "d3.1-nano",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "vllm-sr（11/12、2.21B、Apache-2.0）。Decision 3.0系の追加サイズ。既存行の系列内の扱いを次回判断。",
+   "disposition": "掲載",
+   "model_ids": [
+    "vllm-sr-decision-3"
+   ],
+   "reason": "カードに「Decision 3.0の2Bマルチモーダル判断モデル」とあり、系列内の追加サイズとして既存行（Decision 3.0）に追記（11/16）。",
    "sources": [
     "https://huggingface.co/vllm-sr/d3.1-nano"
    ]
+  },
+  {
+   "category": "llm",
+   "name": "Edge0-145B／Edge0-120B（NVFP4・Q3_K）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Edge0（国未確認）、HF作成11/11。Qwen3.8-Flash-Nextのエキスパート層を作り替えた派生物（145Bは稼働10.12B、NVFP4約47.8GiB）。独自エンジンedge0-inferが必要で、独自ライセンスにより商用サービス等は別途書面許諾。派生物・国不明のため保留（11/16）。",
+   "sources": [
+    "https://huggingface.co/Edge0/Edge0-145B-NVFP4"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Lara Mini Base（Lara-4-Mini-Base）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Translated（国は公式で未確認）、HF作成11/11、gated。総7.2B・稼働0.6Bのゼロから学習したベースモデル（指示調整なし）、45言語に日本語を明記、CC BY-NC-SA 4.0（非商用）、文脈長131,072。翻訳AI Lara 4の土台。ベースモデル・非商用のため掲載判断を保留（11/16）。",
+   "sources": [
+    "https://huggingface.co/translated/Lara-4-Mini-Base",
+    "https://laratranslate.com/research"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d1.1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-d1-1"
+   ],
+   "reason": "Liquid公式文書で既定のAPI判断モデル、料金ページで入力$0.02・出力$0を確認。旧d1の後継（d1-ultraの行から旧d1の置換記録を移した）。初提供日は未確認。AA 66.5。",
+   "sources": [
+    "https://docs.liquid.ai/lfm/models/d1",
+    "https://www.liquid.ai/pricing",
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Decider v1.3／Decider Flash v1.3",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "pplx-decider-v1-3"
+   ],
+   "reason": "AA Decision Index v2.1で70.4（Flash 64.1）を11/16に確認し、公開重みの行へ反映。",
+   "sources": [
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "https://huggingface.co/perplexity-ai/pplx-decider-v1.3"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Claude Mythos 5.2",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Anthropic（11/9、Fable 5.2と同時）。認証プログラム承認組織のみの限定提供（入力$8／出力$40、1M文脈）。一般提供の旗艦Fable 5.2とは別系列の限定モデルで、限定後継ルールに当てはまらないため扱いを次回判断。",
+   "sources": [
+    "https://platform.claude.com/docs/en/release-notes/overview",
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-Rosalind Research／Discovery",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "OpenAI。Trusted Access対象組織のみ（短文脈 入力$5／出力$25）。既存gpt-6-rosalindと同じ系列の派生のため別行にしない方針で、モデルページ（404）の公開を待つ。",
+   "sources": [
+    "https://developers.openai.com/api/docs/pricing"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "ERNIE 5.5 Flash Preview",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Baidu（中国、11/11）。千帆APIのpreview（事後学習の中間版）、280B（稼働14B）、1M文脈。公式料金は未確認。公式が「11/25までに重みを公開」とするため、公開重み側で11/25以降に再確認。",
+   "sources": [
+    "https://ernie.baidu.com/zh/release/ernie-5-5-flash-preview/"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "SubQ Savant 1.4",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Subquadratic の長文脈テキスト生成モデル。early access（ウェイトリスト）のため一般提供待ち。",
+   "sources": [
+    "https://docs.subq.ai"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Sarashina3.2 mini thinking（API）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "SB Intuitions（10/29発表の無償ベータAPI、報道ベース）。公式の提供条件・料金を確認できず、jp_reference_modelsへの追加は保留。",
+   "sources": [
+    "https://www.sbintuitions.co.jp/"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Haru-4B",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "higurashi-haru-4b"
+   ],
+   "reason": "higurashi（東京）、HF 11/12・公式ブログ11/13、Apache-2.0。モデルカードと日本語ブログで日本語対応と参照音声による声指定を確認。",
+   "sources": [
+    "https://huggingface.co/higurashi-ai/Haru-4B",
+    "https://blog.higurashi.ai/melte/haru4b-ja/"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Kitten TTS 2 Mini",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "kitten-tts-2-mini"
+   ],
+   "reason": "KittenML（Stellon Labs、米国）、11/13、82M、Apache-2.0。日本語の既定話者5声をカードで確認。クローン記載なしのためpreset-only。",
+   "sources": [
+    "https://huggingface.co/KittenML/kitten-tts-2-mini",
+    "https://kittenml.com/terms"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Kitten-TTS 2（1.7B）",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "kitten-tts-2"
+   ],
+   "reason": "9/30公開の確認漏れを補完。5〜30秒の参照音声でゼロショット、日本語の名前付き声あり。Stellon Labs Community License（年商・累計調達100万米ドル超は別ライセンス）。",
+   "sources": [
+    "https://huggingface.co/KittenML/kitten-tts-2"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Kitten TTS 2 Nano／Pico",
+   "boards": [],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "同時公開の17M／7.2M版は8言語で日本語を含まない（11/16）。",
+   "sources": [
+    "https://huggingface.co/KittenML"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Ocelot（CatsAI）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "HF 11/15。Qwen3-TTSを蒸留した小型TTS、日本語を含む20言語・3声・クローンなし。業務利用は有料ライセンスで、公式サイトが「プレースホルダー」と明記しており開発元の実体・国を確認できない。",
+   "sources": [
+    "https://huggingface.co/catsaiagency/Ocelot"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "DeepL Aure",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "DeepL（11/11発表）の音声翻訳モデル。DeepL Voice／API for Voiceで使用。当初対応に日本語を含むが入出力どちらの対応か・料金・提供条件の詳細を確認できず保留。",
+   "sources": [
+    "https://www.deepl.com/en/press-release/aure-voice-ai-model"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Sony Walrus",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Sony（arXiv 2611.13689、8B、Gemma 4ベースの音声認識・翻訳・合成の統合モデル）。重み・API未公開のため掲載要件を満たさない。",
+   "sources": [
+    "https://arxiv.org/abs/2611.13689"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Fish Audio Live 3",
+   "boards": [],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "Fish Audio（11/10）の全二重音声モデル。公式に「現在は英語のみ」。",
+   "sources": [
+    "https://fish.audio/blog/introducing-live-3/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "ElevenLabs Scribe v3 Medical",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "11/11のSummit記事で言及のみ。モデル一覧はscribe_v2_medicalのままで、提供日・ID・料金・日本語対応を確認できない。提供確認後に既存行の置換を判断。",
+   "sources": [
+    "https://elevenlabs.io/blog/nyc-summit"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Zoom Scribe V2.1 Pro",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAのASR一覧の表記。公式文書のモデルIDはzoom-scribe-en-pro（英語）・zoom-scribe-multilingual（10言語、言語名の記載なし）で、V2.1の版名・日本語対応・料金を確認できない。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-text",
+    "https://developers.zoom.us/docs/ai-services/scribe/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Deepgram Nova-3（日本語単一言語モデルの改良）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Deepgram変更履歴（11/12）で日本語の単一言語モデルの精度改善（API変更不要）。版名は変わらず新モデルではない。既存の未掲載候補「Nova-3」の日本語対応の根拠として記録。料金はバッチ単一言語$0.0043/分ほか。",
+   "sources": [
+    "https://developers.deepgram.com/changelog/2026/11/12",
+    "https://deepgram.com/pricing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Kling Image 4.0 (preview)",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAのT2I 1180・編集1182に新規表示（AA上は2026-11-17予定・API「Coming soon」）。Klingの公式発表・提供条件を確認できず、予告の根拠もないため保留。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "Dreamina Seedance 2.5 Flash",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "ByteDance（中国）。火山方舟の発表一覧に202611「新发布」（doubao-seedance-2-5-flash-261115）、最長30秒・480p/720p・日本語含む11言語。BytePlusの料金表から解像度・条件ごとの単価を確定できないため、価格の確認後に別行（Flash）として掲載を判断。",
+   "sources": [
+    "https://www.volcengine.com/docs/82379/1159178",
+    "https://docs.byteplus.com/en/docs/ModelArk/1099320"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "LongCat-Video-Avatar 1.6",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "longcat-video-avatar-1-6"
+   ],
+   "reason": "HF（11/13、MIT）で1.5の後継と明記。1.5を置換。",
+   "sources": [
+    "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "PAN 2",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "mbzuai-pan-2"
+   ],
+   "reason": "MBZUAI（UAE）、Apache-2.0、29B、704×1248・24fps・最長20秒のワールドモデル。WAMの発表11/11。",
+   "sources": [
+    "https://huggingface.co/IFM/PAN2",
+    "https://www.wam.ae/en/article/c37a8kv-mbzuai-launches-open-source-pan-model-simulate"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "vela3.1（fast／pico-150m／pico-380m）",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "vllm-sr（11/2〜11/4、Apache-2.0、UltraBERTベース）。既存のVela 3.0行を3.1系へ更新するかを次回判断。",
+   "sources": [
+    "https://huggingface.co/vllm-sr"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "X3Guard-150M",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AxiomicLabs（国未確認、11/13、149M、Apache-2.0）。英語のプロンプトガード。小規模な開発元で日本語の記載なし。",
+   "sources": [
+    "https://huggingface.co/AxiomicLabs"
+   ]
   }
  ],
- "follow_up_ja": "次回11/16も全カテゴリを確認。Qwen4-Max-Preview（11/25終了予定）の一般提供、SubQ Snap 1.2・Drex Max v1.1の公式料金と提供開始日、ACE Music v1の開発元・提供形態、ADM 3 Cloud、Underdog Woof Japaneseの開発元・国、Hyperflow H3 Flash（派生物の扱い）、pplx-decider v1.3とInkling 2 Small（公開重み）のAA評価、Nex-N2.6・Rakuten AI 3.0.1の量子化版と評価、SkyReels V4、Agnes 2.5 Pro Theta、GPT-6 Rosalindのモデルページ、ERNIE 5.5 Flashの事後学習版、Hy4正式版の重み、HiDream-O1-Video-1.0、Qwen AudioGen／Melodia、Lara-4-Mini（gated）を追跡。",
+ "follow_up_ja": "次回11/19も全カテゴリを確認。ERNIE 5.5 Flashの重み（公式は11/25までに公開）、Qwen4-Max-Preview（11/25終了予定）の一般提供、Kling Image 4.0の公式提供、Seedance 2.5 Flashの解像度別単価、Claude Mythos 5.2の扱い、Drex Max v1.1の100万トークン単価と提供開始日、H2O-Lightning系（12B／E4B／Bolt-74B）と既存行のライセンス整理、vela3.1、Agnes 2.5 Pro Thetaの重みの出所、Hy4正式版の重み、Scribe v3 Medical、DeepL Aure、Nex-N2.6・Rakuten AI 3.0.1・Inkling 2 Smallの評価と量子化の実測、Mercury 3のAPI終了（12/28）を追跡。Nejumiの再取得。",
  "added_model_ids": [
   "agnes-video-2-5",
   "agnes-video-2-5-flash",
@@ -11082,7 +11413,14 @@
   "universal-3-5-pro",
   "universal-3-6-pro-realtime",
   "utopai-x",
-  "zen-tts"
+  "zen-tts",
+  "subq-snap-1-2",
+  "liquid-d1-1",
+  "higurashi-haru-4b",
+  "kitten-tts-2-mini",
+  "kitten-tts-2",
+  "longcat-video-avatar-1-6",
+  "mbzuai-pan-2"
  ],
  "known_date_conflicts": [
   {

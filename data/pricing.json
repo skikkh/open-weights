@@ -589,12 +589,25 @@
     "cache_write_short": 25.0,
     "cache_write_long": 50.0
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
-   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。",
-   "unavailable_ja": "限定アクセス・利用審査あり"
+   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。入力27.2万トークン超は入力$40・出力$150・キャッシュ読込$4（長文時のキャッシュ書込は公式表で「-」）。",
+   "unavailable_ja": "限定アクセス・利用審査あり",
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 40,
+      "output": 150,
+      "cache_read": 4,
+      "cache_write_short": null,
+      "cache_write_long": null
+     }
+    }
+   ]
   },
   {
    "id": "gpt-6-rosalind--openai--9",
@@ -610,12 +623,25 @@
     "cache_write_short": 18.75,
     "cache_write_long": 37.5
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
-   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。",
-   "unavailable_ja": "限定アクセス・利用審査あり"
+   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。入力27.2万トークン超は入力$30・出力$112.50・キャッシュ読込$3・書込30分$37.50／12時間$75。",
+   "unavailable_ja": "限定アクセス・利用審査あり",
+   "tiers": [
+    {
+     "over_input": 272000,
+     "label": "入力27.2万超の長文料金",
+     "rates": {
+      "input": 30,
+      "output": 112.5,
+      "cache_read": 3,
+      "cache_write_short": 37.5,
+      "cache_write_long": 75
+     }
+    }
+   ]
   },
   {
    "id": "claude-fable-5-2--anthropic--10",
@@ -1332,11 +1358,12 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
-    "https://www.inceptionlabs.ai/models"
+    "https://www.inceptionlabs.ai/models",
+    "https://docs.inceptionlabs.ai/support/wind-down"
    ],
-   "note_ja": "50%導入割引の表示価格。通常表示は入力$0.20・出力$0.70・キャッシュ$0.02。終了日は未確認のため定期追跡。",
+   "note_ja": "50%導入割引の表示価格。通常表示は入力$0.20・出力$0.70・キャッシュ$0.02。Mercury API自体が2026-12-28までで提供終了予定（公式告知）。",
    "context": 1000000
   },
   {
@@ -1611,13 +1638,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.2375,
-    "output": 8.4085,
+    "input": 0.2403,
+    "output": 8.4023,
     "cache_read": 0.2,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1636,13 +1663,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.25,
-    "output": 10.0,
+    "input": 0.253,
+    "output": 8.8,
     "cache_read": 0.18,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1761,13 +1788,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.006,
+    "input": 0.12,
     "output": 0.5,
-    "cache_read": 0.005,
+    "cache_read": 0.003,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1786,13 +1813,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.038,
+    "input": 0.036,
     "output": 0.5,
     "cache_read": 0.01,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-16",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],

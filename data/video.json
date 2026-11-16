@@ -1012,65 +1012,55 @@
   "rank": 14
  },
  {
-  "id": "longcat-video-avatar-1-5",
+  "id": "longcat-video-avatar-1-6",
   "access": "open-weight",
-  "name": "LongCat-Video-Avatar 1.5",
+  "name": "LongCat-Video-Avatar 1.6",
   "org": "Meituan LongCat",
   "country": "CN",
-  "release": "2026-05",
+  "release": "2026-11-13",
   "params_b": null,
-  "arch": "LongCat-Video（13.6B dense DiT）のファインチューン。音声エンコーダはWhisper-Large-v3、DMD2ステップ蒸留（8NFE）",
+  "arch": "LongCat-Videoを土台にした音声駆動の人物動画モデル（1.5の改良版。HFの公開ファイルは計約77.6GB）",
   "tasks": [
    "s2v",
    "i2v"
   ],
   "spec": {
-   "max_resolution": "720p",
+   "max_resolution": null,
    "max_duration_s": null,
    "fps": null,
-   "other": "音声＋テキスト→動画（AT2V）、音声＋テキスト＋画像→動画（ATI2V）、動画の続き生成。単一話者・複数話者（マルチストリーム音声）対応。セグメントの継ぎ足しで長尺化。アニメ・動物にも汎化"
+   "other": "音声＋テキスト→動画、音声＋テキスト＋画像→動画、音声駆動の動画の続き生成。1人・複数人に対応。続き生成の誤差の蓄積を抑え、10分を超える動画でも画質・人物の一貫性を保つと公式が説明。解像度の記載はカードになし"
   },
   "features": {
    "音声駆動（トーキングヘッド）": true,
    "複数話者": true,
-   "動画延長（長尺）": true,
-   "蒸留版あり（8ステップ）": true,
-   "INT8量子化オプション": true
+   "動画延長（長尺）": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
-  "vram_note": "VRAMの記載なし。公式例は2GPU（context parallel）。--use_int8でVRAMを削減可能。コミュニティのfp8版あり（szwagros/LongCat-Video-Avatar-1.5-fp8）",
-  "speed_note": "DMD2蒸留で8NFE。具体的な秒数の記載なし",
-  "bench": [
-   {
-    "metric": "人手評価（508件の画像・音声ペア、評価者770人、13,240判定）",
-    "value": null,
-    "note": "HeyGen、OmniHuman 1.5、Kling Avatar 2.0と比べて「同等以上」と主張。数値は要旨に記載なし",
-    "source": "https://arxiv.org/abs/2605.26486"
-   }
-  ],
-  "quality_note": "MIT・オープンの音声駆動アバターとして2026年の最新版。リップシンク精度向上（Whisper化）と蒸留による高速化が主な改良点。比較相手が商用の最新アバター製品で、独立評価は未確認",
-  "ja_note": "評価・タグは中国語・英語。日本語音声は記載なし（未確認）",
+  "vram_note": "1.6のVRAMの目安は公式カードに記載なし。1.5のfp8版などは別チェックポイントのため流用しない",
+  "speed_note": "公式は「処理全体の最適化で生成を高速化」とするが、秒数の記載なし",
+  "bench": [],
+  "quality_note": "公式は口の動きの自然さ・音声との同期・長尺の安定性・速度の改善を挙げる（技術報告あり）。独立評価は未確認。1.5の人手評価は引き継がない",
+  "ja_note": "カードの言語は英・中。日本語音声での評価は記載なし（未確認）",
   "license": "MIT",
   "commercial": "yes",
-  "license_note": "モデル重みはMIT",
+  "license_note": "モデル重みはMIT（公式カード）",
   "price_note": null,
-  "hf": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5",
+  "hf": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6",
   "tools": [
-   "公式torchrunスクリプト",
+   "公式スクリプト（LongCat-Videoリポジトリ）",
    "Diffusers"
   ],
-  "summary_ja": "1枚の写真と音声から、口の動きが合った話し手の動画を作るMeituanのモデル（MIT）。複数人の会話や長い動画にも対応する。",
+  "summary_ja": "1枚の写真と音声から、口の動きが合った話し手の動画を作るMeituanのモデルの新版（MIT）。口元の自然さと10分超の長尺の安定性、速度が改善された。",
   "best_for_ja": "解説動画・バーチャル講師・吹き替えなどのトーキングヘッド生成",
   "supersedes": [
+   "LongCat-Video-Avatar 1.5",
    "LongCat-Video-Avatar"
   ],
   "sources": [
-   "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5",
-   "https://arxiv.org/abs/2605.26486",
-   "https://comfyui-wiki.com/en/models/longcat/longcat-avatar",
-   "https://huggingface.co/meituan-longcat/LongCat-Video",
-   "https://huggingface.co/szwagros/LongCat-Video-Avatar-1.5-fp8"
+   "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.6",
+   "https://github.com/meituan-longcat/LongCat-Video/blob/main/assets/LongCat-Video-Avatar-1.6-Tech-Report.pdf",
+   "https://meigen-ai.github.io/LongCat-Video-Avatar-1.6-Page/"
   ],
   "confidence": "medium",
   "rank": 15
@@ -2216,5 +2206,58 @@
   "rank": 11,
   "verified_at": "2026-10-28",
   "release_note": "公式コード・デモの告知は10/21、HF重みアップロード履歴は10/23。"
+ },
+ {
+  "id": "mbzuai-pan-2",
+  "access": "open-weight",
+  "name": "PAN 2",
+  "org": "MBZUAI Institute of Foundation Models（IFM）",
+  "country": "AE",
+  "release": "2026-11-11",
+  "params_b": 29,
+  "arch": "ワールドモデル（GLP構成）。言語モデルによる概念的な推論と潜在拡散による映像生成を組み合わせる。拡散部29B（BF16）、テキストエンコーダはQwen3.5-9B（凍結）、VAEはWan 2.2",
+  "tasks": [
+   "t2v",
+   "i2v"
+  ],
+  "spec": {
+   "max_resolution": "704×1248",
+   "max_duration_s": 20,
+   "fps": 24,
+   "other": "現在の状態（任意の画像＋文章）と文章で書いた行動から、その結果を最長20秒の動画で予測する。T2V・I2Vを1つのチェックポイントで扱う"
+  },
+  "features": {
+   "ワールドモデル（行動に応じた予測）": true,
+   "Diffusers対応": true,
+   "vLLM対応": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "VRAMの目安は公式カードに記載なし。HFリポジトリは計約86GB",
+  "speed_note": "公式の速度値は確認できず",
+  "bench": [],
+  "quality_note": "汎用の動画生成というより、行動に応じた世界の変化を予測するシミュレーター。独立評価・AA評価は未確認",
+  "ja_note": "カードの言語は英語のみ。日本語プロンプトの対応は記載なし",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0（テキストエンコーダ・VAEはそれぞれのリポジトリの条件）",
+  "price_note": null,
+  "hf": "https://huggingface.co/IFM/PAN2",
+  "tools": [
+   "公式generate.py",
+   "Diffusers",
+   "vLLM"
+  ],
+  "summary_ja": "UAEのMBZUAIが公開した29Bのワールドモデル。画像と文章で書いた行動から、その後の様子を最長20秒の動画で予測する。Apache-2.0。",
+  "best_for_ja": "ロボットやエージェント向けの世界シミュレーション、行動に応じた動画予測の研究",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/IFM/PAN2",
+   "https://github.com/ifm-ai/PAN2",
+   "https://www.wam.ae/en/article/c37a8kv-mbzuai-launches-open-source-pan-model-simulate"
+  ],
+  "confidence": "medium",
+  "rank": null,
+  "release_note": "UAE国営通信（WAM）の発表日。HFのリポジトリ作成は10/7、重みの登録は11/5で、一般公開の時点は特定できていない"
  }
 ]

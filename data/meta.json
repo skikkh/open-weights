@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-13",
- "next_update": "2026-11-16",
+ "updated_at": "2026-11-16",
+ "next_update": "2026-11-19",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,17 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-16",
+   "items": [
+    "追加（公開）: Haru-4B（higurashi、日本、11/12、Apache-2.0）。日本語を含む9言語の全二重音声対話モデルで、短い参照音声で声を指定。TTSはKitten TTS 2 Mini（米KittenML、11/13、82M、Apache-2.0、日本語の既定話者5声・クローンなし）と、確認漏れだったKitten-TTS 2（1.7B、9/30、参照音声でゼロショット、独自ライセンス）。動画はPAN 2（UAEのMBZUAI、29Bのワールドモデル、Apache-2.0）。",
+    "置換（公開）: LongCat-Video-Avatar 1.5 → 1.6（Meituan、11/13、MIT。口元の自然さと10分超の長尺を改善）。判断モデルのDecision 3.0に2Bのd3.1-nanoを追記。",
+    "追加（有料）: SubQ Snap 1.2（Subquadratic、11/11、入力$0.04/100万トークン・出力無料、384K、AA判断指数72.6で首位タイ）、Liquid d1.1（Liquid APIの既定判断モデル、入力$0.02・出力$0。旧d1の後継で、d1-ultraとは別の段）。",
+    "更新: pplx-decider v1.3にAA判断指数v2.1の70.4を反映。AA指数v5.0.1の値が出ていたQwen3.8-Flash-Next 28.6・K-EXAONE 2.0 7.6・gpt-oss-120b 3.8・Gemma 4 31B 4.4・Mistral Medium 3.5 4.6を補完。Inkling 2 SmallにUnslothのGGUF（約172〜354GB）とMLX 4bit（約381GB）を追加。",
+    "料金: GPT-6 Cyber／Rosalindに入力27.2万超の長文料金を追加。Mercury 3はAPI全体が12/28で終了予定と注記。OpenRouter経由のKimi K3.1 Pro・DeepSeek V4.1 Flashの4経路の単価を更新。",
+    "保留: Kling Image 4.0（プレビュー、公式未確認）、Seedance 2.5 Flash（単価の条件を確定できず）、Claude Mythos 5.2（限定提供）、ERNIE 5.5 Flash Preview（11/25までに重み公開予定）、Agnes 2.5 Pro Theta の重み（公式配布か未確認）、Edge0、Lara Mini Base、H2O-Lightning-12B ほか。Mercury Decide はAPI終了予定のため見送り。国産LLM・ASRの新規は確認範囲でなし（Nejumiは今回も未取得）。"
+   ]
+  },
   {
    "date": "2026-11-13",
    "items": [
@@ -218,9 +229,9 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0.1",
-   "as_of": "2026-11-13",
+   "as_of": "2026-11-16",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/3のv5.0.1の表を11/13に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。11/3のv5.0.1の表を11/16に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",

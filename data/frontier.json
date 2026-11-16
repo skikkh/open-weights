@@ -970,14 +970,15 @@
   "release": null,
   "access": "api",
   "summary_ja": "拡散型の言語モデルMercuryの現行旗艦。高速な推論・ツール操作・構造化出力向け。",
-  "availability_ja": "通常APIで提供。旧Mercury 2.5は新規利用を終了し既存利用も11/15まで。",
+  "availability_ja": "通常APIで提供中。ただしMercury API全体が2026-12-28まで利用可能で、その後はAPI・データとも利用できなくなると公式に告知（後継の記載なし）。旧Mercury 2.5は11/15で終了。",
   "price_note": "導入割引中は100万トークン当たり入力$0.10・キャッシュ$0.01・出力$0.35。通常表示は$0.20・$0.02・$0.70。割引終了日は未確認。",
   "hf": "https://www.inceptionlabs.ai/models",
   "sources": [
    "https://www.inceptionlabs.ai/models",
-   "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
+   "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+   "https://docs.inceptionlabs.ai/support/wind-down"
   ],
-  "verified_at": "2026-11-12",
+  "verified_at": "2026-11-16",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -987,7 +988,7 @@
   "context_note": "1Mトークン。",
   "availability_tier": "general",
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
-  "detail_note": "Mercury 2.5の料金・評価を流用しない。Mercury 3の1M文脈。割引終了日と正確な初公開日は未確認。"
+  "detail_note": "Mercury 2.5の料金・評価を流用しない。Mercury 3の1M文脈。API終了予定（12/28）を11/16に確認。割引終了日と正確な初公開日は未確認。"
  },
  {
   "id": "solar-pro-4",

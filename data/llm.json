@@ -1043,8 +1043,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では39.8。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0.1の値（思考モード、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では39.8。v5とは尺度が違い比べられない）。",
+  "aa_index": 28.6,
   "japanese_note": "Flash-Next自体の日本語評価は未確認。前世代Qwen3.5-122B-A10BはNejumi Leaderboard 4（2026/3/6版）で総合0.8094（全体8位）という参考値がある。",
   "deploy_note_ja": "BF16で約360GB、公式FP8で約186GB（FP8なら2×H200か4×H100）。unslothのGGUFはUD-Q4_K_XL 約111GBで、128GB級Mac/DGX Sparkならぎりぎり、192GB以上なら余裕がある。UD-Q2_K_XL 約79GB。MLX 4bit版もあり、本一覧で最も手元で動かしやすい大型MoE。",
   "engines": [
@@ -3004,8 +3004,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ³-Banking 14.2、OpenAI-MRCR 94.4、AA-LCR 56.2。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では20。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ³-Banking 14.2、OpenAI-MRCR 94.4、AA-LCR 56.2。aa_indexはAA v4.3.2で、一覧では*印付き（暫定扱いの可能性）。 aa_indexはAA Intelligence Index v5.0.1の値（表記はK-EXAONE 2.0、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では20。v5とは尺度が違い比べられない）。",
+  "aa_index": 7.6,
   "japanese_note": "対応10言語（韓・英・西・独・日・越・仏・伊・波・葡）に日本語が含まれる。前世代のK-EXAONE 236BはQualitegの日本語LLMランキング（2026年3月版）で総合0.7186だった。",
   "deploy_note_ja": "BF16は約1.5TBで、公式の配信例は8×H200を2ノード（計16基）。公式FP8版（約752GB）なら8×H200の1ノードに計算上収まり、NVFP4版（約526GB）もある。SGLang/vLLMはLGのフォーク版を使う。MTP/DSparkの投機的デコードで3〜5倍速くなるとされる。",
   "engines": [
@@ -3065,8 +3065,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは97.9）、HLEはツールなし（ツールありは19.0）。MMLU 90.0、Tau-Bench（v1）Retail 67.8、Codeforces Elo 2622（ツールあり）。aa_indexはAA v4.3.2（high）。指標の改定で数値が大きく下がっている点に注意。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では12。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "OpenAI公式モデルカード（arXiv 2508.10925、reasoning=high）。AIMEはAIME 2025（ツールなし。ツールありは97.9）、HLEはツールなし（ツールありは19.0）。MMLU 90.0、Tau-Bench（v1）Retail 67.8、Codeforces Elo 2622（ツールあり）。aa_indexはAA v4.3.2（high）。指標の改定で数値が大きく下がっている点に注意。 aa_indexはAA Intelligence Index v5.0.1の値（High、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では12。v5とは尺度が違い比べられない）。",
+  "aa_index": 3.8,
   "japanese_note": "公式のMMMLU日本語は83.5（high）。Science Tokyo（旧東工大）が日本語を強化したGPT-OSS-Swallow-120Bを公開しており、元モデルより日本語ランキングで高く評価されている。",
   "deploy_note_ja": "MXFP4（約65GB）で1×H100/MI300X（80GB）に載る。Ollama、LM Studio、llama.cppでの実績が多く、メモリの大きいMacやワークステーションでも動く。思考量はlow/medium/highで指定する。",
   "engines": [
@@ -3228,8 +3228,8 @@
    "tau2": 76.9,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では15。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは26.5）、tau2は3ドメインの平均。MMMLU 88.4、MMMU Pro 76.9、Codeforces Elo 2150。aa_indexはAA v4.3.2（Reasoning）。同世代の26B A4B（MoE）はAA 17で、*印付き。 aa_indexはAA Intelligence Index v5.0.1の値（Reasoning、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では15。v5とは尺度が違い比べられない）。",
+  "aa_index": 4.4,
   "japanese_note": "140以上の言語で事前学習し、35以上の言語を標準でサポート（日本語の個別明記はない）。前世代のGemma 3 27Bは日本語ランキング（Qualiteg 2026年3月版）の中規模で5位だった。",
   "deploy_note_ja": "Q4_K_M 18.3GB（公式QAT Q4_0は約19GB）でRTX 4090/3090（24GB）に載るが、長いコンテキストはKVキャッシュが重く24GBでは厳しい。RTX 5090のllama.cpp実測でQ4_K_M生成約69 tok/s。Q8_0は32.6GBで、64GBのMacやRTX 5090＋オフロード向け。UnslothのMLX 4bit/8bit版があり、Ollama公式（gemma4:31b）、LM Studioにも対応。",
   "engines": [
@@ -3504,8 +3504,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカードと発表時の報道。テキストで確認できたのはSWE-bench Verified 77.6とτ³-Telecom 91.4のみで、他の値は画像のみで読み取れなかった。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では14。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "公式モデルカードと発表時の報道。テキストで確認できたのはSWE-bench Verified 77.6とτ³-Telecom 91.4のみで、他の値は画像のみで読み取れなかった。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0.1の値（既定設定、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では14。v5とは尺度が違い比べられない）。",
+  "aa_index": 4.6,
   "japanese_note": "公式の対応言語に日本語を明記（24言語）。日本語ベンチの個別値は未確認。",
   "deploy_note_ja": "ネイティブFP8（約134GB。リポジトリには2形式が同梱され合計約267GB）。4×H100/H200程度で自前運用できると報道されている（公式の起動例はTP8）。NVIDIA公式のNVFP4版（約95GB）、UnslothのGGUF、MLX 4bit版、EAGLEの投機的デコードモデルがある。",
   "engines": [
@@ -8558,7 +8558,7 @@
   ],
   "confidence": "high",
   "local_q": {
-   "summary_ja": "公式の配布はNVFP4（約393.5GB）とMXFP8（約622.8GB）のみ。家庭用の1台に載る量子化版は公開直後で未確認です。",
+   "summary_ja": "公式のNVFP4（約393.5GB）・MXFP8（約622.8GB）に加え、UnslothのGGUF（最小のUD-IQ1_Sで約172GB、UD-Q4_K_XLで約354GB）とMLX 4bit（約381GB）が出ました。ファイル容量では256GB機に2bit級（約205GB）が収まりますが、実機での動作報告はまだ確認できていません。",
    "quants": [
     {
      "name": "公式NVFP4",
@@ -8571,10 +8571,40 @@
      "bits": 8.39,
      "size_gb": 622.8,
      "source": "https://huggingface.co/thinkingmachines/Inkling-2-Small-MXFP8"
+    },
+    {
+     "name": "Unsloth UD-IQ1_S",
+     "bits": 2.31,
+     "size_gb": 171.7,
+     "source": "https://huggingface.co/unsloth/Inkling-2-Small-GGUF"
+    },
+    {
+     "name": "Unsloth UD-Q2_K_XL",
+     "bits": 2.76,
+     "size_gb": 205.0,
+     "source": "https://huggingface.co/unsloth/Inkling-2-Small-GGUF"
+    },
+    {
+     "name": "Unsloth UD-Q3_K_XL",
+     "bits": 3.84,
+     "size_gb": 285.1,
+     "source": "https://huggingface.co/unsloth/Inkling-2-Small-GGUF"
+    },
+    {
+     "name": "Unsloth UD-Q4_K_XL",
+     "bits": 4.77,
+     "size_gb": 354.2,
+     "source": "https://huggingface.co/unsloth/Inkling-2-Small-GGUF"
+    },
+    {
+     "name": "MLX 4bit（mlx-community）",
+     "bits": 5.13,
+     "size_gb": 380.8,
+     "source": "https://huggingface.co/mlx-community/Inkling-2-Small-4bit"
     }
    ],
    "reports": [],
-   "note_ja": "bitsは実ファイル容量÷594Bの実効値（スケール等を含む）。旧Inkling-Smallの後継とは公式に書かれていないため、旧版は残している。"
+   "note_ja": "bitsは実ファイル容量÷594Bの実効値（スケール等を含む）。旧Inkling-Smallの後継とは公式に書かれていないため、旧版は残している。 GGUF・MLXの容量は11/16にHFのファイル一覧で確認（画像入力用のmmprojは別に約0.7GB）。"
   }
  }
 ]

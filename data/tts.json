@@ -1809,5 +1809,85 @@
   ],
   "confidence": "medium",
   "rank": 35
+ },
+ {
+  "id": "kitten-tts-2-mini",
+  "name": "Kitten TTS 2 Mini（82M）",
+  "org": "KittenML（Stellon Labs, Inc.）",
+  "country": "US",
+  "release": "2026-11-13",
+  "params_m": 82,
+  "arch": "小型TTS（音素化G2P同梱、24kHz出力）。int8のONNX（約82.7MB）とfloat32のPyTorch重みを同梱",
+  "ja_support": "multilingual",
+  "voice_cloning": "preset-only",
+  "voice_cloning_note": "同梱の声（日本語はYuki・Sakura・Haruka・Aoi・Harutoの5種）から選ぶ方式。このチェックポイントのカードに参照音声による声のクローンの記載はない。公式サイトの「zero-shot cloning」は別チェックポイントのKitten-TTS 2（1.7B）の機能で、Miniには当てはまらない。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/KittenML/kitten-tts-2-mini"
+  ],
+  "voice_cloning_verified_at": "2026-11-16",
+  "features": {
+   "streaming": false,
+   "emotion_control": false,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "公式の日本語の評価値はなし。16言語・118声（うち日本語5声）。同時公開のNano（17M）・Pico（7.2M）は8言語で日本語を含まない。",
+  "latency_note": "公式の速度値はなし。CPUで動作（PyTorch不要のONNX版が既定）",
+  "hardware_note": "int8 ONNXで約82.7MB。CPUで動作し、GPUはPyTorch版で任意",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "モデル・ボイスパック・同梱のG2PファイルともApache-2.0。1.7BのKitten-TTS 2（独自ライセンス）とは条件が異なる。",
+  "hf": "https://huggingface.co/KittenML/kitten-tts-2-mini",
+  "summary_ja": "米KittenMLの82Mの小型TTS。CPUで動き、日本語の既定話者5声を含む16言語に対応。Apache-2.0で商用にも使える。",
+  "best_for_ja": "CPUだけの環境や組み込みで、決まった声で日本語を読み上げたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/KittenML/kitten-tts-2-mini",
+   "https://kittenml.com/terms"
+  ],
+  "confidence": "medium",
+  "rank": 36
+ },
+ {
+  "id": "kitten-tts-2",
+  "name": "Kitten-TTS 2（1.7B）",
+  "org": "KittenML（Stellon Labs, Inc.）",
+  "country": "US",
+  "release": "2026-09-30",
+  "params_m": 1700,
+  "arch": "音声言語モデル（テキスト→S3コーデックトークン→ボコーダーで24kHz）。重みは1.58bit三値の本体＋bf16埋め込みの既定版（約954MB）、4bit埋め込み版（約469MB）、bf16版（約3.47GB）",
+  "ja_support": "multilingual",
+  "voice_cloning": "zero-shot",
+  "voice_cloning_note": "5〜30秒の単一話者の参照音声（reference=）から、対象話者の追加学習なしで合成できる。参照音声の書き起こしの要否はカードに記載なし。既定の声は115種で、日本語は名前付きの声（例: JapaneseTrainConductor）で指定する。",
+  "voice_cloning_sources": [
+   "https://huggingface.co/KittenML/kitten-tts-2"
+  ],
+  "voice_cloning_verified_at": "2026-11-16",
+  "features": {
+   "streaming": false,
+   "emotion_control": true,
+   "instruction_control": false,
+   "dialogue": false,
+   "accent_control": false
+  },
+  "ja_metrics": [],
+  "quality_note": "公式の日本語の評価値はなし。感情タグ10種・声の出来事タグ10種・強調はベータで、効き方は声や文で変わると明記。英語向けのテキスト正規化のため、日本語ではnormalize=Falseの指定が推奨。",
+  "latency_note": "公式の速度値はなし",
+  "hardware_note": "既定の重みは約954MB（三値量子化。本体はbf16版とビット一致）。VRAMの目安は公式に記載なし",
+  "license": "Stellon Labs Community License",
+  "commercial": "conditional",
+  "license_note": "研究・非商用と限定的な商用は無料。本人または関連会社の年間売上か累計調達額が100万米ドルを超えたら、Stellon Labsとの別ライセンスが必要。",
+  "hf": "https://huggingface.co/KittenML/kitten-tts-2",
+  "summary_ja": "米KittenMLの1.7B音声言語モデル。数秒〜30秒の参照音声で声をまねでき、日本語を含む16言語の既定の声と感情タグも使える。9/30公開分を今回補完。",
+  "best_for_ja": "小さめの重みで日本語の声クローンを試したい場合（規模の大きい事業は別ライセンス）",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/KittenML/kitten-tts-2",
+   "https://kittenml.com/terms"
+  ],
+  "confidence": "medium",
+  "rank": 37
  }
 ]
