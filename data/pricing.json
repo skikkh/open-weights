@@ -22,13 +22,13 @@
  ],
  "models": [
   {
-   "id": "gpt-6-astra",
+   "id": "gpt-6.2-astra",
    "developer": "OpenAI",
    "family": "GPT Astra",
    "class": "frontier"
   },
   {
-   "id": "gpt-6.1-sol",
+   "id": "gpt-6.2-sol",
    "developer": "OpenAI",
    "family": "GPT Sol",
    "class": "mainstream"
@@ -94,6 +94,12 @@
    "class": "mainstream"
   },
   {
+   "id": "gemini-4-neon",
+   "developer": "Google",
+   "family": "Gemini Neon",
+   "class": "frontier"
+  },
+  {
    "id": "gemini-4-hydrogen",
    "developer": "Google",
    "family": "Gemini Flash",
@@ -154,7 +160,7 @@
    "class": "efficient"
   },
   {
-   "id": "qwen3-8-max-0902",
+   "id": "qwen4-max",
    "developer": "Alibaba",
    "family": "Qwen Max",
    "class": "mainstream"
@@ -296,24 +302,26 @@
  ],
  "quotes": [
   {
-   "id": "gpt-6-astra--openai--0",
-   "model_id": "gpt-6-astra",
+   "id": "gpt-6.2-astra--openai--0",
+   "model_id": "gpt-6.2-astra",
    "provider_id": "openai",
    "plan": "standard",
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 10,
-    "output": 50,
-    "cache_read": 1,
-    "cache_write_short": 12.5,
-    "cache_write_long": 25.0
+    "input": 8,
+    "output": 40,
+    "cache_read": 0.4,
+    "cache_write_short": 10,
+    "cache_write_long": 20
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-19",
    "sources": [
-    "https://developers.openai.com/api/docs/pricing"
+    "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/changelog"
    ],
-   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。（11/17のGPT-6.2 Astraで旧GPT-6 Astraの$10／$50から値下げ）",
    "context": 1050000,
    "max_output": 128000,
    "tiers": [
@@ -321,34 +329,36 @@
      "over_input": 272000,
      "label": "入力27.2万超の長文料金",
      "rates": {
-      "input": 20,
-      "output": 75.0,
-      "cache_read": 2,
-      "cache_write_short": 25.0,
-      "cache_write_long": 50
+      "input": 16,
+      "output": 60,
+      "cache_read": 0.8,
+      "cache_write_short": 20,
+      "cache_write_long": 40
      }
     }
    ]
   },
   {
-   "id": "gpt-6-astra--openai--1",
-   "model_id": "gpt-6-astra",
+   "id": "gpt-6.2-astra--openai--1",
+   "model_id": "gpt-6.2-astra",
    "provider_id": "openai",
    "plan": "batch",
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 5.0,
-    "output": 25.0,
-    "cache_read": 0.5,
-    "cache_write_short": 6.25,
-    "cache_write_long": 12.5
+    "input": 4.0,
+    "output": 20.0,
+    "cache_read": 0.2,
+    "cache_write_short": 5.0,
+    "cache_write_long": 10.0
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-19",
    "sources": [
-    "https://developers.openai.com/api/docs/pricing"
+    "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/changelog"
    ],
-   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
+   "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。（11/17のGPT-6.2 Astraで旧GPT-6 Astraの$10／$50から値下げ）",
    "context": 1050000,
    "max_output": 128000,
    "tiers": [
@@ -356,18 +366,18 @@
      "over_input": 272000,
      "label": "入力27.2万超の長文料金",
      "rates": {
-      "input": 10.0,
-      "output": 37.5,
-      "cache_read": 1.0,
-      "cache_write_short": 12.5,
-      "cache_write_long": 25.0
+      "input": 8.0,
+      "output": 30.0,
+      "cache_read": 0.4,
+      "cache_write_short": 10.0,
+      "cache_write_long": 20.0
      }
     }
    ]
   },
   {
-   "id": "gpt-6.1-sol--openai--2",
-   "model_id": "gpt-6.1-sol",
+   "id": "gpt-6.2-sol--openai--2",
+   "model_id": "gpt-6.2-sol",
    "provider_id": "openai",
    "plan": "standard",
    "currency": "USD",
@@ -379,9 +389,11 @@
     "cache_write_short": 2.5,
     "cache_write_long": 5.0
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-19",
    "sources": [
-    "https://developers.openai.com/api/docs/pricing"
+    "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/changelog"
    ],
    "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。",
    "context": 1050000,
@@ -401,8 +413,8 @@
    ]
   },
   {
-   "id": "gpt-6.1-sol--openai--3",
-   "model_id": "gpt-6.1-sol",
+   "id": "gpt-6.2-sol--openai--3",
+   "model_id": "gpt-6.2-sol",
    "provider_id": "openai",
    "plan": "batch",
    "currency": "USD",
@@ -414,9 +426,11 @@
     "cache_write_short": 1.25,
     "cache_write_long": 2.5
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-19",
    "sources": [
-    "https://developers.openai.com/api/docs/pricing"
+    "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/changelog"
    ],
    "note_ja": "入力27.2万トークン超は、リクエスト全体の入力・キャッシュ2倍、出力1.5倍。キャッシュ書込は30分／12時間。Batchは非同期処理。",
    "context": 1050000,
@@ -974,6 +988,52 @@
    ]
   },
   {
+   "id": "gemini-4-neon--google--79",
+   "model_id": "gemini-4-neon",
+   "provider_id": "google",
+   "plan": "standard",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 3,
+    "output": 15,
+    "cache_read": 0.15,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-19",
+   "sources": [
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/gemini-api/docs/changelog"
+   ],
+   "note_ja": "有料枠のみ（無料枠なし）。思考トークンも出力課金。暗黙キャッシュのみ（明示キャッシュ非対応）。検索グラウンディングは月5,000件超で$14／1,000件。",
+   "context": 1048576,
+   "future_rates": []
+  },
+  {
+   "id": "gemini-4-neon--google--80",
+   "model_id": "gemini-4-neon",
+   "provider_id": "google",
+   "plan": "batch",
+   "currency": "USD",
+   "status": "available",
+   "rates": {
+    "input": 1.5,
+    "output": 7.5,
+    "cache_read": 0.075,
+    "cache_write_short": null,
+    "cache_write_long": null
+   },
+   "verified_at": "2026-11-19",
+   "sources": [
+    "https://ai.google.dev/gemini-api/docs/pricing",
+    "https://ai.google.dev/gemini-api/docs/changelog"
+   ],
+   "note_ja": "Batch（Flexも同額）。思考トークンも出力課金。暗黙キャッシュのみ。",
+   "context": 1048576,
+   "future_rates": []
+  },
+  {
    "id": "gemini-4-hydrogen--google--22",
    "model_id": "gemini-4-hydrogen",
    "provider_id": "google",
@@ -1301,24 +1361,25 @@
    "unavailable_ja": "会員向け・公開API単価なし"
   },
   {
-   "id": "qwen3-8-max-0902--alibaba--36",
-   "model_id": "qwen3-8-max-0902",
+   "id": "qwen4-max--alibaba--36",
+   "model_id": "qwen4-max",
    "provider_id": "alibaba",
    "plan": "standard",
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 2,
-    "output": 6,
-    "cache_read": null,
-    "cache_write_short": null,
-    "cache_write_long": null
+    "input": 1.5,
+    "output": 4.5,
+    "cache_read": 0.075,
+    "cache_write_short": 1.875,
+    "cache_write_long": 3
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-19",
    "sources": [
-    "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+    "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
    ],
-   "note_ja": "International提供のUSD料金。中国地域と課金条件が異なる。版別のキャッシュ単価は未確定のため空欄。",
+   "note_ja": "International（シンガポール）提供のUSD料金。思考・非思考同額、入力1Mまでの区分。キャッシュ書込は5分／1時間。Global・中国本土は入力$1.413／出力$4.24で別条件。",
    "context": 1000000,
    "region": "International"
   },

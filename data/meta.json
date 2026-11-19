@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-16",
- "next_update": "2026-11-19",
+ "updated_at": "2026-11-19",
+ "next_update": "2026-11-22",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,18 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-19",
+   "items": [
+    "置換（有料LLM）: GPT-6 Astra → GPT-6.2 Astra（11/17、入力／出力0に値下げ、AA v5.0.1で62.1）、GPT-6.1 Sol → GPT-6.2 Sol（11/17、料金据え置き、57.3）、Qwen3.8-Max-0902 → Qwen4-Max（11/16一般提供、International .5／.5、42.9）。",
+    "追加（有料LLM）: Gemini 4 Neon（11/18一般提供、HydrogenとCarbonの間の新しい役割、入力／出力5、AA 61.4）。API料金比較もこの4モデルに付け替え。",
+    "追加（公開LLM）: Hy4 flash（Tencent、11/17、総220B・稼働約12B、1M文脈、公式GGUF Q4_K_Mで約168GB）、Aion 1.0 Instruct 2.3B（Microsoft、11/18、MIT、日本語を含む8言語）。置換: SenseNova-Loop-9B-Preview → 正式版SenseNova-Loop-9B（11/17）。AA指数をA.X K2・K2-Horizon-7B／MoVA-36B・LFM3-1.7B／VL-2Bに補完。",
+    "音声（有料）: DeepSeek ASR・TTS API（11/13、日本語対応、TTSは既定2声のみ）を追加。AssemblyAI Universal-3.5 Pro／3.6 Pro Realtime → AssemblyAI-STT-3.7（録音）／3.7-Realtime-Agentに置換し、会議向けの3.7-Realtimeを別行で追加。Gemini 3.5 Transcribeに音声での編集機能を追記。",
+    "画像・動画: MAI-Image-2.7 Preview（編集）とMAI-Image-2.6 → MAI-Image-2.7（11/17、生成・編集、AA編集1位）、MAI-Image-2.6-Flash → 2.7-Flash、Recraft V4.1 Flash → Flash V2（/bin/bash.007／枚）。Kling Image 4.0（11/17、ネイティブ8K）とSeedance 2.5 Flash（480p／720p・最長30秒）を追加。Canva CraftにAPI単価（2K 1枚3クレジット）を追記。",
+    "判断モデル: d1.1 → d1.2、d1-ultra → d1.2-ultra（Liquid、11/16、音声入力対応、AA 74.8で首位）、Microsoft-Decision-1 → 1.1（11/18 GA、Gemma 4ベース、画像入力）。Jev・GLiDE・elephant・mammoth・Celeris・ClefのAA判断指数v2.1を更新。Vela 3.0に日本語を含む15言語対応のvela3.1小型版を追記。",
+    "保留: Astra for Law（招待制の構成）、JoyAI-VL-Preview、K2 Horizon 32B、Sage S2.1 Flash、HiDream-O1-Edit-2.0（公式未確認）、Rumble-2、Ming-3.0-audio-flash、DeepL Aure、ACE Music v1、FastFrames、invoker-render-1.0 ほか。日本語非対応: SOV-Transcribe-1、Sophon-Realtime-4B-Flash、Murf Finch。国産LLMの新規公開は確認範囲でなし。"
+   ]
+  },
   {
    "date": "2026-11-16",
    "items": [
@@ -229,9 +241,9 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0.1",
-   "as_of": "2026-11-16",
+   "as_of": "2026-11-19",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/3のv5.0.1の表を11/16に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。11/3のv5.0.1の表を11/19に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -266,7 +278,7 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、Gemini 4 Carbon（60.0、11/10一般提供）、Claude Opus 5.5（59.1）、GPT-6 Astra（56.9）、GPT-6.1 Sol（54.6）、Claude Sonnet 5.5（54.5）、Gemini 4 Hydrogen（53.9、11/12一般提供）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-13取得）。",
+  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、GPT-6.2 Astra（62.1、11/17提供開始）、Gemini 4 Neon（61.4、11/18一般提供）、Gemini 4 Carbon（60.0）、Claude Opus 5.5（59.1）、GPT-6.2 Sol（57.3、11/17）、Claude Sonnet 5.5（54.5）、Gemini 4 Hydrogen（53.9）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）、Qwen4-Max（42.9、11/16提供開始）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-19取得）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v3 / v3 Live（11/9）、Soniox v6（11/3）、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "Eleven v4／Turbo、Gemini 3.8 Flash TTS／Flash-Lite TTS、Sonic 3.6、Fish Audio Drama 3 API、Aivis Cloud API、Mistral Voxtral Mini TTS 3など。日本語対応を確認したCoda v2とFalcon 2.1も有料TTS一覧に掲載。",

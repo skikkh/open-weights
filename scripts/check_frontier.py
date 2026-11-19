@@ -38,7 +38,7 @@ def main():
     assert rejects([base, dict(base, id="preview", availability_tier="preview")]), "同役割のプレビューを無条件で併載"
     assert rejects([dict(base, series="旗艦 1.0")]), "版番号を含む可変系列キーが通過"
     sol = [m["name"] for m in pool if m["series"] == "OpenAI GPT Sol"]
-    assert sol == ["GPT-6.1 Sol"], sol
+    assert sol == ["GPT-6.2 Sol"], sol
     print(f"OK: 有料{len(pool)}件・AA候補{len(review['candidates'])}件、系列重複・旧版・限定後継の反例6件")
 
 

@@ -1573,6 +1573,83 @@
   }
  },
  {
+  "id": "hy4-flash",
+  "name": "Hy4 flash",
+  "short": "Hy4 flash",
+  "family": "Tencent Hy4",
+  "org": "Tencent（Hy / 混元）",
+  "country": "CN",
+  "release": "2026-11-17",
+  "arch": "MoE（LatentMoE 512専門家中16＋共有1、疎注意とスライディング窓注意の1:3、Engram n-gram埋め込み）",
+  "total_b": 220.25,
+  "active_b": 11.7,
+  "native_precision": "BF16（公式FP8版あり）",
+  "weights_gb": 440.5,
+  "context_k": 1048.576,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Tencent Hy License v1.0",
+  "commercial": "conditional",
+  "license_note": "Apache-2.0を基にした独自ライセンス。API等で推論を提供するMaaS事業者は、年間売上5,000万ドル超などの条件に当たると別途書面の許諾が必要。",
+  "hf": "https://huggingface.co/tencent/Hy4-flash",
+  "summary_ja": "Tencent Hy4の低コスト版。総220B（うち63.5BはEngram埋め込み）で1トークンあたり約11.7Bだけ動かし、画像入力と1M文脈に対応する。",
+  "strengths": [
+   "coding",
+   "agent",
+   "vision",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {},
+  "bench_note": "モデルカードのベンチは画像中心のため数値は転記していない。",
+  "aa_index": null,
+  "japanese_note": "モデルカードに日本語対応の記載なし。",
+  "deploy_note_ja": "BF16で約440GB。公式GGUF（AngelSlim）はQ4_K_Mで約168GB、IQ2_AHで約135GB（いずれも2分割の合計、画像用mmproj約1GBは別）。0.85Bの投機的デコード用ドラフター（DFly2）を内蔵。",
+  "engines": [
+   "vLLM",
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "notes": "Hy4 preview（770B）とは役割の違う軽量版として別行。HFリポジトリ作成は11/17（GGUFは11/16）。活性パラメータはテキスト11.3B＋画像0.43B。",
+  "sources": [
+   "https://huggingface.co/tencent/Hy4-flash",
+   "https://hy.tencent.ai/research/hy4-flash",
+   "https://huggingface.co/tencent/Hy4-flash/blob/main/LICENSE",
+   "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-19",
+  "local_q": {
+   "summary_ja": "公式GGUFのIQ2_AH（約135GB）なら192GB以上、Q4_K_M（約168GB）なら256GBのメモリ機に載る見込み（実測報告は未確認）。",
+   "quants": [
+    {
+     "name": "IQ2_AH (AngelSlim公式)",
+     "bits": null,
+     "size_gb": 135.0,
+     "source": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+    },
+    {
+     "name": "Q3_K (AngelSlim公式)",
+     "bits": null,
+     "size_gb": 155.4,
+     "source": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+    },
+    {
+     "name": "Q4_K_M (AngelSlim公式)",
+     "bits": null,
+     "size_gb": 168.4,
+     "source": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+    }
+   ],
+   "reports": [],
+   "note_ja": "各版とも2分割目（約63.4GB）はEngram埋め込みで共通。サイズはHFのファイル一覧の合計。"
+  }
+ },
+ {
   "id": "qwen3-8-27b",
   "name": "Qwen3.8-27B",
   "family": "Qwen3.8",
@@ -2943,7 +3020,7 @@
    "browsecomp": null
   },
   "bench_note": "公式モデルカード（思考モード）。AIMEはAIME 2026、LCBはv6（2〜5月分）、terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。τ²-Bench Telecomは98.0（平均は未公表のためnull）、τ³ Banking 13.0。BrowseCompは検索10回以内という制限付きで9.3のためnull。KMMLU-Pro 80.5。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では21.5。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "aa_index": 9.0,
   "japanese_note": "日本語にも対応するが、中国語・日本語・スペイン語の品質は「十分に検証されていない」とモデルカードに明記されている。",
   "deploy_note_ja": "ネイティブFP8（約694GB）。合計800GiB以上のGPUメモリが推奨で、検証は4×B300、80GB級GPUなら12基以上が必要。FP8で動かすには計算能力8.9以上のGPUが必要（それ以外はBF16展開で約1.4TB）。公式NVFP4版（約398GB）、公式GGUFあり。vLLMはSKTのフォーク版が推奨。",
   "engines": [
@@ -2959,7 +3036,8 @@
    "https://huggingface.co/skt/A.X-K2",
    "https://news.sktelecom.com/en/3204",
    "https://rcrwireless.com/20260730/ai/sk-telecom-a-x-k2",
-   "https://artificialanalysis.ai/leaderboards/models?open_weights=true"
+   "https://artificialanalysis.ai/leaderboards/models?open_weights=true",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "high",
   "short": "A.X K2"
@@ -5178,7 +5256,7 @@
    "browsecomp": null
   },
   "bench_note": "公式モデルカード（reasoning_effort=high。比較対象のベースラインはAA測定）。terminal_bench2はTerminal-Bench 2.1、HLEはツールなし。ほかにτ3-Banking 26.8、SciCode 38.9、AA-LCR 66.3。aa_indexはAA v4.3.2（サイト表示は丸めて25）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では25.3。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "aa_index": 13.8,
   "japanese_note": "言語タグは英語のみで、日本語の評価は見当たらない。外部のローカル検証（MindStudio、同ファミリーの0.9B/7B/32B）で多言語タスクの不具合が指摘されている。",
   "deploy_note_ja": "公式GGUFのQ4_K_Mは22.4GBで、24GB GPUには短いコンテキストでぎりぎり。32GBのRTX 5090や48GB以上のMacが無難。llama.cppは本家b11454でK2 Horizon対応が入ったばかり（それ以前はIFMのフォークが必要）で、Ollama・LM Studioでの動作実績はまだ少ない。実測tok/sの公表はなし。",
   "local_runtimes": [
@@ -5198,7 +5276,8 @@
    "https://artificialanalysis.ai/models/k2-mova-36b-mid5",
    "https://artificialanalysis.ai/models/open-source/small",
    "https://mbzuai.ac.ae/news/mbzuais-institute-of-foundation-models-launches-k2-horizon-the-worlds-largest-fully-open-ai-mo",
-   "https://runaihome.com/blog/ifm-k2-horizon-consumer-gpu-hardware-guide-2026/"
+   "https://runaihome.com/blog/ifm-k2-horizon-consumer-gpu-hardware-guide-2026/",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "medium"
  },
@@ -6063,7 +6142,7 @@
    "browsecomp": 59.0
   },
   "bench_note": "公式モデルカード（reasoning_effort=high）。terminal_bench2はTerminal-Bench 2.1、AIMEはAIME 2025。GPQA/AIME/LCBは「anti-doom-loop」段階前の値（後は75.6/90.3/72.7）。SWE-bench Verifiedはローンチ表では68.4。IFMは、別の7B実行がSWE-benchの答えを取得し82まで水増しされたことを公表している。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では21。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "aa_index": 10.6,
   "japanese_note": "言語タグは英語のみ。外部のローカル検証（MindStudio）で多言語タスクの不具合が指摘されている。",
   "deploy_note_ja": "BF16で約17GB（HFのメタデータ上は9Bパラメータ）。4bit量子化なら8GB級GPUが目安とされるが、実ファイルサイズとtok/sの実測は見当たらない。llama.cppは本家b11454でK2 Horizon対応が入ったばかりで、Ollama・LM Studioの実績はまだ少ない。",
   "local_runtimes": [
@@ -6082,7 +6161,8 @@
    "https://artificialanalysis.ai/models/k2-horizon-7b",
    "https://runaihome.com/blog/ifm-k2-horizon-consumer-gpu-hardware-guide-2026/",
    "https://aireiter.com/blog/k2-horizon-models",
-   "https://huggingface.co/IFM/K2-Horizon-32B-GGUF"
+   "https://huggingface.co/IFM/K2-Horizon-32B-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "medium"
  },
@@ -8172,6 +8252,51 @@
   "q4_unverified": true
  },
  {
+  "id": "microsoft-aion-1-0-instruct-2-3b",
+  "name": "Aion 1.0 Instruct 2.3B",
+  "short": "Aion 2.3B",
+  "family": "Microsoft Aion",
+  "org": "Microsoft（Windows Applied Sciences Group）",
+  "country": "US",
+  "release": "2026-11-18",
+  "arch": "Dense",
+  "total_b": 2.289,
+  "active_b": null,
+  "native_precision": "BF16",
+  "weights_gb": 4.58,
+  "context_k": 32.768,
+  "modality": [
+   "text"
+  ],
+  "mode": "instruct",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B",
+  "summary_ja": "Windowsの端末内AI向けの小型モデル。要約・書き換え・文書の理解・質問応答向けで、Phi Silicaの後継にあたる。",
+  "strengths": [
+   "efficiency",
+   "multilingual"
+  ],
+  "bench": {},
+  "aa_index": null,
+  "japanese_note": "モデルカードの対応8言語に日本語を含む。言語により品質差があると注記。日本語の独立評価は未確認。",
+  "deploy_note_ja": "BF16で約4.6GB。ONNX（WebGPU）版あり、量子化版は後日公開予定とカードに記載。世界知識や複雑な推論は得意ではないと明記。",
+  "engines": [
+   "Transformers",
+   "ONNX Runtime"
+  ],
+  "supersedes": [],
+  "notes": "さらに最適化した版が2027年1月末までにWindows OSの標準SLMになる予定で、HF版は紹介版と位置づけ。",
+  "sources": [
+   "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B",
+   "https://github.com/microsoft/Aion-Instruct-Preview-Sample"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-19",
+  "q4_unverified": true
+ },
+ {
   "id": "liquid-lfm3-1-7b",
   "name": "LFM3-1.7B",
   "org": "Liquid AI",
@@ -8185,7 +8310,8 @@
    "https://huggingface.co/LiquidAI/LFM3-1.7B",
    "https://huggingface.co/blog/LiquidAI/lfm3",
    "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/LICENSE",
-   "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF"
+   "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "high",
   "verified_at": "2026-10-28",
@@ -8209,7 +8335,7 @@
    "multilingual"
   ],
   "bench": {},
-  "aa_index": null,
+  "aa_index": 6.0,
   "japanese_note": "公式の対応言語に日本語を含む。日本語固有の独立ベンチマークは未確認。",
   "deploy_note_ja": "公式GGUFのQ4_K_Mは約1.10GB。作業用メモリ・KVキャッシュは別途必要で、256K全文脈を約1GBで実行できるという意味ではない。小型モデルのため複雑な推論・コーディングは推奨されていない。",
   "engines": [
@@ -8233,7 +8359,8 @@
    "https://huggingface.co/LiquidAI/LFM3-VL-2B",
    "https://huggingface.co/blog/LiquidAI/lfm3",
    "https://huggingface.co/LiquidAI/LFM3-VL-2B/blob/main/LICENSE",
-   "https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF"
+   "https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "high",
   "verified_at": "2026-10-28",
@@ -8260,7 +8387,7 @@
    "vision"
   ],
   "bench": {},
-  "aa_index": null,
+  "aa_index": 1.7,
   "japanese_note": "公式の対応言語に日本語を含む。日本語固有の独立ベンチマークは未確認。",
   "deploy_note_ja": "公式Q4_K_M約1.10GB＋F16画像プロジェクタ約0.379GB、計約1.48GB。画像・動画の前処理とKVキャッシュは別途必要。映像の生成モデルではない。",
   "engines": [
@@ -8271,19 +8398,19 @@
   "supersedes": []
  },
  {
-  "id": "sensenova-loop-9b-preview",
-  "name": "SenseNova-Loop-9B-Preview",
+  "id": "sensenova-loop-9b",
+  "name": "SenseNova-Loop-9B",
   "short": "SenseNova-Loop 9B",
   "family": "SenseNova-Loop",
   "org": "SenseTime（商湯科技）",
   "country": "CN",
-  "release": "2026-10-30",
+  "release": "2026-11-17",
   "arch": "Dense（ループ型デコーダ＋2系統mHC、線形注意と全注意の3:1ハイブリッド）",
-  "total_b": 9.656,
+  "total_b": 9.413,
   "active_b": null,
-  "native_precision": "BF16（mHCのルーティングはFP32）",
-  "weights_gb": 38.1,
-  "context_k": 262.144,
+  "native_precision": "BF16",
+  "weights_gb": null,
+  "context_k": null,
   "modality": [
    "text",
    "image"
@@ -8291,8 +8418,8 @@
   "mode": "hybrid",
   "license": "Apache-2.0",
   "commercial": "yes",
-  "hf": "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
-  "summary_ja": "24層を同じ重みで2回通す「ループ型」の9B級マルチモーダルモデルで、重みを増やさずに計算を深くする試作版。長い文書の理解やコーディング、ツールを使うエージェント作業向け。",
+  "hf": "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+  "summary_ja": "24層を同じ重みで2回通す「ループ型」の9B級マルチモーダルモデルの正式版。重みを増やさずに計算を深くし、長い文書の理解やコーディング、ツールを使うエージェント作業に向ける。",
   "strengths": [
    "agent",
    "coding",
@@ -8304,20 +8431,23 @@
   "bench_note": "ベンチマークは画像のみで数値の文字情報なし。技術レポートは未公開（TBD）。",
   "aa_index": null,
   "japanese_note": "モデルカードの対応言語は英語・中国語のみ。日本語の評価は未確認。",
-  "deploy_note_ja": "配布ファイルは約38GB（FP32で保存）。推論時の実効計算は約14.6B相当。Transformers 5.18のカスタムコード（trust_remote_code）で動き、llama.cpp等の対応や4bit版は未確認。MTPによる高速化に対応。",
+  "deploy_note_ja": "公式のAWQ版とGGUF版（Q4_K_Mで約5.82GB）を11/18に公開。Transformersのカスタムコード（trust_remote_code）で動く。リポジトリはアクセス申請制（自動承認）で、文脈長と本体の配布容量は今回確認できていない。",
   "engines": [
-   "Transformers"
+   "Transformers",
+   "llama.cpp"
   ],
-  "supersedes": [],
-  "notes": "HFリポジトリ作成は10-28、モデルカードのNewsでは2026-10-30公開。32種類の層で56層分を計算する。",
+  "supersedes": [
+   "SenseNova-Loop-9B-Preview"
+  ],
+  "notes": "HFリポジトリ作成・モデルカードのNewsとも2026-11-17。パラメータ数はHFの実数（約9.41B）。",
   "sources": [
-   "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview",
-   "https://huggingface.co/sensenova/SenseNova-Loop-9B-Preview/commits/main",
+   "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+   "https://huggingface.co/sensenova",
    "https://github.com/OpenSenseNova/SenseNova-Loop"
   ],
   "confidence": "high",
-  "verified_at": "2026-10-31",
-  "q4_unverified": true
+  "verified_at": "2026-11-19",
+  "q4_gb": 5.82
  },
  {
   "id": "microsoft-mage-vl-cowork",

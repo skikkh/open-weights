@@ -1398,6 +1398,62 @@
   "availability_tier": "general"
  },
  {
+  "id": "seedance-2-5-flash",
+  "name": "Dreamina Seedance 2.5 Flash",
+  "org": "ByteDance Seed",
+  "country": "CN",
+  "access": "api",
+  "release": "2026-11",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2v",
+   "i2v",
+   "r2v",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "720p",
+   "max_duration_s": 30,
+   "fps": null,
+   "other": "Seedance 2.5の低価格・高速版。480p／720p、最長30秒。モデルID doubao-seedance-2-5-flash-261115（火山方舟）／dreamina-seedance-2-5-flash-261115（BytePlus）"
+  },
+  "features": {
+   "音声つき生成": true,
+   "動画入力": true,
+   "1080p": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "BytePlus（米ドル）：100万トークンあたり動画入力なし$7.0、動画入力あり$4.3。16:9・5秒の目安は480pで約$0.34、720pで約$0.76（動画入力ありは480p $0.37〜1.45、720p $0.84〜3.25）。火山方舟は46元（動画入力あり28元）／100万トークン。",
+  "bench": [],
+  "quality_note": "AAの動画アリーナに独立した値はまだない。",
+  "ja_note": "火山方舟の発表で日本語を含む11言語に対応（音声・台詞の日本語品質は未確認）。",
+  "license": "API（ByteDance / BytePlus利用規約）",
+  "commercial": "conditional",
+  "license_note": "BytePlus ModelArk・火山方舟の利用規約に従う。",
+  "hf": "https://docs.byteplus.com/en/docs/ModelArk/1099320",
+  "tools": [
+   "BytePlus ModelArk",
+   "火山方舟"
+  ],
+  "summary_ja": "Seedance 2.5の安価な高速版。480p／720pで最長30秒の音声つき動画を、上位版より大幅に安く作れる。",
+  "best_for_ja": "SNS向け短尺や試作など、解像度より本数・費用を優先する動画生成",
+  "supersedes": [],
+  "sources": [
+   "https://docs.byteplus.com/en/docs/ModelArk/1099320",
+   "https://www.volcengine.com/docs/82379/1544106"
+  ],
+  "confidence": "medium",
+  "rank": null,
+  "series": "ByteDance Seedance Flash",
+  "availability_tier": "general",
+  "verified_at": "2026-11-19",
+  "release_note": "火山方舟の発表一覧で2026年11月の新発表。日付はスナップショットID（261115）から推測せず月までにしている。"
+ },
+ {
   "id": "flux-3-video",
   "access": "api",
   "name": "FLUX 3 Video",

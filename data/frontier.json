@@ -1,57 +1,67 @@
 [
  {
-  "id": "gpt-6-astra",
-  "name": "GPT-6 Astra",
+  "id": "gpt-6.2-astra",
+  "name": "GPT-6.2 Astra",
   "category": "llm",
   "org": "OpenAI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-17",
   "access": "api",
-  "summary_ja": "複雑な推論・コーディング向けの旗艦。",
-  "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
-  "price_note": "Standard・100万テキストトークンあたり入力$10／出力$50。入力272K超は入力等2倍・出力1.5倍。キャッシュ・高速モード・ツール等は別条件。",
-  "detail_note": null,
-  "context_note": "APIは1,050,000トークン。ChatGPT／Codexの利用上限とは別。",
-  "hf": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+  "summary_ja": "最も難しい推論・コーディング・長い作業向けのOpenAI旗艦。コンピューター操作や文書作業にも対応。",
+  "availability_ja": "11/17にOpenAI API（Responses／Chat Completions）で提供開始。ツール呼び出しはResponses APIが必要。",
+  "price_note": "Standard・100万テキストトークンあたり入力$8／キャッシュ入力$0.40／キャッシュ書込$10（30分）／出力$40（GPT-6 Astraの$10／$50から値下げ）。入力272K超はリクエスト全体の入力・キャッシュ2倍、出力1.5倍。Batchは50%、Fastは2倍、Ultrafastは2027-02-28まで3倍。",
+  "detail_note": "推論effortのnoneは不可。Responses APIの推論保持やinstructionsの扱いが変わるため公式の移行ガイドを参照。AA Intelligence Index v5.0.1は62.1（Max、11/19照合）。知識カットオフ2026-05-18。",
+  "context_note": "1,050,000トークン（入力最大922,000、出力最大128,000）。ChatGPT／Codexの利用上限とは別。",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
   "sources": [
-   "https://developers.openai.com/api/docs/models/gpt-6-astra"
+   "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+   "https://developers.openai.com/api/docs/changelog",
+   "https://developers.openai.com/api/docs/pricing",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
   "series": "OpenAI GPT Astra",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "OpenAI API変更履歴で11/17の提供開始を確認。",
+  "supersedes": [
+   "GPT-6 Astra"
+  ]
  },
  {
-  "id": "gpt-6.1-sol",
-  "name": "GPT-6.1 Sol",
+  "id": "gpt-6.2-sol",
+  "name": "GPT-6.2 Sol",
   "category": "llm",
   "org": "OpenAI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-17",
   "access": "api",
-  "summary_ja": "複雑なコーディング・エージェント業務と費用のバランスを重視。",
-  "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
-  "price_note": "Standard・100万テキストトークンあたり入力$2／出力$10。入力272K超は入力等2倍・出力1.5倍。キャッシュ・高速モード・ツール等は別条件。",
-  "detail_note": null,
-  "context_note": "APIは1,050,000トークン。ChatGPT／Codexの利用上限とは別。",
-  "hf": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "summary_ja": "日常のコーディング・エージェント業務向け。費用と性能のバランスを重視。",
+  "availability_ja": "11/17にOpenAI API（Responses／Chat Completions）で提供開始。ツール呼び出しはResponses APIが必要。",
+  "price_note": "Standard・100万テキストトークンあたり入力$2／キャッシュ入力$0.10／キャッシュ書込$2.50（30分）／出力$10（GPT-6.1 Solと同額）。入力272K超はリクエスト全体の入力・キャッシュ2倍、出力1.5倍。Batchは50%、Fastは2倍。",
+  "detail_note": "推論effortのnoneは不可。AA Intelligence Index v5.0.1は57.3（Max、11/19照合）。知識カットオフ2026-06-01。",
+  "context_note": "1,050,000トークン（入力最大922,000、出力最大128,000）。ChatGPT／Codexの利用上限とは別。",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
   "sources": [
-   "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+   "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+   "https://developers.openai.com/api/docs/changelog",
+   "https://developers.openai.com/api/docs/pricing",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
   "series": "OpenAI GPT Sol",
   "supersedes": [
-   "GPT-5.6 Sol",
-   "GPT-6 Sol"
+   "GPT-6.1 Sol",
+   "GPT-6 Sol",
+   "GPT-5.6 Sol"
   ],
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "OpenAI API変更履歴で11/17の提供開始を確認。"
  },
  {
   "id": "gpt-6.1-terra",
@@ -213,6 +223,36 @@
   "supersedes": [
    "Gemini 3.8 Flash"
   ],
+  "ja_note": "モデル単位の対応言語一覧は未確認。日本語の個別評価の公式記載なし。"
+ },
+ {
+  "id": "gemini-4-neon",
+  "name": "Gemini 4 Neon",
+  "category": "llm",
+  "series": "Google Gemini Neon",
+  "org": "Google DeepMind",
+  "country": "US",
+  "release": "2026-11-18",
+  "access": "api",
+  "summary_ja": "HydrogenとCarbonの間に置かれたGemini 4。複雑な開発・知識作業・科学の作業を速く仕上げる高頻度用途向け。",
+  "availability_ja": "11/18にGemini APIの有料枠で一般提供（無料枠なし）。Google AI Pro／Ultraのプランでも利用可。",
+  "price_note": "有料枠の100万トークンあたり（米ドル）：入力$3、出力$15（思考トークン込み）、キャッシュ$0.15（暗黙キャッシュのみ）。Batch・Flexは入力$1.50／出力$7.50。検索グラウンディングは月5,000件まで無料、以降$14／1,000件。",
+  "detail_note": "思考レベルはlow／medium／high（既定）／xhigh。公式は最難関はCarbon、日常作業はHydrogenと使い分けを案内しており、Argon・Hydrogenの後継ではない別の役割として追加。AA Intelligence Index v5.0.1は61.4（xhigh、11/19照合）。",
+  "context_note": "入出力を合わせ1,048,576トークン。同期出力は既定64K、long decodeで最大1M。",
+  "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-4-neon",
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/whats-new-gemini-4-neon",
+   "https://ai.google.dev/gemini-api/docs/changelog",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "verified_at": "2026-11-19",
+  "local_note": "一般向けの重み配布なし。API・サービスで利用。",
+  "commercial": "conditional",
+  "license": "提供元の利用規約",
+  "availability_tier": "general",
+  "supersedes": [],
+  "release_note": "Gemini API変更履歴で11/18の一般提供（GA）を確認。",
   "ja_note": "モデル単位の対応言語一覧は未確認。日本語の個別評価の公式記載なし。"
  },
  {
@@ -904,32 +944,37 @@
   "context_note": "1Mトークン、最大出力128Kトークン。思考は常時オン（adaptive thinking）、effort既定はhigh。"
  },
  {
-  "id": "qwen3-8-max-0902",
-  "name": "Qwen3.8-Max-0902",
+  "id": "qwen4-max",
+  "name": "Qwen4-Max",
   "category": "llm",
   "series": "Alibaba Qwen Max",
   "org": "Alibaba Qwen",
   "country": "CN",
-  "release": "2026-09-02",
+  "release": "2026-11-16",
   "access": "api",
-  "summary_ja": "Qwenの商用旗艦。長い開発作業・ツール連携・視覚理解向け。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
-  "hf": "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863",
+  "summary_ja": "Qwen4世代の商用旗艦。文章生成に画像・動画理解と深い推論を組み合わせ、コーディング・事務作業・エージェント向け。",
+  "availability_ja": "11/16にAlibaba Cloud Model Studio（International／Global／中国本土）で提供開始。11/11からのToken Plan限定プレビュー（qwen4-max-preview）は11/25終了予定。",
+  "price_note": "International（シンガポール）は100万トークンあたり入力$1.5／出力$4.5（思考・非思考同額、入力1Mまで）、キャッシュ読込$0.075・書込$1.875（5分）／$3（1時間）。Global・中国本土は$1.413／$4.24（中国本土は人民元表示あり）。新規の無料枠100万トークン（90日）。",
+  "hf": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
   "sources": [
-   "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863"
+   "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+   "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "Qwen3.8-Max-0902",
    "Qwen3.8-Max（旧スナップショット）",
    "Qwen3.7-Max",
    "Qwen3.5-Max"
   ],
-  "context_note": "1Mトークン。qwen3.8-maxは0902スナップショットに更新済み。",
-  "availability_tier": "general"
+  "context_note": "入力1Mトークンまでの料金区分。",
+  "availability_tier": "general",
+  "detail_note": "Web検索・ツール呼び出し・構造化出力、OpenAI／Anthropic互換API。AA Intelligence Index v5.0.1は42.9（11/19照合）。",
+  "release_note": "Model Studioの新着モデル一覧で11/16の提供開始を確認。"
  },
  {
   "id": "qwen3-8-flash-api",
@@ -1043,6 +1088,33 @@
   ],
   "availability_tier": "general",
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+ },
+ {
+  "id": "deepseek-asr-api",
+  "name": "DeepSeek ASR（Speech to Text）",
+  "category": "asr",
+  "series": "DeepSeek ASR",
+  "org": "DeepSeek",
+  "country": "CN",
+  "release": "2026-11-13",
+  "access": "api",
+  "summary_ja": "DeepSeekのアプリ向け音声認識をAPIで公開したもの。1回最大120秒の音声を一括で書き起こす。",
+  "availability_ja": "11/13にDeepSeek APIの単体ツールとして提供開始（POST /v1/tools/asr）。",
+  "price_note": "音声1時間あたり$0.116（米ドル）。期間限定50%引きで$0.058（終了日は公式に記載なし）。",
+  "detail_note": "ストリーミング非対応。16bit PCM WAVまたはOgg Opus、最大8MiB・120秒、ステレオは左チャンネルのみ。言語指定パラメーターはなく自動判定。モデル名・版は公開されていない。",
+  "hf": "https://api-docs.deepseek.com/guides/asr",
+  "sources": [
+   "https://api-docs.deepseek.com/guides/asr",
+   "https://api-docs.deepseek.com/updates",
+   "https://api-docs.deepseek.com/quick_start/pricing"
+  ],
+  "verified_at": "2026-11-19",
+  "local_note": "重みの一般配布なし。API・サービスで利用。",
+  "commercial": "conditional",
+  "license": "提供元の利用規約",
+  "availability_tier": "general",
+  "supersedes": [],
+  "ja_note": "公式ガイドの対応言語に日本語（ja）を含む21言語。日本語の誤り率は未公表。"
  },
  {
   "id": "scribe-v3",
@@ -1255,9 +1327,10 @@
   "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
   "hf": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
   "sources": [
-   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe"
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
+   "https://ai.google.dev/gemini-api/docs/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -1265,7 +1338,8 @@
   "ja_note": "多言語対応。日本語の提供条件は版別の公式対応言語を確認。",
   "context_note": "Liveは逐次処理。通常版は録音の同期処理。",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
+  "detail_note": "11/17に音声での編集・書き換え・整形（source_text）に対応。"
  },
  {
   "id": "gemini-3-5-transcribe-live",
@@ -1281,9 +1355,10 @@
   "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
   "hf": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
   "sources": [
-   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe"
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-transcribe",
+   "https://ai.google.dev/gemini-api/docs/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -1291,7 +1366,8 @@
   "ja_note": "多言語対応。日本語の提供条件は版別の公式対応言語を確認。",
   "context_note": "Liveは逐次処理。通常版は録音の同期処理。",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
+  "detail_note": "11/17に音声での編集・書き換え・整形（source_text）に対応。"
  },
  {
   "id": "grok-voice-transcribe-2",
@@ -1321,60 +1397,89 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "universal-3-5-pro",
-  "name": "Universal-3.5 Pro（録音）",
+  "id": "assemblyai-stt-3-7",
+  "name": "AssemblyAI-STT-3.7（録音）",
   "category": "asr",
-  "series": "AssemblyAI Universal batch",
+  "series": "AssemblyAI STT batch",
   "org": "AssemblyAI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-17",
   "access": "api",
-  "summary_ja": "録音処理向けの現行安定版。リアルタイム版とは更新を分けて扱う。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
-  "hf": "https://www.assemblyai.com/roadmap",
+  "summary_ja": "AssemblyAIの録音向け推奨モデル。32言語の自動判定、言語の切り替わり、新しい話者分離に対応。",
+  "availability_ja": "11/17に提供開始。旧Universal-3.5 Proは非推奨（廃止日未定、廃止後は自動転送）。",
+  "price_note": "音声1時間あたり$0.21（米ドル、Universal-3.5 Proと同額）。",
+  "hf": "https://www.assemblyai.com/llms/models.md",
   "sources": [
-   "https://www.assemblyai.com/roadmap"
+   "https://www.assemblyai.com/llms/models.md",
+   "https://www.assemblyai.com/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
-   "Universal-2",
-   "Universal-3 Pro"
+   "Universal-3.5 Pro",
+   "Universal-3 Pro",
+   "Universal-2"
   ],
-  "ja_note": "日本語対応。Universal-2の日本語リクエストも3.5 Proへ自動転送。",
+  "ja_note": "公式の32言語一覧に日本語を明記。日本語単独の誤り率は未公表。",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式モデル資料でNovember 17, 2026の提供開始を確認。"
  },
  {
-  "id": "universal-3-6-pro-realtime",
-  "name": "Universal-3.6 Pro Realtime",
+  "id": "assemblyai-stt-3-7-realtime",
+  "name": "AssemblyAI-STT-3.7-Realtime",
   "category": "asr",
-  "series": "AssemblyAI Universal realtime",
+  "series": "AssemblyAI STT realtime transcript",
   "org": "AssemblyAI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-17",
   "access": "api",
-  "summary_ja": "会話向けのリアルタイム認識。32言語間のコードスイッチに対応。",
-  "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
-  "hf": "https://www.assemblyai.com/blog/universal-3-6-pro-realtime-supported-languages",
+  "summary_ja": "会議・通話・字幕など、最終的に書き起こしを残すライブ用途向け。話者ラベルは発話の区切りで確定。",
+  "availability_ja": "11/17に提供開始。",
+  "price_note": "音声1時間あたり$0.30（米ドル）。",
+  "hf": "https://www.assemblyai.com/llms/models.md",
   "sources": [
-   "https://www.assemblyai.com/blog/universal-3-6-pro-realtime-supported-languages",
-   "https://www.assemblyai.com/blog/universal-3-6-pro-realtime"
+   "https://www.assemblyai.com/llms/models.md",
+   "https://www.assemblyai.com/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "supersedes": [],
+  "ja_note": "公式の32言語一覧に日本語を明記（1ストリームで自動判定）。",
+  "availability_tier": "general",
+  "release_note": "公式モデル資料でNovember 17, 2026の提供開始を確認。"
+ },
+ {
+  "id": "assemblyai-stt-3-7-realtime-agent",
+  "name": "AssemblyAI-STT-3.7-Realtime-Agent",
+  "category": "asr",
+  "series": "AssemblyAI STT realtime agent",
+  "org": "AssemblyAI",
+  "country": "US",
+  "release": "2026-11-17",
+  "access": "api",
+  "summary_ja": "音声エージェント向けの推奨リアルタイム認識。短い返答や数字・固有名詞の聞き取り、背景の会話の除去、低遅延を重視。",
+  "availability_ja": "11/17に提供開始。旧Universal-3.6 Pro Realtimeは前世代として提供継続。",
+  "price_note": "音声1時間あたり$0.45（米ドル）。",
+  "hf": "https://www.assemblyai.com/llms/models.md",
+  "sources": [
+   "https://www.assemblyai.com/llms/models.md",
+   "https://www.assemblyai.com/changelog"
+  ],
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "Universal-3.6 Pro Realtime",
    "Universal-3.5 Pro Realtime"
   ],
-  "ja_note": "日本語（ja）を公式の対応表に明記。",
+  "ja_note": "公式の32言語一覧に日本語を明記（1ストリームで自動判定）。",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式モデル資料でNovember 17, 2026の提供開始を確認。"
  },
  {
   "id": "pksha-voice-ai",
@@ -1653,6 +1758,39 @@
   "ja_note": "日本語はstableのlightning_v3.1_proと日本語話者を使用。",
   "detail_note": "声クローン対応。10月版プレビューは英語・スペイン語・ヒンディー語のみで、日本語の新版ではない。7/3に日本語等を追加。",
   "availability_tier": "general"
+ },
+ {
+  "id": "deepseek-tts-api",
+  "name": "DeepSeek TTS（Text to Speech）",
+  "category": "tts",
+  "series": "DeepSeek TTS",
+  "org": "DeepSeek",
+  "country": "CN",
+  "release": "2026-11-13",
+  "access": "api",
+  "summary_ja": "チャットの回答の読み上げ向け。一括入力とWebSocketでの逐次入力に対応。",
+  "availability_ja": "11/13にDeepSeek APIの単体ツールとして提供開始（/v1/tools/tts）。",
+  "price_note": "1万課金文字あたり$0.45（米ドル）。期間限定50%引きで$0.225（終了日は公式に記載なし）。",
+  "detail_note": "既定話者はStella（女性）とTide（男性）の2声のみ。参照音声による声クローンや文章からの声づくりの記載なし。1回最大1万課金文字、出力はWAVまたは24kHzのPCM。言語は自動判定。",
+  "hf": "https://api-docs.deepseek.com/guides/tts",
+  "sources": [
+   "https://api-docs.deepseek.com/guides/tts",
+   "https://api-docs.deepseek.com/updates",
+   "https://api-docs.deepseek.com/quick_start/pricing"
+  ],
+  "verified_at": "2026-11-19",
+  "local_note": "重みの一般配布なし。API・サービスで利用。",
+  "commercial": "conditional",
+  "license": "提供元の利用規約",
+  "availability_tier": "general",
+  "supersedes": [],
+  "voice_cloning": "preset-only",
+  "ja_note": "公式ガイドの対応言語に日本語（ja）を含む10言語。",
+  "voice_cloning_note": "既定話者Stella（女性）とTide（男性）から選ぶのみ。参照音声による声クローン（対象話者の追加学習なしを含む）や文章からの声づくりの記載なし。",
+  "voice_cloning_sources": [
+   "https://api-docs.deepseek.com/guides/tts"
+  ],
+  "voice_cloning_verified_at": "2026-11-19"
  },
  {
   "id": "soniox-tts-v2",
@@ -2043,31 +2181,34 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "mai-image-2-6-flash",
-  "name": "MAI-Image-2.6-Flash",
+  "id": "mai-image-2-7-flash",
+  "name": "MAI-Image-2.7-Flash",
   "category": "image",
   "series": "Microsoft MAI Image Flash",
   "org": "Microsoft AI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-17",
   "access": "api",
-  "summary_ja": "MAI-Image-2.6の低コスト・高速版。",
-  "availability_ja": "Microsoft Foundryでパブリックプレビュー。",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
-  "hf": "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
+  "summary_ja": "MAI-Image-2.7の高速・低価格版。画像生成と編集に対応し、MAI LabsのCanvasもこのモデルで動く。",
+  "availability_ja": "11/17からMicrosoft Foundryでパブリックプレビュー。fal・Genspark・OpenRouter・Vercelでも提供。",
+  "price_note": "約$10／1,000枚（米ドル、Microsoft発表）。AAの表示は$10.24／1,000枚。",
+  "hf": "https://ai.azure.com/catalog/models/MAI-Image-2.7-Flash",
   "sources": [
-   "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/"
+   "https://microsoft.ai/news/introducing-mai-image-2-7/",
+   "https://ai.azure.com/catalog/models/MAI-Image-2.7-Flash",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "supersedes": [
+   "MAI-Image-2.6-Flash",
    "MAI-Image-2.5-Flash"
   ],
   "availability_tier": "preview",
-  "detail_note": "2.7の編集プレビューとは役割・提供段階が異なる。",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "detail_note": "AAの画像編集1179（7位）、画像生成1158（11位）、2026-11-19取得。日本語の記載なし。",
+  "release_note": "Microsoft発表（Ignite、11/17）で提供開始を確認。"
  },
  {
   "id": "flux-3-image-klein-api",
@@ -2435,29 +2576,32 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "recraft-v4-1-flash",
-  "name": "Recraft V4.1 Flash",
+  "id": "recraft-v4-1-flash-v2",
+  "name": "Recraft V4.1 Flash V2",
   "category": "image",
   "series": "Recraft Flash",
   "org": "Recraft",
   "country": "GB",
-  "release": "2026-09-23",
+  "release": "2026-11",
   "access": "api",
-  "summary_ja": "デザイン・ブランド素材向けの画像生成。高速版。",
+  "summary_ja": "Recraftで最速・最安のAPIモデル。約1.1秒で、品質はV4.1に近い。ラスター出力のみ。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
-  "hf": "https://www.recraft.ai/blog/meet-recraft-v4-1-flash",
+  "price_note": "1枚$0.007（米ドル、1Kラスター）。ベクター出力・スタイル指定なし。",
+  "hf": "https://www.recraft.ai/docs/api-reference/models/recraft-v4-1-flash-v2.md",
   "sources": [
-   "https://www.recraft.ai/about",
-   "https://www.recraft.ai/blog/meet-recraft-v4-1-flash",
-   "https://www.recraft.ai/docs"
+   "https://www.recraft.ai/docs/api-reference/models/recraft-v4-1-flash-v2.md",
+   "https://www.recraft.ai/blog/meet-recraft-v4-1-flash"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-19",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
-  "supersedes": [],
-  "detail_note": "米国で創業し、英国ロンドンに本社。無料・有料プランの出力条件は公式を確認。"
+  "supersedes": [
+   "Recraft V4.1 Flash"
+  ],
+  "detail_note": "モデルID recraftv4_1_flash_v2。公式は「9月のFlashに続く次の段階」と説明。初代Flashの提供終了は公式で未確認。",
+  "availability_tier": "general",
+  "release_note": "公式ドキュメントは「2026年11月公開」。OpenRouterのID末尾（20261113）は日付として代用しない。"
  },
  {
   "id": "qwen-audio-3-1-asr-flash",

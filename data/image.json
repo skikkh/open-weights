@@ -1581,73 +1581,83 @@
   "availability_tier": "general"
  },
  {
-  "id": "mai-image-2-7-preview",
-  "name": "MAI-Image-2.7 Preview（画像編集）",
+  "id": "mai-image-2-7",
+  "name": "MAI-Image-2.7",
   "org": "Microsoft AI",
   "country": "US",
   "access": "api",
-  "release": "2026-10-27",
+  "release": "2026-11-17",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
+   "t2i",
    "edit"
   ],
   "spec": {
    "max_resolution": null,
-   "other": "プレビュー版で、まず画像編集のみ提供。テキストからの画像生成は「近日」とされ時期未定。シーン全体の作風変更・ライティング変更、文字や記号の書き換え、古い画像の修復・高画質化を重点機能に挙げる。Microsoft Foundry・APIでの提供時期と価格は未発表"
+   "other": "11/17（Ignite）に画像生成と編集の両方で提供開始。透過背景、細かい部分編集、文字描画の改善。高速版MAI-Image-2.7-Flashは有料一覧に別行。10/27の編集のみのプレビューを経て正式名に。"
   },
   "features": {
-   "シーン全体の作風・照明変更": true,
-   "画像内の文字書き換え": true,
-   "修復・高画質化": true,
-   "テキストからの生成（近日）": false
+   "テキストからの生成": true,
+   "画像編集": true,
+   "透過背景": true,
+   "画像内の文字書き換え": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": null,
-  "price_note": "価格・API提供は未発表（2026-10-31時点）。MAI Playground・Arena・Artificial Analysisで試用できる",
+  "price_note": "約$35／1,000枚（米ドル、Microsoft発表。Flash版は約$10／1,000枚）。Microsoft Foundryのパブリックプレビュー価格で、AAの表示は$34.82／1,000枚。",
   "bench": [
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1193,
-    "note": "全体2位（1位GPT Image 2.5 Sunburst 1199、3位GPT Image 2.5 Flare 1182）。MAI-Image-2.6の1151から+42。2026-10-31時点",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
+    "value": 1215,
+    "note": "全体1位（2026-11-19取得）。Microsoftは「GPT Image 2.6 Sunburst (max)を4 ELO上回り、費用は約5分の1」と説明",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    },
    {
-    "metric": "LMArena Image Edit 順位",
-    "value": 3,
-    "note": "公式発表時点で3位（開発元別では2位）",
-    "source": "https://microsoft.ai/news/mai-image-2-7-debut/"
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1214,
+    "note": "全体4位（2026-11-19取得）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
    }
   ],
-  "quality_note": "公式発表によれば、AAが評価する10の用途・7種の編集操作のすべてでMAI-Image-2.6を上回り、シーン・作風の編集では次点に24 ELO差をつけて首位。AAの編集アリーナでGPT Image 2.5 Sunburstに次ぐ2位",
+  "quality_note": "AAの画像編集で1位、画像生成で4位。英語中心の人気投票で、日本語の文字描画の評価ではない。",
   "ja_note": null,
-  "license": "API / サービス（Microsoft利用規約、プレビュー）",
+  "license": "API / サービス（Microsoft Foundry利用規約、パブリックプレビュー）",
   "commercial": "conditional",
-  "license_note": "プレビュー段階で、正式なAPI・商用提供条件は未発表。試用はMAI Playground等の利用規約に従う",
-  "hf": "https://microsoft.ai/news/mai-image-2-7-debut/",
+  "license_note": "Microsoft Foundryのパブリックプレビュー。fal、Genspark、OpenRouter、Vercelでもプレビュー提供。提供条件が変わる可能性がある。",
+  "hf": "https://microsoft.ai/news/introducing-mai-image-2-7/",
   "tools": [
-   "MAI Playground",
-   "Arena",
-   "Artificial Analysis"
+   "Microsoft Foundry",
+   "MAI Labs",
+   "OpenRouter",
+   "fal",
+   "Vercel"
   ],
-  "summary_ja": "Microsoftの画像モデルの次期版のプレビューで、まず画像編集だけが試せる。AAの編集ランキングで2位に入ったが、APIや価格はまだ発表されていない。",
-  "best_for_ja": "作風・照明の変更や画像内の文字差し替えなど、高品質な編集の試用",
-  "supersedes": [],
+  "summary_ja": "Microsoftの自社画像モデル最新版。画像生成と編集の両方に対応し、AAの画像編集ランキングで1位。",
+  "best_for_ja": "Azure／Foundry中心の業務で、高品質な画像生成・編集をまとめて使いたい場合",
+  "supersedes": [
+   "MAI-Image-2.7 Preview（画像編集）",
+   "MAI-Image-2.6",
+   "MAI-Image-2.5",
+   "MAI-Image-2"
+  ],
   "sources": [
-   "https://microsoft.ai/news/mai-image-2-7-debut/",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
-   "https://winbuzzer.com/2026/10/28/microsofts-image-editor-nears-openai-in-preference-tests-xcxwbn/"
+   "https://microsoft.ai/news/introducing-mai-image-2-7/",
+   "https://ai.azure.com/catalog/models/MAI-Image-2.7",
+   "https://artificialanalysis.ai/image/leaderboard/editing",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image"
   ],
   "confidence": "high",
   "hl": {
    "label": "AA 編集",
-   "value": 1193
+   "value": 1215
   },
   "rank": 19,
-  "series": "Microsoft MAI Image editing",
-  "availability_tier": "general"
+  "series": "Microsoft MAI Image generation",
+  "availability_tier": "preview",
+  "verified_at": "2026-11-19"
  },
  {
   "id": "nano-banana-2-1",
@@ -1931,83 +1941,6 @@
    "value": 1166
   },
   "series": "xAI Grok Imagine Image",
-  "availability_tier": "general"
- },
- {
-  "id": "mai-image-2-6",
-  "name": "MAI-Image-2.6",
-  "org": "Microsoft AI",
-  "country": "US",
-  "access": "api",
-  "release": "2026-08-10",
-  "params_b": null,
-  "arch": "非公開",
-  "tasks": [
-   "t2i",
-   "edit"
-  ],
-  "spec": {
-   "max_resolution": null,
-   "other": "Microsoft FoundryでPublic Preview（2026-09-04）。高速版のMAI-Image-2.6-Flashもある。公式は、複数参照対応と解像度制御の強化を今後予定としている。 2026-10-27に後継のMAI-Image-2.7が編集機能のみプレビュー公開（別エントリ）。テキストからの生成は引き続き2.6が最新"
-  },
-  "features": {
-   "文字描画の強化": true,
-   "低価格": true
-  },
-  "min_vram_gb": null,
-  "rec_vram_gb": null,
-  "vram_note": null,
-  "speed_note": null,
-  "price_note": "AA掲載価格は$38.9/1000枚（Flash版は$19.5/1000枚）。公式は「より低価格」とするのみで、具体額は記載なし。",
-  "bench": [
-   {
-    "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1166,
-    "note": "全体5〜6位タイ",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
-   },
-   {
-    "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1151,
-    "note": "全体3〜6位",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
-   },
-   {
-    "metric": "LMArena Image Edit スコア",
-    "value": 1428,
-    "note": "5位（2026-10-06時点）",
-    "source": "https://arena.ai/leaderboard/image-edit"
-   }
-  ],
-  "quality_note": "公式発表では、ArenaのT2Iで2位（発表時）、前版比で総合+79 ELO、文字描画+91 ELO。AAではT2I 6位・編集3〜5位と、トップ集団に入る。",
-  "ja_note": null,
-  "license": "API（Microsoft Foundry利用規約）",
-  "commercial": "yes",
-  "license_note": "Microsoft Foundryの規約に従う。Public Previewのため、提供条件が変わる可能性がある。規約本文の個別精査は未実施。",
-  "hf": "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
-  "tools": [
-   "Microsoft Foundry",
-   "MAI Playground"
-  ],
-  "summary_ja": "Microsoftの自社画像モデル最新版。総合6位級の品質を比較的安く使える。",
-  "best_for_ja": "Azure/Foundry中心の業務システムへの画像生成の組み込み",
-  "supersedes": [
-   "MAI-Image-2.5",
-   "MAI-Image-2"
-  ],
-  "sources": [
-   "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
-   "https://arena.ai/leaderboard/image-edit"
-  ],
-  "confidence": "medium",
-  "rank": 23,
-  "hl": {
-   "label": "AA Arena",
-   "value": 1166
-  },
-  "series": "Microsoft MAI Image generation",
   "availability_tier": "general"
  },
  {
@@ -2543,6 +2476,76 @@
   }
  },
  {
+  "id": "kling-image-4-0",
+  "name": "Kling Image 4.0",
+  "org": "Kuaishou（Kling AI）",
+  "country": "CN",
+  "access": "api",
+  "release": "2026-11-17",
+  "params_b": null,
+  "arch": "非公開",
+  "tasks": [
+   "t2i",
+   "edit",
+   "multi-ref"
+  ],
+  "spec": {
+   "max_resolution": "8K（ネイティブ）",
+   "other": "単画像・最大10枚の画像セット・縦長画像（Webページ／EC詳細ページ）を生成。参照画像・要素を入力可能。1枚に最大約2,000文字の文字描画"
+  },
+  "features": {
+   "ネイティブ8K": true,
+   "画像セット（最大10枚）": true,
+   "参照画像入力": true
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": null,
+  "speed_note": null,
+  "price_note": "Kling API（米ドル）：出力1枚あたり2K $0.063（16 Units）、4K $0.094（24 Units）、8K $0.157（40 Units）。縦長画像・EC詳細ページは$0.235〜0.862／枚。参照画像・要素の入力は1枚$0.003（0.8 Units）。",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Text-to-Image Arena ELO",
+    "value": 1180,
+    "note": "AAの表示名はKling Image 4.0 (preview)、2K画像で計測（2026-11-19取得）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   },
+   {
+    "metric": "Artificial Analysis Image Editing Arena ELO",
+    "value": 1183,
+    "note": "2026-11-19取得",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
+   }
+  ],
+  "quality_note": "AAの画像生成・編集の両方で上位グループ。英語中心の人気投票。",
+  "ja_note": "開発元のプレスリリースで、文字描画は日本語を含む7言語に対応と説明（日本語の描画品質は未確認）。",
+  "license": "API / サービス（Kling AI利用規約）",
+  "commercial": "conditional",
+  "license_note": "Kling AIのAPI規約に従う。規約本文の個別精査は未実施。",
+  "hf": "https://kling.ai/document-api/pricing/base/image.md",
+  "tools": [
+   "Kling AI",
+   "Kling API"
+  ],
+  "summary_ja": "動画のKlingを手がける快手の画像モデル新版。ネイティブ8Kや最大10枚の画像セット、縦長のWebページ・EC画像の生成に対応。",
+  "best_for_ja": "高解像度の広告・EC素材や、統一感のある画像セットの生成",
+  "supersedes": [],
+  "sources": [
+   "https://kling.ai/document-api/pricing/base/image.md",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
+  ],
+  "confidence": "medium",
+  "rank": null,
+  "series": "Kling Image",
+  "availability_tier": "general",
+  "verified_at": "2026-11-19",
+  "hl": {
+   "label": "AA Arena",
+   "value": 1180
+  }
+ },
+ {
   "id": "canva-craft",
   "name": "Canva Craft（craft_v1_2k）",
   "org": "Canva",
@@ -2568,7 +2571,7 @@
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": null,
-  "price_note": "Canva Dream Labで全ユーザーが利用可。Canva Connect APIではモデル名craft_v1_2kで提供。API価格は未確認",
+  "price_note": "Canva Dream Labで全ユーザーが利用可。Canva Connect APIではcraft_v1_2kが2K画像1枚3クレジット（APIの画像生成はpreview）。クレジットのドル換算は公式記載なし。AAの$30／1,000枚は公式価格として扱わない。",
   "bench": [
    {
     "metric": "Design Arena 画像リーダーボード スコア",
@@ -2595,11 +2598,13 @@
    "https://techcrunch.com/2026/10/22/canva-releases-its-first-image-generation-model/",
    "https://betanews.com/article/canva-craft-ai-image-model-designarena-api/",
    "https://www.cmswire.com/digital-experience/canva-debuts-inhouse-ai-image-model-craft/",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
+   "https://www.canva.dev/docs/apps/rest-apis/credit-rates/"
   ],
   "confidence": "medium",
   "rank": 30,
   "series": "Canva Craft",
-  "availability_tier": "general"
+  "availability_tier": "general",
+  "verified_at": "2026-11-19"
  }
 ]

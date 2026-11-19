@@ -1,102 +1,102 @@
 {
- "as_of": "2026-11-16",
- "scope_ja": "AAの12一覧を11/16に再取得。LLM・画像・動画・音楽・ASR・TTSは表の行名を、判断モデルは埋め込みデータの行名と指数を抽出し、台帳・掲載名と照合した（新規はKling Image 4.0 (preview)のみ。S2Sは表の構造の違いで行数は前回値のまま）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
+ "as_of": "2026-11-19",
+ "scope_ja": "AAの12一覧を11/19に再取得。画像・動画・音楽・TTSは表の行名を、LLMと判断モデルは埋め込みデータの行名と指数を抽出し、台帳・掲載名と照合した（新規はGPT-6.2 Astra／Sol、Gemini 4 Neon、Qwen4 Max、JoyAI-VL-Preview、K2 Horizon 32B、Astra for Law 6.2、MAI-Image-2.7／Flash、HiDream-O1-Edit-2.0、d1.2／d1.2-ultra、Microsoft-Decision-1.1など）。ASRは表がブラウザ側描画のため、非ストリーミング88行・ストリーミング52行の別ページで照合（行数は前回値のまま）。候補発見の範囲であり、全候補の提供仕様を一次情報で確認したことや全世界の網羅を意味しない。",
  "boards": [
   {
    "id": "llm",
    "category": "llm",
    "url": "https://artificialanalysis.ai/leaderboards/models",
    "rows": 288,
-   "snapshot_sha256": "4d4883e3465367bea11c606017726593d1513af013b0e98a5f2c2360470b5792",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "1c138c474475c60849048138d5373ab5e807f34857ecee2b5af0b8ee16883752",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "image",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-   "rows": 114,
-   "snapshot_sha256": "2eda99a24f94e9cad20f1a3326c5dfeb2819f30da82c339d444b922894d4acec",
-   "checked_at": "2026-11-16"
+   "rows": 116,
+   "snapshot_sha256": "0f7068c15c0288c89a9c6fefc6251ef1c09d90bb4015b52c93315cc67399cee3",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "editing",
    "category": "image",
    "url": "https://artificialanalysis.ai/image/leaderboard/editing",
-   "rows": 84,
-   "snapshot_sha256": "509610e84c12c52b1f5ff1eb8a1e676970f9b8bdca508d37f5c78b8bf39aab95",
-   "checked_at": "2026-11-16"
+   "rows": 86,
+   "snapshot_sha256": "0773414327b71f648f832f47ae15bd50a36cb6bf45cb5d35d07522d03dcb996f",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "video",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/text-to-video",
-   "rows": 34,
-   "snapshot_sha256": "2561086a23015bda436f1c745461c69735c24d6977fbc40afcc67f1b11385807",
-   "checked_at": "2026-11-16"
+   "rows": 35,
+   "snapshot_sha256": "6e92bcfcb49240078f32e701ebfd581480b6f75786b058ba93df4f74e6beb52c",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "video-image",
    "category": "video",
    "url": "https://artificialanalysis.ai/video/leaderboard/image-to-video",
    "rows": 35,
-   "snapshot_sha256": "964ecfaaf35d3c020a9d606e0ee61f890faaa8842152de96c5692902cffe2250",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "17f09d2a8af1723c7795d76ba2a0e1f52c83ed3954290e5ac95b30631a8bcab6",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "provider",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice",
    "rows": 105,
-   "snapshot_sha256": "c162824944c22c2b3ef075e4cc2b8dbc94179569364c4a0047cddbe7505530e7",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "0836895357e4585fd62ed9862d3550719631bcef208710eb454a3eb464552fa3",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "controlled",
    "category": "tts",
    "url": "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice",
    "rows": 51,
-   "snapshot_sha256": "a5dbe180e34af2e77f5f96216a3a34c045508957f90e941796525eef5f7439d2",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "2c547b9efa041d5202b0016c66878b4bd64c8a0e2fe2a55c7f69f5df0a7374a5",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "asr",
    "category": "asr",
    "url": "https://artificialanalysis.ai/speech-to-text",
    "rows": 64,
-   "snapshot_sha256": "b392b0330d6eebd0cd6d50dcae0ca66f0eea20687c5b4f11173bf171135212fd",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "d95fc82ef0a24ef99a744d0f413f9c5e4d17f6d702d0d40e90cb03d8bcd2e1e8",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "speech",
    "category": "s2s",
    "url": "https://artificialanalysis.ai/speech-to-speech",
    "rows": 47,
-   "snapshot_sha256": "8f27d5a48955a0becf940315fde661494097e3d0d98ec90235f2d48b4f6eec4c",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "7f191a0e4ae63f7b578fcc8e9ebcb58a88cb837d72a09a2ca6fab486dec8619d",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "music-vocals",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/vocals",
    "rows": 14,
-   "snapshot_sha256": "5852636eb80399d7522058a2afc816e5e6e68cb5b9d6dd0854dcbb88ae256045",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "3eeb167b9d7ad98fc2879e4c48bcdbf094f83be529a56eeda17460d9d4e54778",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "music-instrumental",
    "category": "music",
    "url": "https://artificialanalysis.ai/music/leaderboard/instrumental",
    "rows": 19,
-   "snapshot_sha256": "25497b1b9d0a193a096b32e7272d3abab341d3ab01f032763a8db9c415b12801",
-   "checked_at": "2026-11-16"
+   "snapshot_sha256": "9c0614d8a09b8d24f63a108c2867f16e8ae609b90cc7f73e5fa125a4f3fd6fad",
+   "checked_at": "2026-11-19"
   },
   {
    "id": "decision-new",
    "category": "decision",
    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
-   "rows": 22,
-   "snapshot_sha256": "26b252ea208f692f37d6c632f617063ab9fd409c58da136aae16481a548385c6",
-   "checked_at": "2026-11-16"
+   "rows": 29,
+   "snapshot_sha256": "df7cd5b1899280577650e7e0696f4355bb7dd843b82133f65c663d06ae5d5acf",
+   "checked_at": "2026-11-19"
   }
  ],
  "candidates": [
@@ -106,14 +106,15 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6-astra"
+    "gpt-6.2-astra"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/17提供開始のGPT-6.2 Astraに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
-    "https://developers.openai.com/api/docs/models/gpt-6-astra"
+    "https://developers.openai.com/api/docs/models/gpt-6-astra",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -270,14 +271,15 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "qwen3-8-max-0902"
+    "qwen4-max"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/16提供開始のQwen4-Maxに置換（Model Studio新着モデル一覧）。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
-    "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863"
+    "https://www.alibabacloud.com/en/notice/model_studio_update_notice_for_qwen38max_models_863",
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
    ]
   },
   {
@@ -302,14 +304,15 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6.1-sol"
+    "gpt-6.2-sol"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/17提供開始のGPT-6.2 Solに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
     "https://artificialanalysis.ai/leaderboards/models",
-    "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -420,11 +423,11 @@
     "image",
     "editing"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "mai-image-2-6"
+    "mai-image-2-7"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/17提供のMAI-Image-2.7（生成・編集）に置換。どちらもFoundryのプレビュー区分。旧版の評価値は引き継がない。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
     "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/",
@@ -502,11 +505,11 @@
     "image",
     "editing"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "mai-image-2-6-flash"
+    "mai-image-2-7-flash"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/17提供のMAI-Image-2.7-Flashに置換。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
     "https://microsoft.ai/news/mai-image-2-6-launches-at-no-2-on-arena-ahead-of-google-meta-and-xai/"
@@ -1411,11 +1414,11 @@
    "boards": [
     "image"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "recraft-v4-1-flash"
+    "recraft-v4-1-flash-v2"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "2026年11月公開のRecraft V4.1 Flash V2に置換。初代の提供終了は公式で未確認。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
     "https://www.recraft.ai/about",
@@ -1929,11 +1932,11 @@
    "boards": [
     "editing"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "mai-image-2-7-preview"
+    "mai-image-2-7"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "10/27の編集のみプレビューから、11/17に正式名MAI-Image-2.7（生成・編集）へ移行。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/editing",
     "https://microsoft.ai/news/mai-image-2-7-debut/",
@@ -4789,11 +4792,11 @@
    "boards": [
     "asr"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "universal-3-5-pro"
+    "assemblyai-stt-3-7"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/17提供のAssemblyAI-STT-3.7に置換。Universal-3.5 Proは非推奨（廃止日未定）。",
    "sources": [
     "https://artificialanalysis.ai/speech-to-text",
     "https://www.assemblyai.com/roadmap"
@@ -6002,11 +6005,11 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "liquid-d1-ultra"
+    "liquid-d1-2-ultra"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/16提供のd1.2-ultraに置換（Liquid公式ブログ）。",
    "sources": [
     "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
     "https://www.liquid.ai/blog/d1-ultra",
@@ -6165,11 +6168,11 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "microsoft-decision-1"
+    "microsoft-decision-1-1"
    ],
-   "reason": "掲載先の公式出典を確認。重み公開の経路と有料の経路を区別。",
+   "reason": "11/18 GAのMicrosoft-Decision-1.1に置換（Foundryブログ）。",
    "sources": [
     "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
     "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
@@ -6486,13 +6489,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6.1-sol"
+    "gpt-6.2-sol"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Solに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -6798,13 +6802,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6-astra"
+    "gpt-6.2-astra"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Astraに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -7335,13 +7340,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6.1-sol"
+    "gpt-6.2-sol"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Solに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -8771,13 +8777,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6.1-sol"
+    "gpt-6.2-sol"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Solに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -8799,13 +8806,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6-astra"
+    "gpt-6.2-astra"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Astraに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -9617,13 +9625,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6-astra"
+    "gpt-6.2-astra"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Astraに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -9697,13 +9706,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6.1-sol"
+    "gpt-6.2-sol"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Solに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -9727,13 +9737,14 @@
    "boards": [
     "llm"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "gpt-6-astra"
+    "gpt-6.2-astra"
    ],
-   "reason": "対応する掲載行に統合。推論強度は別モデルとして増やさない。",
+   "reason": "11/17提供開始のGPT-6.2 Astraに置換（OpenAI API変更履歴）。旧版の評価値は引き継がない。",
    "sources": [
-    "https://artificialanalysis.ai/leaderboards/models"
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/changelog"
    ]
   },
   {
@@ -10903,7 +10914,7 @@
    ],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "AAではACE Studioの表記でボーカル1位。AAの追加は10/23で今回初めて台帳に記録。ACE Studioの公式資料に記載がなく、国・提供形態・料金・日本語歌詞・重み公開を確認できない。ACE-Stepと同一とは断定しない。",
+   "reason": "AAではACE Studioの表記でボーカル1位。AAの追加日（introducedAt）は11/11で、10/23としていた記録を訂正。Web版のみで公開APIなし（報道）、国・日本語歌詞・v1に適用されるプランは未確認。v1.1 Previewも同サイトにある。",
    "sources": [
     "https://artificialanalysis.ai/music/leaderboard/vocals",
     "https://acestudio.ai"
@@ -10946,10 +10957,13 @@
    "category": "llm",
    "name": "Qwen4-Max-Preview",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "Alibaba（11/11）。Token Plan（定額）のみの期間限定プレビューで、11/25（UTC+8）に終了予定。従量課金なし。一般提供版を待つ。 11/16も Token Plan のみのプレビューで、一般提供・従量料金の記載なし。",
+   "disposition": "旧版",
+   "model_ids": [
+    "qwen4-max"
+   ],
+   "reason": "Token Plan限定プレビュー（11/25終了予定）。11/16に一般提供のQwen4-Maxへ集約。",
    "sources": [
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
     "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
    ]
   },
@@ -11019,11 +11033,11 @@
    "boards": [
     "decision-new"
    ],
-   "disposition": "掲載",
+   "disposition": "旧版",
    "model_ids": [
-    "liquid-d1-1"
+    "liquid-d1-2"
    ],
-   "reason": "Liquid公式文書で既定のAPI判断モデル、料金ページで入力$0.02・出力$0を確認。旧d1の後継（d1-ultraの行から旧d1の置換記録を移した）。初提供日は未確認。AA 66.5。",
+   "reason": "11/16提供のd1.2に置換（Liquid公式ブログ）。",
    "sources": [
     "https://docs.liquid.ai/lfm/models/d1",
     "https://www.liquid.ai/pricing",
@@ -11171,7 +11185,7 @@
    "boards": [],
    "disposition": "要確認",
    "model_ids": [],
-   "reason": "DeepL（11/11発表）の音声翻訳モデル。DeepL Voice／API for Voiceで使用。当初対応に日本語を含むが入出力どちらの対応か・料金・提供条件の詳細を確認できず保留。",
+   "reason": "DeepL（11/11発表）の音声翻訳モデル。公式言語表で日本語は文字起こし・翻訳・翻訳音声のすべてに対応。日本語での話者の声の保持と料金は未確認のため保留を継続。",
    "sources": [
     "https://www.deepl.com/en/press-release/aure-voice-ai-model"
    ]
@@ -11242,24 +11256,28 @@
     "image",
     "editing"
    ],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "AAのT2I 1180・編集1182に新規表示（AA上は2026-11-17予定・API「Coming soon」）。Klingの公式発表・提供条件を確認できず、予告の根拠もないため保留。",
+   "disposition": "掲載",
+   "model_ids": [
+    "kling-image-4-0"
+   ],
+   "reason": "11/17に正式提供（Kling公式の料金表）。2K $0.063／枚など。AAの表示名は(preview)のまま。",
    "sources": [
     "https://artificialanalysis.ai/image/leaderboard/text-to-image",
-    "https://artificialanalysis.ai/image/leaderboard/editing"
+    "https://kling.ai/document-api/pricing/base/image.md"
    ]
   },
   {
    "category": "video",
    "name": "Dreamina Seedance 2.5 Flash",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "ByteDance（中国）。火山方舟の発表一覧に202611「新发布」（doubao-seedance-2-5-flash-261115）、最長30秒・480p/720p・日本語含む11言語。BytePlusの料金表から解像度・条件ごとの単価を確定できないため、価格の確認後に別行（Flash）として掲載を判断。",
+   "disposition": "掲載",
+   "model_ids": [
+    "seedance-2-5-flash"
+   ],
+   "reason": "BytePlusの単価（100万トークン$7.0、動画入力あり$4.3、5秒の目安480p $0.34／720p $0.76）を確認し、Seedance 2.5とは別行で掲載。",
    "sources": [
-    "https://www.volcengine.com/docs/82379/1159178",
-    "https://docs.byteplus.com/en/docs/ModelArk/1099320"
+    "https://docs.byteplus.com/en/docs/ModelArk/1099320",
+    "https://www.volcengine.com/docs/82379/1544106"
    ]
   },
   {
@@ -11293,9 +11311,11 @@
    "category": "decision",
    "name": "vela3.1（fast／pico-150m／pico-380m）",
    "boards": [],
-   "disposition": "要確認",
-   "model_ids": [],
-   "reason": "vllm-sr（11/2〜11/4、Apache-2.0、UltraBERTベース）。既存のVela 3.0行を3.1系へ更新するかを次回判断。",
+   "disposition": "掲載",
+   "model_ids": [
+    "vllm-sr-vela-3"
+   ],
+   "reason": "既存のVela 3.0行に統合し、小型版の日本語を含む15言語対応を追記。行の置換はしない。",
    "sources": [
     "https://huggingface.co/vllm-sr"
    ]
@@ -11310,16 +11330,523 @@
    "sources": [
     "https://huggingface.co/AxiomicLabs"
    ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.2 Astra (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.2-astra"
+   ],
+   "reason": "11/17提供開始（OpenAI API変更履歴）。入力$8／出力$40に値下げ。AA v5.0.1で62.1（Max）。推論強度違い（Low〜Xhigh）は同じ行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "GPT-6.2 Sol (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gpt-6.2-sol"
+   ],
+   "reason": "11/17提供開始。料金は6.1と同じ入力$2／出力$10。AA v5.0.1で57.3（Max）。推論強度違いは同じ行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Gemini 4 Neon (Xhigh)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "gemini-4-neon"
+   ],
+   "reason": "11/18に有料枠で一般提供（Gemini API変更履歴）。HydrogenとCarbonの間の新しい役割でArgon・Hydrogenの後継ではない。AA v5.0.1で61.4（Xhigh）。Low〜Highは同じ行に集約。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://ai.google.dev/gemini-api/docs/whats-new-gemini-4-neon"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Qwen4 Max",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen4-max"
+   ],
+   "reason": "11/16にModel Studioで一般提供。International $1.5／$4.5。AA v5.0.1で42.9。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Astra for Law 6.2 (Max)",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "OpenAIのAstraを法律調査向けに構成したもの（9/17発表、招待制のTrusted Access）。公式は別モデルではなく構成と説明し、API版（gpt-6-astra-law）は日付・料金未定。一般提供の確認まで掲載しない。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://openai.com/index/astra-for-law/"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "DeepSeek ASR（/v1/tools/asr）",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-asr-api"
+   ],
+   "reason": "11/13にDeepSeek APIの単体ツールとして提供開始。日本語を含む21言語、音声1時間$0.116（期間限定半額）。AA一覧には未掲載。",
+   "sources": [
+    "https://api-docs.deepseek.com/guides/asr",
+    "https://api-docs.deepseek.com/quick_start/pricing"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "DeepSeek TTS（/v1/tools/tts）",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "deepseek-tts-api"
+   ],
+   "reason": "11/13提供開始。日本語を含む10言語、既定話者2声のみ（クローンの記載なし）。1万課金文字$0.45（期間限定半額）。AA一覧には未掲載。",
+   "sources": [
+    "https://api-docs.deepseek.com/guides/tts",
+    "https://api-docs.deepseek.com/quick_start/pricing"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Hy4 flash",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "hy4-flash"
+   ],
+   "reason": "Tencent（中国）、HF作成11/17、総220B・稼働約11.7B、1M文脈、Tencent Hy License（MaaS大手は別許諾）。Hy4 previewとは役割の違う軽量版として別行。AA未掲載。",
+   "sources": [
+    "https://huggingface.co/tencent/Hy4-flash"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Aion 1.0 Instruct 2.3B",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "microsoft-aion-1-0-instruct-2-3b"
+   ],
+   "reason": "Microsoft（米国）、11/18、MIT、32K、対応8言語に日本語。Windows標準SLMの紹介版。",
+   "sources": [
+    "https://huggingface.co/microsoft/Aion-1.0-Instruct-2.3B"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "SenseNova-Loop-9B",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "sensenova-loop-9b"
+   ],
+   "reason": "SenseTime（中国）、11/17の正式版でPreviewを置換。Apache-2.0（申請制・自動承認）、日本語の記載なし。",
+   "sources": [
+    "https://huggingface.co/sensenova/SenseNova-Loop-9B"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "SenseNova-Loop-9B-Preview",
+   "boards": [],
+   "disposition": "旧版",
+   "model_ids": [
+    "sensenova-loop-9b"
+   ],
+   "reason": "11/17の正式版SenseNova-Loop-9Bに置換。",
+   "sources": [
+    "https://huggingface.co/sensenova/SenseNova-Loop-9B"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "K2 Horizon 32B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "MBZUAI IFM（UAE）、HF作成9/1、34.78B dense、Apache-2.0、言語タグは英語のみ。AA v5.0.1で13.9。既存のMoVA-36B-A4Bと性能が近く、同系列のサイズ違い（3.7B・0.9Bも未掲載）の扱いをまとめて次回判断。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://huggingface.co/IFM/K2-Horizon-32B"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "JoyAI-VL-Preview",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "JD（中国）。AAでは重み非公開・11/17追加・指数28.0。HFのjdopensourceに該当の重みはなく、公式の提供条件・料金を確認できていないため保留。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://huggingface.co/jdopensource"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "Sage S2.1 Flash",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "上海AI Lab（internlm、中国）、HF作成11/15、321B、MIT、1M文脈。科学向け特化でGLM系の構造と同じだが基盤モデルの記載がなく、扱いを次回判断。",
+   "sources": [
+    "https://huggingface.co/internlm/Sage-S2.1-Flash"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM3-1.7B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-lfm3-1-7b"
+   ],
+   "reason": "10/27掲載済み。AA v5.0.1の6.0を補完。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://huggingface.co/LiquidAI/LFM3-1.7B"
+   ]
+  },
+  {
+   "category": "llm",
+   "name": "LFM3-VL-2B",
+   "boards": [
+    "llm"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-lfm3-vl-2b"
+   ],
+   "reason": "10/27掲載済み。AA v5.0.1の1.7を補完。",
+   "sources": [
+    "https://artificialanalysis.ai/leaderboards/models",
+    "https://huggingface.co/LiquidAI/LFM3-VL-2B"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.7",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-image-2-7"
+   ],
+   "reason": "11/17（Ignite）に生成・編集で提供開始、Foundryのパブリックプレビュー、約$35／1,000枚。AA編集1位1215・生成1214。",
+   "sources": [
+    "https://microsoft.ai/news/introducing-mai-image-2-7/",
+    "https://ai.azure.com/catalog/models/MAI-Image-2.7"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "MAI-Image-2.7-Flash",
+   "boards": [
+    "image",
+    "editing"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "mai-image-2-7-flash"
+   ],
+   "reason": "11/17提供、Foundryのパブリックプレビュー、約$10／1,000枚。",
+   "sources": [
+    "https://microsoft.ai/news/introducing-mai-image-2-7/",
+    "https://ai.azure.com/catalog/models/MAI-Image-2.7-Flash"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Canva Craft",
+   "boards": [
+    "image"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "canva-craft"
+   ],
+   "reason": "10/22から掲載済み。AAの追加は11/13。公式API単価は2K画像1枚3クレジット（ドル換算なし）で、AAの$30／1,000枚は転記しない。",
+   "sources": [
+    "https://www.canva.dev/docs/apps/rest-apis/credit-rates/",
+    "https://artificialanalysis.ai/image/leaderboard/text-to-image"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "HiDream-O1-Edit-2.0",
+   "boards": [
+    "editing"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "AAの埋め込みデータのみ（開発元HiDream、公開日11/10、AA追加11/16、$75／1,000枚、重みURLなし）。公式発表・HFページが見つからず保留。",
+   "sources": [
+    "https://artificialanalysis.ai/image/leaderboard/editing"
+   ]
+  },
+  {
+   "category": "image",
+   "name": "Recraft V4.1 Flash V2",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "recraft-v4-1-flash-v2"
+   ],
+   "reason": "2026年11月公開、$0.007／枚、1Kラスターのみ。",
+   "sources": [
+    "https://www.recraft.ai/docs/api-reference/models/recraft-v4-1-flash-v2.md"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d1.2-ultra",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-d1-2-ultra"
+   ],
+   "reason": "Liquid AI、11/16、入力$0.042／100万トークン、音声入力対応。AA判断指数v2.1で74.8（判断モデル1位）。",
+   "sources": [
+    "https://www.liquid.ai/blog/d1-2",
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "d1.2",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "liquid-d1-2"
+   ],
+   "reason": "Liquid AI、11/16、入力$0.02／100万トークン。AA判断指数v2.1で68.7。",
+   "sources": [
+    "https://www.liquid.ai/blog/d1-2",
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "decision",
+   "name": "Microsoft-Decision-1.1",
+   "boards": [
+    "decision-new"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "microsoft-decision-1-1"
+   ],
+   "reason": "Microsoft、11/18にFoundryでGA、Gemma 4 26B-A4Bベース、画像入力対応、入力$0.042〜0.050／100万トークン。AA 67.8。",
+   "sources": [
+    "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-microsoft-decision-1-1-build-faster-more-efficient-ai-applications-w/4573877",
+    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "FastFrames-S／FastFrames-L",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Apple（11/16、1.3B／14B、Wan2.1ベースのT2V）。apple-amlrの研究用ライセンスのため保留。",
+   "sources": [
+    "https://huggingface.co/apple"
+   ]
+  },
+  {
+   "category": "video",
+   "name": "invoker-render-1.0",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "inclusionAI（11/16、33B、動画→動画のワールドモデル）。Apache-2.0とCC BY-NC 4.0の併用で用途も特殊なため保留。",
+   "sources": [
+    "https://huggingface.co/inclusionAI/invoker-render-1.0"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "AssemblyAI-STT-3.7",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "assemblyai-stt-3-7"
+   ],
+   "reason": "11/17提供、$0.21／時間、32言語に日本語。",
+   "sources": [
+    "https://www.assemblyai.com/llms/models.md"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "AssemblyAI-STT-3.7-Realtime",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "assemblyai-stt-3-7-realtime"
+   ],
+   "reason": "11/17提供、$0.30／時間。会議・字幕向けで、Agent版とは別の役割。",
+   "sources": [
+    "https://www.assemblyai.com/llms/models.md"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "AssemblyAI-STT-3.7-Realtime-Agent",
+   "boards": [],
+   "disposition": "掲載",
+   "model_ids": [
+    "assemblyai-stt-3-7-realtime-agent"
+   ],
+   "reason": "11/17提供、$0.45／時間。音声エージェント向け。",
+   "sources": [
+    "https://www.assemblyai.com/llms/models.md"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Rumble-2／Rumble-2 Realtime／Rumble-2-Flash",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Reson8。AA上の公開日11/10。公開重みのRumble-2-Flash（HF 10/14、0.5B、Apache-2.0）はカードに日本語タグがあるが、公式サイトに接続できず国・料金・日本語対応を確認できないため保留。",
+   "sources": [
+    "https://huggingface.co/Reson8/Rumble-2-Flash",
+    "https://artificialanalysis.ai/speech-to-text"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "SOV-Transcribe-1",
+   "boards": [
+    "asr"
+   ],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "Salesforce（11/10、Apache-2.0）。対応は英・仏・独・西・伊・葡・蘭の7言語。",
+   "sources": [
+    "https://huggingface.co/Salesforce"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Murf Finch-Global／Indic",
+   "boards": [],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "Murf（11/2）。公式の対応言語に日本語なし。",
+   "sources": [
+    "https://murf.ai"
+   ]
+  },
+  {
+   "category": "asr",
+   "name": "Scribe v3 Live Medical",
+   "boards": [],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "ElevenLabsの早期アクセス。ElevenAgents内のみでSpeech to Text APIからは使えずモデルIDもないため保留。",
+   "sources": [
+    "https://elevenlabs.io/docs/overview/models"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Sophon-Realtime-4B-Flash",
+   "boards": [],
+   "disposition": "日本語対象外",
+   "model_ids": [],
+   "reason": "adventists-ai（11/16、Apache-2.0）。言語は中国語・英語のみ。",
+   "sources": [
+    "https://huggingface.co/adventists-ai"
+   ]
+  },
+  {
+   "category": "s2s",
+   "name": "Ming-3.0-audio-flash",
+   "boards": [
+    "speech"
+   ],
+   "disposition": "要確認",
+   "model_ids": [],
+   "reason": "Ant Group。AAのS2S一覧に表示。公式の提供条件・日本語対応を未確認。",
+   "sources": [
+    "https://artificialanalysis.ai/speech-to-speech"
+   ]
+  },
+  {
+   "category": "tts",
+   "name": "Qwen-Audio-3.1-TTS-Flash",
+   "boards": [
+    "controlled"
+   ],
+   "disposition": "掲載",
+   "model_ids": [
+    "qwen-audio-3-1-tts-flash"
+   ],
+   "reason": "有料一覧に掲載済みで、台帳の記録漏れを補完。",
+   "sources": [
+    "https://artificialanalysis.ai/text-to-speech/leaderboard/controlled-voice"
+   ]
   }
  ],
- "follow_up_ja": "次回11/19も全カテゴリを確認。ERNIE 5.5 Flashの重み（公式は11/25までに公開）、Qwen4-Max-Preview（11/25終了予定）の一般提供、Kling Image 4.0の公式提供、Seedance 2.5 Flashの解像度別単価、Claude Mythos 5.2の扱い、Drex Max v1.1の100万トークン単価と提供開始日、H2O-Lightning系（12B／E4B／Bolt-74B）と既存行のライセンス整理、vela3.1、Agnes 2.5 Pro Thetaの重みの出所、Hy4正式版の重み、Scribe v3 Medical、DeepL Aure、Nex-N2.6・Rakuten AI 3.0.1・Inkling 2 Smallの評価と量子化の実測、Mercury 3のAPI終了（12/28）を追跡。Nejumiの再取得。",
+ "follow_up_ja": "次回11/22も全カテゴリを確認。ERNIE 5.5 Flashの重み（公式は11/25までに公開予定）、Qwen4-Max-Previewの終了（11/25）、Astra for Law（API版gpt-6-astra-law）の一般提供、Claude Mythos 5.2の扱い、HiDream-O1-Edit-2.0の公式情報、JoyAI-VL-Previewの提供条件、K2 Horizon 32B／3.7B／0.9Bの掲載判断、Sage S2.1 Flashの基盤モデル、Rumble-2（Reson8）の国・日本語対応、Ming-3.0-audio-flash、DeepL Aureの声の保持と料金、ACE Music v1の提供条件、ElevenLabsによるKotoba買収後のKoto APIの扱い、Universal-3.5 Proの廃止日、Recraft V4.1 Flash初代の提供終了、MAI-Image-2.7の一般提供、Mercury 3のAPI終了（12/28）、Gemini 4 Carbonの導入価格終了（11/30）を追跡。Nejumiは公式表示と一致を確認できる方法を探す。",
  "added_model_ids": [
   "agnes-video-2-5",
   "agnes-video-2-5-flash",
   "aivis-cloud-api",
+  "assemblyai-stt-3-7",
+  "assemblyai-stt-3-7-realtime",
+  "assemblyai-stt-3-7-realtime-agent",
   "cartesia-ink-2",
   "celeris-1-1-decision",
   "claude-fable-5-2",
+  "deepseek-asr-api",
+  "deepseek-tts-api",
   "eleven-realtime-v1-max",
   "eleven-realtime-v1-mini",
   "fish-drama-3-api",
@@ -11328,11 +11855,14 @@
   "gemini-3-5-transcribe-live",
   "gemini-4-carbon",
   "gemini-4-hydrogen",
+  "gemini-4-neon",
   "gemini-decision-1",
   "gemini-omni-flash-1-2",
   "google-genie-4",
   "gpt-6-cyber",
   "gpt-6-rosalind",
+  "gpt-6.2-astra",
+  "gpt-6.2-sol",
   "gpt-image-2-6-flare",
   "gpt-image-2-6-sunburst",
   "grok-imagine-video-1-5-lite",
@@ -11343,20 +11873,32 @@
   "happyhorse-1-1-t2v",
   "heygen-voice",
   "heygen-voice-turbo",
+  "higurashi-haru-4b",
   "hunyuan-image-3-5-preview-api",
+  "hy4-flash",
   "inworld-tts-2",
   "inworld-tts-2-flash",
+  "kitten-tts-2",
+  "kitten-tts-2-mini",
+  "kling-image-4-0",
   "koto-asr-api",
   "koto-s2s-api",
   "koto-tts-api",
   "lightning-v3-1-pro",
+  "liquid-d1-2",
+  "liquid-d1-2-ultra",
   "longcat-2-5",
+  "longcat-video-avatar-1-6",
   "luma-uni-1-1",
   "luma-uni-1-1-max",
-  "mai-image-2-6-flash",
+  "mai-image-2-7",
+  "mai-image-2-7-flash",
   "mai-transcribe-2",
   "mai-transcribe-2-streaming",
+  "mbzuai-pan-2",
   "mercury-2-5",
+  "microsoft-aion-1-0-instruct-2-3b",
+  "microsoft-decision-1-1",
   "minimax-h3-image-highspeed",
   "minimax-speech-2-8-hd",
   "minimax-speech-2-8-turbo",
@@ -11388,8 +11930,8 @@
   "qwen-image-2-1-pro-api",
   "qwen-image-2-1-turbo-api",
   "qwen3-8-flash-api",
-  "qwen3-8-max-0902",
-  "recraft-v4-1-flash",
+  "qwen4-max",
+  "recraft-v4-1-flash-v2",
   "recraft-v4-1-pro",
   "recraft-v4-1-standard",
   "recraft-v4-1-utility",
@@ -11399,6 +11941,7 @@
   "scribe-v2-medical",
   "scribe-v3",
   "scribe-v3-live",
+  "seedance-2-5-flash",
   "seedream-5-0-flash",
   "seedream-5-5",
   "simba-3-5",
@@ -11409,18 +11952,10 @@
   "soniox-v6-async",
   "soniox-v6-realtime",
   "speechmatics-melia-1",
-  "tencent-hy4-api",
-  "universal-3-5-pro",
-  "universal-3-6-pro-realtime",
-  "utopai-x",
-  "zen-tts",
   "subq-snap-1-2",
-  "liquid-d1-1",
-  "higurashi-haru-4b",
-  "kitten-tts-2-mini",
-  "kitten-tts-2",
-  "longcat-video-avatar-1-6",
-  "mbzuai-pan-2"
+  "tencent-hy4-api",
+  "utopai-x",
+  "zen-tts"
  ],
  "known_date_conflicts": [
   {

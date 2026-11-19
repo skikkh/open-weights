@@ -12,9 +12,9 @@ const estimate = (q, u, day = "2026-11-12") => P.estimate(q, u, day);
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-10, `${actual} != ${expected}`);
 let checks = 0;
 function test(name, fn) { fn(); checks++; }
-test("入力・出力・月間件数", () => near(estimate(quote("gpt-6.1-sol", "openai"), usage(10000, 2000, 0, 1000)).total, 40));
+test("入力・出力・月間件数", () => near(estimate(quote("gpt-6.2-sol", "openai"), usage(10000, 2000, 0, 1000)).total, 40));
 test("27.2万を超えた全量に長文単価", () => {
- const q = quote("gpt-6.1-sol", "openai");
+ const q = quote("gpt-6.2-sol", "openai");
  assert.equal(estimate(q, usage(272000)).rates.input, 2);
  assert.equal(estimate(q, usage(272001)).rates.input, 4);
  near(estimate(q, usage(272001, 1000, 100)).per_request, .0694002);
@@ -42,7 +42,7 @@ test("未確認キャッシュ単価を無料にしない", () => {
 test("無料と0リクエストを正しく扱う", () => {
  const q = { status: "available", rates: { input: 0, output: 0, cache_read: 0 } };
  assert.equal(estimate(q, usage(1000, 1000, 100)).total, 0);
- assert.equal(estimate(quote("gpt-6.1-sol", "openai"), usage(1000, 1000, 0, 0)).total, 0);
+ assert.equal(estimate(quote("gpt-6.2-sol", "openai"), usage(1000, 1000, 0, 0)).total, 0);
 });
 test("導入価格の終了日", () => {
  const q = quote("gemini-4-carbon", "google");
@@ -56,7 +56,7 @@ test("長文・出力上限を越える見積を出さない", () => {
  assert.equal(estimate(q, usage(1, 21)).error, "文脈・出力の上限外");
 });
 test("負数・NaN・小数・100%超を拒否", () => {
- const q = quote("gpt-6.1-sol", "openai");
+ const q = quote("gpt-6.2-sol", "openai");
  for (const u of [usage(-1), usage(NaN), usage(.5), usage(1, 1, 101), usage(1, 1, 0, 1.5)]) assert.ok(estimate(q, u).error);
 });
 test("限定提供・会費を0円の従量料金にしない", () => {

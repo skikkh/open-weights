@@ -126,10 +126,10 @@
   "speed_note": "TypeSafe公称は端から端まで70〜500ms。Vals.aiの独立計測で約0.10秒/呼び出し（負荷下0.11秒、1文書64判断でも0.12秒）。Artificial Analysisの計測で0.13秒/タスク、Microsoftの比較計測では中央値240ms",
   "bench": [
    {
-    "metric": "Artificial Analysis Decision Index v1.0",
-    "value": 58,
-    "note": "2026-10-13公開時点の値で、Jev 1.13による。参考: Claude Haiku 5.5(Low)は61、GPT-6 Luna(Low)は55",
-    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 66.2,
+    "note": "2026-11-19取得",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    },
    {
     "metric": "文書の主張検証 正答率（Vals.ai、400問）",
@@ -185,7 +185,8 @@
    "https://www.lindy.ai/blog/jev-ai",
    "https://runtimewire.com/article/langchain-adds-jev-decision-model-agent-workflows",
    "https://alternativeto.net/news/2026/10/typesafe-ai-ships-jev-1-14-with-new-box-type-composable-images-and-longer-context-length/",
-   "https://netlify.com/changelog/typesafe-jev-1-14-0-ai-gateway"
+   "https://netlify.com/changelog/typesafe-jev-1-14-0-ai-gateway",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 2,
@@ -193,20 +194,20 @@
   "pick_reason": "入力 $0.042/100万トークン",
   "hl": {
    "label": "AA Arena",
-   "value": 58
+   "value": 66.2
   },
   "series": "typesafe-jev",
   "availability_tier": "general"
  },
  {
-  "id": "microsoft-decision-1",
-  "name": "Microsoft-Decision-1",
+  "id": "microsoft-decision-1-1",
+  "name": "Microsoft-Decision-1.1",
   "org": "Microsoft",
   "country": "US",
-  "release": "2026-10-09",
+  "release": "2026-11-18",
   "access": "api",
-  "params_b": 9,
-  "arch": "AlibabaのQwen3.5-9Bを単一パスの判断スコアリング用に後学習したモデル（重みは非配布）。今後MAIやOpenAIのモデルへ載せ替える予定と公表",
+  "params_b": null,
+  "arch": "GoogleのGemma 4 26B-A4Bを判断用に後学習し、専用の推論エンジンで動かすモデル（重みは非配布）。1.0はQwen3.5-9Bベース",
   "tasks": [
    "predicate",
    "choice",
@@ -217,14 +218,14 @@
    "guard"
   ],
   "spec": {
-   "latency_ms": 85,
-   "inputs": "テキストのみ（コンテキスト32,768トークン）と、選択肢を固定した質問",
+   "latency_ms": null,
+   "inputs": "テキストと画像（PNG／JPEG、1問あたり最大8枚）",
    "outputs": "各選択肢の較正済み確率（JSON）。説明・理由文は生成しない",
-   "languages": "公式ページに一覧なし。二次情報でFoundryカタログに25言語（日本語を含む）掲載との報告あり（未確認）",
-   "other": "Microsoft Foundry（Direct from Azure、ライフサイクルはPreview）とOpenRouterで提供。用途はAI出力の評価、分類・ルーティング、エージェントのガードレール、コンテンツ安全判定、検索・文書の関連度判定、低信頼時の人間エスカレーション。信用・雇用・医療など重大な判断の唯一の根拠にしないよう明記"
+   "languages": "公式ブログに対応言語の記載なし",
+   "other": "Microsoft Foundryで一般提供（GA）、OpenRouter・Vercelでも提供。公式は1.0の2倍以上の速さと説明。"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
    "ルーブリック採点": true,
    "安全判定（ガードレール）": true,
@@ -234,50 +235,35 @@
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
-  "vram_note": "APIのみ（ベースのQwen3.5-9Bはオープンだが、Decision-1の重みは非配布）",
-  "price_note": "入力 $0.042/1Mトークン、出力無料（Microsoft発表）。Foundryは従量課金またはPTU予約。AAの計測で$31/100万タスク",
-  "speed_note": "Microsoft計測（Foundry・同一リージョン）でp50 85ms、p95 125ms。OpenRouterの3日間計測ではp50 0.19秒（最速プロバイダ）〜0.27秒（平均）、p99 0.67秒（eesel.ai転載）",
+  "price_note": "入力100万トークンあたりGlobal Standard $0.042、US Data Zone $0.046、EU／APAC Data Zone $0.050（米ドル）。出力は無料。",
+  "speed_note": "公式は1.0の2倍以上の速さとするのみで、遅延の数値は今回未確認。",
   "bench": [
    {
-    "metric": "Microsoft社内36ベンチ平均正答率(%)",
-    "value": 83.5,
-    "note": "Microsoft自社計測（約15万問の非公開問題）。同表でJev 1.13.0は82.3、GPT-6 Luna Decisionsは79.4。eesel.aiの転載",
-    "source": "https://www.eesel.ai/blog/microsoft-decision-1"
-   },
-   {
-    "metric": "Artificial Analysis Decision Index v1.0",
-    "value": 54,
-    "note": "GLiDEと同点、Jev 1.13（58）に次ぐ。AA-Omniscienceの非幻覚率40%は判断モデル中最高",
-    "source": "https://artificialanalysis.ai/articles/artificial-analysis-decision-index"
-   },
-   {
-    "metric": "入力摂動での判断変化率(%)",
-    "value": 1.3,
-    "note": "8種類の摂動の平均（Microsoft発表）。選択肢の言い換え・逆順・シャッフルでは変化ゼロ",
-    "source": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/"
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 67.8,
+    "note": "2026-11-19取得。旧Microsoft-Decision-1は62.1",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
-  "quality_note": "速度と一貫性が強み。選択肢の並べ替えで答えが変わりにくく、AAでは幻覚の少なさで判断モデル首位。ただし主要な精度の数値はMicrosoft主催の比較が中心で、独立した再現は限られる。テキストのみで画像は不可",
-  "ja_note": "日本語対応の公式記載なし。二次情報（OrcaRouter）では25言語（日本語含む）掲載だが、言語ごとに性能差があると注記されている",
+  "quality_note": "1.0より速く、画像入力に対応。精度の主な数値はAAの判断指数のほかは公式比較が中心。",
+  "ja_note": "対応言語の公式記載なし。日本語での判断精度は未確認。",
   "license": "API（利用規約）",
   "commercial": "yes",
   "license_note": "Azureサブスクリプションが必要（Direct from Azureモデル）。Microsoftの責任あるAI利用制限（監視・プロファイリング等の禁止）あり",
-  "hf": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
+  "hf": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-microsoft-decision-1-1-build-faster-more-efficient-ai-applications-w/4573877",
   "tools": [
    "Microsoft Foundry",
    "OpenRouter",
    "LLM Gateway（/v1/decisions）"
   ],
-  "summary_ja": "Microsoftが出した判断専用モデルで、選択肢ごとの確率を一瞬で返します。Azure上で使え、Jevと同じ価格で速さと答えのぶれにくさを売りにしています。",
+  "summary_ja": "Microsoftの判断専用モデル新版。Gemma 4ベースに切り替えて速くなり、画像も入力できる。FoundryでGA。",
   "best_for_ja": "Azure中心の企業で、AI出力の採点・ガードレール・ルーティングを低遅延で回したい場合",
-  "supersedes": [],
+  "supersedes": [
+   "Microsoft-Decision-1"
+  ],
   "sources": [
-   "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
-   "https://ai.azure.com/catalog/models/Microsoft-Decision-1",
-   "https://www.eesel.ai/blog/microsoft-decision-1",
-   "https://artificialanalysis.ai/articles/artificial-analysis-decision-index",
-   "https://www.orcarouter.ai/pl/blog/microsoft-decision-1-ga-foundry-no-published-benchmarks",
-   "https://llmgateway.io/blog/openai-decisions-api"
+   "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-microsoft-decision-1-1-build-faster-more-efficient-ai-applications-w/4573877",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 3,
@@ -286,14 +272,16 @@
    "value": 54
   },
   "series": "Microsoft Decision",
-  "availability_tier": "general"
+  "availability_tier": "general",
+  "verified_at": "2026-11-19",
+  "vram_note": "APIのみ（重みは非配布）"
  },
  {
-  "id": "liquid-d1-ultra",
-  "name": "d1-ultra",
+  "id": "liquid-d1-2-ultra",
+  "name": "d1.2-ultra",
   "org": "Liquid AI",
   "country": "US",
-  "release": "2026-10-15",
+  "release": "2026-11-16",
   "access": "api",
   "params_b": null,
   "arch": "d1より大きなオープンウェイトモデルを基にしたマルチモーダル判断モデル。トークンを生成せず1回のフォワードパスで確率を返す（規模は非公開）",
@@ -306,57 +294,60 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "テキスト、画像（base64）、または両方",
+   "inputs": "テキスト・画像・音声",
    "outputs": "noul＝はいの確率0〜1／Choice＝ラベルごとの確率／Score＝尺度上の位置",
    "languages": "記載なし",
-   "other": "エンドポイント https://api.liquid.ai/decisions/v1/systemone（model: d1-ultra）。画像は32×32パッチあたり1.5トークン（1024×1024で1,536トークン）。質問ごとに別プロンプトとして課金。Vercel AI Gateway・OpenRouterは公開時点で「近日対応」。コンテキスト32,768トークンとの掲載あり（二次情報）"
+   "other": "エンドポイント https://api.liquid.ai/decisions/v1/systemone。値の読み取り、箇所の抽出、画像内の位置、数の推定、複数選択の5タスクを追加。OpenRouter・Vercelは公開時点で「近日対応」。"
   },
   "features": {
    "画像入力": true,
    "確率・信頼度を返す": true,
    "較正（過信抑制）を重視した学習": true,
    "重み公開": false,
-   "日本語対応（公式明記）": false
+   "日本語対応（公式明記）": false,
+   "音声入力": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": "APIのみ（重み非公開）",
-  "price_note": "入力 $0.042/1Mトークン、出力トークンなし（公式）",
+  "price_note": "入力$0.042／100万トークン（米ドル）、出力なし（Liquid公式）。",
   "speed_note": "公式に遅延の数値なし（1フォワードパスと説明）",
   "bench": [
    {
-    "metric": "Artificial Analysis Decision Index v1.0",
-    "value": 65.2,
-    "note": "BenchLMの掲載値（独立評価と記載）。Liquidは「他の判断モデルを少なくとも8ポイント上回る」と主張",
-    "source": "https://benchlm.ai/md/decision-models.md"
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 74.8,
+    "note": "2026-11-19取得、判断モデルで1位。旧d1-ultraは70.6",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
-  "quality_note": "Liquidは112評価すべてでJev 1.14を上回り、較正も良いと主張（自社比較）。判断モデル全般の弱点である過信を抑える学習を特長とする。公開から日が浅く、独立した詳細評価はまだ少ない",
+  "quality_note": "AA判断指数v2.1で判断モデル1位。Liquidは較正誤差0.8ポイントと自社計測で説明。新タスクの精度は自社評価のみ。",
   "ja_note": "言語の記載なし。Liquidは日本語特化の小型LLM（LFM2.5-1.2B-JP）も出しているが、d1-ultraの日本語判定精度は不明",
   "license": "API（利用規約）",
   "commercial": "yes",
   "license_note": "Liquid AI API（console.liquid.ai）の利用規約に従う",
-  "hf": "https://www.liquid.ai/blog/d1-ultra",
+  "hf": "https://www.liquid.ai/blog/d1-2",
   "tools": [
    "Liquid AI API",
    "d1 Playground（d1.liquid.ai）"
   ],
-  "summary_ja": "Liquid AIのAPI専用・画像対応の判断モデルです。確率の「自信の度合い」が実際の正しさとずれにくいよう鍛えたとしています。",
+  "summary_ja": "Liquid AIのAPI専用の上位判断モデル新版。音声入力にも対応し、AA判断指数で判断モデル1位。",
   "best_for_ja": "画像を含む判定で、確信度をしきい値に使って自動処理と人の確認を切り分けたい場合",
-  "supersedes": [],
+  "supersedes": [
+   "d1-ultra"
+  ],
   "sources": [
-   "https://www.liquid.ai/blog/d1-ultra",
-   "https://benchlm.ai/md/decision-models.md",
+   "https://www.liquid.ai/blog/d1-2",
    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 4,
   "hl": {
-   "label": "AA Arena",
-   "value": 65.2
+   "label": "AA判断",
+   "value": 74.8
   },
   "series": "liquid-d1-ultra",
-  "availability_tier": "general"
+  "availability_tier": "general",
+  "verified_at": "2026-11-19"
  },
  {
   "id": "celeris-1-1-decision",
@@ -392,9 +383,9 @@
   "speed_note": "公式の中央値36〜44ms。AAの計測は約56ms。",
   "bench": [
    {
-    "metric": "Artificial Analysis Decision Index v2",
-    "value": 63.5,
-    "note": "2026-11-10取得。参考：首位はDrex Max v1.1の73.4",
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 62.0,
+    "note": "2026-11-19取得",
     "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    },
    {
@@ -466,16 +457,16 @@
   "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
   "bench": [
    {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 71.4,
+    "note": "2026-11-19取得",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
     "metric": "Jev Decision Index 0.4（Baseten発表）",
     "value": 71.24,
     "note": "発表時208モデル中1位。10月21日のコミュニティボード0.4.1では68.87で3位",
     "source": "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/"
-   },
-   {
-    "metric": "Artificial Analysis Decision Index",
-    "value": 65.9,
-    "note": "Basetenによる再現実行の値（AA公式ボードには未掲載）",
-    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
   "quality_note": "オープンな判断モデルで最上位級。AAの再現実行でも65.9とd1-ultra（65.25）を上回るが、AA公式の掲載はまだない",
@@ -547,16 +538,16 @@
   "speed_note": "公式に遅延の数値なし（「推論モデルより最大10倍速い」とのみ）",
   "bench": [
    {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 66.4,
+    "note": "2026-11-19取得",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
     "metric": "Jev Decision Index 0.4（Baseten発表）",
     "value": 62.65,
     "note": "15B未満で1位、全体で8位タイ（発表時）。ボード0.4.1では60.26",
     "source": "https://www.baseten.co/blog/the-best-decision-models-in-the-world-mammoth-1-and-elephant-1/"
-   },
-   {
-    "metric": "Artificial Analysis Decision Index",
-    "value": 64.69,
-    "note": "AA公式で2位（1位のd1-ultraは65.25）。When2Call 94.8、WildGuardTest 93.3",
-    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
   "quality_note": "9Bながら公式AA Decision Indexでd1-ultraとほぼ同点の2位。知識が要る判断はmammoth-1のほうが強いとされる",
@@ -584,7 +575,7 @@
   "confidence": "high",
   "hl": {
    "label": "AA Arena",
-   "value": 64.7
+   "value": 66.4
   },
   "rank": 6
  },
@@ -699,6 +690,12 @@
   "speed_note": "自社計測の中央値はRTX PRO 6000で84ms、B200で48ms（直列・BF16）。長いプロンプトや質問数が多いと遅くなる（p99で1〜2.7秒）",
   "bench": [
    {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 72.5,
+    "note": "2026-11-19取得",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
     "metric": "Jev Decision Index 0.4.1",
     "value": 71.5,
     "note": "V1.2。2026-10-22時点で229モデル中1位とFastinoがモデルカードで主張（2位Jeffan-31b-1710が69.8、3位mammoth-1が68.4）",
@@ -709,12 +706,6 @@
     "value": 64.81,
     "note": "API公開時（9月30日）のFastino自社実行。同条件のJev 1.13.0公表値は57.91",
     "source": "https://fastino.ai/blog/introducing-glide-the-first-thinking-decision-model"
-   },
-   {
-    "metric": "AA Decision Index",
-    "value": 65.0,
-    "note": "v1.2、2026-11-05取得。",
-    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
   "quality_note": "AA Decision Indexは65.0（v1.2、2026-11-05取得）。旧v1は53.9で、別の現行行にしない。日本語の品質を直接示す値ではない。",
@@ -1117,6 +1108,12 @@
   "speed_note": "Clef中央値209ms、Clef-flash中央値38.8ms（Cloudflare計測、同条件のJevは524ms）",
   "bench": [
    {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 60.3,
+    "note": "Clef（Cloudflare提供）、2026-11-19取得。Clef-Omniは57.8",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
     "metric": "BFCL（Decision Index内）",
     "value": 98.5,
     "note": "Clef。Clef-flashは98.8（モデルカード）",
@@ -1161,7 +1158,8 @@
    "https://letsdatascience.com/news/cloudflare-releases-open-weight-clef-decision-models-c52886d6",
    "https://flaviocopes.com/clef/",
    "https://www.developersdigest.tech/blog/cloudflare-clef-decision-models-2026",
-   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
   "confidence": "medium",
   "rank": 12,
@@ -1431,7 +1429,7 @@
    "latency_ms": 86,
    "inputs": "テキスト・JSON（d3由来の質問では画像・動画も可）",
    "outputs": "Choice／Yes-No／Score／Span（固有表現・関係・個人情報・根拠のない主張・根拠文を文字位置つきで抜き出し）",
-   "languages": "記載なし（vela3-fastは英語のみ。評価にMASSIVEの52言語を含む）",
+   "languages": "vela3.1（fast 380M／pico-380m／pico-150m、11/2〜11/4公開）は日本語を含む15言語に対応と明記。3.0のvela3-fastは英語のみ",
    "other": "遅延はvela3-flashでルーター判定4問86ms、スパン質問1問40ms（公式の最速条件）。vela3-fastは判定＋スパンを1回のエンコーダ処理（約14ms）で返す。サイズはvela3-fast 0.4B／fast-vision 0.25B／lite 0.8B／mini 4B／flash 9B／turbo 27B"
   },
   "features": {
@@ -1467,8 +1465,8 @@
     "source": "https://huggingface.co/vllm-sr/vela3-turbo"
    }
   ],
-  "quality_note": "ルーティング信号の公開テスト24ファイル中20でVela 2.0 9Bを上回り、下回るものはなし（開発元）。通常の判断は基盤のd3をそのまま使うので、判断精度はd3と同じで、そこに抽出機能が加わる形",
-  "ja_note": "日本語の明記はない。基盤のd3系はQwen系で多言語の素地があるが、日本語の抽出・安全判定の精度は要検証。最小のvela3-fastは英語のみ",
+  "quality_note": "ルーティング信号の公開テスト24ファイル中20でVela 2.0 9Bを上回り、下回るものはなし（開発元）。通常の判断は基盤のd3をそのまま使うので、判断精度はd3と同じで、そこに抽出機能が加わる形 小型エンコーダ版はvela3.1（UltraBERTベース、Apache-2.0、KR Labsと共同）に更新。AA判断指数の公開問題でvela3.1-fastは51.1（正式スコアは提出待ち）。",
+  "ja_note": "小型のvela3.1（fast／pico）は日本語を含む15言語対応と明記。大きい版（lite〜turbo）の日本語精度は要検証。",
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "Apache-2.0",
@@ -1488,10 +1486,12 @@
    "https://huggingface.co/vllm-sr/vela3-turbo",
    "https://huggingface.co/vllm-sr/vela3-flash",
    "https://huggingface.co/collections/vllm-sr/vela-30-6ad1c430eb1718eb4754edcd",
+   "https://huggingface.co/vllm-sr",
    "https://huggingface.co/vllm-sr"
   ],
   "confidence": "medium",
-  "rank": 17
+  "rank": 17,
+  "verified_at": "2026-11-19"
  },
  {
   "id": "gpt-oss-safeguard",
@@ -2026,11 +2026,11 @@
   "verified_at": "2026-11-16"
  },
  {
-  "id": "liquid-d1-1",
-  "name": "d1.1",
+  "id": "liquid-d1-2",
+  "name": "d1.2",
   "org": "Liquid AI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-16",
   "access": "api",
   "params_b": null,
   "arch": "非公開（Liquid APIの既定の判断モデル）",
@@ -2043,27 +2043,28 @@
   ],
   "spec": {
    "latency_ms": null,
-   "inputs": "テキスト・画像",
+   "inputs": "テキスト・画像・音声",
    "outputs": "Noul（はい/いいえ）・Choice・Scoreの確率（生成トークン0）",
    "languages": "公式に対応言語の記載なし",
-   "other": "上位のd1-ultraと同じエンドポイント・形式。公式文書は難しい判断ではd1-ultraへの切り替えを案内"
+   "other": "上位のd1.2-ultraと同じエンドポイント・形式。値の読み取り、箇所の抽出、画像内の位置、数の推定、複数選択の5タスクを追加。"
   },
   "features": {
    "画像入力": true,
    "確率・信頼度を返す": true,
    "重み公開": false,
-   "日本語対応（公式明記）": false
+   "日本語対応（公式明記）": false,
+   "音声入力": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": "APIのみ（公開重みのd1-2Bとは別物）",
-  "price_note": "入力$0.02・キャッシュ入力$0.02／100万トークン（米ドル）、出力$0（公式料金ページ。d1-ultraは入力$0.042）。",
+  "price_note": "入力$0.02／100万トークン（米ドル）、出力なし（Liquid公式）。上位のd1.2-ultraは$0.042。",
   "speed_note": null,
   "bench": [
    {
     "metric": "Artificial Analysis Decision Index v2.1",
-    "value": 66.5,
-    "note": "2026-11-16取得。旧d1は60.8、d1-ultraは70.6",
+    "value": 68.7,
+    "note": "2026-11-19取得。旧d1.1は66.5",
     "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
    }
   ],
@@ -2072,17 +2073,18 @@
   "license": "API（Liquid AI利用規約）",
   "commercial": "conditional",
   "license_note": "Liquid API（Console）で提供。旧d1・d1-ultraはOpenRouter等にもある。",
-  "hf": "https://docs.liquid.ai/lfm/models/d1",
+  "hf": "https://www.liquid.ai/blog/d1-2",
   "tools": [
    "Liquid API"
   ],
-  "summary_ja": "Liquid AIのAPIで既定となった安価な判断モデル。入力100万トークン$0.02・出力無料で、上位のd1-ultraより安い。初提供日は公式で未確認。",
+  "summary_ja": "Liquid AIのAPIの安価な判断モデル新版。入力100万トークン$0.02・出力無料のまま、音声入力と5種類の新タスクに対応。",
   "best_for_ja": "大量の簡単な判断・振り分けを最安クラスで回したい場合",
   "supersedes": [
+   "d1.1",
    "d1（クラウド版）"
   ],
   "sources": [
-   "https://docs.liquid.ai/lfm/models/d1",
+   "https://www.liquid.ai/blog/d1-2",
    "https://www.liquid.ai/pricing",
    "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
   ],
@@ -2090,7 +2092,7 @@
   "rank": null,
   "series": "Liquid d1",
   "availability_tier": "general",
-  "verified_at": "2026-11-16",
-  "release_note": "公式の初提供日は未確認。OpenRouterのID末尾（20261027）やAAの追加日は代用しない。"
+  "verified_at": "2026-11-19",
+  "release_note": "Liquid公式ブログで11/16の提供開始を確認。"
  }
 ]
