@@ -631,28 +631,28 @@
    "currency": "USD",
    "status": "limited",
    "rates": {
-    "input": 15,
-    "output": 75,
-    "cache_read": 1.5,
-    "cache_write_short": 18.75,
-    "cache_write_long": 37.5
+    "input": 10,
+    "output": 50,
+    "cache_read": 1,
+    "cache_write_short": 12.5,
+    "cache_write_long": 25
    },
-   "verified_at": "2026-11-16",
+   "verified_at": "2026-11-22",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
-   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。入力27.2万トークン超は入力$30・出力$112.50・キャッシュ読込$3・書込30分$37.50／12時間$75。",
+   "note_ja": "単価は公表。利用審査・提供条件があるため通常APIの費用順位には混ぜない。入力27.2万トークン超は入力$20・出力$75・キャッシュ読込$2・書込30分$25／12時間$50。公式は販促価格で少なくとも2026-12-31まで適用と注記（終了後の単価は未公表）。11/16時点の$15／$75から値下げ（改定日は変更履歴に記載なし）。",
    "unavailable_ja": "限定アクセス・利用審査あり",
    "tiers": [
     {
      "over_input": 272000,
      "label": "入力27.2万超の長文料金",
      "rates": {
-      "input": 30,
-      "output": 112.5,
-      "cache_read": 3,
-      "cache_write_short": 37.5,
-      "cache_write_long": 75
+      "input": 20,
+      "output": 75,
+      "cache_read": 2,
+      "cache_write_short": 25,
+      "cache_write_long": 50
      }
     }
    ]

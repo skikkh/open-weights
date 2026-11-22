@@ -306,29 +306,35 @@
   "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
  },
  {
-  "id": "gpt-live-1",
-  "name": "GPT-Live 1",
+  "id": "gpt-live-1-1",
+  "name": "GPT-Live 1.1",
   "category": "s2s",
   "org": "OpenAI",
   "country": "US",
-  "release": null,
+  "release": "2026-11-19",
   "access": "api",
-  "summary_ja": "同時に聞いて話せる全二重の音声対話。推論・ツール処理はバックエンドへ委譲。",
-  "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
-  "price_note": "$0.05／セッション1分、秒単位。バックエンドモデル・ツール料金は別。",
-  "detail_note": null,
+  "summary_ja": "同時に聞いて話せる全二重の音声対話。推論・ツール処理はバックエンドへ委譲。1.1は多言語会話での発音・訛りの一貫性・書き起こしを改善。",
+  "availability_ja": "11/19にAPI（v1/live/sessions）で提供開始（公式変更履歴）。モデルページにGA／プレビューの表記はなく、提供区分は通常APIとして扱う。旧GPT-Live-1も同時接続枠が別に記載されており、終了日は未発表。",
+  "price_note": "Liveセッション1分あたり（米ドル）：Active $0.05、Standby $0.02（WebRTCで推論を止めている間）。バックエンドモデル・ツール料金は別。",
+  "detail_note": "GPT-Live-1の後継（同じ役割）。Standby設定は1と1.1の両方で利用可。旧版の評価値は引き継がない。",
   "context_note": null,
-  "hf": "https://developers.openai.com/api/docs/models/gpt-live-1",
+  "hf": "https://developers.openai.com/api/docs/models/gpt-live-1.1",
   "sources": [
-   "https://developers.openai.com/api/docs/models/gpt-live-1"
+   "https://developers.openai.com/api/docs/changelog",
+   "https://developers.openai.com/api/docs/models/gpt-live-1.1",
+   "https://developers.openai.com/api/docs/guides/live-conversations"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-22",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
   "series": "OpenAI Live flagship",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式変更履歴の11/19の項目で提供開始を確認。",
+  "ja_note": "公式のLive会話ガイドの声一覧に日本語の声（Harema、Shida）がある。対応言語の一覧・日本語の評価は公式記載なし。",
+  "supersedes": [
+   "GPT-Live 1"
+  ]
  },
  {
   "id": "gpt-realtime-2.1",
@@ -1015,7 +1021,7 @@
   "release": null,
   "access": "api",
   "summary_ja": "拡散型の言語モデルMercuryの現行旗艦。高速な推論・ツール操作・構造化出力向け。",
-  "availability_ja": "通常APIで提供中。ただしMercury API全体が2026-12-28まで利用可能で、その後はAPI・データとも利用できなくなると公式に告知（後継の記載なし）。旧Mercury 2.5は11/15で終了。",
+  "availability_ja": "通常APIで提供中。ただしMercury API全体が2026-12-28まで利用可能で、その後はAPI・データとも利用できなくなると公式に告知（後継の記載なし）。旧Mercury 2.5は11/22時点でも公式モデルページに掲載があり、終了日は公式に確認できていない。",
   "price_note": "導入割引中は100万トークン当たり入力$0.10・キャッシュ$0.01・出力$0.35。通常表示は$0.20・$0.02・$0.70。割引終了日は未確認。",
   "hf": "https://www.inceptionlabs.ai/models",
   "sources": [
@@ -1186,13 +1192,14 @@
   "access": "api",
   "summary_ja": "医療音声に特化したバッチ認識。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "公式料金を確認（地域・プラン・生成条件で異なる）",
+  "price_note": "ElevenLabsのセルフサーブ・Businessプランでは全Scribeモデルが録音（バッチ）$0.20／音声1時間、リアルタイム$0.22／時間（11/17の公式変更履歴）。Enterpriseは個別料金。",
   "hf": "https://elevenlabs.io/docs/overview/models",
   "sources": [
    "https://elevenlabs.io/docs/overview/models",
-   "https://elevenlabs.io/blog/scribe-v2-medical-generally-available"
+   "https://elevenlabs.io/blog/scribe-v2-medical-generally-available",
+   "https://elevenlabs.io/docs/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-22",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -2941,11 +2948,11 @@
  },
  {
   "access": "api",
-  "verified_at": "2026-11-05",
+  "verified_at": "2026-11-22",
   "commercial": "conditional",
   "license": "提供元の利用規約",
   "availability_tier": "general",
-  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "local_note": "正式版の重みが11月にHugging Faceで公開済み（Tencent Hy License v1.0）。公開モデル側の「Hy4」を参照。",
   "id": "tencent-hy4-api",
   "name": "Hy4（正式版API）",
   "category": "llm",
@@ -2956,7 +2963,7 @@
   "summary_ja": "混元Hy4の正式版。previewから画像理解・PC操作・長いエージェント作業を強化した。",
   "availability_ja": "Tencent Cloud ADP・TokenHub、WorkBuddy等で提供。",
   "price_note": "ADPでは2026年12月31日までモデル呼び出し50%割引を案内。正式版の通常単価は公式料金表で確認が必要。previewの料金をそのまま転記しない。",
-  "detail_note": "正式版の重み配布は未確認。公開側のHy4 previewとは別チェックポイントで、量子化・速度を流用しない。AA v5.0.1は34.6（11/5取得、API評価）。",
+  "detail_note": "正式版の重みは11月に公開（11/22確認、公開側のHy4行）。旧Hy4 previewの量子化・速度は流用しない。AA v5.0.1は34.6（11/22照合）。",
   "context_note": "約105万トークン。出力最大65,536トークン。入口による違いを公式資料で確認。",
   "hf": "https://adp.tencent.com/zh/blog/tencent-cloud-adp-hunyuan-hy4-release",
   "sources": [
@@ -3033,10 +3040,10 @@
  },
  {
   "access": "api",
-  "verified_at": "2026-11-05",
+  "verified_at": "2026-11-22",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "availability_tier": "limited",
+  "availability_tier": "general",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
   "id": "google-genie-4",
   "name": "Genie 4",
@@ -3047,14 +3054,18 @@
   "release": "2026-10-27",
   "release_kind": "announcement",
   "summary_ja": "音声も同時に作り、自然言語で場面を変えられるリアルタイムの世界シミュレーション。通常の動画生成とは用途が異なる。",
-  "availability_ja": "信頼されたテスターへの限定研究プレビュー。一般向けGoogle AI Ultra／APIは提供待ち。",
-  "price_note": "Genie 4固有の料金・一般提供条件は未発表。既存Project Genieの会員価格を転記しない。",
+  "availability_ja": "11/19にGemini APIのInteractions API（v1beta）で一般提供（genie-4）。WebRTC／WebSocketで24fps・16:9の映像と48kHzステレオ音声をリアルタイム配信。",
+  "price_note": "100万トークンあたり（米ドル）：入力$1.50、テキスト出力$9、動画出力$17.50（公式換算で約$0.10／秒、ステレオ音声込み）。",
   "detail_note": "米国Google傘下のGoogle DeepMindが開発。映像を対話的に生成する世界モデルで、3Dメッシュ書き出しモデルではない。最大解像度・継続時間は公式に確認できず未記載。",
   "hf": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
   "sources": [
    "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-   "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/"
-  ]
+   "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
+   "https://aistudio.google.com/docs/changelog",
+   "https://aistudio.google.com/docs/models/genie-4",
+   "https://aistudio.google.com/docs/pricing#genie-4"
+  ],
+  "release_note": "10/27に限定研究プレビューとして発表、11/19にAPIで一般提供（Gemini API変更履歴）。release欄は初公開日の10/27のまま。"
  },
  {
   "id": "hunyuan-image-3-5-preview-api",
@@ -3145,7 +3156,7 @@
   "access": "api",
   "summary_ja": "生命科学の研究向けモデル。信頼アクセス制度で承認された組織だけが使える。",
   "availability_ja": "限定提供：trusted-accessプログラムで承認された研究のみ。一般の開発者はそのまま利用できない。",
-  "price_note": "100万トークンあたり入力$15（キャッシュ$1.50）、出力$75。キャッシュ書き込みは保持30分で$18.75、12時間で$37.50（米ドル、公式料金ページ「Life sciences models」）。データレジデンシー経由は10%増。",
+  "price_note": "100万トークンあたり入力$10（キャッシュ$1）、出力$50。キャッシュ書き込みは保持30分で$12.50、12時間で$25。入力27.2万トークン超は入力$20・出力$75・キャッシュ$2・書込$25／$50（米ドル、公式料金ページ「Specialized models」）。公式は販促価格で少なくとも2026-12-31まで適用と注記。データレジデンシー経由・FedRAMP専用エンドポイントは10%増。",
   "detail_note": "汎用の旗艦とは用途が異なるため別系列。同じ料金欄のgpt-rosalind-research／gpt-rosalind-discoveryは仕様未確認のため掲載していない。",
   "context_note": "公式モデルページが11/10時点で404のため、文脈長・最大出力は未確認。",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
@@ -3154,7 +3165,7 @@
    "https://developers.openai.com/api/docs/changelog",
    "https://developers.openai.com/api/docs/pricing"
   ],
-  "verified_at": "2026-11-10",
+  "verified_at": "2026-11-22",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "supersedes": [],

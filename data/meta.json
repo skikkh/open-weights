@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19",
- "next_update": "2026-11-22",
+ "updated_at": "2026-11-22",
+ "next_update": "2026-11-25",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,18 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-22",
+   "items": [
+    "公開（大型LLM）: Hy4 preview → 正式版Hy4（Tencent、11月公開、770B／稼働49B、画像・動画理解に対応、1M文脈）。ライセンスはApache-2.0からTencent Hy License v1.0に変更。BF16約1,549GB・公式FP8約786GB・公式GGUF（約231GB〜）。AA v5.0.1は34.6。previewのベンチ・Nejumi値は引き継がない。",
+    "追加（ローカルLLM）: Inkling 2 Mini（Thinking Machines Lab、11/20、26.4B／稼働3.4B、Apache-2.0、約20GBで32GB機に載る、AA 20.1）。",
+    "追加（判断モデル）: bison-1（Baseten、11/20、31B、AA判断指数v2.1で75.9の首位）と、MoE版groundhog-1（26B／稼働約4B）。いずれもMIT＋Apache-2.0で、Baseten APIは$0.10／$0.035（100万トークン）。",
+    "置換（有料の音声対話）: GPT-Live 1 → GPT-Live 1.1（OpenAI、11/19、Active $0.05／分・Standby $0.02／分、日本語の声あり）。",
+    "更新（有料）: Genie 4が11/19にGemini APIで一般提供（入力$1.50・動画出力$17.50／100万トークン）。GPT-6 Rosalindの単価を公式の販促価格（入力$10・出力$50、長文$20／$75、少なくとも12/31まで）に訂正。Kling 4.0に公式API料金（1080p $0.235／秒など）、Scribe v2 Medicalに11/17の新料金（録音$0.20／時間）を反映。Mercury 2.5の「11/15終了」を公式未確認のため取り消し。",
+    "値の補完: Granite 4.2 30BのAA指数5.5、GPT-OSS-Swallow-20B-RLのNejumi 0.6424（W&Bの集計対象ランから取得）。HFでリポジトリ名が変わったGLiDE・AutoTrust・Ornith 1.5 35BのURLを更新。",
+    "保留: GPT-6.2 Astra for Law（申請制）、MAI Code 2（Copilot内のみ確認）、StepAudio 3 TTS、Boreal-H3、Azure Speech 09-2026、Sarashina3.2 TTS／ASR（無償ベータ、料金・開始日の記載なし）、Strands Decider v2、DaisyRose-27B、ERNIE 5.5 Flash（11/25までに重み公開予定）ほか。国産LLM・音楽・3Dの新規は確認範囲でなし。"
+   ]
+  },
   {
    "date": "2026-11-19",
    "items": [

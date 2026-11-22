@@ -1460,117 +1460,98 @@
   }
  },
  {
-  "id": "hy4-preview",
-  "name": "Hy4 preview",
+  "id": "hy4",
+  "name": "Hy4",
   "family": "Tencent Hy4",
   "org": "Tencent（Hy / 混元）",
   "country": "CN",
-  "release": "2026-08-28",
+  "release": "2026-11",
   "arch": "MoE（Gated DSA疎注意＋IndexCache、iHC）",
   "total_b": 770,
   "active_b": 49,
   "native_precision": "BF16（公式FP8版あり）",
-  "weights_gb": 1560.0,
+  "weights_gb": 1548.9,
   "context_k": 1049,
   "modality": [
-   "text"
+   "text",
+   "image",
+   "video"
   ],
   "mode": "hybrid",
-  "license": "Apache-2.0",
-  "commercial": "yes",
-  "license_note": null,
-  "hf": "https://huggingface.co/tencent/Hy4-preview",
-  "summary_ja": "TencentのHy（旧Hunyuan）新世代フラッグシップのプレビュー版で、770B/アクティブ49B・1M文脈のMoE。ソフトウェア開発、オフィス文書作成、ゲーム開発、科学研究などの実務向けに後学習されている。",
+  "license": "Tencent Hy License v1.0",
+  "commercial": "conditional",
+  "license_note": "Apache-2.0を基にした独自ライセンス。API等で推論を提供するMaaS事業者は年間売上5,000万米ドル超・月間1億ユーザー超などの条件に当たると別途書面の許諾が必要。プレビュー版（Apache-2.0）から条件が変わった。",
+  "hf": "https://huggingface.co/tencent/Hy4",
+  "summary_ja": "TencentのHy（旧Hunyuan）新世代フラッグシップの正式版。言語部分は770B（稼働49B）のMoEで、1M文脈。プレビュー版と違い画像・動画の理解に対応（ViT 1.23B）。11月にInstruct・FP8・事前学習ベースの重みを公開。",
   "strengths": [
    "coding",
    "agent",
    "reasoning",
-   "long-context"
+   "long-context",
+   "vision"
   ],
   "bench": {
    "swe_verified": null,
-   "gpqa": 92.3,
-   "hle": 43.4,
+   "gpqa": null,
+   "hle": null,
    "aime": null,
    "lcb": null,
    "mmlu_pro": null,
-   "terminal_bench2": 85.4,
+   "terminal_bench2": null,
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカードのベンチ画像（自己申告、最大推論設定）。HLEはツールなし・テキストのみ（ツールあり55.4）。terminal_bench2欄はTerminal-Bench 2.1（Claude Codeハーネス）。他にSWE-bench Pro 65.7、DeepSWE 64.3、SWE-bench Multilingual 82.9、MCP-Atlas 83.7。AA指数は2026-10-20時点で未掲載。",
-  "aa_index": null,
-  "japanese_note": null,
-  "deploy_note_ja": "BF16で約1.56TB（8×B300か2ノード）、公式FP8で約814GB（8×H200 1ノード）。MLX 4bit版（mlx-community）はあるが、GGUFの主要コミュニティ量子化は未確認。",
+  "bench_note": "AA Intelligence Index v5.0.1は34.6（11/22照合。AAは公開重みモデルとして掲載）。モデルカードは事前学習ベースの比較（MMLU-Pro 73.9、SuperGPQA 62.7など）を掲載。プレビュー版のベンチ・Nejumi値は別チェックポイントのため引き継がない。",
+  "aa_index": 34.6,
+  "japanese_note": "モデルカードに日本語の記載・評価はない（多言語ベンチのBelebeleは独・韓・越・西・露の5言語）。",
+  "deploy_note_ja": "BF16で約1,549GB、公式FP8で約786GB。投機的デコード用のDFly2（3.3B）を内蔵。vLLM・SGLangに対応。",
   "engines": [
    "vLLM",
    "SGLang",
-   "MLX"
+   "llama.cpp"
   ],
   "supersedes": [
+   "Hy4 preview",
    "Hy3",
    "Hy3-preview",
    "Hunyuan-A13B"
   ],
-  "notes": "MTP層（10B）は総数に含まない。推論はreasoning_effortで制御し、no_thinkで直接応答。カード自身が、推論が長すぎる・自己検証が過剰といった既知の課題を挙げる早期版。前世代の正式版Hy3（295B/21B、BF16で約598GB、Apache-2.0、256K、2026-07公開、AA指数25.3）は、より軽い選択肢として残っている。 2026-11-04にHy4正式版のAPIが提供開始。正式版の一般向け重み配布は11/5時点で未確認のため、この行のpreview重みを正式版として扱わない。正式APIは有料LLM一覧に掲載。",
+  "notes": "HFのtencent/Hy4・Hy4-FP8・Hy4-baseは履歴が11/20 03:05 UTCの1コミットに圧縮され、FP8版・base版のリポジトリ作成は11/18。正確な公開日と公式の告知日は確認できず月単位で表示。11/4に始まった正式版API（有料LLM一覧）と同じ正式版。",
   "sources": [
-   "https://huggingface.co/tencent/Hy4-preview",
-   "https://huggingface.co/tencent/Hy4-preview-FP8",
-   "https://huggingface.co/tencent/Hy4-preview/blob/main/assets/benchmark-appendix.jpg",
-   "https://app.sentisense.ai/stories/tencent-open-sources-770-b-hy4-llm-for-coding-and-announces-self-improvement-loo-08312026",
-   "https://huggingface.co/tencent/Hy3",
-   "https://artificialanalysis.ai/leaderboards/models",
-   "https://adp.tencent.com/zh/blog/tencent-cloud-adp-hunyuan-hy4-release"
+   "https://huggingface.co/tencent/Hy4",
+   "https://huggingface.co/tencent/Hy4-FP8",
+   "https://huggingface.co/tencent/Hy4-base",
+   "https://huggingface.co/AngelSlim/Hy4-GGUF",
+   "https://artificialanalysis.ai/leaderboards/models"
   ],
   "confidence": "high",
-  "jp_bench": {
-   "nejumi": 0.8344
-  },
-  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
   "short": "Hy4",
   "local_q": {
-   "summary_ja": "最小の量子化版（STQ1_0、約2.38bit・229GB）なら512GBのMac Studioに載ります。",
+   "summary_ja": "公式GGUFの最小版STQ1_0（約231GB）なら512GBのMac Studio級に載る見込み（実測報告は未確認）。",
    "quants": [
     {
      "name": "STQ1_0 (AngelSlim公式)",
      "bits": 2.38,
-     "size_gb": 229.4,
-     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
+     "size_gb": 230.5,
+     "source": "https://huggingface.co/AngelSlim/Hy4-GGUF"
     },
     {
-     "name": "UD-IQ1_M (AngelSlim公式)",
-     "bits": 2.45,
-     "size_gb": 235.4,
-     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
-    },
-    {
-     "name": "MLX 4bit",
-     "bits": 4.5,
-     "size_gb": 433.4,
-     "source": "https://huggingface.co/mlx-community/Hy4-preview-4bit"
-    },
-    {
-     "name": "Q4_K_M (AngelSlim公式)",
-     "bits": 4.86,
-     "size_gb": 467.3,
-     "source": "https://huggingface.co/AngelSlim/Hy4-preview-GGUF"
-    },
-    {
-     "name": "NVFP4-W4A16 (Oxmiq)",
-     "bits": 5.1,
-     "size_gb": 490.4,
-     "source": "https://huggingface.co/Oxmiq/Hy4-preview-NVFP4-W4A16"
+     "name": "IQ2 (AngelSlim公式)",
+     "bits": 3.43,
+     "size_gb": 332.4,
+     "source": "https://huggingface.co/AngelSlim/Hy4-GGUF"
     },
     {
      "name": "公式FP8",
-     "bits": 8.46,
-     "size_gb": 813.8,
-     "source": "https://huggingface.co/tencent/Hy4-preview-FP8"
+     "bits": 8.12,
+     "size_gb": 786.3,
+     "source": "https://huggingface.co/tencent/Hy4-FP8"
     }
    ],
    "reports": [],
-   "note_ja": "この量子化と実行情報はpreview用。AAで11月に評価されたHy4正式APIの指数は転記しない。"
-  }
+   "note_ja": "bitsは実ファイル容量÷774.4B（視覚部込みのHF集計）の実効値。サイズはHFのファイル一覧の合計（画像入力用mmprojは別に約2.7GB）。プレビュー版の量子化・実行情報は引き継がない。"
+  },
+  "verified_at": "2026-11-22"
  },
  {
   "id": "hy4-flash",
@@ -4812,13 +4793,13 @@
    "efficiency"
   ],
   "jp_bench": {
-   "nejumi": null,
+   "nejumi": 0.6424,
    "swallow_avg": 0.568,
    "jmmlu": null,
    "ja_mtbench": 7.26,
    "other": "Swallow LB v2: 英語平均0.752 / JamC-QA 0.562 / MMLU-ProX(ja) 0.746 / 日本語GPQA 0.650。公式ページの公表値は日本語平均0.606・英語平均0.788・日本語MT-Bench 0.872"
   },
-  "jp_bench_note": "swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版、reasoning effort medium）の値",
+  "jp_bench_note": "swallow_avg、ja_mtbench（0〜1の値を10倍）、benchはSwallow LLM Leaderboard v2（事後学習モデル版、reasoning effort medium）の値 Nejumi値0.6424は11/22にNejumi公式レポートの集計対象ラン（W&B、leaderboard_tableのTOTAL_SCORE）から取得。画面描画そのものとの照合はしていない。",
   "bench": {
    "gpqa": 67.6,
    "mmlu_pro": 73.8,
@@ -4846,7 +4827,8 @@
    "https://swallow-llm.github.io/gptoss-swallow.ja.html",
    "https://swallow-llm.github.io/leaderboard/index-post.ja.html"
   ],
-  "confidence": "high"
+  "confidence": "high",
+  "verified_at": "2026-11-22"
  },
  {
   "id": "abeja-qwen3-14b-agentic-256k",
@@ -5304,7 +5286,7 @@
   "license": "MIT",
   "commercial": "yes",
   "license_note": "MIT。Qwen3.5とGemma 4のチェックポイントを起点に追加の事前学習・中間学習・事後学習をしたモデル（Ornith-1.0の延長）。",
-  "hf": "https://huggingface.co/ornith-ai/Ornith-1.5-35B",
+  "hf": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
   "summary_ja": "自分で学習タスクを作って強化学習を回す手法で鍛えた、コーディング・エージェント特化の35B MoE。ベンダー公表値ではQwen3.6-35B-A3Bを上回るが、第三者による検証はまだない。",
   "strengths": [
    "coding",
@@ -5727,8 +5709,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。aa_indexはAA v4.3.2。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では13。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。 aa_indexはAA Intelligence Index v5.0.1（推論あり、2026-11-22取得）の5.5。旧v4.3.2の13とは尺度が違い比べられない。",
+  "aa_index": 5.5,
   "japanese_note": "モデルカードのテスト済み言語に日本語が含まれる。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
   "deploy_note_ja": "Ollama公式（granite4.2:30b）のQ4_K_Mが約18GBで、24GB GPUに載る。ネイティブ128K、512Kまでの拡張あり。LM Studio、llama.cppでも動く。tok/sの実測報告は見当たらない。",
   "local_runtimes": [
@@ -5754,7 +5736,8 @@
    "https://datanorth.ai/news/ibm-releases-granite-4-2",
    "https://www.biton.co.jp/blog_81.html"
   ],
-  "confidence": "high"
+  "confidence": "high",
+  "verified_at": "2026-11-22"
  },
  {
   "id": "liquid-lfm2-5-24b-a2b",
@@ -8736,5 +8719,69 @@
    "reports": [],
    "note_ja": "bitsは実ファイル容量÷594Bの実効値（スケール等を含む）。旧Inkling-Smallの後継とは公式に書かれていないため、旧版は残している。 GGUF・MLXの容量は11/16にHFのファイル一覧で確認（画像入力用のmmprojは別に約0.7GB）。"
   }
+ },
+ {
+  "id": "tml-inkling-2-mini",
+  "name": "Inkling 2 Mini",
+  "short": "Inkling 2 Mini",
+  "family": "Inkling",
+  "org": "Thinking Machines Lab",
+  "country": "US",
+  "release": "2026-11-20",
+  "arch": "MoE",
+  "total_b": 26.4,
+  "active_b": 3.4,
+  "native_precision": "NVFP4とMXFP8の混合（公式配布は単一チェックポイント）",
+  "weights_gb": 20.16,
+  "context_k": 1000,
+  "modality": [
+   "text",
+   "image"
+  ],
+  "mode": "hybrid",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0で商用可。別途、公式の利用ポリシー（Acceptable Use）へのリンクがある。gatedではない。",
+  "hf": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+  "summary_ja": "Inkling 2の小型版（総26.4B、稼働3.4B）。中間12層を3回繰り返すループ型MoEで、実効の稼働は約5.4B。画像入力と最大1Mトークンの文脈に対応し、11/20にApache-2.0で公開。",
+  "strengths": [
+   "efficiency",
+   "coding",
+   "agent",
+   "vision",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "AA Intelligence Index v5.0.1は20.1（11/22照合、AAの公開重み行）。公式カードにGemma 4 31B・Muse Glimmer・Qwen3.8-27B等との比較表があるが、条件が別のためここには転記していない。",
+  "aa_index": 20.1,
+  "japanese_note": "モデルカードは「英語＋一般的な多言語能力」とのみ記載。日本語の個別の評価・対応明記はない。",
+  "deploy_note_ja": "公式チェックポイントは約20GB。公式はDGX Spark 1台、メモリ32GB以上のApple silicon、VRAM 32GB以上のGPUを推奨。SGLang・vLLM・TokenSpeed・NVIDIA Dynamo・Unsloth（GGUF）・llama.cpp・Ollama・Exoに対応とカードに記載。",
+  "engines": [
+   "SGLang",
+   "vLLM",
+   "TokenSpeed",
+   "Unsloth",
+   "llama.cpp",
+   "Ollama",
+   "Transformers"
+  ],
+  "supersedes": [],
+  "notes": "Tinker経由のAPI・プレイグラウンドでも利用可。旧Inkling-Smallの後継とは公式に書かれていない（AAでは旧Inkling-Smallが廃止扱い）。",
+  "sources": [
+   "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-22"
  }
 ]

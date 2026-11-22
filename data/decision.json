@@ -420,6 +420,140 @@
   "availability_tier": "general"
  },
  {
+  "id": "baseten-bison-1",
+  "name": "bison-1（31B）",
+  "params_b": 31.3,
+  "arch": "Gemma 4 31B ITを671万件の判断例で全体微調整した判断モデル（画像エンコーダ・正規化・埋め込みは凍結）。文章を生成せず、1回の共有プレフィルで全質問の各選択肢の確率を返す。「わからない」選択肢とBrier較正項で学習",
+  "spec": {
+   "latency_ms": null,
+   "inputs": "状態（テキスト＋任意で画像）＋型付き質問。最大131,072トークン（超過は切り詰めずに拒否）",
+   "outputs": "Choice／Noul（はい・いいえ）／Scoreの各選択肢の確率",
+   "languages": "英語",
+   "other": "Baseten Model APIsで decision-models/baseten-bison-latest として提供。mammoth-1・elephant-1と同じAPI"
+  },
+  "rec_vram_gb": 80,
+  "vram_note": "公式の要件はない。BF16の重みファイルは約65GBのため80GB級が目安",
+  "price_note": "Baseten Model APIsで$0.10／100万トークン（モデルカード。キャッシュ・出力の扱いは記載なし）",
+  "bench": [
+   {
+    "metric": "Artificial Analysis Decision Index v2.1",
+    "value": 75.9,
+    "note": "2026-11-22取得。AAの判断モデルで1位（Brier 0.14で較正も最良とモデルカード）",
+    "source": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+   },
+   {
+    "metric": "LongMemEval S（128kトークン、自社実行）",
+    "value": 87.1,
+    "note": "Mは84.8",
+    "source": "https://huggingface.co/baselabs/bison-1"
+   }
+  ],
+  "quality_note": "AA判断指数v2.1で75.9と、d1.2-ultra（74.8）を上回り首位。長文の判断にも強い",
+  "hf": "https://huggingface.co/baselabs/bison-1",
+  "summary_ja": "Basetenが11/20に公開した31Bの判断モデル。AA判断指数で首位、13万トークンの長文まで扱えます。商用利用可。",
+  "best_for_ja": "長い文書を含む判断を、最高精度のオープンモデルで自前運用したい場合",
+  "sources": [
+   "https://huggingface.co/baselabs/bison-1",
+   "https://www.baseten.co/library/bison-1/",
+   "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index"
+  ],
+  "hl": {
+   "label": "AA判断",
+   "value": 75.9
+  },
+  "pick": "オープンで最上位",
+  "pick_reason": "AA判断指数v2.1で75.9の首位（11/22）・商用可",
+  "org": "Baseten（Base Labs）",
+  "country": "US",
+  "release": "2026-11-20",
+  "access": "open-weight",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "判断の保留を学習": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "speed_note": "公式に遅延の数値なし",
+  "ja_note": "モデルカードの言語は英語のみ。日本語での精度は不明",
+  "license": "MIT＋Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Basetenの改変部分はMIT、元のGemma 4はApache-2.0で、両方の条件に従う（モデルカード）。ゲートなし",
+  "tools": [
+   "Baseten Model APIs",
+   "Transformers"
+  ],
+  "supersedes": [],
+  "confidence": "high",
+  "rank": 5
+ },
+ {
+  "id": "baseten-groundhog-1",
+  "name": "groundhog-1（26B-A4B）",
+  "params_b": 25.8,
+  "arch": "Gemma 4 26B-A4B ITをbison-1と同じデータ・手法で全体微調整したMoE判断モデル（稼働約4B。画像エンコーダ・ルーター・正規化・埋め込みは凍結）",
+  "spec": {
+   "latency_ms": null,
+   "inputs": "状態（テキスト＋任意で画像）＋型付き質問。最大131,072トークン",
+   "outputs": "Choice／Noul／Scoreの各選択肢の確率",
+   "languages": "英語",
+   "other": "Baseten Model APIsで decision-models/baseten-groundhog-latest として提供"
+  },
+  "rec_vram_gb": 80,
+  "vram_note": "公式の要件はない。BF16の重みファイルは約53GB",
+  "price_note": "Baseten Model APIsで$0.035／100万トークン（モデルカード）",
+  "bench": [],
+  "quality_note": "AA判断指数への掲載は11/22時点でなし。公式はbison-1より速く安い弟分と説明",
+  "hf": "https://huggingface.co/baselabs/groundhog-1",
+  "summary_ja": "bison-1と同時公開のMoE版（総26B・稼働約4B）。長文の判断を小型モデル並みの価格で。",
+  "best_for_ja": "速さと単価を重視して長い文書の判断を回したい場合",
+  "sources": [
+   "https://huggingface.co/baselabs/groundhog-1",
+   "https://www.baseten.co/library/groundhog-1/"
+  ],
+  "org": "Baseten（Base Labs）",
+  "country": "US",
+  "release": "2026-11-20",
+  "access": "open-weight",
+  "tasks": [
+   "predicate",
+   "choice",
+   "score",
+   "route",
+   "classify"
+  ],
+  "features": {
+   "画像入力": true,
+   "確率・信頼度を返す": true,
+   "判断の保留を学習": true,
+   "セルフホスト可": true,
+   "ホストAPIあり": true,
+   "日本語対応（公式明記）": false
+  },
+  "min_vram_gb": null,
+  "speed_note": "公式に遅延の数値なし",
+  "ja_note": "モデルカードの言語は英語のみ。日本語での精度は不明",
+  "license": "MIT＋Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Basetenの改変部分はMIT、元のGemma 4はApache-2.0で、両方の条件に従う（モデルカード）。ゲートなし",
+  "tools": [
+   "Baseten Model APIs",
+   "Transformers"
+  ],
+  "supersedes": [],
+  "confidence": "high",
+  "rank": null
+ },
+ {
   "id": "baseten-mammoth-1",
   "name": "mammoth-1（27B）",
   "org": "Baseten（Base Labs）",
@@ -496,8 +630,8 @@
    "label": "Jev 0.4.1",
    "value": 68.9
   },
-  "pick": "オープンで最上位",
-  "pick_reason": "Jev Decision Index 0.4 で1位・MIT",
+  "pick": null,
+  "pick_reason": null,
   "rank": 5
  },
  {
@@ -713,7 +847,7 @@
   "license": "Fastino Community License",
   "commercial": "conditional",
   "license_note": "年間売上1,000万ドル超の企業が本番で商用利用する場合は別途契約が必要。商用利用時は「Built with Fastino GLiDE」の表示義務。派生モデルにも同じ条件が及ぶ。Qwen3.8由来部分はApache-2.0",
-  "hf": "https://huggingface.co/fastino/GLiDE",
+  "hf": "https://huggingface.co/fastino/GLiDE-27B",
   "tools": [
    "Transformers（同梱のglideパッケージ）",
    "HTTPサーバー（/v1/systemone、同梱）",
@@ -1760,7 +1894,7 @@
   "license": "Apache-2.0",
   "commercial": "yes",
   "license_note": "ベースの Qwen3.8-27B のライセンスにも従う。",
-  "hf": "https://huggingface.co/AutoTrust/JEV-27B-VL",
+  "hf": "https://huggingface.co/autotrust/AutoTrust-Decider-Pro-Vision-27B",
   "tools": [
    "vLLM"
   ],
