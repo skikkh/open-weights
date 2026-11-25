@@ -2191,12 +2191,12 @@
   "availability_tier": "general"
  },
  {
-  "id": "ideogram-4-5",
-  "name": "Ideogram 4.5",
+  "id": "ideogram-4-6",
+  "name": "Ideogram 4.6",
   "org": "Ideogram",
   "country": "CA",
   "access": "api",
-  "release": "2026-09",
+  "release": "2026-11",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -2206,70 +2206,68 @@
    "inpaint"
   ],
   "spec": {
-   "max_resolution": "ネイティブ2K（編集は24MP級の元画像を縮小せずに処理できる）",
-   "other": "画質は4段階。Generateは参照画像を最大5枚まで使える。Precise Editは指定部分だけを変え、複数回の編集でもアーティファクトが蓄積しないとされる。アプリ・MCP・APIで提供。重みを公開しているのは4.0のみ。"
+   "max_resolution": "最大4K（4096×4096画素まで。既定は2K、very_lowは2Kまで）",
+   "other": "生成と編集の両方に対応（元画像最大5枚＋マスク）。品質4段階（既定はmedium）、背景の透過指定、テキスト／JSONプロンプト。Precise Edit（大きさを保った部分編集）のエンドポイントは引き続き4.5。重みを公開しているのは4.0のみ。"
   },
   "features": {
    "文字描画(タイポグラフィ)特化": true,
    "複数参照画像(最大5枚)": true,
+   "4K出力": true,
    "精密な部分編集": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
   "vram_note": null,
   "speed_note": null,
-  "price_note": "公式API（1枚固定価格、プロンプト長・参照枚数・解像度に依存しない）: Low $0.03、Medium $0.06、High $0.10（参照あり・Precise Editは$0.22）、Very low $0.008。サブスクリプション不要。",
+  "price_note": "公式API（1枚あたり米ドル、元画像なし）：2Kまで very low $0.008・low $0.03・medium $0.06・high $0.10、4Kは low $0.06・medium $0.12・high $0.20。品質未指定はmedium。元画像ありの料金は公式料金ページで確認。",
   "bench": [
    {
     "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 1015,
-    "note": "High設定で全体38位",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
+    "value": 985,
+    "note": "Ideogram 4.6 (High)、AAへの追加は11/24（11/25取得）",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
    },
    {
     "metric": "Artificial Analysis Image Editing Arena ELO",
-    "value": 1070,
-    "note": "High設定で全体19〜28位",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
-   },
-   {
-    "metric": "LMArena Image Edit スコア",
-    "value": 1347,
-    "note": "20位・暫定値（2026-10-06時点）",
-    "source": "https://arena.ai/leaderboard/image-edit"
+    "value": 1088,
+    "note": "Ideogram 4.6 (High)、11/25取得",
+    "source": "https://artificialanalysis.ai/image/leaderboard/editing"
    }
   ],
-  "quality_note": "汎用のアリーナでは中位だが、文字組み・デザイン用途では評価が高い（Ideogram 4のContraLabs評価を参照）。公式は、複数回の編集でGPT Image 2.5 SunburstやNano Banana系より崩れにくいと主張している。",
-  "ja_note": "公式ページの文字差し替え作例に、看板を日本語へ翻訳する例がある。品質を第三者が検証した結果は未確認。",
+  "quality_note": "AAでは生成は中位、編集は4.5（1070）より高い値。文字組み・デザイン用途の評価は4.5以前の傾向を参照（4.6固有の第三者評価は未確認）。",
+  "ja_note": "日本語の文字描画を4.6で検証した資料は未確認（4.5では看板の日本語差し替え作例あり）。",
   "license": "API（Ideogram利用規約）",
   "commercial": "yes",
   "license_note": "有償API・プランでの生成物は商用利用可とされる。規約本文の個別精査は未実施。",
-  "hf": "https://ideogram.ai/models/4.5/",
+  "hf": "https://developer.ideogram.ai/v2/ideogram-api/models",
   "tools": [
    "Ideogram API",
    "Ideogramアプリ",
    "MCP"
   ],
-  "summary_ja": "文字入りデザインに強いIdeogramの最新版。1枚3〜22セントの固定価格で編集もできる。",
+  "summary_ja": "文字入りデザインに強いIdeogramの最新版。公式APIで「最新モデル」とされ、4Kまでの生成・編集に対応。1枚0.8〜20セントの固定価格。",
   "best_for_ja": "ロゴ・ポスター・看板など文字主体のデザイン、多言語への文字差し替え",
   "supersedes": [
+   "Ideogram 4.5",
    "Ideogram 4.0（API）",
    "Ideogram 3.0"
   ],
   "sources": [
-   "https://ideogram.ai/models/4.5/",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image",
-   "https://arena.ai/leaderboard/image-edit"
+   "https://developer.ideogram.ai/v2/ideogram-api/models.md",
+   "https://developer.ideogram.ai/v2/api-reference/images/generate/ideogram-4-6.md",
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image",
+   "https://artificialanalysis.ai/image/leaderboard/editing"
   ],
   "confidence": "medium",
   "rank": 27,
   "hl": {
    "label": "AA Arena",
-   "value": 1015
+   "value": 985
   },
   "series": "Ideogram flagship",
-  "availability_tier": "general"
+  "availability_tier": "general",
+  "verified_at": "2026-11-25",
+  "release_note": "公式の発表日は未確認（ニュースページは取得不可）。AA・Runwareの表示は11/19、公式APIドキュメントの料金表（11/15時点と記載）に4.6が載るため月までにしている。"
  },
  {
   "id": "midjourney-v8-2",

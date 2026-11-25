@@ -202,7 +202,7 @@
   "summary_ja": "日常のコーディング・エージェント作業を速く安く回すGemini 4の高速版。Gemini 3.8 Flashからの推奨移行先。",
   "availability_ja": "11/12にGemini APIの無料枠・有料枠で一般提供。Geminiアプリ、AI Studio、Antigravity等にも展開。",
   "price_note": "有料枠の100万トークンあたり（米ドル）：入力$1.50、出力$7.50（思考トークン込み）、キャッシュ$0.075（暗黙キャッシュのみ）。Batch・Flexは入力$0.75／出力$3.75。検索グラウンディングは月5,000件まで無料、以降$14／1,000件。",
-  "detail_note": "公式はCarbonから派生した高速版で、Carbon・Argonと組み合わせる作業役・検証役としても案内。思考レベルはlow／medium／high（既定）／xhigh。AA Intelligence Index v5.0.1は53.9（xhigh、11/13照合）。旧Gemini 3.8 Flashは廃止告知前だが、公式が「3.8 Flashからの推奨アップグレード」と明記したため置換。",
+  "detail_note": "公式はCarbonから派生した高速版で、Carbon・Argonと組み合わせる作業役・検証役としても案内。思考レベルはlow／medium／high（既定）／xhigh。AA Intelligence Index v5.0.2は54.1（xhigh、11/25照合）。旧Gemini 3.8 Flashは廃止告知前だが、公式が「3.8 Flashからの推奨アップグレード」と明記したため置換。",
   "context_note": "入出力を合わせ1,048,576トークン。同期出力は最大65,536トークン、long decodeで最大1M。",
   "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen",
   "sources": [
@@ -237,7 +237,7 @@
   "summary_ja": "HydrogenとCarbonの間に置かれたGemini 4。複雑な開発・知識作業・科学の作業を速く仕上げる高頻度用途向け。",
   "availability_ja": "11/18にGemini APIの有料枠で一般提供（無料枠なし）。Google AI Pro／Ultraのプランでも利用可。",
   "price_note": "有料枠の100万トークンあたり（米ドル）：入力$3、出力$15（思考トークン込み）、キャッシュ$0.15（暗黙キャッシュのみ）。Batch・Flexは入力$1.50／出力$7.50。検索グラウンディングは月5,000件まで無料、以降$14／1,000件。",
-  "detail_note": "思考レベルはlow／medium／high（既定）／xhigh。公式は最難関はCarbon、日常作業はHydrogenと使い分けを案内しており、Argon・Hydrogenの後継ではない別の役割として追加。AA Intelligence Index v5.0.1は61.4（xhigh、11/19照合）。",
+  "detail_note": "思考レベルはlow／medium／high（既定）／xhigh。公式は最難関はCarbon、日常作業はHydrogenと使い分けを案内しており、Argon・Hydrogenの後継ではない別の役割として追加。AA Intelligence Index v5.0.2は61.6（xhigh、11/25照合）。",
   "context_note": "入出力を合わせ1,048,576トークン。同期出力は既定64K、long decodeで最大1M。",
   "hf": "https://ai.google.dev/gemini-api/docs/models/gemini-4-neon",
   "sources": [
@@ -686,7 +686,7 @@
   "access": "api",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-25",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "availability_ja": "API・サービス提供中（契約条件は公式で確認）",
   "id": "grok-4-7",
@@ -696,13 +696,16 @@
   "release": null,
   "summary_ja": "Grok系列のフロンティアAPIモデル。旧Grok世代を別行で並べず、現行の版を掲載。",
   "hf": "https://docs.x.ai/developers/models/grok-4.7",
-  "price_note": "最新の公式API料金を確認。",
+  "price_note": "100万トークンあたり入力$2・キャッシュ読込$0.50・出力$6（USD、グローバルAPI）。入力20万トークン以上はリクエスト全体が入力$4・キャッシュ$1・出力$12。US限定リージョンは別途10%増。",
   "sources": [
-   "https://docs.x.ai/developers/models/grok-4.7"
+   "https://docs.x.ai/developers/models/grok-4.7",
+   "https://docs.x.ai/developers/pricing",
+   "https://docs.x.ai/docs/release-notes"
   ],
   "series": "xAI Grok flagship",
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
+  "detail_note": "AA Intelligence Index v5.0.2は35.4（Xhigh、11/25照合）。"
  },
  {
   "category": "llm",
@@ -927,7 +930,7 @@
   "country": "US",
   "release": "2026-11-09",
   "access": "api",
-  "summary_ja": "Anthropicの最上位。難しい推論・長期のエージェント作業向けで、AA Intelligence Index v5.0.1は64.6（Max）。",
+  "summary_ja": "Anthropicの最上位。難しい推論・長期のエージェント作業向けで、AA Intelligence Index v5.0.2は64.8（Max、11/25照合）。",
   "availability_ja": "Claude API（claude-fable-5-2）、Amazon Bedrock、Google Cloud、Microsoft Foundry、claude.aiのPro／Max／Ultra／Team／Enterpriseで一般提供。30日間のデータ保持が必須で、ZDR契約では原則使えない。",
   "price_note": "100万トークンあたり入力$8／出力$40（米ドル）。キャッシュ書き込み5分$10・1時間$16、キャッシュ読み出し$0.20。Batchは半額、Fast modeは入力$16／出力$80、US限定推論は1.1倍。1Mまで長文脈の割増なし。会員サービスの利用料は別。",
   "hf": "https://www.anthropic.com/claude/fable",
@@ -979,7 +982,7 @@
   ],
   "context_note": "入力1Mトークンまでの料金区分。",
   "availability_tier": "general",
-  "detail_note": "Web検索・ツール呼び出し・構造化出力、OpenAI／Anthropic互換API。AA Intelligence Index v5.0.1は42.9（11/19照合）。",
+  "detail_note": "Web検索・ツール呼び出し・構造化出力、OpenAI／Anthropic互換API。AA Intelligence Index v5.0.2は42.8（11/25照合）。",
   "release_note": "Model Studioの新着モデル一覧で11/16の提供開始を確認。"
  },
  {
@@ -3229,5 +3232,34 @@
   "commercial": "conditional",
   "confidence": "medium",
   "ja_note": "日本語の公式記載なし。OCR対応フォント一覧にも日本語フォントは見当たらない。"
+ },
+ {
+  "id": "azure-llm-speech",
+  "name": "Azure LLM Speech（09 2026）",
+  "category": "asr",
+  "series": "Microsoft Azure LLM Speech",
+  "org": "Microsoft",
+  "country": "US",
+  "release": null,
+  "access": "api",
+  "summary_ja": "Azure SpeechのLLMベースの録音向け音声認識。版はサービス側で自動更新され、現行は09 2026。",
+  "availability_ja": "Azure Speech（Microsoft Foundry）で提供中。版はAPIで選べず自動で切り替わる。",
+  "price_note": "公式料金ページで高速文字起こしと同じ料金・課金SKU。Azure小売価格API（East US、米ドル）で$0.36／音声1時間、9/1からのプロモ価格$0.10／時間（終了日は不明）。地域で異なる。",
+  "hf": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/llm-speech",
+  "sources": [
+   "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/llm-speech",
+   "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=llm-speech",
+   "https://azure.microsoft.com/en-us/pricing/details/speech/",
+   "https://prices.azure.com/api/retail/prices"
+  ],
+  "verified_at": "2026-11-25",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "local_note": "重みの一般配布なし。API・サービスで利用。",
+  "supersedes": [],
+  "availability_tier": "general",
+  "ja_note": "公式の対応言語表にja-JP（日本語）あり。100以上の言語。日本語の精度評価は未確認。",
+  "detail_note": "MAI-Transcribe-2（プレビュー）とは別の製品系列。セグメント・単語単位のタイムスタンプ、フレーズリストに対応。AAのSTT一覧に指標値はなし。",
+  "release_note": "版名「09 2026」と10/26付の公式ブログはあるが、提供開始日は確定できないため日付不明。"
  }
 ]

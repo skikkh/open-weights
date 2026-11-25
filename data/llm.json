@@ -108,8 +108,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告（reasoning_effort=max）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code 2.1.207ハーネス）。その他: Terminal-Bench 3.0 28.3、DeepSWE v1.1 66.9、CyberGym 84.5、HLE w/ tools 62.5、AutomationBench 48.2、GDPval-AA v2 1769。ツールなしHLEとGPQAは自社カードに記載なし。AA指数v4.3.2（2026-10-20取得、Max設定。lowは34.3）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では44.8）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。",
-  "aa_index": 31.7,
+  "bench_note": "モデルカード自己申告（reasoning_effort=max）。terminal_bench2欄はTerminal-Bench 2.1（Claude Code 2.1.207ハーネス）。その他: Terminal-Bench 3.0 28.3、DeepSWE v1.1 66.9、CyberGym 84.5、HLE w/ tools 62.5、AutomationBench 48.2、GDPval-AA v2 1769。ツールなしHLEとGPQAは自社カードに記載なし。AA指数v4.3.2（2026-10-20取得、Max設定。lowは34.3）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では44.8）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。 11/25にAA Intelligence Index v5.0.2（Terminal-Bench 4.1→4.0の置換、FrontierCode-AA 2.0の再採点）で再照合し31.7→31.6に更新。",
+  "aa_index": 31.6,
   "japanese_note": "5.3自体の日本語評価は未確認。前世代GLM-5はNejumi Leaderboard 4（2026/3/6版）で総合0.7884（全体19位）という参考値がある。",
   "deploy_note_ja": "FP8で約756GB。8×H200（約1.13TB）1ノードが目安で、BF16（約1.5TB）なら8×B300か2ノード。unslothのGGUFがあり、UD-Q4_K_XL 約467GBは512GB級Mac、UD-Q2_K_XL 約254GB／UD-IQ1_S 約217GBは256GB級機が目安。KTransformersでCPU+GPUのハイブリッド推論、Ascend NPU（vLLM-Ascend/xLLM）にも対応。",
   "engines": [
@@ -280,8 +280,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では45.1）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。",
-  "aa_index": 32.6,
+  "bench_note": "1017版モデルカード自己申告（max effort）。HLEはツールなし（テキストのみの部分集合では44.0）。他にTerminal-Bench 4.0 42.3、DeepSWE v1.1 77.0、NL2Repo 68.2。1017版はTB2.1/GPQAを載せていないため欄は空欄。参考として初版V4.1-Flash（0910）のカードはGPQA Diamond 90.9、Terminal-Bench 2.1 90.6、HLE w/ tools 63.9、Codeforces 3471。AA指数v4.3.2（2026-10-20取得、1017 Max）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-11-04取得）の値（旧v4.3.2では45.1）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。 11/25にAA Intelligence Index v5.0.2（Terminal-Bench 4.1→4.0の置換、FrontierCode-AA 2.0の再採点）で再照合し32.6→32.4に更新。",
+  "aa_index": 32.4,
   "japanese_note": "V4系の日本語評価は未確認。旧世代DeepSeek-V3.2はNejumi Leaderboard 4（2026/3/6版）で総合0.7888（全体18位）という参考値がある。",
   "deploy_note_ja": "公式重みは約510GB（FP8とFP4の混在）。8×H200や4×GB300/B300で1ノード。SGLang公式cookbookにGB300/H200/B200/B300/MI350X向けレシピがある（当面はプレビュー版Dockerイメージが必要）。unslothのGGUFはUD-Q2_K_XL 約335GB、UD-IQ1_S 約233GBで512GB級Macが現実的な下限。MLX版（mlx-community oQ系）もある。",
   "engines": [
@@ -1043,8 +1043,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0.1の値（思考モード、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では39.8。v5とは尺度が違い比べられない）。",
-  "aa_index": 28.6,
+  "bench_note": "モデルカード自己申告（思考モード）。lcbはLiveCodeBench v6。他にSWE-bench Pro 62.5（Claude Codeハーネス）、DeepSWE 1.1 58.7、SWE-bench Multilingual 81.0、Toolathlon Verified 73.5。HLEはGPT-4o判定。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0.1の値（思考モード、2026-11-16取得の埋め込みデータを小数1桁に丸め。AAに追加された日は不明）（旧v4.3.2では39.8。v5とは尺度が違い比べられない）。 11/25にAA Intelligence Index v5.0.2（Terminal-Bench 4.1→4.0の置換、FrontierCode-AA 2.0の再採点）で再照合し28.6→28.5に更新。",
+  "aa_index": 28.5,
   "japanese_note": "Flash-Next自体の日本語評価は未確認。前世代Qwen3.5-122B-A10BはNejumi Leaderboard 4（2026/3/6版）で総合0.8094（全体8位）という参考値がある。",
   "deploy_note_ja": "BF16で約360GB、公式FP8で約186GB（FP8なら2×H200か4×H100）。unslothのGGUFはUD-Q4_K_XL 約111GBで、128GB級Mac/DGX Sparkならぎりぎり、192GB以上なら余裕がある。UD-Q2_K_XL 約79GB。MLX 4bit版もあり、本一覧で最も手元で動かしやすい大型MoE。",
   "engines": [
@@ -1238,8 +1238,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "Pro-RLのモデルカードに並記された自己申告値。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 67.9、Toolathlon-Verified 73.6、OSWorld-Verified 80.8、CyberGym 95.1。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では37.9）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。",
-  "aa_index": 26.7,
+  "bench_note": "Pro-RLのモデルカードに並記された自己申告値。terminal_bench2欄はTerminal-Bench 2.1。他にDeepSWE v1.1 67.9、Toolathlon-Verified 73.6、OSWorld-Verified 80.8、CyberGym 95.1。AA指数v4.3.2（2026-10-20取得）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）の値（旧v4.3.2では37.9）。 現在のaa_indexはAA Intelligence Index v5.0.1の2026-11-05取得値と照合済み。 11/25にAA Intelligence Index v5.0.2（Terminal-Bench 4.1→4.0の置換、FrontierCode-AA 2.0の再採点）で再照合し26.7→26.8に更新。",
+  "aa_index": 26.8,
   "japanese_note": null,
   "deploy_note_ja": "公式重みは約178GB。vLLMの公式例はTP4（4×H100/H200）。mlx-communityのMLX版（mxfp4-q8）なら256GB級Mac、コミュニティGGUFなら192GB級機も候補。",
   "engines": [
@@ -5709,8 +5709,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。 aa_indexはAA Intelligence Index v5.0.1（推論あり、2026-11-22取得）の5.5。旧v4.3.2の13とは尺度が違い比べられない。",
-  "aa_index": 5.5,
+  "bench_note": "公式モデルカード（NeMo Evaluator SDKベース）。AIMEはAIME25、LCBはv6、terminal_bench2はTerminal-Bench 2.1。ほかにτ³-bench平均62.00、BFCL v4 61.39、RULER 128K 81.38。 aa_indexはAA Intelligence Index v5.0.1（推論あり、2026-11-22取得）の5.5。旧v4.3.2の13とは尺度が違い比べられない。 11/25のAA v5.0.2では指数が表示されないため空欄に戻した（v5.0.1の5.5は参考）。",
+  "aa_index": null,
   "japanese_note": "モデルカードのテスト済み言語に日本語が含まれる。biton（2026年10月版）は日本語○の評価。Nejumi/Swallowのスコアは見当たらない。",
   "deploy_note_ja": "Ollama公式（granite4.2:30b）のQ4_K_Mが約18GBで、24GB GPUに載る。ネイティブ128K、512Kまでの拡張あり。LM Studio、llama.cppでも動く。tok/sの実測報告は見当たらない。",
   "local_runtimes": [
@@ -6215,17 +6215,17 @@
   "confidence": "medium"
  },
  {
-  "id": "krafton-raon-1-mini-preview",
-  "name": "Raon-1 mini preview (30B-A4B)",
+  "id": "krafton-raon-1-mini",
+  "name": "Raon-1 mini (30B-A4B)",
   "short": "Raon-1 mini",
   "family": "Raon-1",
   "org": "KRAFTON",
   "country": "KR",
-  "release": "2026-10-21",
+  "release": "2026-11-24",
   "arch": "MoE（線形注意 RDA 18層＋MLA 7層のハイブリッド、専門家128中6＋共有1）",
-  "total_b": 30,
-  "active_b": 4,
-  "native_precision": "MXFP8（公式。NVFP4 版と GGUF 版もあり）",
+  "total_b": 28.8,
+  "active_b": 4.3,
+  "native_precision": "MXFP8相当（公式。NVFP4版とGGUF版もあり）",
   "weights_gb": 32.7,
   "q4_gb": 19.7,
   "context_k": 262,
@@ -6235,9 +6235,9 @@
   "mode": "thinking",
   "license": "Apache-2.0",
   "commercial": "yes",
-  "license_note": "プレビュー版。最終版で仕様や成績が変わる可能性がある。",
-  "hf": "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
-  "summary_ja": "ゲーム会社 KRAFTON（PUBG の開発元）がゼロから学習した30B MoE（稼働4B）のプレビュー版。韓国語の会話とエージェント作業に強く、学習データには日本語も含む。",
+  "license_note": "正式版。Apache-2.0で商用可。",
+  "hf": "https://huggingface.co/KRAFTON/Raon-1-mini",
+  "summary_ja": "ゲーム会社KRAFTON（PUBGの開発元）がゼロから学習したMoE（総28.8B、稼働4.3B）の正式版。韓国語の会話とエージェント作業に強く、学習データに日本語も含む。思考の強さを6段階で切り替えられる。",
   "strengths": [
    "agent",
    "reasoning",
@@ -6247,37 +6247,36 @@
    "tool-use"
   ],
   "bench": {
-   "swe_verified": 70.8,
-   "gpqa": 84.3,
+   "swe_verified": 71.0,
+   "gpqa": 86.0,
    "hle": null,
-   "aime": 93.3,
-   "lcb": 81.6,
-   "mmlu_pro": 76.5,
+   "aime": 96.7,
+   "lcb": 81.7,
+   "mmlu_pro": 82.7,
    "terminal_bench2": null,
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "モデルカードの自己申告（プレビュー版）。IFBench 84.2、BrowseComp Plus 55.7、AA-LCR 67.3、Terminal-Bench Lite 47.0、AIME 2026 93.3。多くの項目で Qwen3.8-27B には及ばないが、同じ MoE 級の Qwen3.6-35B-A3B・Gemma 4 26B-A4B とは互角以上。Artificial Analysis は未計測（2026-10-27 時点）。",
+  "bench_note": "モデルカードの自己申告（正式版、11/24）。AIMEは2026年版、SWE-Verifiedはmini-SWE-agentでの値。IFBench 84.9、MultiChallenge 64.9、BrowseComp Plus 55.9、AA-LCR 70.7、Terminal-Bench Lite 52.0。プレビュー版の値は引き継がない。Artificial Analysisは未掲載（11/25確認）。",
   "aa_index": null,
   "japanese_note": "学習言語に日本語を含む（韓国語・英語・日本語・中国語・スペイン語・フランス語・タイ語）。日本語の評価値は公開されていない。",
-  "deploy_note_ja": "公式は MXFP8 で約33GB。NVFP4 版なら RTX 5090（32GB）1枚、4bit GGUF（Q4_K_M 約20GB）なら RTX 4090 にも載る。GGUF は KRAFTON の llama.cpp ブランチが必要（本家への取り込みは未完了）。DFlash2 の投機デコード用ドラフトと MLX 版も公開。",
-  "local_runtimes": [
-   "llama.cpp（KRAFTON版）",
-   "MLX"
-  ],
+  "deploy_note_ja": "公式は約32.7GB。公式NVFP4版は約17.6GBでRTX 5090（32GB）1枚、公式GGUFはIQ4_XS約16.2GB・Q4_K_M約19.7GB・Q8_0約30.7GB（カード記載）。",
   "engines": [
    "vLLM",
    "SGLang",
-   "llama.cpp（KRAFTON版）",
+   "llama.cpp",
    "MLX"
   ],
-  "supersedes": [],
-  "sources": [
-   "https://huggingface.co/KRAFTON/Raon-1-mini-preview",
-   "https://huggingface.co/KRAFTON/Raon-1-mini-preview-gguf",
-   "https://huggingface.co/KRAFTON/Raon-1-mini-preview-nvfp4"
+  "supersedes": [
+   "Raon-1 mini preview"
   ],
-  "confidence": "medium"
+  "sources": [
+   "https://huggingface.co/KRAFTON/Raon-1-mini",
+   "https://huggingface.co/api/models/KRAFTON/Raon-1-mini?blobs=true"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-25",
+  "notes": "HF作成は11/24。総パラメータはHFのsafetensors集計で約28.8B（カードの呼称は30B-A4B）。"
  },
  {
   "id": "xing4-0-29b-a4b",
@@ -8056,48 +8055,54 @@
   "bench_note": "開発元の同一評価環境による値。LiveCodeBench v6は82%、SWE-bench Verifiedは47%。独立したAA測定値ではない。"
  },
  {
-  "id": "ling-3-0-flash-sante",
-  "name": "Ling-3.0-flash-Sante",
-  "short": "Ling-3.0-flash-Sante",
-  "family": "Ling-3.0-flash-Sante",
+  "id": "lingsante-3-1-flash",
+  "name": "LingSante-3.1-flash",
+  "short": "LingSante-3.1-flash",
+  "family": "LingSante",
   "org": "Ant Group / inclusionAI",
   "country": "CN",
-  "release": "2026-10-19",
-  "arch": "MoE",
-  "total_b": 124,
-  "active_b": 5.1,
-  "native_precision": "BF16",
-  "weights_gb": 254.981,
-  "context_k": 262.144,
+  "release": "2026-11-19",
+  "arch": "MoE（Ling-3.1-flashベース）",
+  "total_b": 560,
+  "active_b": 25,
+  "native_precision": "FP8（公式MXFP4版も別配布）",
+  "weights_gb": 573.8,
+  "context_k": 1000,
   "modality": [
    "text"
   ],
   "mode": "hybrid",
   "license": "MIT",
   "commercial": "yes",
-  "hf": "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante",
-  "summary_ja": "医療・ヘルスケアの研究や資料調査、ツール利用に追加学習したLing系列。汎用の最新Lingとは用途が違う専門モデルとして掲載する。",
+  "license_note": "MIT。カードは研究・評価用途とし、医療機器ではなく診断・処方の単独根拠にしないよう明記。",
+  "hf": "https://huggingface.co/inclusionAI/LingSante-3.1-flash",
+  "summary_ja": "医療の推論・説明・根拠調査・長い医療業務向けに追加学習したLing系列の新版。汎用の最新Lingとは用途が違う専門モデルとして掲載する。",
   "strengths": [
    "reasoning",
    "agent",
-   "tool-use"
+   "tool-use",
+   "long-context"
   ],
   "bench": {},
+  "bench_note": "医療系の開発元評価のみで一般ベンチの比較値は転記していない。AAは掲載されているが指数は未算出（11/25確認）。",
   "aa_index": null,
   "japanese_note": "日本語での独立評価は未確認。",
-  "deploy_note_ja": "BF16重み約255GB。bartowskiのQ4_K_Mは3分割計約80.39GBで、余裕量を含めると80GB GPU1枚には厳しい。医療系の開発元評価を一般モデルの総合順位と混同しない。",
+  "deploy_note_ja": "公式配布は約574GB。11/22に公式MXFP4版（約313GB、RTN量子化）が追加。旧Ling-3.0-flash-Santeの量子化ファイルは流用しない。",
   "engines": [
-   "Transformers"
+   "SGLang",
+   "vLLM"
   ],
-  "supersedes": [],
+  "supersedes": [
+   "Ling-3.0-flash-Sante"
+  ],
+  "notes": "HF作成は11/19（公式の発表日は未確認のためHF作成日を採用）。",
   "sources": [
-   "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante",
-   "https://huggingface.co/inclusionAI/Ling-3.0-flash-Sante/commits/main",
-   "https://huggingface.co/bartowski/Ling-3.0-flash-Sante-GGUF"
+   "https://huggingface.co/inclusionAI/LingSante-3.1-flash",
+   "https://huggingface.co/api/models/inclusionAI/LingSante-3.1-flash?blobs=true"
   ],
-  "confidence": "high",
-  "verified_at": "2026-10-28",
-  "q4_gb": 80.394
+  "confidence": "medium",
+  "verified_at": "2026-11-25",
+  "q4_unverified": true
  },
  {
   "id": "wevisone-vl-2b",
@@ -8783,5 +8788,114 @@
   ],
   "confidence": "high",
   "verified_at": "2026-11-22"
+ },
+ {
+  "id": "ernie-5-5-flash-preview",
+  "name": "ERNIE-5.5-Flash-Preview",
+  "short": "ERNIE 5.5 Flash Preview",
+  "family": "ERNIE",
+  "org": "Baidu",
+  "country": "CN",
+  "release": "2026-11-23",
+  "arch": "MoE（HCA＋MLA-DSA、専門家512中10＋共有1）",
+  "total_b": 280,
+  "active_b": 14,
+  "native_precision": "FP8（専門家部分はMXFP4、W4A8の量子化前提学習）。FP8版・BF16版も別配布",
+  "weights_gb": 165.9,
+  "context_k": 1048.576,
+  "modality": [
+   "text"
+  ],
+  "mode": "thinking",
+  "license": "Apache-2.0",
+  "commercial": "yes",
+  "license_note": "Apache-2.0はPreviewの重みのみが対象。ERNIE-5.5-Flash-Baseは独自ライセンスのまま。",
+  "hf": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+  "summary_ja": "百度の280B（稼働14B）MoEで、ERNIE-5.5-Flash-Baseを事後学習した最初の版。学習途中の中間チェックポイントで、思考は常時オン（強さは3段階）。1Mトークンの文脈に対応。",
+  "strengths": [
+   "agent",
+   "coding",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": null,
+   "gpqa": null,
+   "hle": null,
+   "aime": null,
+   "lcb": null,
+   "mmlu_pro": null,
+   "terminal_bench2": null,
+   "tau2": null,
+   "browsecomp": null
+  },
+  "bench_note": "公式カードの値（最高推論設定、比較モデルはClaude Code等の別環境）：Terminal-Bench 4.0 46.5、DeepSWE v1.1 71.2、AutomationBench 61.9。Terminal-Bench 2とは版が違うため表の列には入れていない。AAは未掲載（11/25確認）。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの言語表記は英語・中国語。日本語の評価は未確認。",
+  "deploy_note_ja": "既定版（専門家FP4）は実ファイル約166GB、FP8版約302GB、BF16版約600GB。SGLang・vLLMで最大1,048,576トークン。投機デコード用DSparkヘッドを同梱。",
+  "engines": [
+   "SGLang",
+   "vLLM"
+  ],
+  "supersedes": [],
+  "notes": "公式は11/11の千帆APIプレビュー時に「11/25までに重みを公開」としていた（予告どおり11/23にHF公開）。ベースモデル（ERNIE-5.5-Flash-Base）とは役割が違うため別行。",
+  "sources": [
+   "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+   "https://ernie.baidu.com/release/ernie-5-5-flash-preview/",
+   "https://huggingface.co/api/models/baidu/ERNIE-5.5-Flash-Preview?blobs=true"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-25",
+  "q4_unverified": true
+ },
+ {
+  "id": "ling-3-2-air",
+  "name": "Ling-3.2-air",
+  "short": "Ling 3.2 air",
+  "family": "Ling 3.x",
+  "org": "Ant Group（inclusionAI / 百灵）",
+  "country": "CN",
+  "release": "2026-11-23",
+  "arch": "MoE（KDA線形注意35層＋Gated MLA 7層、専門家512中8＋共有1）",
+  "total_b": 124,
+  "active_b": 5.5,
+  "native_precision": "FP8",
+  "weights_gb": 129.3,
+  "context_k": 262.144,
+  "modality": [
+   "text",
+   "image",
+   "video"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/inclusionAI/Ling-3.2-air",
+  "summary_ja": "Ling-3.0-flash-VLと同じネイティブマルチモーダル構造の新版（総124B、稼働5.5B）。画像・動画を読め、定量データ分析や法務作業の評価を前面に出している。",
+  "strengths": [
+   "vision",
+   "agent",
+   "tool-use",
+   "efficiency"
+  ],
+  "bench": {},
+  "bench_note": "AA Intelligence Index v5.0.1は23.4（11/25取得）。公式カードのHarvey LAB-AA v1.1は基準通過率87.7%。",
+  "aa_index": 23.4,
+  "japanese_note": "日本語の対応明記・評価はなし。",
+  "deploy_note_ja": "公式FP8で約129GB。公式手順は141GB級GPU4枚（H100等80GBなら8枚）・256K文脈。カードは256K、AAの表記は約1M文脈で食い違うため、設定ファイルの262,144を採用。",
+  "engines": [
+   "SGLang"
+  ],
+  "supersedes": [],
+  "notes": "前身のLing-3.0-flash-VLは未掲載。",
+  "sources": [
+   "https://huggingface.co/inclusionAI/Ling-3.2-air",
+   "https://huggingface.co/api/models/inclusionAI/Ling-3.2-air?blobs=true",
+   "https://artificialanalysis.ai/leaderboards/models"
+  ],
+  "confidence": "medium",
+  "verified_at": "2026-11-25",
+  "q4_unverified": true
  }
 ]

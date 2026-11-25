@@ -1394,14 +1394,14 @@
   "notes": "v1.4.1は2026-10-26、v1.4.2（重みはv1.4.1と同じ、画像の温度・上限など配信設定を更新）は10-29にmainへ反映。"
  },
  {
-  "id": "strands-decider-2b",
-  "name": "Strands Decider 2B（v1-2610）",
+  "id": "strands-decider-v2",
+  "name": "Strands Decider v2（E2B／E4B／12B／26B-A4B／31B）",
   "org": "AWS（Strands Labs）",
   "country": "US",
-  "release": "2026-10-01",
+  "release": "2026-11-17",
   "access": "open-weight",
-  "params_b": 1.9,
-  "arch": "Qwen3.5-2B-BaseのLMヘッド（文章生成部）を約100万パラメータのポインタヘッドに置き換え、rank-16 LoRAで適応。Gemma 4ベースの派生（E2B／E4B／12B／26B-A4B）もあり",
+  "params_b": 30.7,
+  "arch": "Gemma 4の指示調整モデル（E2B・E4B・12B・26B-A4B・31B）を判断用に追加学習。選択肢ごとの確率を1回の推論で返す（文章は生成しない）",
   "tasks": [
    "predicate",
    "choice",
@@ -1411,67 +1411,62 @@
    "judge"
   ],
   "spec": {
-   "latency_ms": 115,
-   "inputs": "テキスト（学習時は4,096トークン窓）",
-   "outputs": "選択肢ごとのスコア・確率（choice／はい・いいえ／score）",
-   "languages": "記載なし",
-   "other": "遅延はRTX 3090（WSL2）でのJevBench 1問あたり中央値（p95 299ms）。M3 Proで153ms。選択肢数に構造上の上限なし。コード・学習レシピ・データ一覧をGitHubで公開。現行の参照チェックポイントはStrandsAgents/strands-decider-2B-qwen3.5-v1-2610（amazon/にもミラー）"
+   "latency_ms": 99,
+   "inputs": "状態（テキスト・JSON、画像も可）と型付きの質問（複数可）",
+   "outputs": "選択肢ごとの確率（choice 2〜255択／はい・いいえ／score 2〜10段階）",
+   "languages": "英語（カードのlanguageタグ）",
+   "other": "文脈は検証済み32,768トークン（既定）、最大131,072。遅延は31B・H100 1枚で1問99ms、同じ状態への30問で614ms（公式）。5サイズとも同じリクエスト形式でモデル名の変更だけで切り替え可能。"
   },
   "features": {
-   "画像入力": false,
+   "画像入力": true,
    "確率・信頼度を返す": true,
    "学習レシピ・データ一覧を公開": true,
-   "選択肢数の上限なし": true,
+   "選択肢数の上限なし": false,
    "日本語対応（公式明記）": false
   },
-  "min_vram_gb": 4,
-  "rec_vram_gb": 24,
-  "vram_note": "2B版のVRAMは公式未記載。BF16重みは約3.8GB（計算値）。公式計測はRTX 3090（24GB）とM3 Pro。Gemma 4派生はBF16でE2B約9GB、E4B約15GB、12B約23GB、26B-A4B約51GB（公式）",
+  "min_vram_gb": 24,
+  "rec_vram_gb": 80,
+  "vram_note": "BF16重み：E2B 10.3GB（24GB GPU1枚かGPUなし）、E4B 16GB（40GB）、12B 24GB（48GB）、26B-A4B 52GB（80GB）、31B 63GB（80GB）。いずれも公式カードの記載。",
   "price_note": null,
-  "speed_note": "RTX 3090で中央値115ms／判断（AWS公表は100ms未満とも）。Gemma 4派生はH100でE2B 102ms〜26B-A4B 245ms",
+  "speed_note": "31BはH100 1枚で1問99ms（公式）。",
   "bench": [
    {
-    "metric": "JevBench公開セット 正答率（231問）",
-    "value": 0.779,
-    "note": "v1（180/231）、Brier 0.280、ECE 0.072。3シード平均179.7±3.8。旧v19は0.723",
-    "source": "https://github.com/strands-labs/strands-decider"
+    "metric": "Decision Index 0.3（31B）",
+    "value": 71.5,
+    "note": "公式カード。26B-A4B 69.0、12B 64.1、E4B 63.2、E2B 57.1。v1最大の26B-A4Bより22.7点高い",
+    "source": "https://huggingface.co/StrandsAgents/strands-decider-31B-gemma4-v2-2611"
    },
    {
-    "metric": "Jev Decision Index（Gemma 4 26B-A4B派生）",
-    "value": 48.69,
-    "note": "派生版の値（JevBench 207/231）",
-    "source": "https://github.com/strands-labs/strands-decider"
-   },
-   {
-    "metric": "Jev Decision Index 0.3.1（総合）",
-    "value": 21.75,
-    "note": "84位（旧チェックポイント時点、第三者まとめ）",
-    "source": "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+    "metric": "JevBench（31B）",
+    "value": 93.1,
+    "note": "公式カード。26B-A4B 92.6、12B 92.2、E4B 88.3、E2B 87.4。OpenDecisions 92.2、DecisionPivot 84.3、BEV 84.5（31B）",
+    "source": "https://huggingface.co/StrandsAgents/strands-decider-31B-gemma4-v2-2611"
    }
   ],
-  "quality_note": "学習レシピまで全部公開されていて、自分の業務データで作り直しやすいのが最大の利点。2B本体は総合指標では低め（DI 0.3.1で21.75）で、知識の要る判断には不向き。精度が要るならGemma 4派生の大きい版を使う",
-  "ja_note": "言語の記載なし。日本語での判断精度は未評価",
+  "quality_note": "v1の2B（Qwen3.5ベース）から全サイズGemma 4ベースに作り替え、31Bを追加。開発元評価で信頼度と正答率の差は平均0.7点。AAの判断指数（v2.1）には未掲載（11/25確認）なので他の判断モデルとの横並び比較はできない",
+  "ja_note": "カードの言語タグは英語のみ。日本語での判断精度は未評価",
   "license": "Apache-2.0",
   "commercial": "yes",
-  "license_note": "リポジトリはApache-2.0（重み単体のライセンス表記はカードで要確認）。Gemma 4派生もApache-2.0のGemma 4が基盤",
-  "hf": "https://github.com/strands-labs/strands-decider",
+  "license_note": "重み・コードともApache-2.0。基盤のGemma 4もApache-2.0",
+  "hf": "https://huggingface.co/StrandsAgents/strands-decider-31B-gemma4-v2-2611",
   "tools": [
-   "Transformers",
-   "PEFT（LoRA）"
+   "strands-decider（公式ライブラリ）",
+   "Transformers"
   ],
-  "summary_ja": "AWSが公開した2Bの小さな判断モデルで、家庭用GPUでも0.1秒ほどで選択肢を選べます。作り方まで全部公開されているので、自社用に鍛え直しやすいです。",
-  "best_for_ja": "ローカル環境でのツール選択・ルーティング・引数チェックや、自社データでの再学習のたたき台",
+  "summary_ja": "AWSのStrands Labsが公開した判断モデルの第2版。Gemma 4をもとに5サイズあり、最大の31Bは開発元の評価でv1最大版を大きく上回ります。作り方のコードもApache-2.0で公開されています。",
+  "best_for_ja": "ツール選択・ルーティング・引数チェックなどエージェントの判断を、確率付きで自前環境に置きたい場合（小さいE2Bから80GB GPU向けの31Bまで）",
   "supersedes": [
+   "Strands Decider 2B（v1-2610）",
    "Strands Decider 2B v19",
    "Strands Decider 2B v21"
   ],
   "sources": [
+   "https://huggingface.co/StrandsAgents/strands-decider-31B-gemma4-v2-2611",
+   "https://huggingface.co/StrandsAgents/strands-decider-E2B-gemma4-v2-2611",
    "https://github.com/strands-labs/strands-decider",
-   "https://thenewstack.io/aws-strands-decider-model/",
-   "https://aiweekly.co/fr/alerts/aws-strands-labs-ouvre-strands-decider-2b-72-sur-jevbench-en-106-ms-de-latence",
-   "https://redreamality.com/blog/open-decision-models-2026-survey-benchmarks/"
+   "https://strandsagents.com/docs/labs/strands-decider/overview/"
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "rank": 15
  },
  {

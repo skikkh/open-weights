@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-22",
- "next_update": "2026-11-25",
+ "updated_at": "2026-11-25",
+ "next_update": "2026-11-28",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,18 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-25",
+   "items": [
+    "公開（大型LLM）: ERNIE-5.5-Flash-Preview（Baidu、11/23、総280B／稼働14B、Apache-2.0、1M文脈、既定版約166GB）。予告どおり重みが公開された事後学習の中間版。ベースモデルとは別行。",
+    "追加（大型LLM）: Ling-3.2-air（inclusionAI、11/23、総124B／稼働5.5B、MIT、画像・動画入力、AA v5.0.2で23.4）。置換: Ling-3.0-flash-Sante → LingSante-3.1-flash（医療向け、560B／稼働25B、MIT）。",
+    "置換（ローカルLLM）: Raon-1 mini preview → 正式版Raon-1 mini（KRAFTON、11/24、総28.8B／稼働4.3B、Apache-2.0、学習言語に日本語、Q4_K_M約19.7GB）。",
+    "置換（判断モデル）: Strands Decider 2B（v1） → Strands Decider v2（AWS、Gemma 4ベースのE2B〜31Bの5サイズ、Apache-2.0、31BはDecision Index 0.3で71.5）。",
+    "置換（有料の画像）: Ideogram 4.5 → Ideogram 4.6（公式APIの最新モデル、4Kまで、1枚$0.008〜$0.20）。追加（有料ASR）: Azure LLM Speech 09 2026（日本語対応、高速文字起こしと同料金）。",
+    "更新: AA Intelligence Indexがv5.0.2に改定。0.1以上変わったGLM-5.3 31.6、DeepSeek V4.1 Flash 32.4、Qwen3.8-Flash-Next 28.5、MiMo V2.6 Flash 26.8、Claude Fable 5.2 64.8、Gemini 4 Neon 61.6／Hydrogen 54.1、Qwen4-Max 42.8を反映。Granite 4.2 30Bは指数が出なくなったため空欄。Grok 4.7に公式料金（$2／$6、20万以上は2倍）を記載。主要5社のAPI料金を照合し変更なし。",
+    "保留: Boreal-H3（API・価格は確認、開発元の国が未確認）、StepAudio 3 TTS（課金開始、日本語はプレビュー）、qwen-audio-3.1-live、Xing-Audio4.0-ASR、Hume Audio Decisions、REAX 1、GPT-6.2の医療向け構成（新モデルではない）、DaisyRose-27B（米国と確認、派生モデル）ほか。日本語非対応: Kolibri 1.1。国産LLM・音楽・3D・TTSの新規は確認範囲でなし。"
+   ]
+  },
   {
    "date": "2026-11-22",
    "items": [
@@ -252,10 +264,10 @@
  ],
  "leaderboards": [
   {
-   "name": "Artificial Analysis Intelligence Index v5.0.1",
-   "as_of": "2026-11-19",
+   "name": "Artificial Analysis Intelligence Index v5.0.2",
+   "as_of": "2026-11-25",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/3のv5.0.1の表を11/19に取得して照合。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。11/24ごろ改定のv5.0.2（Terminal-Bench 4.1を4.0に置換、FrontierCode-AA 2.0を再採点）の表を11/25に取得し、掲載値と0.1以上違うものを更新。それ以外の掲載値は差が0.1未満のため据え置き（各行の注記に残る「v5.0.1」は照合時点の版）。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -290,7 +302,7 @@
  ],
  "jp_note": "参考：Nejumi Leaderboard 4 では、海外オープンの最上位 Qwen3.8-2.4T-A95B が 0.860、Kimi K3 が 0.843 です。国産の最上位 llm-jp-4.1-33b-thinking は 0.721 で、総合点では中国系の大型MoEと差があります。一方、日本固有の知識を問う JamC-QA では、国産や日本語追加学習のモデルが健闘しています。",
  "closed_refs": {
-  "llm": "Claude Fable 5.2（AA v5.0.1で64.6、11/9一般提供）、GPT-6.2 Astra（62.1、11/17提供開始）、Gemini 4 Neon（61.4、11/18一般提供）、Gemini 4 Carbon（60.0）、Claude Opus 5.5（59.1）、GPT-6.2 Sol（57.3、11/17）、Claude Sonnet 5.5（54.5）、Gemini 4 Hydrogen（53.9）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.4）、Muse Wonder Full（50.1）、Qwen4-Max（42.9、11/16提供開始）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.6（2026-11-19取得）。",
+  "llm": "Claude Fable 5.2（AA v5.0.2で64.8、11/9一般提供）、GPT-6.2 Astra（62.2、11/17提供開始）、Gemini 4 Neon（61.6、11/18一般提供）、Gemini 4 Carbon（60.1）、Claude Opus 5.5（59.1）、GPT-6.2 Sol（57.3、11/17）、Claude Sonnet 5.5（54.5）、Gemini 4 Hydrogen（54.1）、GPT-6.1 Terra（51.3）、Gemini 4 Argon（50.5）、Muse Wonder Full（50.1）、Qwen4-Max（42.8、11/16提供開始）など。重み公開済みのKimi K3.1 ProのAPI評価は46.5、DeepSeek V4.1 Flash 1017は32.4（2026-11-25取得）。",
   "jp": "PLaMo 3.1 Prime（PFN、10/27提供開始。国産LLM一覧に詳細）、Sarashina3 mini / nano（SB Intuitions）、tsuzumi 2（NTT）、Takane（富士通）、cotomi v3（NEC）、Sakana Namazu / Fugu（Sakana AI）は重み非公開です（API・オンプレ提供）。",
   "asr": "OpenAI GPT-Transcribe / GPT-Live-Transcribe、Google Chirp 3、ElevenLabs Scribe v3 / v3 Live（11/9）、Soniox v6（11/3）、AmiVoice API、Azure AI Speech、Mistral Voxtral Mini / Small Transcribe 3・Mini Transcribe Realtime 3（10/20 API Public Preview）など。",
   "tts": "Eleven v4／Turbo、Gemini 3.8 Flash TTS／Flash-Lite TTS、Sonic 3.6、Fish Audio Drama 3 API、Aivis Cloud API、Mistral Voxtral Mini TTS 3など。日本語対応を確認したCoda v2とFalcon 2.1も有料TTS一覧に掲載。",
