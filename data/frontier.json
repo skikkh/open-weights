@@ -1,5 +1,94 @@
 [
  {
+  "id": "rime-stt",
+  "name": "Rime STT",
+  "series": "Rime STT",
+  "category": "asr",
+  "org": "Rime Labs",
+  "country": "US",
+  "release": "2026-10-20",
+  "access": "api",
+  "availability_tier": "general",
+  "summary_ja": "音声エージェント向けのストリーミング音声認識。11/26の更新で日本語を含む13言語に拡大し、言語の自動判定を追加。",
+  "availability_ja": "Rime API（WebSocket wss://stt.api.rime.ai/ws、gRPC）とRime SDK（Python・Node.js・Go・Rust、SDKはalpha）。1ストリーム＝1発話で、発話終了の判定は利用側が行う。",
+  "price_note": "Flex：音声1分あたり$0.002（米ドル）。Scaleプラン（月$100〜）は全料金20%引き。無料枠は毎月$50分の利用（公式料金ページ）。",
+  "detail_note": "10/20に英語・スペイン語で提供開始、11/26に13言語（ar, nl, en, fr, de, hi, id, it, ja, ko, cmn, pt, es）へ拡大。書式は書き言葉（既定）・逐語・タグ付き（タグ付きは欧州6言語のみ）。1ストリームは120秒以内。",
+  "context_note": null,
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "ja_note": "公式の音声認識ページと11/26の変更履歴に日本語（ja）を明記（書き言葉・逐語の両モード）。日本語の誤り率は未公表。料金ページの言語欄は11/28時点で英語・スペイン語のままで、更新が追いついていない可能性がある。",
+  "hf": "https://docs.rime.ai/docs/speech-to-text",
+  "sources": [
+   "https://docs.rime.ai/docs/speech-to-text",
+   "https://docs.rime.ai/changelog",
+   "https://rime.ai/pricing"
+  ],
+  "verified_at": "2026-11-28",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "supersedes": [],
+  "release_note": "初提供日は公式変更履歴の2026-10-20の項目。日本語対応は2026-11-26。"
+ },
+ {
+  "id": "speechmatics-agent-stt-linden-1",
+  "name": "Speechmatics Agent STT（Linden 1）",
+  "series": "Speechmatics Agent STT",
+  "category": "asr",
+  "org": "Speechmatics",
+  "country": "GB",
+  "release": "2026-09-17",
+  "access": "api",
+  "availability_tier": "general",
+  "summary_ja": "音声エージェント向けの低遅延ストリーミング音声認識。Agent STT APIの中身がLinden 1モデル。録音向けのMeliaとは別API。",
+  "availability_ja": "Speechmatics Agent STT API（Linden 1）。Pipecat・LiveKit Agentsのプラグイン、LiveKit Inferenceでも利用可。翻訳は非対応。使える言語は契約内容による（公式）。",
+  "price_note": "公開価格は音声1時間あたり$0.30（米ドル、発表時のローンチ価格）。量に応じた割引で$0.16/時間まで（公式発表）。",
+  "detail_note": "公式は完全な多言語エージェント対応を次のLinden 2で提供予定と説明。AAの英語中心のWER・遅延は日本語精度として扱わない。",
+  "context_note": null,
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "ja_note": "公式の言語ページは「Agent STT APIはLinden 1を使い、Realtimeと同じ言語に対応」と記載し、Realtimeの言語表に日本語（ja）がある。発表記事のFAQでも日本語を強い言語として挙げる。",
+  "hf": "https://docs.speechmatics.com/speech-to-text/languages",
+  "sources": [
+   "https://www.speechmatics.com/company/articles-and-news/meet-agent-stt-powered-by-linden-1-fast-accurate-speech-recognition",
+   "https://docs.speechmatics.com/speech-to-text/languages",
+   "https://artificialanalysis.ai/speech-to-text"
+  ],
+  "verified_at": "2026-11-28",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "supersedes": [],
+  "release_note": "日付は公式発表記事（2026-09-17）。LiveKit Inferenceでは8月から選択可能だったと公式が説明。"
+ },
+ {
+  "id": "muse-voice-transcribe",
+  "name": "Muse Voice Transcribe",
+  "series": "Meta Muse Voice Transcribe",
+  "category": "asr",
+  "org": "Meta",
+  "country": "US",
+  "release": "2026-09-03",
+  "access": "api",
+  "availability_tier": "general",
+  "summary_ja": "Metaの音声認識API。ストリーミングとファイル認識を同じモデルで提供し、発話区切り検出・話者ラベル・語彙バイアスを内蔵。",
+  "availability_ja": "Meta Model API（muse-voice-transcribe-1.0）。リアルタイムWebSocket（wss://api.meta.ai/v1/asr/realtime）と録音ファイル（POST /v1/asr/transcribe、1ファイル10分・32MBまで）。公式にプレビュー表記なし。国によって提供モデルが異なる場合がある（公式の注記）。",
+  "price_note": "音声1時間あたり$0.18（米ドル、=1,000分あたり$3）。ストリーミングとファイル認識は同額、秒単位切り捨てで課金。ZDRも同額。",
+  "detail_note": "モード：PUSH_TO_TALK（既定）／ENDPOINTING／DIARIZATION。タイムスタンプはターン単位のみで単語単位・信頼度は出さない。開発元は公開時点でAAのストリーミングSTT一覧のWER 1位と説明（英語中心の評価で日本語精度ではない）。",
+  "context_note": "リアルタイムセッションは最長60分。入力はモノラル16bit PCM（16kHzまたは24kHz）。",
+  "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
+  "ja_note": "公式の音声認識ガイドが対応25言語（コードスイッチ対応）の一覧に日本語（Japanese）を明記。日本語単独の誤り率は未公表。",
+  "hf": "https://dev.meta.ai/docs/speech-to-text",
+  "sources": [
+   "https://dev.meta.ai/docs/speech-to-text",
+   "https://dev.meta.ai/docs/models",
+   "https://dev.meta.ai/docs/pricing-rate-limits",
+   "https://dev.meta.ai/resources/blog/meet-muse-voice-transcribe-streaming-speech-to-text",
+   "https://artificialanalysis.ai/speech-to-text"
+  ],
+  "verified_at": "2026-11-28",
+  "license": "提供元の利用規約",
+  "commercial": "conditional",
+  "supersedes": [],
+  "release_note": "日付はMeta開発者ブログの公開日（2026-09-03）。報道では9/2から提供とするものもある。AAへの掲載日は代用しない。"
+ },
+ {
   "id": "gpt-6.2-astra",
   "name": "GPT-6.2 Astra",
   "category": "llm",
@@ -10,7 +99,7 @@
   "summary_ja": "最も難しい推論・コーディング・長い作業向けのOpenAI旗艦。コンピューター操作や文書作業にも対応。",
   "availability_ja": "11/17にOpenAI API（Responses／Chat Completions）で提供開始。ツール呼び出しはResponses APIが必要。",
   "price_note": "Standard・100万テキストトークンあたり入力$8／キャッシュ入力$0.40／キャッシュ書込$10（30分）／出力$40（GPT-6 Astraの$10／$50から値下げ）。入力272K超はリクエスト全体の入力・キャッシュ2倍、出力1.5倍。Batchは50%、Fastは2倍、Ultrafastは2027-02-28まで3倍。",
-  "detail_note": "推論effortのnoneは不可。Responses APIの推論保持やinstructionsの扱いが変わるため公式の移行ガイドを参照。AA Intelligence Index v5.0.1は62.1（Max、11/19照合）。知識カットオフ2026-05-18。",
+  "detail_note": "推論effortのnoneは不可。Responses APIの推論保持やinstructionsの扱いが変わるため公式の移行ガイドを参照。AA Intelligence Index v5.0.2は62.2（Max、11/28照合）。知識カットオフ2026-05-18。",
   "context_note": "1,050,000トークン（入力最大922,000、出力最大128,000）。ChatGPT／Codexの利用上限とは別。",
   "hf": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
   "sources": [
@@ -19,7 +108,7 @@
    "https://developers.openai.com/api/docs/pricing",
    "https://artificialanalysis.ai/leaderboards/models"
   ],
-  "verified_at": "2026-11-19",
+  "verified_at": "2026-11-28",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
@@ -523,14 +612,15 @@
   "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
   "price_note": "プラン・利用量で変動。最新の公式料金を確認。",
   "detail_note": "Instant Voice CloningとProfessional Voice Cloningに対応。Professionalは別の学習工程を伴うため、どちらも一律にゼロショットとは表記しない。既存の旧版クローンには再学習が必要な場合がある。",
-  "context_note": null,
+  "context_note": "1リクエスト最大10万文字（約100分の音声）。2026-11-23に1万文字から拡大（公式変更履歴）。",
   "hf": "https://elevenlabs.io/blog/eleven-v4",
   "sources": [
    "https://elevenlabs.io/blog/eleven-v4",
    "https://elevenlabs.io/v4",
-   "https://elevenlabs.io/agents/v4-turbo"
+   "https://elevenlabs.io/agents/v4-turbo",
+   "https://elevenlabs.io/docs/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-28",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
@@ -549,14 +639,15 @@
   "availability_ja": "提供中（利用枠・地域・契約条件は公式で確認）",
   "price_note": "プラン・利用量で変動。最新の公式料金を確認。",
   "detail_note": "Instant Voice CloningとProfessional Voice Cloningに対応。Professionalは別の学習工程を伴うため、どちらも一律にゼロショットとは表記しない。既存の旧版クローンには再学習が必要な場合がある。",
-  "context_note": null,
+  "context_note": "1リクエスト最大10万文字（約100分の音声）。2026-11-23に1万文字から拡大（公式変更履歴）。",
   "hf": "https://elevenlabs.io/blog/eleven-v4",
   "sources": [
    "https://elevenlabs.io/blog/eleven-v4",
    "https://elevenlabs.io/v4",
-   "https://elevenlabs.io/agents/v4-turbo"
+   "https://elevenlabs.io/agents/v4-turbo",
+   "https://elevenlabs.io/docs/changelog"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-28",
   "local_note": "一般向けの重み配布なし。API・サービスで利用。",
   "commercial": "conditional",
   "license": "提供元の利用規約",
@@ -712,7 +803,7 @@
   "access": "api",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "verified_at": "2026-11-05",
+  "verified_at": "2026-11-28",
   "local_note": "K3.1 Proの公式重みは公開済み（約1.56TB）。この行はAPI・会員サービスの提供条件。Highspeed専用の別重みは未確認。",
   "availability_ja": "Kimi.com・Kimi Work・Kimi Code・Kimi APIで提供中。",
   "id": "kimi-k3-1-pro-api",
@@ -722,13 +813,14 @@
   "release": null,
   "summary_ja": "有料会員向けに提供されるKimiの上位モデル。コード・長いエージェント作業向け。",
   "hf": "https://www.kimi.com/code/docs/en/",
-  "price_note": "Kimi Codeの会員プランで利用。Moderato／Plus以上、最大1M文脈はAllegretto／Pro以上。",
+  "price_note": "Kimi APIの従量課金は100万トークンあたり入力$2／キャッシュ入力$0.20／出力$10、キャッシュ書込は5分$2・1時間$4。Batchは標準の60%。Kimi Codeの会員プラン（Moderato／Plus以上、最大1M文脈はAllegretto／Pro以上）とは別。",
   "detail_note": "API・会員サービスの開始日と重み配布日は別。公開モデル側には一般配布のK3.1 Proを掲載。",
   "sources": [
    "https://www.kimi.com/code/docs/en/",
    "https://www.kimi.com/en/blog/kimi-k3-1-pro",
    "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-   "https://www.kimi.ai/blog/kimi-k3-1-pro"
+   "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "https://platform.kimi.ai/docs/pricing/chat"
   ],
   "context_note": "最大1Mトークン。会員プラン・API経路により利用条件が異なる。",
   "series": "Moonshot Kimi Pro",
@@ -740,7 +832,7 @@
   "access": "api",
   "commercial": "conditional",
   "license": "提供元の利用規約",
-  "verified_at": "2026-11-05",
+  "verified_at": "2026-11-28",
   "local_note": "K3.1 Proの公式重みは公開済み（約1.56TB）。この行はAPI・会員サービスの提供条件。Highspeed専用の別重みは未確認。",
   "availability_ja": "Kimi.com・Kimi Work・Kimi Code・Kimi APIで提供中。",
   "id": "kimi-k3-1-pro-highspeed-api",
@@ -750,13 +842,14 @@
   "release": null,
   "summary_ja": "K3.1 Proの高速提供版。開発元は通常版の2〜3倍の速度と説明。通常版と分けて掲載。",
   "hf": "https://www.kimi.com/code/docs/en/",
-  "price_note": "通常版と提供枠・料金が異なる可能性があるため、公式API・会員プランで確認。",
+  "price_note": "Kimi APIの従量課金は100万トークンあたり入力$4／キャッシュ入力$0.20／出力$20、キャッシュ書込は5分$4・1時間$8（通常版の2倍、キャッシュ入力は同額）。会員プランとは別。",
   "detail_note": "API・会員サービスの開始日と重み配布日は別。公開モデル側には一般配布のK3.1 Proを掲載。",
   "sources": [
    "https://www.kimi.com/code/docs/en/",
    "https://www.kimi.com/en/blog/kimi-k3-1-pro",
    "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-   "https://www.kimi.ai/blog/kimi-k3-1-pro"
+   "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "https://platform.kimi.ai/docs/pricing/chat"
   ],
   "context_note": "最大1Mトークン。会員プラン・API経路により利用条件が異なる。",
   "series": "Moonshot Kimi Pro Highspeed",
@@ -1055,12 +1148,12 @@
   "access": "api",
   "summary_ja": "企業向けエージェントの旗艦。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "100万トークンあたり入力$0.30／キャッシュ$0.06／出力$1.20。",
+  "price_note": "100万トークンあたり入力$0.15／キャッシュ$0.03／出力$0.60（公式料金表の「別途告知まで50%割引」、10/20開始・終了日なし）。定価は$0.30／$0.06／$1.20。Contributorモード（データ提供条件つき）は別単価。VAT別。",
   "hf": "https://www.upstage.ai/pricing/api",
   "sources": [
    "https://www.upstage.ai/pricing/api"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-28",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -1082,12 +1175,12 @@
   "access": "api",
   "summary_ja": "企業向けエージェントの小型・低価格版。",
   "availability_ja": "API・サービスで提供中（地域・契約・利用枠は公式を確認）",
-  "price_note": "100万トークンあたり入力$0.10／キャッシュ$0.01。出力単価は公式料金を確認。",
+  "price_note": "100万トークンあたり入力$0.05／キャッシュ$0.005／出力$0.20（公式料金表の「別途告知まで50%割引」、10/11開始・終了日なし）。定価は$0.10／$0.01／$0.40。VAT別。",
   "hf": "https://www.upstage.ai/pricing/api",
   "sources": [
    "https://www.upstage.ai/pricing/api"
   ],
-  "verified_at": "2026-11-01",
+  "verified_at": "2026-11-28",
   "license": "提供元の利用規約",
   "commercial": "conditional",
   "local_note": "重みの一般配布は未確認。掲載する提供経路はAPI・サービス。",
@@ -1096,7 +1189,8 @@
    "Solar Mini 3"
   ],
   "availability_tier": "general",
-  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。"
+  "release_note": "公式の初提供日を確定できていないため日付不明。AAへの評価追加日・資料の更新日は代用しない。",
+  "detail_note": "後継のSolar Mini 4.5は11/23からプレビュー（solar-mini-4-5-preview）、12/3に正式提供予定と公式ドキュメントに記載。正式提供後に置換を判断。"
  },
  {
   "id": "deepseek-asr-api",

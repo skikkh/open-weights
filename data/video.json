@@ -491,6 +491,84 @@
   }
  },
  {
+  "id": "magi-2",
+  "access": "api",
+  "name": "MAGI-2",
+  "org": "Sand AI（Sand.ai）",
+  "country": "CN",
+  "release": "2026-11",
+  "params_b": null,
+  "arch": null,
+  "tasks": [
+   "t2v",
+   "i2v",
+   "flf2v",
+   "r2v",
+   "edit",
+   "audio"
+  ],
+  "spec": {
+   "max_resolution": "1080p",
+   "max_duration_s": 30,
+   "fps": null,
+   "other": "公式は1回で最長30秒のネイティブ1080p音声付き動画、マルチモーダル参照、精密な編集、自動のカメラ計画をうたう。Higgsfieldの案内では4〜30秒・1080pのみ、アスペクト比6種、参照は画像10・動画5・音声5まで、先頭／末尾フレーム指定あり。Sand.aiのAPIプラットフォーム（platform.sand.ai）とHiggsfieldで提供。8月公開の重み公開版MAGI-2 Previewとは別の製品版で、製品版の重み公開は公式に確認できない"
+  },
+  "features": {
+   "音声同時生成": true,
+   "参照素材（画像・動画・音声）": true,
+   "首尾フレーム指定": true,
+   "重み公開": false
+  },
+  "min_vram_gb": null,
+  "rec_vram_gb": null,
+  "vram_note": "API・サービス提供のみ（重み公開版は別行のMAGI-2 Preview）",
+  "speed_note": null,
+  "price_note": "Higgsfield API：10秒$0.80、15秒$1.20、30秒$2.40（米ドル、1秒$0.08相当）。HiggsfieldのPlus会員（月$59・1,200クレジット）では10秒25クレジット。AAの表示も$4.80／分。Sand.ai直販の単価は公開ページで確認できず",
+  "bench": [
+   {
+    "metric": "Artificial Analysis I2V Arena（音声あり, AA-Video-I2V v2.1）ELO",
+    "value": 1163,
+    "note": "全体1位（2位Seedance 2.5 1158）。音声なしI2Vも1153で1位。2026-11-28取得",
+    "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
+   },
+   {
+    "metric": "Artificial Analysis T2V Arena（音声あり, AA-Video-T2V v2.1）ELO",
+    "value": 1150,
+    "note": "全体7位前後（首位Wan 3.0 1175）。音声なしT2Vは1144で2位。2026-11-28取得",
+    "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+   }
+  ],
+  "quality_note": "AAのI2Vで音声あり・なしとも全体1位、T2Vでも上位。重み公開版のMAGI-2 Preview（T2V 1040）から大きく伸びた",
+  "ja_note": "公式ページに対応言語の記載はなく、日本語のセリフ品質は未確認",
+  "license": "API / サービス（Sand.ai・Higgsfield利用規約）",
+  "commercial": "conditional",
+  "license_note": "提供元の利用規約に従う。規約本文は未精査",
+  "hf": "https://sand.ai/",
+  "tools": [
+   "Sand.ai API Platform",
+   "Higgsfield"
+  ],
+  "summary_ja": "中国Sand AIの動画モデル製品版。最長30秒・1080pの音声付き動画を一度に作れ、AAの画像からの動画生成で全体1位。現時点では重みは公開されていない。",
+  "best_for_ja": "画像から高品質な音声付き動画を比較的安くAPIで作りたい場合",
+  "supersedes": [],
+  "sources": [
+   "https://sand.ai/",
+   "https://higgsfield.ai/blog/higgsfield-magi-2",
+   "https://artificialanalysis.ai/video/leaderboard/image-to-video",
+   "https://artificialanalysis.ai/video/leaderboard/text-to-video"
+  ],
+  "confidence": "medium",
+  "hl": {
+   "label": "AA I2V",
+   "value": 1163
+  },
+  "rank": 28,
+  "series": "Sand.ai MAGI video",
+  "availability_tier": "general",
+  "release_note": "公式サイトは「Introducing MAGI-2」と告知するが日付の記載なし。Higgsfieldの告知記事は11/25公開、AAの表示は2026年11月のため月まで。第三者の11/24説は未確認",
+  "verified_at": "2026-11-28"
+ },
+ {
   "id": "cosmos3-super-image2video",
   "access": "open-weight",
   "name": "Cosmos3-Super-Image2Video（4Step蒸留版を含む）",
@@ -1808,16 +1886,16 @@
    "audio"
   ],
   "spec": {
-   "max_resolution": "4K（10bit HDR）。ただし公開時点で1080p・4Kは「近日対応」",
+   "max_resolution": "4K（1080p・4KでHDR出力可。APIは11/19から4K・HDRに対応）",
    "max_duration_s": 30,
    "fps": null,
-   "other": "1回の生成で3〜30秒。動画延長で合計最大2分（予定）。Omni Referenceで参照素材を最大15件（画像10・動画5・被写体7まで）、キーフレーム最大10枚、プロンプト最大8,000トークン。Kling MCP/CLIに対応。2026-09-28に年額Ultra会員向けにKling 4.0 Flash（約20秒・720pまで）を先行提供し、2026-10-15に全ユーザーへ正式公開。開発者APIは公開時点で「近日」。10月21日にKling公式アカウントがAPIの段階提供開始を告知したと報じられているが、公式のモデルIDと秒単価は未確認（2026-10-25時点）"
+   "other": "1回の生成で3〜30秒。動画延長で合計最大2分（予定）。Omni Referenceで参照素材を最大15件（画像10・動画5・被写体7まで）、キーフレーム最大10枚、プロンプト最大8,000トークン。Kling MCP/CLIに対応。2026-09-28に年額Ultra会員向けにKling 4.0 Flash（約20秒・720pまで）を先行提供し、2026-10-15に全ユーザーへ正式公開。公式APIはKling 4.0 Flash（11/4）、アスペクト比4:3・3:4（11/14）、4K・HDR（11/19、settings.dynamic_range）の順に追加（公式API更新履歴）"
   },
   "features": {
    "音声同時生成（ステレオ）": true,
    "キーフレーム編集（最大10枚）": true,
    "参照素材（最大15件）": true,
-   "4K HDR（公開時点は未提供）": false
+   "4K HDR（APIは11/19から）": true
   },
   "min_vram_gb": null,
   "rec_vram_gb": null,
@@ -1825,19 +1903,19 @@
   "speed_note": null,
   "bench": [
    {
-    "metric": "Artificial Analysis T2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
-    "value": 1023,
-    "note": "Kling 4.0はAA未掲載（2026-10-31確認）。参考値として前世代を記載（18位）。Kling 3.0 1080p ProはELOの基準点1000（19位）。首位はWan 3.0の1175",
+    "metric": "Artificial Analysis T2V Arena（音声あり, AA-Video-T2V v2.1）ELO",
+    "value": 1144,
+    "note": "全体11位（首位Wan 3.0 1175）。2026-11-28取得",
     "source": "https://artificialanalysis.ai/video/leaderboard/text-to-video"
    },
    {
-    "metric": "Artificial Analysis I2V Arena（音声あり, v2.1）ELO（前世代Kling 3.0 Omni 1080p Pro）",
-    "value": 1000,
-    "note": "18位（参考値、2026-10-31確認。v2.1ではKling 3.0 1080p Proが基準点1000）。首位はSeedance 2.5の1153",
+    "metric": "Artificial Analysis I2V Arena（音声あり, AA-Video-I2V v2.1）ELO",
+    "value": 1139,
+    "note": "全体6位（首位MAGI-2 1163）。音声なしI2Vは1132で3位。2026-11-28取得",
     "source": "https://artificialanalysis.ai/video/leaderboard/image-to-video"
    }
   ],
-  "quality_note": "2026-10-31時点でAAのT2V・I2Vアリーナには未掲載で、第三者の品質評価はまだない。前世代のKling 3.0はAAで中位（17〜19位）",
+  "quality_note": "AAのT2V（音声あり）で11位、I2V（音声あり）で6位、I2V（音声なし）で3位（2026-11-28）。前世代Kling 3.0（AAで1000前後）から大きく上がった",
   "ja_note": "第三者のまとめ（CometAPI、fal）では、台詞音声の対応言語に日本語を含む（中・英・日・韓・西など）。公式ページに言語一覧はなく、日本語の品質評価も見当たらない",
   "license": "API / サービス（Kling利用規約）",
   "commercial": "conditional",
@@ -1845,8 +1923,8 @@
   "price_note": "公式API（1 Unit=$0.157、出力1秒あたり、米ドル）：入力動画なしで720p $0.157・1080p $0.235・4K $0.549。参照動画など入力動画ありは720p $0.094・1080p $0.141・4K $0.329（入力が出力以下なら出力×2秒、超えるなら入力＋出力秒で課金）。HDRは1080p +$0.047／秒・4K +$0.078／秒。Kling 4.0 Flashは720pのみ$0.094／秒（入力動画あり$0.063）。Web会員プランのクレジット価格は別。",
   "hf": "https://klingai.com",
   "tools": [],
-  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月15日に全ユーザー向けに正式公開された。1回で最長30秒の音声付き動画を作れるが、4K HDR出力は「近日対応」で、開発者APIは段階提供が始まったと報じられている段階。",
-  "best_for_ja": "4K HDRで長めの音声付き動画が必要な制作（評価はこれから）",
+  "summary_ja": "快手（Kuaishou）の最新動画モデルで、2026年10月15日に全ユーザー向けに正式公開。1回で最長30秒の音声付き動画を作れ、公式APIは11/19から4K・HDR出力に対応した。",
+  "best_for_ja": "長めの音声付き動画や4K HDRの映像をAPIで作りたい制作",
   "supersedes": [
    "Kling 3.0",
    "Kling 3.0 Omni",
@@ -1854,6 +1932,7 @@
   ],
   "sources": [
    "https://kling.ai/document-api/pricing/base/video.md",
+   "https://kling.ai/document-api/updates/api.md",
    "https://en.wikipedia.org/wiki/Kling_AI",
    "https://artificialanalysis.ai/video/leaderboard/text-to-video",
    "https://artificialanalysis.ai/video/leaderboard/image-to-video",
@@ -1864,12 +1943,12 @@
   "confidence": "medium",
   "rank": 24,
   "hl": {
-   "label": "AA Arena",
-   "value": 1023
+   "label": "AA I2V",
+   "value": 1139
   },
   "series": "Kling flagship",
   "availability_tier": "general",
-  "verified_at": "2026-11-22"
+  "verified_at": "2026-11-28"
  },
  {
   "id": "runway-gen-4-5",

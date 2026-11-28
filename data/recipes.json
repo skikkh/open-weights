@@ -53,7 +53,7 @@
   {
    "name": "Strata",
    "url": "https://github.com/Niko1221/Strata",
-   "desc": "Qwen3.8-Flash-Next と DeepSeek-V4.1-Flash 用。よく使う専門家だけ VRAM、残りはメインメモリ・SSD。12GB GPU から動く（MIT、v0.2.6）"
+   "desc": "Qwen3.8-Flash-Next・DeepSeek-V4.1-Flash・Hy4 flash 用。よく使う専門家だけ VRAM、残りはメインメモリ・SSD。12GB GPU から動く（MIT、v0.2.6）"
   },
   {
    "name": "Project Maya",
@@ -2162,6 +2162,75 @@
    "note_ja": "実測なし。アクティブ52Bと重く速度は出にくい。UD-Q2_K_XL（378.3GB）ならRAM 384GB以上が必要。",
    "confidence": "low",
    "llm_id": "mistral-large-4"
+  },
+  {
+   "device": "rtx5090-32",
+   "verdict": "ram-offload",
+   "host_ram_gb": 64,
+   "quant": "Strata SQ-64",
+   "file_gb": 129.6,
+   "tricks": [
+    "使用メモリ（RAM＋VRAM）は約59.4GiB、残りはSSDから読む",
+    "全パック共通のEngram表（Q8、67.6GB）は別ファイル",
+    "内蔵DFly2で投機デコード"
+   ],
+   "gen_tok_s": 90,
+   "prefill_tok_s": 1694,
+   "context": "128K文脈（生成90〜111 tok/s）",
+   "measured": true,
+   "measured_on": "RTX 5090（メインメモリ量の記載なし）",
+   "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "note_ja": "開発者の自己申告。公式GGUF（最小約135GB）より小さいメモリで動き、64GBのメインメモリから使える。",
+   "engine": "Strata 0.2.18（strata-hy4 0.1.64）",
+   "engine_url": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "confidence": "medium",
+   "llm_id": "hy4-flash"
+  },
+  {
+   "device": "ryzen-ai-halo-128",
+   "verdict": "ssd",
+   "units": 1,
+   "quant": "Strata SQ-64",
+   "file_gb": 129.6,
+   "tricks": [
+    "使用メモリは約59.4GiB、残りはSSDから読む",
+    "Engram表（Q8、67.6GB）は共通の別ファイル",
+    "内蔵DFly2で投機デコード"
+   ],
+   "gen_tok_s": 51,
+   "prefill_tok_s": 728,
+   "context": "4K〜128K文脈（生成51〜60 tok/s）",
+   "measured": true,
+   "measured_on": "Ryzen AI Max+ 395（Strix Halo 128GB）",
+   "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "note_ja": "開発者の自己申告。128GB機なら元モデルに最も近いSQ-128（使用メモリ約107.5GiB）も選べるが、その速度は未記載。",
+   "engine": "Strata 0.2.18（strata-hy4 0.1.64）",
+   "engine_url": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "confidence": "medium",
+   "llm_id": "hy4-flash"
+  },
+  {
+   "device": "dgx-spark-128",
+   "verdict": "ssd",
+   "units": 1,
+   "quant": "Strata SQ-64",
+   "file_gb": 129.6,
+   "tricks": [
+    "使用メモリは約59.4GiB、残りはSSDから読む",
+    "Engram表（Q8、67.6GB）は共通の別ファイル",
+    "内蔵DFly2で投機デコード"
+   ],
+   "gen_tok_s": 43.9,
+   "prefill_tok_s": 924,
+   "context": "4K文脈",
+   "measured": true,
+   "measured_on": "DGX Spark（GB10 128GB）",
+   "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "note_ja": "開発者の自己申告。SQ-128なら元モデルとのずれが最も小さいが、その速度は未記載。",
+   "engine": "Strata 0.2.18（strata-hy4 0.1.64）",
+   "engine_url": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+   "confidence": "medium",
+   "llm_id": "hy4-flash"
   }
  ]
 }

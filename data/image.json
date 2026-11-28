@@ -169,9 +169,9 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 2,
+  "rank": 3,
   "pick": "7Bで高品質・透過PNG",
-  "pick_reason": "AA Arena オープン首位。非商用",
+  "pick_reason": "AA Arena オープン上位。非商用",
   "hl": {
    "label": "AA Arena",
    "value": 1042
@@ -248,7 +248,7 @@
    "label": "AA Arena",
    "value": 1039
   },
-  "rank": 3
+  "rank": 4
  },
  {
   "id": "qwen-image-2-1-turbo",
@@ -318,7 +318,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-image"
   ],
   "confidence": "medium",
-  "rank": 4,
+  "rank": 5,
   "hl": {
    "label": "AA Arena",
    "value": 1029
@@ -407,9 +407,9 @@
    "https://artificialanalysis.ai/image/leaderboard/editing"
   ],
   "confidence": "medium",
-  "rank": 5,
+  "rank": 6,
   "pick": "8GBで動く最新FLUX",
-  "pick_reason": "AA T2Iでオープン1位（僅差）。BFL の最新世代の軽量版",
+  "pick_reason": "AA T2Iでオープン上位。BFL の最新世代の軽量版",
   "hl": {
    "label": "AA Arena",
    "value": 1043
@@ -511,7 +511,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 6,
+  "rank": 7,
   "hl": {
    "label": "AA Arena",
    "value": 1000
@@ -597,7 +597,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 7,
+  "rank": 8,
   "hl": {
    "label": "AA Arena",
    "value": 837
@@ -685,7 +685,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 8,
+  "rank": 9,
   "hl": {
    "label": "AA Arena",
    "value": 1026
@@ -754,7 +754,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 9,
+  "rank": 10,
   "hl": {
    "label": "LMArena",
    "value": 1113
@@ -834,7 +834,7 @@
    "https://arena.ai/leaderboard/image-edit"
   ],
   "confidence": "high",
-  "rank": 10,
+  "rank": 11,
   "hl": {
    "label": "AA Arena",
    "value": 1064
@@ -935,7 +935,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 11,
+  "rank": 12,
   "hl": {
    "label": "AA Arena",
    "value": 974
@@ -1003,7 +1003,7 @@
    "https://huggingface.co/models?pipeline_tag=text-to-image&sort=trending"
   ],
   "confidence": "medium",
-  "rank": 12
+  "rank": 13
  },
  {
   "id": "z-image-turbo",
@@ -1090,7 +1090,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 13,
+  "rank": 14,
   "pick": "16GBで動く定番・商用OK",
   "pick_reason": "Apache 2.0。速い",
   "hl": {
@@ -1171,7 +1171,7 @@
    "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
   ],
   "confidence": "medium",
-  "rank": 14,
+  "rank": 15,
   "hl": {
    "label": "AA Arena",
    "value": 914
@@ -1247,7 +1247,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "high",
-  "rank": 15,
+  "rank": 16,
   "hl": {
    "label": "AA Arena",
    "value": 990
@@ -1331,7 +1331,7 @@
    "https://arena.ai/leaderboard/image/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 16,
+  "rank": 17,
   "hl": {
    "label": "AA Arena",
    "value": 887
@@ -1393,7 +1393,7 @@
    "https://docs.comfy.org/tutorials/image/anima/anima.md"
   ],
   "confidence": "medium",
-  "rank": 17,
+  "rank": 18,
   "pick": "アニメ絵を軽く",
   "pick_reason": "約7GBで動く"
  },
@@ -1454,7 +1454,7 @@
    "https://huggingface.co/cagliostrolab/animagine-xl-4.0"
   ],
   "confidence": "medium",
-  "rank": 18
+  "rank": 19
  },
  {
   "id": "gpt-image-2-6-sunburst",
@@ -2196,7 +2196,7 @@
   "org": "Ideogram",
   "country": "CA",
   "access": "api",
-  "release": "2026-11",
+  "release": "2026-11-19",
   "params_b": null,
   "arch": "非公開",
   "tasks": [
@@ -2253,6 +2253,7 @@
    "Ideogram 3.0"
   ],
   "sources": [
+   "https://ideogram.ai/models/4.6/",
    "https://developer.ideogram.ai/v2/ideogram-api/models.md",
    "https://developer.ideogram.ai/v2/api-reference/images/generate/ideogram-4-6.md",
    "https://artificialanalysis.ai/image/leaderboard/text-to-image",
@@ -2266,8 +2267,8 @@
   },
   "series": "Ideogram flagship",
   "availability_tier": "general",
-  "verified_at": "2026-11-25",
-  "release_note": "公式の発表日は未確認（ニュースページは取得不可）。AA・Runwareの表示は11/19、公式APIドキュメントの料金表（11/15時点と記載）に4.6が載るため月までにしている。"
+  "verified_at": "2026-11-28",
+  "release_note": "公式モデルページ（ideogram.ai/models/4.6）で「2026年11月19日リリース」と明記（11/28確認）。"
  },
  {
   "id": "midjourney-v8-2",
@@ -2403,12 +2404,12 @@
   "availability_tier": "general"
  },
  {
-  "id": "ming-image-0-1-design",
-  "name": "Ming-Image-0.1-Design",
+  "id": "ming-image-0-2-design",
+  "name": "Ming-Image-0.2-Design",
   "org": "Ant Group（inclusionAI）",
   "country": "CN",
   "access": "open-weight",
-  "release": "2026-09-17",
+  "release": "2026-11-25",
   "params_b": 6,
   "arch": "6Bの拡散Transformer（DiT）に、条件付け用のMing系MoEマルチモーダルLLM（BF16で約34GB）とQwen2系1.5Bのコネクタを組み合わせた構成。透明背景（RGBA）の画像を直接出力できる",
   "tasks": [
@@ -2416,7 +2417,7 @@
   ],
   "spec": {
    "max_resolution": "2048×2048（推奨。2560×1440など1:4〜4:1の比率に対応）",
-   "other": "UI・インフォグラフィック・ポスターなど文字の多いデザイン向け。Figma風のレイヤー構造JSONを推奨プロンプト形式とし、短い指示をJSONに書き換えるプロンプト拡張（Ling-3.0-flash-VLやQwen3.8-27Bを使用）を用意。既定12ステップ・CFG 1.0。決まった前置き文を付けると透明背景（RGBA）の画像を生成する。同時公開のMing-Image-0.1-Design-Layerは、完成したデザイン画像を編集可能な透明レイヤーに分解する"
+   "other": "UI・EC画像・空間デザインなど文字や構図の多いデザイン向け。Figma風のレイヤー構造JSONを推奨プロンプト形式とし、プロンプト拡張（Ling-3.0-flash-VLやQwen3.8-27B）を用意。既定12ステップ・CFG 1.0。決まった前置き文で透明背景（RGBA）を生成。レイヤー分解は前世代のMing-Image-0.1-Design-Layer（別モデル）を使う。Ling-3.2-flashと組み合わせたWebページ化の手順も公開"
   },
   "features": {
    "透明背景（RGBA）出力": true,
@@ -2428,50 +2429,45 @@
   },
   "min_vram_gb": 80,
   "rec_vram_gb": 80,
-  "vram_note": "公式の検証済み最小構成はVRAM 80GiB以上のGPU 1枚（BF16）。重みは合計約53GB（DiT約12GB、MLLM約34GB、コネクタ約6GB）。量子化版・ComfyUI対応は未確認",
+  "vram_note": "公式の検証済み構成はVRAM 80GiBのGPU 1枚（BF16）。重みは合計約53GB（0.1と同じ構成）。第三者のGGUF量子化版（Abiray/Ming-Image-0.2-Design-GGUF）はあるが動作は未確認",
   "speed_note": "既定12ステップ（CFG 1.0）。公式の時間計測はない",
-  "price_note": "DeepInfraでもホスト提供（料金は未確認）",
+  "price_note": "DeepInfraで0.1をホスト提供（0.2の提供・料金は未確認）",
   "bench": [
    {
-    "metric": "Artificial Analysis Text-to-Image Arena ELO",
-    "value": 999,
-    "note": "全体47位、オープンウェイトでは7位前後（FLUX.2 [dev] の1000とほぼ同点）。2026-10-27確認",
-    "source": "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text"
-   },
-   {
-    "metric": "Artificial Analysis UI/UXデザイン部門 ELO（オープンウェイト）",
-    "value": 1082,
-    "note": "公開直後（2026-09-22頃）のオープンウェイト1位（2位 Ideogram 4.0 (Quality) 1052）。開発元がGitHubに掲載したAAの画面による値で、その後に出たモデルは含まない",
-    "source": "https://github.com/inclusionAI/Ming-Image"
+    "metric": "Artificial Analysis Text-to-Image Arena ELO（AA-Image-T2I v2.1）",
+    "value": 1095,
+    "note": "オープンウェイト1位（2位H3-Image 1066、3位Qwen-Image-2.1 1049）、全体では24位前後。2026-11-28取得。旧0.1-Designは1001",
+    "source": "https://artificialanalysis.ai/image/leaderboard/text-to-image"
    }
   ],
-  "quality_note": "UIやインフォグラフィックなど文字とレイアウトの多いデザインに特化した生成モデル。AAの総合アリーナではFLUX.2 [dev] 並みの999で、オープンでは上位だがQwen-Image-2.1やFLUX 3 Image Klein（1040台）には届かない。一方、AAのUI/UXデザイン部門では公開時点でオープンウェイト1位。透明背景の素材を直接作れる点も珍しい",
+  "quality_note": "文字とレイアウトの多いデザイン向け生成モデルの改良版。公式は複雑な構図・光・文字描画の改善をうたい、AAの総合T2Iアリーナでオープンウェイト1位（1095）。0.1の999から大きく上がり、MiniMax-H3-ImageやQwen-Image-2.1を上回る。透明背景の素材も直接作れる",
   "ja_note": "公式の作例・説明は英語と中国語のみで、日本語の文字描画は未確認",
   "license": "MIT",
   "commercial": "yes",
-  "license_note": "MIT（HFのモデルカード・GitHubとも）",
-  "hf": "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design",
+  "license_note": "MIT（HFのモデルカード）",
+  "hf": "https://huggingface.co/inclusionAI/Ming-Image-0.2-Design",
   "tools": [
    "公式推論スクリプト（Ming-Image）",
-   "vLLM-Omni",
-   "Hugging Face Spaces（デモ）"
+   "vLLM-Omni"
   ],
-  "summary_ja": "中国Ant GroupのinclusionAIが公開した、アプリの画面やポスターなど文字の多いデザインづくりが得意な画像生成モデルです。透明背景の素材も作れ、MITで商用にも使えます。",
-  "best_for_ja": "アプリやWebのUI案、インフォグラフィック、スライド素材など、文字とレイアウトが主役のデザイン案づくり",
-  "supersedes": [],
+  "summary_ja": "中国Ant GroupのinclusionAIが公開した、デザイン向け画像生成モデルの新版です。ECのメイン画像やUI案、空間デザインの描画が向上し、AAの画像生成でオープンウェイト1位。MITで商用にも使えます。",
+  "best_for_ja": "ECのメイン画像、アプリやWebのUI案、ポスター・インフォグラフィックなど文字とレイアウトが主役のデザイン案づくり",
+  "supersedes": [
+   "Ming-Image-0.1-Design"
+  ],
   "sources": [
-   "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design",
+   "https://huggingface.co/inclusionAI/Ming-Image-0.2-Design",
    "https://github.com/inclusionAI/Ming-Image",
    "https://huggingface.co/inclusionAI/Ming-Image-0.1-Design-Layer",
-   "https://artificialanalysis.ai/text-to-image/arena/leaderboard-text",
-   "https://deepinfra.com/blog/ming-design-with-ai"
+   "https://artificialanalysis.ai/image/leaderboard/text-to-image"
   ],
   "confidence": "medium",
-  "rank": 10,
+  "rank": 2,
   "hl": {
    "label": "AA Arena",
-   "value": 999
-  }
+   "value": 1095
+  },
+  "verified_at": "2026-11-28"
  },
  {
   "id": "kling-image-4-0",

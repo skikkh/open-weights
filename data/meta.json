@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25",
- "next_update": "2026-11-28",
+ "updated_at": "2026-11-28",
+ "next_update": "2026-12-01",
  "rules": [
   "上部で公開モデル中心とフロンティア・有料を切り替えます。公開モデル側の汎用カテゴリは重み配布ありを、有料側はAPI・サービスを掲載。国産LLMではAPIモデルも通常一覧に含めます。",
   "同じ系列・役割は最新の提供版だけを載せます。High／Max等の推論設定やAPI名の別名で件数を増やしません。限定後継の一般提供までは現行の一般提供版を残します。",
@@ -13,6 +13,18 @@
   "3日ごとに最新情報を調べ直して更新します。"
  ],
  "changelog": [
+  {
+   "date": "2026-11-28",
+   "items": [
+    "追加（大型LLM）: GigaChat 4（Sber・ロシア、11/26、総708B／稼働41B、MIT、1M文脈）、GigaChat 3.5 Omni（11/27、433.6B／稼働28B、MIT、画像・音声・動画入力で別行）。追加（ローカルLLM）: GigaChat 4 37B-A4B（11/26、非商用限定）。",
+    "置換（画像・公開）: Ming-Image-0.1-Design → Ming-Image-0.2-Design（inclusionAI、11/25、MIT、AA画像生成でオープンウェイト1位1095）。追加（動画・有料）: MAGI-2（Sand.ai、11月、API、最長30秒・1080p音声付き、AA画像→動画1位。重み公開版MAGI-2 Previewは別行で維持）。",
+    "追加（ASR・公開）: Nemotron 3.5 ASR Streaming 0.6B ja-dialogue（DeNA、11/25、日本語の音声対話向けストリーミング、OpenMDW-1.1）。追加（有料ASR・掲載漏れ）: Muse Voice Transcribe（Meta、9/3、$0.18/時間）、Speechmatics Agent STT（Linden 1、9/17、$0.30/時間）、Rime STT（10/20提供、11/26に日本語対応、$0.002/分）。",
+    "更新: AA指数（v5.0.2）でERNIE-5.5-Flash-Preview 31.3、Gemma 4 26B A4B 4.0、GPT-6.2 Astra 62.2。Nejumi（W&B公開データ）をKimi K3.1 Pro・Hy4・Hy4 flash・Mistral Large 4・Inkling 2 Small／Mini・ERNIE-5.5-Flash-Previewに追加し、DeepSeek-V4.1-Flash-1017を1017版の値0.7541に訂正。Hy4 flashにStrataのパックと載せ方レシピ3件（開発者測定）。",
+    "更新: Kling 4.0（11/19に4K・HDR対応、AA値を本体の値に）、Ideogram 4.6の公開日を11/19に確定、Eleven v4／v4 Turboの1リクエスト上限を10万文字に（11/23）。",
+    "更新（API料金）: Solar Pro 4／Mini 4を公式の50%割引表示（終了日なし、定価は注記）に、Kimi K3.1 Pro／Highspeedの1時間キャッシュ書込を補完、OpenRouter経由のSiliconFlow・Fireworksの単価変更を反映。全81経路を11/28に照合。",
+    "保留: Quasar 1.2 358B（GLM-5.3の圧縮派生API、選定範囲外）、Solar Mini 4.5 Preview（12/3正式提供予定）、d1.3-ultra（AA判断指数首位だが公式告知・料金なし）、Migu Music v1.0、Phonic 1.1（開発元の国が未確認）、Sage-Med-Preview、MAI Code 2のAPI、Claude Mythos 5.2ほか。日本語対象外: Conv 2.0、Saaras v4、Dialt、Kugel Ear 1、GigaAM-v4ほか。"
+   ]
+  },
   {
    "date": "2026-11-25",
    "items": [
@@ -265,9 +277,9 @@
  "leaderboards": [
   {
    "name": "Artificial Analysis Intelligence Index v5.0.2",
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-28",
    "url": "https://artificialanalysis.ai/leaderboards/models",
-   "note": "9評価の合成点。11/24ごろ改定のv5.0.2（Terminal-Bench 4.1を4.0に置換、FrontierCode-AA 2.0を再採点）の表を11/25に取得し、掲載値と0.1以上違うものを更新。それ以外の掲載値は差が0.1未満のため据え置き（各行の注記に残る「v5.0.1」は照合時点の版）。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
+   "note": "9評価の合成点。v5.0.2の表を11/28に再取得し、掲載値と0.1以上違うもの（未掲載→掲載を含む）だけを更新。旧v4系とは尺度が異なり比較できません。日本語能力や公開重みのローカル実測を直接表す指標ではありません。"
   },
   {
    "name": "Artificial Analysis：Laptops & Workstations",
@@ -277,9 +289,9 @@
   },
   {
    "name": "Nejumi LLM Leaderboard 4（日本語総合）",
-   "as_of": "2026-10-22",
+   "as_of": "2026-11-25",
    "url": "https://nejumi.ai/",
-   "note": "W&B の公開データから表を組み立て直した値で、公式の表示と完全には一致しない可能性があります。"
+   "note": "W&B の公開データ（leaderboard4タグの実行結果のTOTAL_SCORE）から組み立て直した値で、公式の表示と完全には一致しない可能性があります。11/28時点の最新実行は11/25。"
   },
   {
    "name": "LMArena Text（日本語カテゴリ含む）",

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-12",
+ "as_of": "2026-11-28",
  "unit_tokens": 1000000,
  "scope_ja": "テキストLLMの有料API。100万トークン単価。音声・画像・動画の秒・文字・枚数課金は各カテゴリに掲載。",
  "classes": [
@@ -315,7 +315,7 @@
     "cache_write_short": 10,
     "cache_write_long": 20
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
     "https://developers.openai.com/api/docs/pricing",
@@ -352,7 +352,7 @@
     "cache_write_short": 5.0,
     "cache_write_long": 10.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
     "https://developers.openai.com/api/docs/pricing",
@@ -389,7 +389,7 @@
     "cache_write_short": 2.5,
     "cache_write_long": 5.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
     "https://developers.openai.com/api/docs/pricing",
@@ -426,7 +426,7 @@
     "cache_write_short": 1.25,
     "cache_write_long": 2.5
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
     "https://developers.openai.com/api/docs/pricing",
@@ -463,7 +463,7 @@
     "cache_write_short": 1.25,
     "cache_write_long": 2.5
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -498,7 +498,7 @@
     "cache_write_short": 0.625,
     "cache_write_long": 1.25
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -533,7 +533,7 @@
     "cache_write_short": 0.125,
     "cache_write_long": 0.25
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -568,7 +568,7 @@
     "cache_write_short": 0.0625,
     "cache_write_long": 0.125
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -603,7 +603,7 @@
     "cache_write_short": 25.0,
     "cache_write_long": 50.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -637,7 +637,7 @@
     "cache_write_short": 12.5,
     "cache_write_long": 25
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://developers.openai.com/api/docs/pricing"
    ],
@@ -671,7 +671,7 @@
     "cache_write_short": 10.0,
     "cache_write_long": 16
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -692,7 +692,7 @@
     "cache_write_short": 5.0,
     "cache_write_long": 8.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -713,7 +713,7 @@
     "cache_write_short": 5.0,
     "cache_write_long": 8
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -734,7 +734,7 @@
     "cache_write_short": 2.5,
     "cache_write_long": 4.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -755,7 +755,7 @@
     "cache_write_short": 2.5,
     "cache_write_long": 4
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -776,7 +776,7 @@
     "cache_write_short": 1.25,
     "cache_write_long": 2.0
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -797,7 +797,7 @@
     "cache_write_short": 0.125,
     "cache_write_long": 0.2
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -831,7 +831,7 @@
     "cache_write_short": 0.0625,
     "cache_write_long": 0.1
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing"
    ],
@@ -865,7 +865,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://aistudio.google.com/docs/pricing"
    ],
@@ -899,7 +899,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://aistudio.google.com/docs/pricing"
    ],
@@ -933,7 +933,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://aistudio.google.com/docs/pricing"
    ],
@@ -967,7 +967,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://aistudio.google.com/docs/pricing"
    ],
@@ -1001,7 +1001,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://ai.google.dev/gemini-api/docs/pricing",
     "https://ai.google.dev/gemini-api/docs/changelog"
@@ -1024,7 +1024,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://ai.google.dev/gemini-api/docs/pricing",
     "https://ai.google.dev/gemini-api/docs/changelog"
@@ -1047,7 +1047,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://ai.google.dev/gemini-api/docs/pricing"
    ],
@@ -1069,7 +1069,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://ai.google.dev/gemini-api/docs/pricing"
    ],
@@ -1091,7 +1091,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://docs.x.ai/developers/pricing"
    ],
@@ -1124,13 +1124,13 @@
     "output": 10,
     "cache_read": 0.2,
     "cache_write_short": 2,
-    "cache_write_long": null
+    "cache_write_long": 4.0
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
-    "https://platform.kimi.ai/"
+    "https://platform.kimi.ai/docs/pricing/chat"
    ],
-   "note_ja": "Kimi Code会費とは別の従量課金。標準キャッシュ書込の単価を表示。延長保持の単価は未確認。通常版とHighspeedは役割別。",
+   "note_ja": "Kimi Code会費とは別の従量課金。キャッシュ書込は5分（既定）と1時間の2区分、キャッシュ入力はヒット単価のみ。通常版とHighspeedは役割別。",
    "context": 1048576
   },
   {
@@ -1147,7 +1147,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://platform.kimi.ai/docs/pricing/chat"
    ],
@@ -1166,13 +1166,13 @@
     "output": 20,
     "cache_read": 0.2,
     "cache_write_short": 4,
-    "cache_write_long": null
+    "cache_write_long": 8.0
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
-    "https://platform.kimi.ai/"
+    "https://platform.kimi.ai/docs/pricing/chat"
    ],
-   "note_ja": "Kimi Code会費とは別の従量課金。標準キャッシュ書込の単価を表示。延長保持の単価は未確認。通常版とHighspeedは役割別。",
+   "note_ja": "Kimi Code会費とは別の従量課金。キャッシュ書込は5分（既定）と1時間の2区分、キャッシュ入力はヒット単価のみ。通常版とHighspeedは役割別。",
    "context": 1048576
   },
   {
@@ -1189,7 +1189,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://api-docs.deepseek.com/quick_start/pricing/"
    ],
@@ -1211,7 +1211,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://api-docs.deepseek.com/quick_start/pricing/"
    ],
@@ -1233,7 +1233,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://api-docs.deepseek.com/quick_start/pricing/"
    ],
@@ -1255,7 +1255,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://api-docs.deepseek.com/quick_start/pricing/"
    ],
@@ -1277,7 +1277,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://dev.meta.ai/docs/pricing-rate-limits"
    ],
@@ -1298,7 +1298,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://dev.meta.ai/docs/pricing-rate-limits"
    ],
@@ -1319,7 +1319,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://dev.meta.ai/docs/pricing-rate-limits"
    ],
@@ -1353,7 +1353,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://dev.meta.ai/docs/pricing-rate-limits"
    ],
@@ -1374,7 +1374,7 @@
     "cache_write_short": 1.875,
     "cache_write_long": 3
    },
-   "verified_at": "2026-11-19",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
     "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"
@@ -1397,7 +1397,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
    ],
@@ -1419,7 +1419,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-25",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.inceptionlabs.ai/models",
     "https://docs.inceptionlabs.ai/support/wind-down"
@@ -1435,17 +1435,17 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.06,
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.03,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.upstage.ai/pricing/api"
    ],
-   "note_ja": "通常のUSDトークン料金。終了済みの無料・割引期間を適用しない。"
+   "note_ja": "公式料金表で「別途告知まで50%割引」（2026-10-20開始、終了日なし）の表示価格。定価は入力$0.30・キャッシュ$0.06・出力$1.20。11/23からのContributorモード（データ提供条件つき、入力$0.09・出力$0.36）は別条件で含めない。VAT別。"
   },
   {
    "id": "solar-mini-4--upstage--40",
@@ -1455,17 +1455,17 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.1,
-    "output": 0.4,
-    "cache_read": 0.01,
+    "input": 0.05,
+    "output": 0.2,
+    "cache_read": 0.005,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.upstage.ai/pricing/api"
    ],
-   "note_ja": "通常のUSDトークン料金。終了済みの無料・割引期間を適用しない。"
+   "note_ja": "公式料金表で「別途告知まで50%割引」（2026-10-11開始、終了日なし）の表示価格。定価は入力$0.10・キャッシュ$0.01・出力$0.40。後継Solar Mini 4.5は12/3に正式提供予定（11/23からプレビュー）。VAT別。"
   },
   {
    "id": "tencent-hy4-api--tencent--41",
@@ -1481,7 +1481,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1517,7 +1517,7 @@
     "cache_write_short": 13,
     "cache_write_long": 26
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1538,7 +1538,7 @@
     "cache_write_short": 26,
     "cache_write_long": 52
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1559,7 +1559,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1580,7 +1580,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1601,7 +1601,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1622,7 +1622,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://cloud.tencent.com/document/product/1823/130055/"
    ],
@@ -1643,7 +1643,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://www.preferred.jp/ja/news/pr20261027"
    ],
@@ -1663,7 +1663,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://docs.z.ai/guides/overview/pricing"
    ],
@@ -1684,7 +1684,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://docs.z.ai/guides/overview/pricing"
    ],
@@ -1705,7 +1705,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-16",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1730,7 +1730,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-16",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1755,7 +1755,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1780,7 +1780,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1805,7 +1805,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1830,7 +1830,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/moonshotai/kimi-k3.1-pro/endpoints"
    ],
@@ -1855,7 +1855,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-16",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1880,7 +1880,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-16",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1905,7 +1905,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1930,7 +1930,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1955,7 +1955,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -1980,7 +1980,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2005,7 +2005,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2024,13 +2024,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.3,
-    "output": 0.55,
-    "cache_read": 0.006,
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2055,7 +2055,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2080,7 +2080,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2105,7 +2105,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash-1017/endpoints"
    ],
@@ -2130,7 +2130,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2155,7 +2155,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2180,7 +2180,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2205,7 +2205,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2230,7 +2230,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2250,12 +2250,12 @@
    "status": "available",
    "rates": {
     "input": 0.7,
-    "output": 2.2,
+    "output": 1.9,
     "cache_read": 0.13,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2274,13 +2274,13 @@
    "currency": "USD",
    "status": "available",
    "rates": {
-    "input": 0.98,
-    "output": 3.08,
-    "cache_read": 0.182,
+    "input": 0.7,
+    "output": 2.2,
+    "cache_read": 0.13,
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2305,7 +2305,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2330,7 +2330,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2355,7 +2355,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],
@@ -2380,7 +2380,7 @@
     "cache_write_short": null,
     "cache_write_long": null
    },
-   "verified_at": "2026-11-12",
+   "verified_at": "2026-11-28",
    "sources": [
     "https://openrouter.ai/api/v1/models/z-ai/glm-5.3/endpoints"
    ],

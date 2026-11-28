@@ -1191,5 +1191,67 @@
   ],
   "confidence": "medium",
   "rank": 18
+ },
+ {
+  "id": "nemotron-3-5-asr-streaming-0-6b-ja-dialogue",
+  "name": "Nemotron 3.5 ASR Streaming 0.6B ja-dialogue（DeNA）",
+  "org": "DeNA",
+  "country": "JP",
+  "release": "2026-11-25",
+  "params_m": 600,
+  "arch": "FastConformer Cache-Aware RNN-T（NVIDIA Nemotron 3.5 ASR Streaming 0.6Bを日本語の音声対話向けに追加学習。構造は元モデルと同じ）",
+  "lang": "ja-only",
+  "ja_cer": [
+   {
+    "dataset": "Common Voice ja（300発話）",
+    "cer": 4.6,
+    "note": "開発元の評価。読み（カタカナ）CER、560msストリーミング。元モデルは9.5",
+    "source": "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue"
+   },
+   {
+    "dataset": "FLEURS ja（300発話）",
+    "cer": 5.1,
+    "note": "開発元の評価。読みCER、560ms。元モデルは5.9",
+    "source": "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue"
+   },
+   {
+    "dataset": "相づち（合成音声768発話）",
+    "cer": 17.3,
+    "note": "開発元の評価。学習に使っていない合成音声での相づち・短い返事。元モデルは54.8",
+    "source": "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue"
+   },
+   {
+    "dataset": "ReazonSpeech（300発話、参考）",
+    "cer": 21.1,
+    "note": "開発元の評価。正解が放送字幕でフィラーを省くため参考値。元モデルは22.6",
+    "source": "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue"
+   }
+  ],
+  "features": {
+   "streaming": true,
+   "timestamps": null,
+   "diarization": false,
+   "punctuation": null,
+   "long_form": null
+  },
+  "speed_note": "構造は元モデルと同じで速度も同等（開発元）。先読みは80ms／320ms／560ms／1,120msから選択（評価値は560ms）。DeNAのL4 1枚での計測では、発話終了から確定まで中央値24ms＋待機用の無音200ms（約220ms、追加学習前の元モデルで計測）。",
+  "hardware_note": "NVIDIA NeMoのキャッシュ対応ストリーミング推論スクリプトで実行（target_lang=ja-JP）。.nemo配布ファイルは2,553,047,040バイト（約2.55GB、必要VRAMとは別）。最低VRAMは公式に明記なし。",
+  "license": "OpenMDW-1.1",
+  "commercial": "yes",
+  "license_note": "元モデルと同じOpenMDW License 1.1。学習データはCommon Voice v27（CC0）、FLEURS（CC BY 4.0）、Irodori-TTS-v4.1-Smallで作った合成音声（約173時間）。",
+  "hf": "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue",
+  "summary_ja": "DeNAがNVIDIAの多言語ストリーミングASRを日本語の音声対話向けに追加学習した版。「うん」「ええ」などの相づちを発話の終わりを待たずに書き起こし、相づちのCERは54.8%→17.3%、Common Voiceは9.5%→4.6%に改善（開発元の評価）。",
+  "best_for_ja": "ASR→LLM→TTSを組む日本語の音声エージェントで、相づち・短い返事を低遅延に拾いたい場合。数字は漢数字で出力されるため、必要なら後処理で変換する。",
+  "supersedes": [],
+  "sources": [
+   "https://huggingface.co/dena-ai/nemotron-3.5-asr-streaming-0.6b-ja-dialogue",
+   "https://engineering.dena.com/blog/2026/11/asr-finetuning-voice-dialogue/",
+   "https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b"
+  ],
+  "confidence": "medium",
+  "rank": 19,
+  "capability_note": "元モデル（多言語40言語）とは別チェックポイントで、日本語の対話向けに調整。数値は開発元の読みCER（表記ゆれを誤りにしない）で、他行の公式CERと直接比較しない。発話の終わりの判定（ターン検出）は別途必要。DeNAは同時にParakeet TDT-CTC 0.6B jaとHaas-ja-v1.0の対話向け追加学習版も公開。",
+  "release_note": "日付はHFのリポジトリ作成日（2026-11-25）。解説ブログは2026-11-26公開。",
+  "verified_at": "2026-11-28"
  }
 ]

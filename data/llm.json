@@ -63,10 +63,16 @@
    "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE",
    "https://huggingface.co/api/models/moonshotai/Kimi-K3.1-Pro?blobs=true",
    "https://www.kimi.ai/blog/kimi-k3-1-pro",
-   "https://artificialanalysis.ai/models/kimi-k3-1-pro"
+   "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
-  "q4_gb": 1561.3
+  "q4_gb": 1561.3,
+  "jp_bench": {
+   "nejumi": 0.8557
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-06実行のmoonshotai/Kimi-K3.1-Pro reasoning-max）",
+  "verified_at": "2026-11-28"
  },
  {
   "id": "glm-5-3",
@@ -304,13 +310,14 @@
    "https://huggingface.co/unsloth/DeepSeek-V4.1-Flash-1017-GGUF",
    "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
    "https://artificialanalysis.ai/leaderboards/models",
-   "https://blog.qualiteg.com/llm-ranking-2026-03/"
+   "https://blog.qualiteg.com/llm-ranking-2026-03/",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
   "jp_bench": {
-   "nejumi": 0.8158
+   "nejumi": 0.7541
   },
-  "jp_bench_note": "Nejumi Leaderboard 4（2026-10-19 時点、W&B 公開データから再構成）",
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-10-19実行のdeepseek-ai/DeepSeek-V4.1-Flash-1017 reasoning-effort-100）。以前の0.8158は旧版V4.1-Flash（09-10実行）の値で、1017版には引き継がない。",
   "short": "DeepSeek V4.1 Flash",
   "local_q": {
    "summary_ja": "2bitなら 256GB 機に常駐して約37 tok/s。Engram 表を SSD に置けば 128GB 機（DGX Spark）でも約9 tok/s で動きます。",
@@ -437,7 +444,8 @@
     }
    ],
    "note_ja": null
-  }
+  },
+  "verified_at": "2026-11-28"
  },
  {
   "id": "mimo-v2-6-pro",
@@ -1522,7 +1530,8 @@
    "https://huggingface.co/tencent/Hy4-FP8",
    "https://huggingface.co/tencent/Hy4-base",
    "https://huggingface.co/AngelSlim/Hy4-GGUF",
-   "https://artificialanalysis.ai/leaderboards/models"
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
   "short": "Hy4",
@@ -1551,7 +1560,11 @@
    "reports": [],
    "note_ja": "bitsは実ファイル容量÷774.4B（視覚部込みのHF集計）の実効値。サイズはHFのファイル一覧の合計（画像入力用mmprojは別に約2.7GB）。プレビュー版の量子化・実行情報は引き継がない。"
   },
-  "verified_at": "2026-11-22"
+  "verified_at": "2026-11-28",
+  "jp_bench": {
+   "nejumi": 0.8338
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-20実行のtencent/Hy4 reasoning-high、vLLM）"
  },
  {
   "id": "hy4-flash",
@@ -1592,7 +1605,8 @@
   "engines": [
    "vLLM",
    "SGLang",
-   "llama.cpp"
+   "llama.cpp",
+   "Strata"
   ],
   "supersedes": [],
   "notes": "Hy4 preview（770B）とは役割の違う軽量版として別行。HFリポジトリ作成は11/17（GGUFは11/16）。活性パラメータはテキスト11.3B＋画像0.43B。",
@@ -1600,12 +1614,14 @@
    "https://huggingface.co/tencent/Hy4-flash",
    "https://hy.tencent.ai/research/hy4-flash",
    "https://huggingface.co/tencent/Hy4-flash/blob/main/LICENSE",
-   "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+   "https://huggingface.co/AngelSlim/Hy4-flash-GGUF",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4",
+   "https://huggingface.co/strata-engine/Hy4-Flash-Strata"
   ],
   "confidence": "high",
-  "verified_at": "2026-11-19",
+  "verified_at": "2026-11-28",
   "local_q": {
-   "summary_ja": "公式GGUFのIQ2_AH（約135GB）なら192GB以上、Q4_K_M（約168GB）なら256GBのメモリ機に載る見込み（実測報告は未確認）。",
+   "summary_ja": "専用エンジンStrataのパックなら、64GBのメインメモリ＋8GB以上のGPUから動き、RTX 5090で約90〜111 tok/s（開発者の測定）。公式GGUFはIQ2_AH（約135GB）で192GB以上の機材向け。",
    "quants": [
     {
      "name": "IQ2_AH (AngelSlim公式)",
@@ -1624,11 +1640,58 @@
      "bits": null,
      "size_gb": 168.4,
      "source": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF"
+    },
+    {
+     "name": "Strata SQ-64",
+     "bits": null,
+     "size_gb": 129.6,
+     "resident_gb": 63.8,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+     "note": "パック62.0GB＋共通Engram表（Q8）67.6GB。使用メモリ（RAM＋VRAM）は約59.4GiB"
+    },
+    {
+     "name": "Strata SQ-96",
+     "bits": null,
+     "size_gb": 157.2,
+     "resident_gb": 91.4,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+     "note": "パック89.6GB＋共通Engram表67.6GB。使用メモリ約85.1GiB"
+    },
+    {
+     "name": "Strata SQ-128",
+     "bits": null,
+     "size_gb": 181.2,
+     "resident_gb": 115.4,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata",
+     "note": "パック113.7GB＋共通Engram表67.6GB。使用メモリ約107.5GiB。元モデルとのずれ（KL）が最も小さい"
     }
    ],
-   "reports": [],
-   "note_ja": "各版とも2分割目（約63.4GB）はEngram埋め込みで共通。サイズはHFのファイル一覧の合計。"
-  }
+   "reports": [
+    {
+     "hardware": "RTX 5090 32GB＋メインメモリ（128K文脈）",
+     "quant": "Strata SQ-64",
+     "gen_tok_s": 90,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata"
+    },
+    {
+     "hardware": "Ryzen AI Max+ 395（Strix Halo 128GB）",
+     "quant": "Strata SQ-64",
+     "gen_tok_s": 51,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata"
+    },
+    {
+     "hardware": "DGX Spark（GB10 128GB、4K文脈）",
+     "quant": "Strata SQ-64",
+     "gen_tok_s": 43.9,
+     "source": "https://huggingface.co/strata-engine/Hy4-Flash-Strata"
+    }
+   ],
+   "note_ja": "各版とも2分割目（約63.4GB）はEngram埋め込みで共通。サイズはHFのファイル一覧の合計。 Strataの速度は開発者（strata-engine）による自己申告で、Strata 0.2.18・DFly2投機デコードありの値。Strataパックの使用メモリはカードのGiB表記をGBに換算し、残り（主にEngram表）はSSDから読む。"
+  },
+  "jp_bench": {
+   "nejumi": 0.8199
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-18実行のtencent/Hy4-flash reasoning-max、vLLM）"
  },
  {
   "id": "qwen3-8-27b",
@@ -3391,10 +3454,11 @@
    "https://huggingface.co/blog/mistral-large4",
    "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4",
    "https://artificialanalysis.ai/models/mistral-large-4",
-   "https://mistral.ai/news/mistral-large-4/"
+   "https://mistral.ai/news/mistral-large-4/",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
-  "verified_at": "2026-10-31",
+  "verified_at": "2026-11-28",
   "local_q": {
    "summary_ja": "2bit（約340〜380GB）で 512GB の Mac Studio 1台に載り、生成は約15 tok/s。128GB 機1台には最小の1bit版（約233GB）でも載りません。",
    "quants": [
@@ -3519,7 +3583,11 @@
     }
    ],
    "note_ja": "RTX PRO 6000 ×4 の IQ2_XXS は800K文脈まで動くが、長い文脈では生成3 tok/s・prefill 129 tok/sまで落ちる（HFブログ）。bitsはファイル容量を総1Tで割った目安。"
-  }
+  },
+  "jp_bench": {
+   "nejumi": 0.7968
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-04実行の公開重みmistralai/Mistral-Large-4-1T-A52B reasoning-high）。11/24実行のMistral公式API（mistral-large-4、reasoning-high）は0.8145で、経路が違うため別値。"
  },
  {
   "id": "mistral-medium-3-5",
@@ -5085,8 +5153,8 @@
    "tau2": 68.2,
    "browsecomp": null
   },
-  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは17.2）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 57.40、Terminal-Bench 2.1 37.22。aa_indexはAA v4.3.2（Reasoning）。 aa_indexはAA Intelligence Index v5.0（2026-10-27改定、2026-10-31取得）で未評価のため空欄（旧v4.3.2では17。v5とは尺度が違い比べられない）。",
-  "aa_index": null,
+  "bench_note": "公式モデルカード（指示調整版）。AIMEはAIME 2026（ツールなし）、LCBはv6、HLEはツールなし（検索ありは17.2）。NVIDIAの測定（Nemotron 3.5 Lightningカード）ではSWE-bench Verified 57.40、Terminal-Bench 2.1 37.22。aa_indexはAA v4.3.2（Reasoning）。 aa_indexはAA Intelligence Index v5.0.2のReasoning設定で4.0（11/28取得。旧v4.3.2では17で、v5とは尺度が違い比べられない）。",
+  "aa_index": 4.0,
   "japanese_note": "Swallow LLM Leaderboardで日本語平均0.646（40B以下の国外オープンでGemma 4 31Bに次ぐ2位）。Nejumi Leaderboard 4（2026-09-01時点）で総合0.7872。biton（2026年10月版）は16GB帯の本命としている。",
   "deploy_note_ja": "UD-Q4_K_M 16.9GBで16〜24GBのGPUに載る。RTX 5090のllama.cpp実測でQ4_K_M生成約249 tok/s。M4 Max 128GBのoMLX（6bit）で生成約83 tok/s（4k）、64kでも約50 tok/s。Ollama公式（gemma4:26b）、LM Studio、Unsloth MLX版あり。",
   "local_runtimes": [
@@ -5118,7 +5186,8 @@
   "jp_bench": {
    "nejumi": 0.7872
   },
-  "jp_bench_note": "Nejumi Leaderboard 4（Qualiteg による集計、2026-09-01 時点）"
+  "jp_bench_note": "Nejumi Leaderboard 4（Qualiteg による集計、2026-09-01 時点）",
+  "verified_at": "2026-11-28"
  },
  {
   "id": "meta-muse-glimmer-30b",
@@ -8672,7 +8741,8 @@
    "https://huggingface.co/thinkingmachines/Inkling-2-Small",
    "https://huggingface.co/thinkingmachines/Inkling-2-Small-MXFP8",
    "https://thinkingmachines.ai/news/inkling-2-small/",
-   "https://artificialanalysis.ai/leaderboards/models"
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
   "local_q": {
@@ -8723,7 +8793,12 @@
    ],
    "reports": [],
    "note_ja": "bitsは実ファイル容量÷594Bの実効値（スケール等を含む）。旧Inkling-Smallの後継とは公式に書かれていないため、旧版は残している。 GGUF・MLXの容量は11/16にHFのファイル一覧で確認（画像入力用のmmprojは別に約0.7GB）。"
-  }
+  },
+  "jp_bench": {
+   "nejumi": 0.8332
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-16実行のthinkingmachines/Inkling-2-Small reasoning-max）",
+  "verified_at": "2026-11-28"
  },
  {
   "id": "tml-inkling-2-mini",
@@ -8784,10 +8859,15 @@
   "notes": "Tinker経由のAPI・プレイグラウンドでも利用可。旧Inkling-Smallの後継とは公式に書かれていない（AAでは旧Inkling-Smallが廃止扱い）。",
   "sources": [
    "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
-   "https://artificialanalysis.ai/leaderboards/models"
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
-  "verified_at": "2026-11-22"
+  "verified_at": "2026-11-28",
+  "jp_bench": {
+   "nejumi": 0.7956
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-24実行のthinkingmachines/Inkling-2-Mini reasoning-max、vLLM）"
  },
  {
   "id": "ernie-5-5-flash-preview",
@@ -8829,8 +8909,8 @@
    "tau2": null,
    "browsecomp": null
   },
-  "bench_note": "公式カードの値（最高推論設定、比較モデルはClaude Code等の別環境）：Terminal-Bench 4.0 46.5、DeepSWE v1.1 71.2、AutomationBench 61.9。Terminal-Bench 2とは版が違うため表の列には入れていない。AAは未掲載（11/25確認）。",
-  "aa_index": null,
+  "bench_note": "公式カードの値（最高推論設定、比較モデルはClaude Code等の別環境）：Terminal-Bench 4.0 46.5、DeepSWE v1.1 71.2、AutomationBench 61.9。Terminal-Bench 2とは版が違うため表の列には入れていない。AA Intelligence Index v5.0.2は31.3（11/28取得）。",
+  "aa_index": 31.3,
   "japanese_note": "モデルカードの言語表記は英語・中国語。日本語の評価は未確認。",
   "deploy_note_ja": "既定版（専門家FP4）は実ファイル約166GB、FP8版約302GB、BF16版約600GB。SGLang・vLLMで最大1,048,576トークン。投機デコード用DSparkヘッドを同梱。",
   "engines": [
@@ -8842,11 +8922,17 @@
   "sources": [
    "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
    "https://ernie.baidu.com/release/ernie-5-5-flash-preview/",
-   "https://huggingface.co/api/models/baidu/ERNIE-5.5-Flash-Preview?blobs=true"
+   "https://huggingface.co/api/models/baidu/ERNIE-5.5-Flash-Preview?blobs=true",
+   "https://artificialanalysis.ai/leaderboards/models",
+   "https://wandb.ai/llm-leaderboard/nejumi-leaderboard4"
   ],
   "confidence": "high",
-  "verified_at": "2026-11-25",
-  "q4_unverified": true
+  "verified_at": "2026-11-28",
+  "q4_unverified": true,
+  "jp_bench": {
+   "nejumi": 0.8173
+  },
+  "jp_bench_note": "Nejumi Leaderboard 4（W&B公開データ、2026-11-25実行のbaidu/ERNIE-5.5-Flash-Preview reasoning-high、vLLM）"
  },
  {
   "id": "ling-3-2-air",
@@ -8896,6 +8982,228 @@
   ],
   "confidence": "medium",
   "verified_at": "2026-11-25",
+  "q4_unverified": true
+ },
+ {
+  "id": "gigachat-4-708b-a41b",
+  "name": "GigaChat 4 (708B-A41B)",
+  "short": "GigaChat 4",
+  "family": "GigaChat 4",
+  "org": "Sber（GigaChat。HF: ai-sage）",
+  "country": "RU",
+  "release": "2026-11-26",
+  "arch": "MoE（Gated DeltaNet 48層＋MLA-DSA 16層のハイブリッド、専門家256中8＋共有1）",
+  "total_b": 708,
+  "active_b": 41,
+  "native_precision": "FP8（公式の標準配布。BF16版・ベースモデル・学習途中チェックポイントも別配布）",
+  "weights_gb": 726.2,
+  "context_k": 1048.576,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B",
+  "summary_ja": "ロシアSberのGigaChat最上位モデルを重み公開した版（総708B、稼働41B）。即答と推論を1つのモデルで切り替えられ、1Mトークンの文脈に対応。ロシア語と英語が中心。",
+  "strengths": [
+   "coding",
+   "agent",
+   "tool-use",
+   "long-context"
+  ],
+  "bench": {
+   "swe_verified": 80.89,
+   "gpqa": 82.83,
+   "hle": 23.91,
+   "aime": 95.0,
+   "lcb": 88.82,
+   "mmlu_pro": null,
+   "terminal_bench2": 71.26,
+   "tau2": 83.31,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカードの自己申告（推論モード）。AIMEはAIME 2026のmean@8、HLEはテキストのみ・ツールなし、SWE-bench VerifiedとTerminal-Bench 2.0は7時間タイムアウト（Terminal-Bench 2.1は69.66）。BFCL v4 79.55、IFBench 80.33、AA-LCR 70.33。Artificial Analysisは未掲載（11/28確認）。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの言語表記はロシア語・英語（多言語会話に対応と記載）。日本語の評価値はなく、Nejumiも未掲載（11/28確認）。",
+  "deploy_note_ja": "公式FP8で約726GB、BF16で約1,427GB。公式手順はH100 80GB×16（2ノード、SGLang）。公式GGUFはQ4_K_M約429GB・Q6_K約583GB・Q8_0約755GBで、llama.cppは本体未統合のGigaChat4対応PR（#32767）が必要。MTPとDFlash2の投機デコードに対応。",
+  "engines": [
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "notes": "HFへの重みの公開コミットは2026-11-26 09:00 UTC（リポジトリ作成は11/20、ベースは11/18）で、公式ブログの発表も11/26。HFのsafetensors集計は約710.2B（MTP層等込み）。前世代GigaChat 3.5 Ultraは未掲載。",
+  "sources": [
+   "https://huggingface.co/ai-sage/GigaChat4-708B-A41B",
+   "https://giga.chat/blog/en",
+   "https://github.com/salute-developers/gigachat4",
+   "https://huggingface.co/ai-sage/GigaChat4-708B-A41B-GGUF",
+   "https://huggingface.co/api/models/ai-sage/GigaChat4-708B-A41B?blobs=true"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-28",
+  "local_q": {
+   "summary_ja": "公式GGUFは最小でもQ4_K_M（約429GB）で512GB級の機材向け。有志の約2bit混合版（約182〜195GB）なら256GB機に載るが、llama.cppの対応PR版が必要で実測報告は未確認。",
+   "quants": [
+    {
+     "name": "IQ1_M-IQ2_XXS-mix（有志 skyzer4ever）",
+     "bits": 2.05,
+     "size_gb": 182.2,
+     "source": "https://huggingface.co/skyzer4ever/GigaChat4-708B-A41B-GGUF",
+     "note": "専門家をIQ1_M/IQ2_XXSに圧縮。wiki2のPPLは4.46（Q8_0は1.88）で品質低下が大きい"
+    },
+    {
+     "name": "IQ2_XXS-mix（有志 skyzer4ever）",
+     "bits": 2.2,
+     "size_gb": 195.4,
+     "source": "https://huggingface.co/skyzer4ever/GigaChat4-708B-A41B-GGUF",
+     "note": "wiki2のPPLは3.63（Q8_0は1.88）"
+    },
+    {
+     "name": "Q4_K_M（公式GGUF）",
+     "bits": 4.84,
+     "size_gb": 429.4,
+     "source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B-GGUF"
+    },
+    {
+     "name": "Q6_K（公式GGUF）",
+     "bits": 6.57,
+     "size_gb": 583.2,
+     "source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B-GGUF"
+    },
+    {
+     "name": "公式FP8",
+     "bits": 8.18,
+     "size_gb": 726.2,
+     "source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B"
+    }
+   ],
+   "reports": [
+    {
+     "hardware": "H100 80GB×8（1ノード、llama.cpp PR版、MTP-3投機デコード）",
+     "quant": "Q4_K_M（公式GGUF）",
+     "gen_tok_s": 82.3,
+     "source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B-GGUF"
+    },
+    {
+     "hardware": "AMD EPYC 9474F×2（CPUのみ、64スレッド、MTP-3）",
+     "quant": "Q4_K_M（公式GGUF）",
+     "gen_tok_s": 9.0,
+     "source": "https://huggingface.co/ai-sage/GigaChat4-708B-A41B-GGUF"
+    }
+   ],
+   "note_ja": "bitsは実ファイル容量÷HF集計710.2Bの実効値。公式の速度はMTP-3なし（H100×8で40.3、CPUで3.7 tok/s）とあり（上の値）の両方が載っている。"
+  }
+ },
+ {
+  "id": "gigachat-4-37b-a4b",
+  "name": "GigaChat 4 37B-A4B",
+  "short": "GigaChat 4 37B",
+  "family": "GigaChat 4",
+  "org": "Sber（GigaChat。HF: ai-sage）",
+  "country": "RU",
+  "release": "2026-11-26",
+  "arch": "MoE（Gated DeltaNet 24層＋MLA-DSA 8層のハイブリッド、専門家192中8＋共有1）",
+  "total_b": 37,
+  "active_b": 4,
+  "native_precision": "FP8（公式の標準配布。BF16版・ベースモデルも別配布）",
+  "weights_gb": 41.3,
+  "q4_gb": 23.3,
+  "context_k": 1048.576,
+  "modality": [
+   "text"
+  ],
+  "mode": "hybrid",
+  "license": "Noncommercial License for individuals 1.0",
+  "commercial": "no",
+  "license_note": "非商用目的に限り利用・改変・再配布を許可。商用目的で出力を生成することも禁止。上位の708B版はMITで、ライセンスが違う。",
+  "hf": "https://huggingface.co/ai-sage/GigaChat4-37B-A4B",
+  "summary_ja": "GigaChat 4の小型版（総37B、稼働4B）。即答と推論を1つのモデルで切り替え、1M文脈に対応。ライセンスは非商用限定。",
+  "strengths": [
+   "agent",
+   "tool-use",
+   "long-context",
+   "efficiency"
+  ],
+  "bench": {
+   "swe_verified": 70.8,
+   "gpqa": 70.0,
+   "hle": 9.0,
+   "aime": 92.0,
+   "lcb": 85.0,
+   "mmlu_pro": null,
+   "terminal_bench2": 38.2,
+   "tau2": 73.0,
+   "browsecomp": null
+  },
+  "bench_note": "公式モデルカードの自己申告（推論モード）。AIMEはAIME 2026のmean@8、HLEはテキストのみ。Terminal-Bench 2.1は39.33、BFCL 72.0、IFBench 75.0、AA-LCR 54.0。Artificial Analysisは未掲載（11/28確認）。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの言語表記はロシア語・英語。日本語の評価値はなし。",
+  "deploy_note_ja": "公式FP8で約41GB（DFlash2ドラフター込み）、BF16で約78GB。公式GGUFはQ4_K_M約23.3GB・Q6_K約31.5GB・Q8_0約40.7GBで、llama.cppは本体未統合の対応PR（#32767）が必要。公式の測定ではH100×8でQ4_K_Mが150 tok/s（MTP-3で213 tok/s）。",
+  "engines": [
+   "SGLang",
+   "llama.cpp"
+  ],
+  "supersedes": [],
+  "notes": "HFへの重みの公開コミットは2026-11-26 09:00 UTC（リポジトリ作成は11/20）。HFのsafetensors集計は約38.3B（MTP層等込み）。前世代GigaChat 3.5 37Bは未掲載。",
+  "sources": [
+   "https://huggingface.co/ai-sage/GigaChat4-37B-A4B",
+   "https://huggingface.co/ai-sage/GigaChat4-37B-A4B/blob/main/LICENSE.txt",
+   "https://huggingface.co/ai-sage/GigaChat4-37B-A4B-GGUF",
+   "https://giga.chat/blog/en",
+   "https://huggingface.co/api/models/ai-sage/GigaChat4-37B-A4B?blobs=true"
+  ],
+  "confidence": "high",
+  "verified_at": "2026-11-28"
+ },
+ {
+  "id": "gigachat-3-5-omni-432b-a28b",
+  "name": "GigaChat 3.5 Omni (432B-A28B)",
+  "short": "GigaChat 3.5 Omni",
+  "family": "GigaChat 3.5",
+  "org": "Sber（GigaChat。HF: ai-sage）",
+  "country": "RU",
+  "release": "2026-11-27",
+  "arch": "MoE（MLA＋Gated DeltaNetのハイブリッド、MTPヘッド3個）＋InternViT画像エンコーダ（300M）＋GigaAM音声エンコーダ",
+  "total_b": 433.6,
+  "active_b": 28,
+  "native_precision": "FP8（128×128ブロック量子化、画像・音声エンコーダはBF16）",
+  "weights_gb": 437.0,
+  "context_k": 131.072,
+  "modality": [
+   "text",
+   "image",
+   "audio",
+   "video"
+  ],
+  "mode": "instruct",
+  "license": "MIT",
+  "commercial": "yes",
+  "license_note": null,
+  "hf": "https://huggingface.co/ai-sage/GigaChat3.5-Omni-432B-A28B",
+  "summary_ja": "GigaChat 3.5 Ultra（432B、稼働28B）に画像・音声・音声付き動画の入力を足したマルチモーダル版。出力はテキストのみ。動画は1秒1枚・最大512枚を音声と時刻順に読む。",
+  "strengths": [
+   "vision",
+   "multilingual",
+   "tool-use"
+  ],
+  "bench": {},
+  "bench_note": "公式カードは動画（音声付き）・音声・画像・テキストの比較表。Daily-Omni 81.04、WorldSense 56.97、Video-MME（音声付き）80.74（比較はQwen3-Omni-30B-A3B、MiMo-V2.6-Pro等）。テキストの値はGigaChat 3.5 Ultraのカードを参照しており、表の列には入れていない。Artificial Analysisは未掲載（11/28確認）。",
+  "aa_index": null,
+  "japanese_note": "モデルカードの言語表記はロシア語・英語。日本語の評価値はなし。",
+  "deploy_note_ja": "公式FP8で約437GB。公式手順はH100×8（SGLang、対応PR #51276が必要）・131K文脈。公式の4bit版・GGUFは未確認。",
+  "engines": [
+   "SGLang"
+  ],
+  "supersedes": [],
+  "notes": "HFリポジトリ作成は11/20、重みの公開コミット（1件）は2026-11-27 10:37 UTC。テキスト専用の後継世代GigaChat 4（11/26）とは入力の役割が違うため別行。テキスト版のGigaChat 3.5 Ultraは未掲載。",
+  "sources": [
+   "https://huggingface.co/ai-sage/GigaChat3.5-Omni-432B-A28B",
+   "https://huggingface.co/api/models/ai-sage/GigaChat3.5-Omni-432B-A28B?blobs=true"
+  ],
+  "confidence": "medium",
+  "verified_at": "2026-11-28",
   "q4_unverified": true
  }
 ]
